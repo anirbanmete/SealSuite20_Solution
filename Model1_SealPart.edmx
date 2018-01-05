@@ -1,0 +1,961 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SealPartDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="SealPartDBModelStoreContainer">
+          <EntitySet Name="tblCustomer" EntityType="SealPartDBModel.Store.tblCustomer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblHW_AdjCSeal" EntityType="SealPartDBModel.Store.tblHW_AdjCSeal" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblHW_AdjESeal" EntityType="SealPartDBModel.Store.tblHW_AdjESeal" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblHW_AdjUSeal" EntityType="SealPartDBModel.Store.tblHW_AdjUSeal" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblHW_Face" EntityType="SealPartDBModel.Store.tblHW_Face" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblLocation" EntityType="SealPartDBModel.Store.tblLocation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblPlatform" EntityType="SealPartDBModel.Store.tblPlatform" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblPN" EntityType="SealPartDBModel.Store.tblPN" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblProject" EntityType="SealPartDBModel.Store.tblProject" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblRev" EntityType="SealPartDBModel.Store.tblRev" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_tblHW_AdjCSeal_tblHW_Face" Association="SealPartDBModel.Store.FK_tblHW_AdjCSeal_tblHW_Face">
+            <End Role="tblHW_Face" EntitySet="tblHW_Face" />
+            <End Role="tblHW_AdjCSeal" EntitySet="tblHW_AdjCSeal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblHW_AdjESeal_tblHW_Face" Association="SealPartDBModel.Store.FK_tblHW_AdjESeal_tblHW_Face">
+            <End Role="tblHW_Face" EntitySet="tblHW_Face" />
+            <End Role="tblHW_AdjESeal" EntitySet="tblHW_AdjESeal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblHW_AdjUSeal_tblHW_Face" Association="SealPartDBModel.Store.FK_tblHW_AdjUSeal_tblHW_Face">
+            <End Role="tblHW_Face" EntitySet="tblHW_Face" />
+            <End Role="tblHW_AdjUSeal" EntitySet="tblHW_AdjUSeal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblHW_Face_tblRev" Association="SealPartDBModel.Store.FK_tblHW_Face_tblRev">
+            <End Role="tblRev" EntitySet="tblRev" />
+            <End Role="tblHW_Face" EntitySet="tblHW_Face" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblLocation_tblPlatform" Association="SealPartDBModel.Store.FK_tblLocation_tblPlatform">
+            <End Role="tblPlatform" EntitySet="tblPlatform" />
+            <End Role="tblLocation" EntitySet="tblLocation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPlatform_tblCustomer" Association="SealPartDBModel.Store.FK_tblPlatform_tblCustomer">
+            <End Role="tblCustomer" EntitySet="tblCustomer" />
+            <End Role="tblPlatform" EntitySet="tblPlatform" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPNCust_tblLocation" Association="SealPartDBModel.Store.FK_tblPNCust_tblLocation">
+            <End Role="tblLocation" EntitySet="tblLocation" />
+            <End Role="tblProject" EntitySet="tblProject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPNCust_tblRev" Association="SealPartDBModel.Store.FK_tblPNCust_tblRev">
+            <End Role="tblRev" EntitySet="tblRev" />
+            <End Role="tblProject" EntitySet="tblProject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRev_tblPN" Association="SealPartDBModel.Store.FK_tblRev_tblPN">
+            <End Role="tblPN" EntitySet="tblPN" />
+            <End Role="tblRev" EntitySet="tblRev" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tblCustomer">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="numeric" Nullable="false" />
+          <Property Name="fldName" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldDimUnit" Type="nchar" MaxLength="10" />
+          <Property Name="fldCulturalFormat" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblHW_AdjCSeal">
+          <Key>
+            <PropertyRef Name="fldPNID" />
+            <PropertyRef Name="fldRevID" />
+          </Key>
+          <Property Name="fldPNID" Type="numeric" Nullable="false" />
+          <Property Name="fldRevID" Type="numeric" Nullable="false" />
+          <Property Name="fldDHFree" Type="real" />
+          <Property Name="fldDThetaOpening" Type="real" />
+          <Property Name="fldDT" Type="real" />
+        </EntityType>
+        <EntityType Name="tblHW_AdjESeal">
+          <Key>
+            <PropertyRef Name="fldPNID" />
+            <PropertyRef Name="fldRevID" />
+          </Key>
+          <Property Name="fldPNID" Type="numeric" Nullable="false" />
+          <Property Name="fldRevID" Type="numeric" Nullable="false" />
+          <Property Name="fldDThetaE1" Type="real" />
+          <Property Name="fldDThetaM1" Type="real" />
+        </EntityType>
+        <EntityType Name="tblHW_AdjUSeal">
+          <Key>
+            <PropertyRef Name="fldPNID" />
+            <PropertyRef Name="fldRevID" />
+          </Key>
+          <Property Name="fldPNID" Type="numeric" Nullable="false" />
+          <Property Name="fldRevID" Type="numeric" Nullable="false" />
+          <Property Name="fldDT" Type="real" />
+          <Property Name="fldDTheta1" Type="real" />
+          <Property Name="fldDTheta2" Type="real" />
+          <Property Name="fldDRad1" Type="real" />
+          <Property Name="fldDRad2" Type="real" />
+          <Property Name="fldDLLeg" Type="real" />
+        </EntityType>
+        <EntityType Name="tblHW_Face">
+          <Key>
+            <PropertyRef Name="fldPNID" />
+            <PropertyRef Name="fldRevID" />
+          </Key>
+          <Property Name="fldPNID" Type="numeric" Nullable="false" />
+          <Property Name="fldRevID" Type="numeric" Nullable="false" />
+          <Property Name="fldType" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="fldMCS" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="fldGeomTemplate" Type="bit" />
+          <Property Name="fldSegmented" Type="bit" />
+          <Property Name="fldSegmentCount" Type="int" />
+          <Property Name="fldMatName" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldHT" Type="int" />
+          <Property Name="fldTemper" Type="int" />
+          <Property Name="fldCoating" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldSFinish" Type="int" />
+          <Property Name="fldIsPlating" Type="bit" />
+          <Property Name="fldPlatingCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldPlatingThickCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldPlatingThickMin" Type="real" />
+          <Property Name="fldPlatingThickMax" Type="real" />
+          <Property Name="fldHfreeStd" Type="numeric" Scale="4" />
+          <Property Name="fldHFreeTol1" Type="real" />
+          <Property Name="fldHFreeTol2" Type="real" />
+          <Property Name="fldPOrient" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldDControl" Type="real" />
+          <Property Name="fldH11Tol" Type="real" />
+          <Property Name="fldAdjusted" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblLocation">
+          <Key>
+            <PropertyRef Name="fldCustID" />
+            <PropertyRef Name="fldPlatformID" />
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldCustID" Type="numeric" Nullable="false" />
+          <Property Name="fldPlatformID" Type="numeric" Nullable="false" />
+          <Property Name="fldID" Type="numeric" Nullable="false" />
+          <Property Name="fldLoc" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblPlatform">
+          <Key>
+            <PropertyRef Name="fldCustID" />
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldCustID" Type="numeric" Nullable="false" />
+          <Property Name="fldID" Type="numeric" Nullable="false" />
+          <Property Name="fldName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblPN">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="numeric" Nullable="false" />
+          <Property Name="fldCurrentExists" Type="bit" />
+          <Property Name="fldCurrent" Type="nvarchar(max)" />
+          <Property Name="fldLegacyExists" Type="bit" />
+          <Property Name="fldLegacyType" Type="int" />
+          <Property Name="fldLegacy" Type="nvarchar(max)" />
+          <Property Name="fldParentCurrentExists" Type="bit" />
+          <Property Name="fldParentCurrent" Type="nvarchar(max)" />
+          <Property Name="fldParentCurrentRev" Type="nchar" MaxLength="10" />
+          <Property Name="fldParentLegacyExists" Type="bit" />
+          <Property Name="fldParentLegacy" Type="nvarchar(max)" />
+          <Property Name="fldParentLegacyRev" Type="nchar" MaxLength="10" />
+          <Property Name="fldRefDimCurrentExists" Type="bit" />
+          <Property Name="fldRefDimCurrent" Type="nvarchar(max)" />
+          <Property Name="fldRefDimCurrentRev" Type="nchar" MaxLength="10" />
+          <Property Name="fldRefDimLegacyExists" Type="bit" />
+          <Property Name="fldRefDimLegacy" Type="nvarchar(max)" />
+          <Property Name="fldRefDimLegacyRev" Type="nchar" MaxLength="10" />
+          <Property Name="fldRefNotesCurrentExists" Type="bit" />
+          <Property Name="fldRefNotesCurrent" Type="nvarchar(max)" />
+          <Property Name="fldRefNotesCurrentRev" Type="nchar" MaxLength="10" />
+          <Property Name="fldRefNotesLegacyExists" Type="bit" />
+          <Property Name="fldRefNotesLegacy" Type="nvarchar(max)" />
+          <Property Name="fldRefNotesLegacyRev" Type="nchar" MaxLength="10" />
+          <Property Name="fldAppType" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldDimUnit" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tblProject">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldPNID" Type="numeric" Nullable="false" />
+          <Property Name="fldRevID" Type="numeric" Nullable="false" />
+          <Property Name="fldCustID" Type="numeric" Nullable="false" />
+          <Property Name="fldPlatformID" Type="numeric" Nullable="false" />
+          <Property Name="fldLocID" Type="numeric" Nullable="false" />
+          <Property Name="fldID" Type="numeric" Nullable="false" />
+          <Property Name="fldPN_Cust" Type="nvarchar(max)" />
+          <Property Name="fldPN_Cust_Rev" Type="nchar" MaxLength="10" />
+          <Property Name="fldSealIPE" Type="bit" />
+          <Property Name="fldSealTest" Type="bit" />
+          <Property Name="fldSealProcess" Type="bit" />
+          <Property Name="fldDateCreated" Type="datetime" />
+          <Property Name="fldDateLastModified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblRev">
+          <Key>
+            <PropertyRef Name="fldPNID" />
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldPNID" Type="numeric" Nullable="false" />
+          <Property Name="fldID" Type="numeric" Nullable="false" />
+          <Property Name="fldCurrent" Type="nvarchar" MaxLength="10" />
+          <Property Name="fldLegacy" Type="nvarchar" MaxLength="10" />
+          <Property Name="fldDWGFile" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_tblHW_AdjCSeal_tblHW_Face">
+          <End Role="tblHW_Face" Type="SealPartDBModel.Store.tblHW_Face" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblHW_AdjCSeal" Type="SealPartDBModel.Store.tblHW_AdjCSeal" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblHW_Face">
+              <PropertyRef Name="fldPNID" />
+              <PropertyRef Name="fldRevID" />
+            </Principal>
+            <Dependent Role="tblHW_AdjCSeal">
+              <PropertyRef Name="fldPNID" />
+              <PropertyRef Name="fldRevID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblHW_AdjESeal_tblHW_Face">
+          <End Role="tblHW_Face" Type="SealPartDBModel.Store.tblHW_Face" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblHW_AdjESeal" Type="SealPartDBModel.Store.tblHW_AdjESeal" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblHW_Face">
+              <PropertyRef Name="fldPNID" />
+              <PropertyRef Name="fldRevID" />
+            </Principal>
+            <Dependent Role="tblHW_AdjESeal">
+              <PropertyRef Name="fldPNID" />
+              <PropertyRef Name="fldRevID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblHW_AdjUSeal_tblHW_Face">
+          <End Role="tblHW_Face" Type="SealPartDBModel.Store.tblHW_Face" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblHW_AdjUSeal" Type="SealPartDBModel.Store.tblHW_AdjUSeal" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblHW_Face">
+              <PropertyRef Name="fldPNID" />
+              <PropertyRef Name="fldRevID" />
+            </Principal>
+            <Dependent Role="tblHW_AdjUSeal">
+              <PropertyRef Name="fldPNID" />
+              <PropertyRef Name="fldRevID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblHW_Face_tblRev">
+          <End Role="tblRev" Type="SealPartDBModel.Store.tblRev" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblHW_Face" Type="SealPartDBModel.Store.tblHW_Face" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblRev">
+              <PropertyRef Name="fldPNID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblHW_Face">
+              <PropertyRef Name="fldPNID" />
+              <PropertyRef Name="fldRevID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblLocation_tblPlatform">
+          <End Role="tblPlatform" Type="SealPartDBModel.Store.tblPlatform" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblLocation" Type="SealPartDBModel.Store.tblLocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPlatform">
+              <PropertyRef Name="fldCustID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblLocation">
+              <PropertyRef Name="fldCustID" />
+              <PropertyRef Name="fldPlatformID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPlatform_tblCustomer">
+          <End Role="tblCustomer" Type="SealPartDBModel.Store.tblCustomer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblPlatform" Type="SealPartDBModel.Store.tblPlatform" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCustomer">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblPlatform">
+              <PropertyRef Name="fldCustID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPNCust_tblLocation">
+          <End Role="tblLocation" Type="SealPartDBModel.Store.tblLocation" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblProject" Type="SealPartDBModel.Store.tblProject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLocation">
+              <PropertyRef Name="fldCustID" />
+              <PropertyRef Name="fldPlatformID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblProject">
+              <PropertyRef Name="fldCustID" />
+              <PropertyRef Name="fldPlatformID" />
+              <PropertyRef Name="fldLocID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPNCust_tblRev">
+          <End Role="tblRev" Type="SealPartDBModel.Store.tblRev" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblProject" Type="SealPartDBModel.Store.tblProject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRev">
+              <PropertyRef Name="fldPNID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblProject">
+              <PropertyRef Name="fldPNID" />
+              <PropertyRef Name="fldRevID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRev_tblPN">
+          <End Role="tblPN" Type="SealPartDBModel.Store.tblPN" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblRev" Type="SealPartDBModel.Store.tblRev" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPN">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblRev">
+              <PropertyRef Name="fldPNID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SealPartDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="SealPartDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblCustomer" EntityType="SealPartDBModel.tblCustomer" />
+          <EntitySet Name="tblHW_AdjCSeal" EntityType="SealPartDBModel.tblHW_AdjCSeal" />
+          <EntitySet Name="tblHW_AdjESeal" EntityType="SealPartDBModel.tblHW_AdjESeal" />
+          <EntitySet Name="tblHW_AdjUSeal" EntityType="SealPartDBModel.tblHW_AdjUSeal" />
+          <EntitySet Name="tblHW_Face" EntityType="SealPartDBModel.tblHW_Face" />
+          <EntitySet Name="tblLocation" EntityType="SealPartDBModel.tblLocation" />
+          <EntitySet Name="tblPlatform" EntityType="SealPartDBModel.tblPlatform" />
+          <EntitySet Name="tblPN" EntityType="SealPartDBModel.tblPN" />
+          <EntitySet Name="tblProject" EntityType="SealPartDBModel.tblProject" />
+          <EntitySet Name="tblRev" EntityType="SealPartDBModel.tblRev" />
+          <AssociationSet Name="FK_tblPlatform_tblCustomer" Association="SealPartDBModel.FK_tblPlatform_tblCustomer">
+            <End Role="tblCustomer" EntitySet="tblCustomer" />
+            <End Role="tblPlatform" EntitySet="tblPlatform" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblHW_AdjCSeal_tblHW_Face" Association="SealPartDBModel.FK_tblHW_AdjCSeal_tblHW_Face">
+            <End Role="tblHW_Face" EntitySet="tblHW_Face" />
+            <End Role="tblHW_AdjCSeal" EntitySet="tblHW_AdjCSeal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblHW_AdjESeal_tblHW_Face" Association="SealPartDBModel.FK_tblHW_AdjESeal_tblHW_Face">
+            <End Role="tblHW_Face" EntitySet="tblHW_Face" />
+            <End Role="tblHW_AdjESeal" EntitySet="tblHW_AdjESeal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblHW_AdjUSeal_tblHW_Face" Association="SealPartDBModel.FK_tblHW_AdjUSeal_tblHW_Face">
+            <End Role="tblHW_Face" EntitySet="tblHW_Face" />
+            <End Role="tblHW_AdjUSeal" EntitySet="tblHW_AdjUSeal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblHW_Face_tblRev" Association="SealPartDBModel.FK_tblHW_Face_tblRev">
+            <End Role="tblRev" EntitySet="tblRev" />
+            <End Role="tblHW_Face" EntitySet="tblHW_Face" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblLocation_tblPlatform" Association="SealPartDBModel.FK_tblLocation_tblPlatform">
+            <End Role="tblPlatform" EntitySet="tblPlatform" />
+            <End Role="tblLocation" EntitySet="tblLocation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPNCust_tblLocation" Association="SealPartDBModel.FK_tblPNCust_tblLocation">
+            <End Role="tblLocation" EntitySet="tblLocation" />
+            <End Role="tblProject" EntitySet="tblProject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRev_tblPN" Association="SealPartDBModel.FK_tblRev_tblPN">
+            <End Role="tblPN" EntitySet="tblPN" />
+            <End Role="tblRev" EntitySet="tblRev" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPNCust_tblRev" Association="SealPartDBModel.FK_tblPNCust_tblRev">
+            <End Role="tblRev" EntitySet="tblRev" />
+            <End Role="tblProject" EntitySet="tblProject" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tblCustomer">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldDimUnit" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="fldCulturalFormat" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="tblPlatform" Relationship="SealPartDBModel.FK_tblPlatform_tblCustomer" FromRole="tblCustomer" ToRole="tblPlatform" />
+        </EntityType>
+        <EntityType Name="tblHW_AdjCSeal">
+          <Key>
+            <PropertyRef Name="fldPNID" />
+            <PropertyRef Name="fldRevID" />
+          </Key>
+          <Property Name="fldPNID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldRevID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldDHFree" Type="Single" />
+          <Property Name="fldDThetaOpening" Type="Single" />
+          <Property Name="fldDT" Type="Single" />
+          <NavigationProperty Name="tblHW_Face" Relationship="SealPartDBModel.FK_tblHW_AdjCSeal_tblHW_Face" FromRole="tblHW_AdjCSeal" ToRole="tblHW_Face" />
+        </EntityType>
+        <EntityType Name="tblHW_AdjESeal">
+          <Key>
+            <PropertyRef Name="fldPNID" />
+            <PropertyRef Name="fldRevID" />
+          </Key>
+          <Property Name="fldPNID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldRevID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldDThetaE1" Type="Single" />
+          <Property Name="fldDThetaM1" Type="Single" />
+          <NavigationProperty Name="tblHW_Face" Relationship="SealPartDBModel.FK_tblHW_AdjESeal_tblHW_Face" FromRole="tblHW_AdjESeal" ToRole="tblHW_Face" />
+        </EntityType>
+        <EntityType Name="tblHW_AdjUSeal">
+          <Key>
+            <PropertyRef Name="fldPNID" />
+            <PropertyRef Name="fldRevID" />
+          </Key>
+          <Property Name="fldPNID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldRevID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldDT" Type="Single" />
+          <Property Name="fldDTheta1" Type="Single" />
+          <Property Name="fldDTheta2" Type="Single" />
+          <Property Name="fldDRad1" Type="Single" />
+          <Property Name="fldDRad2" Type="Single" />
+          <Property Name="fldDLLeg" Type="Single" />
+          <NavigationProperty Name="tblHW_Face" Relationship="SealPartDBModel.FK_tblHW_AdjUSeal_tblHW_Face" FromRole="tblHW_AdjUSeal" ToRole="tblHW_Face" />
+        </EntityType>
+        <EntityType Name="tblHW_Face">
+          <Key>
+            <PropertyRef Name="fldPNID" />
+            <PropertyRef Name="fldRevID" />
+          </Key>
+          <Property Name="fldPNID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldRevID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldType" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldMCS" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldGeomTemplate" Type="Boolean" />
+          <Property Name="fldSegmented" Type="Boolean" />
+          <Property Name="fldSegmentCount" Type="Int32" />
+          <Property Name="fldMatName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldHT" Type="Int32" />
+          <Property Name="fldTemper" Type="Int32" />
+          <Property Name="fldCoating" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldSFinish" Type="Int32" />
+          <Property Name="fldIsPlating" Type="Boolean" />
+          <Property Name="fldPlatingCode" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldPlatingThickCode" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldPlatingThickMin" Type="Single" />
+          <Property Name="fldPlatingThickMax" Type="Single" />
+          <Property Name="fldHfreeStd" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="fldHFreeTol1" Type="Single" />
+          <Property Name="fldHFreeTol2" Type="Single" />
+          <Property Name="fldPOrient" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldDControl" Type="Single" />
+          <Property Name="fldH11Tol" Type="Single" />
+          <Property Name="fldAdjusted" Type="Boolean" />
+          <NavigationProperty Name="tblHW_AdjCSeal" Relationship="SealPartDBModel.FK_tblHW_AdjCSeal_tblHW_Face" FromRole="tblHW_Face" ToRole="tblHW_AdjCSeal" />
+          <NavigationProperty Name="tblHW_AdjESeal" Relationship="SealPartDBModel.FK_tblHW_AdjESeal_tblHW_Face" FromRole="tblHW_Face" ToRole="tblHW_AdjESeal" />
+          <NavigationProperty Name="tblHW_AdjUSeal" Relationship="SealPartDBModel.FK_tblHW_AdjUSeal_tblHW_Face" FromRole="tblHW_Face" ToRole="tblHW_AdjUSeal" />
+          <NavigationProperty Name="tblRev" Relationship="SealPartDBModel.FK_tblHW_Face_tblRev" FromRole="tblHW_Face" ToRole="tblRev" />
+        </EntityType>
+        <EntityType Name="tblLocation">
+          <Key>
+            <PropertyRef Name="fldCustID" />
+            <PropertyRef Name="fldPlatformID" />
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldCustID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldPlatformID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldLoc" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="tblPlatform" Relationship="SealPartDBModel.FK_tblLocation_tblPlatform" FromRole="tblLocation" ToRole="tblPlatform" />
+          <NavigationProperty Name="tblProject" Relationship="SealPartDBModel.FK_tblPNCust_tblLocation" FromRole="tblLocation" ToRole="tblProject" />
+        </EntityType>
+        <EntityType Name="tblPlatform">
+          <Key>
+            <PropertyRef Name="fldCustID" />
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldCustID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="tblCustomer" Relationship="SealPartDBModel.FK_tblPlatform_tblCustomer" FromRole="tblPlatform" ToRole="tblCustomer" />
+          <NavigationProperty Name="tblLocation" Relationship="SealPartDBModel.FK_tblLocation_tblPlatform" FromRole="tblPlatform" ToRole="tblLocation" />
+        </EntityType>
+        <EntityType Name="tblPN">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldCurrentExists" Type="Boolean" />
+          <Property Name="fldCurrent" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="fldLegacyExists" Type="Boolean" />
+          <Property Name="fldLegacyType" Type="Int32" />
+          <Property Name="fldLegacy" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="fldParentCurrentExists" Type="Boolean" />
+          <Property Name="fldParentCurrent" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="fldParentCurrentRev" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="fldParentLegacyExists" Type="Boolean" />
+          <Property Name="fldParentLegacy" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="fldParentLegacyRev" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="fldRefDimCurrentExists" Type="Boolean" />
+          <Property Name="fldRefDimCurrent" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="fldRefDimCurrentRev" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="fldRefDimLegacyExists" Type="Boolean" />
+          <Property Name="fldRefDimLegacy" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="fldRefDimLegacyRev" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="fldRefNotesCurrentExists" Type="Boolean" />
+          <Property Name="fldRefNotesCurrent" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="fldRefNotesCurrentRev" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="fldRefNotesLegacyExists" Type="Boolean" />
+          <Property Name="fldRefNotesLegacy" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="fldRefNotesLegacyRev" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="fldAppType" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldDimUnit" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="tblRev" Relationship="SealPartDBModel.FK_tblRev_tblPN" FromRole="tblPN" ToRole="tblRev" />
+        </EntityType>
+        <EntityType Name="tblProject">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldPNID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldRevID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldCustID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldPlatformID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldLocID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldPN_Cust" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="fldPN_Cust_Rev" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="fldSealIPE" Type="Boolean" />
+          <Property Name="fldSealTest" Type="Boolean" />
+          <Property Name="fldSealProcess" Type="Boolean" />
+          <Property Name="fldDateCreated" Type="DateTime" />
+          <Property Name="fldDateLastModified" Type="DateTime" />
+          <NavigationProperty Name="tblLocation" Relationship="SealPartDBModel.FK_tblPNCust_tblLocation" FromRole="tblProject" ToRole="tblLocation" />
+          <NavigationProperty Name="tblRev" Relationship="SealPartDBModel.FK_tblPNCust_tblRev" FromRole="tblProject" ToRole="tblRev" />
+        </EntityType>
+        <EntityType Name="tblRev">
+          <Key>
+            <PropertyRef Name="fldPNID" />
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldPNID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldCurrent" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="fldLegacy" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="fldDWGFile" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="tblHW_Face" Relationship="SealPartDBModel.FK_tblHW_Face_tblRev" FromRole="tblRev" ToRole="tblHW_Face" />
+          <NavigationProperty Name="tblPN" Relationship="SealPartDBModel.FK_tblRev_tblPN" FromRole="tblRev" ToRole="tblPN" />
+          <NavigationProperty Name="tblProject" Relationship="SealPartDBModel.FK_tblPNCust_tblRev" FromRole="tblRev" ToRole="tblProject" />
+        </EntityType>
+        <Association Name="FK_tblPlatform_tblCustomer">
+          <End Role="tblCustomer" Type="SealPartDBModel.tblCustomer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblPlatform" Type="SealPartDBModel.tblPlatform" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCustomer">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblPlatform">
+              <PropertyRef Name="fldCustID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblHW_AdjCSeal_tblHW_Face">
+          <End Role="tblHW_Face" Type="SealPartDBModel.tblHW_Face" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblHW_AdjCSeal" Type="SealPartDBModel.tblHW_AdjCSeal" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblHW_Face">
+              <PropertyRef Name="fldPNID" />
+              <PropertyRef Name="fldRevID" />
+            </Principal>
+            <Dependent Role="tblHW_AdjCSeal">
+              <PropertyRef Name="fldPNID" />
+              <PropertyRef Name="fldRevID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblHW_AdjESeal_tblHW_Face">
+          <End Role="tblHW_Face" Type="SealPartDBModel.tblHW_Face" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblHW_AdjESeal" Type="SealPartDBModel.tblHW_AdjESeal" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblHW_Face">
+              <PropertyRef Name="fldPNID" />
+              <PropertyRef Name="fldRevID" />
+            </Principal>
+            <Dependent Role="tblHW_AdjESeal">
+              <PropertyRef Name="fldPNID" />
+              <PropertyRef Name="fldRevID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblHW_AdjUSeal_tblHW_Face">
+          <End Role="tblHW_Face" Type="SealPartDBModel.tblHW_Face" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblHW_AdjUSeal" Type="SealPartDBModel.tblHW_AdjUSeal" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblHW_Face">
+              <PropertyRef Name="fldPNID" />
+              <PropertyRef Name="fldRevID" />
+            </Principal>
+            <Dependent Role="tblHW_AdjUSeal">
+              <PropertyRef Name="fldPNID" />
+              <PropertyRef Name="fldRevID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblHW_Face_tblRev">
+          <End Role="tblRev" Type="SealPartDBModel.tblRev" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblHW_Face" Type="SealPartDBModel.tblHW_Face" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblRev">
+              <PropertyRef Name="fldPNID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblHW_Face">
+              <PropertyRef Name="fldPNID" />
+              <PropertyRef Name="fldRevID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblLocation_tblPlatform">
+          <End Role="tblPlatform" Type="SealPartDBModel.tblPlatform" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblLocation" Type="SealPartDBModel.tblLocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPlatform">
+              <PropertyRef Name="fldCustID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblLocation">
+              <PropertyRef Name="fldCustID" />
+              <PropertyRef Name="fldPlatformID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPNCust_tblLocation">
+          <End Role="tblLocation" Type="SealPartDBModel.tblLocation" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblProject" Type="SealPartDBModel.tblProject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLocation">
+              <PropertyRef Name="fldCustID" />
+              <PropertyRef Name="fldPlatformID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblProject">
+              <PropertyRef Name="fldCustID" />
+              <PropertyRef Name="fldPlatformID" />
+              <PropertyRef Name="fldLocID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRev_tblPN">
+          <End Role="tblPN" Type="SealPartDBModel.tblPN" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblRev" Type="SealPartDBModel.tblRev" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPN">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblRev">
+              <PropertyRef Name="fldPNID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPNCust_tblRev">
+          <End Role="tblRev" Type="SealPartDBModel.tblRev" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblProject" Type="SealPartDBModel.tblProject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRev">
+              <PropertyRef Name="fldPNID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblProject">
+              <PropertyRef Name="fldPNID" />
+              <PropertyRef Name="fldRevID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SealPartDBModelStoreContainer" CdmEntityContainer="SealPartDBEntities">
+          <EntitySetMapping Name="tblCustomer">
+            <EntityTypeMapping TypeName="SealPartDBModel.tblCustomer">
+              <MappingFragment StoreEntitySet="tblCustomer">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldName" ColumnName="fldName" />
+                <ScalarProperty Name="fldDimUnit" ColumnName="fldDimUnit" />
+                <ScalarProperty Name="fldCulturalFormat" ColumnName="fldCulturalFormat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblHW_AdjCSeal">
+            <EntityTypeMapping TypeName="SealPartDBModel.tblHW_AdjCSeal">
+              <MappingFragment StoreEntitySet="tblHW_AdjCSeal">
+                <ScalarProperty Name="fldPNID" ColumnName="fldPNID" />
+                <ScalarProperty Name="fldRevID" ColumnName="fldRevID" />
+                <ScalarProperty Name="fldDHFree" ColumnName="fldDHFree" />
+                <ScalarProperty Name="fldDThetaOpening" ColumnName="fldDThetaOpening" />
+                <ScalarProperty Name="fldDT" ColumnName="fldDT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblHW_AdjESeal">
+            <EntityTypeMapping TypeName="SealPartDBModel.tblHW_AdjESeal">
+              <MappingFragment StoreEntitySet="tblHW_AdjESeal">
+                <ScalarProperty Name="fldPNID" ColumnName="fldPNID" />
+                <ScalarProperty Name="fldRevID" ColumnName="fldRevID" />
+                <ScalarProperty Name="fldDThetaE1" ColumnName="fldDThetaE1" />
+                <ScalarProperty Name="fldDThetaM1" ColumnName="fldDThetaM1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblHW_AdjUSeal">
+            <EntityTypeMapping TypeName="SealPartDBModel.tblHW_AdjUSeal">
+              <MappingFragment StoreEntitySet="tblHW_AdjUSeal">
+                <ScalarProperty Name="fldPNID" ColumnName="fldPNID" />
+                <ScalarProperty Name="fldRevID" ColumnName="fldRevID" />
+                <ScalarProperty Name="fldDT" ColumnName="fldDT" />
+                <ScalarProperty Name="fldDTheta1" ColumnName="fldDTheta1" />
+                <ScalarProperty Name="fldDTheta2" ColumnName="fldDTheta2" />
+                <ScalarProperty Name="fldDRad1" ColumnName="fldDRad1" />
+                <ScalarProperty Name="fldDRad2" ColumnName="fldDRad2" />
+                <ScalarProperty Name="fldDLLeg" ColumnName="fldDLLeg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblHW_Face">
+            <EntityTypeMapping TypeName="SealPartDBModel.tblHW_Face">
+              <MappingFragment StoreEntitySet="tblHW_Face">
+                <ScalarProperty Name="fldPNID" ColumnName="fldPNID" />
+                <ScalarProperty Name="fldRevID" ColumnName="fldRevID" />
+                <ScalarProperty Name="fldType" ColumnName="fldType" />
+                <ScalarProperty Name="fldMCS" ColumnName="fldMCS" />
+                <ScalarProperty Name="fldGeomTemplate" ColumnName="fldGeomTemplate" />
+                <ScalarProperty Name="fldSegmented" ColumnName="fldSegmented" />
+                <ScalarProperty Name="fldSegmentCount" ColumnName="fldSegmentCount" />
+                <ScalarProperty Name="fldMatName" ColumnName="fldMatName" />
+                <ScalarProperty Name="fldHT" ColumnName="fldHT" />
+                <ScalarProperty Name="fldTemper" ColumnName="fldTemper" />
+                <ScalarProperty Name="fldCoating" ColumnName="fldCoating" />
+                <ScalarProperty Name="fldSFinish" ColumnName="fldSFinish" />
+                <ScalarProperty Name="fldIsPlating" ColumnName="fldIsPlating" />
+                <ScalarProperty Name="fldPlatingCode" ColumnName="fldPlatingCode" />
+                <ScalarProperty Name="fldPlatingThickCode" ColumnName="fldPlatingThickCode" />
+                <ScalarProperty Name="fldPlatingThickMin" ColumnName="fldPlatingThickMin" />
+                <ScalarProperty Name="fldPlatingThickMax" ColumnName="fldPlatingThickMax" />
+                <ScalarProperty Name="fldHfreeStd" ColumnName="fldHfreeStd" />
+                <ScalarProperty Name="fldHFreeTol1" ColumnName="fldHFreeTol1" />
+                <ScalarProperty Name="fldHFreeTol2" ColumnName="fldHFreeTol2" />
+                <ScalarProperty Name="fldPOrient" ColumnName="fldPOrient" />
+                <ScalarProperty Name="fldDControl" ColumnName="fldDControl" />
+                <ScalarProperty Name="fldH11Tol" ColumnName="fldH11Tol" />
+                <ScalarProperty Name="fldAdjusted" ColumnName="fldAdjusted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLocation">
+            <EntityTypeMapping TypeName="SealPartDBModel.tblLocation">
+              <MappingFragment StoreEntitySet="tblLocation">
+                <ScalarProperty Name="fldCustID" ColumnName="fldCustID" />
+                <ScalarProperty Name="fldPlatformID" ColumnName="fldPlatformID" />
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldLoc" ColumnName="fldLoc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPlatform">
+            <EntityTypeMapping TypeName="SealPartDBModel.tblPlatform">
+              <MappingFragment StoreEntitySet="tblPlatform">
+                <ScalarProperty Name="fldCustID" ColumnName="fldCustID" />
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldName" ColumnName="fldName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPN">
+            <EntityTypeMapping TypeName="SealPartDBModel.tblPN">
+              <MappingFragment StoreEntitySet="tblPN">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldCurrentExists" ColumnName="fldCurrentExists" />
+                <ScalarProperty Name="fldCurrent" ColumnName="fldCurrent" />
+                <ScalarProperty Name="fldLegacyExists" ColumnName="fldLegacyExists" />
+                <ScalarProperty Name="fldLegacyType" ColumnName="fldLegacyType" />
+                <ScalarProperty Name="fldLegacy" ColumnName="fldLegacy" />
+                <ScalarProperty Name="fldParentCurrentExists" ColumnName="fldParentCurrentExists" />
+                <ScalarProperty Name="fldParentCurrent" ColumnName="fldParentCurrent" />
+                <ScalarProperty Name="fldParentCurrentRev" ColumnName="fldParentCurrentRev" />
+                <ScalarProperty Name="fldParentLegacyExists" ColumnName="fldParentLegacyExists" />
+                <ScalarProperty Name="fldParentLegacy" ColumnName="fldParentLegacy" />
+                <ScalarProperty Name="fldParentLegacyRev" ColumnName="fldParentLegacyRev" />
+                <ScalarProperty Name="fldRefDimCurrentExists" ColumnName="fldRefDimCurrentExists" />
+                <ScalarProperty Name="fldRefDimCurrent" ColumnName="fldRefDimCurrent" />
+                <ScalarProperty Name="fldRefDimCurrentRev" ColumnName="fldRefDimCurrentRev" />
+                <ScalarProperty Name="fldRefDimLegacyExists" ColumnName="fldRefDimLegacyExists" />
+                <ScalarProperty Name="fldRefDimLegacy" ColumnName="fldRefDimLegacy" />
+                <ScalarProperty Name="fldRefDimLegacyRev" ColumnName="fldRefDimLegacyRev" />
+                <ScalarProperty Name="fldRefNotesCurrentExists" ColumnName="fldRefNotesCurrentExists" />
+                <ScalarProperty Name="fldRefNotesCurrent" ColumnName="fldRefNotesCurrent" />
+                <ScalarProperty Name="fldRefNotesCurrentRev" ColumnName="fldRefNotesCurrentRev" />
+                <ScalarProperty Name="fldRefNotesLegacyExists" ColumnName="fldRefNotesLegacyExists" />
+                <ScalarProperty Name="fldRefNotesLegacy" ColumnName="fldRefNotesLegacy" />
+                <ScalarProperty Name="fldRefNotesLegacyRev" ColumnName="fldRefNotesLegacyRev" />
+                <ScalarProperty Name="fldAppType" ColumnName="fldAppType" />
+                <ScalarProperty Name="fldDimUnit" ColumnName="fldDimUnit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProject">
+            <EntityTypeMapping TypeName="SealPartDBModel.tblProject">
+              <MappingFragment StoreEntitySet="tblProject">
+                <ScalarProperty Name="fldPNID" ColumnName="fldPNID" />
+                <ScalarProperty Name="fldRevID" ColumnName="fldRevID" />
+                <ScalarProperty Name="fldCustID" ColumnName="fldCustID" />
+                <ScalarProperty Name="fldPlatformID" ColumnName="fldPlatformID" />
+                <ScalarProperty Name="fldLocID" ColumnName="fldLocID" />
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldPN_Cust" ColumnName="fldPN_Cust" />
+                <ScalarProperty Name="fldPN_Cust_Rev" ColumnName="fldPN_Cust_Rev" />
+                <ScalarProperty Name="fldSealIPE" ColumnName="fldSealIPE" />
+                <ScalarProperty Name="fldSealTest" ColumnName="fldSealTest" />
+                <ScalarProperty Name="fldSealProcess" ColumnName="fldSealProcess" />
+                <ScalarProperty Name="fldDateCreated" ColumnName="fldDateCreated" />
+                <ScalarProperty Name="fldDateLastModified" ColumnName="fldDateLastModified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRev">
+            <EntityTypeMapping TypeName="SealPartDBModel.tblRev">
+              <MappingFragment StoreEntitySet="tblRev">
+                <ScalarProperty Name="fldPNID" ColumnName="fldPNID" />
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldCurrent" ColumnName="fldCurrent" />
+                <ScalarProperty Name="fldLegacy" ColumnName="fldLegacy" />
+                <ScalarProperty Name="fldDWGFile" ColumnName="fldDWGFile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="SealPartDBModel.tblCustomer" Width="1.5" PointX="3.5" PointY="2.25" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealPartDBModel.tblHW_AdjCSeal" Width="1.5" PointX="7.5" PointY="4.625" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealPartDBModel.tblHW_AdjESeal" Width="1.5" PointX="7.5" PointY="7.5" Height="1.9802864583333344" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealPartDBModel.tblHW_AdjUSeal" Width="1.5" PointX="7.5" PointY="10.25" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealPartDBModel.tblHW_Face" Width="1.5" PointX="5.25" PointY="5.625" Height="6.4032194010416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealPartDBModel.tblLocation" Width="1.5" PointX="8" PointY="0.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealPartDBModel.tblPlatform" Width="1.5" PointX="5.75" PointY="1.625" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealPartDBModel.tblPN" Width="1.5" PointX="0.75" PointY="5.75" Height="6.2109179687500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealPartDBModel.tblProject" Width="1.5" PointX="10.25" PointY="6.875" Height="3.9033007812499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealPartDBModel.tblRev" Width="1.5" PointX="3" PointY="7.5" Height="2.5571907552083353" IsExpanded="true" />
+        <AssociationConnector Association="SealPartDBModel.FK_tblPlatform_tblCustomer" ManuallyRouted="false">
+          <ConnectorPoint PointX="5" PointY="2.9276432291666659" />
+          <ConnectorPoint PointX="5.75" PointY="2.9276432291666659" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealPartDBModel.FK_tblHW_AdjCSeal_tblHW_Face" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="6.2112939453125" />
+          <ConnectorPoint PointX="7.5" PointY="6.2112939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealPartDBModel.FK_tblHW_AdjESeal_tblHW_Face" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="8.4901432291666676" />
+          <ConnectorPoint PointX="7.5" PointY="8.4901432291666676" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealPartDBModel.FK_tblHW_AdjUSeal_tblHW_Face" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="11.139109700520834" />
+          <ConnectorPoint PointX="7.166666666666667" PointY="11.139109700520834" />
+          <ConnectorPoint PointX="7.333333333333333" PointY="11.139109700520834" />
+          <ConnectorPoint PointX="7.5" PointY="11.139109700520834" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealPartDBModel.FK_tblHW_Face_tblRev" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="8.7785953776041676" />
+          <ConnectorPoint PointX="5.25" PointY="8.7785953776041676" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealPartDBModel.FK_tblLocation_tblPlatform" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.25" PointY="2.2737939453125" />
+          <ConnectorPoint PointX="8" PointY="2.2737939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealPartDBModel.FK_tblPNCust_tblLocation" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.28125" PointY="2.9225878906249996" />
+          <ConnectorPoint PointX="9.28125" PointY="9.8651432291666676" />
+          <ConnectorPoint PointX="9.7916666666666661" PointY="9.8651432291666676" />
+          <ConnectorPoint PointX="9.9583333333333339" PointY="9.8651432291666676" />
+          <ConnectorPoint PointX="10.25" PointY="9.8651432291666676" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealPartDBModel.FK_tblRev_tblPN" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="8.7785953776041676" />
+          <ConnectorPoint PointX="3" PointY="8.7785953776041676" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealPartDBModel.FK_tblPNCust_tblRev" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.75" PointY="10.057190755208335" />
+          <ConnectorPoint PointX="3.75" PointY="12.278219401041667" />
+          <ConnectorPoint PointX="7.25" PointY="12.278219401041667" />
+          <ConnectorPoint PointX="7.25" PointY="10" />
+          <ConnectorPoint PointX="9.875" PointY="10" />
+          <ConnectorPoint PointX="9.875" PointY="8.3388196145833327" />
+          <ConnectorPoint PointX="10.25" PointY="8.3388196145833327" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

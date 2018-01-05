@@ -1,0 +1,1098 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SealIPEMCSDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="SealIPEMCSDBModelStoreContainer">
+          <EntitySet Name="tblCSeal_Envelope" EntityType="SealIPEMCSDBModel.Store.tblCSeal_Envelope" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblCSeal_FEAParams" EntityType="SealIPEMCSDBModel.Store.tblCSeal_FEAParams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblCSeal_Geom" EntityType="SealIPEMCSDBModel.Store.tblCSeal_Geom" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblCSeal_ManfData" EntityType="SealIPEMCSDBModel.Store.tblCSeal_ManfData" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblESeal_Envelope" EntityType="SealIPEMCSDBModel.Store.tblESeal_Envelope" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblESeal_FEAParams" EntityType="SealIPEMCSDBModel.Store.tblESeal_FEAParams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblESeal_Geom" EntityType="SealIPEMCSDBModel.Store.tblESeal_Geom" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblESeal_Leak_None" EntityType="SealIPEMCSDBModel.Store.tblESeal_Leak_None" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblESeal_Leak_T800" EntityType="SealIPEMCSDBModel.Store.tblESeal_Leak_T800" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblESeal_Leak_Tricom" EntityType="SealIPEMCSDBModel.Store.tblESeal_Leak_Tricom" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblESeal_ManfData" EntityType="SealIPEMCSDBModel.Store.tblESeal_ManfData" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblESealNew_Geom" EntityType="SealIPEMCSDBModel.Store.tblESealNew_Geom" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblHT" EntityType="SealIPEMCSDBModel.Store.tblHT" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblMaterial" EntityType="SealIPEMCSDBModel.Store.tblMaterial" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblMaterial_S" EntityType="SealIPEMCSDBModel.Store.tblMaterial_S" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblMatTemper" EntityType="SealIPEMCSDBModel.Store.tblMatTemper" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblPlatingThick" EntityType="SealIPEMCSDBModel.Store.tblPlatingThick" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblPlatingType" EntityType="SealIPEMCSDBModel.Store.tblPlatingType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblTemper" EntityType="SealIPEMCSDBModel.Store.tblTemper" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblUSeal_Envelope" EntityType="SealIPEMCSDBModel.Store.tblUSeal_Envelope" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblUSeal_FEAParams" EntityType="SealIPEMCSDBModel.Store.tblUSeal_FEAParams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblUSeal_Geom" EntityType="SealIPEMCSDBModel.Store.tblUSeal_Geom" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblUSeal_ManfData" EntityType="SealIPEMCSDBModel.Store.tblUSeal_ManfData" store:Type="Tables" store:Schema="dbo" store:Name="tblUSeal_ManfData">
+            <DefiningQuery>SELECT 
+      [tblUSeal_ManfData].[fldCrossSecNo] AS [fldCrossSecNo], 
+      [tblUSeal_ManfData].[fldHFree] AS [fldHFree], 
+      [tblUSeal_ManfData].[fldBuildTol] AS [fldBuildTol], 
+      [tblUSeal_ManfData].[fldDiMin] AS [fldDiMin], 
+      [tblUSeal_ManfData].[fldWidMax] AS [fldWidMax], 
+      [tblUSeal_ManfData].[fldHfreeAdjMinPCent] AS [fldHfreeAdjMinPCent], 
+      [tblUSeal_ManfData].[fldHfreeAdjMaxPCent] AS [fldHfreeAdjMaxPCent], 
+      [tblUSeal_ManfData].[fldStripWid] AS [fldStripWid]
+      FROM [dbo].[tblUSeal_ManfData] AS [tblUSeal_ManfData]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tblUSealNew_Geom" EntityType="SealIPEMCSDBModel.Store.tblUSealNew_Geom" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="tblCSeal_Envelope">
+          <Key>
+            <PropertyRef Name="fldCrossSecNo" />
+          </Key>
+          <Property Name="fldCrossSecNo" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="fldHfreeStd" Type="numeric" Scale="4" />
+          <Property Name="fldDHfreeAdjMax" Type="numeric" Scale="4" />
+          <Property Name="fldWidMax" Type="numeric" Scale="4" />
+        </EntityType>
+        <EntityType Name="tblCSeal_FEAParams">
+          <Key>
+            <PropertyRef Name="fldCrossSecNo" />
+          </Key>
+          <Property Name="fldCrossSecNo" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="fldNelConSeal" Type="smallint" />
+          <Property Name="fldNelConRad" Type="smallint" />
+          <Property Name="fldNLayer" Type="smallint" />
+          <Property Name="fldNLayer_pl" Type="smallint" />
+          <Property Name="fldBetaT" Type="real" />
+          <Property Name="fldBetaM" Type="real" />
+          <Property Name="fldRemark" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblCSeal_Geom">
+          <Key>
+            <PropertyRef Name="fldCrossSecNo" />
+          </Key>
+          <Property Name="fldCrossSecNo" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="fldCCS" Type="int" />
+          <Property Name="fldSpringEnergized" Type="bit" />
+          <Property Name="fldThick" Type="numeric" Scale="3" />
+          <Property Name="fldTTolCust" Type="numeric" Scale="4" />
+          <Property Name="fldTTolFab" Type="numeric" Scale="4" />
+          <Property Name="fldStripWid" Type="numeric" Scale="3" />
+          <Property Name="fldStripWidTol" Type="numeric" Scale="3" />
+          <Property Name="fldWidMax" Type="numeric" Scale="3" />
+          <Property Name="fldHFree" Type="numeric" Scale="3" />
+          <Property Name="fldHFreeTol" Type="numeric" Scale="3" />
+          <Property Name="fldFDepthMin" Type="numeric" Scale="3" />
+          <Property Name="fldFDepthMax" Type="numeric" Scale="3" />
+          <Property Name="fldGMinWid" Type="numeric" Scale="3" />
+          <Property Name="fldZClear" Type="numeric" Scale="3" />
+          <Property Name="fldCavityCornerRad" Type="numeric" Scale="3" />
+          <Property Name="fldToolNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldGeomTemplate" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblCSeal_ManfData">
+          <Key>
+            <PropertyRef Name="fldCrossSecNo" />
+          </Key>
+          <Property Name="fldCrossSecNo" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="fldThetaOpeningAdjMinPCent" Type="int" />
+          <Property Name="fldThetaOpeningAdjMaxPCent" Type="int" />
+          <Property Name="fldDiMin" Type="real" />
+          <Property Name="fldWidMax" Type="real" />
+        </EntityType>
+        <EntityType Name="tblESeal_Envelope">
+          <Key>
+            <PropertyRef Name="fldCrossSecNo" />
+          </Key>
+          <Property Name="fldCrossSecNo" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="fldHfreeStd" Type="numeric" Scale="4" />
+          <Property Name="fldDHfreeAdjMax" Type="numeric" Scale="4" />
+          <Property Name="fldWidMax" Type="numeric" Scale="4" />
+        </EntityType>
+        <EntityType Name="tblESeal_FEAParams">
+          <Key>
+            <PropertyRef Name="fldCrossSecNo" />
+          </Key>
+          <Property Name="fldCrossSecNo" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="fldNelConSeal" Type="smallint" />
+          <Property Name="fldNelConMid" Type="smallint" />
+          <Property Name="fldNelConHeel" Type="smallint" />
+          <Property Name="fldNelConRad" Type="smallint" />
+          <Property Name="fldStifn" Type="real" />
+          <Property Name="fldNLayer" Type="smallint" />
+          <Property Name="fldBetaT" Type="real" />
+          <Property Name="fldBetaM" Type="real" />
+          <Property Name="fldWtE1" Type="real" />
+          <Property Name="fldWtE2" Type="real" />
+          <Property Name="fldWtE3" Type="real" />
+          <Property Name="fldWtM2" Type="real" />
+          <Property Name="fldRemark" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblESeal_Geom">
+          <Key>
+            <PropertyRef Name="fldCrossSecNo" />
+            <PropertyRef Name="fldStageNo" />
+          </Key>
+          <Property Name="fldCrossSecNo" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="fldCCS" Type="int" />
+          <Property Name="fldStageNo" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="fldTemplateNo" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="fldNConv" Type="smallint" Nullable="false" />
+          <Property Name="fldThickness" Type="numeric" Scale="3" />
+          <Property Name="fldRadE1" Type="numeric" Scale="5" />
+          <Property Name="fldThetaE1" Type="numeric" Scale="4" />
+          <Property Name="fldRadE2" Type="numeric" Scale="5" />
+          <Property Name="fldThetaE2" Type="numeric" Scale="4" />
+          <Property Name="fldRadE3" Type="numeric" Scale="5" />
+          <Property Name="fldThetaE3" Type="numeric" Scale="4" />
+          <Property Name="fldThetaM1" Type="numeric" Scale="4" />
+          <Property Name="fldRadM2" Type="numeric" Scale="4" />
+          <Property Name="fldThetaM2" Type="numeric" Scale="4" />
+          <Property Name="fldRadM3" Type="numeric" Scale="4" />
+          <Property Name="fldThetaM3" Type="numeric" Scale="4" />
+          <Property Name="fldRadM4" Type="numeric" Scale="4" />
+          <Property Name="fldThetaM4" Type="numeric" Scale="4" />
+          <Property Name="fldRadM5" Type="numeric" Scale="4" />
+          <Property Name="fldThetaM5" Type="numeric" Scale="4" />
+          <Property Name="fldhConv" Type="numeric" Scale="4" />
+          <Property Name="fldLFlatE" Type="numeric" Scale="4" />
+          <Property Name="fldCavityCornerRad" Type="numeric" Scale="3" />
+          <Property Name="fldToolNo" Type="nvarchar" MaxLength="255" />
+          <Property Name="fldGeomTemplate" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblESeal_Leak_None">
+          <Key>
+            <PropertyRef Name="fldPress" />
+            <PropertyRef Name="fldLoad" />
+          </Key>
+          <Property Name="fldPress" Type="smallint" Nullable="false" />
+          <Property Name="fldLoad" Type="smallint" Nullable="false" />
+          <Property Name="fldLeak" Type="real" />
+        </EntityType>
+        <EntityType Name="tblESeal_Leak_T800">
+          <Key>
+            <PropertyRef Name="fldPress" />
+            <PropertyRef Name="fldSFinish" />
+          </Key>
+          <Property Name="fldPress" Type="smallint" Nullable="false" />
+          <Property Name="fldSFinish" Type="smallint" Nullable="false" />
+          <Property Name="fldLeak" Type="real" />
+        </EntityType>
+        <EntityType Name="tblESeal_Leak_Tricom">
+          <Key>
+            <PropertyRef Name="fldPress" />
+            <PropertyRef Name="fldLoad" />
+          </Key>
+          <Property Name="fldPress" Type="smallint" Nullable="false" />
+          <Property Name="fldLoad" Type="smallint" Nullable="false" />
+          <Property Name="fldLeak" Type="real" />
+        </EntityType>
+        <EntityType Name="tblESeal_ManfData">
+          <Key>
+            <PropertyRef Name="fldCrossSecNo" />
+            <PropertyRef Name="fldStageNo" />
+          </Key>
+          <Property Name="fldCrossSecNo" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="fldStageNo" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="fldBuildTol" Type="real" />
+          <Property Name="fldDiMin" Type="real" />
+          <Property Name="fldWidMax" Type="real" />
+          <Property Name="fldHfreeAdjMinPCent" Type="int" Nullable="false" />
+          <Property Name="fldHfreeAdjMaxPCent" Type="int" Nullable="false" />
+          <Property Name="fldStripWid" Type="real" />
+        </EntityType>
+        <EntityType Name="tblESealNew_Geom">
+          <Key>
+            <PropertyRef Name="fldCustID" />
+            <PropertyRef Name="fldPlatformID" />
+            <PropertyRef Name="fldProjectID" />
+            <PropertyRef Name="fldCrossSecNo" />
+          </Key>
+          <Property Name="fldCustID" Type="numeric" Nullable="false" />
+          <Property Name="fldPlatformID" Type="numeric" Nullable="false" />
+          <Property Name="fldProjectID" Type="numeric" Nullable="false" />
+          <Property Name="fldCrossSecNo" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="fldCrossSecNoOrg" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldTemplateNo" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="fldNConv" Type="smallint" Nullable="false" />
+          <Property Name="fldThickness" Type="real" Nullable="false" />
+          <Property Name="fldRadE1" Type="real" Nullable="false" />
+          <Property Name="fldThetaE1" Type="real" Nullable="false" />
+          <Property Name="fldRadE2" Type="real" Nullable="false" />
+          <Property Name="fldThetaE2" Type="real" Nullable="false" />
+          <Property Name="fldRadE3" Type="real" Nullable="false" />
+          <Property Name="fldThetaE3" Type="real" Nullable="false" />
+          <Property Name="fldThetaM1" Type="real" Nullable="false" />
+          <Property Name="fldRadM2" Type="real" />
+          <Property Name="fldThetaM2" Type="real" />
+          <Property Name="fldRadM3" Type="real" />
+          <Property Name="fldThetaM3" Type="real" />
+          <Property Name="fldRadM4" Type="real" />
+          <Property Name="fldThetaM4" Type="real" />
+          <Property Name="fldRadM5" Type="real" />
+          <Property Name="fldThetaM5" Type="real" />
+          <Property Name="fldHConv" Type="real" Nullable="false" />
+          <Property Name="fldCavityCornerRad" Type="real" />
+        </EntityType>
+        <EntityType Name="tblHT">
+          <Key>
+            <PropertyRef Name="fldMatCode" />
+          </Key>
+          <Property Name="fldMatCode" Type="int" Nullable="false" />
+          <Property Name="fldCode" Type="int" />
+        </EntityType>
+        <EntityType Name="tblMaterial">
+          <Key>
+            <PropertyRef Name="fldName" />
+          </Key>
+          <Property Name="fldName" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="fldCode" Type="int" />
+          <Property Name="fldC" Type="char" MaxLength="10" />
+          <Property Name="fldE" Type="char" MaxLength="10" />
+          <Property Name="fldU" Type="char" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tblMaterial_S">
+          <Key>
+            <PropertyRef Name="fldName" />
+          </Key>
+          <Property Name="fldName" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="fldCode" Type="int" />
+          <Property Name="fldC" Type="char" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tblMatTemper">
+          <Key>
+            <PropertyRef Name="fldMatCode" />
+          </Key>
+          <Property Name="fldMatCode" Type="int" Nullable="false" />
+          <Property Name="fldTemperCode" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblPlatingThick">
+          <Key>
+            <PropertyRef Name="fldPlatingThickCode" />
+          </Key>
+          <Property Name="fldPlatingThickCode" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="fldPlatingThickMinEng" Type="real" />
+          <Property Name="fldPlatingThickMaxEng" Type="real" />
+          <Property Name="fldPlatingThickMinMet" Type="real" />
+          <Property Name="fldPlatingThickMaxMet" Type="real" />
+        </EntityType>
+        <EntityType Name="tblPlatingType">
+          <Key>
+            <PropertyRef Name="fldPlatingCode" />
+          </Key>
+          <Property Name="fldPlatingCode" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="fldPlatingDescrip" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblTemper">
+          <Key>
+            <PropertyRef Name="fldCode" />
+          </Key>
+          <Property Name="fldCode" Type="int" Nullable="false" />
+          <Property Name="fldDesc" Type="nvarchar(max)" />
+          <Property Name="fldDesc_Sort" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblUSeal_Envelope">
+          <Key>
+            <PropertyRef Name="fldCrossSecNo" />
+          </Key>
+          <Property Name="fldCrossSecNo" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="fldHfreeStd" Type="numeric" Scale="4" />
+          <Property Name="fldDHfreeAdjMax" Type="numeric" Scale="4" />
+          <Property Name="fldWidMax" Type="numeric" Scale="4" />
+        </EntityType>
+        <EntityType Name="tblUSeal_FEAParams">
+          <Key>
+            <PropertyRef Name="fldCrossSecNo" />
+          </Key>
+          <Property Name="fldCrossSecNo" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="fldNelConSeal" Type="smallint" />
+          <Property Name="fldNelConHeel" Type="smallint" />
+          <Property Name="fldNelConRad" Type="smallint" />
+          <Property Name="fldNLayer" Type="smallint" />
+          <Property Name="fldBetaT" Type="real" />
+          <Property Name="fldBetaM" Type="real" />
+          <Property Name="fldRemark" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tblUSeal_Geom">
+          <Key>
+            <PropertyRef Name="fldCrossSecNo" />
+          </Key>
+          <Property Name="fldCrossSecNo" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="fldCCS" Type="int" />
+          <Property Name="fldLLeg" Type="numeric" Scale="3" />
+          <Property Name="fldThick" Type="numeric" Scale="3" />
+          <Property Name="fldR1" Type="numeric" Scale="3" />
+          <Property Name="fldR2" Type="numeric" Scale="3" />
+          <Property Name="fldTheta1" Type="numeric" Scale="3" />
+          <Property Name="fldTheta2" Type="numeric" Scale="3" />
+          <Property Name="fldCavityCornerRad" Type="numeric" Scale="3" />
+          <Property Name="fldGeomTemplate" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'SealMCSDB1.dbo.tblUSeal_ManfData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="tblUSeal_ManfData">
+          <Key>
+            <PropertyRef Name="fldCrossSecNo" />
+            <PropertyRef Name="fldHfreeAdjMinPCent" />
+            <PropertyRef Name="fldHfreeAdjMaxPCent" />
+          </Key>
+          <Property Name="fldCrossSecNo" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="fldHFree" Type="real" />
+          <Property Name="fldBuildTol" Type="real" />
+          <Property Name="fldDiMin" Type="real" />
+          <Property Name="fldWidMax" Type="real" />
+          <Property Name="fldHfreeAdjMinPCent" Type="int" Nullable="false" />
+          <Property Name="fldHfreeAdjMaxPCent" Type="int" Nullable="false" />
+          <Property Name="fldStripWid" Type="real" />
+        </EntityType>
+        <EntityType Name="tblUSealNew_Geom">
+          <Key>
+            <PropertyRef Name="fldCustID" />
+            <PropertyRef Name="fldPlatformID" />
+            <PropertyRef Name="fldProjectID" />
+            <PropertyRef Name="fldCrossSecNo" />
+          </Key>
+          <Property Name="fldCustID" Type="numeric" Nullable="false" />
+          <Property Name="fldPlatformID" Type="numeric" Nullable="false" />
+          <Property Name="fldProjectID" Type="numeric" Nullable="false" />
+          <Property Name="fldCrossSecNo" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="fldCrossSecNoOrg" Type="nvarchar" MaxLength="255" />
+          <Property Name="fldThick" Type="real" />
+          <Property Name="fldLLeg" Type="real" />
+          <Property Name="fldR1" Type="real" />
+          <Property Name="fldR2" Type="real" />
+          <Property Name="fldTheta1" Type="real" />
+          <Property Name="fldTheta2" Type="real" />
+          <Property Name="fldCavityCornerRad" Type="real" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SealIPEMCSDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="SealIPEMCSDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblCSeal_Envelope" EntityType="SealIPEMCSDBModel.tblCSeal_Envelope" />
+          <EntitySet Name="tblCSeal_FEAParams" EntityType="SealIPEMCSDBModel.tblCSeal_FEAParams" />
+          <EntitySet Name="tblCSeal_Geom" EntityType="SealIPEMCSDBModel.tblCSeal_Geom" />
+          <EntitySet Name="tblCSeal_ManfData" EntityType="SealIPEMCSDBModel.tblCSeal_ManfData" />
+          <EntitySet Name="tblESeal_Envelope" EntityType="SealIPEMCSDBModel.tblESeal_Envelope" />
+          <EntitySet Name="tblESeal_FEAParams" EntityType="SealIPEMCSDBModel.tblESeal_FEAParams" />
+          <EntitySet Name="tblESeal_Geom" EntityType="SealIPEMCSDBModel.tblESeal_Geom" />
+          <EntitySet Name="tblESeal_Leak_None" EntityType="SealIPEMCSDBModel.tblESeal_Leak_None" />
+          <EntitySet Name="tblESeal_Leak_T800" EntityType="SealIPEMCSDBModel.tblESeal_Leak_T800" />
+          <EntitySet Name="tblESeal_Leak_Tricom" EntityType="SealIPEMCSDBModel.tblESeal_Leak_Tricom" />
+          <EntitySet Name="tblESeal_ManfData" EntityType="SealIPEMCSDBModel.tblESeal_ManfData" />
+          <EntitySet Name="tblESealNew_Geom" EntityType="SealIPEMCSDBModel.tblESealNew_Geom" />
+          <EntitySet Name="tblHT" EntityType="SealIPEMCSDBModel.tblHT" />
+          <EntitySet Name="tblMaterial" EntityType="SealIPEMCSDBModel.tblMaterial" />
+          <EntitySet Name="tblMaterial_S" EntityType="SealIPEMCSDBModel.tblMaterial_S" />
+          <EntitySet Name="tblMatTemper" EntityType="SealIPEMCSDBModel.tblMatTemper" />
+          <EntitySet Name="tblPlatingThick" EntityType="SealIPEMCSDBModel.tblPlatingThick" />
+          <EntitySet Name="tblPlatingType" EntityType="SealIPEMCSDBModel.tblPlatingType" />
+          <EntitySet Name="tblTemper" EntityType="SealIPEMCSDBModel.tblTemper" />
+          <EntitySet Name="tblUSeal_Envelope" EntityType="SealIPEMCSDBModel.tblUSeal_Envelope" />
+          <EntitySet Name="tblUSeal_FEAParams" EntityType="SealIPEMCSDBModel.tblUSeal_FEAParams" />
+          <EntitySet Name="tblUSeal_Geom" EntityType="SealIPEMCSDBModel.tblUSeal_Geom" />
+          <EntitySet Name="tblUSeal_ManfData" EntityType="SealIPEMCSDBModel.tblUSeal_ManfData" />
+          <EntitySet Name="tblUSealNew_Geom" EntityType="SealIPEMCSDBModel.tblUSealNew_Geom" />
+        </EntityContainer>
+        <EntityType Name="tblCSeal_Envelope">
+          <Key>
+            <PropertyRef Name="fldCrossSecNo" />
+          </Key>
+          <Property Name="fldCrossSecNo" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldHfreeStd" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="fldDHfreeAdjMax" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="fldWidMax" Type="Decimal" Precision="18" Scale="4" />
+        </EntityType>
+        <EntityType Name="tblCSeal_FEAParams">
+          <Key>
+            <PropertyRef Name="fldCrossSecNo" />
+          </Key>
+          <Property Name="fldCrossSecNo" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldNelConSeal" Type="Int16" />
+          <Property Name="fldNelConRad" Type="Int16" />
+          <Property Name="fldNLayer" Type="Int16" />
+          <Property Name="fldNLayer_pl" Type="Int16" />
+          <Property Name="fldBetaT" Type="Single" />
+          <Property Name="fldBetaM" Type="Single" />
+          <Property Name="fldRemark" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblCSeal_Geom">
+          <Key>
+            <PropertyRef Name="fldCrossSecNo" />
+          </Key>
+          <Property Name="fldCrossSecNo" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldCCS" Type="Int32" />
+          <Property Name="fldSpringEnergized" Type="Boolean" />
+          <Property Name="fldThick" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="fldTTolCust" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="fldTTolFab" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="fldStripWid" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="fldStripWidTol" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="fldWidMax" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="fldHFree" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="fldHFreeTol" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="fldFDepthMin" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="fldFDepthMax" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="fldGMinWid" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="fldZClear" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="fldCavityCornerRad" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="fldToolNo" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldGeomTemplate" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblCSeal_ManfData">
+          <Key>
+            <PropertyRef Name="fldCrossSecNo" />
+          </Key>
+          <Property Name="fldCrossSecNo" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldThetaOpeningAdjMinPCent" Type="Int32" />
+          <Property Name="fldThetaOpeningAdjMaxPCent" Type="Int32" />
+          <Property Name="fldDiMin" Type="Single" />
+          <Property Name="fldWidMax" Type="Single" />
+        </EntityType>
+        <EntityType Name="tblESeal_Envelope">
+          <Key>
+            <PropertyRef Name="fldCrossSecNo" />
+          </Key>
+          <Property Name="fldCrossSecNo" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldHfreeStd" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="fldDHfreeAdjMax" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="fldWidMax" Type="Decimal" Precision="18" Scale="4" />
+        </EntityType>
+        <EntityType Name="tblESeal_FEAParams">
+          <Key>
+            <PropertyRef Name="fldCrossSecNo" />
+          </Key>
+          <Property Name="fldCrossSecNo" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldNelConSeal" Type="Int16" />
+          <Property Name="fldNelConMid" Type="Int16" />
+          <Property Name="fldNelConHeel" Type="Int16" />
+          <Property Name="fldNelConRad" Type="Int16" />
+          <Property Name="fldStifn" Type="Single" />
+          <Property Name="fldNLayer" Type="Int16" />
+          <Property Name="fldBetaT" Type="Single" />
+          <Property Name="fldBetaM" Type="Single" />
+          <Property Name="fldWtE1" Type="Single" />
+          <Property Name="fldWtE2" Type="Single" />
+          <Property Name="fldWtE3" Type="Single" />
+          <Property Name="fldWtM2" Type="Single" />
+          <Property Name="fldRemark" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblESeal_Geom">
+          <Key>
+            <PropertyRef Name="fldCrossSecNo" />
+            <PropertyRef Name="fldStageNo" />
+          </Key>
+          <Property Name="fldCrossSecNo" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldCCS" Type="Int32" />
+          <Property Name="fldStageNo" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldTemplateNo" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldNConv" Type="Int16" Nullable="false" />
+          <Property Name="fldThickness" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="fldRadE1" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="fldThetaE1" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="fldRadE2" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="fldThetaE2" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="fldRadE3" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="fldThetaE3" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="fldThetaM1" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="fldRadM2" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="fldThetaM2" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="fldRadM3" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="fldThetaM3" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="fldRadM4" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="fldThetaM4" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="fldRadM5" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="fldThetaM5" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="fldhConv" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="fldLFlatE" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="fldCavityCornerRad" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="fldToolNo" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="fldGeomTemplate" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblESeal_Leak_None">
+          <Key>
+            <PropertyRef Name="fldPress" />
+            <PropertyRef Name="fldLoad" />
+          </Key>
+          <Property Name="fldPress" Type="Int16" Nullable="false" />
+          <Property Name="fldLoad" Type="Int16" Nullable="false" />
+          <Property Name="fldLeak" Type="Single" />
+        </EntityType>
+        <EntityType Name="tblESeal_Leak_T800">
+          <Key>
+            <PropertyRef Name="fldPress" />
+            <PropertyRef Name="fldSFinish" />
+          </Key>
+          <Property Name="fldPress" Type="Int16" Nullable="false" />
+          <Property Name="fldSFinish" Type="Int16" Nullable="false" />
+          <Property Name="fldLeak" Type="Single" />
+        </EntityType>
+        <EntityType Name="tblESeal_Leak_Tricom">
+          <Key>
+            <PropertyRef Name="fldPress" />
+            <PropertyRef Name="fldLoad" />
+          </Key>
+          <Property Name="fldPress" Type="Int16" Nullable="false" />
+          <Property Name="fldLoad" Type="Int16" Nullable="false" />
+          <Property Name="fldLeak" Type="Single" />
+        </EntityType>
+        <EntityType Name="tblESeal_ManfData">
+          <Key>
+            <PropertyRef Name="fldCrossSecNo" />
+            <PropertyRef Name="fldStageNo" />
+          </Key>
+          <Property Name="fldCrossSecNo" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldStageNo" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldBuildTol" Type="Single" />
+          <Property Name="fldDiMin" Type="Single" />
+          <Property Name="fldWidMax" Type="Single" />
+          <Property Name="fldHfreeAdjMinPCent" Type="Int32" Nullable="false" />
+          <Property Name="fldHfreeAdjMaxPCent" Type="Int32" Nullable="false" />
+          <Property Name="fldStripWid" Type="Single" />
+        </EntityType>
+        <EntityType Name="tblESealNew_Geom">
+          <Key>
+            <PropertyRef Name="fldCustID" />
+            <PropertyRef Name="fldPlatformID" />
+            <PropertyRef Name="fldProjectID" />
+            <PropertyRef Name="fldCrossSecNo" />
+          </Key>
+          <Property Name="fldCustID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldPlatformID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldCrossSecNo" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldCrossSecNoOrg" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldTemplateNo" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldNConv" Type="Int16" Nullable="false" />
+          <Property Name="fldThickness" Type="Single" Nullable="false" />
+          <Property Name="fldRadE1" Type="Single" Nullable="false" />
+          <Property Name="fldThetaE1" Type="Single" Nullable="false" />
+          <Property Name="fldRadE2" Type="Single" Nullable="false" />
+          <Property Name="fldThetaE2" Type="Single" Nullable="false" />
+          <Property Name="fldRadE3" Type="Single" Nullable="false" />
+          <Property Name="fldThetaE3" Type="Single" Nullable="false" />
+          <Property Name="fldThetaM1" Type="Single" Nullable="false" />
+          <Property Name="fldRadM2" Type="Single" />
+          <Property Name="fldThetaM2" Type="Single" />
+          <Property Name="fldRadM3" Type="Single" />
+          <Property Name="fldThetaM3" Type="Single" />
+          <Property Name="fldRadM4" Type="Single" />
+          <Property Name="fldThetaM4" Type="Single" />
+          <Property Name="fldRadM5" Type="Single" />
+          <Property Name="fldThetaM5" Type="Single" />
+          <Property Name="fldHConv" Type="Single" Nullable="false" />
+          <Property Name="fldCavityCornerRad" Type="Single" />
+        </EntityType>
+        <EntityType Name="tblHT">
+          <Key>
+            <PropertyRef Name="fldMatCode" />
+          </Key>
+          <Property Name="fldMatCode" Type="Int32" Nullable="false" />
+          <Property Name="fldCode" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblMaterial">
+          <Key>
+            <PropertyRef Name="fldName" />
+          </Key>
+          <Property Name="fldName" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="fldCode" Type="Int32" />
+          <Property Name="fldC" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+          <Property Name="fldE" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+          <Property Name="fldU" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+        </EntityType>
+        <EntityType Name="tblMaterial_S">
+          <Key>
+            <PropertyRef Name="fldName" />
+          </Key>
+          <Property Name="fldName" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="fldCode" Type="Int32" />
+          <Property Name="fldC" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+        </EntityType>
+        <EntityType Name="tblMatTemper">
+          <Key>
+            <PropertyRef Name="fldMatCode" />
+          </Key>
+          <Property Name="fldMatCode" Type="Int32" Nullable="false" />
+          <Property Name="fldTemperCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblPlatingThick">
+          <Key>
+            <PropertyRef Name="fldPlatingThickCode" />
+          </Key>
+          <Property Name="fldPlatingThickCode" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldPlatingThickMinEng" Type="Single" />
+          <Property Name="fldPlatingThickMaxEng" Type="Single" />
+          <Property Name="fldPlatingThickMinMet" Type="Single" />
+          <Property Name="fldPlatingThickMaxMet" Type="Single" />
+        </EntityType>
+        <EntityType Name="tblPlatingType">
+          <Key>
+            <PropertyRef Name="fldPlatingCode" />
+          </Key>
+          <Property Name="fldPlatingCode" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldPlatingDescrip" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblTemper">
+          <Key>
+            <PropertyRef Name="fldCode" />
+          </Key>
+          <Property Name="fldCode" Type="Int32" Nullable="false" />
+          <Property Name="fldDesc" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="fldDesc_Sort" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblUSeal_Envelope">
+          <Key>
+            <PropertyRef Name="fldCrossSecNo" />
+          </Key>
+          <Property Name="fldCrossSecNo" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldHfreeStd" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="fldDHfreeAdjMax" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="fldWidMax" Type="Decimal" Precision="18" Scale="4" />
+        </EntityType>
+        <EntityType Name="tblUSeal_FEAParams">
+          <Key>
+            <PropertyRef Name="fldCrossSecNo" />
+          </Key>
+          <Property Name="fldCrossSecNo" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="fldNelConSeal" Type="Int16" />
+          <Property Name="fldNelConHeel" Type="Int16" />
+          <Property Name="fldNelConRad" Type="Int16" />
+          <Property Name="fldNLayer" Type="Int16" />
+          <Property Name="fldBetaT" Type="Single" />
+          <Property Name="fldBetaM" Type="Single" />
+          <Property Name="fldRemark" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblUSeal_Geom">
+          <Key>
+            <PropertyRef Name="fldCrossSecNo" />
+          </Key>
+          <Property Name="fldCrossSecNo" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldCCS" Type="Int32" />
+          <Property Name="fldLLeg" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="fldThick" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="fldR1" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="fldR2" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="fldTheta1" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="fldTheta2" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="fldCavityCornerRad" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="fldGeomTemplate" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblUSeal_ManfData">
+          <Key>
+            <PropertyRef Name="fldCrossSecNo" />
+            <PropertyRef Name="fldHfreeAdjMinPCent" />
+            <PropertyRef Name="fldHfreeAdjMaxPCent" />
+          </Key>
+          <Property Name="fldCrossSecNo" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldHFree" Type="Single" />
+          <Property Name="fldBuildTol" Type="Single" />
+          <Property Name="fldDiMin" Type="Single" />
+          <Property Name="fldWidMax" Type="Single" />
+          <Property Name="fldHfreeAdjMinPCent" Type="Int32" Nullable="false" />
+          <Property Name="fldHfreeAdjMaxPCent" Type="Int32" Nullable="false" />
+          <Property Name="fldStripWid" Type="Single" />
+        </EntityType>
+        <EntityType Name="tblUSealNew_Geom">
+          <Key>
+            <PropertyRef Name="fldCustID" />
+            <PropertyRef Name="fldPlatformID" />
+            <PropertyRef Name="fldProjectID" />
+            <PropertyRef Name="fldCrossSecNo" />
+          </Key>
+          <Property Name="fldCustID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldPlatformID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldCrossSecNo" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="fldCrossSecNoOrg" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="fldThick" Type="Single" />
+          <Property Name="fldLLeg" Type="Single" />
+          <Property Name="fldR1" Type="Single" />
+          <Property Name="fldR2" Type="Single" />
+          <Property Name="fldTheta1" Type="Single" />
+          <Property Name="fldTheta2" Type="Single" />
+          <Property Name="fldCavityCornerRad" Type="Single" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SealIPEMCSDBModelStoreContainer" CdmEntityContainer="SealIPEMCSDBEntities">
+          <EntitySetMapping Name="tblCSeal_Envelope">
+            <EntityTypeMapping TypeName="SealIPEMCSDBModel.tblCSeal_Envelope">
+              <MappingFragment StoreEntitySet="tblCSeal_Envelope">
+                <ScalarProperty Name="fldCrossSecNo" ColumnName="fldCrossSecNo" />
+                <ScalarProperty Name="fldHfreeStd" ColumnName="fldHfreeStd" />
+                <ScalarProperty Name="fldDHfreeAdjMax" ColumnName="fldDHfreeAdjMax" />
+                <ScalarProperty Name="fldWidMax" ColumnName="fldWidMax" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCSeal_FEAParams">
+            <EntityTypeMapping TypeName="SealIPEMCSDBModel.tblCSeal_FEAParams">
+              <MappingFragment StoreEntitySet="tblCSeal_FEAParams">
+                <ScalarProperty Name="fldCrossSecNo" ColumnName="fldCrossSecNo" />
+                <ScalarProperty Name="fldNelConSeal" ColumnName="fldNelConSeal" />
+                <ScalarProperty Name="fldNelConRad" ColumnName="fldNelConRad" />
+                <ScalarProperty Name="fldNLayer" ColumnName="fldNLayer" />
+                <ScalarProperty Name="fldNLayer_pl" ColumnName="fldNLayer_pl" />
+                <ScalarProperty Name="fldBetaT" ColumnName="fldBetaT" />
+                <ScalarProperty Name="fldBetaM" ColumnName="fldBetaM" />
+                <ScalarProperty Name="fldRemark" ColumnName="fldRemark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCSeal_Geom">
+            <EntityTypeMapping TypeName="SealIPEMCSDBModel.tblCSeal_Geom">
+              <MappingFragment StoreEntitySet="tblCSeal_Geom">
+                <ScalarProperty Name="fldCrossSecNo" ColumnName="fldCrossSecNo" />
+                <ScalarProperty Name="fldCCS" ColumnName="fldCCS" />
+                <ScalarProperty Name="fldSpringEnergized" ColumnName="fldSpringEnergized" />
+                <ScalarProperty Name="fldThick" ColumnName="fldThick" />
+                <ScalarProperty Name="fldTTolCust" ColumnName="fldTTolCust" />
+                <ScalarProperty Name="fldTTolFab" ColumnName="fldTTolFab" />
+                <ScalarProperty Name="fldStripWid" ColumnName="fldStripWid" />
+                <ScalarProperty Name="fldStripWidTol" ColumnName="fldStripWidTol" />
+                <ScalarProperty Name="fldWidMax" ColumnName="fldWidMax" />
+                <ScalarProperty Name="fldHFree" ColumnName="fldHFree" />
+                <ScalarProperty Name="fldHFreeTol" ColumnName="fldHFreeTol" />
+                <ScalarProperty Name="fldFDepthMin" ColumnName="fldFDepthMin" />
+                <ScalarProperty Name="fldFDepthMax" ColumnName="fldFDepthMax" />
+                <ScalarProperty Name="fldGMinWid" ColumnName="fldGMinWid" />
+                <ScalarProperty Name="fldZClear" ColumnName="fldZClear" />
+                <ScalarProperty Name="fldCavityCornerRad" ColumnName="fldCavityCornerRad" />
+                <ScalarProperty Name="fldToolNo" ColumnName="fldToolNo" />
+                <ScalarProperty Name="fldGeomTemplate" ColumnName="fldGeomTemplate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCSeal_ManfData">
+            <EntityTypeMapping TypeName="SealIPEMCSDBModel.tblCSeal_ManfData">
+              <MappingFragment StoreEntitySet="tblCSeal_ManfData">
+                <ScalarProperty Name="fldCrossSecNo" ColumnName="fldCrossSecNo" />
+                <ScalarProperty Name="fldThetaOpeningAdjMinPCent" ColumnName="fldThetaOpeningAdjMinPCent" />
+                <ScalarProperty Name="fldThetaOpeningAdjMaxPCent" ColumnName="fldThetaOpeningAdjMaxPCent" />
+                <ScalarProperty Name="fldDiMin" ColumnName="fldDiMin" />
+                <ScalarProperty Name="fldWidMax" ColumnName="fldWidMax" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblESeal_Envelope">
+            <EntityTypeMapping TypeName="SealIPEMCSDBModel.tblESeal_Envelope">
+              <MappingFragment StoreEntitySet="tblESeal_Envelope">
+                <ScalarProperty Name="fldCrossSecNo" ColumnName="fldCrossSecNo" />
+                <ScalarProperty Name="fldHfreeStd" ColumnName="fldHfreeStd" />
+                <ScalarProperty Name="fldDHfreeAdjMax" ColumnName="fldDHfreeAdjMax" />
+                <ScalarProperty Name="fldWidMax" ColumnName="fldWidMax" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblESeal_FEAParams">
+            <EntityTypeMapping TypeName="SealIPEMCSDBModel.tblESeal_FEAParams">
+              <MappingFragment StoreEntitySet="tblESeal_FEAParams">
+                <ScalarProperty Name="fldCrossSecNo" ColumnName="fldCrossSecNo" />
+                <ScalarProperty Name="fldNelConSeal" ColumnName="fldNelConSeal" />
+                <ScalarProperty Name="fldNelConMid" ColumnName="fldNelConMid" />
+                <ScalarProperty Name="fldNelConHeel" ColumnName="fldNelConHeel" />
+                <ScalarProperty Name="fldNelConRad" ColumnName="fldNelConRad" />
+                <ScalarProperty Name="fldStifn" ColumnName="fldStifn" />
+                <ScalarProperty Name="fldNLayer" ColumnName="fldNLayer" />
+                <ScalarProperty Name="fldBetaT" ColumnName="fldBetaT" />
+                <ScalarProperty Name="fldBetaM" ColumnName="fldBetaM" />
+                <ScalarProperty Name="fldWtE1" ColumnName="fldWtE1" />
+                <ScalarProperty Name="fldWtE2" ColumnName="fldWtE2" />
+                <ScalarProperty Name="fldWtE3" ColumnName="fldWtE3" />
+                <ScalarProperty Name="fldWtM2" ColumnName="fldWtM2" />
+                <ScalarProperty Name="fldRemark" ColumnName="fldRemark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblESeal_Geom">
+            <EntityTypeMapping TypeName="SealIPEMCSDBModel.tblESeal_Geom">
+              <MappingFragment StoreEntitySet="tblESeal_Geom">
+                <ScalarProperty Name="fldCrossSecNo" ColumnName="fldCrossSecNo" />
+                <ScalarProperty Name="fldCCS" ColumnName="fldCCS" />
+                <ScalarProperty Name="fldStageNo" ColumnName="fldStageNo" />
+                <ScalarProperty Name="fldTemplateNo" ColumnName="fldTemplateNo" />
+                <ScalarProperty Name="fldNConv" ColumnName="fldNConv" />
+                <ScalarProperty Name="fldThickness" ColumnName="fldThickness" />
+                <ScalarProperty Name="fldRadE1" ColumnName="fldRadE1" />
+                <ScalarProperty Name="fldThetaE1" ColumnName="fldThetaE1" />
+                <ScalarProperty Name="fldRadE2" ColumnName="fldRadE2" />
+                <ScalarProperty Name="fldThetaE2" ColumnName="fldThetaE2" />
+                <ScalarProperty Name="fldRadE3" ColumnName="fldRadE3" />
+                <ScalarProperty Name="fldThetaE3" ColumnName="fldThetaE3" />
+                <ScalarProperty Name="fldThetaM1" ColumnName="fldThetaM1" />
+                <ScalarProperty Name="fldRadM2" ColumnName="fldRadM2" />
+                <ScalarProperty Name="fldThetaM2" ColumnName="fldThetaM2" />
+                <ScalarProperty Name="fldRadM3" ColumnName="fldRadM3" />
+                <ScalarProperty Name="fldThetaM3" ColumnName="fldThetaM3" />
+                <ScalarProperty Name="fldRadM4" ColumnName="fldRadM4" />
+                <ScalarProperty Name="fldThetaM4" ColumnName="fldThetaM4" />
+                <ScalarProperty Name="fldRadM5" ColumnName="fldRadM5" />
+                <ScalarProperty Name="fldThetaM5" ColumnName="fldThetaM5" />
+                <ScalarProperty Name="fldhConv" ColumnName="fldhConv" />
+                <ScalarProperty Name="fldLFlatE" ColumnName="fldLFlatE" />
+                <ScalarProperty Name="fldCavityCornerRad" ColumnName="fldCavityCornerRad" />
+                <ScalarProperty Name="fldToolNo" ColumnName="fldToolNo" />
+                <ScalarProperty Name="fldGeomTemplate" ColumnName="fldGeomTemplate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblESeal_Leak_None">
+            <EntityTypeMapping TypeName="SealIPEMCSDBModel.tblESeal_Leak_None">
+              <MappingFragment StoreEntitySet="tblESeal_Leak_None">
+                <ScalarProperty Name="fldPress" ColumnName="fldPress" />
+                <ScalarProperty Name="fldLoad" ColumnName="fldLoad" />
+                <ScalarProperty Name="fldLeak" ColumnName="fldLeak" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblESeal_Leak_T800">
+            <EntityTypeMapping TypeName="SealIPEMCSDBModel.tblESeal_Leak_T800">
+              <MappingFragment StoreEntitySet="tblESeal_Leak_T800">
+                <ScalarProperty Name="fldPress" ColumnName="fldPress" />
+                <ScalarProperty Name="fldSFinish" ColumnName="fldSFinish" />
+                <ScalarProperty Name="fldLeak" ColumnName="fldLeak" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblESeal_Leak_Tricom">
+            <EntityTypeMapping TypeName="SealIPEMCSDBModel.tblESeal_Leak_Tricom">
+              <MappingFragment StoreEntitySet="tblESeal_Leak_Tricom">
+                <ScalarProperty Name="fldPress" ColumnName="fldPress" />
+                <ScalarProperty Name="fldLoad" ColumnName="fldLoad" />
+                <ScalarProperty Name="fldLeak" ColumnName="fldLeak" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblESeal_ManfData">
+            <EntityTypeMapping TypeName="SealIPEMCSDBModel.tblESeal_ManfData">
+              <MappingFragment StoreEntitySet="tblESeal_ManfData">
+                <ScalarProperty Name="fldCrossSecNo" ColumnName="fldCrossSecNo" />
+                <ScalarProperty Name="fldStageNo" ColumnName="fldStageNo" />
+                <ScalarProperty Name="fldBuildTol" ColumnName="fldBuildTol" />
+                <ScalarProperty Name="fldDiMin" ColumnName="fldDiMin" />
+                <ScalarProperty Name="fldWidMax" ColumnName="fldWidMax" />
+                <ScalarProperty Name="fldHfreeAdjMinPCent" ColumnName="fldHfreeAdjMinPCent" />
+                <ScalarProperty Name="fldHfreeAdjMaxPCent" ColumnName="fldHfreeAdjMaxPCent" />
+                <ScalarProperty Name="fldStripWid" ColumnName="fldStripWid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblESealNew_Geom">
+            <EntityTypeMapping TypeName="SealIPEMCSDBModel.tblESealNew_Geom">
+              <MappingFragment StoreEntitySet="tblESealNew_Geom">
+                <ScalarProperty Name="fldCustID" ColumnName="fldCustID" />
+                <ScalarProperty Name="fldPlatformID" ColumnName="fldPlatformID" />
+                <ScalarProperty Name="fldProjectID" ColumnName="fldProjectID" />
+                <ScalarProperty Name="fldCrossSecNo" ColumnName="fldCrossSecNo" />
+                <ScalarProperty Name="fldCrossSecNoOrg" ColumnName="fldCrossSecNoOrg" />
+                <ScalarProperty Name="fldTemplateNo" ColumnName="fldTemplateNo" />
+                <ScalarProperty Name="fldNConv" ColumnName="fldNConv" />
+                <ScalarProperty Name="fldThickness" ColumnName="fldThickness" />
+                <ScalarProperty Name="fldRadE1" ColumnName="fldRadE1" />
+                <ScalarProperty Name="fldThetaE1" ColumnName="fldThetaE1" />
+                <ScalarProperty Name="fldRadE2" ColumnName="fldRadE2" />
+                <ScalarProperty Name="fldThetaE2" ColumnName="fldThetaE2" />
+                <ScalarProperty Name="fldRadE3" ColumnName="fldRadE3" />
+                <ScalarProperty Name="fldThetaE3" ColumnName="fldThetaE3" />
+                <ScalarProperty Name="fldThetaM1" ColumnName="fldThetaM1" />
+                <ScalarProperty Name="fldRadM2" ColumnName="fldRadM2" />
+                <ScalarProperty Name="fldThetaM2" ColumnName="fldThetaM2" />
+                <ScalarProperty Name="fldRadM3" ColumnName="fldRadM3" />
+                <ScalarProperty Name="fldThetaM3" ColumnName="fldThetaM3" />
+                <ScalarProperty Name="fldRadM4" ColumnName="fldRadM4" />
+                <ScalarProperty Name="fldThetaM4" ColumnName="fldThetaM4" />
+                <ScalarProperty Name="fldRadM5" ColumnName="fldRadM5" />
+                <ScalarProperty Name="fldThetaM5" ColumnName="fldThetaM5" />
+                <ScalarProperty Name="fldHConv" ColumnName="fldHConv" />
+                <ScalarProperty Name="fldCavityCornerRad" ColumnName="fldCavityCornerRad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblHT">
+            <EntityTypeMapping TypeName="SealIPEMCSDBModel.tblHT">
+              <MappingFragment StoreEntitySet="tblHT">
+                <ScalarProperty Name="fldMatCode" ColumnName="fldMatCode" />
+                <ScalarProperty Name="fldCode" ColumnName="fldCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMaterial">
+            <EntityTypeMapping TypeName="SealIPEMCSDBModel.tblMaterial">
+              <MappingFragment StoreEntitySet="tblMaterial">
+                <ScalarProperty Name="fldName" ColumnName="fldName" />
+                <ScalarProperty Name="fldCode" ColumnName="fldCode" />
+                <ScalarProperty Name="fldC" ColumnName="fldC" />
+                <ScalarProperty Name="fldE" ColumnName="fldE" />
+                <ScalarProperty Name="fldU" ColumnName="fldU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMaterial_S">
+            <EntityTypeMapping TypeName="SealIPEMCSDBModel.tblMaterial_S">
+              <MappingFragment StoreEntitySet="tblMaterial_S">
+                <ScalarProperty Name="fldName" ColumnName="fldName" />
+                <ScalarProperty Name="fldCode" ColumnName="fldCode" />
+                <ScalarProperty Name="fldC" ColumnName="fldC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMatTemper">
+            <EntityTypeMapping TypeName="SealIPEMCSDBModel.tblMatTemper">
+              <MappingFragment StoreEntitySet="tblMatTemper">
+                <ScalarProperty Name="fldMatCode" ColumnName="fldMatCode" />
+                <ScalarProperty Name="fldTemperCode" ColumnName="fldTemperCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPlatingThick">
+            <EntityTypeMapping TypeName="SealIPEMCSDBModel.tblPlatingThick">
+              <MappingFragment StoreEntitySet="tblPlatingThick">
+                <ScalarProperty Name="fldPlatingThickCode" ColumnName="fldPlatingThickCode" />
+                <ScalarProperty Name="fldPlatingThickMinEng" ColumnName="fldPlatingThickMinEng" />
+                <ScalarProperty Name="fldPlatingThickMaxEng" ColumnName="fldPlatingThickMaxEng" />
+                <ScalarProperty Name="fldPlatingThickMinMet" ColumnName="fldPlatingThickMinMet" />
+                <ScalarProperty Name="fldPlatingThickMaxMet" ColumnName="fldPlatingThickMaxMet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPlatingType">
+            <EntityTypeMapping TypeName="SealIPEMCSDBModel.tblPlatingType">
+              <MappingFragment StoreEntitySet="tblPlatingType">
+                <ScalarProperty Name="fldPlatingCode" ColumnName="fldPlatingCode" />
+                <ScalarProperty Name="fldPlatingDescrip" ColumnName="fldPlatingDescrip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTemper">
+            <EntityTypeMapping TypeName="SealIPEMCSDBModel.tblTemper">
+              <MappingFragment StoreEntitySet="tblTemper">
+                <ScalarProperty Name="fldCode" ColumnName="fldCode" />
+                <ScalarProperty Name="fldDesc" ColumnName="fldDesc" />
+                <ScalarProperty Name="fldDesc_Sort" ColumnName="fldDesc_Sort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUSeal_Envelope">
+            <EntityTypeMapping TypeName="SealIPEMCSDBModel.tblUSeal_Envelope">
+              <MappingFragment StoreEntitySet="tblUSeal_Envelope">
+                <ScalarProperty Name="fldCrossSecNo" ColumnName="fldCrossSecNo" />
+                <ScalarProperty Name="fldHfreeStd" ColumnName="fldHfreeStd" />
+                <ScalarProperty Name="fldDHfreeAdjMax" ColumnName="fldDHfreeAdjMax" />
+                <ScalarProperty Name="fldWidMax" ColumnName="fldWidMax" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUSeal_FEAParams">
+            <EntityTypeMapping TypeName="SealIPEMCSDBModel.tblUSeal_FEAParams">
+              <MappingFragment StoreEntitySet="tblUSeal_FEAParams">
+                <ScalarProperty Name="fldCrossSecNo" ColumnName="fldCrossSecNo" />
+                <ScalarProperty Name="fldNelConSeal" ColumnName="fldNelConSeal" />
+                <ScalarProperty Name="fldNelConHeel" ColumnName="fldNelConHeel" />
+                <ScalarProperty Name="fldNelConRad" ColumnName="fldNelConRad" />
+                <ScalarProperty Name="fldNLayer" ColumnName="fldNLayer" />
+                <ScalarProperty Name="fldBetaT" ColumnName="fldBetaT" />
+                <ScalarProperty Name="fldBetaM" ColumnName="fldBetaM" />
+                <ScalarProperty Name="fldRemark" ColumnName="fldRemark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUSeal_Geom">
+            <EntityTypeMapping TypeName="SealIPEMCSDBModel.tblUSeal_Geom">
+              <MappingFragment StoreEntitySet="tblUSeal_Geom">
+                <ScalarProperty Name="fldCrossSecNo" ColumnName="fldCrossSecNo" />
+                <ScalarProperty Name="fldCCS" ColumnName="fldCCS" />
+                <ScalarProperty Name="fldLLeg" ColumnName="fldLLeg" />
+                <ScalarProperty Name="fldThick" ColumnName="fldThick" />
+                <ScalarProperty Name="fldR1" ColumnName="fldR1" />
+                <ScalarProperty Name="fldR2" ColumnName="fldR2" />
+                <ScalarProperty Name="fldTheta1" ColumnName="fldTheta1" />
+                <ScalarProperty Name="fldTheta2" ColumnName="fldTheta2" />
+                <ScalarProperty Name="fldCavityCornerRad" ColumnName="fldCavityCornerRad" />
+                <ScalarProperty Name="fldGeomTemplate" ColumnName="fldGeomTemplate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUSeal_ManfData">
+            <EntityTypeMapping TypeName="SealIPEMCSDBModel.tblUSeal_ManfData">
+              <MappingFragment StoreEntitySet="tblUSeal_ManfData">
+                <ScalarProperty Name="fldCrossSecNo" ColumnName="fldCrossSecNo" />
+                <ScalarProperty Name="fldHFree" ColumnName="fldHFree" />
+                <ScalarProperty Name="fldBuildTol" ColumnName="fldBuildTol" />
+                <ScalarProperty Name="fldDiMin" ColumnName="fldDiMin" />
+                <ScalarProperty Name="fldWidMax" ColumnName="fldWidMax" />
+                <ScalarProperty Name="fldHfreeAdjMinPCent" ColumnName="fldHfreeAdjMinPCent" />
+                <ScalarProperty Name="fldHfreeAdjMaxPCent" ColumnName="fldHfreeAdjMaxPCent" />
+                <ScalarProperty Name="fldStripWid" ColumnName="fldStripWid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUSealNew_Geom">
+            <EntityTypeMapping TypeName="SealIPEMCSDBModel.tblUSealNew_Geom">
+              <MappingFragment StoreEntitySet="tblUSealNew_Geom">
+                <ScalarProperty Name="fldCustID" ColumnName="fldCustID" />
+                <ScalarProperty Name="fldPlatformID" ColumnName="fldPlatformID" />
+                <ScalarProperty Name="fldProjectID" ColumnName="fldProjectID" />
+                <ScalarProperty Name="fldCrossSecNo" ColumnName="fldCrossSecNo" />
+                <ScalarProperty Name="fldCrossSecNoOrg" ColumnName="fldCrossSecNoOrg" />
+                <ScalarProperty Name="fldThick" ColumnName="fldThick" />
+                <ScalarProperty Name="fldLLeg" ColumnName="fldLLeg" />
+                <ScalarProperty Name="fldR1" ColumnName="fldR1" />
+                <ScalarProperty Name="fldR2" ColumnName="fldR2" />
+                <ScalarProperty Name="fldTheta1" ColumnName="fldTheta1" />
+                <ScalarProperty Name="fldTheta2" ColumnName="fldTheta2" />
+                <ScalarProperty Name="fldCavityCornerRad" ColumnName="fldCavityCornerRad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblCSeal_Envelope" Width="1.5" PointX="0.75" PointY="0.75" Height="1.787985026041667" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblCSeal_FEAParams" Width="1.5" PointX="2.75" PointY="0.75" Height="2.5571907552083326" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblCSeal_Geom" Width="1.5" PointX="4.75" PointY="0.75" Height="4.480205078125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblCSeal_ManfData" Width="1.5" PointX="0.75" PointY="4.75" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblESeal_Envelope" Width="1.5" PointX="6.75" PointY="0.75" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblESeal_FEAParams" Width="1.5" PointX="2.75" PointY="6.75" Height="3.7109993489583317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblESeal_Geom" Width="1.5" PointX="6.75" PointY="3.75" Height="6.0186165364583317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblESeal_Leak_None" Width="1.5" PointX="8.75" PointY="0.75" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblESeal_Leak_T800" Width="1.5" PointX="8.75" PointY="3.75" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblESeal_Leak_Tricom" Width="1.5" PointX="8.75" PointY="6.75" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblESeal_ManfData" Width="1.5" PointX="8.75" PointY="9.75" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblESealNew_Geom" Width="1.5" PointX="10.75" PointY="0.75" Height="5.8263151041666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblHT" Width="1.5" PointX="4.75" PointY="10.75" Height="1.4033821614583388" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblMaterial" Width="1.5" PointX="10.75" PointY="7.75" Height="1.9802864583333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblMaterial_S" Width="1.5" PointX="10.75" PointY="10.75" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblMatTemper" Width="1.5" PointX="0.75" PointY="11.75" Height="1.4033821614583388" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblPlatingThick" Width="1.5" PointX="12.75" PointY="0.75" Height="1.9802864583333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblPlatingType" Width="1.5" PointX="12.75" PointY="3.75" Height="1.4033821614583388" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblTemper" Width="1.5" PointX="12.75" PointY="6.75" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblUSeal_Envelope" Width="1.5" PointX="12.75" PointY="9.75" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblUSeal_FEAParams" Width="1.5" PointX="12.75" PointY="12.75" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblUSeal_Geom" Width="1.5" PointX="2.75" PointY="13.75" Height="2.9417936197916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblUSeal_ManfData" Width="1.5" PointX="4.75" PointY="13.75" Height="2.5571907552083246" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblUSealNew_Geom" Width="1.5" PointX="6.75" PointY="13.75" Height="3.3263964843750102" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

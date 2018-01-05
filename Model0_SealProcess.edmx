@@ -1,0 +1,445 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SealSuiteDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="SealSuiteDBModelStoreContainer">
+          <EntitySet Name="tblProcess_UserRole" EntityType="SealSuiteDBModel.Store.tblProcess_UserRole" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblProgramDataFile" EntityType="SealSuiteDBModel.Store.tblProgramDataFile" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblRole" EntityType="SealSuiteDBModel.Store.tblRole" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblTest_UserRole" EntityType="SealSuiteDBModel.Store.tblTest_UserRole" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblTitle" EntityType="SealSuiteDBModel.Store.tblTitle" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblUser" EntityType="SealSuiteDBModel.Store.tblUser" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_tblProcess_UserRole_tblRole" Association="SealSuiteDBModel.Store.FK_tblProcess_UserRole_tblRole">
+            <End Role="tblRole" EntitySet="tblRole" />
+            <End Role="tblProcess_UserRole" EntitySet="tblProcess_UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProcess_UserRole_tblUser" Association="SealSuiteDBModel.Store.FK_tblProcess_UserRole_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblProcess_UserRole" EntitySet="tblProcess_UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSealUser_tblTitle" Association="SealSuiteDBModel.Store.FK_tblSealUser_tblTitle">
+            <End Role="tblTitle" EntitySet="tblTitle" />
+            <End Role="tblUser" EntitySet="tblUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSealUserRole_tblRole" Association="SealSuiteDBModel.Store.FK_tblSealUserRole_tblRole">
+            <End Role="tblRole" EntitySet="tblRole" />
+            <End Role="tblTest_UserRole" EntitySet="tblTest_UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSealUserRole_tblSealUser" Association="SealSuiteDBModel.Store.FK_tblSealUserRole_tblSealUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblTest_UserRole" EntitySet="tblTest_UserRole" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tblProcess_UserRole">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="numeric" Nullable="false" />
+          <Property Name="fldUserID" Type="numeric" />
+          <Property Name="fldRoleID" Type="numeric" />
+        </EntityType>
+        <EntityType Name="tblProgramDataFile">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="numeric" Nullable="false" />
+          <Property Name="fldFileName_UserGroup" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblRole">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="numeric" Nullable="false" />
+          <Property Name="fldRole" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldIsSuperRole" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblTest_UserRole">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="numeric" Nullable="false" />
+          <Property Name="fldUserID" Type="numeric" />
+          <Property Name="fldRoleID" Type="numeric" />
+        </EntityType>
+        <EntityType Name="tblTitle">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="numeric" Nullable="false" />
+          <Property Name="fldTitle" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="numeric" Nullable="false" />
+          <Property Name="fldLastName" Type="nvarchar" MaxLength="100" />
+          <Property Name="fldFirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="fldTitleID" Type="numeric" />
+          <Property Name="fldSystemLogin" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldSignature" Type="image" />
+          <Property Name="fldProcess" Type="bit" />
+          <Property Name="fldTest" Type="bit" />
+          <Property Name="fldIPE" Type="bit" />
+        </EntityType>
+        <Association Name="FK_tblProcess_UserRole_tblRole">
+          <End Role="tblRole" Type="SealSuiteDBModel.Store.tblRole" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblProcess_UserRole" Type="SealSuiteDBModel.Store.tblProcess_UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRole">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblProcess_UserRole">
+              <PropertyRef Name="fldRoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProcess_UserRole_tblUser">
+          <End Role="tblUser" Type="SealSuiteDBModel.Store.tblUser" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblProcess_UserRole" Type="SealSuiteDBModel.Store.tblProcess_UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblProcess_UserRole">
+              <PropertyRef Name="fldUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSealUser_tblTitle">
+          <End Role="tblTitle" Type="SealSuiteDBModel.Store.tblTitle" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblUser" Type="SealSuiteDBModel.Store.tblUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTitle">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblUser">
+              <PropertyRef Name="fldTitleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSealUserRole_tblRole">
+          <End Role="tblRole" Type="SealSuiteDBModel.Store.tblRole" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblTest_UserRole" Type="SealSuiteDBModel.Store.tblTest_UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRole">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblTest_UserRole">
+              <PropertyRef Name="fldRoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSealUserRole_tblSealUser">
+          <End Role="tblUser" Type="SealSuiteDBModel.Store.tblUser" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblTest_UserRole" Type="SealSuiteDBModel.Store.tblTest_UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblTest_UserRole">
+              <PropertyRef Name="fldUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SealSuiteDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="SealSuiteDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblProcess_UserRole" EntityType="SealSuiteDBModel.tblProcess_UserRole" />
+          <EntitySet Name="tblProgramDataFile" EntityType="SealSuiteDBModel.tblProgramDataFile" />
+          <EntitySet Name="tblRole" EntityType="SealSuiteDBModel.tblRole" />
+          <EntitySet Name="tblTest_UserRole" EntityType="SealSuiteDBModel.tblTest_UserRole" />
+          <EntitySet Name="tblTitle" EntityType="SealSuiteDBModel.tblTitle" />
+          <EntitySet Name="tblUser" EntityType="SealSuiteDBModel.tblUser" />
+          <AssociationSet Name="FK_tblProcess_UserRole_tblRole" Association="SealSuiteDBModel.FK_tblProcess_UserRole_tblRole">
+            <End Role="tblRole" EntitySet="tblRole" />
+            <End Role="tblProcess_UserRole" EntitySet="tblProcess_UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProcess_UserRole_tblUser" Association="SealSuiteDBModel.FK_tblProcess_UserRole_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblProcess_UserRole" EntitySet="tblProcess_UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSealUserRole_tblRole" Association="SealSuiteDBModel.FK_tblSealUserRole_tblRole">
+            <End Role="tblRole" EntitySet="tblRole" />
+            <End Role="tblTest_UserRole" EntitySet="tblTest_UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSealUserRole_tblSealUser" Association="SealSuiteDBModel.FK_tblSealUserRole_tblSealUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblTest_UserRole" EntitySet="tblTest_UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSealUser_tblTitle" Association="SealSuiteDBModel.FK_tblSealUser_tblTitle">
+            <End Role="tblTitle" EntitySet="tblTitle" />
+            <End Role="tblUser" EntitySet="tblUser" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tblProcess_UserRole">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldUserID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="fldRoleID" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="tblRole" Relationship="SealSuiteDBModel.FK_tblProcess_UserRole_tblRole" FromRole="tblProcess_UserRole" ToRole="tblRole" />
+          <NavigationProperty Name="tblUser" Relationship="SealSuiteDBModel.FK_tblProcess_UserRole_tblUser" FromRole="tblProcess_UserRole" ToRole="tblUser" />
+        </EntityType>
+        <EntityType Name="tblProgramDataFile">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldFileName_UserGroup" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblRole">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldRole" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldIsSuperRole" Type="Boolean" />
+          <NavigationProperty Name="tblProcess_UserRole" Relationship="SealSuiteDBModel.FK_tblProcess_UserRole_tblRole" FromRole="tblRole" ToRole="tblProcess_UserRole" />
+          <NavigationProperty Name="tblTest_UserRole" Relationship="SealSuiteDBModel.FK_tblSealUserRole_tblRole" FromRole="tblRole" ToRole="tblTest_UserRole" />
+        </EntityType>
+        <EntityType Name="tblTest_UserRole">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldUserID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="fldRoleID" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="tblRole" Relationship="SealSuiteDBModel.FK_tblSealUserRole_tblRole" FromRole="tblTest_UserRole" ToRole="tblRole" />
+          <NavigationProperty Name="tblUser" Relationship="SealSuiteDBModel.FK_tblSealUserRole_tblSealUser" FromRole="tblTest_UserRole" ToRole="tblUser" />
+        </EntityType>
+        <EntityType Name="tblTitle">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldTitle" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="tblUser" Relationship="SealSuiteDBModel.FK_tblSealUser_tblTitle" FromRole="tblTitle" ToRole="tblUser" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldLastName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="fldFirstName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="fldTitleID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="fldSystemLogin" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldSignature" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="fldProcess" Type="Boolean" />
+          <Property Name="fldTest" Type="Boolean" />
+          <Property Name="fldIPE" Type="Boolean" />
+          <NavigationProperty Name="tblProcess_UserRole" Relationship="SealSuiteDBModel.FK_tblProcess_UserRole_tblUser" FromRole="tblUser" ToRole="tblProcess_UserRole" />
+          <NavigationProperty Name="tblTest_UserRole" Relationship="SealSuiteDBModel.FK_tblSealUserRole_tblSealUser" FromRole="tblUser" ToRole="tblTest_UserRole" />
+          <NavigationProperty Name="tblTitle" Relationship="SealSuiteDBModel.FK_tblSealUser_tblTitle" FromRole="tblUser" ToRole="tblTitle" />
+        </EntityType>
+        <Association Name="FK_tblProcess_UserRole_tblRole">
+          <End Role="tblRole" Type="SealSuiteDBModel.tblRole" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblProcess_UserRole" Type="SealSuiteDBModel.tblProcess_UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRole">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblProcess_UserRole">
+              <PropertyRef Name="fldRoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProcess_UserRole_tblUser">
+          <End Role="tblUser" Type="SealSuiteDBModel.tblUser" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblProcess_UserRole" Type="SealSuiteDBModel.tblProcess_UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblProcess_UserRole">
+              <PropertyRef Name="fldUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSealUserRole_tblRole">
+          <End Role="tblRole" Type="SealSuiteDBModel.tblRole" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblTest_UserRole" Type="SealSuiteDBModel.tblTest_UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRole">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblTest_UserRole">
+              <PropertyRef Name="fldRoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSealUserRole_tblSealUser">
+          <End Role="tblUser" Type="SealSuiteDBModel.tblUser" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblTest_UserRole" Type="SealSuiteDBModel.tblTest_UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblTest_UserRole">
+              <PropertyRef Name="fldUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSealUser_tblTitle">
+          <End Role="tblTitle" Type="SealSuiteDBModel.tblTitle" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblUser" Type="SealSuiteDBModel.tblUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTitle">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblUser">
+              <PropertyRef Name="fldTitleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SealSuiteDBModelStoreContainer" CdmEntityContainer="SealSuiteDBEntities">
+          <EntitySetMapping Name="tblProcess_UserRole">
+            <EntityTypeMapping TypeName="SealSuiteDBModel.tblProcess_UserRole">
+              <MappingFragment StoreEntitySet="tblProcess_UserRole">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldUserID" ColumnName="fldUserID" />
+                <ScalarProperty Name="fldRoleID" ColumnName="fldRoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProgramDataFile">
+            <EntityTypeMapping TypeName="SealSuiteDBModel.tblProgramDataFile">
+              <MappingFragment StoreEntitySet="tblProgramDataFile">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldFileName_UserGroup" ColumnName="fldFileName_UserGroup" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRole">
+            <EntityTypeMapping TypeName="SealSuiteDBModel.tblRole">
+              <MappingFragment StoreEntitySet="tblRole">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldRole" ColumnName="fldRole" />
+                <ScalarProperty Name="fldIsSuperRole" ColumnName="fldIsSuperRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTest_UserRole">
+            <EntityTypeMapping TypeName="SealSuiteDBModel.tblTest_UserRole">
+              <MappingFragment StoreEntitySet="tblTest_UserRole">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldUserID" ColumnName="fldUserID" />
+                <ScalarProperty Name="fldRoleID" ColumnName="fldRoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTitle">
+            <EntityTypeMapping TypeName="SealSuiteDBModel.tblTitle">
+              <MappingFragment StoreEntitySet="tblTitle">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldTitle" ColumnName="fldTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUser">
+            <EntityTypeMapping TypeName="SealSuiteDBModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldLastName" ColumnName="fldLastName" />
+                <ScalarProperty Name="fldFirstName" ColumnName="fldFirstName" />
+                <ScalarProperty Name="fldTitleID" ColumnName="fldTitleID" />
+                <ScalarProperty Name="fldSystemLogin" ColumnName="fldSystemLogin" />
+                <ScalarProperty Name="fldSignature" ColumnName="fldSignature" />
+                <ScalarProperty Name="fldProcess" ColumnName="fldProcess" />
+                <ScalarProperty Name="fldTest" ColumnName="fldTest" />
+                <ScalarProperty Name="fldIPE" ColumnName="fldIPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="SealSuiteDBModel.tblProcess_UserRole" Width="1.5" PointX="5.25" PointY="3.75" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealSuiteDBModel.tblProgramDataFile" Width="1.5" PointX="5.75" PointY="7.125" Height="1.4033821614583326" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealSuiteDBModel.tblRole" Width="1.5" PointX="3" PointY="7.5" Height="1.9802864583333326" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealSuiteDBModel.tblTest_UserRole" Width="1.5" PointX="5.25" PointY="0.75" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealSuiteDBModel.tblTitle" Width="1.5" PointX="0.75" PointY="4" Height="1.5956835937499991" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealSuiteDBModel.tblUser" Width="1.5" PointX="3" PointY="3.125" Height="3.3263964843749996" IsExpanded="true" />
+        <AssociationConnector Association="SealSuiteDBModel.FK_tblProcess_UserRole_tblRole" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="9.0355843098958317" />
+          <ConnectorPoint PointX="5.46875" PointY="9.0355843098958317" />
+          <ConnectorPoint PointX="5.46875" PointY="5.7302864583333335" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealSuiteDBModel.FK_tblProcess_UserRole_tblUser" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="4.7401432291666667" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="4.7401432291666659" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="4.7401432291666667" />
+          <ConnectorPoint PointX="5.25" PointY="4.7401432291666667" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealSuiteDBModel.FK_tblSealUserRole_tblRole" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="7.5" />
+          <ConnectorPoint PointX="4.875" PointY="7.125" />
+          <ConnectorPoint PointX="4.875" PointY="1.7401432291666668" />
+          <ConnectorPoint PointX="5.25" PointY="1.7401432291666668" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealSuiteDBModel.FK_tblSealUserRole_tblSealUser" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.75" PointY="3.125" />
+          <ConnectorPoint PointX="3.75" PointY="2.2664673437500009" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="2.2664673437500005" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="2.2664673437500009" />
+          <ConnectorPoint PointX="5.25" PointY="2.2664673437500009" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealSuiteDBModel.FK_tblSealUser_tblTitle" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="4.797841796875" />
+          <ConnectorPoint PointX="3" PointY="4.797841796875" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

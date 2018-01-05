@@ -1,0 +1,873 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C7F10AE0-1A98-4ED2-BF8E-C0A93E9D9A8A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>SealSuite21.My.MyApplication</StartupObject>
+    <RootNamespace>SealSuite21</RootNamespace>
+    <AssemblyName>SealSuite21</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>SealSuite21.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>SealSuite21.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Seal.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ClassLibrary11, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\ClassLibrary11.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.Acrobat">
+      <HintPath>obj\x86\Debug\Interop.Acrobat.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="itextsharp, Version=4.1.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.PowerPoint, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="1_14_clsPartFile.vb" />
+    <Compile Include="1_14_clsPartProject.vb" />
+    <Compile Include="1_14_clsPartUnit.vb" />
+    <Compile Include="1_14_frmPartMain.Designer.vb">
+      <DependentUpon>1_14_frmPartMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="1_14_frmPartMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="1_14_frmPartLegacyPN.Designer.vb">
+      <DependentUpon>1_14_frmPartLegacyPN.vb</DependentUpon>
+    </Compile>
+    <Compile Include="1_14_frmPartLegacyPN.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3_25_clsTestEquipment.vb" />
+    <Compile Include="3_25_clsTestFile.vb" />
+    <Compile Include="3_25_clsTestMO.vb" />
+    <Compile Include="3_25_clsTestReport.vb" />
+    <Compile Include="3_25_clsTestSeal.vb" />
+    <Compile Include="3_25_clsTestSpec.vb" />
+    <Compile Include="3_25_clsTest.vb" />
+    <Compile Include="3_25_clsTestProject.vb" />
+    <Compile Include="3_25_clsTestUnit.vb" />
+    <Compile Include="3_25_clsTestUser.vb" />
+    <Compile Include="3_25_frmTestAdminLogIn.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3_25_frmTestGen.designer.vb">
+      <DependentUpon>3_25_frmTestGen.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_25_frmTestGen.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3_25_frmTestImage.designer.vb">
+      <DependentUpon>3_25_frmTestImage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_25_frmTestImage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3_25_frmTestLeak.designer.vb">
+      <DependentUpon>3_25_frmTestLeak.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_25_frmTestLeak.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3_25_frmTestLoad.designer.vb">
+      <DependentUpon>3_25_frmTestLoad.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_25_frmTestLoad.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3_25_frmTestMain.designer.vb">
+      <DependentUpon>3_25_frmTestMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_25_frmTestMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3_25_frmTestMeasure_FH.designer.vb">
+      <DependentUpon>3_25_frmTestMeasure_FH.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_25_frmTestMeasure_FH.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3_25_frmTestMeasure_Shim.designer.vb">
+      <DependentUpon>3_25_frmTestMeasure_Shim.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_25_frmTestMeasure_Shim.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3_25_frmTestNotes.designer.vb">
+      <DependentUpon>3_25_frmTestNotes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_25_frmTestNotes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3_25_frmTestPressure.designer.vb">
+      <DependentUpon>3_25_frmTestPressure.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_25_frmTestPressure.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3_25_frmTestProcedure.designer.vb">
+      <DependentUpon>3_25_frmTestProcedure.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_25_frmTestProcedure.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3_25_frmTestReport.designer.vb">
+      <DependentUpon>3_25_frmTestReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_25_frmTestReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3_25_frmTestSignOff.designer.vb">
+      <DependentUpon>3_25_frmTestSignOff.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_25_frmTestSignOff.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="0_20_frmSplash.designer.vb">
+      <DependentUpon>0_20_frmSplash.vb</DependentUpon>
+    </Compile>
+    <Compile Include="0_20_frmSplash.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3_25_frmTestUnit.designer.vb">
+      <DependentUpon>3_25_frmTestUnit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_25_frmTestUnit.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3_25_frmTestUserGroup.designer.vb">
+      <DependentUpon>3_25_frmTestUserGroup.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_25_frmTestUserGroup.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3_25_frmTestUser_Role.designer.vb">
+      <DependentUpon>3_25_frmTestUser_Role.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_25_frmTestUser_Role.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3_25_frmTestUser_SignOff.designer.vb">
+      <DependentUpon>3_25_frmTestUser_SignOff.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3_25_frmTestUser_SignOff.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_clsIPEAnalysis.vb" />
+    <Compile Include="4_101_clsIPEANSYS.vb" />
+    <Compile Include="4_101_clsIPEAPICalls.vb" />
+    <Compile Include="4_101_clsIPEAppLoad.vb" />
+    <Compile Include="4_101_clsIPECavity.vb" />
+    <Compile Include="4_101_clsIPECSeal.vb" />
+    <Compile Include="4_101_clsIPECSeal_DB.vb" />
+    <Compile Include="4_101_clsIPECSeal_DXF.vb" />
+    <Compile Include="4_101_clsIPECSeal_Graphics.vb" />
+    <Compile Include="4_101_clsIPEDataValidate.vb" />
+    <Compile Include="4_101_clsIPEDwg.vb" />
+    <Compile Include="4_101_clsIPEESeal.vb" />
+    <Compile Include="4_101_clsIPEESeal_ANSYS.vb" />
+    <Compile Include="4_101_clsIPEESeal_DataValidate.vb" />
+    <Compile Include="4_101_clsIPEESeal_DB.vb" />
+    <Compile Include="4_101_clsIPEESeal_DXF.vb" />
+    <Compile Include="4_101_clsIPEESeal_Graphics.vb" />
+    <Compile Include="4_101_clsIPEESeal_Leak.vb" />
+    <Compile Include="4_101_clsIPEESeal_NewDesign.vb" />
+    <Compile Include="4_101_clsIPEFile.vb" />
+    <Compile Include="4_101_clsIPEMaterial.vb" />
+    <Compile Include="4_101_clsIPEOpCond.vb" />
+    <Compile Include="4_101_clsIPEProject.vb" />
+    <Compile Include="4_101_clsIPEReport.vb" />
+    <Compile Include="4_101_clsIPESeal.vb" />
+    <Compile Include="4_101_clsIPESealCandidates.vb" />
+    <Compile Include="4_101_clsIPEUnit.vb" />
+    <Compile Include="4_101_clsIPEUSeal.vb" />
+    <Compile Include="4_101_clsIPEUSeal_ANSYS.vb" />
+    <Compile Include="4_101_clsIPEUSeal_DB.vb" />
+    <Compile Include="4_101_clsIPEUSeal_DXF.vb" />
+    <Compile Include="4_101_clsIPEUSeal_Graphics.vb" />
+    <Compile Include="4_101_clsIPEUSeal_NewDesign.vb" />
+    <Compile Include="4_101_clsIPEUser.vb" />
+    <Compile Include="4_101_frmIPEAbout.designer.vb">
+      <DependentUpon>4_101_frmIPEAbout.vb</DependentUpon>
+    </Compile>
+    <Compile Include="4_101_frmIPEAbout.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPEAdjGeomCSeal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPEAdjGeomESeal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPEAnalysisSet.designer.vb">
+      <DependentUpon>4_101_frmIPEAnalysisSet.vb</DependentUpon>
+    </Compile>
+    <Compile Include="4_101_frmIPEAnalysisSet.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPEAppliedLoading.designer.vb">
+      <DependentUpon>4_101_frmIPEAppliedLoading.vb</DependentUpon>
+    </Compile>
+    <Compile Include="4_101_frmIPEAppliedLoading.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPECavity.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPECustomResults.designer.vb">
+      <DependentUpon>4_101_frmIPECustomResults.vb</DependentUpon>
+    </Compile>
+    <Compile Include="4_101_frmIPECustomResults.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPEDesignCenterESeal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPEDesignCenterUSeal.designer.vb">
+      <DependentUpon>4_101_frmIPEDesignCenterUSeal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="4_101_frmIPEDesignCenterUSeal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPEDesignChoiceESeal.designer.vb">
+      <DependentUpon>4_101_frmIPEDesignChoiceESeal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="4_101_frmIPEDesignChoiceESeal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPEDesignCSeal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPEDesignESeal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPEDesignESeal_New.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPEDesignSeal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPEDesignUSeal.designer.vb">
+      <DependentUpon>4_101_frmIPEDesignUSeal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="4_101_frmIPEDesignUSeal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPEFEA.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPEFEAParams.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPEFEAParamsCSeal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPEFEAParamsESeal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPEFEAParamsUSeal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPELoadStep.designer.vb">
+      <DependentUpon>4_101_frmIPELoadStep.vb</DependentUpon>
+    </Compile>
+    <Compile Include="4_101_frmIPELoadStep.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPEMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPEMaterial.designer.vb">
+      <DependentUpon>4_101_frmIPEMaterial.vb</DependentUpon>
+    </Compile>
+    <Compile Include="4_101_frmIPEMaterial.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPENomen_AdjGeom.designer.vb">
+      <DependentUpon>4_101_frmIPENomen_AdjGeom.vb</DependentUpon>
+    </Compile>
+    <Compile Include="4_101_frmIPENomen_AdjGeom.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPENomen_DesignCenter.designer.vb">
+      <DependentUpon>4_101_frmIPENomen_DesignCenter.vb</DependentUpon>
+    </Compile>
+    <Compile Include="4_101_frmIPENomen_DesignCenter.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPEOpCond.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPEOutput.designer.vb">
+      <DependentUpon>4_101_frmIPEOutput.vb</DependentUpon>
+    </Compile>
+    <Compile Include="4_101_frmIPEOutput.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPEPicBox_Cavity.designer.vb">
+      <DependentUpon>4_101_frmIPEPicBox_Cavity.vb</DependentUpon>
+    </Compile>
+    <Compile Include="4_101_frmIPEPicBox_Cavity.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPEPicBox_Seal.designer.vb">
+      <DependentUpon>4_101_frmIPEPicBox_Seal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="4_101_frmIPEPicBox_Seal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPEPlating.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPEReportCust.designer.vb">
+      <DependentUpon>4_101_frmIPEReportCust.vb</DependentUpon>
+    </Compile>
+    <Compile Include="4_101_frmIPEReportCust.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPEReportFormat.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPEResult.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPESelectionCriteria.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPEUser.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPEUserInfo.designer.vb">
+      <DependentUpon>4_101_frmIPEUserInfo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="4_101_frmIPEUserInfo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4_101_frmIPEDwg.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="1_14_frmPartCopy.Designer.vb">
+      <DependentUpon>1_14_frmPartCopy.vb</DependentUpon>
+    </Compile>
+    <Compile Include="1_14_frmPartCopy.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="2_11_frmProcessMain_tb10Dwg_Notes.Designer.vb">
+      <DependentUpon>2_11_frmProcessMain_tb10Dwg_Notes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="2_11_frmProcessMain_tb10Dwg_Notes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="1_14_frmPartHW.designer.vb">
+      <DependentUpon>1_14_frmPartHW.vb</DependentUpon>
+    </Compile>
+    <Compile Include="1_14_frmPartHW.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="1_14_frmPartNomen_NonStd_AdjGeom.designer.vb">
+      <DependentUpon>1_14_frmPartNomen_NonStd_AdjGeom.vb</DependentUpon>
+    </Compile>
+    <Compile Include="1_14_frmPartNomen_NonStd_AdjGeom.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="1_14_frmPartNonStdCS_ESeal.designer.vb">
+      <DependentUpon>1_14_frmPartNonStdCS_ESeal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="1_14_frmPartNonStdCS_ESeal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="1_14_frmPartNonStdCS_CSeal.designer.vb">
+      <DependentUpon>1_14_frmPartNonStdCS_CSeal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="1_14_frmPartNonStdCS_CSeal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="0_20_clsUser.vb" />
+    <Compile Include="0_20_clsFile.vb" />
+    <Compile Include="0_20_frmUserGroup.Designer.vb">
+      <DependentUpon>0_20_frmUserGroup.vb</DependentUpon>
+    </Compile>
+    <Compile Include="0_20_frmUserGroup.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="2_11_clsProcessFile.vb" />
+    <Compile Include="0_20_frmUserRole.Designer.vb">
+      <DependentUpon>0_20_frmUserRole.vb</DependentUpon>
+    </Compile>
+    <Compile Include="0_20_frmUserRole.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="2_11_clsProcessProj_Risk.vb" />
+    <Compile Include="Model0_SealProcess.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model0_SealProcess.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model5_SealProcess.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model5_SealProcess.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model1_SealPart.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1_SealPart.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model2_SealTest.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model2_SealTest.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model4_SealIPEMCS.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model4_SealIPEMCS.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model3_SealIPE.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model3_SealIPE.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="modMain_Process.vb" />
+    <Compile Include="modMain_IPE.vb" />
+    <Compile Include="modMain.vb" />
+    <Compile Include="modMain_Test.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="modMain_Part.vb" />
+    <Compile Include="2_11_frmProcessMain.Designer.vb">
+      <DependentUpon>2_11_frmProcessMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="2_11_frmProcessMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="2_11_frmProcessMain_SetUnit.Designer.vb">
+      <DependentUpon>2_11_frmProcessMain_SetUnit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="2_11_frmProcessMain_SetUnit.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="2_11_clsProcessProj.vb" />
+    <Compile Include="2_11_clsProcessProj_tb01_PreOrder.vb" />
+    <Compile Include="2_11_clsProcessProj_tb02_ITAR_Export.vb" />
+    <Compile Include="2_11_clsProcessProj_tb03_OrdEntry.vb" />
+    <Compile Include="2_11_clsProcessProj_tb04_Cost.vb" />
+    <Compile Include="2_11_clsProcessProj_tb05_App.vb" />
+    <Compile Include="2_11_clsProcessProj_tb06_Design.vb" />
+    <Compile Include="2_11_clsProcessProj_tb07_Manf.vb" />
+    <Compile Include="2_11_clsProcessProj_tb08_Purchase.vb" />
+    <Compile Include="2_11_clsProcessProj_tb09_Qlty.vb" />
+    <Compile Include="2_11_clsProcessProj_tb10_Dwg.vb" />
+    <Compile Include="2_11_clsProcessProj_tb11_Test.vb" />
+    <Compile Include="2_11_clsProcessProj_tb12_Planning.vb" />
+    <Compile Include="2_11_clsProcessProj_tb13_Shipping.vb" />
+    <Compile Include="2_11_clsProcessProj_tb14_IssueComment.vb" />
+    <Compile Include="2_11_clsProcessProj_EditedBy.vb" />
+    <Compile Include="2_11_clsProcessProj_tb15_Approval.vb" />
+    <Compile Include="2_11_frmProcessMain_CustomizeTab.Designer.vb">
+      <DependentUpon>2_11_frmProcessMain_CustomizeTab.vb</DependentUpon>
+    </Compile>
+    <Compile Include="2_11_frmProcessMain_CustomizeTab.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="2_11_frmProcessIssueComnt.Designer.vb">
+      <DependentUpon>2_11_frmProcessIssueComnt.vb</DependentUpon>
+    </Compile>
+    <Compile Include="2_11_frmProcessIssueComnt.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="1_14_frmPartMain.resx">
+      <DependentUpon>1_14_frmPartMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="1_14_frmPartLegacyPN.resx">
+      <DependentUpon>1_14_frmPartLegacyPN.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="2_11_frmProcessMain_tb10Dwg_Notes.resx">
+      <DependentUpon>2_11_frmProcessMain_tb10Dwg_Notes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="0_20_frmUserGroup.resx">
+      <DependentUpon>0_20_frmUserGroup.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3_25_frmTestAdminLogIn.resx">
+      <DependentUpon>3_25_frmTestAdminLogIn.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3_25_frmTestGen.resx">
+      <DependentUpon>3_25_frmTestGen.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3_25_frmTestImage.resx">
+      <DependentUpon>3_25_frmTestImage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3_25_frmTestLeak.resx">
+      <DependentUpon>3_25_frmTestLeak.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3_25_frmTestLoad.resx">
+      <DependentUpon>3_25_frmTestLoad.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3_25_frmTestMain.resx">
+      <DependentUpon>3_25_frmTestMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3_25_frmTestMeasure_FH.resx">
+      <DependentUpon>3_25_frmTestMeasure_FH.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3_25_frmTestMeasure_Shim.resx">
+      <DependentUpon>3_25_frmTestMeasure_Shim.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3_25_frmTestNotes.resx">
+      <DependentUpon>3_25_frmTestNotes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3_25_frmTestPressure.resx">
+      <DependentUpon>3_25_frmTestPressure.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3_25_frmTestProcedure.resx">
+      <DependentUpon>3_25_frmTestProcedure.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3_25_frmTestReport.resx">
+      <DependentUpon>3_25_frmTestReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3_25_frmTestSignOff.resx">
+      <DependentUpon>3_25_frmTestSignOff.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="0_20_frmSplash.resx">
+      <DependentUpon>0_20_frmSplash.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3_25_frmTestUnit.resx">
+      <DependentUpon>3_25_frmTestUnit.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3_25_frmTestUserGroup.resx">
+      <DependentUpon>3_25_frmTestUserGroup.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3_25_frmTestUser_Role.resx">
+      <DependentUpon>3_25_frmTestUser_Role.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3_25_frmTestUser_SignOff.resx">
+      <DependentUpon>3_25_frmTestUser_SignOff.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPEAbout.resx">
+      <DependentUpon>4_101_frmIPEAbout.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPEAdjGeomCSeal.resx">
+      <DependentUpon>4_101_frmIPEAdjGeomCSeal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPEAdjGeomESeal.resx">
+      <DependentUpon>4_101_frmIPEAdjGeomESeal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPEAnalysisSet.resx">
+      <DependentUpon>4_101_frmIPEAnalysisSet.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPEAppliedLoading.resx">
+      <DependentUpon>4_101_frmIPEAppliedLoading.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPECavity.resx">
+      <DependentUpon>4_101_frmIPECavity.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPECustomResults.resx">
+      <DependentUpon>4_101_frmIPECustomResults.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPEDesignCenterESeal.resx">
+      <DependentUpon>4_101_frmIPEDesignCenterESeal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPEDesignCenterUSeal.resx">
+      <DependentUpon>4_101_frmIPEDesignCenterUSeal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPEDesignChoiceESeal.resx">
+      <DependentUpon>4_101_frmIPEDesignChoiceESeal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPEDesignCSeal.resx">
+      <DependentUpon>4_101_frmIPEDesignCSeal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPEDesignESeal.resx">
+      <DependentUpon>4_101_frmIPEDesignESeal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPEDesignESeal_New.resx">
+      <DependentUpon>4_101_frmIPEDesignESeal_New.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPEDesignSeal.resx">
+      <DependentUpon>4_101_frmIPEDesignSeal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPEDesignUSeal.resx">
+      <DependentUpon>4_101_frmIPEDesignUSeal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPEFEA.resx">
+      <DependentUpon>4_101_frmIPEFEA.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPEFEAParams.resx">
+      <DependentUpon>4_101_frmIPEFEAParams.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPEFEAParamsCSeal.resx">
+      <DependentUpon>4_101_frmIPEFEAParamsCSeal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPEFEAParamsESeal.resx">
+      <DependentUpon>4_101_frmIPEFEAParamsESeal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPEFEAParamsUSeal.resx">
+      <DependentUpon>4_101_frmIPEFEAParamsUSeal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPELoadStep.resx">
+      <DependentUpon>4_101_frmIPELoadStep.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPEMain.resx">
+      <DependentUpon>4_101_frmIPEMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPEMaterial.resx">
+      <DependentUpon>4_101_frmIPEMaterial.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPENomen_AdjGeom.resx">
+      <DependentUpon>4_101_frmIPENomen_AdjGeom.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPENomen_DesignCenter.resx">
+      <DependentUpon>4_101_frmIPENomen_DesignCenter.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPEOpCond.resx">
+      <DependentUpon>4_101_frmIPEOpCond.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPEOutput.resx">
+      <DependentUpon>4_101_frmIPEOutput.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPEPicBox_Cavity.resx">
+      <DependentUpon>4_101_frmIPEPicBox_Cavity.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPEPicBox_Seal.resx">
+      <DependentUpon>4_101_frmIPEPicBox_Seal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPEPlating.resx">
+      <DependentUpon>4_101_frmIPEPlating.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPEReportCust.resx">
+      <DependentUpon>4_101_frmIPEReportCust.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPEReportFormat.resx">
+      <DependentUpon>4_101_frmIPEReportFormat.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPEResult.resx">
+      <DependentUpon>4_101_frmIPEResult.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPESelectionCriteria.resx">
+      <DependentUpon>4_101_frmIPESelectionCriteria.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPEUser.resx">
+      <DependentUpon>4_101_frmIPEUser.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPEUserInfo.resx">
+      <DependentUpon>4_101_frmIPEUserInfo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4_101_frmIPEDwg.resx">
+      <DependentUpon>4_101_frmIPEDwg.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="1_14_frmPartCopy.resx">
+      <DependentUpon>1_14_frmPartCopy.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="1_14_frmPartHW.resx">
+      <DependentUpon>1_14_frmPartHW.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="1_14_frmPartNomen_NonStd_AdjGeom.resx">
+      <DependentUpon>1_14_frmPartNomen_NonStd_AdjGeom.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="1_14_frmPartNonStdCS_ESeal.resx">
+      <DependentUpon>1_14_frmPartNonStdCS_ESeal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="1_14_frmPartNonStdCS_CSeal.resx">
+      <DependentUpon>1_14_frmPartNonStdCS_CSeal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="0_20_frmUserRole.resx">
+      <DependentUpon>0_20_frmUserRole.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="2_11_frmProcessMain.resx">
+      <DependentUpon>2_11_frmProcessMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="2_11_frmProcessMain_SetUnit.resx">
+      <DependentUpon>2_11_frmProcessMain_SetUnit.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="2_11_frmProcessMain_CustomizeTab.resx">
+      <DependentUpon>2_11_frmProcessMain_CustomizeTab.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="2_11_frmProcessIssueComnt.resx">
+      <DependentUpon>2_11_frmProcessIssueComnt.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="Model3_SealIPE.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model3_SealIPE.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Model4_SealIPEMCS.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model4_SealIPEMCS.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ClassDiagram1.cd" />
+    <EntityDeploy Include="Model2_SealTest.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model2_SealTest.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Model1_SealPart.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1_SealPart.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Model5_SealProcess.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model5_SealProcess.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Model0_SealProcess.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model0_SealProcess.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\DataSources\SealIPEDBEntities.datasource" />
+    <None Include="My Project\DataSources\SealIPEDBEntities1.datasource" />
+    <None Include="My Project\DataSources\SealIPEMCSDBEntities.datasource" />
+    <None Include="My Project\DataSources\SealIPEMCSDBEntities1.datasource" />
+    <None Include="My Project\DataSources\SealMCSDBEntities.datasource" />
+    <None Include="My Project\DataSources\SealPartDBEntities.datasource" />
+    <None Include="My Project\DataSources\SealPartDBEntities1.datasource" />
+    <None Include="My Project\DataSources\SealProcessDBEntities.datasource" />
+    <None Include="My Project\DataSources\SealProcessDBEntities1.datasource" />
+    <None Include="My Project\DataSources\SealSuiteDBEntities.datasource" />
+    <None Include="My Project\DataSources\SealSuiteDBEntities1.datasource" />
+    <None Include="My Project\DataSources\SealTestDBEntities.datasource" />
+    <None Include="My Project\DataSources\SealTestDBEntities1.datasource" />
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Acrobat">
+      <Guid>{E64169B3-3592-47D2-816E-602C5C13F328}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>1</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WaterMark.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Seal.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

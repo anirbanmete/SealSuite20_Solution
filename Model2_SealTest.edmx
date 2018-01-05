@@ -1,0 +1,1941 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SealTestDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="SealTestDBModelStoreContainer">
+          <EntitySet Name="tblFile" EntityType="SealTestDBModel.Store.tblFile" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblFlowMeter" EntityType="SealTestDBModel.Store.tblFlowMeter" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblForceStand" EntityType="SealTestDBModel.Store.tblForceStand" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblLeak" EntityType="SealTestDBModel.Store.tblLeak" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblLeakData" EntityType="SealTestDBModel.Store.tblLeakData" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblLeakMedium" EntityType="SealTestDBModel.Store.tblLeakMedium" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblLeakStand" EntityType="SealTestDBModel.Store.tblLeakStand" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblLoad" EntityType="SealTestDBModel.Store.tblLoad" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblLoadCell" EntityType="SealTestDBModel.Store.tblLoadCell" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblLoadData" EntityType="SealTestDBModel.Store.tblLoadData" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblMO" EntityType="SealTestDBModel.Store.tblMO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblPlatenSurfaceFinish" EntityType="SealTestDBModel.Store.tblPlatenSurfaceFinish" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblPress" EntityType="SealTestDBModel.Store.tblPress" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblPressureData" EntityType="SealTestDBModel.Store.tblPressureData" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblReport" EntityType="SealTestDBModel.Store.tblReport" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblReportGenImage" EntityType="SealTestDBModel.Store.tblReportGenImage" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblReportGenSeal" EntityType="SealTestDBModel.Store.tblReportGenSeal" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblReportResult" EntityType="SealTestDBModel.Store.tblReportResult" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblResult_FEA" EntityType="SealTestDBModel.Store.tblResult_FEA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblSpec" EntityType="SealTestDBModel.Store.tblSpec" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblTestCavity" EntityType="SealTestDBModel.Store.tblTestCavity" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblTestOpCond" EntityType="SealTestDBModel.Store.tblTestOpCond" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblTestProject" EntityType="SealTestDBModel.Store.tblTestProject" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblTestUser" EntityType="SealTestDBModel.Store.tblTestUser" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblUnit" EntityType="SealTestDBModel.Store.tblUnit" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_tblLeak_tblTestRpt" Association="SealTestDBModel.Store.FK_tblLeak_tblTestRpt">
+            <End Role="tblReport" EntitySet="tblReport" />
+            <End Role="tblLeak" EntitySet="tblLeak" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblLoad_tblTestRpt" Association="SealTestDBModel.Store.FK_tblLoad_tblTestRpt">
+            <End Role="tblReport" EntitySet="tblReport" />
+            <End Role="tblLoad" EntitySet="tblLoad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMO_tblMO" Association="SealTestDBModel.Store.FK_tblMO_tblMO">
+            <End Role="tblTestProject" EntitySet="tblTestProject" />
+            <End Role="tblMO" EntitySet="tblMO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPress_tblTestRpt" Association="SealTestDBModel.Store.FK_tblPress_tblTestRpt">
+            <End Role="tblReport" EntitySet="tblReport" />
+            <End Role="tblPress" EntitySet="tblPress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblReport_tblMO" Association="SealTestDBModel.Store.FK_tblReport_tblMO">
+            <End Role="tblMO" EntitySet="tblMO" />
+            <End Role="tblReport" EntitySet="tblReport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblReportLeakData_tblReportLeakEquip" Association="SealTestDBModel.Store.FK_tblReportLeakData_tblReportLeakEquip">
+            <End Role="tblLeak" EntitySet="tblLeak" />
+            <End Role="tblLeakData" EntitySet="tblLeakData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblReportLoadData_tblReportLoadEquip" Association="SealTestDBModel.Store.FK_tblReportLoadData_tblReportLoadEquip">
+            <End Role="tblLoad" EntitySet="tblLoad" />
+            <End Role="tblLoadData" EntitySet="tblLoadData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblReportPressureData_tblReportPressEquip" Association="SealTestDBModel.Store.FK_tblReportPressureData_tblReportPressEquip">
+            <End Role="tblPress" EntitySet="tblPress" />
+            <End Role="tblPressureData" EntitySet="tblPressureData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTestCavityDesign_tblTestProject" Association="SealTestDBModel.Store.FK_tblTestCavityDesign_tblTestProject">
+            <End Role="tblTestProject" EntitySet="tblTestProject" />
+            <End Role="tblTestCavity" EntitySet="tblTestCavity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTestOpCondDesign_tblTestProject" Association="SealTestDBModel.Store.FK_tblTestOpCondDesign_tblTestProject">
+            <End Role="tblTestProject" EntitySet="tblTestProject" />
+            <End Role="tblTestOpCond" EntitySet="tblTestOpCond" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTestProjectLeak_tblTestProject" Association="SealTestDBModel.Store.FK_tblTestProjectLeak_tblTestProject">
+            <End Role="tblTestProject" EntitySet="tblTestProject" />
+            <End Role="tblSpec" EntitySet="tblSpec" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTestResults_tblTestSpec" Association="SealTestDBModel.Store.FK_tblTestResults_tblTestSpec">
+            <End Role="tblSpec" EntitySet="tblSpec" />
+            <End Role="tblResult_FEA" EntitySet="tblResult_FEA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTestRptGenImage_tblTestRpt" Association="SealTestDBModel.Store.FK_tblTestRptGenImage_tblTestRpt">
+            <End Role="tblReport" EntitySet="tblReport" />
+            <End Role="tblReportGenImage" EntitySet="tblReportGenImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTestRptGenSeal_tblTestRpt" Association="SealTestDBModel.Store.FK_tblTestRptGenSeal_tblTestRpt">
+            <End Role="tblReport" EntitySet="tblReport" />
+            <End Role="tblReportGenSeal" EntitySet="tblReportGenSeal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTestRptResults_tblTestRpt" Association="SealTestDBModel.Store.FK_tblTestRptResults_tblTestRpt">
+            <End Role="tblReport" EntitySet="tblReport" />
+            <End Role="tblReportResult" EntitySet="tblReportResult" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUnit_tblTestProject" Association="SealTestDBModel.Store.FK_tblUnit_tblTestProject">
+            <End Role="tblTestProject" EntitySet="tblTestProject" />
+            <End Role="tblUnit" EntitySet="tblUnit" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tblFile">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="numeric" Nullable="false" />
+          <Property Name="fldFileName_EquipList" Type="nvarchar(max)" />
+          <Property Name="fldFileName_LeakProcedure" Type="nvarchar(max)" />
+          <Property Name="fldFileName_LoadProcedure" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblFlowMeter">
+          <Key>
+            <PropertyRef Name="fldSN" />
+          </Key>
+          <Property Name="fldMake" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="fldSN" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="fldRange" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldModelNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldDateCalibrationDue" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblForceStand">
+          <Key>
+            <PropertyRef Name="fldName" />
+          </Key>
+          <Property Name="fldName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="fldSN" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldDateCalibrationDue" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblLeak">
+          <Key>
+            <PropertyRef Name="fldTestProjectID" />
+            <PropertyRef Name="fldTestMOID" />
+            <PropertyRef Name="fldTestRptID" />
+          </Key>
+          <Property Name="fldTestProjectID" Type="numeric" Nullable="false" />
+          <Property Name="fldTestMOID" Type="numeric" Nullable="false" />
+          <Property Name="fldTestRptID" Type="numeric" Nullable="false" />
+          <Property Name="fldStandName" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldT" Type="real" />
+          <Property Name="fldFixture" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldShimActual" Type="real" />
+          <Property Name="fldShimDescrip" Type="nvarchar(max)" />
+          <Property Name="fldSF_Platen" Type="int" />
+          <Property Name="fldTestMeterMake" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldTestMeterSN" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldIsSpringBack" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblLeakData">
+          <Key>
+            <PropertyRef Name="fldTestProjectID" />
+            <PropertyRef Name="fldTestMOID" />
+            <PropertyRef Name="fldTestRptID" />
+            <PropertyRef Name="fldSealSeqID" />
+          </Key>
+          <Property Name="fldTestProjectID" Type="numeric" Nullable="false" />
+          <Property Name="fldTestMOID" Type="numeric" Nullable="false" />
+          <Property Name="fldTestRptID" Type="numeric" Nullable="false" />
+          <Property Name="fldSealSeqID" Type="numeric" Nullable="false" />
+          <Property Name="fldFHIni" Type="real" />
+          <Property Name="fldFHFinal" Type="real" />
+          <Property Name="fldODPre" Type="real" />
+          <Property Name="fldODPost" Type="real" />
+          <Property Name="fldIDPre" Type="real" />
+          <Property Name="fldIDPost" Type="real" />
+          <Property Name="fldVal" Type="real" />
+        </EntityType>
+        <EntityType Name="tblLeakMedium">
+          <Key>
+            <PropertyRef Name="fldName" />
+          </Key>
+          <Property Name="fldName" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblLeakStand">
+          <Key>
+            <PropertyRef Name="fldName" />
+          </Key>
+          <Property Name="fldName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="fldFixture" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblLoad">
+          <Key>
+            <PropertyRef Name="fldTestProjectID" />
+            <PropertyRef Name="fldTestMOID" />
+            <PropertyRef Name="fldTestRptID" />
+          </Key>
+          <Property Name="fldTestProjectID" Type="numeric" Nullable="false" />
+          <Property Name="fldTestMOID" Type="numeric" Nullable="false" />
+          <Property Name="fldTestRptID" Type="numeric" Nullable="false" />
+          <Property Name="fldStandName" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldStandSN" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldLoadCellMake" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldLoadCellSN" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldIsSpringBack" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblLoadCell">
+          <Key>
+            <PropertyRef Name="fldSN" />
+          </Key>
+          <Property Name="fldMake" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="fldSN" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="fldRange" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldModelNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldDateCalibrationDue" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblLoadData">
+          <Key>
+            <PropertyRef Name="fldTestProjectID" />
+            <PropertyRef Name="fldTestMOID" />
+            <PropertyRef Name="fldTestRptID" />
+            <PropertyRef Name="fldSealSeqID" />
+          </Key>
+          <Property Name="fldTestProjectID" Type="numeric" Nullable="false" />
+          <Property Name="fldTestMOID" Type="numeric" Nullable="false" />
+          <Property Name="fldTestRptID" Type="numeric" Nullable="false" />
+          <Property Name="fldSealSeqID" Type="numeric" Nullable="false" />
+          <Property Name="fldFHIni" Type="real" />
+          <Property Name="fldFHFinal" Type="real" />
+          <Property Name="fldODPre" Type="real" />
+          <Property Name="fldODPost" Type="real" />
+          <Property Name="fldIDPre" Type="real" />
+          <Property Name="fldIDPost" Type="real" />
+          <Property Name="fldVal" Type="real" />
+        </EntityType>
+        <EntityType Name="tblMO">
+          <Key>
+            <PropertyRef Name="fldTestProjectID" />
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldTestProjectID" Type="numeric" Nullable="false" />
+          <Property Name="fldID" Type="numeric" Nullable="false" />
+          <Property Name="fldNo" Type="numeric" />
+        </EntityType>
+        <EntityType Name="tblPlatenSurfaceFinish">
+          <Key>
+            <PropertyRef Name="fldSF_Platen" />
+          </Key>
+          <Property Name="fldSF_Platen" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPress">
+          <Key>
+            <PropertyRef Name="fldTestProjectID" />
+            <PropertyRef Name="fldTestMOID" />
+            <PropertyRef Name="fldTestRptID" />
+          </Key>
+          <Property Name="fldTestProjectID" Type="numeric" Nullable="false" />
+          <Property Name="fldTestMOID" Type="numeric" Nullable="false" />
+          <Property Name="fldTestRptID" Type="numeric" Nullable="false" />
+          <Property Name="fldStandName" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldMeasureDevice" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblPressureData">
+          <Key>
+            <PropertyRef Name="fldTestProjectID" />
+            <PropertyRef Name="fldTestMOID" />
+            <PropertyRef Name="fldTestRptID" />
+            <PropertyRef Name="fldSealSeqID" />
+          </Key>
+          <Property Name="fldTestProjectID" Type="numeric" Nullable="false" />
+          <Property Name="fldTestMOID" Type="numeric" Nullable="false" />
+          <Property Name="fldTestRptID" Type="numeric" Nullable="false" />
+          <Property Name="fldSealSeqID" Type="numeric" Nullable="false" />
+          <Property Name="fldPressureMin" Type="real" />
+          <Property Name="fldPressureFail" Type="real" />
+        </EntityType>
+        <EntityType Name="tblReport">
+          <Key>
+            <PropertyRef Name="fldTestProjectID" />
+            <PropertyRef Name="fldTestMOID" />
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldTestProjectID" Type="numeric" Nullable="false" />
+          <Property Name="fldTestMOID" Type="numeric" Nullable="false" />
+          <Property Name="fldID" Type="numeric" Nullable="false" />
+          <Property Name="fldNo" Type="numeric" />
+          <Property Name="fldDateOpen" Type="datetime" />
+          <Property Name="fldSealQty" Type="int" />
+          <Property Name="fldIsLeak" Type="bit" />
+          <Property Name="fldIsLeak_Leakage" Type="bit" />
+          <Property Name="fldIsLeak_LeakagePlated" Type="bit" />
+          <Property Name="fldIsLeak_Springback" Type="bit" />
+          <Property Name="fldIsLoad" Type="bit" />
+          <Property Name="fldIsLoad_Springback" Type="bit" />
+          <Property Name="fldIsPressure" Type="bit" />
+          <Property Name="fldLeakPress" Type="real" />
+          <Property Name="fldNotes" Type="nvarchar(max)" />
+          <Property Name="fldOverridden" Type="bit" />
+          <Property Name="fldUserTester" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldTesterSigned" Type="bit" />
+          <Property Name="fldDateTester" Type="datetime" />
+          <Property Name="fldUserEngg" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldEnggSigned" Type="bit" />
+          <Property Name="fldDateEngg" Type="datetime" />
+          <Property Name="fldUserQuality" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldQualitySigned" Type="bit" />
+          <Property Name="fldDateQuality" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblReportGenImage">
+          <Key>
+            <PropertyRef Name="fldTestProjectID" />
+            <PropertyRef Name="fldTestMOID" />
+            <PropertyRef Name="fldTestRptID" />
+            <PropertyRef Name="fldImageID" />
+          </Key>
+          <Property Name="fldTestProjectID" Type="numeric" Nullable="false" />
+          <Property Name="fldTestMOID" Type="numeric" Nullable="false" />
+          <Property Name="fldTestRptID" Type="numeric" Nullable="false" />
+          <Property Name="fldImageID" Type="numeric" Nullable="false" />
+          <Property Name="fldImageFile" Type="nvarchar(max)" />
+          <Property Name="fldImageNameTag" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldImageCaption" Type="nvarchar(max)" />
+          <Property Name="fldImage" Type="image" />
+          <Property Name="fldSelected" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblReportGenSeal">
+          <Key>
+            <PropertyRef Name="fldTestProjectID" />
+            <PropertyRef Name="fldTestMOID" />
+            <PropertyRef Name="fldTestRptID" />
+            <PropertyRef Name="fldSealSeqID" />
+          </Key>
+          <Property Name="fldTestProjectID" Type="numeric" Nullable="false" />
+          <Property Name="fldTestMOID" Type="numeric" Nullable="false" />
+          <Property Name="fldTestRptID" Type="numeric" Nullable="false" />
+          <Property Name="fldSealSeqID" Type="numeric" Nullable="false" />
+          <Property Name="fldSealSN" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblReportResult">
+          <Key>
+            <PropertyRef Name="fldTestProjectID" />
+            <PropertyRef Name="fldTestMOID" />
+            <PropertyRef Name="fldTestRptID" />
+          </Key>
+          <Property Name="fldTestProjectID" Type="numeric" Nullable="false" />
+          <Property Name="fldTestMOID" Type="numeric" Nullable="false" />
+          <Property Name="fldTestRptID" Type="numeric" Nullable="false" />
+          <Property Name="fldDSealing" Type="real" />
+          <Property Name="fldLeak_UnitLoad" Type="real" />
+          <Property Name="fldLeak_FHFinal" Type="real" />
+        </EntityType>
+        <EntityType Name="tblResult_FEA">
+          <Key>
+            <PropertyRef Name="fldTestProjectID" />
+          </Key>
+          <Property Name="fldTestProjectID" Type="numeric" Nullable="false" />
+          <Property Name="fldDSealing" Type="real" />
+          <Property Name="fldLeak_UnitLoad" Type="real" />
+          <Property Name="fldLeak_FHFinal" Type="real" />
+          <Property Name="fldLoad_UnitLoad" Type="real" />
+          <Property Name="fldLoad_FHFinal" Type="real" />
+        </EntityType>
+        <EntityType Name="tblSpec">
+          <Key>
+            <PropertyRef Name="fldTestProjectID" />
+          </Key>
+          <Property Name="fldTestProjectID" Type="numeric" Nullable="false" />
+          <Property Name="fldSealQty" Type="numeric" />
+          <Property Name="fldIsLeak" Type="bit" />
+          <Property Name="fldIsLoad" Type="bit" />
+          <Property Name="fldIsPressure" Type="bit" />
+          <Property Name="fldSealFHIniMin_Unplated" Type="real" />
+          <Property Name="fldSealFHIniMax_Unplated" Type="real" />
+          <Property Name="fldSealODPreMin_Unplated" Type="real" />
+          <Property Name="fldSealODPreMax_Unplated" Type="real" />
+          <Property Name="fldSealIDPreMin_Unplated" Type="real" />
+          <Property Name="fldSealIDPreMax_Unplated" Type="real" />
+          <Property Name="fldSealFHIniMin_Plated" Type="real" />
+          <Property Name="fldSealFHIniMax_Plated" Type="real" />
+          <Property Name="fldSealODPreMin_Plated" Type="real" />
+          <Property Name="fldSealODPreMax_Plated" Type="real" />
+          <Property Name="fldSealIDPreMin_Plated" Type="real" />
+          <Property Name="fldSealIDPreMax_Plated" Type="real" />
+          <Property Name="fldLeakCavityDepth" Type="real" />
+          <Property Name="fldLeakProcedure_FileName" Type="varchar(max)" />
+          <Property Name="fldLeakMedium" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldLeakPress" Type="real" />
+          <Property Name="fldIsLeak_Leakage" Type="bit" />
+          <Property Name="fldLeakMax_Unplated" Type="real" />
+          <Property Name="fldLeakMax_Plated" Type="real" />
+          <Property Name="fldIsLeakSpringBack" Type="bit" />
+          <Property Name="fldLeakSpringBackMin_Unplated" Type="real" />
+          <Property Name="fldLeakSpringBackMin_Plated" Type="real" />
+          <Property Name="fldLoadProcedure_FileName" Type="varchar(max)" />
+          <Property Name="fldLoadType" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldLoadMin_CavityDepth" Type="real" />
+          <Property Name="fldLoadRange_CavityDepth" Type="real" />
+          <Property Name="fldLoadMax_CavityDepth" Type="real" />
+          <Property Name="fldLoadMin" Type="real" />
+          <Property Name="fldLoadMax" Type="real" />
+          <Property Name="fldIsLoadSpringBack" Type="bit" />
+          <Property Name="fldLoadSpringBackMin_Unplated" Type="real" />
+          <Property Name="fldLoadSpringBackMin_Plated" Type="real" />
+        </EntityType>
+        <EntityType Name="tblTestCavity">
+          <Key>
+            <PropertyRef Name="fldTestProjectID" />
+            <PropertyRef Name="fldDate" />
+          </Key>
+          <Property Name="fldTestProjectID" Type="numeric" Nullable="false" />
+          <Property Name="fldDate" Type="datetime" Nullable="false" />
+          <Property Name="fldCavityID" Type="numeric" />
+          <Property Name="fldCavityDepth" Type="real" />
+          <Property Name="fldCavityDepthTol1" Type="real" />
+          <Property Name="fldCavityDepthTol2" Type="real" />
+        </EntityType>
+        <EntityType Name="tblTestOpCond">
+          <Key>
+            <PropertyRef Name="fldTestProjectID" />
+            <PropertyRef Name="fldDate" />
+          </Key>
+          <Property Name="fldTestProjectID" Type="numeric" Nullable="false" />
+          <Property Name="fldDate" Type="datetime" Nullable="false" />
+          <Property Name="fldOpCondID" Type="numeric" />
+          <Property Name="fldUnitUserP" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldPDiff" Type="real" />
+          <Property Name="fldTOper" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblTestProject">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldPNID" Type="numeric" Nullable="false" />
+          <Property Name="fldRevID" Type="numeric" />
+          <Property Name="fldPNR_CustInfoID" Type="numeric" />
+          <Property Name="fldID" Type="numeric" Nullable="false" />
+          <Property Name="fldUserAdmin" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldDateAdmin" Type="datetime" />
+          <Property Name="fldSignedOff" Type="bit" />
+          <Property Name="fldUserSignedOff" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldDateSignedOff" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblTestUser">
+          <Key>
+            <PropertyRef Name="fldName" />
+          </Key>
+          <Property Name="fldName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="fldSystemLogin" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldRoleAdmin" Type="bit" />
+          <Property Name="fldRoleTester" Type="bit" />
+          <Property Name="fldRoleEngg" Type="bit" />
+          <Property Name="fldRoleQuality" Type="bit" />
+          <Property Name="fldSignature" Type="image" />
+        </EntityType>
+        <EntityType Name="tblUnit">
+          <Key>
+            <PropertyRef Name="fldTestProjectID" />
+          </Key>
+          <Property Name="fldTestProjectID" Type="numeric" Nullable="false" />
+          <Property Name="fldLUnitPH" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldFUnitPH" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldPUnitPH" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldLeakUnitPH" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldLUnitCust" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldFUnitCust" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldPUnitCust" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldLeakUnitCust" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_tblLeak_tblTestRpt">
+          <End Role="tblReport" Type="SealTestDBModel.Store.tblReport" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblLeak" Type="SealTestDBModel.Store.tblLeak" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblReport">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblLeak">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldTestRptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblLoad_tblTestRpt">
+          <End Role="tblReport" Type="SealTestDBModel.Store.tblReport" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblLoad" Type="SealTestDBModel.Store.tblLoad" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblReport">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblLoad">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldTestRptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMO_tblMO">
+          <End Role="tblTestProject" Type="SealTestDBModel.Store.tblTestProject" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblMO" Type="SealTestDBModel.Store.tblMO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTestProject">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblMO">
+              <PropertyRef Name="fldTestProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPress_tblTestRpt">
+          <End Role="tblReport" Type="SealTestDBModel.Store.tblReport" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblPress" Type="SealTestDBModel.Store.tblPress" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblReport">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblPress">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldTestRptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblReport_tblMO">
+          <End Role="tblMO" Type="SealTestDBModel.Store.tblMO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblReport" Type="SealTestDBModel.Store.tblReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMO">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblReport">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblReportLeakData_tblReportLeakEquip">
+          <End Role="tblLeak" Type="SealTestDBModel.Store.tblLeak" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblLeakData" Type="SealTestDBModel.Store.tblLeakData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLeak">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldTestRptID" />
+            </Principal>
+            <Dependent Role="tblLeakData">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldTestRptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblReportLoadData_tblReportLoadEquip">
+          <End Role="tblLoad" Type="SealTestDBModel.Store.tblLoad" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblLoadData" Type="SealTestDBModel.Store.tblLoadData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLoad">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldTestRptID" />
+            </Principal>
+            <Dependent Role="tblLoadData">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldTestRptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblReportPressureData_tblReportPressEquip">
+          <End Role="tblPress" Type="SealTestDBModel.Store.tblPress" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblPressureData" Type="SealTestDBModel.Store.tblPressureData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPress">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldTestRptID" />
+            </Principal>
+            <Dependent Role="tblPressureData">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldTestRptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTestCavityDesign_tblTestProject">
+          <End Role="tblTestProject" Type="SealTestDBModel.Store.tblTestProject" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblTestCavity" Type="SealTestDBModel.Store.tblTestCavity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTestProject">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblTestCavity">
+              <PropertyRef Name="fldTestProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTestOpCondDesign_tblTestProject">
+          <End Role="tblTestProject" Type="SealTestDBModel.Store.tblTestProject" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblTestOpCond" Type="SealTestDBModel.Store.tblTestOpCond" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTestProject">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblTestOpCond">
+              <PropertyRef Name="fldTestProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTestProjectLeak_tblTestProject">
+          <End Role="tblTestProject" Type="SealTestDBModel.Store.tblTestProject" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblSpec" Type="SealTestDBModel.Store.tblSpec" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblTestProject">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblSpec">
+              <PropertyRef Name="fldTestProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTestResults_tblTestSpec">
+          <End Role="tblSpec" Type="SealTestDBModel.Store.tblSpec" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblResult_FEA" Type="SealTestDBModel.Store.tblResult_FEA" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblSpec">
+              <PropertyRef Name="fldTestProjectID" />
+            </Principal>
+            <Dependent Role="tblResult_FEA">
+              <PropertyRef Name="fldTestProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTestRptGenImage_tblTestRpt">
+          <End Role="tblReport" Type="SealTestDBModel.Store.tblReport" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblReportGenImage" Type="SealTestDBModel.Store.tblReportGenImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblReport">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblReportGenImage">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldTestRptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTestRptGenSeal_tblTestRpt">
+          <End Role="tblReport" Type="SealTestDBModel.Store.tblReport" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblReportGenSeal" Type="SealTestDBModel.Store.tblReportGenSeal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblReport">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblReportGenSeal">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldTestRptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTestRptResults_tblTestRpt">
+          <End Role="tblReport" Type="SealTestDBModel.Store.tblReport" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblReportResult" Type="SealTestDBModel.Store.tblReportResult" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblReport">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblReportResult">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldTestRptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUnit_tblTestProject">
+          <End Role="tblTestProject" Type="SealTestDBModel.Store.tblTestProject" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblUnit" Type="SealTestDBModel.Store.tblUnit" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblTestProject">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblUnit">
+              <PropertyRef Name="fldTestProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SealTestDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="SealTestDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblFile" EntityType="SealTestDBModel.tblFile" />
+          <EntitySet Name="tblFlowMeter" EntityType="SealTestDBModel.tblFlowMeter" />
+          <EntitySet Name="tblForceStand" EntityType="SealTestDBModel.tblForceStand" />
+          <EntitySet Name="tblLeak" EntityType="SealTestDBModel.tblLeak" />
+          <EntitySet Name="tblLeakData" EntityType="SealTestDBModel.tblLeakData" />
+          <EntitySet Name="tblLeakMedium" EntityType="SealTestDBModel.tblLeakMedium" />
+          <EntitySet Name="tblLeakStand" EntityType="SealTestDBModel.tblLeakStand" />
+          <EntitySet Name="tblLoad" EntityType="SealTestDBModel.tblLoad" />
+          <EntitySet Name="tblLoadCell" EntityType="SealTestDBModel.tblLoadCell" />
+          <EntitySet Name="tblLoadData" EntityType="SealTestDBModel.tblLoadData" />
+          <EntitySet Name="tblMO" EntityType="SealTestDBModel.tblMO" />
+          <EntitySet Name="tblPlatenSurfaceFinish" EntityType="SealTestDBModel.tblPlatenSurfaceFinish" />
+          <EntitySet Name="tblPress" EntityType="SealTestDBModel.tblPress" />
+          <EntitySet Name="tblPressureData" EntityType="SealTestDBModel.tblPressureData" />
+          <EntitySet Name="tblReport" EntityType="SealTestDBModel.tblReport" />
+          <EntitySet Name="tblReportGenImage" EntityType="SealTestDBModel.tblReportGenImage" />
+          <EntitySet Name="tblReportGenSeal" EntityType="SealTestDBModel.tblReportGenSeal" />
+          <EntitySet Name="tblReportResult" EntityType="SealTestDBModel.tblReportResult" />
+          <EntitySet Name="tblResult_FEA" EntityType="SealTestDBModel.tblResult_FEA" />
+          <EntitySet Name="tblSpec" EntityType="SealTestDBModel.tblSpec" />
+          <EntitySet Name="tblTestCavity" EntityType="SealTestDBModel.tblTestCavity" />
+          <EntitySet Name="tblTestOpCond" EntityType="SealTestDBModel.tblTestOpCond" />
+          <EntitySet Name="tblTestProject" EntityType="SealTestDBModel.tblTestProject" />
+          <EntitySet Name="tblTestUser" EntityType="SealTestDBModel.tblTestUser" />
+          <EntitySet Name="tblUnit" EntityType="SealTestDBModel.tblUnit" />
+          <AssociationSet Name="FK_tblLeak_tblTestRpt" Association="SealTestDBModel.FK_tblLeak_tblTestRpt">
+            <End Role="tblReport" EntitySet="tblReport" />
+            <End Role="tblLeak" EntitySet="tblLeak" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblReportLeakData_tblReportLeakEquip" Association="SealTestDBModel.FK_tblReportLeakData_tblReportLeakEquip">
+            <End Role="tblLeak" EntitySet="tblLeak" />
+            <End Role="tblLeakData" EntitySet="tblLeakData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblLoad_tblTestRpt" Association="SealTestDBModel.FK_tblLoad_tblTestRpt">
+            <End Role="tblReport" EntitySet="tblReport" />
+            <End Role="tblLoad" EntitySet="tblLoad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblReportLoadData_tblReportLoadEquip" Association="SealTestDBModel.FK_tblReportLoadData_tblReportLoadEquip">
+            <End Role="tblLoad" EntitySet="tblLoad" />
+            <End Role="tblLoadData" EntitySet="tblLoadData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMO_tblMO" Association="SealTestDBModel.FK_tblMO_tblMO">
+            <End Role="tblTestProject" EntitySet="tblTestProject" />
+            <End Role="tblMO" EntitySet="tblMO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblReport_tblMO" Association="SealTestDBModel.FK_tblReport_tblMO">
+            <End Role="tblMO" EntitySet="tblMO" />
+            <End Role="tblReport" EntitySet="tblReport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPress_tblTestRpt" Association="SealTestDBModel.FK_tblPress_tblTestRpt">
+            <End Role="tblReport" EntitySet="tblReport" />
+            <End Role="tblPress" EntitySet="tblPress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblReportPressureData_tblReportPressEquip" Association="SealTestDBModel.FK_tblReportPressureData_tblReportPressEquip">
+            <End Role="tblPress" EntitySet="tblPress" />
+            <End Role="tblPressureData" EntitySet="tblPressureData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTestRptGenImage_tblTestRpt" Association="SealTestDBModel.FK_tblTestRptGenImage_tblTestRpt">
+            <End Role="tblReport" EntitySet="tblReport" />
+            <End Role="tblReportGenImage" EntitySet="tblReportGenImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTestRptGenSeal_tblTestRpt" Association="SealTestDBModel.FK_tblTestRptGenSeal_tblTestRpt">
+            <End Role="tblReport" EntitySet="tblReport" />
+            <End Role="tblReportGenSeal" EntitySet="tblReportGenSeal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTestRptResults_tblTestRpt" Association="SealTestDBModel.FK_tblTestRptResults_tblTestRpt">
+            <End Role="tblReport" EntitySet="tblReport" />
+            <End Role="tblReportResult" EntitySet="tblReportResult" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTestResults_tblTestSpec" Association="SealTestDBModel.FK_tblTestResults_tblTestSpec">
+            <End Role="tblSpec" EntitySet="tblSpec" />
+            <End Role="tblResult_FEA" EntitySet="tblResult_FEA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTestProjectLeak_tblTestProject" Association="SealTestDBModel.FK_tblTestProjectLeak_tblTestProject">
+            <End Role="tblTestProject" EntitySet="tblTestProject" />
+            <End Role="tblSpec" EntitySet="tblSpec" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTestCavityDesign_tblTestProject" Association="SealTestDBModel.FK_tblTestCavityDesign_tblTestProject">
+            <End Role="tblTestProject" EntitySet="tblTestProject" />
+            <End Role="tblTestCavity" EntitySet="tblTestCavity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTestOpCondDesign_tblTestProject" Association="SealTestDBModel.FK_tblTestOpCondDesign_tblTestProject">
+            <End Role="tblTestProject" EntitySet="tblTestProject" />
+            <End Role="tblTestOpCond" EntitySet="tblTestOpCond" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUnit_tblTestProject" Association="SealTestDBModel.FK_tblUnit_tblTestProject">
+            <End Role="tblTestProject" EntitySet="tblTestProject" />
+            <End Role="tblUnit" EntitySet="tblUnit" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tblFile">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldFileName_EquipList" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="fldFileName_LeakProcedure" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="fldFileName_LoadProcedure" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblFlowMeter">
+          <Key>
+            <PropertyRef Name="fldSN" />
+          </Key>
+          <Property Name="fldMake" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldSN" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldRange" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldModelNo" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldDateCalibrationDue" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="tblForceStand">
+          <Key>
+            <PropertyRef Name="fldName" />
+          </Key>
+          <Property Name="fldName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldSN" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldDateCalibrationDue" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="tblLeak">
+          <Key>
+            <PropertyRef Name="fldTestProjectID" />
+            <PropertyRef Name="fldTestMOID" />
+            <PropertyRef Name="fldTestRptID" />
+          </Key>
+          <Property Name="fldTestProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldTestMOID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldTestRptID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldStandName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldT" Type="Single" />
+          <Property Name="fldFixture" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldShimActual" Type="Single" />
+          <Property Name="fldShimDescrip" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="fldSF_Platen" Type="Int32" />
+          <Property Name="fldTestMeterMake" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldTestMeterSN" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldIsSpringBack" Type="Boolean" />
+          <NavigationProperty Name="tblReport" Relationship="SealTestDBModel.FK_tblLeak_tblTestRpt" FromRole="tblLeak" ToRole="tblReport" />
+          <NavigationProperty Name="tblLeakData" Relationship="SealTestDBModel.FK_tblReportLeakData_tblReportLeakEquip" FromRole="tblLeak" ToRole="tblLeakData" />
+        </EntityType>
+        <EntityType Name="tblLeakData">
+          <Key>
+            <PropertyRef Name="fldTestProjectID" />
+            <PropertyRef Name="fldTestMOID" />
+            <PropertyRef Name="fldTestRptID" />
+            <PropertyRef Name="fldSealSeqID" />
+          </Key>
+          <Property Name="fldTestProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldTestMOID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldTestRptID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldSealSeqID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldFHIni" Type="Single" />
+          <Property Name="fldFHFinal" Type="Single" />
+          <Property Name="fldODPre" Type="Single" />
+          <Property Name="fldODPost" Type="Single" />
+          <Property Name="fldIDPre" Type="Single" />
+          <Property Name="fldIDPost" Type="Single" />
+          <Property Name="fldVal" Type="Single" />
+          <NavigationProperty Name="tblLeak" Relationship="SealTestDBModel.FK_tblReportLeakData_tblReportLeakEquip" FromRole="tblLeakData" ToRole="tblLeak" />
+        </EntityType>
+        <EntityType Name="tblLeakMedium">
+          <Key>
+            <PropertyRef Name="fldName" />
+          </Key>
+          <Property Name="fldName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblLeakStand">
+          <Key>
+            <PropertyRef Name="fldName" />
+          </Key>
+          <Property Name="fldName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldFixture" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblLoad">
+          <Key>
+            <PropertyRef Name="fldTestProjectID" />
+            <PropertyRef Name="fldTestMOID" />
+            <PropertyRef Name="fldTestRptID" />
+          </Key>
+          <Property Name="fldTestProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldTestMOID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldTestRptID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldStandName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldStandSN" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldLoadCellMake" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldLoadCellSN" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldIsSpringBack" Type="Boolean" />
+          <NavigationProperty Name="tblReport" Relationship="SealTestDBModel.FK_tblLoad_tblTestRpt" FromRole="tblLoad" ToRole="tblReport" />
+          <NavigationProperty Name="tblLoadData" Relationship="SealTestDBModel.FK_tblReportLoadData_tblReportLoadEquip" FromRole="tblLoad" ToRole="tblLoadData" />
+        </EntityType>
+        <EntityType Name="tblLoadCell">
+          <Key>
+            <PropertyRef Name="fldSN" />
+          </Key>
+          <Property Name="fldMake" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldSN" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldRange" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldModelNo" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldDateCalibrationDue" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="tblLoadData">
+          <Key>
+            <PropertyRef Name="fldTestProjectID" />
+            <PropertyRef Name="fldTestMOID" />
+            <PropertyRef Name="fldTestRptID" />
+            <PropertyRef Name="fldSealSeqID" />
+          </Key>
+          <Property Name="fldTestProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldTestMOID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldTestRptID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldSealSeqID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldFHIni" Type="Single" />
+          <Property Name="fldFHFinal" Type="Single" />
+          <Property Name="fldODPre" Type="Single" />
+          <Property Name="fldODPost" Type="Single" />
+          <Property Name="fldIDPre" Type="Single" />
+          <Property Name="fldIDPost" Type="Single" />
+          <Property Name="fldVal" Type="Single" />
+          <NavigationProperty Name="tblLoad" Relationship="SealTestDBModel.FK_tblReportLoadData_tblReportLoadEquip" FromRole="tblLoadData" ToRole="tblLoad" />
+        </EntityType>
+        <EntityType Name="tblMO">
+          <Key>
+            <PropertyRef Name="fldTestProjectID" />
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldTestProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldNo" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="tblTestProject" Relationship="SealTestDBModel.FK_tblMO_tblMO" FromRole="tblMO" ToRole="tblTestProject" />
+          <NavigationProperty Name="tblReport" Relationship="SealTestDBModel.FK_tblReport_tblMO" FromRole="tblMO" ToRole="tblReport" />
+        </EntityType>
+        <EntityType Name="tblPlatenSurfaceFinish">
+          <Key>
+            <PropertyRef Name="fldSF_Platen" />
+          </Key>
+          <Property Name="fldSF_Platen" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPress">
+          <Key>
+            <PropertyRef Name="fldTestProjectID" />
+            <PropertyRef Name="fldTestMOID" />
+            <PropertyRef Name="fldTestRptID" />
+          </Key>
+          <Property Name="fldTestProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldTestMOID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldTestRptID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldStandName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldMeasureDevice" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="tblReport" Relationship="SealTestDBModel.FK_tblPress_tblTestRpt" FromRole="tblPress" ToRole="tblReport" />
+          <NavigationProperty Name="tblPressureData" Relationship="SealTestDBModel.FK_tblReportPressureData_tblReportPressEquip" FromRole="tblPress" ToRole="tblPressureData" />
+        </EntityType>
+        <EntityType Name="tblPressureData">
+          <Key>
+            <PropertyRef Name="fldTestProjectID" />
+            <PropertyRef Name="fldTestMOID" />
+            <PropertyRef Name="fldTestRptID" />
+            <PropertyRef Name="fldSealSeqID" />
+          </Key>
+          <Property Name="fldTestProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldTestMOID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldTestRptID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldSealSeqID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldPressureMin" Type="Single" />
+          <Property Name="fldPressureFail" Type="Single" />
+          <NavigationProperty Name="tblPress" Relationship="SealTestDBModel.FK_tblReportPressureData_tblReportPressEquip" FromRole="tblPressureData" ToRole="tblPress" />
+        </EntityType>
+        <EntityType Name="tblReport">
+          <Key>
+            <PropertyRef Name="fldTestProjectID" />
+            <PropertyRef Name="fldTestMOID" />
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldTestProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldTestMOID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldNo" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="fldDateOpen" Type="DateTime" />
+          <Property Name="fldSealQty" Type="Int32" />
+          <Property Name="fldIsLeak" Type="Boolean" />
+          <Property Name="fldIsLeak_Leakage" Type="Boolean" />
+          <Property Name="fldIsLeak_LeakagePlated" Type="Boolean" />
+          <Property Name="fldIsLeak_Springback" Type="Boolean" />
+          <Property Name="fldIsLoad" Type="Boolean" />
+          <Property Name="fldIsLoad_Springback" Type="Boolean" />
+          <Property Name="fldIsPressure" Type="Boolean" />
+          <Property Name="fldLeakPress" Type="Single" />
+          <Property Name="fldNotes" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="fldOverridden" Type="Boolean" />
+          <Property Name="fldUserTester" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldTesterSigned" Type="Boolean" />
+          <Property Name="fldDateTester" Type="DateTime" />
+          <Property Name="fldUserEngg" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldEnggSigned" Type="Boolean" />
+          <Property Name="fldDateEngg" Type="DateTime" />
+          <Property Name="fldUserQuality" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldQualitySigned" Type="Boolean" />
+          <Property Name="fldDateQuality" Type="DateTime" />
+          <NavigationProperty Name="tblLeak" Relationship="SealTestDBModel.FK_tblLeak_tblTestRpt" FromRole="tblReport" ToRole="tblLeak" />
+          <NavigationProperty Name="tblLoad" Relationship="SealTestDBModel.FK_tblLoad_tblTestRpt" FromRole="tblReport" ToRole="tblLoad" />
+          <NavigationProperty Name="tblMO" Relationship="SealTestDBModel.FK_tblReport_tblMO" FromRole="tblReport" ToRole="tblMO" />
+          <NavigationProperty Name="tblPress" Relationship="SealTestDBModel.FK_tblPress_tblTestRpt" FromRole="tblReport" ToRole="tblPress" />
+          <NavigationProperty Name="tblReportGenImage" Relationship="SealTestDBModel.FK_tblTestRptGenImage_tblTestRpt" FromRole="tblReport" ToRole="tblReportGenImage" />
+          <NavigationProperty Name="tblReportGenSeal" Relationship="SealTestDBModel.FK_tblTestRptGenSeal_tblTestRpt" FromRole="tblReport" ToRole="tblReportGenSeal" />
+          <NavigationProperty Name="tblReportResult" Relationship="SealTestDBModel.FK_tblTestRptResults_tblTestRpt" FromRole="tblReport" ToRole="tblReportResult" />
+        </EntityType>
+        <EntityType Name="tblReportGenImage">
+          <Key>
+            <PropertyRef Name="fldTestProjectID" />
+            <PropertyRef Name="fldTestMOID" />
+            <PropertyRef Name="fldTestRptID" />
+            <PropertyRef Name="fldImageID" />
+          </Key>
+          <Property Name="fldTestProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldTestMOID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldTestRptID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldImageID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldImageFile" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="fldImageNameTag" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldImageCaption" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="fldImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="fldSelected" Type="Boolean" />
+          <NavigationProperty Name="tblReport" Relationship="SealTestDBModel.FK_tblTestRptGenImage_tblTestRpt" FromRole="tblReportGenImage" ToRole="tblReport" />
+        </EntityType>
+        <EntityType Name="tblReportGenSeal">
+          <Key>
+            <PropertyRef Name="fldTestProjectID" />
+            <PropertyRef Name="fldTestMOID" />
+            <PropertyRef Name="fldTestRptID" />
+            <PropertyRef Name="fldSealSeqID" />
+          </Key>
+          <Property Name="fldTestProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldTestMOID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldTestRptID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldSealSeqID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldSealSN" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="tblReport" Relationship="SealTestDBModel.FK_tblTestRptGenSeal_tblTestRpt" FromRole="tblReportGenSeal" ToRole="tblReport" />
+        </EntityType>
+        <EntityType Name="tblReportResult">
+          <Key>
+            <PropertyRef Name="fldTestProjectID" />
+            <PropertyRef Name="fldTestMOID" />
+            <PropertyRef Name="fldTestRptID" />
+          </Key>
+          <Property Name="fldTestProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldTestMOID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldTestRptID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldDSealing" Type="Single" />
+          <Property Name="fldLeak_UnitLoad" Type="Single" />
+          <Property Name="fldLeak_FHFinal" Type="Single" />
+          <NavigationProperty Name="tblReport" Relationship="SealTestDBModel.FK_tblTestRptResults_tblTestRpt" FromRole="tblReportResult" ToRole="tblReport" />
+        </EntityType>
+        <EntityType Name="tblResult_FEA">
+          <Key>
+            <PropertyRef Name="fldTestProjectID" />
+          </Key>
+          <Property Name="fldTestProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldDSealing" Type="Single" />
+          <Property Name="fldLeak_UnitLoad" Type="Single" />
+          <Property Name="fldLeak_FHFinal" Type="Single" />
+          <Property Name="fldLoad_UnitLoad" Type="Single" />
+          <Property Name="fldLoad_FHFinal" Type="Single" />
+          <NavigationProperty Name="tblSpec" Relationship="SealTestDBModel.FK_tblTestResults_tblTestSpec" FromRole="tblResult_FEA" ToRole="tblSpec" />
+        </EntityType>
+        <EntityType Name="tblSpec">
+          <Key>
+            <PropertyRef Name="fldTestProjectID" />
+          </Key>
+          <Property Name="fldTestProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldSealQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="fldIsLeak" Type="Boolean" />
+          <Property Name="fldIsLoad" Type="Boolean" />
+          <Property Name="fldIsPressure" Type="Boolean" />
+          <Property Name="fldSealFHIniMin_Unplated" Type="Single" />
+          <Property Name="fldSealFHIniMax_Unplated" Type="Single" />
+          <Property Name="fldSealODPreMin_Unplated" Type="Single" />
+          <Property Name="fldSealODPreMax_Unplated" Type="Single" />
+          <Property Name="fldSealIDPreMin_Unplated" Type="Single" />
+          <Property Name="fldSealIDPreMax_Unplated" Type="Single" />
+          <Property Name="fldSealFHIniMin_Plated" Type="Single" />
+          <Property Name="fldSealFHIniMax_Plated" Type="Single" />
+          <Property Name="fldSealODPreMin_Plated" Type="Single" />
+          <Property Name="fldSealODPreMax_Plated" Type="Single" />
+          <Property Name="fldSealIDPreMin_Plated" Type="Single" />
+          <Property Name="fldSealIDPreMax_Plated" Type="Single" />
+          <Property Name="fldLeakCavityDepth" Type="Single" />
+          <Property Name="fldLeakProcedure_FileName" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="fldLeakMedium" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldLeakPress" Type="Single" />
+          <Property Name="fldIsLeak_Leakage" Type="Boolean" />
+          <Property Name="fldLeakMax_Unplated" Type="Single" />
+          <Property Name="fldLeakMax_Plated" Type="Single" />
+          <Property Name="fldIsLeakSpringBack" Type="Boolean" />
+          <Property Name="fldLeakSpringBackMin_Unplated" Type="Single" />
+          <Property Name="fldLeakSpringBackMin_Plated" Type="Single" />
+          <Property Name="fldLoadProcedure_FileName" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="fldLoadType" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldLoadMin_CavityDepth" Type="Single" />
+          <Property Name="fldLoadRange_CavityDepth" Type="Single" />
+          <Property Name="fldLoadMax_CavityDepth" Type="Single" />
+          <Property Name="fldLoadMin" Type="Single" />
+          <Property Name="fldLoadMax" Type="Single" />
+          <Property Name="fldIsLoadSpringBack" Type="Boolean" />
+          <Property Name="fldLoadSpringBackMin_Unplated" Type="Single" />
+          <Property Name="fldLoadSpringBackMin_Plated" Type="Single" />
+          <NavigationProperty Name="tblResult_FEA" Relationship="SealTestDBModel.FK_tblTestResults_tblTestSpec" FromRole="tblSpec" ToRole="tblResult_FEA" />
+          <NavigationProperty Name="tblTestProject" Relationship="SealTestDBModel.FK_tblTestProjectLeak_tblTestProject" FromRole="tblSpec" ToRole="tblTestProject" />
+        </EntityType>
+        <EntityType Name="tblTestCavity">
+          <Key>
+            <PropertyRef Name="fldTestProjectID" />
+            <PropertyRef Name="fldDate" />
+          </Key>
+          <Property Name="fldTestProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldDate" Type="DateTime" Nullable="false" />
+          <Property Name="fldCavityID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="fldCavityDepth" Type="Single" />
+          <Property Name="fldCavityDepthTol1" Type="Single" />
+          <Property Name="fldCavityDepthTol2" Type="Single" />
+          <NavigationProperty Name="tblTestProject" Relationship="SealTestDBModel.FK_tblTestCavityDesign_tblTestProject" FromRole="tblTestCavity" ToRole="tblTestProject" />
+        </EntityType>
+        <EntityType Name="tblTestOpCond">
+          <Key>
+            <PropertyRef Name="fldTestProjectID" />
+            <PropertyRef Name="fldDate" />
+          </Key>
+          <Property Name="fldTestProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldDate" Type="DateTime" Nullable="false" />
+          <Property Name="fldOpCondID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="fldUnitUserP" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldPDiff" Type="Single" />
+          <Property Name="fldTOper" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="tblTestProject" Relationship="SealTestDBModel.FK_tblTestOpCondDesign_tblTestProject" FromRole="tblTestOpCond" ToRole="tblTestProject" />
+        </EntityType>
+        <EntityType Name="tblTestProject">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldPNID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldRevID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="fldPNR_CustInfoID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="fldID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldUserAdmin" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldDateAdmin" Type="DateTime" />
+          <Property Name="fldSignedOff" Type="Boolean" />
+          <Property Name="fldUserSignedOff" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldDateSignedOff" Type="DateTime" />
+          <NavigationProperty Name="tblMO" Relationship="SealTestDBModel.FK_tblMO_tblMO" FromRole="tblTestProject" ToRole="tblMO" />
+          <NavigationProperty Name="tblSpec" Relationship="SealTestDBModel.FK_tblTestProjectLeak_tblTestProject" FromRole="tblTestProject" ToRole="tblSpec" />
+          <NavigationProperty Name="tblTestCavity" Relationship="SealTestDBModel.FK_tblTestCavityDesign_tblTestProject" FromRole="tblTestProject" ToRole="tblTestCavity" />
+          <NavigationProperty Name="tblTestOpCond" Relationship="SealTestDBModel.FK_tblTestOpCondDesign_tblTestProject" FromRole="tblTestProject" ToRole="tblTestOpCond" />
+          <NavigationProperty Name="tblUnit" Relationship="SealTestDBModel.FK_tblUnit_tblTestProject" FromRole="tblTestProject" ToRole="tblUnit" />
+        </EntityType>
+        <EntityType Name="tblTestUser">
+          <Key>
+            <PropertyRef Name="fldName" />
+          </Key>
+          <Property Name="fldName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldSystemLogin" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldRoleAdmin" Type="Boolean" />
+          <Property Name="fldRoleTester" Type="Boolean" />
+          <Property Name="fldRoleEngg" Type="Boolean" />
+          <Property Name="fldRoleQuality" Type="Boolean" />
+          <Property Name="fldSignature" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblUnit">
+          <Key>
+            <PropertyRef Name="fldTestProjectID" />
+          </Key>
+          <Property Name="fldTestProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldLUnitPH" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldFUnitPH" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldPUnitPH" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldLeakUnitPH" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldLUnitCust" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldFUnitCust" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldPUnitCust" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldLeakUnitCust" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="tblTestProject" Relationship="SealTestDBModel.FK_tblUnit_tblTestProject" FromRole="tblUnit" ToRole="tblTestProject" />
+        </EntityType>
+        <Association Name="FK_tblLeak_tblTestRpt">
+          <End Role="tblReport" Type="SealTestDBModel.tblReport" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblLeak" Type="SealTestDBModel.tblLeak" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblReport">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblLeak">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldTestRptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblReportLeakData_tblReportLeakEquip">
+          <End Role="tblLeak" Type="SealTestDBModel.tblLeak" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblLeakData" Type="SealTestDBModel.tblLeakData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLeak">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldTestRptID" />
+            </Principal>
+            <Dependent Role="tblLeakData">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldTestRptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblLoad_tblTestRpt">
+          <End Role="tblReport" Type="SealTestDBModel.tblReport" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblLoad" Type="SealTestDBModel.tblLoad" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblReport">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblLoad">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldTestRptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblReportLoadData_tblReportLoadEquip">
+          <End Role="tblLoad" Type="SealTestDBModel.tblLoad" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblLoadData" Type="SealTestDBModel.tblLoadData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLoad">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldTestRptID" />
+            </Principal>
+            <Dependent Role="tblLoadData">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldTestRptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMO_tblMO">
+          <End Role="tblTestProject" Type="SealTestDBModel.tblTestProject" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblMO" Type="SealTestDBModel.tblMO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTestProject">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblMO">
+              <PropertyRef Name="fldTestProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblReport_tblMO">
+          <End Role="tblMO" Type="SealTestDBModel.tblMO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblReport" Type="SealTestDBModel.tblReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMO">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblReport">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPress_tblTestRpt">
+          <End Role="tblReport" Type="SealTestDBModel.tblReport" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblPress" Type="SealTestDBModel.tblPress" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblReport">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblPress">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldTestRptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblReportPressureData_tblReportPressEquip">
+          <End Role="tblPress" Type="SealTestDBModel.tblPress" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblPressureData" Type="SealTestDBModel.tblPressureData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPress">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldTestRptID" />
+            </Principal>
+            <Dependent Role="tblPressureData">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldTestRptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTestRptGenImage_tblTestRpt">
+          <End Role="tblReport" Type="SealTestDBModel.tblReport" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblReportGenImage" Type="SealTestDBModel.tblReportGenImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblReport">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblReportGenImage">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldTestRptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTestRptGenSeal_tblTestRpt">
+          <End Role="tblReport" Type="SealTestDBModel.tblReport" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblReportGenSeal" Type="SealTestDBModel.tblReportGenSeal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblReport">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblReportGenSeal">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldTestRptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTestRptResults_tblTestRpt">
+          <End Role="tblReport" Type="SealTestDBModel.tblReport" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblReportResult" Type="SealTestDBModel.tblReportResult" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblReport">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblReportResult">
+              <PropertyRef Name="fldTestProjectID" />
+              <PropertyRef Name="fldTestMOID" />
+              <PropertyRef Name="fldTestRptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTestResults_tblTestSpec">
+          <End Role="tblSpec" Type="SealTestDBModel.tblSpec" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblResult_FEA" Type="SealTestDBModel.tblResult_FEA" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblSpec">
+              <PropertyRef Name="fldTestProjectID" />
+            </Principal>
+            <Dependent Role="tblResult_FEA">
+              <PropertyRef Name="fldTestProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTestProjectLeak_tblTestProject">
+          <End Role="tblTestProject" Type="SealTestDBModel.tblTestProject" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblSpec" Type="SealTestDBModel.tblSpec" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblTestProject">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblSpec">
+              <PropertyRef Name="fldTestProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTestCavityDesign_tblTestProject">
+          <End Role="tblTestProject" Type="SealTestDBModel.tblTestProject" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblTestCavity" Type="SealTestDBModel.tblTestCavity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTestProject">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblTestCavity">
+              <PropertyRef Name="fldTestProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTestOpCondDesign_tblTestProject">
+          <End Role="tblTestProject" Type="SealTestDBModel.tblTestProject" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblTestOpCond" Type="SealTestDBModel.tblTestOpCond" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTestProject">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblTestOpCond">
+              <PropertyRef Name="fldTestProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUnit_tblTestProject">
+          <End Role="tblTestProject" Type="SealTestDBModel.tblTestProject" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblUnit" Type="SealTestDBModel.tblUnit" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblTestProject">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblUnit">
+              <PropertyRef Name="fldTestProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SealTestDBModelStoreContainer" CdmEntityContainer="SealTestDBEntities">
+          <EntitySetMapping Name="tblFile">
+            <EntityTypeMapping TypeName="SealTestDBModel.tblFile">
+              <MappingFragment StoreEntitySet="tblFile">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldFileName_EquipList" ColumnName="fldFileName_EquipList" />
+                <ScalarProperty Name="fldFileName_LeakProcedure" ColumnName="fldFileName_LeakProcedure" />
+                <ScalarProperty Name="fldFileName_LoadProcedure" ColumnName="fldFileName_LoadProcedure" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFlowMeter">
+            <EntityTypeMapping TypeName="SealTestDBModel.tblFlowMeter">
+              <MappingFragment StoreEntitySet="tblFlowMeter">
+                <ScalarProperty Name="fldMake" ColumnName="fldMake" />
+                <ScalarProperty Name="fldSN" ColumnName="fldSN" />
+                <ScalarProperty Name="fldRange" ColumnName="fldRange" />
+                <ScalarProperty Name="fldModelNo" ColumnName="fldModelNo" />
+                <ScalarProperty Name="fldDateCalibrationDue" ColumnName="fldDateCalibrationDue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblForceStand">
+            <EntityTypeMapping TypeName="SealTestDBModel.tblForceStand">
+              <MappingFragment StoreEntitySet="tblForceStand">
+                <ScalarProperty Name="fldName" ColumnName="fldName" />
+                <ScalarProperty Name="fldSN" ColumnName="fldSN" />
+                <ScalarProperty Name="fldDateCalibrationDue" ColumnName="fldDateCalibrationDue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLeak">
+            <EntityTypeMapping TypeName="SealTestDBModel.tblLeak">
+              <MappingFragment StoreEntitySet="tblLeak">
+                <ScalarProperty Name="fldTestProjectID" ColumnName="fldTestProjectID" />
+                <ScalarProperty Name="fldTestMOID" ColumnName="fldTestMOID" />
+                <ScalarProperty Name="fldTestRptID" ColumnName="fldTestRptID" />
+                <ScalarProperty Name="fldStandName" ColumnName="fldStandName" />
+                <ScalarProperty Name="fldT" ColumnName="fldT" />
+                <ScalarProperty Name="fldFixture" ColumnName="fldFixture" />
+                <ScalarProperty Name="fldShimActual" ColumnName="fldShimActual" />
+                <ScalarProperty Name="fldShimDescrip" ColumnName="fldShimDescrip" />
+                <ScalarProperty Name="fldSF_Platen" ColumnName="fldSF_Platen" />
+                <ScalarProperty Name="fldTestMeterMake" ColumnName="fldTestMeterMake" />
+                <ScalarProperty Name="fldTestMeterSN" ColumnName="fldTestMeterSN" />
+                <ScalarProperty Name="fldIsSpringBack" ColumnName="fldIsSpringBack" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLeakData">
+            <EntityTypeMapping TypeName="SealTestDBModel.tblLeakData">
+              <MappingFragment StoreEntitySet="tblLeakData">
+                <ScalarProperty Name="fldTestProjectID" ColumnName="fldTestProjectID" />
+                <ScalarProperty Name="fldTestMOID" ColumnName="fldTestMOID" />
+                <ScalarProperty Name="fldTestRptID" ColumnName="fldTestRptID" />
+                <ScalarProperty Name="fldSealSeqID" ColumnName="fldSealSeqID" />
+                <ScalarProperty Name="fldFHIni" ColumnName="fldFHIni" />
+                <ScalarProperty Name="fldFHFinal" ColumnName="fldFHFinal" />
+                <ScalarProperty Name="fldODPre" ColumnName="fldODPre" />
+                <ScalarProperty Name="fldODPost" ColumnName="fldODPost" />
+                <ScalarProperty Name="fldIDPre" ColumnName="fldIDPre" />
+                <ScalarProperty Name="fldIDPost" ColumnName="fldIDPost" />
+                <ScalarProperty Name="fldVal" ColumnName="fldVal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLeakMedium">
+            <EntityTypeMapping TypeName="SealTestDBModel.tblLeakMedium">
+              <MappingFragment StoreEntitySet="tblLeakMedium">
+                <ScalarProperty Name="fldName" ColumnName="fldName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLeakStand">
+            <EntityTypeMapping TypeName="SealTestDBModel.tblLeakStand">
+              <MappingFragment StoreEntitySet="tblLeakStand">
+                <ScalarProperty Name="fldName" ColumnName="fldName" />
+                <ScalarProperty Name="fldFixture" ColumnName="fldFixture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLoad">
+            <EntityTypeMapping TypeName="SealTestDBModel.tblLoad">
+              <MappingFragment StoreEntitySet="tblLoad">
+                <ScalarProperty Name="fldTestProjectID" ColumnName="fldTestProjectID" />
+                <ScalarProperty Name="fldTestMOID" ColumnName="fldTestMOID" />
+                <ScalarProperty Name="fldTestRptID" ColumnName="fldTestRptID" />
+                <ScalarProperty Name="fldStandName" ColumnName="fldStandName" />
+                <ScalarProperty Name="fldStandSN" ColumnName="fldStandSN" />
+                <ScalarProperty Name="fldLoadCellMake" ColumnName="fldLoadCellMake" />
+                <ScalarProperty Name="fldLoadCellSN" ColumnName="fldLoadCellSN" />
+                <ScalarProperty Name="fldIsSpringBack" ColumnName="fldIsSpringBack" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLoadCell">
+            <EntityTypeMapping TypeName="SealTestDBModel.tblLoadCell">
+              <MappingFragment StoreEntitySet="tblLoadCell">
+                <ScalarProperty Name="fldMake" ColumnName="fldMake" />
+                <ScalarProperty Name="fldSN" ColumnName="fldSN" />
+                <ScalarProperty Name="fldRange" ColumnName="fldRange" />
+                <ScalarProperty Name="fldModelNo" ColumnName="fldModelNo" />
+                <ScalarProperty Name="fldDateCalibrationDue" ColumnName="fldDateCalibrationDue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLoadData">
+            <EntityTypeMapping TypeName="SealTestDBModel.tblLoadData">
+              <MappingFragment StoreEntitySet="tblLoadData">
+                <ScalarProperty Name="fldTestProjectID" ColumnName="fldTestProjectID" />
+                <ScalarProperty Name="fldTestMOID" ColumnName="fldTestMOID" />
+                <ScalarProperty Name="fldTestRptID" ColumnName="fldTestRptID" />
+                <ScalarProperty Name="fldSealSeqID" ColumnName="fldSealSeqID" />
+                <ScalarProperty Name="fldFHIni" ColumnName="fldFHIni" />
+                <ScalarProperty Name="fldFHFinal" ColumnName="fldFHFinal" />
+                <ScalarProperty Name="fldODPre" ColumnName="fldODPre" />
+                <ScalarProperty Name="fldODPost" ColumnName="fldODPost" />
+                <ScalarProperty Name="fldIDPre" ColumnName="fldIDPre" />
+                <ScalarProperty Name="fldIDPost" ColumnName="fldIDPost" />
+                <ScalarProperty Name="fldVal" ColumnName="fldVal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMO">
+            <EntityTypeMapping TypeName="SealTestDBModel.tblMO">
+              <MappingFragment StoreEntitySet="tblMO">
+                <ScalarProperty Name="fldTestProjectID" ColumnName="fldTestProjectID" />
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldNo" ColumnName="fldNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPlatenSurfaceFinish">
+            <EntityTypeMapping TypeName="SealTestDBModel.tblPlatenSurfaceFinish">
+              <MappingFragment StoreEntitySet="tblPlatenSurfaceFinish">
+                <ScalarProperty Name="fldSF_Platen" ColumnName="fldSF_Platen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPress">
+            <EntityTypeMapping TypeName="SealTestDBModel.tblPress">
+              <MappingFragment StoreEntitySet="tblPress">
+                <ScalarProperty Name="fldTestProjectID" ColumnName="fldTestProjectID" />
+                <ScalarProperty Name="fldTestMOID" ColumnName="fldTestMOID" />
+                <ScalarProperty Name="fldTestRptID" ColumnName="fldTestRptID" />
+                <ScalarProperty Name="fldStandName" ColumnName="fldStandName" />
+                <ScalarProperty Name="fldMeasureDevice" ColumnName="fldMeasureDevice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPressureData">
+            <EntityTypeMapping TypeName="SealTestDBModel.tblPressureData">
+              <MappingFragment StoreEntitySet="tblPressureData">
+                <ScalarProperty Name="fldTestProjectID" ColumnName="fldTestProjectID" />
+                <ScalarProperty Name="fldTestMOID" ColumnName="fldTestMOID" />
+                <ScalarProperty Name="fldTestRptID" ColumnName="fldTestRptID" />
+                <ScalarProperty Name="fldSealSeqID" ColumnName="fldSealSeqID" />
+                <ScalarProperty Name="fldPressureMin" ColumnName="fldPressureMin" />
+                <ScalarProperty Name="fldPressureFail" ColumnName="fldPressureFail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblReport">
+            <EntityTypeMapping TypeName="SealTestDBModel.tblReport">
+              <MappingFragment StoreEntitySet="tblReport">
+                <ScalarProperty Name="fldTestProjectID" ColumnName="fldTestProjectID" />
+                <ScalarProperty Name="fldTestMOID" ColumnName="fldTestMOID" />
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldNo" ColumnName="fldNo" />
+                <ScalarProperty Name="fldDateOpen" ColumnName="fldDateOpen" />
+                <ScalarProperty Name="fldSealQty" ColumnName="fldSealQty" />
+                <ScalarProperty Name="fldIsLeak" ColumnName="fldIsLeak" />
+                <ScalarProperty Name="fldIsLeak_Leakage" ColumnName="fldIsLeak_Leakage" />
+                <ScalarProperty Name="fldIsLeak_LeakagePlated" ColumnName="fldIsLeak_LeakagePlated" />
+                <ScalarProperty Name="fldIsLeak_Springback" ColumnName="fldIsLeak_Springback" />
+                <ScalarProperty Name="fldIsLoad" ColumnName="fldIsLoad" />
+                <ScalarProperty Name="fldIsLoad_Springback" ColumnName="fldIsLoad_Springback" />
+                <ScalarProperty Name="fldIsPressure" ColumnName="fldIsPressure" />
+                <ScalarProperty Name="fldLeakPress" ColumnName="fldLeakPress" />
+                <ScalarProperty Name="fldNotes" ColumnName="fldNotes" />
+                <ScalarProperty Name="fldOverridden" ColumnName="fldOverridden" />
+                <ScalarProperty Name="fldUserTester" ColumnName="fldUserTester" />
+                <ScalarProperty Name="fldTesterSigned" ColumnName="fldTesterSigned" />
+                <ScalarProperty Name="fldDateTester" ColumnName="fldDateTester" />
+                <ScalarProperty Name="fldUserEngg" ColumnName="fldUserEngg" />
+                <ScalarProperty Name="fldEnggSigned" ColumnName="fldEnggSigned" />
+                <ScalarProperty Name="fldDateEngg" ColumnName="fldDateEngg" />
+                <ScalarProperty Name="fldUserQuality" ColumnName="fldUserQuality" />
+                <ScalarProperty Name="fldQualitySigned" ColumnName="fldQualitySigned" />
+                <ScalarProperty Name="fldDateQuality" ColumnName="fldDateQuality" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblReportGenImage">
+            <EntityTypeMapping TypeName="SealTestDBModel.tblReportGenImage">
+              <MappingFragment StoreEntitySet="tblReportGenImage">
+                <ScalarProperty Name="fldTestProjectID" ColumnName="fldTestProjectID" />
+                <ScalarProperty Name="fldTestMOID" ColumnName="fldTestMOID" />
+                <ScalarProperty Name="fldTestRptID" ColumnName="fldTestRptID" />
+                <ScalarProperty Name="fldImageID" ColumnName="fldImageID" />
+                <ScalarProperty Name="fldImageFile" ColumnName="fldImageFile" />
+                <ScalarProperty Name="fldImageNameTag" ColumnName="fldImageNameTag" />
+                <ScalarProperty Name="fldImageCaption" ColumnName="fldImageCaption" />
+                <ScalarProperty Name="fldImage" ColumnName="fldImage" />
+                <ScalarProperty Name="fldSelected" ColumnName="fldSelected" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblReportGenSeal">
+            <EntityTypeMapping TypeName="SealTestDBModel.tblReportGenSeal">
+              <MappingFragment StoreEntitySet="tblReportGenSeal">
+                <ScalarProperty Name="fldTestProjectID" ColumnName="fldTestProjectID" />
+                <ScalarProperty Name="fldTestMOID" ColumnName="fldTestMOID" />
+                <ScalarProperty Name="fldTestRptID" ColumnName="fldTestRptID" />
+                <ScalarProperty Name="fldSealSeqID" ColumnName="fldSealSeqID" />
+                <ScalarProperty Name="fldSealSN" ColumnName="fldSealSN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblReportResult">
+            <EntityTypeMapping TypeName="SealTestDBModel.tblReportResult">
+              <MappingFragment StoreEntitySet="tblReportResult">
+                <ScalarProperty Name="fldTestProjectID" ColumnName="fldTestProjectID" />
+                <ScalarProperty Name="fldTestMOID" ColumnName="fldTestMOID" />
+                <ScalarProperty Name="fldTestRptID" ColumnName="fldTestRptID" />
+                <ScalarProperty Name="fldDSealing" ColumnName="fldDSealing" />
+                <ScalarProperty Name="fldLeak_UnitLoad" ColumnName="fldLeak_UnitLoad" />
+                <ScalarProperty Name="fldLeak_FHFinal" ColumnName="fldLeak_FHFinal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblResult_FEA">
+            <EntityTypeMapping TypeName="SealTestDBModel.tblResult_FEA">
+              <MappingFragment StoreEntitySet="tblResult_FEA">
+                <ScalarProperty Name="fldTestProjectID" ColumnName="fldTestProjectID" />
+                <ScalarProperty Name="fldDSealing" ColumnName="fldDSealing" />
+                <ScalarProperty Name="fldLeak_UnitLoad" ColumnName="fldLeak_UnitLoad" />
+                <ScalarProperty Name="fldLeak_FHFinal" ColumnName="fldLeak_FHFinal" />
+                <ScalarProperty Name="fldLoad_UnitLoad" ColumnName="fldLoad_UnitLoad" />
+                <ScalarProperty Name="fldLoad_FHFinal" ColumnName="fldLoad_FHFinal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSpec">
+            <EntityTypeMapping TypeName="SealTestDBModel.tblSpec">
+              <MappingFragment StoreEntitySet="tblSpec">
+                <ScalarProperty Name="fldTestProjectID" ColumnName="fldTestProjectID" />
+                <ScalarProperty Name="fldSealQty" ColumnName="fldSealQty" />
+                <ScalarProperty Name="fldIsLeak" ColumnName="fldIsLeak" />
+                <ScalarProperty Name="fldIsLoad" ColumnName="fldIsLoad" />
+                <ScalarProperty Name="fldIsPressure" ColumnName="fldIsPressure" />
+                <ScalarProperty Name="fldSealFHIniMin_Unplated" ColumnName="fldSealFHIniMin_Unplated" />
+                <ScalarProperty Name="fldSealFHIniMax_Unplated" ColumnName="fldSealFHIniMax_Unplated" />
+                <ScalarProperty Name="fldSealODPreMin_Unplated" ColumnName="fldSealODPreMin_Unplated" />
+                <ScalarProperty Name="fldSealODPreMax_Unplated" ColumnName="fldSealODPreMax_Unplated" />
+                <ScalarProperty Name="fldSealIDPreMin_Unplated" ColumnName="fldSealIDPreMin_Unplated" />
+                <ScalarProperty Name="fldSealIDPreMax_Unplated" ColumnName="fldSealIDPreMax_Unplated" />
+                <ScalarProperty Name="fldSealFHIniMin_Plated" ColumnName="fldSealFHIniMin_Plated" />
+                <ScalarProperty Name="fldSealFHIniMax_Plated" ColumnName="fldSealFHIniMax_Plated" />
+                <ScalarProperty Name="fldSealODPreMin_Plated" ColumnName="fldSealODPreMin_Plated" />
+                <ScalarProperty Name="fldSealODPreMax_Plated" ColumnName="fldSealODPreMax_Plated" />
+                <ScalarProperty Name="fldSealIDPreMin_Plated" ColumnName="fldSealIDPreMin_Plated" />
+                <ScalarProperty Name="fldSealIDPreMax_Plated" ColumnName="fldSealIDPreMax_Plated" />
+                <ScalarProperty Name="fldLeakCavityDepth" ColumnName="fldLeakCavityDepth" />
+                <ScalarProperty Name="fldLeakProcedure_FileName" ColumnName="fldLeakProcedure_FileName" />
+                <ScalarProperty Name="fldLeakMedium" ColumnName="fldLeakMedium" />
+                <ScalarProperty Name="fldLeakPress" ColumnName="fldLeakPress" />
+                <ScalarProperty Name="fldIsLeak_Leakage" ColumnName="fldIsLeak_Leakage" />
+                <ScalarProperty Name="fldLeakMax_Unplated" ColumnName="fldLeakMax_Unplated" />
+                <ScalarProperty Name="fldLeakMax_Plated" ColumnName="fldLeakMax_Plated" />
+                <ScalarProperty Name="fldIsLeakSpringBack" ColumnName="fldIsLeakSpringBack" />
+                <ScalarProperty Name="fldLeakSpringBackMin_Unplated" ColumnName="fldLeakSpringBackMin_Unplated" />
+                <ScalarProperty Name="fldLeakSpringBackMin_Plated" ColumnName="fldLeakSpringBackMin_Plated" />
+                <ScalarProperty Name="fldLoadProcedure_FileName" ColumnName="fldLoadProcedure_FileName" />
+                <ScalarProperty Name="fldLoadType" ColumnName="fldLoadType" />
+                <ScalarProperty Name="fldLoadMin_CavityDepth" ColumnName="fldLoadMin_CavityDepth" />
+                <ScalarProperty Name="fldLoadRange_CavityDepth" ColumnName="fldLoadRange_CavityDepth" />
+                <ScalarProperty Name="fldLoadMax_CavityDepth" ColumnName="fldLoadMax_CavityDepth" />
+                <ScalarProperty Name="fldLoadMin" ColumnName="fldLoadMin" />
+                <ScalarProperty Name="fldLoadMax" ColumnName="fldLoadMax" />
+                <ScalarProperty Name="fldIsLoadSpringBack" ColumnName="fldIsLoadSpringBack" />
+                <ScalarProperty Name="fldLoadSpringBackMin_Unplated" ColumnName="fldLoadSpringBackMin_Unplated" />
+                <ScalarProperty Name="fldLoadSpringBackMin_Plated" ColumnName="fldLoadSpringBackMin_Plated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTestCavity">
+            <EntityTypeMapping TypeName="SealTestDBModel.tblTestCavity">
+              <MappingFragment StoreEntitySet="tblTestCavity">
+                <ScalarProperty Name="fldTestProjectID" ColumnName="fldTestProjectID" />
+                <ScalarProperty Name="fldDate" ColumnName="fldDate" />
+                <ScalarProperty Name="fldCavityID" ColumnName="fldCavityID" />
+                <ScalarProperty Name="fldCavityDepth" ColumnName="fldCavityDepth" />
+                <ScalarProperty Name="fldCavityDepthTol1" ColumnName="fldCavityDepthTol1" />
+                <ScalarProperty Name="fldCavityDepthTol2" ColumnName="fldCavityDepthTol2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTestOpCond">
+            <EntityTypeMapping TypeName="SealTestDBModel.tblTestOpCond">
+              <MappingFragment StoreEntitySet="tblTestOpCond">
+                <ScalarProperty Name="fldTestProjectID" ColumnName="fldTestProjectID" />
+                <ScalarProperty Name="fldDate" ColumnName="fldDate" />
+                <ScalarProperty Name="fldOpCondID" ColumnName="fldOpCondID" />
+                <ScalarProperty Name="fldUnitUserP" ColumnName="fldUnitUserP" />
+                <ScalarProperty Name="fldPDiff" ColumnName="fldPDiff" />
+                <ScalarProperty Name="fldTOper" ColumnName="fldTOper" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTestProject">
+            <EntityTypeMapping TypeName="SealTestDBModel.tblTestProject">
+              <MappingFragment StoreEntitySet="tblTestProject">
+                <ScalarProperty Name="fldPNID" ColumnName="fldPNID" />
+                <ScalarProperty Name="fldRevID" ColumnName="fldRevID" />
+                <ScalarProperty Name="fldPNR_CustInfoID" ColumnName="fldPNR_CustInfoID" />
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldUserAdmin" ColumnName="fldUserAdmin" />
+                <ScalarProperty Name="fldDateAdmin" ColumnName="fldDateAdmin" />
+                <ScalarProperty Name="fldSignedOff" ColumnName="fldSignedOff" />
+                <ScalarProperty Name="fldUserSignedOff" ColumnName="fldUserSignedOff" />
+                <ScalarProperty Name="fldDateSignedOff" ColumnName="fldDateSignedOff" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTestUser">
+            <EntityTypeMapping TypeName="SealTestDBModel.tblTestUser">
+              <MappingFragment StoreEntitySet="tblTestUser">
+                <ScalarProperty Name="fldName" ColumnName="fldName" />
+                <ScalarProperty Name="fldSystemLogin" ColumnName="fldSystemLogin" />
+                <ScalarProperty Name="fldRoleAdmin" ColumnName="fldRoleAdmin" />
+                <ScalarProperty Name="fldRoleTester" ColumnName="fldRoleTester" />
+                <ScalarProperty Name="fldRoleEngg" ColumnName="fldRoleEngg" />
+                <ScalarProperty Name="fldRoleQuality" ColumnName="fldRoleQuality" />
+                <ScalarProperty Name="fldSignature" ColumnName="fldSignature" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUnit">
+            <EntityTypeMapping TypeName="SealTestDBModel.tblUnit">
+              <MappingFragment StoreEntitySet="tblUnit">
+                <ScalarProperty Name="fldTestProjectID" ColumnName="fldTestProjectID" />
+                <ScalarProperty Name="fldLUnitPH" ColumnName="fldLUnitPH" />
+                <ScalarProperty Name="fldFUnitPH" ColumnName="fldFUnitPH" />
+                <ScalarProperty Name="fldPUnitPH" ColumnName="fldPUnitPH" />
+                <ScalarProperty Name="fldLeakUnitPH" ColumnName="fldLeakUnitPH" />
+                <ScalarProperty Name="fldLUnitCust" ColumnName="fldLUnitCust" />
+                <ScalarProperty Name="fldFUnitCust" ColumnName="fldFUnitCust" />
+                <ScalarProperty Name="fldPUnitCust" ColumnName="fldPUnitCust" />
+                <ScalarProperty Name="fldLeakUnitCust" ColumnName="fldLeakUnitCust" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="SealTestDBModel.tblFile" Width="1.5" PointX="0.75" PointY="0.75" Height="1.787985026041667" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealTestDBModel.tblFlowMeter" Width="1.5" PointX="2.75" PointY="0.75" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealTestDBModel.tblForceStand" Width="1.5" PointX="0.75" PointY="3.75" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealTestDBModel.tblLeak" Width="1.5" PointX="7.5" PointY="2.875" Height="3.7109993489583335" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealTestDBModel.tblLeakData" Width="1.5" PointX="9.75" PointY="3" Height="3.3263964843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealTestDBModel.tblLeakMedium" Width="1.5" PointX="2.75" PointY="3.75" Height="1.211080729166667" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealTestDBModel.tblLeakStand" Width="1.5" PointX="4.75" PointY="0.75" Height="1.4033821614583317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealTestDBModel.tblLoad" Width="1.5" PointX="7.5" PointY="7.5" Height="2.9417936197916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealTestDBModel.tblLoadCell" Width="1.5" PointX="4.75" PointY="3.75" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealTestDBModel.tblLoadData" Width="1.5" PointX="9.75" PointY="7.25" Height="3.3263964843750031" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealTestDBModel.tblMO" Width="1.5" PointX="3" PointY="12.125" Height="1.9802864583333353" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealTestDBModel.tblPlatenSurfaceFinish" Width="1.5" PointX="6.75" PointY="0.75" Height="1.2110807291666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealTestDBModel.tblPress" Width="1.5" PointX="7.5" PointY="11.375" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealTestDBModel.tblPressureData" Width="1.5" PointX="9.75" PointY="11.375" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealTestDBModel.tblReport" Width="1.5" PointX="5.25" PointY="9.5" Height="7.1724251302083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealTestDBModel.tblReportGenImage" Width="1.5" PointX="7.5" PointY="14.5" Height="2.9417936197916692" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealTestDBModel.tblReportGenSeal" Width="1.5" PointX="7.5" PointY="18.125" Height="2.1725878906250031" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealTestDBModel.tblReportResult" Width="1.5" PointX="7.5" PointY="21.125" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealTestDBModel.tblResult_FEA" Width="1.5" PointX="5.25" PointY="33.5" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealTestDBModel.tblSpec" Width="1.5" PointX="3" PointY="30.375" Height="8.51853515625001" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealTestDBModel.tblTestCavity" Width="1.5" PointX="3" PointY="24.25" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealTestDBModel.tblTestOpCond" Width="1.5" PointX="3" PointY="27.375" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealTestDBModel.tblTestProject" Width="1.5" PointX="0.75" PointY="20.875" Height="3.7109993489583388" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealTestDBModel.tblTestUser" Width="1.5" PointX="0.75" PointY="6.75" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealTestDBModel.tblUnit" Width="1.5" PointX="3" PointY="39.75" Height="2.9417936197916674" IsExpanded="true" />
+        <AssociationConnector Association="SealTestDBModel.FK_tblLeak_tblTestRpt" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.53125" PointY="9.5" />
+          <ConnectorPoint PointX="6.53125" PointY="3.28125" />
+          <ConnectorPoint PointX="7.5" PointY="3.28125" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealTestDBModel.FK_tblReportLeakData_tblReportLeakEquip" ManuallyRouted="false">
+          <ConnectorPoint PointX="9" PointY="4.6631982421875" />
+          <ConnectorPoint PointX="9.75" PointY="4.6631982421875" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealTestDBModel.FK_tblLoad_tblTestRpt" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="9.9708968098958337" />
+          <ConnectorPoint PointX="7.5" PointY="9.9708968098958337" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealTestDBModel.FK_tblReportLoadData_tblReportLoadEquip" ManuallyRouted="false">
+          <ConnectorPoint PointX="9" PointY="8.9708968098958337" />
+          <ConnectorPoint PointX="9.75" PointY="8.9708968098958337" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealTestDBModel.FK_tblMO_tblMO" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="20.875" />
+          <ConnectorPoint PointX="1.5" PointY="13.115143229166668" />
+          <ConnectorPoint PointX="3" PointY="13.115143229166668" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealTestDBModel.FK_tblReport_tblMO" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="13.115143229166668" />
+          <ConnectorPoint PointX="5.25" PointY="13.115143229166668" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealTestDBModel.FK_tblPress_tblTestRpt" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="12.557444661458334" />
+          <ConnectorPoint PointX="7.5" PointY="12.557444661458334" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealTestDBModel.FK_tblReportPressureData_tblReportPressEquip" ManuallyRouted="false">
+          <ConnectorPoint PointX="9" PointY="12.557444661458334" />
+          <ConnectorPoint PointX="9.75" PointY="12.557444661458334" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealTestDBModel.FK_tblTestRptGenImage_tblTestRpt" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="15.586212565104166" />
+          <ConnectorPoint PointX="7.5" PointY="15.586212565104166" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealTestDBModel.FK_tblTestRptGenSeal_tblTestRpt" ManuallyRouted="false">
+          <ConnectorPoint PointX="6" PointY="16.672425130208332" />
+          <ConnectorPoint PointX="6" PointY="19.2112939453125" />
+          <ConnectorPoint PointX="6.3229191666666669" PointY="19.2112939453125" />
+          <ConnectorPoint PointX="6.4895858333333329" PointY="19.2112939453125" />
+          <ConnectorPoint PointX="7.5" PointY="19.2112939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealTestDBModel.FK_tblTestRptResults_tblTestRpt" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.4062525" PointY="16.672425130208332" />
+          <ConnectorPoint PointX="6.4062525" PointY="22.307444661458334" />
+          <ConnectorPoint PointX="7.5" PointY="22.307444661458334" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealTestDBModel.FK_tblTestResults_tblTestSpec" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="34.682444661458334" />
+          <ConnectorPoint PointX="5.25" PointY="34.682444661458334" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealTestDBModel.FK_tblTestProjectLeak_tblTestProject" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="24.585999348958339" />
+          <ConnectorPoint PointX="1.5" PointY="34.634267578125005" />
+          <ConnectorPoint PointX="3" PointY="34.634267578125005" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealTestDBModel.FK_tblTestCavityDesign_tblTestProject" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="24.417999674479169" />
+          <ConnectorPoint PointX="3" PointY="24.417999674479169" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealTestDBModel.FK_tblTestOpCondDesign_tblTestProject" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.9062525" PointY="24.585999348958339" />
+          <ConnectorPoint PointX="1.9062525" PointY="28.557444661458334" />
+          <ConnectorPoint PointX="3" PointY="28.557444661458334" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealTestDBModel.FK_tblUnit_tblTestProject" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.0937475" PointY="24.585999348958339" />
+          <ConnectorPoint PointX="1.0937475" PointY="41.220896809895834" />
+          <ConnectorPoint PointX="3" PointY="41.220896809895834" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

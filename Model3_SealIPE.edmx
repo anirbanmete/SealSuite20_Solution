@@ -1,0 +1,1228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SealIPEDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="SealIPEDBModelStoreContainer">
+          <EntitySet Name="tblAddLoad" EntityType="SealIPEDBModel.Store.tblAddLoad" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblAdjCSeal" EntityType="SealIPEDBModel.Store.tblAdjCSeal" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblAdjESeal" EntityType="SealIPEDBModel.Store.tblAdjESeal" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblAdjUSeal" EntityType="SealIPEDBModel.Store.tblAdjUSeal" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblAnalysis" EntityType="SealIPEDBModel.Store.tblAnalysis" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblAppLoad" EntityType="SealIPEDBModel.Store.tblAppLoad" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblCavity" EntityType="SealIPEDBModel.Store.tblCavity" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblFEAParam" EntityType="SealIPEDBModel.Store.tblFEAParam" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblIPEProject" EntityType="SealIPEDBModel.Store.tblIPEProject" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblIPEUser" EntityType="SealIPEDBModel.Store.tblIPEUser" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblLoadCase_Gen" EntityType="SealIPEDBModel.Store.tblLoadCase_Gen" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblOpCond" EntityType="SealIPEDBModel.Store.tblOpCond" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblResult_Gen" EntityType="SealIPEDBModel.Store.tblResult_Gen" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblResult_LoadStep" EntityType="SealIPEDBModel.Store.tblResult_LoadStep" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblSeal" EntityType="SealIPEDBModel.Store.tblSeal" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_tblAddLoad_tblAppLoad" Association="SealIPEDBModel.Store.FK_tblAddLoad_tblAppLoad">
+            <End Role="tblAppLoad" EntitySet="tblAppLoad" />
+            <End Role="tblAddLoad" EntitySet="tblAddLoad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAdjCSeal_tblSeal" Association="SealIPEDBModel.Store.FK_tblAdjCSeal_tblSeal">
+            <End Role="tblSeal" EntitySet="tblSeal" />
+            <End Role="tblAdjCSeal" EntitySet="tblAdjCSeal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAdjESeal_tblSeal" Association="SealIPEDBModel.Store.FK_tblAdjESeal_tblSeal">
+            <End Role="tblSeal" EntitySet="tblSeal" />
+            <End Role="tblAdjESeal" EntitySet="tblAdjESeal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAdjUSeal_tblSeal" Association="SealIPEDBModel.Store.FK_tblAdjUSeal_tblSeal">
+            <End Role="tblSeal" EntitySet="tblSeal" />
+            <End Role="tblAdjUSeal" EntitySet="tblAdjUSeal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAnalysis_tblProject" Association="SealIPEDBModel.Store.FK_tblAnalysis_tblProject">
+            <End Role="tblIPEProject" EntitySet="tblIPEProject" />
+            <End Role="tblAnalysis" EntitySet="tblAnalysis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAppLoad_tblProject" Association="SealIPEDBModel.Store.FK_tblAppLoad_tblProject">
+            <End Role="tblIPEProject" EntitySet="tblIPEProject" />
+            <End Role="tblAppLoad" EntitySet="tblAppLoad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCavity_tblCavity" Association="SealIPEDBModel.Store.FK_tblCavity_tblCavity">
+            <End Role="tblIPEProject" EntitySet="tblIPEProject" />
+            <End Role="tblCavity" EntitySet="tblCavity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblFEAParam_tblAnalysis" Association="SealIPEDBModel.Store.FK_tblFEAParam_tblAnalysis">
+            <End Role="tblAnalysis" EntitySet="tblAnalysis" />
+            <End Role="tblFEAParam" EntitySet="tblFEAParam" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOpCond_tblOpCond" Association="SealIPEDBModel.Store.FK_tblOpCond_tblOpCond">
+            <End Role="tblIPEProject" EntitySet="tblIPEProject" />
+            <End Role="tblOpCond" EntitySet="tblOpCond" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblResult_Gen_tblResult_Gen" Association="SealIPEDBModel.Store.FK_tblResult_Gen_tblResult_Gen">
+            <End Role="tblAnalysis" EntitySet="tblAnalysis" />
+            <End Role="tblResult_Gen" EntitySet="tblResult_Gen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblResult_LoadStep_tblAnalysis" Association="SealIPEDBModel.Store.FK_tblResult_LoadStep_tblAnalysis">
+            <End Role="tblAnalysis" EntitySet="tblAnalysis" />
+            <End Role="tblResult_LoadStep" EntitySet="tblResult_LoadStep" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSeal_tblProject" Association="SealIPEDBModel.Store.FK_tblSeal_tblProject">
+            <End Role="tblIPEProject" EntitySet="tblIPEProject" />
+            <End Role="tblSeal" EntitySet="tblSeal" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tblAddLoad">
+          <Key>
+            <PropertyRef Name="fldProjectID" />
+            <PropertyRef Name="fldAppLoadID" />
+            <PropertyRef Name="fldStep" />
+          </Key>
+          <Property Name="fldProjectID" Type="numeric" Nullable="false" />
+          <Property Name="fldAppLoadID" Type="numeric" Nullable="false" />
+          <Property Name="fldStep" Type="int" Nullable="false" />
+          <Property Name="fldPDiff" Type="real" />
+          <Property Name="fldTOper" Type="real" />
+          <Property Name="fldCavityDepth" Type="real" />
+        </EntityType>
+        <EntityType Name="tblAdjCSeal">
+          <Key>
+            <PropertyRef Name="fldProjectID" />
+            <PropertyRef Name="fldSealID" />
+          </Key>
+          <Property Name="fldProjectID" Type="numeric" Nullable="false" />
+          <Property Name="fldSealID" Type="numeric" Nullable="false" />
+          <Property Name="fldDHFree" Type="real" />
+          <Property Name="fldDThetaOpening" Type="real" />
+          <Property Name="fldDT" Type="real" />
+        </EntityType>
+        <EntityType Name="tblAdjESeal">
+          <Key>
+            <PropertyRef Name="fldProjectID" />
+            <PropertyRef Name="fldSealID" />
+          </Key>
+          <Property Name="fldProjectID" Type="numeric" Nullable="false" />
+          <Property Name="fldSealID" Type="numeric" Nullable="false" />
+          <Property Name="fldDThetaE1" Type="real" />
+          <Property Name="fldDThetaM1" Type="real" />
+        </EntityType>
+        <EntityType Name="tblAdjUSeal">
+          <Key>
+            <PropertyRef Name="fldProjectID" />
+            <PropertyRef Name="fldSealID" />
+          </Key>
+          <Property Name="fldProjectID" Type="numeric" Nullable="false" />
+          <Property Name="fldSealID" Type="numeric" Nullable="false" />
+          <Property Name="fldDT" Type="real" />
+          <Property Name="fldDTheta1" Type="real" />
+          <Property Name="fldDTheta2" Type="real" />
+          <Property Name="fldDRad1" Type="real" />
+          <Property Name="fldDRad2" Type="real" />
+          <Property Name="fldDLLeg" Type="real" />
+        </EntityType>
+        <EntityType Name="tblAnalysis">
+          <Key>
+            <PropertyRef Name="fldProjectID" />
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldProjectID" Type="numeric" Nullable="false" />
+          <Property Name="fldID" Type="numeric" Nullable="false" />
+          <Property Name="fldCavityID" Type="numeric" Nullable="false" />
+          <Property Name="fldOpCondID" Type="numeric" Nullable="false" />
+          <Property Name="fldAppLoadID" Type="numeric" Nullable="false" />
+          <Property Name="fldLoadCase_GenID" Type="numeric" Nullable="false" />
+          <Property Name="fldLoadCaseName" Type="nvarchar(max)" />
+          <Property Name="fldMatModel" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldSealID" Type="numeric" Nullable="false" />
+          <Property Name="fldUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblAppLoad">
+          <Key>
+            <PropertyRef Name="fldProjectID" />
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldProjectID" Type="numeric" Nullable="false" />
+          <Property Name="fldID" Type="numeric" Nullable="false" />
+          <Property Name="fldPreCompressed" Type="bit" />
+          <Property Name="fldPreCompressed_HMin" Type="real" />
+          <Property Name="fldRadConstraint" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblCavity">
+          <Key>
+            <PropertyRef Name="fldProjectID" />
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldProjectID" Type="numeric" Nullable="false" />
+          <Property Name="fldID" Type="numeric" Nullable="false" />
+          <Property Name="fldCavityDia1" Type="real" />
+          <Property Name="fldCavityDia2" Type="real" />
+          <Property Name="fldCavityDepth" Type="real" />
+          <Property Name="fldCavityDepthTol1" Type="real" />
+          <Property Name="fldCavityDepthTol2" Type="real" />
+        </EntityType>
+        <EntityType Name="tblFEAParam">
+          <Key>
+            <PropertyRef Name="fldProjectID" />
+            <PropertyRef Name="fldAnalysisID" />
+          </Key>
+          <Property Name="fldProjectID" Type="numeric" Nullable="false" />
+          <Property Name="fldAnalysisID" Type="numeric" Nullable="false" />
+          <Property Name="fldANSYS_Ver" Type="real" />
+          <Property Name="fldMaxElement" Type="int" />
+          <Property Name="fldNLayer" Type="int" />
+          <Property Name="fldNLayer_Plating" Type="int" />
+          <Property Name="fldNelConSeal" Type="int" />
+          <Property Name="fldNelConMid" Type="int" />
+          <Property Name="fldNelConHeel" Type="int" />
+          <Property Name="fldNelConRad" Type="int" />
+          <Property Name="fldFacKN" Type="real" />
+          <Property Name="fldFacTOLN" Type="real" />
+          <Property Name="fldNSBSTP" Type="int" />
+          <Property Name="fldNSBMX" Type="int" />
+          <Property Name="fldNSBMN" Type="int" />
+        </EntityType>
+        <EntityType Name="tblIPEProject">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldPNID" Type="numeric" />
+          <Property Name="fldRevID" Type="numeric" />
+          <Property Name="fldPNR_CustInfoID" Type="numeric" />
+          <Property Name="fldID" Type="numeric" Nullable="false" />
+          <Property Name="fldUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblIPEUser">
+          <Key>
+            <PropertyRef Name="fldSystemLogin" />
+          </Key>
+          <Property Name="fldName" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldSystemLogin" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="fldPhoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldRoleDesigner" Type="bit" />
+          <Property Name="fldRoleAdmin" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblLoadCase_Gen">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="numeric" Nullable="false" />
+          <Property Name="fldLoadType" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldCompressTolType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblOpCond">
+          <Key>
+            <PropertyRef Name="fldProjectID" />
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldProjectID" Type="numeric" Nullable="false" />
+          <Property Name="fldID" Type="numeric" Nullable="false" />
+          <Property Name="fldUnitUserP" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldPDiff" Type="real" />
+          <Property Name="fldTOper" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldPOrient" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblResult_Gen">
+          <Key>
+            <PropertyRef Name="fldProjectID" />
+            <PropertyRef Name="fldAnalysisID" />
+          </Key>
+          <Property Name="fldProjectID" Type="numeric" Nullable="false" />
+          <Property Name="fldAnalysisID" Type="numeric" Nullable="false" />
+          <Property Name="fldSolnConv" Type="int" />
+          <Property Name="fldPeneMax1" Type="numeric" Scale="9" />
+          <Property Name="fldDSealing" Type="numeric" Scale="3" />
+          <Property Name="fldHFreeFinal" Type="numeric" Scale="3" />
+          <Property Name="fldLeakage_BL" Type="numeric" Scale="3" />
+        </EntityType>
+        <EntityType Name="tblResult_LoadStep">
+          <Key>
+            <PropertyRef Name="fldProjectID" />
+            <PropertyRef Name="fldAnalysisID" />
+            <PropertyRef Name="fldStepID" />
+          </Key>
+          <Property Name="fldProjectID" Type="numeric" Nullable="false" />
+          <Property Name="fldAnalysisID" Type="numeric" Nullable="false" />
+          <Property Name="fldStepID" Type="int" Nullable="false" />
+          <Property Name="fldFSeat_Unit" Type="real" />
+          <Property Name="fldSigEqvMax" Type="real" />
+        </EntityType>
+        <EntityType Name="tblSeal">
+          <Key>
+            <PropertyRef Name="fldProjectID" />
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldProjectID" Type="numeric" Nullable="false" />
+          <Property Name="fldID" Type="numeric" Nullable="false" />
+          <Property Name="fldType" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="fldMCS" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldSegmented" Type="bit" />
+          <Property Name="fldSegmentCount" Type="int" />
+          <Property Name="fldMatName" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldHeatTreatment" Type="int" />
+          <Property Name="fldCoating" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldSFinish" Type="int" />
+          <Property Name="fldPlating" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldPlatingThickCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="fldZClear" Type="real" />
+          <Property Name="fldHFreeTol1" Type="real" />
+          <Property Name="fldHFreeTol2" Type="real" />
+          <Property Name="fldAdjusted" Type="bit" />
+          <Property Name="fldSelected" Type="bit" />
+        </EntityType>
+        <Association Name="FK_tblAddLoad_tblAppLoad">
+          <End Role="tblAppLoad" Type="SealIPEDBModel.Store.tblAppLoad" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblAddLoad" Type="SealIPEDBModel.Store.tblAddLoad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAppLoad">
+              <PropertyRef Name="fldProjectID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblAddLoad">
+              <PropertyRef Name="fldProjectID" />
+              <PropertyRef Name="fldAppLoadID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAdjCSeal_tblSeal">
+          <End Role="tblSeal" Type="SealIPEDBModel.Store.tblSeal" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblAdjCSeal" Type="SealIPEDBModel.Store.tblAdjCSeal" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblSeal">
+              <PropertyRef Name="fldProjectID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblAdjCSeal">
+              <PropertyRef Name="fldProjectID" />
+              <PropertyRef Name="fldSealID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAdjESeal_tblSeal">
+          <End Role="tblSeal" Type="SealIPEDBModel.Store.tblSeal" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblAdjESeal" Type="SealIPEDBModel.Store.tblAdjESeal" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblSeal">
+              <PropertyRef Name="fldProjectID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblAdjESeal">
+              <PropertyRef Name="fldProjectID" />
+              <PropertyRef Name="fldSealID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAdjUSeal_tblSeal">
+          <End Role="tblSeal" Type="SealIPEDBModel.Store.tblSeal" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblAdjUSeal" Type="SealIPEDBModel.Store.tblAdjUSeal" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblSeal">
+              <PropertyRef Name="fldProjectID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblAdjUSeal">
+              <PropertyRef Name="fldProjectID" />
+              <PropertyRef Name="fldSealID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAnalysis_tblProject">
+          <End Role="tblIPEProject" Type="SealIPEDBModel.Store.tblIPEProject" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblAnalysis" Type="SealIPEDBModel.Store.tblAnalysis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblIPEProject">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblAnalysis">
+              <PropertyRef Name="fldProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAppLoad_tblProject">
+          <End Role="tblIPEProject" Type="SealIPEDBModel.Store.tblIPEProject" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblAppLoad" Type="SealIPEDBModel.Store.tblAppLoad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblIPEProject">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblAppLoad">
+              <PropertyRef Name="fldProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCavity_tblCavity">
+          <End Role="tblIPEProject" Type="SealIPEDBModel.Store.tblIPEProject" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblCavity" Type="SealIPEDBModel.Store.tblCavity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblIPEProject">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblCavity">
+              <PropertyRef Name="fldProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblFEAParam_tblAnalysis">
+          <End Role="tblAnalysis" Type="SealIPEDBModel.Store.tblAnalysis" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblFEAParam" Type="SealIPEDBModel.Store.tblFEAParam" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblAnalysis">
+              <PropertyRef Name="fldProjectID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblFEAParam">
+              <PropertyRef Name="fldProjectID" />
+              <PropertyRef Name="fldAnalysisID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOpCond_tblOpCond">
+          <End Role="tblIPEProject" Type="SealIPEDBModel.Store.tblIPEProject" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblOpCond" Type="SealIPEDBModel.Store.tblOpCond" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblIPEProject">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblOpCond">
+              <PropertyRef Name="fldProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblResult_Gen_tblResult_Gen">
+          <End Role="tblAnalysis" Type="SealIPEDBModel.Store.tblAnalysis" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblResult_Gen" Type="SealIPEDBModel.Store.tblResult_Gen" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblAnalysis">
+              <PropertyRef Name="fldProjectID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblResult_Gen">
+              <PropertyRef Name="fldProjectID" />
+              <PropertyRef Name="fldAnalysisID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblResult_LoadStep_tblAnalysis">
+          <End Role="tblAnalysis" Type="SealIPEDBModel.Store.tblAnalysis" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblResult_LoadStep" Type="SealIPEDBModel.Store.tblResult_LoadStep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAnalysis">
+              <PropertyRef Name="fldProjectID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblResult_LoadStep">
+              <PropertyRef Name="fldProjectID" />
+              <PropertyRef Name="fldAnalysisID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSeal_tblProject">
+          <End Role="tblIPEProject" Type="SealIPEDBModel.Store.tblIPEProject" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblSeal" Type="SealIPEDBModel.Store.tblSeal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblIPEProject">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblSeal">
+              <PropertyRef Name="fldProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SealIPEDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="SealIPEDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblAddLoad" EntityType="SealIPEDBModel.tblAddLoad" />
+          <EntitySet Name="tblAdjCSeal" EntityType="SealIPEDBModel.tblAdjCSeal" />
+          <EntitySet Name="tblAdjESeal" EntityType="SealIPEDBModel.tblAdjESeal" />
+          <EntitySet Name="tblAdjUSeal" EntityType="SealIPEDBModel.tblAdjUSeal" />
+          <EntitySet Name="tblAnalysis" EntityType="SealIPEDBModel.tblAnalysis" />
+          <EntitySet Name="tblAppLoad" EntityType="SealIPEDBModel.tblAppLoad" />
+          <EntitySet Name="tblCavity" EntityType="SealIPEDBModel.tblCavity" />
+          <EntitySet Name="tblFEAParam" EntityType="SealIPEDBModel.tblFEAParam" />
+          <EntitySet Name="tblIPEProject" EntityType="SealIPEDBModel.tblIPEProject" />
+          <EntitySet Name="tblIPEUser" EntityType="SealIPEDBModel.tblIPEUser" />
+          <EntitySet Name="tblLoadCase_Gen" EntityType="SealIPEDBModel.tblLoadCase_Gen" />
+          <EntitySet Name="tblOpCond" EntityType="SealIPEDBModel.tblOpCond" />
+          <EntitySet Name="tblResult_Gen" EntityType="SealIPEDBModel.tblResult_Gen" />
+          <EntitySet Name="tblResult_LoadStep" EntityType="SealIPEDBModel.tblResult_LoadStep" />
+          <EntitySet Name="tblSeal" EntityType="SealIPEDBModel.tblSeal" />
+          <AssociationSet Name="FK_tblAddLoad_tblAppLoad" Association="SealIPEDBModel.FK_tblAddLoad_tblAppLoad">
+            <End Role="tblAppLoad" EntitySet="tblAppLoad" />
+            <End Role="tblAddLoad" EntitySet="tblAddLoad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAdjCSeal_tblSeal" Association="SealIPEDBModel.FK_tblAdjCSeal_tblSeal">
+            <End Role="tblSeal" EntitySet="tblSeal" />
+            <End Role="tblAdjCSeal" EntitySet="tblAdjCSeal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAdjESeal_tblSeal" Association="SealIPEDBModel.FK_tblAdjESeal_tblSeal">
+            <End Role="tblSeal" EntitySet="tblSeal" />
+            <End Role="tblAdjESeal" EntitySet="tblAdjESeal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAdjUSeal_tblSeal" Association="SealIPEDBModel.FK_tblAdjUSeal_tblSeal">
+            <End Role="tblSeal" EntitySet="tblSeal" />
+            <End Role="tblAdjUSeal" EntitySet="tblAdjUSeal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAnalysis_tblProject" Association="SealIPEDBModel.FK_tblAnalysis_tblProject">
+            <End Role="tblIPEProject" EntitySet="tblIPEProject" />
+            <End Role="tblAnalysis" EntitySet="tblAnalysis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblFEAParam_tblAnalysis" Association="SealIPEDBModel.FK_tblFEAParam_tblAnalysis">
+            <End Role="tblAnalysis" EntitySet="tblAnalysis" />
+            <End Role="tblFEAParam" EntitySet="tblFEAParam" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblResult_Gen_tblResult_Gen" Association="SealIPEDBModel.FK_tblResult_Gen_tblResult_Gen">
+            <End Role="tblAnalysis" EntitySet="tblAnalysis" />
+            <End Role="tblResult_Gen" EntitySet="tblResult_Gen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblResult_LoadStep_tblAnalysis" Association="SealIPEDBModel.FK_tblResult_LoadStep_tblAnalysis">
+            <End Role="tblAnalysis" EntitySet="tblAnalysis" />
+            <End Role="tblResult_LoadStep" EntitySet="tblResult_LoadStep" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAppLoad_tblProject" Association="SealIPEDBModel.FK_tblAppLoad_tblProject">
+            <End Role="tblIPEProject" EntitySet="tblIPEProject" />
+            <End Role="tblAppLoad" EntitySet="tblAppLoad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCavity_tblCavity" Association="SealIPEDBModel.FK_tblCavity_tblCavity">
+            <End Role="tblIPEProject" EntitySet="tblIPEProject" />
+            <End Role="tblCavity" EntitySet="tblCavity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOpCond_tblOpCond" Association="SealIPEDBModel.FK_tblOpCond_tblOpCond">
+            <End Role="tblIPEProject" EntitySet="tblIPEProject" />
+            <End Role="tblOpCond" EntitySet="tblOpCond" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSeal_tblProject" Association="SealIPEDBModel.FK_tblSeal_tblProject">
+            <End Role="tblIPEProject" EntitySet="tblIPEProject" />
+            <End Role="tblSeal" EntitySet="tblSeal" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tblAddLoad">
+          <Key>
+            <PropertyRef Name="fldProjectID" />
+            <PropertyRef Name="fldAppLoadID" />
+            <PropertyRef Name="fldStep" />
+          </Key>
+          <Property Name="fldProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldAppLoadID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldStep" Type="Int32" Nullable="false" />
+          <Property Name="fldPDiff" Type="Single" />
+          <Property Name="fldTOper" Type="Single" />
+          <Property Name="fldCavityDepth" Type="Single" />
+          <NavigationProperty Name="tblAppLoad" Relationship="SealIPEDBModel.FK_tblAddLoad_tblAppLoad" FromRole="tblAddLoad" ToRole="tblAppLoad" />
+        </EntityType>
+        <EntityType Name="tblAdjCSeal">
+          <Key>
+            <PropertyRef Name="fldProjectID" />
+            <PropertyRef Name="fldSealID" />
+          </Key>
+          <Property Name="fldProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldSealID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldDHFree" Type="Single" />
+          <Property Name="fldDThetaOpening" Type="Single" />
+          <Property Name="fldDT" Type="Single" />
+          <NavigationProperty Name="tblSeal" Relationship="SealIPEDBModel.FK_tblAdjCSeal_tblSeal" FromRole="tblAdjCSeal" ToRole="tblSeal" />
+        </EntityType>
+        <EntityType Name="tblAdjESeal">
+          <Key>
+            <PropertyRef Name="fldProjectID" />
+            <PropertyRef Name="fldSealID" />
+          </Key>
+          <Property Name="fldProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldSealID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldDThetaE1" Type="Single" />
+          <Property Name="fldDThetaM1" Type="Single" />
+          <NavigationProperty Name="tblSeal" Relationship="SealIPEDBModel.FK_tblAdjESeal_tblSeal" FromRole="tblAdjESeal" ToRole="tblSeal" />
+        </EntityType>
+        <EntityType Name="tblAdjUSeal">
+          <Key>
+            <PropertyRef Name="fldProjectID" />
+            <PropertyRef Name="fldSealID" />
+          </Key>
+          <Property Name="fldProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldSealID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldDT" Type="Single" />
+          <Property Name="fldDTheta1" Type="Single" />
+          <Property Name="fldDTheta2" Type="Single" />
+          <Property Name="fldDRad1" Type="Single" />
+          <Property Name="fldDRad2" Type="Single" />
+          <Property Name="fldDLLeg" Type="Single" />
+          <NavigationProperty Name="tblSeal" Relationship="SealIPEDBModel.FK_tblAdjUSeal_tblSeal" FromRole="tblAdjUSeal" ToRole="tblSeal" />
+        </EntityType>
+        <EntityType Name="tblAnalysis">
+          <Key>
+            <PropertyRef Name="fldProjectID" />
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldCavityID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldOpCondID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldAppLoadID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldLoadCase_GenID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldLoadCaseName" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="fldMatModel" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldSealID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldUser" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldDate" Type="DateTime" />
+          <NavigationProperty Name="tblIPEProject" Relationship="SealIPEDBModel.FK_tblAnalysis_tblProject" FromRole="tblAnalysis" ToRole="tblIPEProject" />
+          <NavigationProperty Name="tblFEAParam" Relationship="SealIPEDBModel.FK_tblFEAParam_tblAnalysis" FromRole="tblAnalysis" ToRole="tblFEAParam" />
+          <NavigationProperty Name="tblResult_Gen" Relationship="SealIPEDBModel.FK_tblResult_Gen_tblResult_Gen" FromRole="tblAnalysis" ToRole="tblResult_Gen" />
+          <NavigationProperty Name="tblResult_LoadStep" Relationship="SealIPEDBModel.FK_tblResult_LoadStep_tblAnalysis" FromRole="tblAnalysis" ToRole="tblResult_LoadStep" />
+        </EntityType>
+        <EntityType Name="tblAppLoad">
+          <Key>
+            <PropertyRef Name="fldProjectID" />
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldPreCompressed" Type="Boolean" />
+          <Property Name="fldPreCompressed_HMin" Type="Single" />
+          <Property Name="fldRadConstraint" Type="Boolean" />
+          <NavigationProperty Name="tblAddLoad" Relationship="SealIPEDBModel.FK_tblAddLoad_tblAppLoad" FromRole="tblAppLoad" ToRole="tblAddLoad" />
+          <NavigationProperty Name="tblIPEProject" Relationship="SealIPEDBModel.FK_tblAppLoad_tblProject" FromRole="tblAppLoad" ToRole="tblIPEProject" />
+        </EntityType>
+        <EntityType Name="tblCavity">
+          <Key>
+            <PropertyRef Name="fldProjectID" />
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldCavityDia1" Type="Single" />
+          <Property Name="fldCavityDia2" Type="Single" />
+          <Property Name="fldCavityDepth" Type="Single" />
+          <Property Name="fldCavityDepthTol1" Type="Single" />
+          <Property Name="fldCavityDepthTol2" Type="Single" />
+          <NavigationProperty Name="tblIPEProject" Relationship="SealIPEDBModel.FK_tblCavity_tblCavity" FromRole="tblCavity" ToRole="tblIPEProject" />
+        </EntityType>
+        <EntityType Name="tblFEAParam">
+          <Key>
+            <PropertyRef Name="fldProjectID" />
+            <PropertyRef Name="fldAnalysisID" />
+          </Key>
+          <Property Name="fldProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldAnalysisID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldANSYS_Ver" Type="Single" />
+          <Property Name="fldMaxElement" Type="Int32" />
+          <Property Name="fldNLayer" Type="Int32" />
+          <Property Name="fldNLayer_Plating" Type="Int32" />
+          <Property Name="fldNelConSeal" Type="Int32" />
+          <Property Name="fldNelConMid" Type="Int32" />
+          <Property Name="fldNelConHeel" Type="Int32" />
+          <Property Name="fldNelConRad" Type="Int32" />
+          <Property Name="fldFacKN" Type="Single" />
+          <Property Name="fldFacTOLN" Type="Single" />
+          <Property Name="fldNSBSTP" Type="Int32" />
+          <Property Name="fldNSBMX" Type="Int32" />
+          <Property Name="fldNSBMN" Type="Int32" />
+          <NavigationProperty Name="tblAnalysis" Relationship="SealIPEDBModel.FK_tblFEAParam_tblAnalysis" FromRole="tblFEAParam" ToRole="tblAnalysis" />
+        </EntityType>
+        <EntityType Name="tblIPEProject">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldPNID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="fldRevID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="fldPNR_CustInfoID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="fldID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldUser" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldDate" Type="DateTime" />
+          <NavigationProperty Name="tblAnalysis" Relationship="SealIPEDBModel.FK_tblAnalysis_tblProject" FromRole="tblIPEProject" ToRole="tblAnalysis" />
+          <NavigationProperty Name="tblAppLoad" Relationship="SealIPEDBModel.FK_tblAppLoad_tblProject" FromRole="tblIPEProject" ToRole="tblAppLoad" />
+          <NavigationProperty Name="tblCavity" Relationship="SealIPEDBModel.FK_tblCavity_tblCavity" FromRole="tblIPEProject" ToRole="tblCavity" />
+          <NavigationProperty Name="tblOpCond" Relationship="SealIPEDBModel.FK_tblOpCond_tblOpCond" FromRole="tblIPEProject" ToRole="tblOpCond" />
+          <NavigationProperty Name="tblSeal" Relationship="SealIPEDBModel.FK_tblSeal_tblProject" FromRole="tblIPEProject" ToRole="tblSeal" />
+        </EntityType>
+        <EntityType Name="tblIPEUser">
+          <Key>
+            <PropertyRef Name="fldSystemLogin" />
+          </Key>
+          <Property Name="fldName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldSystemLogin" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldPhoneNo" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldRoleDesigner" Type="Boolean" />
+          <Property Name="fldRoleAdmin" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblLoadCase_Gen">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldLoadType" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldCompressTolType" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblOpCond">
+          <Key>
+            <PropertyRef Name="fldProjectID" />
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldUnitUserP" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldPDiff" Type="Single" />
+          <Property Name="fldTOper" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldPOrient" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="tblIPEProject" Relationship="SealIPEDBModel.FK_tblOpCond_tblOpCond" FromRole="tblOpCond" ToRole="tblIPEProject" />
+        </EntityType>
+        <EntityType Name="tblResult_Gen">
+          <Key>
+            <PropertyRef Name="fldProjectID" />
+            <PropertyRef Name="fldAnalysisID" />
+          </Key>
+          <Property Name="fldProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldAnalysisID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldSolnConv" Type="Int32" />
+          <Property Name="fldPeneMax1" Type="Decimal" Precision="18" Scale="9" />
+          <Property Name="fldDSealing" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="fldHFreeFinal" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="fldLeakage_BL" Type="Decimal" Precision="18" Scale="3" />
+          <NavigationProperty Name="tblAnalysis" Relationship="SealIPEDBModel.FK_tblResult_Gen_tblResult_Gen" FromRole="tblResult_Gen" ToRole="tblAnalysis" />
+        </EntityType>
+        <EntityType Name="tblResult_LoadStep">
+          <Key>
+            <PropertyRef Name="fldProjectID" />
+            <PropertyRef Name="fldAnalysisID" />
+            <PropertyRef Name="fldStepID" />
+          </Key>
+          <Property Name="fldProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldAnalysisID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldStepID" Type="Int32" Nullable="false" />
+          <Property Name="fldFSeat_Unit" Type="Single" />
+          <Property Name="fldSigEqvMax" Type="Single" />
+          <NavigationProperty Name="tblAnalysis" Relationship="SealIPEDBModel.FK_tblResult_LoadStep_tblAnalysis" FromRole="tblResult_LoadStep" ToRole="tblAnalysis" />
+        </EntityType>
+        <EntityType Name="tblSeal">
+          <Key>
+            <PropertyRef Name="fldProjectID" />
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldType" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldMCS" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldSegmented" Type="Boolean" />
+          <Property Name="fldSegmentCount" Type="Int32" />
+          <Property Name="fldMatName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldHeatTreatment" Type="Int32" />
+          <Property Name="fldCoating" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldSFinish" Type="Int32" />
+          <Property Name="fldPlating" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldPlatingThickCode" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="fldZClear" Type="Single" />
+          <Property Name="fldHFreeTol1" Type="Single" />
+          <Property Name="fldHFreeTol2" Type="Single" />
+          <Property Name="fldAdjusted" Type="Boolean" />
+          <Property Name="fldSelected" Type="Boolean" />
+          <NavigationProperty Name="tblAdjCSeal" Relationship="SealIPEDBModel.FK_tblAdjCSeal_tblSeal" FromRole="tblSeal" ToRole="tblAdjCSeal" />
+          <NavigationProperty Name="tblAdjESeal" Relationship="SealIPEDBModel.FK_tblAdjESeal_tblSeal" FromRole="tblSeal" ToRole="tblAdjESeal" />
+          <NavigationProperty Name="tblAdjUSeal" Relationship="SealIPEDBModel.FK_tblAdjUSeal_tblSeal" FromRole="tblSeal" ToRole="tblAdjUSeal" />
+          <NavigationProperty Name="tblIPEProject" Relationship="SealIPEDBModel.FK_tblSeal_tblProject" FromRole="tblSeal" ToRole="tblIPEProject" />
+        </EntityType>
+        <Association Name="FK_tblAddLoad_tblAppLoad">
+          <End Role="tblAppLoad" Type="SealIPEDBModel.tblAppLoad" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblAddLoad" Type="SealIPEDBModel.tblAddLoad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAppLoad">
+              <PropertyRef Name="fldProjectID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblAddLoad">
+              <PropertyRef Name="fldProjectID" />
+              <PropertyRef Name="fldAppLoadID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAdjCSeal_tblSeal">
+          <End Role="tblSeal" Type="SealIPEDBModel.tblSeal" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblAdjCSeal" Type="SealIPEDBModel.tblAdjCSeal" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblSeal">
+              <PropertyRef Name="fldProjectID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblAdjCSeal">
+              <PropertyRef Name="fldProjectID" />
+              <PropertyRef Name="fldSealID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAdjESeal_tblSeal">
+          <End Role="tblSeal" Type="SealIPEDBModel.tblSeal" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblAdjESeal" Type="SealIPEDBModel.tblAdjESeal" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblSeal">
+              <PropertyRef Name="fldProjectID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblAdjESeal">
+              <PropertyRef Name="fldProjectID" />
+              <PropertyRef Name="fldSealID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAdjUSeal_tblSeal">
+          <End Role="tblSeal" Type="SealIPEDBModel.tblSeal" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblAdjUSeal" Type="SealIPEDBModel.tblAdjUSeal" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblSeal">
+              <PropertyRef Name="fldProjectID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblAdjUSeal">
+              <PropertyRef Name="fldProjectID" />
+              <PropertyRef Name="fldSealID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAnalysis_tblProject">
+          <End Role="tblIPEProject" Type="SealIPEDBModel.tblIPEProject" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblAnalysis" Type="SealIPEDBModel.tblAnalysis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblIPEProject">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblAnalysis">
+              <PropertyRef Name="fldProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblFEAParam_tblAnalysis">
+          <End Role="tblAnalysis" Type="SealIPEDBModel.tblAnalysis" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblFEAParam" Type="SealIPEDBModel.tblFEAParam" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblAnalysis">
+              <PropertyRef Name="fldProjectID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblFEAParam">
+              <PropertyRef Name="fldProjectID" />
+              <PropertyRef Name="fldAnalysisID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblResult_Gen_tblResult_Gen">
+          <End Role="tblAnalysis" Type="SealIPEDBModel.tblAnalysis" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblResult_Gen" Type="SealIPEDBModel.tblResult_Gen" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblAnalysis">
+              <PropertyRef Name="fldProjectID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblResult_Gen">
+              <PropertyRef Name="fldProjectID" />
+              <PropertyRef Name="fldAnalysisID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblResult_LoadStep_tblAnalysis">
+          <End Role="tblAnalysis" Type="SealIPEDBModel.tblAnalysis" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblResult_LoadStep" Type="SealIPEDBModel.tblResult_LoadStep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAnalysis">
+              <PropertyRef Name="fldProjectID" />
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblResult_LoadStep">
+              <PropertyRef Name="fldProjectID" />
+              <PropertyRef Name="fldAnalysisID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAppLoad_tblProject">
+          <End Role="tblIPEProject" Type="SealIPEDBModel.tblIPEProject" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblAppLoad" Type="SealIPEDBModel.tblAppLoad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblIPEProject">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblAppLoad">
+              <PropertyRef Name="fldProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCavity_tblCavity">
+          <End Role="tblIPEProject" Type="SealIPEDBModel.tblIPEProject" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblCavity" Type="SealIPEDBModel.tblCavity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblIPEProject">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblCavity">
+              <PropertyRef Name="fldProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOpCond_tblOpCond">
+          <End Role="tblIPEProject" Type="SealIPEDBModel.tblIPEProject" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblOpCond" Type="SealIPEDBModel.tblOpCond" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblIPEProject">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblOpCond">
+              <PropertyRef Name="fldProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSeal_tblProject">
+          <End Role="tblIPEProject" Type="SealIPEDBModel.tblIPEProject" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblSeal" Type="SealIPEDBModel.tblSeal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblIPEProject">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblSeal">
+              <PropertyRef Name="fldProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SealIPEDBModelStoreContainer" CdmEntityContainer="SealIPEDBEntities">
+          <EntitySetMapping Name="tblAddLoad">
+            <EntityTypeMapping TypeName="SealIPEDBModel.tblAddLoad">
+              <MappingFragment StoreEntitySet="tblAddLoad">
+                <ScalarProperty Name="fldProjectID" ColumnName="fldProjectID" />
+                <ScalarProperty Name="fldAppLoadID" ColumnName="fldAppLoadID" />
+                <ScalarProperty Name="fldStep" ColumnName="fldStep" />
+                <ScalarProperty Name="fldPDiff" ColumnName="fldPDiff" />
+                <ScalarProperty Name="fldTOper" ColumnName="fldTOper" />
+                <ScalarProperty Name="fldCavityDepth" ColumnName="fldCavityDepth" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAdjCSeal">
+            <EntityTypeMapping TypeName="SealIPEDBModel.tblAdjCSeal">
+              <MappingFragment StoreEntitySet="tblAdjCSeal">
+                <ScalarProperty Name="fldProjectID" ColumnName="fldProjectID" />
+                <ScalarProperty Name="fldSealID" ColumnName="fldSealID" />
+                <ScalarProperty Name="fldDHFree" ColumnName="fldDHFree" />
+                <ScalarProperty Name="fldDThetaOpening" ColumnName="fldDThetaOpening" />
+                <ScalarProperty Name="fldDT" ColumnName="fldDT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAdjESeal">
+            <EntityTypeMapping TypeName="SealIPEDBModel.tblAdjESeal">
+              <MappingFragment StoreEntitySet="tblAdjESeal">
+                <ScalarProperty Name="fldProjectID" ColumnName="fldProjectID" />
+                <ScalarProperty Name="fldSealID" ColumnName="fldSealID" />
+                <ScalarProperty Name="fldDThetaE1" ColumnName="fldDThetaE1" />
+                <ScalarProperty Name="fldDThetaM1" ColumnName="fldDThetaM1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAdjUSeal">
+            <EntityTypeMapping TypeName="SealIPEDBModel.tblAdjUSeal">
+              <MappingFragment StoreEntitySet="tblAdjUSeal">
+                <ScalarProperty Name="fldProjectID" ColumnName="fldProjectID" />
+                <ScalarProperty Name="fldSealID" ColumnName="fldSealID" />
+                <ScalarProperty Name="fldDT" ColumnName="fldDT" />
+                <ScalarProperty Name="fldDTheta1" ColumnName="fldDTheta1" />
+                <ScalarProperty Name="fldDTheta2" ColumnName="fldDTheta2" />
+                <ScalarProperty Name="fldDRad1" ColumnName="fldDRad1" />
+                <ScalarProperty Name="fldDRad2" ColumnName="fldDRad2" />
+                <ScalarProperty Name="fldDLLeg" ColumnName="fldDLLeg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAnalysis">
+            <EntityTypeMapping TypeName="SealIPEDBModel.tblAnalysis">
+              <MappingFragment StoreEntitySet="tblAnalysis">
+                <ScalarProperty Name="fldProjectID" ColumnName="fldProjectID" />
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldCavityID" ColumnName="fldCavityID" />
+                <ScalarProperty Name="fldOpCondID" ColumnName="fldOpCondID" />
+                <ScalarProperty Name="fldAppLoadID" ColumnName="fldAppLoadID" />
+                <ScalarProperty Name="fldLoadCase_GenID" ColumnName="fldLoadCase_GenID" />
+                <ScalarProperty Name="fldLoadCaseName" ColumnName="fldLoadCaseName" />
+                <ScalarProperty Name="fldMatModel" ColumnName="fldMatModel" />
+                <ScalarProperty Name="fldSealID" ColumnName="fldSealID" />
+                <ScalarProperty Name="fldUser" ColumnName="fldUser" />
+                <ScalarProperty Name="fldDate" ColumnName="fldDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAppLoad">
+            <EntityTypeMapping TypeName="SealIPEDBModel.tblAppLoad">
+              <MappingFragment StoreEntitySet="tblAppLoad">
+                <ScalarProperty Name="fldProjectID" ColumnName="fldProjectID" />
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldPreCompressed" ColumnName="fldPreCompressed" />
+                <ScalarProperty Name="fldPreCompressed_HMin" ColumnName="fldPreCompressed_HMin" />
+                <ScalarProperty Name="fldRadConstraint" ColumnName="fldRadConstraint" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCavity">
+            <EntityTypeMapping TypeName="SealIPEDBModel.tblCavity">
+              <MappingFragment StoreEntitySet="tblCavity">
+                <ScalarProperty Name="fldProjectID" ColumnName="fldProjectID" />
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldCavityDia1" ColumnName="fldCavityDia1" />
+                <ScalarProperty Name="fldCavityDia2" ColumnName="fldCavityDia2" />
+                <ScalarProperty Name="fldCavityDepth" ColumnName="fldCavityDepth" />
+                <ScalarProperty Name="fldCavityDepthTol1" ColumnName="fldCavityDepthTol1" />
+                <ScalarProperty Name="fldCavityDepthTol2" ColumnName="fldCavityDepthTol2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFEAParam">
+            <EntityTypeMapping TypeName="SealIPEDBModel.tblFEAParam">
+              <MappingFragment StoreEntitySet="tblFEAParam">
+                <ScalarProperty Name="fldProjectID" ColumnName="fldProjectID" />
+                <ScalarProperty Name="fldAnalysisID" ColumnName="fldAnalysisID" />
+                <ScalarProperty Name="fldANSYS_Ver" ColumnName="fldANSYS_Ver" />
+                <ScalarProperty Name="fldMaxElement" ColumnName="fldMaxElement" />
+                <ScalarProperty Name="fldNLayer" ColumnName="fldNLayer" />
+                <ScalarProperty Name="fldNLayer_Plating" ColumnName="fldNLayer_Plating" />
+                <ScalarProperty Name="fldNelConSeal" ColumnName="fldNelConSeal" />
+                <ScalarProperty Name="fldNelConMid" ColumnName="fldNelConMid" />
+                <ScalarProperty Name="fldNelConHeel" ColumnName="fldNelConHeel" />
+                <ScalarProperty Name="fldNelConRad" ColumnName="fldNelConRad" />
+                <ScalarProperty Name="fldFacKN" ColumnName="fldFacKN" />
+                <ScalarProperty Name="fldFacTOLN" ColumnName="fldFacTOLN" />
+                <ScalarProperty Name="fldNSBSTP" ColumnName="fldNSBSTP" />
+                <ScalarProperty Name="fldNSBMX" ColumnName="fldNSBMX" />
+                <ScalarProperty Name="fldNSBMN" ColumnName="fldNSBMN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblIPEProject">
+            <EntityTypeMapping TypeName="SealIPEDBModel.tblIPEProject">
+              <MappingFragment StoreEntitySet="tblIPEProject">
+                <ScalarProperty Name="fldPNID" ColumnName="fldPNID" />
+                <ScalarProperty Name="fldRevID" ColumnName="fldRevID" />
+                <ScalarProperty Name="fldPNR_CustInfoID" ColumnName="fldPNR_CustInfoID" />
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldUser" ColumnName="fldUser" />
+                <ScalarProperty Name="fldDate" ColumnName="fldDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblIPEUser">
+            <EntityTypeMapping TypeName="SealIPEDBModel.tblIPEUser">
+              <MappingFragment StoreEntitySet="tblIPEUser">
+                <ScalarProperty Name="fldName" ColumnName="fldName" />
+                <ScalarProperty Name="fldSystemLogin" ColumnName="fldSystemLogin" />
+                <ScalarProperty Name="fldPhoneNo" ColumnName="fldPhoneNo" />
+                <ScalarProperty Name="fldRoleDesigner" ColumnName="fldRoleDesigner" />
+                <ScalarProperty Name="fldRoleAdmin" ColumnName="fldRoleAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLoadCase_Gen">
+            <EntityTypeMapping TypeName="SealIPEDBModel.tblLoadCase_Gen">
+              <MappingFragment StoreEntitySet="tblLoadCase_Gen">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldLoadType" ColumnName="fldLoadType" />
+                <ScalarProperty Name="fldCompressTolType" ColumnName="fldCompressTolType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOpCond">
+            <EntityTypeMapping TypeName="SealIPEDBModel.tblOpCond">
+              <MappingFragment StoreEntitySet="tblOpCond">
+                <ScalarProperty Name="fldProjectID" ColumnName="fldProjectID" />
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldUnitUserP" ColumnName="fldUnitUserP" />
+                <ScalarProperty Name="fldPDiff" ColumnName="fldPDiff" />
+                <ScalarProperty Name="fldTOper" ColumnName="fldTOper" />
+                <ScalarProperty Name="fldPOrient" ColumnName="fldPOrient" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblResult_Gen">
+            <EntityTypeMapping TypeName="SealIPEDBModel.tblResult_Gen">
+              <MappingFragment StoreEntitySet="tblResult_Gen">
+                <ScalarProperty Name="fldProjectID" ColumnName="fldProjectID" />
+                <ScalarProperty Name="fldAnalysisID" ColumnName="fldAnalysisID" />
+                <ScalarProperty Name="fldSolnConv" ColumnName="fldSolnConv" />
+                <ScalarProperty Name="fldPeneMax1" ColumnName="fldPeneMax1" />
+                <ScalarProperty Name="fldDSealing" ColumnName="fldDSealing" />
+                <ScalarProperty Name="fldHFreeFinal" ColumnName="fldHFreeFinal" />
+                <ScalarProperty Name="fldLeakage_BL" ColumnName="fldLeakage_BL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblResult_LoadStep">
+            <EntityTypeMapping TypeName="SealIPEDBModel.tblResult_LoadStep">
+              <MappingFragment StoreEntitySet="tblResult_LoadStep">
+                <ScalarProperty Name="fldProjectID" ColumnName="fldProjectID" />
+                <ScalarProperty Name="fldAnalysisID" ColumnName="fldAnalysisID" />
+                <ScalarProperty Name="fldStepID" ColumnName="fldStepID" />
+                <ScalarProperty Name="fldFSeat_Unit" ColumnName="fldFSeat_Unit" />
+                <ScalarProperty Name="fldSigEqvMax" ColumnName="fldSigEqvMax" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSeal">
+            <EntityTypeMapping TypeName="SealIPEDBModel.tblSeal">
+              <MappingFragment StoreEntitySet="tblSeal">
+                <ScalarProperty Name="fldProjectID" ColumnName="fldProjectID" />
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldType" ColumnName="fldType" />
+                <ScalarProperty Name="fldMCS" ColumnName="fldMCS" />
+                <ScalarProperty Name="fldSegmented" ColumnName="fldSegmented" />
+                <ScalarProperty Name="fldSegmentCount" ColumnName="fldSegmentCount" />
+                <ScalarProperty Name="fldMatName" ColumnName="fldMatName" />
+                <ScalarProperty Name="fldHeatTreatment" ColumnName="fldHeatTreatment" />
+                <ScalarProperty Name="fldCoating" ColumnName="fldCoating" />
+                <ScalarProperty Name="fldSFinish" ColumnName="fldSFinish" />
+                <ScalarProperty Name="fldPlating" ColumnName="fldPlating" />
+                <ScalarProperty Name="fldPlatingThickCode" ColumnName="fldPlatingThickCode" />
+                <ScalarProperty Name="fldZClear" ColumnName="fldZClear" />
+                <ScalarProperty Name="fldHFreeTol1" ColumnName="fldHFreeTol1" />
+                <ScalarProperty Name="fldHFreeTol2" ColumnName="fldHFreeTol2" />
+                <ScalarProperty Name="fldAdjusted" ColumnName="fldAdjusted" />
+                <ScalarProperty Name="fldSelected" ColumnName="fldSelected" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="SealIPEDBModel.tblAddLoad" Width="1.5" PointX="5.25" PointY="13.375" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEDBModel.tblAdjCSeal" Width="1.5" PointX="5.25" PointY="22.875" Height="2.172587890624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEDBModel.tblAdjESeal" Width="1.5" PointX="5.25" PointY="25.75" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEDBModel.tblAdjUSeal" Width="1.5" PointX="5.25" PointY="28.5" Height="2.749492187499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEDBModel.tblAnalysis" Width="1.5" PointX="3" PointY="5.5" Height="3.9033007812499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEDBModel.tblAppLoad" Width="1.5" PointX="3" PointY="13.375" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEDBModel.tblCavity" Width="1.5" PointX="3" PointY="16.5" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEDBModel.tblFEAParam" Width="1.5" PointX="5.25" PointY="2.25" Height="4.0956022135416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEDBModel.tblIPEProject" Width="1.5" PointX="0.75" PointY="15.25" Height="3.1340950520833317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEDBModel.tblIPEUser" Width="1.5" PointX="0.75" PointY="0.75" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEDBModel.tblLoadCase_Gen" Width="1.5" PointX="7.75" PointY="0.75" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEDBModel.tblOpCond" Width="1.5" PointX="3" PointY="19.75" Height="2.3648893229166745" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEDBModel.tblResult_Gen" Width="1.5" PointX="5.25" PointY="7.125" Height="2.5571907552083388" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEDBModel.tblResult_LoadStep" Width="1.5" PointX="5.25" PointY="10.375" Height="2.1725878906250031" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEDBModel.tblSeal" Width="1.5" PointX="3" PointY="24.5" Height="5.0571093750000031" IsExpanded="true" />
+        <AssociationConnector Association="SealIPEDBModel.FK_tblAddLoad_tblAppLoad" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="14.557444661458334" />
+          <ConnectorPoint PointX="5.25" PointY="14.557444661458334" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealIPEDBModel.FK_tblAdjCSeal_tblSeal" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="24.773793945312498" />
+          <ConnectorPoint PointX="5.25" PointY="24.773793945312498" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealIPEDBModel.FK_tblAdjESeal_tblSeal" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="26.740143229166666" />
+          <ConnectorPoint PointX="5.25" PointY="26.740143229166666" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealIPEDBModel.FK_tblAdjUSeal_tblSeal" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="29.0285546875" />
+          <ConnectorPoint PointX="5.25" PointY="29.0285546875" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealIPEDBModel.FK_tblAnalysis_tblProject" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="15.25" />
+          <ConnectorPoint PointX="1.5" PointY="7.451650390625" />
+          <ConnectorPoint PointX="3" PointY="7.451650390625" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealIPEDBModel.FK_tblFEAParam_tblAnalysis" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="5.9228011067708337" />
+          <ConnectorPoint PointX="5.25" PointY="5.9228011067708337" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealIPEDBModel.FK_tblResult_Gen_tblResult_Gen" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="8.264150390625" />
+          <ConnectorPoint PointX="5.25" PointY="8.264150390625" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealIPEDBModel.FK_tblResult_LoadStep_tblAnalysis" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.75" PointY="9.40330078125" />
+          <ConnectorPoint PointX="3.75" PointY="11.461293945312502" />
+          <ConnectorPoint PointX="5.25" PointY="11.461293945312502" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealIPEDBModel.FK_tblAppLoad_tblProject" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="15.494944661458334" />
+          <ConnectorPoint PointX="3" PointY="15.494944661458334" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealIPEDBModel.FK_tblCavity_tblCavity" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="17.442047526041666" />
+          <ConnectorPoint PointX="3" PointY="17.442047526041666" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealIPEDBModel.FK_tblOpCond_tblOpCond" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="18.384095052083332" />
+          <ConnectorPoint PointX="1.5" PointY="20.932444661458337" />
+          <ConnectorPoint PointX="1.8229191666666667" PointY="20.932444661458337" />
+          <ConnectorPoint PointX="1.9895858333333332" PointY="20.932444661458337" />
+          <ConnectorPoint PointX="3" PointY="20.932444661458337" />
+        </AssociationConnector>
+        <AssociationConnector Association="SealIPEDBModel.FK_tblSeal_tblProject" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.9062525" PointY="18.384095052083332" />
+          <ConnectorPoint PointX="1.9062525" PointY="27.0285546875" />
+          <ConnectorPoint PointX="3" PointY="27.0285546875" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
