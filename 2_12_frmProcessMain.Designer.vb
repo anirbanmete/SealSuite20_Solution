@@ -83,6 +83,7 @@ Partial Class Process_frmMain
         Dim DataGridViewCellStyle116 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lblBorder = New System.Windows.Forms.Label()
         Me.pnlPanel1 = New System.Windows.Forms.Panel()
+        Me.cmdSealPart = New System.Windows.Forms.Button()
         Me.cmdIssueComment = New System.Windows.Forms.Button()
         Me.txtStatus = New System.Windows.Forms.TextBox()
         Me.cmdSetUnits = New System.Windows.Forms.Button()
@@ -881,7 +882,6 @@ Partial Class Process_frmMain
         Me.menuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.TabViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.openFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.cmdSealPart = New System.Windows.Forms.Button()
         Me.pnlPanel1.SuspendLayout()
         Me.GroupBox43.SuspendLayout()
         Me.GroupBox37.SuspendLayout()
@@ -1061,6 +1061,18 @@ Partial Class Process_frmMain
         Me.pnlPanel1.Name = "pnlPanel1"
         Me.pnlPanel1.Size = New System.Drawing.Size(1108, 846)
         Me.pnlPanel1.TabIndex = 5
+        '
+        'cmdSealPart
+        '
+        Me.cmdSealPart.BackColor = System.Drawing.Color.Silver
+        Me.cmdSealPart.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdSealPart.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cmdSealPart.Location = New System.Drawing.Point(41, 810)
+        Me.cmdSealPart.Name = "cmdSealPart"
+        Me.cmdSealPart.Size = New System.Drawing.Size(90, 30)
+        Me.cmdSealPart.TabIndex = 687
+        Me.cmdSealPart.Text = "Seal Part"
+        Me.cmdSealPart.UseVisualStyleBackColor = False
         '
         'cmdIssueComment
         '
@@ -1535,7 +1547,7 @@ Partial Class Process_frmMain
         Me.Label201.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label201.Location = New System.Drawing.Point(46, 122)
         Me.Label201.Name = "Label201"
-        Me.Label201.Size = New System.Drawing.Size(35, 13)
+        Me.Label201.Size = New System.Drawing.Size(34, 13)
         Me.Label201.TabIndex = 648
         Me.Label201.Text = "Type"
         Me.Label201.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1837,7 +1849,7 @@ Partial Class Process_frmMain
         Me.Label105.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label105.Location = New System.Drawing.Point(238, 36)
         Me.Label105.Name = "Label105"
-        Me.Label105.Size = New System.Drawing.Size(35, 13)
+        Me.Label105.Size = New System.Drawing.Size(34, 13)
         Me.Label105.TabIndex = 635
         Me.Label105.Text = "Type"
         Me.Label105.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1849,7 +1861,7 @@ Partial Class Process_frmMain
         Me.Label213.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label213.Location = New System.Drawing.Point(33, 35)
         Me.Label213.Name = "Label213"
-        Me.Label213.Size = New System.Drawing.Size(44, 13)
+        Me.Label213.Size = New System.Drawing.Size(43, 13)
         Me.Label213.TabIndex = 639
         Me.Label213.Text = "Family"
         Me.Label213.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -2463,7 +2475,7 @@ Partial Class Process_frmMain
         Me.Label57.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label57.Location = New System.Drawing.Point(388, 141)
         Me.Label57.Name = "Label57"
-        Me.Label57.Size = New System.Drawing.Size(114, 13)
+        Me.Label57.Size = New System.Drawing.Size(113, 13)
         Me.Label57.TabIndex = 877
         Me.Label57.Text = "ITAR Classification"
         Me.Label57.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -2619,7 +2631,7 @@ Partial Class Process_frmMain
         Me.Label239.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label239.Location = New System.Drawing.Point(66, 141)
         Me.Label239.Name = "Label239"
-        Me.Label239.Size = New System.Drawing.Size(186, 13)
+        Me.Label239.Size = New System.Drawing.Size(185, 13)
         Me.Label239.TabIndex = 719
         Me.Label239.Text = "Product under ITAR regulations"
         Me.Label239.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -2902,7 +2914,7 @@ Partial Class Process_frmMain
         Me.Label138.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label138.Location = New System.Drawing.Point(138, 34)
         Me.Label138.Name = "Label138"
-        Me.Label138.Size = New System.Drawing.Size(48, 13)
+        Me.Label138.Size = New System.Drawing.Size(47, 13)
         Me.Label138.TabIndex = 694
         Me.Label138.Text = "Tooling"
         Me.Label138.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -3087,7 +3099,7 @@ Partial Class Process_frmMain
         Me.Label222.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label222.Location = New System.Drawing.Point(138, 34)
         Me.Label222.Name = "Label222"
-        Me.Label222.Size = New System.Drawing.Size(48, 13)
+        Me.Label222.Size = New System.Drawing.Size(47, 13)
         Me.Label222.TabIndex = 694
         Me.Label222.Text = "Tooling"
         Me.Label222.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -3417,7 +3429,7 @@ Partial Class Process_frmMain
         Me.Label220.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label220.Location = New System.Drawing.Point(357, 31)
         Me.Label220.Name = "Label220"
-        Me.Label220.Size = New System.Drawing.Size(38, 13)
+        Me.Label220.Size = New System.Drawing.Size(37, 13)
         Me.Label220.TabIndex = 678
         Me.Label220.Text = "DFAR"
         Me.Label220.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -5333,7 +5345,7 @@ Partial Class Process_frmMain
         Me.Label35.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label35.Location = New System.Drawing.Point(364, 302)
         Me.Label35.Name = "Label35"
-        Me.Label35.Size = New System.Drawing.Size(52, 13)
+        Me.Label35.Size = New System.Drawing.Size(51, 13)
         Me.Label35.TabIndex = 890
         Me.Label35.Text = "Velocity"
         Me.Label35.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -5577,7 +5589,7 @@ Partial Class Process_frmMain
         Me.Label61.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label61.Location = New System.Drawing.Point(17, 91)
         Me.Label61.Name = "Label61"
-        Me.Label61.Size = New System.Drawing.Size(114, 13)
+        Me.Label61.Size = New System.Drawing.Size(113, 13)
         Me.Label61.TabIndex = 815
         Me.Label61.Text = "Design Verification"
         Me.Label61.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -5763,7 +5775,7 @@ Partial Class Process_frmMain
         Me.Label143.ForeColor = System.Drawing.Color.Black
         Me.Label143.Location = New System.Drawing.Point(496, 32)
         Me.Label143.Name = "Label143"
-        Me.Label143.Size = New System.Drawing.Size(33, 13)
+        Me.Label143.Size = New System.Drawing.Size(32, 13)
         Me.Label143.TabIndex = 788
         Me.Label143.Text = "Rev."
         Me.Label143.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -5895,7 +5907,7 @@ Partial Class Process_frmMain
         Me.Label147.ForeColor = System.Drawing.Color.Black
         Me.Label147.Location = New System.Drawing.Point(252, 31)
         Me.Label147.Name = "Label147"
-        Me.Label147.Size = New System.Drawing.Size(33, 13)
+        Me.Label147.Size = New System.Drawing.Size(32, 13)
         Me.Label147.TabIndex = 496
         Me.Label147.Text = "Rev."
         Me.Label147.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -6212,7 +6224,7 @@ Partial Class Process_frmMain
         Me.Label124.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label124.Location = New System.Drawing.Point(827, 278)
         Me.Label124.Name = "Label124"
-        Me.Label124.Size = New System.Drawing.Size(95, 13)
+        Me.Label124.Size = New System.Drawing.Size(94, 13)
         Me.Label124.TabIndex = 777
         Me.Label124.Text = "Outside Vendor"
         Me.Label124.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -6298,7 +6310,7 @@ Partial Class Process_frmMain
         Me.Label79.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label79.Location = New System.Drawing.Point(827, 278)
         Me.Label79.Name = "Label79"
-        Me.Label79.Size = New System.Drawing.Size(95, 13)
+        Me.Label79.Size = New System.Drawing.Size(94, 13)
         Me.Label79.TabIndex = 777
         Me.Label79.Text = "Outside Vendor"
         Me.Label79.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -6386,7 +6398,7 @@ Partial Class Process_frmMain
         Me.Label109.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label109.Location = New System.Drawing.Point(344, 279)
         Me.Label109.Name = "Label109"
-        Me.Label109.Size = New System.Drawing.Size(83, 13)
+        Me.Label109.Size = New System.Drawing.Size(81, 13)
         Me.Label109.TabIndex = 790
         Me.Label109.Text = "Temper Type"
         Me.Label109.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -6411,7 +6423,7 @@ Partial Class Process_frmMain
         Me.Label236.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label236.Location = New System.Drawing.Point(344, 279)
         Me.Label236.Name = "Label236"
-        Me.Label236.Size = New System.Drawing.Size(83, 13)
+        Me.Label236.Size = New System.Drawing.Size(81, 13)
         Me.Label236.TabIndex = 790
         Me.Label236.Text = "Temper Type"
         Me.Label236.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -7000,7 +7012,7 @@ Partial Class Process_frmMain
         Me.Label117.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label117.Location = New System.Drawing.Point(26, 136)
         Me.Label117.Name = "Label117"
-        Me.Label117.Size = New System.Drawing.Size(118, 13)
+        Me.Label117.Size = New System.Drawing.Size(117, 13)
         Me.Label117.TabIndex = 684
         Me.Label117.Text = "Tooling and Gages:"
         Me.Label117.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -7089,7 +7101,7 @@ Partial Class Process_frmMain
         Me.Label101.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label101.Location = New System.Drawing.Point(355, 27)
         Me.Label101.Name = "Label101"
-        Me.Label101.Size = New System.Drawing.Size(96, 13)
+        Me.Label101.Size = New System.Drawing.Size(95, 13)
         Me.Label101.TabIndex = 679
         Me.Label101.Text = "Heat Treatment"
         Me.Label101.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -7254,7 +7266,7 @@ Partial Class Process_frmMain
         Me.Label33.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label33.Location = New System.Drawing.Point(37, 164)
         Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(118, 13)
+        Me.Label33.Size = New System.Drawing.Size(117, 13)
         Me.Label33.TabIndex = 881
         Me.Label33.Text = "Tooling and Gages:"
         Me.Label33.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -7833,7 +7845,7 @@ Partial Class Process_frmMain
         Me.Label107.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label107.Location = New System.Drawing.Point(16, 52)
         Me.Label107.Name = "Label107"
-        Me.Label107.Size = New System.Drawing.Size(300, 13)
+        Me.Label107.Size = New System.Drawing.Size(299, 13)
         Me.Label107.TabIndex = 676
         Me.Label107.Text = "Separate Tooling and Inspection Gages (Split Ring)"
         Me.Label107.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -8535,7 +8547,7 @@ Partial Class Process_frmMain
         Me.Label162.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label162.Location = New System.Drawing.Point(20, 38)
         Me.Label162.Name = "Label162"
-        Me.Label162.Size = New System.Drawing.Size(83, 13)
+        Me.Label162.Size = New System.Drawing.Size(82, 13)
         Me.Label162.TabIndex = 766
         Me.Label162.Text = "Compress To"
         Me.Label162.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -8735,7 +8747,7 @@ Partial Class Process_frmMain
         Me.Label173.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label173.Location = New System.Drawing.Point(20, 38)
         Me.Label173.Name = "Label173"
-        Me.Label173.Size = New System.Drawing.Size(83, 13)
+        Me.Label173.Size = New System.Drawing.Size(82, 13)
         Me.Label173.TabIndex = 789
         Me.Label173.Text = "Compress To"
         Me.Label173.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -8935,7 +8947,7 @@ Partial Class Process_frmMain
         Me.Label86.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label86.Location = New System.Drawing.Point(20, 38)
         Me.Label86.Name = "Label86"
-        Me.Label86.Size = New System.Drawing.Size(83, 13)
+        Me.Label86.Size = New System.Drawing.Size(82, 13)
         Me.Label86.TabIndex = 814
         Me.Label86.Text = "Compress To"
         Me.Label86.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -9772,30 +9784,18 @@ Partial Class Process_frmMain
         Me.TabViewToolStripMenuItem.Enabled = False
         Me.TabViewToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TabViewToolStripMenuItem.Name = "TabViewToolStripMenuItem"
-        Me.TabViewToolStripMenuItem.Size = New System.Drawing.Size(76, 20)
+        Me.TabViewToolStripMenuItem.Size = New System.Drawing.Size(75, 20)
         Me.TabViewToolStripMenuItem.Text = "Tab View"
         '
         'openFileDialog1
         '
         Me.openFileDialog1.FileName = "OpenFileDialog1"
         '
-        'cmdSealPart
-        '
-        Me.cmdSealPart.BackColor = System.Drawing.Color.Silver
-        Me.cmdSealPart.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdSealPart.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdSealPart.Location = New System.Drawing.Point(41, 810)
-        Me.cmdSealPart.Name = "cmdSealPart"
-        Me.cmdSealPart.Size = New System.Drawing.Size(90, 30)
-        Me.cmdSealPart.TabIndex = 687
-        Me.cmdSealPart.Text = "Seal Part"
-        Me.cmdSealPart.UseVisualStyleBackColor = False
-        '
         'Process_frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1114, 672)
+        Me.ClientSize = New System.Drawing.Size(1114, 671)
         Me.ControlBox = False
         Me.Controls.Add(Me.pnlPanel1)
         Me.Controls.Add(Me.lblBorder)
