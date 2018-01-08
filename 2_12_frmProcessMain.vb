@@ -2,9 +2,9 @@
 '                                                                              '
 '                          SOFTWARE  :  "SealProcess"                          '
 '                      FORM MODULE   :  Process_frmMain                        '
-'                        VERSION NO  :  1.1                                    '
+'                        VERSION NO  :  1.2                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  05JAN18                                '
+'                     LAST MODIFIED  :  08JAN18                                '
 '                                                                              '
 '===============================================================================
 Imports System.Globalization
@@ -606,8 +606,7 @@ Public Class Process_frmMain
 
     End Sub
 
-
-    Private Sub RetrieveFromDB()
+	Private Sub RetrieveFromDB()
         '=======================
         mProcess_Project.RetrieveFromDB(mPNID, mRevID)
         mProcess_Project.CustContact.RetrieveFromDB(mProcess_Project.ID)
@@ -619,15 +618,15 @@ Public Class Process_frmMain
         mProcess_Project.Design.RetrieveFromDB(mProcess_Project.ID)
         mProcess_Project.Manf.RetrieveFromDB(mProcess_Project.ID)
         mProcess_Project.Purchase.RetrieveFromDB(mProcess_Project.ID)
-        ''mProcess_Project.Qlty.RetrieveFromDB(mProcess_Project.ID)
-        ''mProcess_Project.Dwg.RetrieveFromDB(mProcess_Project.ID)
-        ''mProcess_Project.Test.RetrieveFromDB(mProcess_Project.ID)
-        ''mProcess_Project.Planning.RetrieveFromDB(mProcess_Project.ID)
-        ''mProcess_Project.Shipping.RetrieveFromDB(mProcess_Project.ID)
+		mProcess_Project.Qlty.RetrieveFromDB(mProcess_Project.ID)
+		mProcess_Project.Dwg.RetrieveFromDB(mProcess_Project.ID)
+		mProcess_Project.Test.RetrieveFromDB(mProcess_Project.ID)
+		''mProcess_Project.Planning.RetrieveFromDB(mProcess_Project.ID)
+		mProcess_Project.Shipping.RetrieveFromDB(mProcess_Project.ID)
 
-        ''mProcess_Project.IssueCommnt.RetrieveFromDB(mProcess_Project.ID)
-        ''mProcess_Project.Approval.RetrieveFromDB(mProcess_Project.ID)
-    End Sub
+		''mProcess_Project.IssueCommnt.RetrieveFromDB(mProcess_Project.ID)
+		''mProcess_Project.Approval.RetrieveFromDB(mProcess_Project.ID)
+	End Sub
 
     Private Sub InitializeControls()
         '===========================
@@ -2098,8 +2097,8 @@ Public Class Process_frmMain
                 grdDrawing_Needed.Rows(j).Cells(2).Value = .Needed.Status(j)
 
                 If (Math.Abs(.Needed.LeadTime(j)) > gcEPS) Then
-                    grdDrawing_Needed.Rows(j).Cells(3).Value = .Needed.LeadTime
-                Else
+					grdDrawing_Needed.Rows(j).Cells(3).Value = .Needed.LeadTime(j)
+				Else
                     grdDrawing_Needed.Rows(j).Cells(3).Value = ""
                 End If
             Next
@@ -2171,1599 +2170,1606 @@ Public Class Process_frmMain
             cmbTest_QtyPost_Leak.Text = .Leak.Qty_Plated
 
             cmbTest_FreqPre_Leak.Text = .Leak.Freq_Unplated
-            cmbTest_FreqPre_Leak.Text = .Leak.Freq_Plated
-
-            '...Load
-            If (Math.Abs(.Load.Compress_Unplated) > gcEPS) Then
-                txtTest_CompressPre_Load.Text = .Load.Compress_Unplated.ToString("##0.000")
-            Else
-                txtTest_CompressPre_Load.Text = ""
-            End If
-
-            If (Math.Abs(.Load.Compress_Plated) > gcEPS) Then
-                txtTest_CompressPost_Load.Text = .Load.Compress_Plated.ToString("##0.000")
-            Else
-                txtTest_CompressPost_Load.Text = ""
-            End If
-
-            If (Math.Abs(.Load.Max_Unplated) > gcEPS) Then
-                txtTest_ReqPre_Load.Text = .Load.Max_Unplated.ToString("##0.000")
-            Else
-                txtTest_ReqPre_Load.Text = ""
-            End If
-
-            If (Math.Abs(.Load.Max_Plated) > gcEPS) Then
-                txtTest_ReqPost_Load.Text = .Load.Max_Plated.ToString("##0.000")
-            Else
-                txtTest_ReqPost_Load.Text = ""
-            End If
-
-            cmbTest_QtyPre_Load.Text = .Load.Qty_Unplated
-            cmbTest_QtyPost_Load.Text = .Load.Qty_Plated
-
-            cmbTest_FreqPre_Load.Text = .Load.Freq_Unplated
-            cmbTest_FreqPre_Load.Text = .Load.Freq_Plated
-
-            '....SpringBack
-            If (Math.Abs(.SpringBack.Compress_Unplated) > gcEPS) Then
-                txtTest_CompressPre_SpringBack.Text = .SpringBack.Compress_Unplated.ToString("##0.000")
-            Else
-                txtTest_CompressPre_SpringBack.Text = ""
-            End If
-
-            If (Math.Abs(.SpringBack.Compress_Plated) > gcEPS) Then
-                txtTest_CompressPost_SpringBack.Text = .SpringBack.Compress_Plated.ToString("##0.000")
-            Else
-                txtTest_CompressPost_SpringBack.Text = ""
-            End If
-
-            If (Math.Abs(.SpringBack.Max_Unplated) > gcEPS) Then
-                txtTest_ReqPre_SpringBack.Text = .SpringBack.Max_Unplated.ToString("##0.000")
-            Else
-                txtTest_ReqPre_SpringBack.Text = ""
-            End If
-
-            If (Math.Abs(.SpringBack.Max_Plated) > gcEPS) Then
-                txtTest_ReqPost_SpringBack.Text = .SpringBack.Max_Plated.ToString("##0.000")
-            Else
-                txtTest_ReqPost_SpringBack.Text = ""
-            End If
-
-            cmbTest_QtyPre_SpringBack.Text = .SpringBack.Qty_Unplated
-            cmbTest_QtyPost_SpringBack.Text = .SpringBack.Qty_Plated
-
-            cmbTest_FreqPre_SpringBack.Text = .SpringBack.Freq_Unplated
-            cmbTest_FreqPre_SpringBack.Text = .SpringBack.Freq_Plated
-
-        End With
-
-        '....Planning
-        ''With mProcess_Project.Planning
-
-        ''    For j As Integer = 0 To .SplOperation.ID_SplOperation.Count - 1
-        ''        grdPlanning_Ordered.Rows.Add()
-        ''        grdPlanning_Ordered.Rows(j).Cells(0).Value = .SplOperation.Desc(j)
-
-        ''        If (Math.Abs(.SplOperation.LeadTimeStart(j)) > gcEPS) Then
-        ''            grdPlanning_Ordered.Rows(j).Cells(1).Value = .SplOperation.LeadTimeStart(j)
-        ''        Else
-        ''            grdPlanning_Ordered.Rows(j).Cells(1).Value = ""
-        ''        End If
-        ''    Next
-
-        ''    grdPlanning_Ordered.AllowUserToAddRows = False
-
-        ''    For j As Integer = 0 To .MileOperation.ID_MileOperation.Count - 1
-        ''        grdPlanning_MileStoneOperation.Rows.Add()
-        ''        grdPlanning_MileStoneOperation.Rows(j).Cells(0).Value = .MileOperation.Name(j)
-
-        ''        If (Math.Abs(.MileOperation.LeadTime(j)) > gcEPS) Then
-        ''            grdPlanning_MileStoneOperation.Rows(j).Cells(1).Value = .MileOperation.LeadTime(j)
-        ''        Else
-        ''            grdPlanning_MileStoneOperation.Rows(j).Cells(1).Value = ""
-        ''        End If
-        ''    Next
-
-        ''    lstPlanning_Notes_Dim.Items.Clear()
-        ''    For i As Integer = 0 To mProcess_Project.Cost.SplOperation.ID_Cost.Count - 1
-        ''        Dim pName As String = mProcess_Project.Cost.SplOperation.Desc(i)
-
-        ''        Dim pFlag As Boolean = False
-        ''        For j As Integer = 0 To .SplOperation.ID_SplOperation.Count - 1
-        ''            If (pName = .SplOperation.Desc(j)) Then
-        ''                pFlag = True
-        ''                Exit For
-        ''            End If
-        ''        Next
-        ''        If (Not pFlag) Then
-        ''            lstPlanning_Notes_Dim.Items.Add(pName)
-        ''        End If
-        ''    Next
-
-        ''    txtPlanning_Notes.Text = .Notes
-
-        ''End With
-
-        '....Shipping
-        With mProcess_Project.Shipping
-
-            For i As Integer = 0 To mProcess_Project.Design.CustSpec.ID_Cust.Count - 1
-                grdShipping_CustSpec.Rows.Add()
-                grdShipping_CustSpec.Rows(i).Cells(0).Value = mProcess_Project.Design.CustSpec.Desc(i)
-                grdShipping_CustSpec.Rows(i).Cells(1).Value = mProcess_Project.Design.CustSpec.Interpret(i)
-            Next
-            grdShipping_CustSpec.AllowUserToAddRows = False
-            grpCustSpec_Shipping.Enabled = False
-            txtShipping_Notes.Text = .Notes
-        End With
-
-
-        '....IssueComment
-        With mProcess_Project.IssueCommnt
-            Dim pCI As New CultureInfo("en-US")
-            For i As Integer = 0 To .SN.Count - 1
-
-                grdIssueComment.Rows.Add()
-                'grdIssueComment.Rows(i).Cells(0).Value = .SlNo(i)
-                grdIssueComment.Rows(i).Cells(0).Value = .Comment(i)
-                grdIssueComment.Rows(i).Cells(1).Value = .ByDept(i)
-                grdIssueComment.Rows(i).Cells(2).Value = .ByName(i)
-                grdIssueComment.Rows(i).Cells(3).Value = .ByDate(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                grdIssueComment.Rows(i).Cells(4).Value = .ToDept(i)
-                'grdIssueComment.Rows(i).Cells(6).Value = .Resolved(i)
-
-                If (.Resolved(i)) Then
-                    grdIssueComment.Rows(i).Cells(5).Value = "Y"
-                    grdIssueComment.Rows(i).Cells(6).Value = .Name(i)
-                    grdIssueComment.Rows(i).Cells(7).Value = .DateResolution(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-
-                    grdIssueComment.Rows(i).Cells(8).Value = .Resolution(i)
-                Else
-                    grdIssueComment.Rows(i).Cells(5).Value = "N"
-                    grdIssueComment.Rows(i).Cells(6).Value = .Name(i)
-                    grdIssueComment.Rows(i).Cells(7).Value = ""
-
-                    grdIssueComment.Rows(i).Cells(8).Value = .Resolution(i)
-                End If
-
-            Next
-        End With
-
-
-        '....Attendies
-        With mProcess_Project.Approval
-
-            For j As Integer = 0 To .SN.Count - 1
-                grdApproval_Attendees.Rows(j).Cells(1).Value = .Name(j)
-                grdApproval_Attendees.Rows(j).Cells(2).Value = .Title(j)
-                grdApproval_Attendees.Rows(j).Cells(3).Value = .Signed(j)
-
-                If (.Signed(j)) Then
-                    Dim pCI As New CultureInfo("en-US")
-                    grdApproval_Attendees.Rows(j).Cells(4).Value = .DateSigned(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                Else
-                    grdApproval_Attendees.Rows(j).Cells(4).Value = ""
-                End If
-
-            Next
-
-        End With
-
-
-
-        ' ''....Hard Coded
-        ''cmbApp_InsertLoc.SelectedIndex = 0
-        ''cmbApp_Face_POrient.SelectedIndex = 1
-        ''tbApp.Controls.Remove(tbpAxial)
-
-        ''cmbApp_PressCycle.SelectedIndex = 1
-        ''cmbApp_Shaped.SelectedIndex = 1
-        ''cmbApp_OutOfRound.SelectedIndex = 1
-        ''cmbApp_SplitRing.SelectedIndex = 1
-        ''cmbApp_PreComp.SelectedIndex = 1
-
-        ''grdApp_Face_Cavity.Rows.Add()
-        ''grdApp_Face_Cavity.Rows.Add()
-        ''grdApp_Face_Cavity.Rows.Add()
-        ' ''grdApp_Face_Cavity.Rows.Add()
-        ' ''grdApp_Face_Cavity.Rows.Add()
-        ''grdApp_Face_Cavity.Rows(0).Cells(0).Value = "Depth"
-        ''grdApp_Face_Cavity.Rows(0).Cells(1).Value = "0.0500"
-        ''grdApp_Face_Cavity.Rows(0).Cells(2).Value = "0.0540"
-        ''grdApp_Face_Cavity.Rows(0).Cells(3).Value = "0.0500"
-        ''grdApp_Face_Cavity.Rows(0).Cells(4).Value = "0.0540"
-
-        ' ''grdApp_Face_Cavity.Rows(1).Cells(0).Value = "Axial L"
-        ' ''grdApp_Face_Cavity.Rows(1).Cells(1).Value = ""
-        ' ''grdApp_Face_Cavity.Rows(1).Cells(2).Value = ""
-        ' ''grdApp_Face_Cavity.Rows(1).Cells(3).Value = ""
-        ' ''grdApp_Face_Cavity.Rows(1).Cells(4).Value = ""
-        ' ''grdApp_Face_Cavity.Rows.Add()
-        ''grdApp_Face_Cavity.Rows(1).Cells(0).Value = "Radial Wid"
-        ''grdApp_Face_Cavity.Rows(1).Cells(1).Value = "0.0000"
-        ''grdApp_Face_Cavity.Rows(1).Cells(2).Value = "0.0750"
-        ''grdApp_Face_Cavity.Rows(1).Cells(3).Value = "0.0750"
-        ''grdApp_Face_Cavity.Rows(1).Cells(4).Value = "0.0750"
-        ' ''grdApp_Face_Cavity.Rows.Add()
-        ''grdApp_Face_Cavity.Rows(2).Cells(0).Value = "ID"
-        ''grdApp_Face_Cavity.Rows(2).Cells(1).Value = "0.6995"
-        ''grdApp_Face_Cavity.Rows(2).Cells(2).Value = "0.7030"
-        ''grdApp_Face_Cavity.Rows(2).Cells(3).Value = "0.6995"
-        ''grdApp_Face_Cavity.Rows(2).Cells(4).Value = "0.7030"
-        ' ''grdApp_Face_Cavity.Rows.Add()
-        ' ''grdApp_Face_Cavity.Rows(4).Cells(0).Value = "OD"
-        ' ''grdApp_Face_Cavity.Rows(4).Cells(1).Value = ""
-        ' ''grdApp_Face_Cavity.Rows(4).Cells(2).Value = ""
-        ' ''grdApp_Face_Cavity.Rows(4).Cells(3).Value = ""
-        ' ''grdApp_Face_Cavity.Rows(4).Cells(4).Value = ""
-        ' ''grdApp_Face_Cavity.Rows.Add()
-        ''grdApp_Face_Cavity.Rows(3).Cells(0).Value = "Corner Radius"
-        ''grdApp_Face_Cavity.Rows(3).Cells(1).Value = "0.0000"
-        ''grdApp_Face_Cavity.Rows(3).Cells(2).Value = "0.0150"
-        ''grdApp_Face_Cavity.Rows(3).Cells(3).Value = "0.0150"
-        ''grdApp_Face_Cavity.Rows(3).Cells(4).Value = "0.0150"
-
-        ''cmbDesign_BuildToPrint.SelectedIndex = 1
-        ''cmbDesign_Frozen.SelectedIndex = 0
-        ''cmbDesign_Process.SelectedIndex = 0
-        ''cmbDesign_Class1.SelectedIndex = 1
-        ''cmbDwg_DesignLevel.SelectedIndex = 3
-        ''cmbDesign_VerfyType.SelectedIndex = 2
-        ''cmbDesign_PerformedBy.Text = "RDiM"
-        ''cmbDesign_Winnovation.SelectedIndex = 1
-        ''txtDesign_WinnovationNo.Enabled = False
-        ''cmbDesign_Mat_Seal.SelectedIndex = 0
-        ''cmbDesign_Mat_Spring.Enabled = False
-        ''cmbDesign_TemperType.SelectedIndex = 4
-        ''GroupBox49.Enabled = False
-        ''chkDesign_Plating.Checked = True
-        ''cmbDesign_PlatingCode.SelectedIndex = 13
-        ''cmbDesign_PlatingThickCode.SelectedIndex = 2
-        ''cmbDesign_OutsideVendor.SelectedIndex = 1
-
-        ''grdDesign_Input.Rows.Add()
-        ''grdDesign_Input.Rows(0).Cells(0).Value = "Catalog equivalent."
-        ''grdDesign_Input.Rows(1).Cells(0).Value = "Ref NH-761188"
-
-        ''grdDesign_CustSpec.Rows.Add()
-        ''grdDesign_CustSpec.Rows.Add()
-        ''grdDesign_CustSpec.Rows.Add()
-        ''grdDesign_CustSpec.Rows.Add()
-        ''grdDesign_CustSpec.Rows.Add()
-        ''grdDesign_CustSpec.Rows.Add()
-
-        ''grdDesign_CustSpec.Rows(0).Cells(0).Value = "Quality"
-        ''grdDesign_CustSpec.Rows(0).Cells(1).Value = "CERTIFICATE OF COMPLIANCE"
-        ''grdDesign_CustSpec.Rows(1).Cells(0).Value = "Quality"
-        ''grdDesign_CustSpec.Rows(1).Cells(1).Value = "MATERIAL CERTIFICATIONS INCLUDING HARDNESS AND SOURCE  PER SKOFLO SPEC-11138"
-        ''grdDesign_CustSpec.Rows(2).Cells(0).Value = "Quality"
-        ''grdDesign_CustSpec.Rows(2).Cells(1).Value = "HARDNESS REPORT AFTER NACE HEAT TREAT PER T1."
-
-        ''grdDesign_CustSpec.Rows(3).Cells(0).Value = "Design"
-        ''grdDesign_CustSpec.Rows(3).Cells(1).Value = "AMS 5596 (UNS N07718)."
-        ''grdDesign_CustSpec.Rows(4).Cells(0).Value = "Design"
-        ''grdDesign_CustSpec.Rows(4).Cells(1).Value = "SKOFLO SPEC-11138 (MATERIAL ORIGIN REQUIREMENTS.)"
-        ''grdDesign_CustSpec.Rows(5).Cells(0).Value = "Design"
-        ''grdDesign_CustSpec.Rows(5).Cells(1).Value = "ALL MATERIALS MUST MEET SKOFLO SPEC-11138 SOURCING REQUIREMENTS."
-        ''grdDesign_CustSpec.Rows(6).Cells(0).Value = "Design"
-        ''grdDesign_CustSpec.Rows(6).Cells(1).Value = "WELDING PRIOR TO FORMING PERMITTED PER GOOD COMMERCIAL PRACTICE.  NO FILLER USED."
-
-        ''chkLegacyRef_Dim.Checked = True
-        ''grdPurchase_Mat.Rows(0).Cells(0).Value = "701-006-124-14"
-        ''grdPurchase_Mat.Rows(0).Cells(2).Value = "Inventory"
-
-        ''txtManf_HT.Text = 40
-        ''grdDrawing_Needed.Rows.Add()
-        ''grdDrawing_Needed.Rows(0).Cells(0).Value = "NH-761273"
-        ''grdDrawing_Needed.Rows(0).Cells(1).Value = "Cust dwg"
-        ''grdDrawing_Needed.Rows(0).Cells(2).Value = "Inventory"
-
-        ''grdDrawing_Needed.Rows(1).Cells(0).Value = "NH-761273F"
-        ''grdDrawing_Needed.Rows(1).Cells(1).Value = "Fab dwg"
-        ''grdDrawing_Needed.Rows(1).Cells(2).Value = "Inventory"
-
-        ''grdManf_ToolNGage.Rows.Add()
-        ''grdManf_ToolNGage.Rows(0).Cells(0).Value = "062-006-124-SF-.500"
-        ''grdManf_ToolNGage.Rows(0).Cells(1).Value = "Roll tooling"
-        ''grdManf_ToolNGage.Rows(0).Cells(2).Value = "C-Ring"
-        ''grdManf_ToolNGage.Rows(0).Cells(3).Value = "Inventory"
-        ''grdManf_ToolNGage.Rows(1).Cells(0).Value = "TECE-711-062"
-        ''grdManf_ToolNGage.Rows(1).Cells(1).Value = "Die"
-        ''grdManf_ToolNGage.Rows(1).Cells(2).Value = "Std"
-        ''grdManf_ToolNGage.Rows(1).Cells(3).Value = "Inventory"
-
-        ''grdDesign_Seal.Rows.Add()
-        ''grdDesign_Seal.Rows.Add()
-        ''grdDesign_Seal.Rows.Add()
-        ''grdDesign_Seal.Rows(0).Cells(0).Value = "ID"
-        ''grdDesign_Seal.Rows(0).Cells(1).Value = "0.7110"
-        ''grdDesign_Seal.Rows(0).Cells(2).Value = "0.7135"
-        ''grdDesign_Seal.Rows(0).Cells(3).Value = "0.7160"
-
-        ''grdDesign_Seal.Rows(1).Cells(0).Value = "Radial Wid"
-        ''grdDesign_Seal.Rows(1).Cells(1).Value = "0.0000"
-        ''grdDesign_Seal.Rows(1).Cells(2).Value = "0.0250"
-        ''grdDesign_Seal.Rows(1).Cells(3).Value = "0.0500"
-
-        ''grdDesign_Seal.Rows(2).Cells(0).Value = "FH"
-        ''grdDesign_Seal.Rows(2).Cells(1).Value = "0.0600"
-        ''grdDesign_Seal.Rows(2).Cells(2).Value = "0.0620"
-        ''grdDesign_Seal.Rows(2).Cells(3).Value = "0.0640"
-
-        ''grdDesign_Seal.Rows(3).Cells(0).Value = "Roundness"
-        ''grdDesign_Seal.Rows(3).Cells(1).Value = "0.0000"
-        ''grdDesign_Seal.Rows(3).Cells(2).Value = "0.0100"
-        ''grdDesign_Seal.Rows(3).Cells(3).Value = "0.0200"
-
-        ''cmbQuality_ApprovedSupplier.SelectedIndex = 1
-        ''cmbQuality_TNG.SelectedIndex = 1
-        ''cmbQuality_CustComplaint.SelectedIndex = 1
-        ''cmbQuality_SPC.SelectedIndex = 1
-        ''cmbQuality_GageRnR_Reqd.SelectedIndex = 1
-        ''cmbQuality_VisualInspection.SelectedIndex = 1
-        ''cmbQuality_CustAcceptStd.Text = "HARDNESS TEST FOR NACE COMPLIANCE.  C OF C, MATL CERTS"
-
-        ''grdApproval_Attendees.Rows.Add()
-        ''grdApproval_Attendees.Rows.Add()
-        ''grdApproval_Attendees.Rows.Add()
-        ''grdApproval_Attendees.Rows.Add()
-        ''grdApproval_Attendees.Rows.Add()
-        ''grdApproval_Attendees.Rows.Add()
-        ''grdApproval_Attendees.Rows.Add()
-
-        ''grdApproval_Attendees.Rows(0).Cells(0).Value = "Engineering"
-        ''grdApproval_Attendees.Rows(0).Cells(1).Value = "Nick Lasewicz"
-        ''grdApproval_Attendees.Rows(0).Cells(2).Value = "Engineer"
-        ''grdApproval_Attendees.Rows(0).Cells(3).Value = True
-        ''grdApproval_Attendees.Rows(0).Cells(4).Value = "10/27/2017"
-
-        ''grdApproval_Attendees.Rows(1).Cells(0).Value = "Marketing"
-        ''grdApproval_Attendees.Rows(1).Cells(1).Value = "Rob DiMilia"
-        ''grdApproval_Attendees.Rows(1).Cells(2).Value = "Market Mgr."
-        ''grdApproval_Attendees.Rows(1).Cells(3).Value = True
-        ''grdApproval_Attendees.Rows(1).Cells(4).Value = "10/27/2017"
-
-        ''grdApproval_Attendees.Rows(2).Cells(0).Value = "Mfg. Eng."
-        ''grdApproval_Attendees.Rows(2).Cells(1).Value = "Tyler Lesco"
-        ''grdApproval_Attendees.Rows(2).Cells(2).Value = "Mfg. Eng."
-        ''grdApproval_Attendees.Rows(2).Cells(3).Value = True
-        ''grdApproval_Attendees.Rows(2).Cells(4).Value = "10/27/2017"
-
-        ''grdApproval_Attendees.Rows(3).Cells(0).Value = "Quality"
-        ''grdApproval_Attendees.Rows(3).Cells(1).Value = "Jim Devine"
-        ''grdApproval_Attendees.Rows(3).Cells(2).Value = "QA Manager"
-        ''grdApproval_Attendees.Rows(3).Cells(3).Value = True
-        ''grdApproval_Attendees.Rows(3).Cells(4).Value = "10/27/2017"
-
-        ''grdApproval_Attendees.Rows(4).Cells(0).Value = "Planning"
-        ''grdApproval_Attendees.Rows(4).Cells(1).Value = "John D'Eugenio"
-        ''grdApproval_Attendees.Rows(4).Cells(2).Value = "Prod. Planner"
-        ''grdApproval_Attendees.Rows(4).Cells(3).Value = True
-        ''grdApproval_Attendees.Rows(4).Cells(4).Value = "10/27/2017"
-
-        ''grdApproval_Attendees.Rows(5).Cells(0).Value = "Purchasing"
-        ''grdApproval_Attendees.Rows(5).Cells(1).Value = "Paul Hollman"
-        ''grdApproval_Attendees.Rows(5).Cells(2).Value = "Purchasing"
-        ''grdApproval_Attendees.Rows(5).Cells(3).Value = True
-        ''grdApproval_Attendees.Rows(5).Cells(4).Value = "10/27/2017"
-
-        ''grdApproval_Attendees.Rows(6).Cells(0).Value = "Customer Service"
-        ''grdApproval_Attendees.Rows(6).Cells(1).Value = "Denise Kaliszewski"
-        ''grdApproval_Attendees.Rows(6).Cells(2).Value = "Cust. Serv. Supervisor"
-        ''grdApproval_Attendees.Rows(6).Cells(3).Value = True
-        ''grdApproval_Attendees.Rows(6).Cells(4).Value = "10/27/2017"
-
-        ''grdApproval_Attendees.Rows(7).Cells(0).Value = "Meeting Chair"
-        ''grdApproval_Attendees.Rows(7).Cells(1).Value = "Alicia Sorban"
-        ''grdApproval_Attendees.Rows(7).Cells(2).Value = "Eng. Spec."
-        ''grdApproval_Attendees.Rows(7).Cells(3).Value = True
-        ''grdApproval_Attendees.Rows(7).Cells(4).Value = "10/27/2017"
-
-
-    End Sub
-
-
-    Private Sub PopulateCmbSFinish()
-        '===========================  
-        '....This routine populates the Surface Finish combo box. (Database Driven).
-        Dim pSealMCSEntity As New SealIPEMCSDBEntities()
-        Dim pRecordLeak = (From it In pSealMCSEntity.tblESeal_Leak_T800
-                                    Select it.fldSFinish Distinct).ToList()
-
-        cmbSFinish.Items.Clear()
-        Dim pRecord As New tblESeal_Leak_T800
-
-        If (pRecordLeak.Count > 0) Then
-            For i As Integer = 0 To pRecordLeak.Count - 1
-                cmbSFinish.Items.Add(pRecordLeak(i))
-            Next
-        End If
-
-        cmbSFinish.SelectedIndex = 0
-    End Sub
-
-
-    Private Sub SaveData()
-        '==================
-        With mProcess_Project
-            .POPCoding = cmbPopCoding.Text
-
-            .Rating = cmbRating.Text
-            .Type = cmbType.Text
-
-            If (txtStartDate.Text <> "") Then
-                If (txtStartDate.Text <> DateTime.MinValue) Then
-                    .DateOpen = Convert.ToDateTime(txtStartDate.Text)
-                End If
-
-            End If
-
-            If (txtDateMod.Text <> "") Then
-                If (txtDateMod.Text <> DateTime.MinValue) Then
-                    .DateLastModified = Convert.ToDateTime(txtDateMod.Text)
-                End If
-            End If
-
-            '.CloseDate = = Convert.ToDateTime(txtc.Text)
-            .LastModifiedBy = txtModifiedBy.Text
-
-        End With
-
-        With mProcess_Project.PreOrder
-            .Mgr_PreOrder = cmbMgrPreOrder.Text
-            .Mgr_Sales = txtMgrSales.Text
-
-            If (cmbExport_Reqd.Text = "Y") Then
-                .Export_Reqd = True
-            Else
-                .Export_Reqd = False
-            End If
-
-            .Export_Status = cmbExport_Status.Text
-
-            .Part_Family = cmbPartFamily.Text
-            .Part_Type = cmbPartType.Text
-
-            .PreOrder_Seg = cmbPreOrderSeg.Text
-            .PreOrder_Channel = cmbPreOrderChannel.Text
-            .Notes = txtPreOrderNotes.Text
-
-            .Loc_CostFile = cmbCostFileLoc.Text
-            .Loc_RFQPkg = cmbRFQPkgLoc.Text
-            .Notes_Price = txtPreOrderPriceNotes.Text
-
-            If (chkPreOrderUserSigned.Checked) Then
-                '.User_Name = txtPreOrderUserName.Text
-                .EditedBy.User_Name = txtPreOrderUserName.Text
-                .EditedBy.User_DateSigned = Convert.ToDateTime(txtPreOrderUserDate.Text)
-                .EditedBy.User_Signed = True
-
-            Else
-                .EditedBy.User_Name = ""
-                .EditedBy.User_DateSigned = DateTime.MinValue
-                .EditedBy.User_Signed = False
-            End If
-
-            '....Cust Contact Pre-Order
-            mProcess_Project.CustContact.ID_Cust.Clear()
-            mProcess_Project.CustContact.DeptName.Clear()
-            mProcess_Project.CustContact.Name.Clear()
-            mProcess_Project.CustContact.Phone.Clear()
-            mProcess_Project.CustContact.Email.Clear()
-
-            'grdOrdEntry_CustContact = grdCustContact
-
-            For j As Integer = 0 To grdCustContact.Rows.Count - 2
-                mProcess_Project.CustContact.ID_Cust.Add(j + 1)
-                mProcess_Project.CustContact.DeptName.Add(grdCustContact.Rows(j).Cells(0).Value)
-                mProcess_Project.CustContact.Name.Add(grdCustContact.Rows(j).Cells(1).Value)
-                mProcess_Project.CustContact.Phone.Add(grdCustContact.Rows(j).Cells(2).Value)
-                mProcess_Project.CustContact.Email.Add(grdCustContact.Rows(j).Cells(3).Value)
-            Next
-
-            '....Cust Contact Order-Entry
-            mProcess_Project.CustContact.ID_Cust.Clear()
-            mProcess_Project.CustContact.DeptName.Clear()
-            mProcess_Project.CustContact.Name.Clear()
-            mProcess_Project.CustContact.Phone.Clear()
-            mProcess_Project.CustContact.Email.Clear()
-            For j As Integer = 0 To grdOrdEntry_CustContact.Rows.Count - 2
-                mProcess_Project.CustContact.ID_Cust.Add(j + 1)
-                mProcess_Project.CustContact.DeptName.Add(grdOrdEntry_CustContact.Rows(j).Cells(0).Value)
-                mProcess_Project.CustContact.Name.Add(grdOrdEntry_CustContact.Rows(j).Cells(1).Value)
-                mProcess_Project.CustContact.Phone.Add(grdOrdEntry_CustContact.Rows(j).Cells(2).Value)
-                mProcess_Project.CustContact.Email.Add(grdOrdEntry_CustContact.Rows(j).Cells(3).Value)
-            Next
-
-            '....Quote
-            .Quote.QID.Clear()
-            .Quote.QDate.Clear()
-            .Quote.No.Clear()
-
-            For j As Integer = 0 To grdQuote.Rows.Count - 2
-                .Quote.QID.Add(j + 1)
-                'grdQuote.Rows(j).Cells(0).Value <> "" And 
-                If (Not IsNothing(grdQuote.Rows(j).Cells(0).Value)) Then
-                    .Quote.QDate.Add(grdQuote.Rows(j).Cells(0).Value)
-                Else
-                    .Quote.QDate.Add(DateTime.MinValue)
-                End If
-
-                .Quote.No.Add(grdQuote.Rows(j).Cells(1).Value)
-            Next
-
-            '....Sales Data
-            .SalesData.ID_Sales.Clear()
-            .SalesData.Year.Clear()
-            .SalesData.Qty.Clear()
-            .SalesData.Price.Clear()
-            .SalesData.Total.Clear()
-
-            For j As Integer = 0 To grdPreOrder_SalesData.Rows.Count - 2
-                .SalesData.ID_Sales.Add(j + 1)
-                .SalesData.Year.Add(grdPreOrder_SalesData.Rows(j).Cells(0).Value)
-                .SalesData.Qty.Add(grdPreOrder_SalesData.Rows(j).Cells(1).Value)
-                .SalesData.Price.Add(grdPreOrder_SalesData.Rows(j).Cells(2).Value)
-                .SalesData.Total.Add(grdPreOrder_SalesData.Rows(j).Cells(3).Value)
-            Next
-
-        End With
-
-        '....ITAR_Export
-        With mProcess_Project.ITAR_Export
-            .IsCustOnDenialList = IIf(cmbITAR_Export_CustOnDenialList.Text = "Y", True, False)
-            .CountryProhibited = IIf(cmbITAR_Export_CountryProhibited.Text = "Y", True, False)
-            .HasAntiBoycottLang = IIf(cmbITAR_Export_AntiBoycottLang.Text = "Y", True, False)
-            .IsUnder_ITAR_Reg = IIf(cmbITAR_Export_ProductITAR_Reg.Text = "Y", True, False)
-            .ITAR_Class = txtITAR_Export_ITAR_Classification.Text
-            .SaleExportControlled = IIf(cmbITAR_Export_SaleExportControlled.Text = "Y", True, False)
-            .EAR_Class = txtITAR_Export_EAR_Classification.Text
-            .Status = cmbITAR_Export_Status.Text
-            .HTS_Class = txtITAR_Export_HTS_Classification.Text
-
-            If (chkITAR_Export_UserSigned.Checked) Then
-                .EditedBy.User_Name = txtITAR_Export_UserName.Text
-                .EditedBy.User_DateSigned = Convert.ToDateTime(txtITAR_Export_UserDate.Text)
-                .EditedBy.User_Signed = True
-
-            Else
-                .EditedBy.User_Name = ""
-                .EditedBy.User_DateSigned = DateTime.MinValue
-                .EditedBy.User_Signed = False
-            End If
-        End With
-
-        '....OrderEntrty
-        With mProcess_Project.OrdEntry
-            .SalesOrderNo = txtOrdEntry_SalesOrderNo.Text
-            If (txtOrdEntry_SalesDate.Text <> "") Then
-                .DateSales = Convert.ToDateTime(txtOrdEntry_SalesDate.Text)
-            End If
-
-            If (txtOrderEntry_QtdLeadTime.Text <> "") Then
-                .LeadTimeQuoted = Convert.ToDouble(txtOrderEntry_QtdLeadTime.Text)
-            End If
-
-            .PONo = txtOrdEntry_PONo.Text
-            If (txtOrdEntry_PODate.Text <> "") Then
-                .DatePO = Convert.ToDateTime(txtOrdEntry_PODate.Text)
-            End If
-
-            If (txtOrdEntry_PODate_EDI.Text <> "") Then
-                .DatePO_EDI = Convert.ToDateTime(txtOrdEntry_PODate_EDI.Text)
-            End If
-
-            .HasSplReq = IIf(cmbOrdEntry_SpecialReq.Text = "Y", True, False)
-            .Tool_Reqd = IIf(cmbOrdEntry_Tooling.Text = "Y", True, False)
-            .SplPkg_Lbl_Reqd = IIf(cmbOrdEntry_SplPkgNLbl.Text = "Y", True, False)
-            If (txtOrdEntry_OrderQty.Text <> "") Then
-                .OrdQty = Convert.ToInt16(txtOrdEntry_OrderQty.Text)
-            End If
-
-            If (txtOrdEntry_OrderShipDate.Text <> "") Then
-                .DateOrdShip = Convert.ToDateTime(txtOrdEntry_OrderShipDate.Text)
-            End If
-
-            .Expedited = IIf(cmbOrdEntry_Expedited.Text = "Y", True, False)
-            .IsDFAR = IIf(cmbOrdEntry_DFAR.Text = "Y", True, False)
-
-            If (chkOrdEntry_UserSigned.Checked) Then
-                .EditedBy.User_Name = txtOrdEntry_UserName.Text
-                .EditedBy.User_DateSigned = Convert.ToDateTime(txtOrdEntry_UserDate.Text)
-                .EditedBy.User_Signed = True
-
-            Else
-                .EditedBy.User_Name = ""
-                .EditedBy.User_DateSigned = DateTime.MinValue
-                .EditedBy.User_Signed = False
-            End If
-
-        End With
-
-        '....Cost
-        With mProcess_Project.Cost
-            .QuoteFileLoc = cmbCost_QuoteFile.Text
-            .Notes = txtCost_Notes.Text
-
-            'If (grdQuality_SplOperation.Rows.Count > 1) Then
-            '    grdCost_SplOperation = grdQuality_SplOperation
-            'End If
-
-            .SplOperation.ID_SplOp.Clear()
-            .SplOperation.Desc.Clear()
-            .SplOperation.Spec.Clear()
-            .SplOperation.LeadTime.Clear()
-            .SplOperation.Cost.Clear()
-
-            For j As Integer = 0 To grdCost_SplOperation.Rows.Count - 2
-                .SplOperation.ID_SplOp.Add(j + 1)
-                .SplOperation.Desc.Add(grdCost_SplOperation.Rows(j).Cells(0).Value)
-                .SplOperation.Spec.Add(grdCost_SplOperation.Rows(j).Cells(1).Value)
-
-                If (Not IsNothing(grdCost_SplOperation.Rows(j).Cells(2).Value)) Then
-                    If (grdCost_SplOperation.Rows(j).Cells(2).Value.ToString() <> "") Then
-                        .SplOperation.LeadTime.Add(grdCost_SplOperation.Rows(j).Cells(2).Value)
-                    Else
-                        .SplOperation.LeadTime.Add(0)
-                    End If
-
-                Else
-                    .SplOperation.LeadTime.Add(0)
-                End If
-
-                If (Not IsNothing(grdCost_SplOperation.Rows(j).Cells(3).Value)) Then
-                    If (grdCost_SplOperation.Rows(j).Cells(3).Value.ToString() <> "") Then
-                        .SplOperation.Cost.Add(grdCost_SplOperation.Rows(j).Cells(3).Value)
-                    Else
-                        .SplOperation.Cost.Add(0)
-                    End If
-
-                Else
-                    .SplOperation.Cost.Add(0)
-                End If
-
-                '.SplOperation.LeadTime.Add(grdCost_SplOperation.Rows(j).Cells(2).Value)
-                '.SplOperation.Cost.Add(grdCost_SplOperation.Rows(j).Cells(3).Value)
-            Next
-
-            ''....Spl Operation
-            'grdCost_SplOperation.Rows.Clear()
-            'For j As Integer = 0 To .SplOperation.Desc.Count - 1
-            '    grdCost_SplOperation.Rows.Add()
-            '    grdCost_SplOperation.Rows(j).Cells(0).Value = .SplOperation.Desc(j)
-            '    grdCost_SplOperation.Rows(j).Cells(1).Value = .SplOperation.Spec(j)
-            '    If (Math.Abs(.SplOperation.LeadTime(j)) > gcEPS) Then
-            '        grdCost_SplOperation.Rows(j).Cells(2).Value = .SplOperation.LeadTime(j)
-            '    Else
-            '        grdCost_SplOperation.Rows(j).Cells(2).Value = ""
-            '    End If
-
-            '    If (Math.Abs(.SplOperation.Cost(j)) > gcEPS) Then
-            '        grdCost_SplOperation.Rows(j).Cells(3).Value = .SplOperation.Cost(j).ToString("#.00")
-            '    Else
-            '        grdCost_SplOperation.Rows(j).Cells(3).Value = ""
-            '    End If
-            'Next
-            'grdCost_SplOperation.Refresh()
-            'TabControl1.Refresh()
-
-            If (chkCost_UserSigned.Checked) Then
-                .EditedBy.User_Name = txtCost_UserName.Text
-                .EditedBy.User_DateSigned = Convert.ToDateTime(txtCost_UserDate.Text)
-                .EditedBy.User_Signed = True
-
-            Else
-                .EditedBy.User_Name = ""
-                .EditedBy.User_DateSigned = DateTime.MinValue
-                .EditedBy.User_Signed = False
-            End If
-
-        End With
-
-        '....App
-        With mProcess_Project.App
-            .Eqp = txtApp_Equip.Text
-            .ExistingSeal = txtApp_ExistingSeal.Text
-            .Type = cmbApp_InsertLoc.Text
-
-            .Fluid = txtApp_Fluid.Text
-            If (txtApp_MaxLeak.Text <> "") Then
-                .MaxLeak = Convert.ToDouble(txtApp_MaxLeak.Text)
-            End If
-
-
-            .IsPressCyclic = IIf(cmbApp_PressCycle.Text = "Y", True, False)
-
-            If (.IsPressCyclic) Then
-                If (txtApp_PressCycleFreq.Text <> "") Then
-                    .PressCycle_Freq = Convert.ToDouble(txtApp_PressCycleFreq.Text)
-                End If
-
-                If (txtApp_PressCycleAmp.Text <> "") Then
-                    .PressCycle_Amp = Convert.ToDouble(txtApp_PressCycleAmp.Text)
-                End If
-            Else
-                .PressCycle_Freq = 0
-                .PressCycle_Amp = 0
-            End If
-
-            .Shaped = IIf(cmbApp_Shaped.Text = "Y", True, False)
-            .IsOoR = IIf(cmbApp_OutOfRound.Text = "Y", True, False)
-            .IsSplitRing = IIf(cmbApp_SplitRing.Text = "Y", True, False)
-            .IsPreComp = IIf(cmbApp_PreComp.Text = "Y", True, False)
-
-            If (Not IsNothing(grdApp_OpCond.Rows(0).Cells(1).Value) And grdApp_OpCond.Rows(0).Cells(1).Value <> "") Then
-                .OpCond.T_Assy = Convert.ToDouble(grdApp_OpCond.Rows(0).Cells(1).Value)
-            End If
-
-            If (Not IsNothing(grdApp_OpCond.Rows(0).Cells(2).Value) And grdApp_OpCond.Rows(0).Cells(2).Value <> "") Then
-                .OpCond.T_Min = Convert.ToDouble(grdApp_OpCond.Rows(0).Cells(2).Value)
-            End If
-
-            If (Not IsNothing(grdApp_OpCond.Rows(0).Cells(3).Value) And grdApp_OpCond.Rows(0).Cells(3).Value <> "") Then
-                .OpCond.T_Max = Convert.ToDouble(grdApp_OpCond.Rows(0).Cells(3).Value)
-            End If
-
-            If (Not IsNothing(grdApp_OpCond.Rows(0).Cells(4).Value) And grdApp_OpCond.Rows(0).Cells(4).Value <> "") Then
-                .OpCond.T_Oper = Convert.ToDouble(grdApp_OpCond.Rows(0).Cells(4).Value)
-            End If
-
-            If (Not IsNothing(grdApp_OpCond.Rows(1).Cells(1).Value) And grdApp_OpCond.Rows(1).Cells(1).Value <> "") Then
-                .OpCond.Press_Assy = Convert.ToDouble(grdApp_OpCond.Rows(1).Cells(1).Value)
-            End If
-
-            If (Not IsNothing(grdApp_OpCond.Rows(1).Cells(2).Value) And grdApp_OpCond.Rows(1).Cells(2).Value <> "") Then
-                .OpCond.Press_Min = Convert.ToDouble(grdApp_OpCond.Rows(1).Cells(2).Value)
-            End If
-
-            If (Not IsNothing(grdApp_OpCond.Rows(1).Cells(3).Value) And grdApp_OpCond.Rows(1).Cells(3).Value <> "") Then
-                .OpCond.Press_Max = Convert.ToDouble(grdApp_OpCond.Rows(1).Cells(3).Value)
-            End If
-
-            If (Not IsNothing(grdApp_OpCond.Rows(1).Cells(4).Value) And grdApp_OpCond.Rows(1).Cells(4).Value <> "") Then
-                .OpCond.Press_Oper = Convert.ToDouble(grdApp_OpCond.Rows(1).Cells(4).Value)
-            End If
-
-            If (Not IsNothing(grdApp_Load.Rows(0).Cells(1).Value) And grdApp_Load.Rows(0).Cells(1).Value <> "") Then
-                .Load.Assy_Min = Convert.ToDouble(grdApp_Load.Rows(0).Cells(1).Value)
-            End If
-
-            If (Not IsNothing(grdApp_Load.Rows(0).Cells(2).Value) And grdApp_Load.Rows(0).Cells(2).Value <> "") Then
-                .Load.Assy_Max = Convert.ToDouble(grdApp_Load.Rows(0).Cells(2).Value)
-            End If
-
-            If (Not IsNothing(grdApp_Load.Rows(1).Cells(1).Value) And grdApp_Load.Rows(1).Cells(1).Value <> "") Then
-                .Load.Oper_Min = Convert.ToDouble(grdApp_Load.Rows(1).Cells(1).Value)
-            End If
-
-            If (Not IsNothing(grdApp_Load.Rows(0).Cells(2).Value) And grdApp_Load.Rows(0).Cells(2).Value <> "") Then
-                .Load.Oper_Max = Convert.ToDouble(grdApp_Load.Rows(1).Cells(2).Value)
-            End If
-
-            If (.Type = "Face") Then
-                '....Face
-                .Cavity.ID_Cavity.Clear()
-                .Cavity.DimName.Clear()
-                .Cavity.Assy.Clear()
-                .Cavity.Oper.Clear()
-                For i As Integer = 0 To grdApp_Face_Cavity.Rows.Count - 2
-                    .Cavity.ID_Cavity.Add(i + 1)
-                    .Cavity.DimName.Add(grdApp_Face_Cavity.Rows(i).Cells(0).Value)
-
-                    Dim pAssyMin As Double = 0
-                    If (Not IsNothing(grdApp_Face_Cavity.Rows(i).Cells(1).Value) And grdApp_Face_Cavity.Rows(i).Cells(1).Value <> "") Then
-                        pAssyMin = Convert.ToDouble(grdApp_Face_Cavity.Rows(i).Cells(1).Value)
-                    End If
-
-                    Dim pAssyMax As Double = 0
-                    If (Not IsNothing(grdApp_Face_Cavity.Rows(i).Cells(2).Value) And grdApp_Face_Cavity.Rows(i).Cells(2).Value <> "") Then
-                        pAssyMax = Convert.ToDouble(grdApp_Face_Cavity.Rows(i).Cells(2).Value)
-                    End If
-
-                    Dim pAssy As clsProcessProj_App.clsCavity.sAssy
-                    pAssy.Min = pAssyMin
-                    pAssy.Max = pAssyMax
-                    .Cavity.Assy.Add(pAssy)
-
-                    Dim pOperMin As Double = 0
-                    If (Not IsNothing(grdApp_Face_Cavity.Rows(i).Cells(3).Value) And grdApp_Face_Cavity.Rows(i).Cells(3).Value <> "") Then
-                        pOperMin = Convert.ToDouble(grdApp_Face_Cavity.Rows(i).Cells(3).Value)
-                    End If
-
-                    Dim pOperMax As Double = 0
-                    If (Not IsNothing(grdApp_Face_Cavity.Rows(i).Cells(4).Value) And grdApp_Face_Cavity.Rows(i).Cells(4).Value <> "") Then
-                        pOperMax = Convert.ToDouble(grdApp_Face_Cavity.Rows(i).Cells(4).Value)
-                    End If
-
-                    Dim pOper As clsProcessProj_App.clsCavity.sOper
-                    pOper.Min = pOperMin
-                    pOper.Max = pOperMax
-                    .Cavity.Oper.Add(pOper)
-                Next
-
-                .CavityFlange.Mat1 = txtApp_Mat1_Face.Text
-                .CavityFlange.Mat2 = txtApp_Mat2_Face.Text
-
-                If (txtApp_Hardness1_Face.Text <> "") Then
-                    .CavityFlange.Hard1 = Convert.ToDouble(txtApp_Hardness1_Face.Text)
-                Else
-                    .CavityFlange.Hard1 = 0
-                End If
-
-                If (txtApp_Hardness2_Face.Text <> "") Then
-                    .CavityFlange.Hard2 = Convert.ToDouble(txtApp_Hardness2_Face.Text)
-                Else
-                    .CavityFlange.Hard2 = 0
-                End If
-
-                If (txtApp_SF1_Face.Text <> "") Then
-                    .CavityFlange.SF1 = Convert.ToDouble(txtApp_SF1_Face.Text)
-                Else
-                    .CavityFlange.SF1 = 0
-                End If
-
-                If (txtApp_SF2_Face.Text <> "") Then
-                    .CavityFlange.SF2 = Convert.ToDouble(txtApp_SF2_Face.Text)
-                Else
-                    .CavityFlange.SF2 = 0
-                End If
-
-                .CavityFlange.MeasureSF = cmbFace_SF_ProcessName.Text
-                .CavityFlange.UnitSF = cmbFace_SF_Unit.Text
-
-                .Face.POrient = cmbApp_Face_POrient.Text
-                If (txtApp_Face_MaxFlangeSeparation.Text <> "") Then
-                    .Face.MaxFlangeSep = txtApp_Face_MaxFlangeSeparation.Text
-                Else
-                    .Face.MaxFlangeSep = 0
-                End If
-
-            ElseIf (.Type = "Axial") Then
-
-                '....Axial
-                .Cavity.ID_Cavity.Clear()
-                .Cavity.DimName.Clear()
-                .Cavity.Assy.Clear()
-                .Cavity.Oper.Clear()
-                For i As Integer = 0 To grdApp_Axial_Cavity.Rows.Count - 2
-                    .Cavity.ID_Cavity.Add(i + 1)
-                    .Cavity.DimName.Add(grdApp_Axial_Cavity.Rows(i).Cells(0).Value)
-
-                    Dim pAssyMin As Double = 0
-                    If (Not IsNothing(grdApp_Axial_Cavity.Rows(i).Cells(1).Value) And grdApp_Axial_Cavity.Rows(i).Cells(1).Value <> "") Then
-                        pAssyMin = Convert.ToDouble(grdApp_Axial_Cavity.Rows(i).Cells(1).Value)
-                    End If
-
-                    Dim pAssyMax As Double = 0
-                    If (Not IsNothing(grdApp_Axial_Cavity.Rows(i).Cells(2).Value) And grdApp_Axial_Cavity.Rows(i).Cells(2).Value <> "") Then
-                        pAssyMax = Convert.ToDouble(grdApp_Axial_Cavity.Rows(i).Cells(2).Value)
-                    End If
-
-                    Dim pAssy As clsProcessProj_App.clsCavity.sAssy
-                    pAssy.Min = pAssyMin
-                    pAssy.Max = pAssyMax
-                    .Cavity.Assy.Add(pAssy)
-
-                    Dim pOperMin As Double = 0
-                    If (Not IsNothing(grdApp_Axial_Cavity.Rows(i).Cells(3).Value) And grdApp_Axial_Cavity.Rows(i).Cells(3).Value <> "") Then
-                        pOperMin = Convert.ToDouble(grdApp_Axial_Cavity.Rows(i).Cells(3).Value)
-                    End If
-
-                    Dim pOperMax As Double = 0
-                    If (Not IsNothing(grdApp_Axial_Cavity.Rows(i).Cells(4).Value) And grdApp_Axial_Cavity.Rows(i).Cells(4).Value <> "") Then
-                        pOperMax = Convert.ToDouble(grdApp_Axial_Cavity.Rows(i).Cells(4).Value)
-                    End If
-
-                    Dim pOper As clsProcessProj_App.clsCavity.sOper
-                    pOper.Min = pOperMin
-                    pOper.Max = pOperMax
-                    .Cavity.Oper.Add(pOper)
-
-                Next
-
-                .CavityFlange.Mat1 = txtApp_Mat1_Axial.Text
-                .CavityFlange.Mat2 = txtApp_Mat2_Axial.Text
-
-                If (txtApp_Hardness1_Axial.Text <> "") Then
-                    .CavityFlange.Hard1 = Convert.ToDouble(txtApp_Hardness1_Axial.Text)
-                Else
-                    .CavityFlange.Hard1 = 0
-                End If
-
-                If (txtApp_Hardness2_Axial.Text <> "") Then
-                    .CavityFlange.Hard2 = Convert.ToDouble(txtApp_Hardness2_Axial.Text)
-                Else
-                    .CavityFlange.Hard2 = 0
-                End If
-
-                If (txtApp_SF1_Axial.Text <> "") Then
-                    .CavityFlange.SF1 = Convert.ToDouble(txtApp_SF1_Axial.Text)
-                Else
-                    .CavityFlange.SF1 = 0
-                End If
-
-                If (txtApp_SF2_Axial.Text <> "") Then
-                    .CavityFlange.SF2 = Convert.ToDouble(txtApp_SF2_Axial.Text)
-                Else
-                    .CavityFlange.SF2 = 0
-                End If
-
-                .CavityFlange.MeasureSF = cmbAxial_SF_ProcessName.Text
-                .CavityFlange.UnitSF = cmbAxial_SF_Unit.Text
-
-                .Axial.IsStatic = IIf(cmbApp_Static_Axial.Text = "Y", True, False)
-
-                .Axial.IsRotating = IIf(cmbApp_Rotate_Axial.Text = "Y", True, False)
-                If (.Axial.IsRotating) Then
-                    If (txtApp_RotateRPM_Axial.Text <> "") Then
-                        .Axial.RPM = Convert.ToInt64(txtApp_RotateRPM_Axial.Text)
-                    Else
-                        .Axial.RPM = 0.0
-                    End If
-
-                Else
-                    .Axial.RPM = 0.0
-                End If
-
-                .Axial.IsRecip = IIf(cmbApp_Recip_Axial.Text = "Y", True, False)
-                If (.Axial.IsRecip) Then
-                    .Axial.Recip_Stroke = Convert.ToDouble(txtApp_RecipStrokeL_Axial.Text)
-                    .Axial.Recip_V = Convert.ToDouble(txtApp_RecipV_Axial.Text)
-                    .Axial.Recip_CycleRate = Convert.ToDouble(txtApp_RecipCycleRate_Axial.Text)
-                    .Axial.Recip_ServiceLife = Convert.ToDouble(txtApp_RecipServiceLife_Axial.Text)
-                Else
-                    .Axial.Recip_Stroke = 0.0
-                    .Axial.Recip_V = 0.0
-                    .Axial.Recip_CycleRate = 0.0
-                    .Axial.Recip_ServiceLife = 0.0
-                End If
-
-                .Axial.IsOscilatory = IIf(cmbApp_Osc_Axial.Text = "Y", True, False)
-                If (.Axial.IsOscilatory) Then
-                    .Axial.Oscilate_Rot = Convert.ToDouble(txtApp_OscRot_Axial.Text)
-                    .Axial.Oscilate_V = Convert.ToDouble(txtApp_OscV_Axial.Text)
-                    .Axial.Oscilate_CycleRate = Convert.ToDouble(txtApp_OscCycleRate_Axial.Text)
-                    .Axial.Oscilate_ServiceLife = Convert.ToDouble(txtApp_OscServiceLife_Axial.Text)
-                Else
-                    .Axial.Oscilate_Rot = 0.0
-                    .Axial.Oscilate_V = 0.0
-                    .Axial.Oscilate_CycleRate = 0.0
-                    .Axial.Oscilate_ServiceLife = 0.0
-                End If
-
-            End If
-
-        End With
-
-        '....Design
-        With mProcess_Project.Design
-            .CustDwgNo = txtDesign_CustDwgNo.Text
-            .CustDwgRev = txtDesign_CustDwgRev.Text
-
-            .Frozen_Design = IIf(cmbDesign_Frozen.Text = "Y", True, False)
-            .Frozen_Process = IIf(cmbDesign_Process.Text = "Y", True, False)
-
-            .IsClass1 = IIf(cmbDesign_Class1.Text = "Y", True, False)
-            .IsBuildToPrint = IIf(cmbDesign_BuildToPrint.Text = "Y", True, False)
-
-            '.VerfyType = cmbDesign_TemperType.Text
-            '.PerformedBy = cmbDesign_PerformedBy.Text
-            .MCS = txtDesign_MCS.Text
-
-            .IsWinnovation = IIf(cmbDesign_Winnovation.Text = "Y", True, False)
-
-            If (.IsWinnovation) Then
-                .WinnovationNo = txtDesign_WinnovationNo.Text
-            End If
-
-            .Verification.ID_Verification.Clear()
-            .Verification.Desc.Clear()
-            .Verification.Owner.Clear()
-            .Verification.Result.Clear()
-
-            For i As Integer = 0 To grdDesign_Verification.Rows.Count - 2
-                .Verification.ID_Verification.Add(i + 1)
-                .Verification.Desc.Add(grdDesign_Verification.Rows(i).Cells(0).Value)
-                .Verification.Owner.Add(grdDesign_Verification.Rows(i).Cells(1).Value)
-                .Verification.Result.Add(grdDesign_Verification.Rows(i).Cells(2).Value)
-            Next
-
-            .IsMat_OutsideVender = IIf(cmbDesign_OutsideVendor.Text = "Y", True, False)
-
-            .Input.ID_Input.Clear()
-            .Input.Desc.Clear()
-            For i As Integer = 0 To grdDesign_Input.Rows.Count - 2
-                .Input.ID_Input.Add(i + 1)
-                .Input.Desc.Add(grdDesign_Input.Rows(i).Cells(0).Value)
-            Next
-
-            '.KeyChar.ID_Key.Clear()
-            '.KeyChar.KeyChar.Clear()
-            'For i As Integer = 0 To grdDesign_KeyChar.Rows.Count - 2
-            '    .KeyChar.ID_Key.Add(i + 1)
-            '    .KeyChar.KeyChar.Add(grdDesign_Input.Rows(i).Cells(0).Value)
-            'Next
-
-            .FOD_Risks = txtDesign_FOD_Risks.Text
-
-            .CustSpec.ID_Cust.Clear()
-            .CustSpec.Type.Clear()
-            .CustSpec.Desc.Clear()
-            .CustSpec.Interpret.Clear()
-
-            For i As Integer = 0 To grdDesign_CustSpec.Rows.Count - 2
-                .CustSpec.ID_Cust.Add(i + 1)
-                .CustSpec.Type.Add(grdDesign_CustSpec.Rows(i).Cells(0).Value)
-                .CustSpec.Desc.Add(grdDesign_CustSpec.Rows(i).Cells(1).Value)
-                .CustSpec.Interpret.Add(grdDesign_CustSpec.Rows(i).Cells(2).Value)
-            Next
-
-            .LessonsLearned = txtDesign_LessonsLearned.Text
-
-            .SealDim.ID_Seal.Clear()
-            .SealDim.Name.Clear()
-            .SealDim.Min.Clear()
-            .SealDim.Nom.Clear()
-            .SealDim.Max.Clear()
-            For i As Integer = 0 To grdDesign_Seal.Rows.Count - 2
-                .SealDim.ID_Seal.Add(i + 1)
-                .SealDim.Name.Add(grdDesign_Seal.Rows(i).Cells(0).Value)
-                If (Not IsNothing(grdDesign_Seal.Rows(i).Cells(1).Value)) Then
-                    If (grdDesign_Seal.Rows(i).Cells(1).Value.ToString() <> "") Then
-                        .SealDim.Min.Add(grdDesign_Seal.Rows(i).Cells(1).Value)
-                    Else
-                        .SealDim.Min.Add(0)
-                    End If
-
-                Else
-                    .SealDim.Min.Add(0)
-                End If
-
-                If (Not IsNothing(grdDesign_Seal.Rows(i).Cells(2).Value)) Then
-                    If (grdDesign_Seal.Rows(i).Cells(2).Value.ToString() <> "") Then
-                        .SealDim.Nom.Add(grdDesign_Seal.Rows(i).Cells(2).Value)
-                    Else
-                        .SealDim.Nom.Add(0)
-                    End If
-
-                Else
-                    .SealDim.Nom.Add(0)
-                End If
-
-                If (Not IsNothing(grdDesign_Seal.Rows(i).Cells(3).Value)) Then
-                    If (grdDesign_Seal.Rows(i).Cells(3).Value.ToString() <> "") Then
-                        .SealDim.Max.Add(grdDesign_Seal.Rows(i).Cells(3).Value)
-                    Else
-                        .SealDim.Max.Add(0)
-                    End If
-
-                Else
-                    .SealDim.Max.Add(0)
-                End If
-            Next
-
-            .Notes = txtDesign_Notes.Text
-
-        End With
-
-        '....Manf
-        With mProcess_Project.Manf
-            .BaseMat_PartNo = txtManf_MatPartNo_Base.Text
-            .SpringMat_PartNo = txtManf_MatPartNo_Spring.Text
-
-            If (txtManf_HT.Text <> "") Then
-                .HT = txtManf_HT.Text
-            Else
-                .HT = ""
-            End If
-
-            .PreComp_Glue = cmbManf_PrecompressionGlue.Text
-
-            .ToolNGage.ID_Tool.Clear()
-            .ToolNGage.PartNo.Clear()
-            .ToolNGage.Desc.Clear()
-            .ToolNGage.Type.Clear()
-            .ToolNGage.Status.Clear()
-            .ToolNGage.LeadTime.Clear()
-            .ToolNGage.DesignResponsibility.Clear()
-
-            For i As Integer = 0 To grdManf_ToolNGage.Rows.Count - 2
-                .ToolNGage.ID_Tool.Add(i + 1)
-                .ToolNGage.PartNo.Add(grdManf_ToolNGage.Rows(i).Cells(0).Value)
-                .ToolNGage.Desc.Add(grdManf_ToolNGage.Rows(i).Cells(1).Value)
-                .ToolNGage.Type.Add(grdManf_ToolNGage.Rows(i).Cells(2).Value)
-                .ToolNGage.Status.Add(grdManf_ToolNGage.Rows(i).Cells(3).Value)
-
-                If (Not IsNothing(grdManf_ToolNGage.Rows(i).Cells(4).Value)) Then
-                    If (grdManf_ToolNGage.Rows(i).Cells(4).Value.ToString() <> "") Then
-                        .ToolNGage.LeadTime.Add(grdManf_ToolNGage.Rows(i).Cells(4).Value)
-                    Else
-                        .ToolNGage.LeadTime.Add(0)
-                    End If
-
-
-                Else
-                    .ToolNGage.LeadTime.Add(0)
-                End If
-
-                .ToolNGage.DesignResponsibility.Add(grdManf_ToolNGage.Rows(i).Cells(5).Value)
-            Next
-
-        End With
-
-
-        '....Purchase
-        With mProcess_Project.Purchase
-            .Mat.ID_Mat.Clear()
-            .Mat.Item.Clear()
-            .Mat.EstQty.Clear()
-            .Mat.Status.Clear()
-            .Mat.LeadTime.Clear()
-
-            For i As Integer = 0 To grdPurchase_Mat.Rows.Count - 2
-                .Mat.ID_Mat.Add(i + 1)
-                .Mat.Item.Add(grdPurchase_Mat.Rows(i).Cells(0).Value)
-                If (Not IsNothing(grdPurchase_Mat.Rows(i).Cells(1).Value)) Then
-                    If (grdPurchase_Mat.Rows(i).Cells(1).Value.ToString() <> "") Then
-                        .Mat.EstQty.Add(grdPurchase_Mat.Rows(i).Cells(1).Value)
-                    Else
-                        .Mat.EstQty.Add(0)
-                    End If
-                Else
-                    .Mat.EstQty.Add(0)
-                End If
-
-                .Mat.Status.Add(grdPurchase_Mat.Rows(i).Cells(2).Value)
-
-                If (Not IsNothing(grdPurchase_Mat.Rows(i).Cells(3).Value)) Then
-                    If (grdPurchase_Mat.Rows(i).Cells(3).Value.ToString() <> "") Then
-                        .Mat.LeadTime.Add(grdPurchase_Mat.Rows(i).Cells(3).Value)
-                    Else
-                        .Mat.LeadTime.Add(0)
-                    End If
-
-                Else
-                    .Mat.LeadTime.Add(0)
-                End If
-            Next
-
-            '.ToolNGage.ID_Tool.Clear()
-            '.ToolNGage.PartNo.Clear()
-            '.ToolNGage.Desc.Clear()
-            '.ToolNGage.Type.Clear()
-            '.ToolNGage.LeadTime.Clear()
-            '.ToolNGage.DesignResponsibility.Clear()
-
-            'For i As Integer = 0 To grdPurchase_ToolNGages.Rows.Count - 2
-            '    .ToolNGage.ID_Tool.Add(i + 1)
-            '    .ToolNGage.PartNo.Add(grdPurchase_ToolNGages.Rows(i).Cells(0).Value)
-            '    .ToolNGage.Desc.Add(grdPurchase_ToolNGages.Rows(i).Cells(1).Value)
-            '    .ToolNGage.Type.Add(grdPurchase_ToolNGages.Rows(i).Cells(2).Value)
-
-            '    If (Not IsNothing(grdPurchase_ToolNGages.Rows(i).Cells(3).Value) And grdPurchase_ToolNGages.Rows(i).Cells(3).Value <> "") Then
-            '        .ToolNGage.LeadTime.Add(grdManf_ToolNGage.Rows(i).Cells(3).Value)
-            '    Else
-            '        .ToolNGage.LeadTime.Add(0)
-            '    End If
-
-            '    .ToolNGage.DesignResponsibility.Add(grdPurchase_ToolNGages.Rows(i).Cells(4).Value)
-            'Next
-
-            .Dwg.ID_Dwg.Clear()
-            .Dwg.No.Clear()
-            .Dwg.Desc.Clear()
-            .Dwg.LeadTime.Clear()
-            For i As Integer = 0 To grdPurchase_Drawing.Rows.Count - 2
-                .Dwg.ID_Dwg.Add(i + 1)
-                .Dwg.No.Add(grdPurchase_Drawing.Rows(i).Cells(0).Value)
-                .Dwg.Desc.Add(grdPurchase_Drawing.Rows(i).Cells(1).Value)
-                If (Not IsNothing(grdPurchase_Drawing.Rows(i).Cells(2).Value)) Then
-                    If (grdPurchase_Drawing.Rows(i).Cells(2).Value.ToString() <> "") Then
-                        .Dwg.LeadTime.Add(grdPurchase_Drawing.Rows(i).Cells(2).Value)
-                    Else
-                        .Dwg.LeadTime.Add(0)
-                    End If
-
-                Else
-                    .Dwg.LeadTime.Add(0)
-                End If
-            Next
-        End With
-
-        ' ''....Qlty
-        ''With mProcess_Project.Qlty
-        ''    If (cmbQuality_ApprovedSupplier.Text = "Y") Then
-        ''        .ApprovedSupplier = True
-        ''    Else
-        ''        .ApprovedSupplier = False
-        ''    End If
-
-        ''    If (cmbQuality_TNG.Text = "Y") Then
-        ''        .TNG = True
-        ''    Else
-        ''        .TNG = False
-        ''    End If
-
-        ''    If (cmbQuality_CustComplaint.Text = "Y") Then
-        ''        .CustComplaint = True
-        ''        .Reason = txtQuality_Reason.Text
-        ''    Else
-        ''        .CustComplaint = False
-        ''        .Reason = ""
-        ''    End If
-
-        ''    If (cmbQuality_VisualInspection.Text = "Y") Then
-        ''        .VisualInspection = True
-        ''        .VisualInspection_Type = cmbQuality_VisualInspection.Text
-        ''    Else
-        ''        .VisualInspection = False
-        ''        .VisualInspection_Type = ""
-        ''    End If
-
-        ''    .CustAcceptStd = cmbQuality_CustAcceptStd.Text
-
-        ''    If (cmbQuality_SPC.Text = "Y") Then
-        ''        .SPC = True
-        ''    Else
-        ''        .SPC = False
-        ''    End If
-
-        ''    If (cmbQuality_GageRnR_Reqd.Text = "Y") Then
-        ''        .GageRnR_Reqd = True
-        ''    Else
-        ''        .GageRnR_Reqd = False
-        ''    End If
-
-        ''    'If (grdCost_SplOperation.Rows.Count > 1) Then
-        ''    '    grdQuality_SplOperation = grdCost_SplOperation
-        ''    'End If
-
-        ''    mProcess_Project.Cost.SplOperation.ID_Cost.Clear()
-        ''    mProcess_Project.Cost.SplOperation.Desc.Clear()
-        ''    mProcess_Project.Cost.SplOperation.Spec.Clear()
-        ''    mProcess_Project.Cost.SplOperation.LeadTime.Clear()
-        ''    mProcess_Project.Cost.SplOperation.Cost.Clear()
-
-        ''    For j As Integer = 0 To grdQuality_SplOperation.Rows.Count - 2
-        ''        mProcess_Project.Cost.SplOperation.ID_Cost.Add(j + 1)
-        ''        mProcess_Project.Cost.SplOperation.Desc.Add(grdQuality_SplOperation.Rows(j).Cells(0).Value)
-        ''        mProcess_Project.Cost.SplOperation.Spec.Add(grdQuality_SplOperation.Rows(j).Cells(1).Value)
-
-        ''        If (Not IsNothing(grdQuality_SplOperation.Rows(j).Cells(2).Value)) Then
-        ''            If (grdQuality_SplOperation.Rows(j).Cells(2).Value.ToString() <> "") Then
-        ''                mProcess_Project.Cost.SplOperation.LeadTime.Add(grdQuality_SplOperation.Rows(j).Cells(2).Value)
-        ''            Else
-        ''                mProcess_Project.Cost.SplOperation.LeadTime.Add(0)
-        ''            End If
-
-        ''        Else
-        ''            mProcess_Project.Cost.SplOperation.LeadTime.Add(0)
-        ''        End If
-
-        ''        If (Not IsNothing(grdQuality_SplOperation.Rows(j).Cells(3).Value)) Then
-        ''            If (grdQuality_SplOperation.Rows(j).Cells(3).Value.ToString() <> "") Then
-        ''                mProcess_Project.Cost.SplOperation.Cost.Add(grdQuality_SplOperation.Rows(j).Cells(3).Value)
-        ''            Else
-        ''                mProcess_Project.Cost.SplOperation.Cost.Add(0)
-        ''            End If
-
-
-        ''        Else
-        ''            mProcess_Project.Cost.SplOperation.Cost.Add(0)
-        ''        End If
-
-        ''    Next
-
-        ''    'grdQuality_SplOperation.Refresh()
-        ''    'TabControl1.Refresh()
-
-        ''End With
-
-
-        ' ''....Dwg
-        ''With mProcess_Project.Dwg
-        ''    .DesignLevel = cmbDwg_DesignLevel.Text
-
-        ''    .Needed.ID_Needed.Clear()
-        ''    .Needed.DwgNo.Clear()
-        ''    .Needed.Desc.Clear()
-        ''    .Needed.Status.Clear()
-        ''    .Needed.LeadTime.Clear()
-
-        ''    For i As Integer = 0 To grdDrawing_Needed.Rows.Count - 2
-        ''        .Needed.ID_Needed.Add(i + 1)
-        ''        .Needed.DwgNo.Add(grdDrawing_Needed.Rows(i).Cells(0).Value)
-        ''        .Needed.Desc.Add(grdDrawing_Needed.Rows(i).Cells(1).Value)
-        ''        .Needed.Status.Add(grdDrawing_Needed.Rows(i).Cells(2).Value)
-        ''        If (Not IsNothing(grdDrawing_Needed.Rows(i).Cells(3).Value) And grdDrawing_Needed.Rows(i).Cells(3).Value <> "") Then
-        ''            .Needed.LeadTime.Add(grdDrawing_Needed.Rows(i).Cells(3).Value)
-        ''        Else
-        ''            .Needed.LeadTime.Add(0)
-        ''        End If
-        ''    Next
-
-        ''    .BOM.ID_BOM.Clear()
-        ''    .BOM.ParentPartNo.Clear()
-        ''    .BOM.ChildPartNo.Clear()
-        ''    .BOM.Qty.Clear()
-
-
-        ''    For i As Integer = 0 To grdDrawing_Needed.Rows.Count - 2
-        ''        .BOM.ID_BOM.Add(i + 1)
-        ''        .BOM.ParentPartNo.Add(grdDrawing_BOM.Rows(i).Cells(0).Value)
-        ''        .BOM.ChildPartNo.Add(grdDrawing_BOM.Rows(i).Cells(1).Value)
-        ''        .BOM.Qty.Add(grdDrawing_BOM.Rows(i).Cells(2).Value)
-        ''    Next
-
-        ''End With
-
-        ' ''....Testing
-        ''With mProcess_Project.Test
-
-        ''    '....Leak
-        ''    If (txtTest_CompressPre_Leak.Text <> "") Then
-        ''        .Leak.CompressPre = txtTest_CompressPre_Leak.Text
-        ''    Else
-        ''        .Leak.CompressPost = 0
-        ''    End If
-
-        ''    If (txtTest_CompressPost_Leak.Text <> "") Then
-        ''        .Leak.CompressPost = txtTest_CompressPost_Leak.Text
-        ''    Else
-        ''        .Leak.CompressPost = 0
-        ''    End If
-
-        ''    .Leak.MediaPre = cmbTest_MediaPre_Leak.Text
-        ''    .Leak.MediaPost = cmbTest_MediaPost_Leak.Text
-
-        ''    If (txtTest_PressPre_Leak.Text <> "") Then
-        ''        .Leak.PressPre = txtTest_PressPre_Leak.Text
-        ''    Else
-        ''        .Leak.PressPre = 0
-        ''    End If
-
-        ''    If (txtTest_PressPost_Leak.Text <> "") Then
-        ''        .Leak.PressPost = txtTest_PressPost_Leak.Text
-        ''    Else
-        ''        .Leak.PressPost = 0
-        ''    End If
-
-        ''    If (txtTest_ReqPre_Leak.Text <> "") Then
-        ''        .Leak.ReqPre = txtTest_ReqPre_Leak.Text
-        ''    Else
-        ''        .Leak.ReqPre = 0
-        ''    End If
-
-        ''    If (txtTest_ReqPost_Leak.Text <> "") Then
-        ''        .Leak.ReqPost = txtTest_ReqPost_Leak.Text
-        ''    Else
-        ''        .Leak.ReqPost = 0
-        ''    End If
-
-        ''    If (cmbTest_QtyPre_Leak.Text <> "") Then
-        ''        .Leak.QtyPre = Convert.ToDouble(cmbTest_QtyPre_Leak.Text)
-        ''    Else
-        ''        .Leak.QtyPre = 0
-        ''    End If
-
-        ''    If (cmbTest_QtyPost_Leak.Text <> "") Then
-        ''        .Leak.QtyPost = cmbTest_QtyPost_Leak.Text
-        ''    Else
-        ''        .Leak.QtyPost = 0
-        ''    End If
-
-
-        ''    .Leak.FreqPre = cmbTest_FreqPre_Leak.Text
-        ''    .Leak.FreqPost = cmbTest_FreqPost_Leak.Text
-
-
-        ''    '....Load
-        ''    If (txtTest_CompressPre_Load.Text <> "") Then
-        ''        .Load.CompressPre = txtTest_CompressPre_Load.Text
-        ''    Else
-        ''        .Load.CompressPost = 0
-        ''    End If
-
-        ''    If (txtTest_CompressPost_Load.Text <> "") Then
-        ''        .Load.CompressPost = txtTest_CompressPost_Load.Text
-        ''    Else
-        ''        .Load.CompressPost = 0
-        ''    End If
-
-        ''    If (txtTest_ReqPre_Load.Text <> "") Then
-        ''        .Load.ReqPre = txtTest_ReqPre_Load.Text
-        ''    Else
-        ''        .Load.ReqPre = 0
-        ''    End If
-
-        ''    If (txtTest_ReqPost_Load.Text <> "") Then
-        ''        .Load.ReqPost = txtTest_ReqPost_Load.Text
-        ''    Else
-        ''        .Load.ReqPost = 0
-        ''    End If
-
-        ''    If (cmbTest_QtyPre_Load.Text <> "") Then
-        ''        .Load.QtyPre = Convert.ToDouble(cmbTest_QtyPre_Load.Text)
-        ''    Else
-        ''        .Load.QtyPre = 0
-        ''    End If
-
-        ''    If (cmbTest_QtyPost_Load.Text <> "") Then
-        ''        .Load.QtyPost = cmbTest_QtyPost_Load.Text
-        ''    Else
-        ''        .Load.QtyPost = 0
-        ''    End If
-
-        ''    '.Load.QtyPre = cmbTest_QtyPre_Load.Text
-        ''    '.Load.QtyPost = cmbTest_QtyPost_Load.Text
-        ''    .Load.FreqPre = cmbTest_FreqPre_Load.Text
-        ''    .Load.FreqPost = cmbTest_FreqPost_Load.Text
-
-        ''    '....SpringBack
-        ''    If (txtTest_CompressPre_SpringBack.Text <> "") Then
-        ''        .SpringBack.CompressPre = txtTest_CompressPre_SpringBack.Text
-        ''    Else
-        ''        .SpringBack.CompressPost = 0
-        ''    End If
-
-        ''    If (txtTest_CompressPost_SpringBack.Text <> "") Then
-        ''        .SpringBack.CompressPost = txtTest_CompressPost_SpringBack.Text
-        ''    Else
-        ''        .SpringBack.CompressPost = 0
-        ''    End If
-
-        ''    If (txtTest_ReqPre_SpringBack.Text <> "") Then
-        ''        .SpringBack.ReqPre = txtTest_ReqPre_SpringBack.Text
-        ''    Else
-        ''        .SpringBack.ReqPre = 0
-        ''    End If
-
-        ''    If (txtTest_ReqPost_SpringBack.Text <> "") Then
-        ''        .SpringBack.ReqPost = txtTest_ReqPost_SpringBack.Text
-        ''    Else
-        ''        .SpringBack.ReqPost = 0
-        ''    End If
-
-        ''    If (cmbTest_QtyPre_SpringBack.Text <> "") Then
-        ''        .SpringBack.QtyPre = Convert.ToDouble(cmbTest_QtyPre_SpringBack.Text)
-        ''    Else
-        ''        .SpringBack.QtyPre = 0
-        ''    End If
-
-        ''    If (cmbTest_QtyPost_SpringBack.Text <> "") Then
-        ''        .SpringBack.QtyPost = cmbTest_QtyPost_SpringBack.Text
-        ''    Else
-        ''        .SpringBack.QtyPost = 0
-        ''    End If
-
-        ''    '.SpringBack.QtyPre = cmbTest_QtyPre_SpringBack.Text
-        ''    '.SpringBack.QtyPost = cmbTest_QtyPost_SpringBack.Text
-        ''    .SpringBack.FreqPre = cmbTest_FreqPre_SpringBack.Text
-        ''    .SpringBack.FreqPost = cmbTest_FreqPost_SpringBack.Text
-
-        ''End With
-
-        ' ''....Planning
-        '' ''With mProcess_Project.Planning
-
-        '' ''    .SplOperation.ID_SplOperation.Clear()
-        '' ''    .SplOperation.Desc.Clear()
-        '' ''    .SplOperation.LeadTimeStart.Clear()
-        '' ''    .SplOperation.Index.Clear()
-
-        '' ''    For i As Integer = 0 To grdPlanning_Ordered.Rows.Count - 1
-        '' ''        .SplOperation.ID_SplOperation.Add(i + 1)
-        '' ''        .SplOperation.Desc.Add(grdPlanning_Ordered.Rows(i).Cells(0).Value)
-        '' ''        If (Not IsNothing(grdPlanning_Ordered.Rows(i).Cells(1).Value)) Then
-        '' ''            If (grdPlanning_Ordered.Rows(i).Cells(1).Value.ToString() <> "") Then
-        '' ''                .SplOperation.LeadTimeStart.Add(grdPlanning_Ordered.Rows(i).Cells(1).Value)
-        '' ''            Else
-        '' ''                .SplOperation.LeadTimeStart.Add(0)
-        '' ''            End If
-
-        '' ''        Else
-        '' ''            .SplOperation.LeadTimeStart.Add(0)
-        '' ''        End If
-        '' ''        .SplOperation.Index.Add(i + 1)
-        '' ''    Next
-
-        '' ''    .MileOperation.ID_MileOperation.Clear()
-        '' ''    .MileOperation.Name.Clear()
-        '' ''    .MileOperation.LeadTime.Clear()
-
-        '' ''    For i As Integer = 0 To grdPlanning_Ordered.Rows.Count - 2
-        '' ''        .MileOperation.ID_MileOperation.Add(i + 1)
-        '' ''        .MileOperation.Name.Add(grdPlanning_MileStoneOperation.Rows(i).Cells(0).Value)
-        '' ''        If (Not IsNothing(grdPlanning_MileStoneOperation.Rows(i).Cells(1).Value) And grdPlanning_MileStoneOperation.Rows(i).Cells(1).Value <> "") Then
-        '' ''            .MileOperation.LeadTime.Add(grdPlanning_MileStoneOperation.Rows(i).Cells(1).Value)
-        '' ''        Else
-        '' ''            .MileOperation.LeadTime.Add(0)
-        '' ''        End If
-        '' ''    Next
-
-        '' ''    .Notes = txtPlanning_Notes.Text
-
-        '' ''End With
-
-        ' ''....Shipping
-        ''With mProcess_Project.Shipping
-        ''    .Notes = txtPlanning_Notes.Text
-
-        ''End With
-
-        ''With mProcess_Project.IssueCommnt
-        ''    '....IssueCommnt
-        ''    .SlNo.Clear()
-        ''    .Comment.Clear()
-        ''    .ByDept.Clear()
-        ''    .ByName.Clear()
-        ''    .ByDate.Clear()
-        ''    .ToDept.Clear()
-        ''    .Resolved.Clear()
-        ''    .Name.Clear()
-        ''    .ResolvedDate.Clear()
-        ''    .Resolution.Clear()
-
-
-        ''    For j As Integer = 0 To grdIssueComment.Rows.Count - 2
-        ''        .SlNo.Add(j + 1)
-        ''        '.SlNo.Add(grdIssueComment.Rows(j).Cells(0).Value)
-        ''        .Comment.Add(grdIssueComment.Rows(j).Cells(0).Value)
-        ''        .ByDept.Add(grdIssueComment.Rows(j).Cells(1).Value)
-        ''        .ByName.Add(grdIssueComment.Rows(j).Cells(2).Value)
-        ''        If (grdIssueComment.Rows(j).Cells(3).Value <> "" And Not IsNothing(grdIssueComment.Rows(j).Cells(3).Value)) Then
-        ''            .ByDate.Add(grdIssueComment.Rows(j).Cells(3).Value)
-        ''        Else
-        ''            .ByDate.Add(DateTime.MinValue)
-        ''        End If
-
-        ''        .ToDept.Add(grdIssueComment.Rows(j).Cells(4).Value)
-        ''        If (grdIssueComment.Rows(j).Cells(5).Value = "Y") Then
-        ''            .Resolved.Add(True)
-        ''        Else
-        ''            .Resolved.Add(False)
-        ''        End If
-        ''        '.Resolved.Add(grdIssueComment.Rows(j).Cells(6).Value)
-        ''        .Name.Add(grdIssueComment.Rows(j).Cells(6).Value)
-
-        ''        If (grdIssueComment.Rows(j).Cells(7).Value <> "" And Not IsNothing(grdIssueComment.Rows(j).Cells(7).Value)) Then
-        ''            .ResolvedDate.Add(grdIssueComment.Rows(j).Cells(7).Value)
-        ''        Else
-        ''            .ResolvedDate.Add(DateTime.MinValue)
-        ''        End If
-
-        ''        .Resolution.Add(grdIssueComment.Rows(j).Cells(8).Value)
-        ''    Next
-
-        ''End With
-
-        ' ''....Approval
-        ''With mProcess_Project.Approval
-        ''    .SLNo.Clear()
-        ''    .DeptName.Clear()
-        ''    .Name.Clear()
-        ''    .Title.Clear()
-        ''    .Signed.Clear()
-        ''    .SignedDate.Clear()
-
-        ''    For j As Integer = 0 To grdApproval_Attendees.Rows.Count - 1
-        ''        .SLNo.Add(j + 1)
-        ''        .DeptName.Add(grdApproval_Attendees.Rows(j).Cells(0).Value)
-        ''        .Name.Add(grdApproval_Attendees.Rows(j).Cells(1).Value)
-        ''        .Title.Add(grdApproval_Attendees.Rows(j).Cells(2).Value)
-        ''        .Signed.Add(grdApproval_Attendees.Rows(j).Cells(3).Value)
-        ''        If (grdApproval_Attendees.Rows(j).Cells(4).Value <> "" And Not IsNothing(grdApproval_Attendees.Rows(j).Cells(4).Value)) Then
-        ''            .SignedDate.Add(grdApproval_Attendees.Rows(j).Cells(4).Value)
-        ''        Else
-        ''            .SignedDate.Add(DateTime.MinValue)
-        ''        End If
-
-        ''    Next
-        ''End With
-
-        gProcessProject = mProcess_Project.Clone()
-
-    End Sub
+			cmbTest_FreqPost_Leak.Text = .Leak.Freq_Plated
+
+			'...Load
+			If (Math.Abs(.Load.Compress_Unplated) > gcEPS) Then
+				txtTest_CompressPre_Load.Text = .Load.Compress_Unplated.ToString("##0.000")
+			Else
+				txtTest_CompressPre_Load.Text = ""
+			End If
+
+			If (Math.Abs(.Load.Compress_Plated) > gcEPS) Then
+				txtTest_CompressPost_Load.Text = .Load.Compress_Plated.ToString("##0.000")
+			Else
+				txtTest_CompressPost_Load.Text = ""
+			End If
+
+			If (Math.Abs(.Load.Max_Unplated) > gcEPS) Then
+				txtTest_ReqPre_Load.Text = .Load.Max_Unplated.ToString("##0.000")
+			Else
+				txtTest_ReqPre_Load.Text = ""
+			End If
+
+			If (Math.Abs(.Load.Max_Plated) > gcEPS) Then
+				txtTest_ReqPost_Load.Text = .Load.Max_Plated.ToString("##0.000")
+			Else
+				txtTest_ReqPost_Load.Text = ""
+			End If
+
+			cmbTest_QtyPre_Load.Text = .Load.Qty_Unplated
+			cmbTest_QtyPost_Load.Text = .Load.Qty_Plated
+
+			cmbTest_FreqPre_Load.Text = .Load.Freq_Unplated
+			cmbTest_FreqPost_Load.Text = .Load.Freq_Plated
+
+			'....SpringBack
+			If (Math.Abs(.SpringBack.Compress_Unplated) > gcEPS) Then
+				txtTest_CompressPre_SpringBack.Text = .SpringBack.Compress_Unplated.ToString("##0.000")
+			Else
+				txtTest_CompressPre_SpringBack.Text = ""
+			End If
+
+			If (Math.Abs(.SpringBack.Compress_Plated) > gcEPS) Then
+				txtTest_CompressPost_SpringBack.Text = .SpringBack.Compress_Plated.ToString("##0.000")
+			Else
+				txtTest_CompressPost_SpringBack.Text = ""
+			End If
+
+			If (Math.Abs(.SpringBack.Max_Unplated) > gcEPS) Then
+				txtTest_ReqPre_SpringBack.Text = .SpringBack.Max_Unplated.ToString("##0.000")
+			Else
+				txtTest_ReqPre_SpringBack.Text = ""
+			End If
+
+			If (Math.Abs(.SpringBack.Max_Plated) > gcEPS) Then
+				txtTest_ReqPost_SpringBack.Text = .SpringBack.Max_Plated.ToString("##0.000")
+			Else
+				txtTest_ReqPost_SpringBack.Text = ""
+			End If
+
+			cmbTest_QtyPre_SpringBack.Text = .SpringBack.Qty_Unplated
+			cmbTest_QtyPost_SpringBack.Text = .SpringBack.Qty_Plated
+
+			cmbTest_FreqPre_SpringBack.Text = .SpringBack.Freq_Unplated
+			cmbTest_FreqPost_SpringBack.Text = .SpringBack.Freq_Plated
+
+		End With
+
+		'....Planning
+		''With mProcess_Project.Planning
+
+		''    For j As Integer = 0 To .SplOperation.ID_SplOperation.Count - 1
+		''        grdPlanning_Ordered.Rows.Add()
+		''        grdPlanning_Ordered.Rows(j).Cells(0).Value = .SplOperation.Desc(j)
+
+		''        If (Math.Abs(.SplOperation.LeadTimeStart(j)) > gcEPS) Then
+		''            grdPlanning_Ordered.Rows(j).Cells(1).Value = .SplOperation.LeadTimeStart(j)
+		''        Else
+		''            grdPlanning_Ordered.Rows(j).Cells(1).Value = ""
+		''        End If
+		''    Next
+
+		''    grdPlanning_Ordered.AllowUserToAddRows = False
+
+		''    For j As Integer = 0 To .MileOperation.ID_MileOperation.Count - 1
+		''        grdPlanning_MileStoneOperation.Rows.Add()
+		''        grdPlanning_MileStoneOperation.Rows(j).Cells(0).Value = .MileOperation.Name(j)
+
+		''        If (Math.Abs(.MileOperation.LeadTime(j)) > gcEPS) Then
+		''            grdPlanning_MileStoneOperation.Rows(j).Cells(1).Value = .MileOperation.LeadTime(j)
+		''        Else
+		''            grdPlanning_MileStoneOperation.Rows(j).Cells(1).Value = ""
+		''        End If
+		''    Next
+
+		''    lstPlanning_Notes_Dim.Items.Clear()
+		''    For i As Integer = 0 To mProcess_Project.Cost.SplOperation.ID_Cost.Count - 1
+		''        Dim pName As String = mProcess_Project.Cost.SplOperation.Desc(i)
+
+		''        Dim pFlag As Boolean = False
+		''        For j As Integer = 0 To .SplOperation.ID_SplOperation.Count - 1
+		''            If (pName = .SplOperation.Desc(j)) Then
+		''                pFlag = True
+		''                Exit For
+		''            End If
+		''        Next
+		''        If (Not pFlag) Then
+		''            lstPlanning_Notes_Dim.Items.Add(pName)
+		''        End If
+		''    Next
+
+		''    txtPlanning_Notes.Text = .Notes
+
+		''End With
+
+		'....Shipping
+		With mProcess_Project.Shipping
+
+			For i As Integer = 0 To mProcess_Project.Design.CustSpec.ID_Cust.Count - 1
+				grdShipping_CustSpec.Rows.Add()
+				grdShipping_CustSpec.Rows(i).Cells(0).Value = mProcess_Project.Design.CustSpec.Desc(i)
+				grdShipping_CustSpec.Rows(i).Cells(1).Value = mProcess_Project.Design.CustSpec.Interpret(i)
+			Next
+			grdShipping_CustSpec.AllowUserToAddRows = False
+			grpCustSpec_Shipping.Enabled = False
+			txtShipping_Notes.Text = .Notes
+		End With
+
+
+		'....IssueComment
+		With mProcess_Project.IssueCommnt
+			Dim pCI As New CultureInfo("en-US")
+			For i As Integer = 0 To .SN.Count - 1
+
+				grdIssueComment.Rows.Add()
+				'grdIssueComment.Rows(i).Cells(0).Value = .SlNo(i)
+				grdIssueComment.Rows(i).Cells(0).Value = .Comment(i)
+				grdIssueComment.Rows(i).Cells(1).Value = .ByDept(i)
+				grdIssueComment.Rows(i).Cells(2).Value = .ByName(i)
+				grdIssueComment.Rows(i).Cells(3).Value = .ByDate(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+				grdIssueComment.Rows(i).Cells(4).Value = .ToDept(i)
+				'grdIssueComment.Rows(i).Cells(6).Value = .Resolved(i)
+
+				If (.Resolved(i)) Then
+					grdIssueComment.Rows(i).Cells(5).Value = "Y"
+					grdIssueComment.Rows(i).Cells(6).Value = .Name(i)
+					grdIssueComment.Rows(i).Cells(7).Value = .DateResolution(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+
+					grdIssueComment.Rows(i).Cells(8).Value = .Resolution(i)
+				Else
+					grdIssueComment.Rows(i).Cells(5).Value = "N"
+					grdIssueComment.Rows(i).Cells(6).Value = .Name(i)
+					grdIssueComment.Rows(i).Cells(7).Value = ""
+
+					grdIssueComment.Rows(i).Cells(8).Value = .Resolution(i)
+				End If
+
+			Next
+		End With
+
+
+		'....Attendies
+		With mProcess_Project.Approval
+
+			For j As Integer = 0 To .SN.Count - 1
+				grdApproval_Attendees.Rows(j).Cells(1).Value = .Name(j)
+				grdApproval_Attendees.Rows(j).Cells(2).Value = .Title(j)
+				grdApproval_Attendees.Rows(j).Cells(3).Value = .Signed(j)
+
+				If (.Signed(j)) Then
+					Dim pCI As New CultureInfo("en-US")
+					grdApproval_Attendees.Rows(j).Cells(4).Value = .DateSigned(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+				Else
+					grdApproval_Attendees.Rows(j).Cells(4).Value = ""
+				End If
+
+			Next
+
+		End With
+
+
+
+		' ''....Hard Coded
+		''cmbApp_InsertLoc.SelectedIndex = 0
+		''cmbApp_Face_POrient.SelectedIndex = 1
+		''tbApp.Controls.Remove(tbpAxial)
+
+		''cmbApp_PressCycle.SelectedIndex = 1
+		''cmbApp_Shaped.SelectedIndex = 1
+		''cmbApp_OutOfRound.SelectedIndex = 1
+		''cmbApp_SplitRing.SelectedIndex = 1
+		''cmbApp_PreComp.SelectedIndex = 1
+
+		''grdApp_Face_Cavity.Rows.Add()
+		''grdApp_Face_Cavity.Rows.Add()
+		''grdApp_Face_Cavity.Rows.Add()
+		' ''grdApp_Face_Cavity.Rows.Add()
+		' ''grdApp_Face_Cavity.Rows.Add()
+		''grdApp_Face_Cavity.Rows(0).Cells(0).Value = "Depth"
+		''grdApp_Face_Cavity.Rows(0).Cells(1).Value = "0.0500"
+		''grdApp_Face_Cavity.Rows(0).Cells(2).Value = "0.0540"
+		''grdApp_Face_Cavity.Rows(0).Cells(3).Value = "0.0500"
+		''grdApp_Face_Cavity.Rows(0).Cells(4).Value = "0.0540"
+
+		' ''grdApp_Face_Cavity.Rows(1).Cells(0).Value = "Axial L"
+		' ''grdApp_Face_Cavity.Rows(1).Cells(1).Value = ""
+		' ''grdApp_Face_Cavity.Rows(1).Cells(2).Value = ""
+		' ''grdApp_Face_Cavity.Rows(1).Cells(3).Value = ""
+		' ''grdApp_Face_Cavity.Rows(1).Cells(4).Value = ""
+		' ''grdApp_Face_Cavity.Rows.Add()
+		''grdApp_Face_Cavity.Rows(1).Cells(0).Value = "Radial Wid"
+		''grdApp_Face_Cavity.Rows(1).Cells(1).Value = "0.0000"
+		''grdApp_Face_Cavity.Rows(1).Cells(2).Value = "0.0750"
+		''grdApp_Face_Cavity.Rows(1).Cells(3).Value = "0.0750"
+		''grdApp_Face_Cavity.Rows(1).Cells(4).Value = "0.0750"
+		' ''grdApp_Face_Cavity.Rows.Add()
+		''grdApp_Face_Cavity.Rows(2).Cells(0).Value = "ID"
+		''grdApp_Face_Cavity.Rows(2).Cells(1).Value = "0.6995"
+		''grdApp_Face_Cavity.Rows(2).Cells(2).Value = "0.7030"
+		''grdApp_Face_Cavity.Rows(2).Cells(3).Value = "0.6995"
+		''grdApp_Face_Cavity.Rows(2).Cells(4).Value = "0.7030"
+		' ''grdApp_Face_Cavity.Rows.Add()
+		' ''grdApp_Face_Cavity.Rows(4).Cells(0).Value = "OD"
+		' ''grdApp_Face_Cavity.Rows(4).Cells(1).Value = ""
+		' ''grdApp_Face_Cavity.Rows(4).Cells(2).Value = ""
+		' ''grdApp_Face_Cavity.Rows(4).Cells(3).Value = ""
+		' ''grdApp_Face_Cavity.Rows(4).Cells(4).Value = ""
+		' ''grdApp_Face_Cavity.Rows.Add()
+		''grdApp_Face_Cavity.Rows(3).Cells(0).Value = "Corner Radius"
+		''grdApp_Face_Cavity.Rows(3).Cells(1).Value = "0.0000"
+		''grdApp_Face_Cavity.Rows(3).Cells(2).Value = "0.0150"
+		''grdApp_Face_Cavity.Rows(3).Cells(3).Value = "0.0150"
+		''grdApp_Face_Cavity.Rows(3).Cells(4).Value = "0.0150"
+
+		''cmbDesign_BuildToPrint.SelectedIndex = 1
+		''cmbDesign_Frozen.SelectedIndex = 0
+		''cmbDesign_Process.SelectedIndex = 0
+		''cmbDesign_Class1.SelectedIndex = 1
+		''cmbDwg_DesignLevel.SelectedIndex = 3
+		''cmbDesign_VerfyType.SelectedIndex = 2
+		''cmbDesign_PerformedBy.Text = "RDiM"
+		''cmbDesign_Winnovation.SelectedIndex = 1
+		''txtDesign_WinnovationNo.Enabled = False
+		''cmbDesign_Mat_Seal.SelectedIndex = 0
+		''cmbDesign_Mat_Spring.Enabled = False
+		''cmbDesign_TemperType.SelectedIndex = 4
+		''GroupBox49.Enabled = False
+		''chkDesign_Plating.Checked = True
+		''cmbDesign_PlatingCode.SelectedIndex = 13
+		''cmbDesign_PlatingThickCode.SelectedIndex = 2
+		''cmbDesign_OutsideVendor.SelectedIndex = 1
+
+		''grdDesign_Input.Rows.Add()
+		''grdDesign_Input.Rows(0).Cells(0).Value = "Catalog equivalent."
+		''grdDesign_Input.Rows(1).Cells(0).Value = "Ref NH-761188"
+
+		''grdDesign_CustSpec.Rows.Add()
+		''grdDesign_CustSpec.Rows.Add()
+		''grdDesign_CustSpec.Rows.Add()
+		''grdDesign_CustSpec.Rows.Add()
+		''grdDesign_CustSpec.Rows.Add()
+		''grdDesign_CustSpec.Rows.Add()
+
+		''grdDesign_CustSpec.Rows(0).Cells(0).Value = "Quality"
+		''grdDesign_CustSpec.Rows(0).Cells(1).Value = "CERTIFICATE OF COMPLIANCE"
+		''grdDesign_CustSpec.Rows(1).Cells(0).Value = "Quality"
+		''grdDesign_CustSpec.Rows(1).Cells(1).Value = "MATERIAL CERTIFICATIONS INCLUDING HARDNESS AND SOURCE  PER SKOFLO SPEC-11138"
+		''grdDesign_CustSpec.Rows(2).Cells(0).Value = "Quality"
+		''grdDesign_CustSpec.Rows(2).Cells(1).Value = "HARDNESS REPORT AFTER NACE HEAT TREAT PER T1."
+
+		''grdDesign_CustSpec.Rows(3).Cells(0).Value = "Design"
+		''grdDesign_CustSpec.Rows(3).Cells(1).Value = "AMS 5596 (UNS N07718)."
+		''grdDesign_CustSpec.Rows(4).Cells(0).Value = "Design"
+		''grdDesign_CustSpec.Rows(4).Cells(1).Value = "SKOFLO SPEC-11138 (MATERIAL ORIGIN REQUIREMENTS.)"
+		''grdDesign_CustSpec.Rows(5).Cells(0).Value = "Design"
+		''grdDesign_CustSpec.Rows(5).Cells(1).Value = "ALL MATERIALS MUST MEET SKOFLO SPEC-11138 SOURCING REQUIREMENTS."
+		''grdDesign_CustSpec.Rows(6).Cells(0).Value = "Design"
+		''grdDesign_CustSpec.Rows(6).Cells(1).Value = "WELDING PRIOR TO FORMING PERMITTED PER GOOD COMMERCIAL PRACTICE.  NO FILLER USED."
+
+		''chkLegacyRef_Dim.Checked = True
+		''grdPurchase_Mat.Rows(0).Cells(0).Value = "701-006-124-14"
+		''grdPurchase_Mat.Rows(0).Cells(2).Value = "Inventory"
+
+		''txtManf_HT.Text = 40
+		''grdDrawing_Needed.Rows.Add()
+		''grdDrawing_Needed.Rows(0).Cells(0).Value = "NH-761273"
+		''grdDrawing_Needed.Rows(0).Cells(1).Value = "Cust dwg"
+		''grdDrawing_Needed.Rows(0).Cells(2).Value = "Inventory"
+
+		''grdDrawing_Needed.Rows(1).Cells(0).Value = "NH-761273F"
+		''grdDrawing_Needed.Rows(1).Cells(1).Value = "Fab dwg"
+		''grdDrawing_Needed.Rows(1).Cells(2).Value = "Inventory"
+
+		''grdManf_ToolNGage.Rows.Add()
+		''grdManf_ToolNGage.Rows(0).Cells(0).Value = "062-006-124-SF-.500"
+		''grdManf_ToolNGage.Rows(0).Cells(1).Value = "Roll tooling"
+		''grdManf_ToolNGage.Rows(0).Cells(2).Value = "C-Ring"
+		''grdManf_ToolNGage.Rows(0).Cells(3).Value = "Inventory"
+		''grdManf_ToolNGage.Rows(1).Cells(0).Value = "TECE-711-062"
+		''grdManf_ToolNGage.Rows(1).Cells(1).Value = "Die"
+		''grdManf_ToolNGage.Rows(1).Cells(2).Value = "Std"
+		''grdManf_ToolNGage.Rows(1).Cells(3).Value = "Inventory"
+
+		''grdDesign_Seal.Rows.Add()
+		''grdDesign_Seal.Rows.Add()
+		''grdDesign_Seal.Rows.Add()
+		''grdDesign_Seal.Rows(0).Cells(0).Value = "ID"
+		''grdDesign_Seal.Rows(0).Cells(1).Value = "0.7110"
+		''grdDesign_Seal.Rows(0).Cells(2).Value = "0.7135"
+		''grdDesign_Seal.Rows(0).Cells(3).Value = "0.7160"
+
+		''grdDesign_Seal.Rows(1).Cells(0).Value = "Radial Wid"
+		''grdDesign_Seal.Rows(1).Cells(1).Value = "0.0000"
+		''grdDesign_Seal.Rows(1).Cells(2).Value = "0.0250"
+		''grdDesign_Seal.Rows(1).Cells(3).Value = "0.0500"
+
+		''grdDesign_Seal.Rows(2).Cells(0).Value = "FH"
+		''grdDesign_Seal.Rows(2).Cells(1).Value = "0.0600"
+		''grdDesign_Seal.Rows(2).Cells(2).Value = "0.0620"
+		''grdDesign_Seal.Rows(2).Cells(3).Value = "0.0640"
+
+		''grdDesign_Seal.Rows(3).Cells(0).Value = "Roundness"
+		''grdDesign_Seal.Rows(3).Cells(1).Value = "0.0000"
+		''grdDesign_Seal.Rows(3).Cells(2).Value = "0.0100"
+		''grdDesign_Seal.Rows(3).Cells(3).Value = "0.0200"
+
+		''cmbQuality_ApprovedSupplier.SelectedIndex = 1
+		''cmbQuality_TNG.SelectedIndex = 1
+		''cmbQuality_CustComplaint.SelectedIndex = 1
+		''cmbQuality_SPC.SelectedIndex = 1
+		''cmbQuality_GageRnR_Reqd.SelectedIndex = 1
+		''cmbQuality_VisualInspection.SelectedIndex = 1
+		''cmbQuality_CustAcceptStd.Text = "HARDNESS TEST FOR NACE COMPLIANCE.  C OF C, MATL CERTS"
+
+		''grdApproval_Attendees.Rows.Add()
+		''grdApproval_Attendees.Rows.Add()
+		''grdApproval_Attendees.Rows.Add()
+		''grdApproval_Attendees.Rows.Add()
+		''grdApproval_Attendees.Rows.Add()
+		''grdApproval_Attendees.Rows.Add()
+		''grdApproval_Attendees.Rows.Add()
+
+		''grdApproval_Attendees.Rows(0).Cells(0).Value = "Engineering"
+		''grdApproval_Attendees.Rows(0).Cells(1).Value = "Nick Lasewicz"
+		''grdApproval_Attendees.Rows(0).Cells(2).Value = "Engineer"
+		''grdApproval_Attendees.Rows(0).Cells(3).Value = True
+		''grdApproval_Attendees.Rows(0).Cells(4).Value = "10/27/2017"
+
+		''grdApproval_Attendees.Rows(1).Cells(0).Value = "Marketing"
+		''grdApproval_Attendees.Rows(1).Cells(1).Value = "Rob DiMilia"
+		''grdApproval_Attendees.Rows(1).Cells(2).Value = "Market Mgr."
+		''grdApproval_Attendees.Rows(1).Cells(3).Value = True
+		''grdApproval_Attendees.Rows(1).Cells(4).Value = "10/27/2017"
+
+		''grdApproval_Attendees.Rows(2).Cells(0).Value = "Mfg. Eng."
+		''grdApproval_Attendees.Rows(2).Cells(1).Value = "Tyler Lesco"
+		''grdApproval_Attendees.Rows(2).Cells(2).Value = "Mfg. Eng."
+		''grdApproval_Attendees.Rows(2).Cells(3).Value = True
+		''grdApproval_Attendees.Rows(2).Cells(4).Value = "10/27/2017"
+
+		''grdApproval_Attendees.Rows(3).Cells(0).Value = "Quality"
+		''grdApproval_Attendees.Rows(3).Cells(1).Value = "Jim Devine"
+		''grdApproval_Attendees.Rows(3).Cells(2).Value = "QA Manager"
+		''grdApproval_Attendees.Rows(3).Cells(3).Value = True
+		''grdApproval_Attendees.Rows(3).Cells(4).Value = "10/27/2017"
+
+		''grdApproval_Attendees.Rows(4).Cells(0).Value = "Planning"
+		''grdApproval_Attendees.Rows(4).Cells(1).Value = "John D'Eugenio"
+		''grdApproval_Attendees.Rows(4).Cells(2).Value = "Prod. Planner"
+		''grdApproval_Attendees.Rows(4).Cells(3).Value = True
+		''grdApproval_Attendees.Rows(4).Cells(4).Value = "10/27/2017"
+
+		''grdApproval_Attendees.Rows(5).Cells(0).Value = "Purchasing"
+		''grdApproval_Attendees.Rows(5).Cells(1).Value = "Paul Hollman"
+		''grdApproval_Attendees.Rows(5).Cells(2).Value = "Purchasing"
+		''grdApproval_Attendees.Rows(5).Cells(3).Value = True
+		''grdApproval_Attendees.Rows(5).Cells(4).Value = "10/27/2017"
+
+		''grdApproval_Attendees.Rows(6).Cells(0).Value = "Customer Service"
+		''grdApproval_Attendees.Rows(6).Cells(1).Value = "Denise Kaliszewski"
+		''grdApproval_Attendees.Rows(6).Cells(2).Value = "Cust. Serv. Supervisor"
+		''grdApproval_Attendees.Rows(6).Cells(3).Value = True
+		''grdApproval_Attendees.Rows(6).Cells(4).Value = "10/27/2017"
+
+		''grdApproval_Attendees.Rows(7).Cells(0).Value = "Meeting Chair"
+		''grdApproval_Attendees.Rows(7).Cells(1).Value = "Alicia Sorban"
+		''grdApproval_Attendees.Rows(7).Cells(2).Value = "Eng. Spec."
+		''grdApproval_Attendees.Rows(7).Cells(3).Value = True
+		''grdApproval_Attendees.Rows(7).Cells(4).Value = "10/27/2017"
+
+
+	End Sub
+
+
+	Private Sub PopulateCmbSFinish()
+		'===========================  
+		'....This routine populates the Surface Finish combo box. (Database Driven).
+		Dim pSealMCSEntity As New SealIPEMCSDBEntities()
+		Dim pRecordLeak = (From it In pSealMCSEntity.tblESeal_Leak_T800
+						   Select it.fldSFinish Distinct).ToList()
+
+		cmbSFinish.Items.Clear()
+		Dim pRecord As New tblESeal_Leak_T800
+
+		If (pRecordLeak.Count > 0) Then
+			For i As Integer = 0 To pRecordLeak.Count - 1
+				cmbSFinish.Items.Add(pRecordLeak(i))
+			Next
+		End If
+
+		cmbSFinish.SelectedIndex = 0
+	End Sub
+
+
+	Private Sub SaveData()
+		'==================
+		With mProcess_Project
+			.POPCoding = cmbPopCoding.Text
+
+			.Rating = cmbRating.Text
+			.Type = cmbType.Text
+
+			If (txtStartDate.Text <> "") Then
+				If (txtStartDate.Text <> DateTime.MinValue) Then
+					.DateOpen = Convert.ToDateTime(txtStartDate.Text)
+				End If
+
+			End If
+
+			If (txtDateMod.Text <> "") Then
+				If (txtDateMod.Text <> DateTime.MinValue) Then
+					.DateLastModified = Convert.ToDateTime(txtDateMod.Text)
+				End If
+			End If
+
+			'.CloseDate = = Convert.ToDateTime(txtc.Text)
+			.LastModifiedBy = txtModifiedBy.Text
+
+		End With
+
+		With mProcess_Project.PreOrder
+			.Mgr_PreOrder = cmbMgrPreOrder.Text
+			.Mgr_Sales = txtMgrSales.Text
+
+			If (cmbExport_Reqd.Text = "Y") Then
+				.Export_Reqd = True
+			Else
+				.Export_Reqd = False
+			End If
+
+			.Export_Status = cmbExport_Status.Text
+
+			.Part_Family = cmbPartFamily.Text
+			.Part_Type = cmbPartType.Text
+
+			.PreOrder_Seg = cmbPreOrderSeg.Text
+			.PreOrder_Channel = cmbPreOrderChannel.Text
+			.Notes = txtPreOrderNotes.Text
+
+			.Loc_CostFile = cmbCostFileLoc.Text
+			.Loc_RFQPkg = cmbRFQPkgLoc.Text
+			.Notes_Price = txtPreOrderPriceNotes.Text
+
+			If (chkPreOrderUserSigned.Checked) Then
+				'.User_Name = txtPreOrderUserName.Text
+				.EditedBy.User_Name = txtPreOrderUserName.Text
+				.EditedBy.User_DateSigned = Convert.ToDateTime(txtPreOrderUserDate.Text)
+				.EditedBy.User_Signed = True
+
+			Else
+				.EditedBy.User_Name = ""
+				.EditedBy.User_DateSigned = DateTime.MinValue
+				.EditedBy.User_Signed = False
+			End If
+
+			'....Cust Contact Pre-Order
+			mProcess_Project.CustContact.ID_Cust.Clear()
+			mProcess_Project.CustContact.DeptName.Clear()
+			mProcess_Project.CustContact.Name.Clear()
+			mProcess_Project.CustContact.Phone.Clear()
+			mProcess_Project.CustContact.Email.Clear()
+
+			'grdOrdEntry_CustContact = grdCustContact
+
+			For j As Integer = 0 To grdCustContact.Rows.Count - 2
+				mProcess_Project.CustContact.ID_Cust.Add(j + 1)
+				mProcess_Project.CustContact.DeptName.Add(grdCustContact.Rows(j).Cells(0).Value)
+				mProcess_Project.CustContact.Name.Add(grdCustContact.Rows(j).Cells(1).Value)
+				mProcess_Project.CustContact.Phone.Add(grdCustContact.Rows(j).Cells(2).Value)
+				mProcess_Project.CustContact.Email.Add(grdCustContact.Rows(j).Cells(3).Value)
+			Next
+
+			'....Cust Contact Order-Entry
+			mProcess_Project.CustContact.ID_Cust.Clear()
+			mProcess_Project.CustContact.DeptName.Clear()
+			mProcess_Project.CustContact.Name.Clear()
+			mProcess_Project.CustContact.Phone.Clear()
+			mProcess_Project.CustContact.Email.Clear()
+			For j As Integer = 0 To grdOrdEntry_CustContact.Rows.Count - 2
+				mProcess_Project.CustContact.ID_Cust.Add(j + 1)
+				mProcess_Project.CustContact.DeptName.Add(grdOrdEntry_CustContact.Rows(j).Cells(0).Value)
+				mProcess_Project.CustContact.Name.Add(grdOrdEntry_CustContact.Rows(j).Cells(1).Value)
+				mProcess_Project.CustContact.Phone.Add(grdOrdEntry_CustContact.Rows(j).Cells(2).Value)
+				mProcess_Project.CustContact.Email.Add(grdOrdEntry_CustContact.Rows(j).Cells(3).Value)
+			Next
+
+			'....Quote
+			.Quote.QID.Clear()
+			.Quote.QDate.Clear()
+			.Quote.No.Clear()
+
+			For j As Integer = 0 To grdQuote.Rows.Count - 2
+				.Quote.QID.Add(j + 1)
+				'grdQuote.Rows(j).Cells(0).Value <> "" And 
+				If (Not IsNothing(grdQuote.Rows(j).Cells(0).Value)) Then
+					.Quote.QDate.Add(grdQuote.Rows(j).Cells(0).Value)
+				Else
+					.Quote.QDate.Add(DateTime.MinValue)
+				End If
+
+				.Quote.No.Add(grdQuote.Rows(j).Cells(1).Value)
+			Next
+
+			'....Sales Data
+			.SalesData.ID_Sales.Clear()
+			.SalesData.Year.Clear()
+			.SalesData.Qty.Clear()
+			.SalesData.Price.Clear()
+			.SalesData.Total.Clear()
+
+			For j As Integer = 0 To grdPreOrder_SalesData.Rows.Count - 2
+				.SalesData.ID_Sales.Add(j + 1)
+				.SalesData.Year.Add(grdPreOrder_SalesData.Rows(j).Cells(0).Value)
+				.SalesData.Qty.Add(grdPreOrder_SalesData.Rows(j).Cells(1).Value)
+				.SalesData.Price.Add(grdPreOrder_SalesData.Rows(j).Cells(2).Value)
+				.SalesData.Total.Add(grdPreOrder_SalesData.Rows(j).Cells(3).Value)
+			Next
+
+		End With
+
+		'....ITAR_Export
+		With mProcess_Project.ITAR_Export
+			.IsCustOnDenialList = IIf(cmbITAR_Export_CustOnDenialList.Text = "Y", True, False)
+			.CountryProhibited = IIf(cmbITAR_Export_CountryProhibited.Text = "Y", True, False)
+			.HasAntiBoycottLang = IIf(cmbITAR_Export_AntiBoycottLang.Text = "Y", True, False)
+			.IsUnder_ITAR_Reg = IIf(cmbITAR_Export_ProductITAR_Reg.Text = "Y", True, False)
+			.ITAR_Class = txtITAR_Export_ITAR_Classification.Text
+			.SaleExportControlled = IIf(cmbITAR_Export_SaleExportControlled.Text = "Y", True, False)
+			.EAR_Class = txtITAR_Export_EAR_Classification.Text
+			.Status = cmbITAR_Export_Status.Text
+			.HTS_Class = txtITAR_Export_HTS_Classification.Text
+
+			If (chkITAR_Export_UserSigned.Checked) Then
+				.EditedBy.User_Name = txtITAR_Export_UserName.Text
+				.EditedBy.User_DateSigned = Convert.ToDateTime(txtITAR_Export_UserDate.Text)
+				.EditedBy.User_Signed = True
+
+			Else
+				.EditedBy.User_Name = ""
+				.EditedBy.User_DateSigned = DateTime.MinValue
+				.EditedBy.User_Signed = False
+			End If
+		End With
+
+		'....OrderEntrty
+		With mProcess_Project.OrdEntry
+			.SalesOrderNo = txtOrdEntry_SalesOrderNo.Text
+			If (txtOrdEntry_SalesDate.Text <> "") Then
+				.DateSales = Convert.ToDateTime(txtOrdEntry_SalesDate.Text)
+			End If
+
+			If (txtOrderEntry_QtdLeadTime.Text <> "") Then
+				.LeadTimeQuoted = Convert.ToDouble(txtOrderEntry_QtdLeadTime.Text)
+			End If
+
+			.PONo = txtOrdEntry_PONo.Text
+			If (txtOrdEntry_PODate.Text <> "") Then
+				.DatePO = Convert.ToDateTime(txtOrdEntry_PODate.Text)
+			End If
+
+			If (txtOrdEntry_PODate_EDI.Text <> "") Then
+				.DatePO_EDI = Convert.ToDateTime(txtOrdEntry_PODate_EDI.Text)
+			End If
+
+			.HasSplReq = IIf(cmbOrdEntry_SpecialReq.Text = "Y", True, False)
+			.Tool_Reqd = IIf(cmbOrdEntry_Tooling.Text = "Y", True, False)
+			.SplPkg_Lbl_Reqd = IIf(cmbOrdEntry_SplPkgNLbl.Text = "Y", True, False)
+			If (txtOrdEntry_OrderQty.Text <> "") Then
+				.OrdQty = Convert.ToInt16(txtOrdEntry_OrderQty.Text)
+			End If
+
+			If (txtOrdEntry_OrderShipDate.Text <> "") Then
+				.DateOrdShip = Convert.ToDateTime(txtOrdEntry_OrderShipDate.Text)
+			End If
+
+			.Expedited = IIf(cmbOrdEntry_Expedited.Text = "Y", True, False)
+			.IsDFAR = IIf(cmbOrdEntry_DFAR.Text = "Y", True, False)
+
+			If (chkOrdEntry_UserSigned.Checked) Then
+				.EditedBy.User_Name = txtOrdEntry_UserName.Text
+				.EditedBy.User_DateSigned = Convert.ToDateTime(txtOrdEntry_UserDate.Text)
+				.EditedBy.User_Signed = True
+
+			Else
+				.EditedBy.User_Name = ""
+				.EditedBy.User_DateSigned = DateTime.MinValue
+				.EditedBy.User_Signed = False
+			End If
+
+		End With
+
+		'....Cost
+		With mProcess_Project.Cost
+			.QuoteFileLoc = cmbCost_QuoteFile.Text
+			.Notes = txtCost_Notes.Text
+
+			'If (grdQuality_SplOperation.Rows.Count > 1) Then
+			'    grdCost_SplOperation = grdQuality_SplOperation
+			'End If
+
+			.SplOperation.ID_SplOp.Clear()
+			.SplOperation.Desc.Clear()
+			.SplOperation.Spec.Clear()
+			.SplOperation.LeadTime.Clear()
+			.SplOperation.Cost.Clear()
+
+			For j As Integer = 0 To grdCost_SplOperation.Rows.Count - 2
+				.SplOperation.ID_SplOp.Add(j + 1)
+				.SplOperation.Desc.Add(grdCost_SplOperation.Rows(j).Cells(0).Value)
+				.SplOperation.Spec.Add(grdCost_SplOperation.Rows(j).Cells(1).Value)
+
+				If (Not IsNothing(grdCost_SplOperation.Rows(j).Cells(2).Value)) Then
+					If (grdCost_SplOperation.Rows(j).Cells(2).Value.ToString() <> "") Then
+						.SplOperation.LeadTime.Add(grdCost_SplOperation.Rows(j).Cells(2).Value)
+					Else
+						.SplOperation.LeadTime.Add(0)
+					End If
+
+				Else
+					.SplOperation.LeadTime.Add(0)
+				End If
+
+				If (Not IsNothing(grdCost_SplOperation.Rows(j).Cells(3).Value)) Then
+					If (grdCost_SplOperation.Rows(j).Cells(3).Value.ToString() <> "") Then
+						.SplOperation.Cost.Add(grdCost_SplOperation.Rows(j).Cells(3).Value)
+					Else
+						.SplOperation.Cost.Add(0)
+					End If
+
+				Else
+					.SplOperation.Cost.Add(0)
+				End If
+
+				'.SplOperation.LeadTime.Add(grdCost_SplOperation.Rows(j).Cells(2).Value)
+				'.SplOperation.Cost.Add(grdCost_SplOperation.Rows(j).Cells(3).Value)
+			Next
+
+			''....Spl Operation
+			'grdCost_SplOperation.Rows.Clear()
+			'For j As Integer = 0 To .SplOperation.Desc.Count - 1
+			'    grdCost_SplOperation.Rows.Add()
+			'    grdCost_SplOperation.Rows(j).Cells(0).Value = .SplOperation.Desc(j)
+			'    grdCost_SplOperation.Rows(j).Cells(1).Value = .SplOperation.Spec(j)
+			'    If (Math.Abs(.SplOperation.LeadTime(j)) > gcEPS) Then
+			'        grdCost_SplOperation.Rows(j).Cells(2).Value = .SplOperation.LeadTime(j)
+			'    Else
+			'        grdCost_SplOperation.Rows(j).Cells(2).Value = ""
+			'    End If
+
+			'    If (Math.Abs(.SplOperation.Cost(j)) > gcEPS) Then
+			'        grdCost_SplOperation.Rows(j).Cells(3).Value = .SplOperation.Cost(j).ToString("#.00")
+			'    Else
+			'        grdCost_SplOperation.Rows(j).Cells(3).Value = ""
+			'    End If
+			'Next
+			'grdCost_SplOperation.Refresh()
+			'TabControl1.Refresh()
+
+			If (chkCost_UserSigned.Checked) Then
+				.EditedBy.User_Name = txtCost_UserName.Text
+				.EditedBy.User_DateSigned = Convert.ToDateTime(txtCost_UserDate.Text)
+				.EditedBy.User_Signed = True
+
+			Else
+				.EditedBy.User_Name = ""
+				.EditedBy.User_DateSigned = DateTime.MinValue
+				.EditedBy.User_Signed = False
+			End If
+
+		End With
+
+		'....App
+		With mProcess_Project.App
+			.Eqp = txtApp_Equip.Text
+			.ExistingSeal = txtApp_ExistingSeal.Text
+			.Type = cmbApp_InsertLoc.Text
+
+			.Fluid = txtApp_Fluid.Text
+			If (txtApp_MaxLeak.Text <> "") Then
+				.MaxLeak = Convert.ToDouble(txtApp_MaxLeak.Text)
+			End If
+
+
+			.IsPressCyclic = IIf(cmbApp_PressCycle.Text = "Y", True, False)
+
+			If (.IsPressCyclic) Then
+				If (txtApp_PressCycleFreq.Text <> "") Then
+					.PressCycle_Freq = Convert.ToDouble(txtApp_PressCycleFreq.Text)
+				End If
+
+				If (txtApp_PressCycleAmp.Text <> "") Then
+					.PressCycle_Amp = Convert.ToDouble(txtApp_PressCycleAmp.Text)
+				End If
+			Else
+				.PressCycle_Freq = 0
+				.PressCycle_Amp = 0
+			End If
+
+			.Shaped = IIf(cmbApp_Shaped.Text = "Y", True, False)
+			.IsOoR = IIf(cmbApp_OutOfRound.Text = "Y", True, False)
+			.IsSplitRing = IIf(cmbApp_SplitRing.Text = "Y", True, False)
+			.IsPreComp = IIf(cmbApp_PreComp.Text = "Y", True, False)
+
+			If (Not IsNothing(grdApp_OpCond.Rows(0).Cells(1).Value) And grdApp_OpCond.Rows(0).Cells(1).Value <> "") Then
+				.OpCond.T_Assy = Convert.ToDouble(grdApp_OpCond.Rows(0).Cells(1).Value)
+			End If
+
+			If (Not IsNothing(grdApp_OpCond.Rows(0).Cells(2).Value) And grdApp_OpCond.Rows(0).Cells(2).Value <> "") Then
+				.OpCond.T_Min = Convert.ToDouble(grdApp_OpCond.Rows(0).Cells(2).Value)
+			End If
+
+			If (Not IsNothing(grdApp_OpCond.Rows(0).Cells(3).Value) And grdApp_OpCond.Rows(0).Cells(3).Value <> "") Then
+				.OpCond.T_Max = Convert.ToDouble(grdApp_OpCond.Rows(0).Cells(3).Value)
+			End If
+
+			If (Not IsNothing(grdApp_OpCond.Rows(0).Cells(4).Value) And grdApp_OpCond.Rows(0).Cells(4).Value <> "") Then
+				.OpCond.T_Oper = Convert.ToDouble(grdApp_OpCond.Rows(0).Cells(4).Value)
+			End If
+
+			If (Not IsNothing(grdApp_OpCond.Rows(1).Cells(1).Value) And grdApp_OpCond.Rows(1).Cells(1).Value <> "") Then
+				.OpCond.Press_Assy = Convert.ToDouble(grdApp_OpCond.Rows(1).Cells(1).Value)
+			End If
+
+			If (Not IsNothing(grdApp_OpCond.Rows(1).Cells(2).Value) And grdApp_OpCond.Rows(1).Cells(2).Value <> "") Then
+				.OpCond.Press_Min = Convert.ToDouble(grdApp_OpCond.Rows(1).Cells(2).Value)
+			End If
+
+			If (Not IsNothing(grdApp_OpCond.Rows(1).Cells(3).Value) And grdApp_OpCond.Rows(1).Cells(3).Value <> "") Then
+				.OpCond.Press_Max = Convert.ToDouble(grdApp_OpCond.Rows(1).Cells(3).Value)
+			End If
+
+			If (Not IsNothing(grdApp_OpCond.Rows(1).Cells(4).Value) And grdApp_OpCond.Rows(1).Cells(4).Value <> "") Then
+				.OpCond.Press_Oper = Convert.ToDouble(grdApp_OpCond.Rows(1).Cells(4).Value)
+			End If
+
+			If (Not IsNothing(grdApp_Load.Rows(0).Cells(1).Value) And grdApp_Load.Rows(0).Cells(1).Value <> "") Then
+				.Load.Assy_Min = Convert.ToDouble(grdApp_Load.Rows(0).Cells(1).Value)
+			End If
+
+			If (Not IsNothing(grdApp_Load.Rows(0).Cells(2).Value) And grdApp_Load.Rows(0).Cells(2).Value <> "") Then
+				.Load.Assy_Max = Convert.ToDouble(grdApp_Load.Rows(0).Cells(2).Value)
+			End If
+
+			If (Not IsNothing(grdApp_Load.Rows(1).Cells(1).Value) And grdApp_Load.Rows(1).Cells(1).Value <> "") Then
+				.Load.Oper_Min = Convert.ToDouble(grdApp_Load.Rows(1).Cells(1).Value)
+			End If
+
+			If (Not IsNothing(grdApp_Load.Rows(0).Cells(2).Value) And grdApp_Load.Rows(0).Cells(2).Value <> "") Then
+				.Load.Oper_Max = Convert.ToDouble(grdApp_Load.Rows(1).Cells(2).Value)
+			End If
+
+			If (.Type = "Face") Then
+				'....Face
+				.Cavity.ID_Cavity.Clear()
+				.Cavity.DimName.Clear()
+				.Cavity.Assy.Clear()
+				.Cavity.Oper.Clear()
+				For i As Integer = 0 To grdApp_Face_Cavity.Rows.Count - 2
+					.Cavity.ID_Cavity.Add(i + 1)
+					.Cavity.DimName.Add(grdApp_Face_Cavity.Rows(i).Cells(0).Value)
+
+					Dim pAssyMin As Double = 0
+					If (Not IsNothing(grdApp_Face_Cavity.Rows(i).Cells(1).Value) And grdApp_Face_Cavity.Rows(i).Cells(1).Value <> "") Then
+						pAssyMin = Convert.ToDouble(grdApp_Face_Cavity.Rows(i).Cells(1).Value)
+					End If
+
+					Dim pAssyMax As Double = 0
+					If (Not IsNothing(grdApp_Face_Cavity.Rows(i).Cells(2).Value) And grdApp_Face_Cavity.Rows(i).Cells(2).Value <> "") Then
+						pAssyMax = Convert.ToDouble(grdApp_Face_Cavity.Rows(i).Cells(2).Value)
+					End If
+
+					Dim pAssy As clsProcessProj_App.clsCavity.sAssy
+					pAssy.Min = pAssyMin
+					pAssy.Max = pAssyMax
+					.Cavity.Assy.Add(pAssy)
+
+					Dim pOperMin As Double = 0
+					If (Not IsNothing(grdApp_Face_Cavity.Rows(i).Cells(3).Value) And grdApp_Face_Cavity.Rows(i).Cells(3).Value <> "") Then
+						pOperMin = Convert.ToDouble(grdApp_Face_Cavity.Rows(i).Cells(3).Value)
+					End If
+
+					Dim pOperMax As Double = 0
+					If (Not IsNothing(grdApp_Face_Cavity.Rows(i).Cells(4).Value) And grdApp_Face_Cavity.Rows(i).Cells(4).Value <> "") Then
+						pOperMax = Convert.ToDouble(grdApp_Face_Cavity.Rows(i).Cells(4).Value)
+					End If
+
+					Dim pOper As clsProcessProj_App.clsCavity.sOper
+					pOper.Min = pOperMin
+					pOper.Max = pOperMax
+					.Cavity.Oper.Add(pOper)
+				Next
+
+				.CavityFlange.Mat1 = txtApp_Mat1_Face.Text
+				.CavityFlange.Mat2 = txtApp_Mat2_Face.Text
+
+				If (txtApp_Hardness1_Face.Text <> "") Then
+					.CavityFlange.Hard1 = Convert.ToDouble(txtApp_Hardness1_Face.Text)
+				Else
+					.CavityFlange.Hard1 = 0
+				End If
+
+				If (txtApp_Hardness2_Face.Text <> "") Then
+					.CavityFlange.Hard2 = Convert.ToDouble(txtApp_Hardness2_Face.Text)
+				Else
+					.CavityFlange.Hard2 = 0
+				End If
+
+				If (txtApp_SF1_Face.Text <> "") Then
+					.CavityFlange.SF1 = Convert.ToDouble(txtApp_SF1_Face.Text)
+				Else
+					.CavityFlange.SF1 = 0
+				End If
+
+				If (txtApp_SF2_Face.Text <> "") Then
+					.CavityFlange.SF2 = Convert.ToDouble(txtApp_SF2_Face.Text)
+				Else
+					.CavityFlange.SF2 = 0
+				End If
+
+				.CavityFlange.MeasureSF = cmbFace_SF_ProcessName.Text
+				.CavityFlange.UnitSF = cmbFace_SF_Unit.Text
+
+				.Face.POrient = cmbApp_Face_POrient.Text
+				If (txtApp_Face_MaxFlangeSeparation.Text <> "") Then
+					.Face.MaxFlangeSep = txtApp_Face_MaxFlangeSeparation.Text
+				Else
+					.Face.MaxFlangeSep = 0
+				End If
+
+			ElseIf (.Type = "Axial") Then
+
+				'....Axial
+				.Cavity.ID_Cavity.Clear()
+				.Cavity.DimName.Clear()
+				.Cavity.Assy.Clear()
+				.Cavity.Oper.Clear()
+				For i As Integer = 0 To grdApp_Axial_Cavity.Rows.Count - 2
+					.Cavity.ID_Cavity.Add(i + 1)
+					.Cavity.DimName.Add(grdApp_Axial_Cavity.Rows(i).Cells(0).Value)
+
+					Dim pAssyMin As Double = 0
+					If (Not IsNothing(grdApp_Axial_Cavity.Rows(i).Cells(1).Value) And grdApp_Axial_Cavity.Rows(i).Cells(1).Value <> "") Then
+						pAssyMin = Convert.ToDouble(grdApp_Axial_Cavity.Rows(i).Cells(1).Value)
+					End If
+
+					Dim pAssyMax As Double = 0
+					If (Not IsNothing(grdApp_Axial_Cavity.Rows(i).Cells(2).Value) And grdApp_Axial_Cavity.Rows(i).Cells(2).Value <> "") Then
+						pAssyMax = Convert.ToDouble(grdApp_Axial_Cavity.Rows(i).Cells(2).Value)
+					End If
+
+					Dim pAssy As clsProcessProj_App.clsCavity.sAssy
+					pAssy.Min = pAssyMin
+					pAssy.Max = pAssyMax
+					.Cavity.Assy.Add(pAssy)
+
+					Dim pOperMin As Double = 0
+					If (Not IsNothing(grdApp_Axial_Cavity.Rows(i).Cells(3).Value) And grdApp_Axial_Cavity.Rows(i).Cells(3).Value <> "") Then
+						pOperMin = Convert.ToDouble(grdApp_Axial_Cavity.Rows(i).Cells(3).Value)
+					End If
+
+					Dim pOperMax As Double = 0
+					If (Not IsNothing(grdApp_Axial_Cavity.Rows(i).Cells(4).Value) And grdApp_Axial_Cavity.Rows(i).Cells(4).Value <> "") Then
+						pOperMax = Convert.ToDouble(grdApp_Axial_Cavity.Rows(i).Cells(4).Value)
+					End If
+
+					Dim pOper As clsProcessProj_App.clsCavity.sOper
+					pOper.Min = pOperMin
+					pOper.Max = pOperMax
+					.Cavity.Oper.Add(pOper)
+
+				Next
+
+				.CavityFlange.Mat1 = txtApp_Mat1_Axial.Text
+				.CavityFlange.Mat2 = txtApp_Mat2_Axial.Text
+
+				If (txtApp_Hardness1_Axial.Text <> "") Then
+					.CavityFlange.Hard1 = Convert.ToDouble(txtApp_Hardness1_Axial.Text)
+				Else
+					.CavityFlange.Hard1 = 0
+				End If
+
+				If (txtApp_Hardness2_Axial.Text <> "") Then
+					.CavityFlange.Hard2 = Convert.ToDouble(txtApp_Hardness2_Axial.Text)
+				Else
+					.CavityFlange.Hard2 = 0
+				End If
+
+				If (txtApp_SF1_Axial.Text <> "") Then
+					.CavityFlange.SF1 = Convert.ToDouble(txtApp_SF1_Axial.Text)
+				Else
+					.CavityFlange.SF1 = 0
+				End If
+
+				If (txtApp_SF2_Axial.Text <> "") Then
+					.CavityFlange.SF2 = Convert.ToDouble(txtApp_SF2_Axial.Text)
+				Else
+					.CavityFlange.SF2 = 0
+				End If
+
+				.CavityFlange.MeasureSF = cmbAxial_SF_ProcessName.Text
+				.CavityFlange.UnitSF = cmbAxial_SF_Unit.Text
+
+				.Axial.IsStatic = IIf(cmbApp_Static_Axial.Text = "Y", True, False)
+
+				.Axial.IsRotating = IIf(cmbApp_Rotate_Axial.Text = "Y", True, False)
+				If (.Axial.IsRotating) Then
+					If (txtApp_RotateRPM_Axial.Text <> "") Then
+						.Axial.RPM = Convert.ToInt64(txtApp_RotateRPM_Axial.Text)
+					Else
+						.Axial.RPM = 0.0
+					End If
+
+				Else
+					.Axial.RPM = 0.0
+				End If
+
+				.Axial.IsRecip = IIf(cmbApp_Recip_Axial.Text = "Y", True, False)
+				If (.Axial.IsRecip) Then
+					.Axial.Recip_Stroke = Convert.ToDouble(txtApp_RecipStrokeL_Axial.Text)
+					.Axial.Recip_V = Convert.ToDouble(txtApp_RecipV_Axial.Text)
+					.Axial.Recip_CycleRate = Convert.ToDouble(txtApp_RecipCycleRate_Axial.Text)
+					.Axial.Recip_ServiceLife = Convert.ToDouble(txtApp_RecipServiceLife_Axial.Text)
+				Else
+					.Axial.Recip_Stroke = 0.0
+					.Axial.Recip_V = 0.0
+					.Axial.Recip_CycleRate = 0.0
+					.Axial.Recip_ServiceLife = 0.0
+				End If
+
+				.Axial.IsOscilatory = IIf(cmbApp_Osc_Axial.Text = "Y", True, False)
+				If (.Axial.IsOscilatory) Then
+					.Axial.Oscilate_Rot = Convert.ToDouble(txtApp_OscRot_Axial.Text)
+					.Axial.Oscilate_V = Convert.ToDouble(txtApp_OscV_Axial.Text)
+					.Axial.Oscilate_CycleRate = Convert.ToDouble(txtApp_OscCycleRate_Axial.Text)
+					.Axial.Oscilate_ServiceLife = Convert.ToDouble(txtApp_OscServiceLife_Axial.Text)
+				Else
+					.Axial.Oscilate_Rot = 0.0
+					.Axial.Oscilate_V = 0.0
+					.Axial.Oscilate_CycleRate = 0.0
+					.Axial.Oscilate_ServiceLife = 0.0
+				End If
+
+			End If
+
+		End With
+
+		'....Design
+		With mProcess_Project.Design
+			.CustDwgNo = txtDesign_CustDwgNo.Text
+			.CustDwgRev = txtDesign_CustDwgRev.Text
+
+			.Frozen_Design = IIf(cmbDesign_Frozen.Text = "Y", True, False)
+			.Frozen_Process = IIf(cmbDesign_Process.Text = "Y", True, False)
+
+			.IsClass1 = IIf(cmbDesign_Class1.Text = "Y", True, False)
+			.IsBuildToPrint = IIf(cmbDesign_BuildToPrint.Text = "Y", True, False)
+
+			'.VerfyType = cmbDesign_TemperType.Text
+			'.PerformedBy = cmbDesign_PerformedBy.Text
+			.MCS = txtDesign_MCS.Text
+
+			.IsWinnovation = IIf(cmbDesign_Winnovation.Text = "Y", True, False)
+
+			If (.IsWinnovation) Then
+				.WinnovationNo = txtDesign_WinnovationNo.Text
+			End If
+
+			.Verification.ID_Verification.Clear()
+			.Verification.Desc.Clear()
+			.Verification.Owner.Clear()
+			.Verification.Result.Clear()
+
+			For i As Integer = 0 To grdDesign_Verification.Rows.Count - 2
+				.Verification.ID_Verification.Add(i + 1)
+				.Verification.Desc.Add(grdDesign_Verification.Rows(i).Cells(0).Value)
+				.Verification.Owner.Add(grdDesign_Verification.Rows(i).Cells(1).Value)
+				.Verification.Result.Add(grdDesign_Verification.Rows(i).Cells(2).Value)
+			Next
+
+			.IsMat_OutsideVender = IIf(cmbDesign_OutsideVendor.Text = "Y", True, False)
+
+			.Input.ID_Input.Clear()
+			.Input.Desc.Clear()
+			For i As Integer = 0 To grdDesign_Input.Rows.Count - 2
+				.Input.ID_Input.Add(i + 1)
+				.Input.Desc.Add(grdDesign_Input.Rows(i).Cells(0).Value)
+			Next
+
+			'.KeyChar.ID_Key.Clear()
+			'.KeyChar.KeyChar.Clear()
+			'For i As Integer = 0 To grdDesign_KeyChar.Rows.Count - 2
+			'    .KeyChar.ID_Key.Add(i + 1)
+			'    .KeyChar.KeyChar.Add(grdDesign_Input.Rows(i).Cells(0).Value)
+			'Next
+
+			.FOD_Risks = txtDesign_FOD_Risks.Text
+
+			.CustSpec.ID_Cust.Clear()
+			.CustSpec.Type.Clear()
+			.CustSpec.Desc.Clear()
+			.CustSpec.Interpret.Clear()
+
+			For i As Integer = 0 To grdDesign_CustSpec.Rows.Count - 2
+				.CustSpec.ID_Cust.Add(i + 1)
+				.CustSpec.Type.Add(grdDesign_CustSpec.Rows(i).Cells(0).Value)
+				.CustSpec.Desc.Add(grdDesign_CustSpec.Rows(i).Cells(1).Value)
+				.CustSpec.Interpret.Add(grdDesign_CustSpec.Rows(i).Cells(2).Value)
+			Next
+
+			.LessonsLearned = txtDesign_LessonsLearned.Text
+
+			.SealDim.ID_Seal.Clear()
+			.SealDim.Name.Clear()
+			.SealDim.Min.Clear()
+			.SealDim.Nom.Clear()
+			.SealDim.Max.Clear()
+			For i As Integer = 0 To grdDesign_Seal.Rows.Count - 2
+				.SealDim.ID_Seal.Add(i + 1)
+				.SealDim.Name.Add(grdDesign_Seal.Rows(i).Cells(0).Value)
+				If (Not IsNothing(grdDesign_Seal.Rows(i).Cells(1).Value)) Then
+					If (grdDesign_Seal.Rows(i).Cells(1).Value.ToString() <> "") Then
+						.SealDim.Min.Add(grdDesign_Seal.Rows(i).Cells(1).Value)
+					Else
+						.SealDim.Min.Add(0)
+					End If
+
+				Else
+					.SealDim.Min.Add(0)
+				End If
+
+				If (Not IsNothing(grdDesign_Seal.Rows(i).Cells(2).Value)) Then
+					If (grdDesign_Seal.Rows(i).Cells(2).Value.ToString() <> "") Then
+						.SealDim.Nom.Add(grdDesign_Seal.Rows(i).Cells(2).Value)
+					Else
+						.SealDim.Nom.Add(0)
+					End If
+
+				Else
+					.SealDim.Nom.Add(0)
+				End If
+
+				If (Not IsNothing(grdDesign_Seal.Rows(i).Cells(3).Value)) Then
+					If (grdDesign_Seal.Rows(i).Cells(3).Value.ToString() <> "") Then
+						.SealDim.Max.Add(grdDesign_Seal.Rows(i).Cells(3).Value)
+					Else
+						.SealDim.Max.Add(0)
+					End If
+
+				Else
+					.SealDim.Max.Add(0)
+				End If
+			Next
+
+			.Notes = txtDesign_Notes.Text
+
+		End With
+
+		'....Manf
+		With mProcess_Project.Manf
+			.BaseMat_PartNo = txtManf_MatPartNo_Base.Text
+			.SpringMat_PartNo = txtManf_MatPartNo_Spring.Text
+
+			If (txtManf_HT.Text <> "") Then
+				.HT = txtManf_HT.Text
+			Else
+				.HT = ""
+			End If
+
+			.PreComp_Glue = cmbManf_PrecompressionGlue.Text
+
+			.ToolNGage.ID_Tool.Clear()
+			.ToolNGage.PartNo.Clear()
+			.ToolNGage.Desc.Clear()
+			.ToolNGage.Type.Clear()
+			.ToolNGage.Status.Clear()
+			.ToolNGage.LeadTime.Clear()
+			.ToolNGage.DesignResponsibility.Clear()
+
+			For i As Integer = 0 To grdManf_ToolNGage.Rows.Count - 2
+				.ToolNGage.ID_Tool.Add(i + 1)
+				.ToolNGage.PartNo.Add(grdManf_ToolNGage.Rows(i).Cells(0).Value)
+				.ToolNGage.Desc.Add(grdManf_ToolNGage.Rows(i).Cells(1).Value)
+				.ToolNGage.Type.Add(grdManf_ToolNGage.Rows(i).Cells(2).Value)
+				.ToolNGage.Status.Add(grdManf_ToolNGage.Rows(i).Cells(3).Value)
+
+				If (Not IsNothing(grdManf_ToolNGage.Rows(i).Cells(4).Value)) Then
+					If (grdManf_ToolNGage.Rows(i).Cells(4).Value.ToString() <> "") Then
+						.ToolNGage.LeadTime.Add(grdManf_ToolNGage.Rows(i).Cells(4).Value)
+					Else
+						.ToolNGage.LeadTime.Add(0)
+					End If
+
+
+				Else
+					.ToolNGage.LeadTime.Add(0)
+				End If
+
+				.ToolNGage.DesignResponsibility.Add(grdManf_ToolNGage.Rows(i).Cells(5).Value)
+			Next
+
+		End With
+
+
+		'....Purchase
+		With mProcess_Project.Purchase
+			.Mat.ID_Mat.Clear()
+			.Mat.Item.Clear()
+			.Mat.EstQty.Clear()
+			.Mat.Status.Clear()
+			.Mat.LeadTime.Clear()
+
+			For i As Integer = 0 To grdPurchase_Mat.Rows.Count - 2
+				.Mat.ID_Mat.Add(i + 1)
+				.Mat.Item.Add(grdPurchase_Mat.Rows(i).Cells(0).Value)
+				If (Not IsNothing(grdPurchase_Mat.Rows(i).Cells(1).Value)) Then
+					If (grdPurchase_Mat.Rows(i).Cells(1).Value.ToString() <> "") Then
+						.Mat.EstQty.Add(grdPurchase_Mat.Rows(i).Cells(1).Value)
+					Else
+						.Mat.EstQty.Add(0)
+					End If
+				Else
+					.Mat.EstQty.Add(0)
+				End If
+
+				.Mat.Status.Add(grdPurchase_Mat.Rows(i).Cells(2).Value)
+
+				If (Not IsNothing(grdPurchase_Mat.Rows(i).Cells(3).Value)) Then
+					If (grdPurchase_Mat.Rows(i).Cells(3).Value.ToString() <> "") Then
+						.Mat.LeadTime.Add(grdPurchase_Mat.Rows(i).Cells(3).Value)
+					Else
+						.Mat.LeadTime.Add(0)
+					End If
+
+				Else
+					.Mat.LeadTime.Add(0)
+				End If
+			Next
+
+			'.ToolNGage.ID_Tool.Clear()
+			'.ToolNGage.PartNo.Clear()
+			'.ToolNGage.Desc.Clear()
+			'.ToolNGage.Type.Clear()
+			'.ToolNGage.LeadTime.Clear()
+			'.ToolNGage.DesignResponsibility.Clear()
+
+			'For i As Integer = 0 To grdPurchase_ToolNGages.Rows.Count - 2
+			'    .ToolNGage.ID_Tool.Add(i + 1)
+			'    .ToolNGage.PartNo.Add(grdPurchase_ToolNGages.Rows(i).Cells(0).Value)
+			'    .ToolNGage.Desc.Add(grdPurchase_ToolNGages.Rows(i).Cells(1).Value)
+			'    .ToolNGage.Type.Add(grdPurchase_ToolNGages.Rows(i).Cells(2).Value)
+
+			'    If (Not IsNothing(grdPurchase_ToolNGages.Rows(i).Cells(3).Value) And grdPurchase_ToolNGages.Rows(i).Cells(3).Value <> "") Then
+			'        .ToolNGage.LeadTime.Add(grdManf_ToolNGage.Rows(i).Cells(3).Value)
+			'    Else
+			'        .ToolNGage.LeadTime.Add(0)
+			'    End If
+
+			'    .ToolNGage.DesignResponsibility.Add(grdPurchase_ToolNGages.Rows(i).Cells(4).Value)
+			'Next
+
+			.Dwg.ID_Dwg.Clear()
+			.Dwg.No.Clear()
+			.Dwg.Desc.Clear()
+			.Dwg.LeadTime.Clear()
+			For i As Integer = 0 To grdPurchase_Drawing.Rows.Count - 2
+				.Dwg.ID_Dwg.Add(i + 1)
+				.Dwg.No.Add(grdPurchase_Drawing.Rows(i).Cells(0).Value)
+				.Dwg.Desc.Add(grdPurchase_Drawing.Rows(i).Cells(1).Value)
+				If (Not IsNothing(grdPurchase_Drawing.Rows(i).Cells(2).Value)) Then
+					If (grdPurchase_Drawing.Rows(i).Cells(2).Value.ToString() <> "") Then
+						.Dwg.LeadTime.Add(grdPurchase_Drawing.Rows(i).Cells(2).Value)
+					Else
+						.Dwg.LeadTime.Add(0)
+					End If
+
+				Else
+					.Dwg.LeadTime.Add(0)
+				End If
+			Next
+		End With
+
+		'....Qlty
+		With mProcess_Project.Qlty
+			If (cmbQuality_ApprovedSupplier.Text = "Y") Then
+				.IsApvdSupplierOnly = True
+			Else
+				.IsApvdSupplierOnly = False
+			End If
+
+			If (cmbQuality_TNG.Text = "Y") Then
+				.Separate_Tool_Gage_Reqd = True
+			Else
+				.Separate_Tool_Gage_Reqd = False
+			End If
+
+			If (cmbQuality_CustComplaint.Text = "Y") Then
+				.HasCustComplaint = True
+				.Reason = txtQuality_Reason.Text
+			Else
+				.HasCustComplaint = False
+				.Reason = ""
+			End If
+
+			If (cmbQuality_VisualInspection.Text = "Y") Then
+				.VisualInspection = True
+				.VisualInspection_Type = cmbQuality_VisualInspection.Text
+			Else
+				.VisualInspection = False
+				.VisualInspection_Type = ""
+			End If
+
+			.CustAcceptStd = cmbQuality_CustAcceptStd.Text
+
+			If (cmbQuality_SPC.Text = "Y") Then
+				.SPC_Reqd = True
+			Else
+				.SPC_Reqd = False
+			End If
+
+			If (cmbQuality_GageRnR_Reqd.Text = "Y") Then
+				.GageRnR_Reqd = True
+			Else
+				.GageRnR_Reqd = False
+			End If
+
+			'If (grdCost_SplOperation.Rows.Count > 1) Then
+			'    grdQuality_SplOperation = grdCost_SplOperation
+			'End If
+
+			mProcess_Project.Cost.SplOperation.ID_SplOp.Clear()
+			mProcess_Project.Cost.SplOperation.Desc.Clear()
+			mProcess_Project.Cost.SplOperation.Spec.Clear()
+			mProcess_Project.Cost.SplOperation.LeadTime.Clear()
+			mProcess_Project.Cost.SplOperation.Cost.Clear()
+
+			For j As Integer = 0 To grdQuality_SplOperation.Rows.Count - 2
+				mProcess_Project.Cost.SplOperation.ID_SplOp.Add(j + 1)
+				mProcess_Project.Cost.SplOperation.Desc.Add(grdQuality_SplOperation.Rows(j).Cells(0).Value)
+				mProcess_Project.Cost.SplOperation.Spec.Add(grdQuality_SplOperation.Rows(j).Cells(1).Value)
+
+				If (Not IsNothing(grdQuality_SplOperation.Rows(j).Cells(2).Value)) Then
+					If (grdQuality_SplOperation.Rows(j).Cells(2).Value.ToString() <> "") Then
+						mProcess_Project.Cost.SplOperation.LeadTime.Add(grdQuality_SplOperation.Rows(j).Cells(2).Value)
+					Else
+						mProcess_Project.Cost.SplOperation.LeadTime.Add(0)
+					End If
+
+				Else
+					mProcess_Project.Cost.SplOperation.LeadTime.Add(0)
+				End If
+
+				If (Not IsNothing(grdQuality_SplOperation.Rows(j).Cells(3).Value)) Then
+					If (grdQuality_SplOperation.Rows(j).Cells(3).Value.ToString() <> "") Then
+						mProcess_Project.Cost.SplOperation.Cost.Add(grdQuality_SplOperation.Rows(j).Cells(3).Value)
+					Else
+						mProcess_Project.Cost.SplOperation.Cost.Add(0)
+					End If
+
+
+				Else
+					mProcess_Project.Cost.SplOperation.Cost.Add(0)
+				End If
+
+			Next
+
+			'grdQuality_SplOperation.Refresh()
+			'TabControl1.Refresh()
+
+		End With
+
+
+		'....Dwg
+		With mProcess_Project.Dwg
+			.DesignLevel = cmbDwg_DesignLevel.Text
+
+			.Needed.ID_Needed.Clear()
+			.Needed.DwgNo.Clear()
+			.Needed.Desc.Clear()
+			.Needed.Status.Clear()
+			.Needed.LeadTime.Clear()
+
+			For i As Integer = 0 To grdDrawing_Needed.Rows.Count - 2
+				.Needed.ID_Needed.Add(i + 1)
+				.Needed.DwgNo.Add(grdDrawing_Needed.Rows(i).Cells(0).Value)
+				.Needed.Desc.Add(grdDrawing_Needed.Rows(i).Cells(1).Value)
+				.Needed.Status.Add(grdDrawing_Needed.Rows(i).Cells(2).Value)
+				If (Not IsNothing(grdDrawing_Needed.Rows(i).Cells(3).Value)) Then
+					If (grdDrawing_Needed.Rows(i).Cells(3).Value.ToString() <> "") Then
+						.Needed.LeadTime.Add(grdDrawing_Needed.Rows(i).Cells(3).Value)
+					Else
+						.Needed.LeadTime.Add(0)
+					End If
+
+				Else
+					.Needed.LeadTime.Add(0)
+				End If
+			Next
+
+			.BOM.ID_BOM.Clear()
+			.BOM.Parent_PartNo.Clear()
+			.BOM.Child_PartNo.Clear()
+			.BOM.Qty.Clear()
+
+
+			For i As Integer = 0 To grdDrawing_BOM.Rows.Count - 2
+				.BOM.ID_BOM.Add(i + 1)
+				.BOM.Parent_PartNo.Add(grdDrawing_BOM.Rows(i).Cells(0).Value)
+				.BOM.Child_PartNo.Add(grdDrawing_BOM.Rows(i).Cells(1).Value)
+				.BOM.Qty.Add(grdDrawing_BOM.Rows(i).Cells(2).Value)
+			Next
+
+		End With
+
+		'....Testing
+		With mProcess_Project.Test
+
+			.Other = txtTest_Other.Text
+
+			'....Leak
+			If (txtTest_CompressPre_Leak.Text <> "") Then
+				.Leak.Compress_Unplated = txtTest_CompressPre_Leak.Text
+			Else
+				.Leak.Compress_Unplated = 0
+			End If
+
+			If (txtTest_CompressPost_Leak.Text <> "") Then
+				.Leak.Compress_Plated = txtTest_CompressPost_Leak.Text
+			Else
+				.Leak.Compress_Plated = 0
+			End If
+
+			.Leak.Medium_Unplated = cmbTest_MediaPre_Leak.Text
+			.Leak.Medium_Plated = cmbTest_MediaPost_Leak.Text
+
+			If (txtTest_PressPre_Leak.Text <> "") Then
+				.Leak.Press_Unplated = txtTest_PressPre_Leak.Text
+			Else
+				.Leak.Press_Unplated = 0
+			End If
+
+			If (txtTest_PressPost_Leak.Text <> "") Then
+				.Leak.Press_Plated = txtTest_PressPost_Leak.Text
+			Else
+				.Leak.Press_Plated = 0
+			End If
+
+			If (txtTest_ReqPre_Leak.Text <> "") Then
+				.Leak.Max_Unplated = txtTest_ReqPre_Leak.Text
+			Else
+				.Leak.Max_Unplated = 0
+			End If
+
+			If (txtTest_ReqPost_Leak.Text <> "") Then
+				.Leak.Max_Plated = txtTest_ReqPost_Leak.Text
+			Else
+				.Leak.Max_Plated = 0
+			End If
+
+			If (cmbTest_QtyPre_Leak.Text <> "") Then
+				.Leak.Qty_Unplated = Convert.ToDouble(cmbTest_QtyPre_Leak.Text)
+			Else
+				.Leak.Qty_Unplated = 0
+			End If
+
+			If (cmbTest_QtyPost_Leak.Text <> "") Then
+				.Leak.Qty_Plated = cmbTest_QtyPost_Leak.Text
+			Else
+				.Leak.Qty_Plated = 0
+			End If
+
+
+			.Leak.Freq_Unplated = cmbTest_FreqPre_Leak.Text
+			.Leak.Freq_Plated = cmbTest_FreqPost_Leak.Text
+
+
+			'....Load
+			If (txtTest_CompressPre_Load.Text <> "") Then
+				.Load.Compress_Unplated = txtTest_CompressPre_Load.Text
+			Else
+				.Load.Compress_Unplated = 0
+			End If
+
+			If (txtTest_CompressPost_Load.Text <> "") Then
+				.Load.Compress_Plated = txtTest_CompressPost_Load.Text
+			Else
+				.Load.Compress_Plated = 0
+			End If
+
+			If (txtTest_ReqPre_Load.Text <> "") Then
+				.Load.Max_Unplated = txtTest_ReqPre_Load.Text
+			Else
+				.Load.Max_Unplated = 0
+			End If
+
+			If (txtTest_ReqPost_Load.Text <> "") Then
+				.Load.Max_Plated = txtTest_ReqPost_Load.Text
+			Else
+				.Load.Max_Plated = 0
+			End If
+
+			If (cmbTest_QtyPre_Load.Text <> "") Then
+				.Load.Qty_Unplated = Convert.ToDouble(cmbTest_QtyPre_Load.Text)
+			Else
+				.Load.Qty_Unplated = 0
+			End If
+
+			If (cmbTest_QtyPost_Load.Text <> "") Then
+				.Load.Qty_Plated = cmbTest_QtyPost_Load.Text
+			Else
+				.Load.Qty_Plated = 0
+			End If
+
+			'.Load.QtyPre = cmbTest_QtyPre_Load.Text
+			'.Load.QtyPost = cmbTest_QtyPost_Load.Text
+			.Load.Freq_Unplated = cmbTest_FreqPre_Load.Text
+			.Load.Freq_Plated = cmbTest_FreqPost_Load.Text
+
+			'....SpringBack
+			If (txtTest_CompressPre_SpringBack.Text <> "") Then
+				.SpringBack.Compress_Unplated = txtTest_CompressPre_SpringBack.Text
+			Else
+				.SpringBack.Compress_Unplated = 0
+			End If
+
+			If (txtTest_CompressPost_SpringBack.Text <> "") Then
+				.SpringBack.Compress_Plated = txtTest_CompressPost_SpringBack.Text
+			Else
+				.SpringBack.Compress_Plated = 0
+			End If
+
+			If (txtTest_ReqPre_SpringBack.Text <> "") Then
+				.SpringBack.Max_Unplated = txtTest_ReqPre_SpringBack.Text
+			Else
+				.SpringBack.Max_Unplated = 0
+			End If
+
+			If (txtTest_ReqPost_SpringBack.Text <> "") Then
+				.SpringBack.Max_Plated = txtTest_ReqPost_SpringBack.Text
+			Else
+				.SpringBack.Max_Plated = 0
+			End If
+
+			If (cmbTest_QtyPre_SpringBack.Text <> "") Then
+				.SpringBack.Qty_Unplated = Convert.ToDouble(cmbTest_QtyPre_SpringBack.Text)
+			Else
+				.SpringBack.Qty_Unplated = 0
+			End If
+
+			If (cmbTest_QtyPost_SpringBack.Text <> "") Then
+				.SpringBack.Qty_Plated = cmbTest_QtyPost_SpringBack.Text
+			Else
+				.SpringBack.Qty_Plated = 0
+			End If
+
+			'.SpringBack.QtyPre = cmbTest_QtyPre_SpringBack.Text
+			'.SpringBack.QtyPost = cmbTest_QtyPost_SpringBack.Text
+			.SpringBack.Freq_Unplated = cmbTest_FreqPre_SpringBack.Text
+			.SpringBack.Freq_Plated = cmbTest_FreqPost_SpringBack.Text
+
+		End With
+
+		' ''....Planning
+		'' ''With mProcess_Project.Planning
+
+		'' ''    .SplOperation.ID_SplOperation.Clear()
+		'' ''    .SplOperation.Desc.Clear()
+		'' ''    .SplOperation.LeadTimeStart.Clear()
+		'' ''    .SplOperation.Index.Clear()
+
+		'' ''    For i As Integer = 0 To grdPlanning_Ordered.Rows.Count - 1
+		'' ''        .SplOperation.ID_SplOperation.Add(i + 1)
+		'' ''        .SplOperation.Desc.Add(grdPlanning_Ordered.Rows(i).Cells(0).Value)
+		'' ''        If (Not IsNothing(grdPlanning_Ordered.Rows(i).Cells(1).Value)) Then
+		'' ''            If (grdPlanning_Ordered.Rows(i).Cells(1).Value.ToString() <> "") Then
+		'' ''                .SplOperation.LeadTimeStart.Add(grdPlanning_Ordered.Rows(i).Cells(1).Value)
+		'' ''            Else
+		'' ''                .SplOperation.LeadTimeStart.Add(0)
+		'' ''            End If
+
+		'' ''        Else
+		'' ''            .SplOperation.LeadTimeStart.Add(0)
+		'' ''        End If
+		'' ''        .SplOperation.Index.Add(i + 1)
+		'' ''    Next
+
+		'' ''    .MileOperation.ID_MileOperation.Clear()
+		'' ''    .MileOperation.Name.Clear()
+		'' ''    .MileOperation.LeadTime.Clear()
+
+		'' ''    For i As Integer = 0 To grdPlanning_Ordered.Rows.Count - 2
+		'' ''        .MileOperation.ID_MileOperation.Add(i + 1)
+		'' ''        .MileOperation.Name.Add(grdPlanning_MileStoneOperation.Rows(i).Cells(0).Value)
+		'' ''        If (Not IsNothing(grdPlanning_MileStoneOperation.Rows(i).Cells(1).Value) And grdPlanning_MileStoneOperation.Rows(i).Cells(1).Value <> "") Then
+		'' ''            .MileOperation.LeadTime.Add(grdPlanning_MileStoneOperation.Rows(i).Cells(1).Value)
+		'' ''        Else
+		'' ''            .MileOperation.LeadTime.Add(0)
+		'' ''        End If
+		'' ''    Next
+
+		'' ''    .Notes = txtPlanning_Notes.Text
+
+		'' ''End With
+
+		'....Shipping
+		With mProcess_Project.Shipping
+			.Notes = txtShipping_Notes.Text
+
+		End With
+
+		''With mProcess_Project.IssueCommnt
+		''    '....IssueCommnt
+		''    .SlNo.Clear()
+		''    .Comment.Clear()
+		''    .ByDept.Clear()
+		''    .ByName.Clear()
+		''    .ByDate.Clear()
+		''    .ToDept.Clear()
+		''    .Resolved.Clear()
+		''    .Name.Clear()
+		''    .ResolvedDate.Clear()
+		''    .Resolution.Clear()
+
+
+		''    For j As Integer = 0 To grdIssueComment.Rows.Count - 2
+		''        .SlNo.Add(j + 1)
+		''        '.SlNo.Add(grdIssueComment.Rows(j).Cells(0).Value)
+		''        .Comment.Add(grdIssueComment.Rows(j).Cells(0).Value)
+		''        .ByDept.Add(grdIssueComment.Rows(j).Cells(1).Value)
+		''        .ByName.Add(grdIssueComment.Rows(j).Cells(2).Value)
+		''        If (grdIssueComment.Rows(j).Cells(3).Value <> "" And Not IsNothing(grdIssueComment.Rows(j).Cells(3).Value)) Then
+		''            .ByDate.Add(grdIssueComment.Rows(j).Cells(3).Value)
+		''        Else
+		''            .ByDate.Add(DateTime.MinValue)
+		''        End If
+
+		''        .ToDept.Add(grdIssueComment.Rows(j).Cells(4).Value)
+		''        If (grdIssueComment.Rows(j).Cells(5).Value = "Y") Then
+		''            .Resolved.Add(True)
+		''        Else
+		''            .Resolved.Add(False)
+		''        End If
+		''        '.Resolved.Add(grdIssueComment.Rows(j).Cells(6).Value)
+		''        .Name.Add(grdIssueComment.Rows(j).Cells(6).Value)
+
+		''        If (grdIssueComment.Rows(j).Cells(7).Value <> "" And Not IsNothing(grdIssueComment.Rows(j).Cells(7).Value)) Then
+		''            .ResolvedDate.Add(grdIssueComment.Rows(j).Cells(7).Value)
+		''        Else
+		''            .ResolvedDate.Add(DateTime.MinValue)
+		''        End If
+
+		''        .Resolution.Add(grdIssueComment.Rows(j).Cells(8).Value)
+		''    Next
+
+		''End With
+
+		' ''....Approval
+		''With mProcess_Project.Approval
+		''    .SLNo.Clear()
+		''    .DeptName.Clear()
+		''    .Name.Clear()
+		''    .Title.Clear()
+		''    .Signed.Clear()
+		''    .SignedDate.Clear()
+
+		''    For j As Integer = 0 To grdApproval_Attendees.Rows.Count - 1
+		''        .SLNo.Add(j + 1)
+		''        .DeptName.Add(grdApproval_Attendees.Rows(j).Cells(0).Value)
+		''        .Name.Add(grdApproval_Attendees.Rows(j).Cells(1).Value)
+		''        .Title.Add(grdApproval_Attendees.Rows(j).Cells(2).Value)
+		''        .Signed.Add(grdApproval_Attendees.Rows(j).Cells(3).Value)
+		''        If (grdApproval_Attendees.Rows(j).Cells(4).Value <> "" And Not IsNothing(grdApproval_Attendees.Rows(j).Cells(4).Value)) Then
+		''            .SignedDate.Add(grdApproval_Attendees.Rows(j).Cells(4).Value)
+		''        Else
+		''            .SignedDate.Add(DateTime.MinValue)
+		''        End If
+
+		''    Next
+		''End With
+
+		gProcessProject = mProcess_Project.Clone()
+
+	End Sub
 
 
     Private Sub SaveToDB()
@@ -3778,14 +3784,14 @@ Public Class Process_frmMain
         mProcess_Project.Design.SaveToDB(mProcess_Project.ID)
         mProcess_Project.Manf.SaveToDB(mProcess_Project.ID)
         mProcess_Project.Purchase.SaveToDB(mProcess_Project.ID)
-        ''mProcess_Project.Qlty.SaveToDB(mProcess_Project.ID)
-        ''mProcess_Project.Dwg.SaveToDB(mProcess_Project.ID)
-        ''mProcess_Project.Test.SaveToDB(mProcess_Project.ID)
-        ''mProcess_Project.Planning.SaveToDB(mProcess_Project.ID)
-        ''mProcess_Project.Shipping.SaveToDB(mProcess_Project.ID)
-        ''mProcess_Project.IssueCommnt.SaveToDB(mProcess_Project.ID)
-        ''mProcess_Project.Approval.SaveToDB(mProcess_Project.ID)
-    End Sub
+		mProcess_Project.Qlty.SaveToDB(mProcess_Project.ID)
+		mProcess_Project.Dwg.SaveToDB(mProcess_Project.ID)
+		mProcess_Project.Test.SaveToDB(mProcess_Project.ID)
+		'mProcess_Project.Planning.SaveToDB(mProcess_Project.ID)
+		mProcess_Project.Shipping.SaveToDB(mProcess_Project.ID)
+		''mProcess_Project.IssueCommnt.SaveToDB(mProcess_Project.ID)
+		''mProcess_Project.Approval.SaveToDB(mProcess_Project.ID)
+	End Sub
 
 
     Private Sub CopyDataGridView(ByVal Dgv_Source As DataGridView, ByVal Dgv_Target As DataGridView)
