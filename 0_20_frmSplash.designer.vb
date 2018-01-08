@@ -241,7 +241,7 @@ Partial Class frmSplash
 		Me.lblVarNo.Name = "lblVarNo"
 		Me.lblVarNo.Size = New System.Drawing.Size(195, 32)
 		Me.lblVarNo.TabIndex = 6
-		Me.lblVarNo.Text = "SealSuite 2.1"
+		Me.lblVarNo.Text = "SealSuite 2.2"
 		Me.lblVarNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
 		'
 		'cmdExit

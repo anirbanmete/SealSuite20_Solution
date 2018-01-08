@@ -18,7 +18,7 @@ Imports System.Runtime.Serialization
 Imports System.Xml.Serialization
 
 
-<Assembly: EdmSchemaAttribute("9e9b7cda-a652-4942-ad10-5d30c01795b3")>
+<Assembly: EdmSchemaAttribute("de4e614f-8fc4-43df-b42c-0101575371f3")>
 #Region "EDM Relationship Metadata"
 <Assembly: EdmRelationshipAttribute("SealIPEDBModel", "FK_tblAddLoad_tblAppLoad", "tblAppLoad", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblAppLoad), "tblAddLoad", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(tblAddLoad), True)>
 <Assembly: EdmRelationshipAttribute("SealIPEDBModel", "FK_tblAdjCSeal_tblSeal", "tblSeal", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblSeal), "tblAdjCSeal", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(tblAdjCSeal), True)>
