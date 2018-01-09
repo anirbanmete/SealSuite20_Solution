@@ -284,7 +284,6 @@ Public Class Process_frmMain
         pCmbColDesign_Seal = grdDesign_Seal.Columns.Item(0)
 
         If (pSealType = "E") Then
-
             pCmbColDesign_Seal.Items.Add("OD")
             pCmbColDesign_Seal.Items.Add("ID")
             pCmbColDesign_Seal.Items.Add("Roundness")
@@ -432,8 +431,7 @@ Public Class Process_frmMain
             chkPlating.Checked = False
             cmbPlatingCode.Enabled = True
             cmbPlatingThickCode.Enabled = True
-            'PopulatePlatingType()
-            'PopulatePlatingTCode()
+
         Else
             grpPlating.Enabled = False
         End If
@@ -1107,7 +1105,7 @@ Public Class Process_frmMain
                 grdApp_Load.Rows(1).Cells(2).Value = ""
             End If
 
-            '....Face
+            '....Face Seal
             If (.Type = "Face") Then
                 For j As Integer = 0 To .Cavity.ID_Cavity.Count - 1
                     grdApp_Face_Cavity.Rows.Add()
@@ -1158,7 +1156,7 @@ Public Class Process_frmMain
                 End If
 
             ElseIf (.Type = "Axial") Then
-                '....Axial
+                '....Axial Seal
                 For j As Integer = 0 To .Cavity.ID_Cavity.Count - 1
                     grdApp_Axial_Cavity.Rows.Add()
                     grdApp_Axial_Cavity.Rows(j).Cells(0).Value = .Cavity.DimName(j)
@@ -1324,12 +1322,6 @@ Public Class Process_frmMain
                 cmbDesign_BuildToPrint.Text = "N"
             End If
 
-            'cmbDesign_VerfyType.Text = .VerfyType
-            'cmbDesign_PerformedBy.Text = .PerformedBy
-
-            'For j As Integer = 0 To .Verification.ID_Verification.Count - 2
-            '    grdDesign_Verification.Rows.Add()
-            'Next
             For i As Integer = 0 To .Verification.ID_Verification.Count - 1
                 grdDesign_Verification.Rows.Add()
                 grdDesign_Verification.Rows(i).Cells(0).Value = .Verification.Desc(i)
@@ -1409,12 +1401,6 @@ Public Class Process_frmMain
             txtDesign_FOD_Risks.Text = .FOD_Risks
 
             '....Material Section from HW
-
-            'If (gPartProject.SealType() = "E-Seal") Then
-
-            'End If
-            ''chkCoating.Checked = gPartProject.PNR.HW.Coating
-
             If (gPartProject.PNR.SealType.ToString() = "SC") Then
                 cmbDesign_Mat_Spring.Text = gPartProject.PNR.HW.MatName
                 cmbDesign_Mat_Seal.Enabled = False
@@ -1438,8 +1424,6 @@ Public Class Process_frmMain
             ElseIf (pTemperCode = 8) Then
                 cmbDesign_TemperType.Text = "NACE"
             End If
-
-            'cmbTemperCode.Text = 
 
             If (gPartProject.PNR.SealType = clsPartProject.clsPNR.eType.E) Then
                 If (gPartProject.PNR.HW.Coating = "None") Then
@@ -1465,24 +1449,11 @@ Public Class Process_frmMain
 
             End If
 
-            'For j As Integer = 0 To .Input.ID_Input.Count - 2
-            '    grdDesign_Input.Rows.Add()
-            'Next
             For i As Integer = 0 To .Input.ID_Input.Count - 1
                 grdDesign_Input.Rows.Add()
                 grdDesign_Input.Rows(i).Cells(0).Value = .Input.Desc(i)
             Next
 
-            'For j As Integer = 0 To .KeyChar.ID_Key.Count - 2
-            '    grdDesign_KeyChar.Rows.Add()
-            'Next
-            'For i As Integer = 0 To .KeyChar.ID_Key.Count - 1
-            '    grdDesign_KeyChar.Rows(i).Cells(0).Value = .KeyChar.KeyChar(i)
-            'Next
-
-            'For j As Integer = 0 To .CustSpec.ID_Cust.Count - 2
-            '    grdDesign_CustSpec.Rows.Add()
-            'Next
             For i As Integer = 0 To .CustSpec.ID_Cust.Count - 1
                 grdDesign_CustSpec.Rows.Add()
                 grdDesign_CustSpec.Rows(i).Cells(0).Value = .CustSpec.Type(i)
@@ -1490,10 +1461,6 @@ Public Class Process_frmMain
                 grdDesign_CustSpec.Rows(i).Cells(2).Value = .CustSpec.Interpret(i)
                 'grdDesign_CustSpec.Rows.Add()
             Next
-
-            'For j As Integer = 0 To .SealDim.ID_Seal.Count - 2
-            '    grdDesign_CustSpec.Rows.Add()
-            'Next
 
             For i As Integer = 0 To .SealDim.ID_Seal.Count - 1
                 grdDesign_Seal.Rows.Add()
@@ -1534,18 +1501,11 @@ Public Class Process_frmMain
             txtManf_HT.Text = .HT
             cmbManf_PrecompressionGlue.Text = .PreComp_Glue
 
-            'For j As Integer = 0 To .ToolNGage.ID_Tool.Count - 2
-            '    grdManf_ToolNGage.Rows.Add()
-            'Next
-
             For i As Integer = 0 To .ToolNGage.ID_Tool.Count - 1
                 grdManf_ToolNGage.Rows.Add()
                 grdManf_ToolNGage.Rows(i).Cells(0).Value = .ToolNGage.PartNo(i)
 
                 grdManf_ToolNGage.Rows(i).Cells(1).Value = .ToolNGage.Desc(i)
-
-
-                'Dim combo As ComboBox = CType(sender, ComboBox)
 
                 If ("Roll tooling" = .ToolNGage.Desc(i)) Then
 
@@ -1575,10 +1535,6 @@ Public Class Process_frmMain
                     dgvcc.Items.Add("3D tooling")
                     grdManf_ToolNGage.Item(2, i) = dgvcc
 
-                    'Else
-                    'Dim dgvcc As New DataGridViewComboBoxCell
-                    'dgvcc.Items.Clear()
-                    'grdManf_ToolNGage.Item(2, grdManf_ToolNGage.CurrentRow.Index) = dgvcc
                 End If
 
 
@@ -1624,10 +1580,6 @@ Public Class Process_frmMain
 
         '....Purchasing
         With mProcess_Project.Purchase
-
-            'For j As Integer = 0 To .Mat.ID_Mat.Count - 2
-            '    grdPurchase_Mat.Rows.Add()
-            'Next
 
             For i As Integer = 0 To .Mat.ID_Mat.Count - 1
                 grdPurchase_Mat.Rows.Add()
@@ -1751,9 +1703,6 @@ Public Class Process_frmMain
         With mProcess_Project.Dwg
             cmbDwg_DesignLevel.Text = .DesignLevel
 
-            'For j As Integer = 0 To .Needed.ID_Needed.Count - 2
-            '    grdDrawing_Needed.Rows.Add()
-            'Next
             For j As Integer = 0 To .Needed.ID_Needed.Count - 1
                 grdDrawing_Needed.Rows.Add()
                 grdDrawing_Needed.Rows(j).Cells(0).Value = .Needed.DwgNo(j)
@@ -1767,9 +1716,6 @@ Public Class Process_frmMain
                 End If
             Next
 
-            'For j As Integer = 0 To .BOM.ID_BOM.Count - 2
-            '    grdDrawing_BOM.Rows.Add()
-            'Next
             For j As Integer = 0 To .BOM.ID_BOM.Count - 1
                 grdDrawing_BOM.Rows.Add()
                 grdDrawing_BOM.Rows(j).Cells(0).Value = .BOM.Parent_PartNo(j)
@@ -1781,7 +1727,6 @@ Public Class Process_frmMain
                     grdDrawing_BOM.Rows(j).Cells(2).Value = ""
                 End If
             Next
-
 
         End With
 
@@ -2199,8 +2144,6 @@ Public Class Process_frmMain
                 End If
 
                 With gPartProject.PNR.HW
-                    'Dim pSealType As String = pHWFace_Rec.fldType
-                    'mPartProject.PNR.SealType = CType([Enum].Parse(GetType(clsProject.clsPNR.eType), pSealType), clsProject.clsPNR.eType)
                     .POrient = pHWFace_Rec.fldPOrient
                     .MCrossSecNo = pHWFace_Rec.fldMCS
                     .IsSegmented = pHWFace_Rec.fldSegmented
@@ -2647,8 +2590,6 @@ Public Class Process_frmMain
             End If
 
         ElseIf (cmbApp_InsertLoc.Text = "Axial") Then
-            'tbApp.TabPages.Add(tbpAxial)
-            'tbApp.TabPages.Remove(tbpFace)
             Dim pFaceExists As Boolean = False
             Dim pAxialExists As Boolean = False
             For i As Integer = 0 To tbApp.TabPages.Count - 1
@@ -2755,21 +2696,6 @@ Public Class Process_frmMain
     Private Sub cmbCoating_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) _
                                                 Handles cmbCoating.SelectedIndexChanged
         '========================================================================================
-        'Dim pCoat As String = cmbCoating.Text
-        'If pCoat = "T800" Then
-        '    lblSFinish.Enabled = True
-        '    cmbSFinish.Enabled = True
-        '    lblUnitSFinish.Enabled = True
-        '    cmbSFinish.DropDownStyle = ComboBoxStyle.DropDownList
-        '    cmbSFinish.SelectedIndex = 0
-        'Else
-        '    lblSFinish.Enabled = False
-        '    cmbSFinish.Enabled = False
-        '    lblUnitSFinish.Enabled = False
-        '    cmbSFinish.DropDownStyle = ComboBoxStyle.DropDown
-        '    cmbSFinish.Text = ""
-        'End If
-
         If (gPartProject.PNR.SealType = clsPartProject.clsPNR.eType.E) Then
             If (gPartProject.PNR.HW.Coating = "None") Then
                 chkCoating.Checked = False
@@ -2779,11 +2705,6 @@ Public Class Process_frmMain
                 cmbCoating.Text = gPartProject.PNR.HW.Coating
             End If
 
-            'If (gPartProject.PNR.HW.SFinish = "0") Then
-            '    cmbSFinish.Text = ""
-            'Else
-            '    cmbSFinish.Text = gPartProject.PNR.HW.SFinish
-            'End If
         End If
 
     End Sub
@@ -3328,8 +3249,6 @@ Public Class Process_frmMain
             If (pComboBoxManf IsNot Nothing) Then
                 RemoveHandler pComboBoxManf.SelectionChangeCommitted, New EventHandler(AddressOf ComboBoxManf_SelectionChangeCommitted)
 
-                'mRowIndex = grdManf_ToolNGage.CurrentCell.RowIndex
-                'AddHandler pComboBox.SelectedIndexChanged, AddressOf grdApproval_Attendees_EditingControlShowing
                 AddHandler pComboBoxManf.SelectionChangeCommitted, New EventHandler(AddressOf ComboBoxManf_SelectionChangeCommitted)
             End If
         Catch ex As Exception
@@ -3367,7 +3286,6 @@ Public Class Process_frmMain
                 If (pQryTitle.Count > 0) Then
                     grdApproval_Attendees.Rows(grdApproval_Attendees.CurrentCell.RowIndex).Cells(2).Value = pQryTitle(0).fldTitle
                 End If
-
 
             End If
         End If
@@ -3409,10 +3327,6 @@ Public Class Process_frmMain
                 dgvcc.Items.Add("3D tooling")
                 grdManf_ToolNGage.Item(2, grdManf_ToolNGage.CurrentRow.Index) = dgvcc
 
-                'Else
-                'Dim dgvcc As New DataGridViewComboBoxCell
-                'dgvcc.Items.Clear()
-                'grdManf_ToolNGage.Item(2, grdManf_ToolNGage.CurrentRow.Index) = dgvcc
             End If
 
         Catch ex As Exception
