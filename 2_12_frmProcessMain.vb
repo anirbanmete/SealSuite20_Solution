@@ -2743,17 +2743,19 @@ Public Class Process_frmMain
     Private Sub cmbPartFamily_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbPartFamily.SelectedIndexChanged
         '======================================================================================================================
         cmbPartFamily.Text = gPartProject.PNR.SealType.ToString() & "-Seal"
+        cmdSealPart.Focus()
     End Sub
 
     Private Sub cmbPartFamily_MouseLeave(sender As Object, e As EventArgs) Handles cmbPartFamily.MouseLeave
         '==================================================================================================
-        cmbPartFamily.Focus()
+        cmdSealPart.Focus()
     End Sub
 
     Private Sub cmbApp_Face_POrient_SelectedIndexChanged(sender As Object, e As EventArgs) _
                                                          Handles cmbApp_Face_POrient.SelectedIndexChanged
         '================================================================================================
         cmbApp_Face_POrient.Text = gPartProject.PNR.HW.POrient
+        cmdSealPart.Focus()
     End Sub
 
     Private Sub cmbApp_Face_POrient_MouseHover(sender As Object, e As EventArgs) Handles cmbApp_Face_POrient.MouseHover
@@ -2764,7 +2766,7 @@ Public Class Process_frmMain
 
     Private Sub cmbApp_Face_POrient_MouseLeave(sender As Object, e As EventArgs) Handles cmbApp_Face_POrient.MouseLeave
         '==============================================================================================================
-        cmbApp_Face_POrient.Focus()
+        cmdSealPart.Focus()
     End Sub
 
     Private Sub cmbParkerPN_Part2_NewRef_Dim_SelectedIndexChanged(sender As Object, e As EventArgs) _
@@ -2777,6 +2779,7 @@ Public Class Process_frmMain
         Else
             cmbParkerPN_Part2_NewRef_Dim.Text = ""
         End If
+        cmdSealPart.Focus()
     End Sub
 
     Private Sub cmbParkerPN_Part2_Notes_Dim_SelectedIndexChanged(sender As Object, e As EventArgs) _
@@ -2790,6 +2793,7 @@ Public Class Process_frmMain
             cmbParkerPN_Part2_Notes_Dim.Text = ""
 
         End If
+        cmdSealPart.Focus()
     End Sub
 
     Private Sub cmbParkerPN_Part2_NewRef_Dim_MouseHover(sender As Object, e As EventArgs) _
@@ -2802,7 +2806,7 @@ Public Class Process_frmMain
     Private Sub cmbParkerPN_Part2_NewRef_Dim_MouseLeave(sender As Object, e As EventArgs) _
                                                         Handles cmbParkerPN_Part2_NewRef_Dim.MouseLeave
         '==============================================================================================
-        cmbParkerPN_Part2_NewRef_Dim.Focus()
+        cmdSealPart.Focus()
     End Sub
 
     Private Sub cmbParkerPN_Part2_Notes_Dim_MouseHover(sender As Object, e As EventArgs) _
@@ -2815,7 +2819,7 @@ Public Class Process_frmMain
     Private Sub cmbParkerPN_Part2_Notes_Dim_MouseLeave(sender As Object, e As EventArgs) _
                                                        Handles cmbParkerPN_Part2_Notes_Dim.MouseLeave
         '============================================================================================
-        cmbParkerPN_Part2_Notes_Dim.Focus()
+        cmdSealPart.Focus()
     End Sub
 
 
@@ -2823,12 +2827,14 @@ Public Class Process_frmMain
                                                         Handles cmbDesign_Mat_Seal.SelectedIndexChanged
         '==============================================================================================
         cmbDesign_Mat_Seal.Text = gPartProject.PNR.HW.MatName
+        cmdSealPart.Focus()
     End Sub
 
     Private Sub cmbDesign_Mat_Spring_SelectedIndexChanged(sender As Object, e As EventArgs) _
                                                           Handles cmbDesign_Mat_Spring.SelectedIndexChanged
         '==================================================================================================
         cmbDesign_Mat_Spring.Text = gPartProject.PNR.HW.MatName
+        cmdSealPart.Focus()
     End Sub
 
     Private Sub cmbDesign_Mat_Seal_MouseHover(sender As Object, e As EventArgs) Handles cmbDesign_Mat_Seal.MouseHover
@@ -2839,12 +2845,12 @@ Public Class Process_frmMain
 
     Private Sub cmbDesign_Mat_Seal_MouseLeave(sender As Object, e As EventArgs) Handles cmbDesign_Mat_Seal.MouseLeave
         '============================================================================================================
-        cmbDesign_Mat_Seal.Focus()
+        cmdSealPart.Focus()
     End Sub
 
     Private Sub cmbDesign_Mat_Spring_MouseLeave(sender As Object, e As EventArgs) Handles cmbDesign_Mat_Spring.MouseLeave
         '================================================================================================================
-        cmbDesign_Mat_Spring.Focus()
+        cmdSealPart.Focus()
     End Sub
 
     Private Sub cmbDesign_Mat_Spring_MouseHover(sender As Object, e As EventArgs) Handles cmbDesign_Mat_Spring.MouseHover
@@ -2869,6 +2875,7 @@ Public Class Process_frmMain
         ElseIf (pTemperCode = 8) Then
             cmbDesign_TemperType.Text = "NACE"
         End If
+        cmdSealPart.Focus()
     End Sub
 
     Private Sub cmbDesign_TemperType_MouseHover(sender As Object, e As EventArgs) Handles cmbDesign_TemperType.MouseHover
@@ -2879,7 +2886,7 @@ Public Class Process_frmMain
 
     Private Sub cmbDesign_TemperType_MouseLeave(sender As Object, e As EventArgs) Handles cmbDesign_TemperType.MouseLeave
         '================================================================================================================
-        cmbDesign_TemperType.Focus()
+        cmdSealPart.Focus()
     End Sub
 
     Private Sub cmbSFinish_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbSFinish.SelectedIndexChanged
@@ -2892,11 +2899,12 @@ Public Class Process_frmMain
                 cmbSFinish.Text = gPartProject.PNR.HW.SFinish
             End If
         End If
+        cmdSealPart.Focus()
     End Sub
 
     Private Sub cmbCoating_MouseLeave(sender As Object, e As EventArgs) Handles cmbCoating.MouseLeave
         '============================================================================================
-        cmbCoating.Focus()
+        cmdSealPart.Focus()
     End Sub
 
     Private Sub cmbCoating_MouseHover(sender As Object, e As EventArgs) Handles cmbCoating.MouseHover
@@ -2914,7 +2922,7 @@ Public Class Process_frmMain
 
     Private Sub cmbSFinish_MouseLeave(sender As Object, e As EventArgs) Handles cmbSFinish.MouseLeave
         '============================================================================================
-        cmbSFinish.Focus()
+        cmdSealPart.Focus()
     End Sub
 
     Private Sub cmbPlatingCode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbPlatingCode.SelectedIndexChanged
@@ -2926,6 +2934,7 @@ Public Class Process_frmMain
                 'cmbPlatingThickCode.Text = gPartProject.PNR.HW.Plating.ThickCode
             End If
         End If
+        cmdSealPart.Focus()
     End Sub
 
     Private Sub cmbPlatingCode_MouseHover(sender As Object, e As EventArgs) Handles cmbPlatingCode.MouseHover
@@ -2936,7 +2945,7 @@ Public Class Process_frmMain
 
     Private Sub cmbPlatingCode_MouseLeave(sender As Object, e As EventArgs) Handles cmbPlatingCode.MouseLeave
         '====================================================================================================
-        cmbPlatingCode.Focus()
+        cmdSealPart.Focus()
     End Sub
 
     Private Sub cmbPlatingThickCode_SelectedIndexChanged(sender As Object, e As EventArgs) _
@@ -2947,7 +2956,7 @@ Public Class Process_frmMain
                 cmbPlatingThickCode.Text = gPartProject.PNR.HW.Plating.ThickCode
             End If
         End If
-
+        cmdSealPart.Focus()
     End Sub
 
     Private Sub cmbPlatingThickCode_MouseHover(sender As Object, e As EventArgs) Handles cmbPlatingThickCode.MouseHover
@@ -2958,7 +2967,7 @@ Public Class Process_frmMain
 
     Private Sub cmbPlatingThickCode_MouseLeave(sender As Object, e As EventArgs) Handles cmbPlatingThickCode.MouseLeave
         '==============================================================================================================
-        cmbPlatingThickCode.Focus()
+        cmdSealPart.Focus()
 
     End Sub
 
@@ -2970,7 +2979,7 @@ Public Class Process_frmMain
         '================================================================================================================
         If (chkPreOrderUserSigned.Checked) Then
             cmdPreOrderUserSign.Text = "Signed"
-            txtPreOrderUserName.Text = "Jeffrey LaBonte"
+            'txtPreOrderUserName.Text = "Jeffrey LaBonte"
             txtPreOrderUserDate.Text = DateTime.Now.ToShortDateString()
         Else
             cmdPreOrderUserSign.Text = "Sign"
