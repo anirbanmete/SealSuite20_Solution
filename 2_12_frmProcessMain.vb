@@ -4,7 +4,7 @@
 '                      FORM MODULE   :  Process_frmMain                        '
 '                        VERSION NO  :  1.2                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  08JAN18                                '
+'                     LAST MODIFIED  :  09JAN18                                '
 '                                                                              '
 '===============================================================================
 Imports System.Globalization
@@ -624,9 +624,9 @@ Public Class Process_frmMain
 		''mProcess_Project.Planning.RetrieveFromDB(mProcess_Project.ID)
 		mProcess_Project.Shipping.RetrieveFromDB(mProcess_Project.ID)
 
-		''mProcess_Project.IssueCommnt.RetrieveFromDB(mProcess_Project.ID)
-		''mProcess_Project.Approval.RetrieveFromDB(mProcess_Project.ID)
-	End Sub
+        ''mProcess_Project.IssueCommnt.RetrieveFromDB(mProcess_Project.ID)
+        mProcess_Project.Approval.RetrieveFromDB(mProcess_Project.ID)
+    End Sub
 
     Private Sub InitializeControls()
         '===========================
@@ -1060,19 +1060,19 @@ Public Class Process_frmMain
 
             If (gPartProject.PNR.SealType.ToString() = "E") Then
                 cmbPartFamily.Text = "E-Seal"
-                cmbPartFamily.Enabled = False
+                'cmbPartFamily.Enabled = False
             ElseIf (gPartProject.PNR.SealType.ToString() = "C") Then
                 cmbPartFamily.Text = "C-Seal"
-                cmbPartFamily.Enabled = False
+                'cmbPartFamily.Enabled = False
             ElseIf (gPartProject.PNR.SealType.ToString() = "SC") Then
                 cmbPartFamily.Text = "SC-Seal"
-                cmbPartFamily.Enabled = False
+                'cmbPartFamily.Enabled = False
             ElseIf (gPartProject.PNR.SealType.ToString() = "U") Then
                 cmbPartFamily.Text = "U-Seal"
-                cmbPartFamily.Enabled = False
+                'cmbPartFamily.Enabled = False
             Else
                 cmbPartFamily.Text = .Part.Family
-                cmbPartFamily.Enabled = True
+                'cmbPartFamily.Enabled = True
             End If
 
             cmbPartType.Text = .Part.Type
@@ -1507,7 +1507,8 @@ Public Class Process_frmMain
                 cmbFace_SF_ProcessName.Text = .CavityFlange.MeasureSF
                 cmbFace_SF_Unit.Text = .CavityFlange.UnitSF
 
-                cmbApp_Face_POrient.Text = .Face.POrient
+
+                cmbApp_Face_POrient.Text = gPartProject.PNR.HW.POrient '.Face.POrient       'AES 09JAN18
 
                 If (Math.Abs(.Face.MaxFlangeSep) > gcEPS) Then
                     txtApp_Face_MaxFlangeSeparation.Text = .Face.MaxFlangeSep.ToString("##0.000")
@@ -3697,79 +3698,79 @@ Public Class Process_frmMain
 
 		End With
 
-		''With mProcess_Project.IssueCommnt
-		''    '....IssueCommnt
-		''    .SlNo.Clear()
-		''    .Comment.Clear()
-		''    .ByDept.Clear()
-		''    .ByName.Clear()
-		''    .ByDate.Clear()
-		''    .ToDept.Clear()
-		''    .Resolved.Clear()
-		''    .Name.Clear()
-		''    .ResolvedDate.Clear()
-		''    .Resolution.Clear()
+        ''With mProcess_Project.IssueCommnt
+        ''    '....IssueCommnt
+        ''    .SlNo.Clear()
+        ''    .Comment.Clear()
+        ''    .ByDept.Clear()
+        ''    .ByName.Clear()
+        ''    .ByDate.Clear()
+        ''    .ToDept.Clear()
+        ''    .Resolved.Clear()
+        ''    .Name.Clear()
+        ''    .ResolvedDate.Clear()
+        ''    .Resolution.Clear()
 
 
-		''    For j As Integer = 0 To grdIssueComment.Rows.Count - 2
-		''        .SlNo.Add(j + 1)
-		''        '.SlNo.Add(grdIssueComment.Rows(j).Cells(0).Value)
-		''        .Comment.Add(grdIssueComment.Rows(j).Cells(0).Value)
-		''        .ByDept.Add(grdIssueComment.Rows(j).Cells(1).Value)
-		''        .ByName.Add(grdIssueComment.Rows(j).Cells(2).Value)
-		''        If (grdIssueComment.Rows(j).Cells(3).Value <> "" And Not IsNothing(grdIssueComment.Rows(j).Cells(3).Value)) Then
-		''            .ByDate.Add(grdIssueComment.Rows(j).Cells(3).Value)
-		''        Else
-		''            .ByDate.Add(DateTime.MinValue)
-		''        End If
+        ''    For j As Integer = 0 To grdIssueComment.Rows.Count - 2
+        ''        .SlNo.Add(j + 1)
+        ''        '.SlNo.Add(grdIssueComment.Rows(j).Cells(0).Value)
+        ''        .Comment.Add(grdIssueComment.Rows(j).Cells(0).Value)
+        ''        .ByDept.Add(grdIssueComment.Rows(j).Cells(1).Value)
+        ''        .ByName.Add(grdIssueComment.Rows(j).Cells(2).Value)
+        ''        If (grdIssueComment.Rows(j).Cells(3).Value <> "" And Not IsNothing(grdIssueComment.Rows(j).Cells(3).Value)) Then
+        ''            .ByDate.Add(grdIssueComment.Rows(j).Cells(3).Value)
+        ''        Else
+        ''            .ByDate.Add(DateTime.MinValue)
+        ''        End If
 
-		''        .ToDept.Add(grdIssueComment.Rows(j).Cells(4).Value)
-		''        If (grdIssueComment.Rows(j).Cells(5).Value = "Y") Then
-		''            .Resolved.Add(True)
-		''        Else
-		''            .Resolved.Add(False)
-		''        End If
-		''        '.Resolved.Add(grdIssueComment.Rows(j).Cells(6).Value)
-		''        .Name.Add(grdIssueComment.Rows(j).Cells(6).Value)
+        ''        .ToDept.Add(grdIssueComment.Rows(j).Cells(4).Value)
+        ''        If (grdIssueComment.Rows(j).Cells(5).Value = "Y") Then
+        ''            .Resolved.Add(True)
+        ''        Else
+        ''            .Resolved.Add(False)
+        ''        End If
+        ''        '.Resolved.Add(grdIssueComment.Rows(j).Cells(6).Value)
+        ''        .Name.Add(grdIssueComment.Rows(j).Cells(6).Value)
 
-		''        If (grdIssueComment.Rows(j).Cells(7).Value <> "" And Not IsNothing(grdIssueComment.Rows(j).Cells(7).Value)) Then
-		''            .ResolvedDate.Add(grdIssueComment.Rows(j).Cells(7).Value)
-		''        Else
-		''            .ResolvedDate.Add(DateTime.MinValue)
-		''        End If
+        ''        If (grdIssueComment.Rows(j).Cells(7).Value <> "" And Not IsNothing(grdIssueComment.Rows(j).Cells(7).Value)) Then
+        ''            .ResolvedDate.Add(grdIssueComment.Rows(j).Cells(7).Value)
+        ''        Else
+        ''            .ResolvedDate.Add(DateTime.MinValue)
+        ''        End If
 
-		''        .Resolution.Add(grdIssueComment.Rows(j).Cells(8).Value)
-		''    Next
+        ''        .Resolution.Add(grdIssueComment.Rows(j).Cells(8).Value)
+        ''    Next
 
-		''End With
+        ''End With
 
-		' ''....Approval
-		''With mProcess_Project.Approval
-		''    .SLNo.Clear()
-		''    .DeptName.Clear()
-		''    .Name.Clear()
-		''    .Title.Clear()
-		''    .Signed.Clear()
-		''    .SignedDate.Clear()
+        '....Approval
+        With mProcess_Project.Approval
+            .SN.Clear()
+            .Dept.Clear()
+            .Name.Clear()
+            .Title.Clear()
+            .Signed.Clear()
+            .DateSigned.Clear()
 
-		''    For j As Integer = 0 To grdApproval_Attendees.Rows.Count - 1
-		''        .SLNo.Add(j + 1)
-		''        .DeptName.Add(grdApproval_Attendees.Rows(j).Cells(0).Value)
-		''        .Name.Add(grdApproval_Attendees.Rows(j).Cells(1).Value)
-		''        .Title.Add(grdApproval_Attendees.Rows(j).Cells(2).Value)
-		''        .Signed.Add(grdApproval_Attendees.Rows(j).Cells(3).Value)
-		''        If (grdApproval_Attendees.Rows(j).Cells(4).Value <> "" And Not IsNothing(grdApproval_Attendees.Rows(j).Cells(4).Value)) Then
-		''            .SignedDate.Add(grdApproval_Attendees.Rows(j).Cells(4).Value)
-		''        Else
-		''            .SignedDate.Add(DateTime.MinValue)
-		''        End If
+            For j As Integer = 0 To grdApproval_Attendees.Rows.Count - 1
+                .SN.Add(j + 1)
+                .Dept.Add(grdApproval_Attendees.Rows(j).Cells(0).Value)
+                .Name.Add(grdApproval_Attendees.Rows(j).Cells(1).Value)
+                .Title.Add(grdApproval_Attendees.Rows(j).Cells(2).Value)
+                .Signed.Add(grdApproval_Attendees.Rows(j).Cells(3).Value)
+                If (grdApproval_Attendees.Rows(j).Cells(4).Value <> "" And Not IsNothing(grdApproval_Attendees.Rows(j).Cells(4).Value)) Then
+                    .DateSigned.Add(grdApproval_Attendees.Rows(j).Cells(4).Value)
+                Else
+                    .DateSigned.Add(DateTime.MinValue)
+                End If
 
-		''    Next
-		''End With
+            Next
+        End With
 
-		gProcessProject = mProcess_Project.Clone()
+        gProcessProject = mProcess_Project.Clone()
 
-	End Sub
+    End Sub
 
 
     Private Sub SaveToDB()
@@ -3789,9 +3790,9 @@ Public Class Process_frmMain
 		mProcess_Project.Test.SaveToDB(mProcess_Project.ID)
 		'mProcess_Project.Planning.SaveToDB(mProcess_Project.ID)
 		mProcess_Project.Shipping.SaveToDB(mProcess_Project.ID)
-		''mProcess_Project.IssueCommnt.SaveToDB(mProcess_Project.ID)
-		''mProcess_Project.Approval.SaveToDB(mProcess_Project.ID)
-	End Sub
+        ''mProcess_Project.IssueCommnt.SaveToDB(mProcess_Project.ID)
+        mProcess_Project.Approval.SaveToDB(mProcess_Project.ID)
+    End Sub
 
 
     Private Sub CopyDataGridView(ByVal Dgv_Source As DataGridView, ByVal Dgv_Target As DataGridView)
@@ -4625,7 +4626,7 @@ Public Class Process_frmMain
     End Sub
 
     Private Sub cmdResetSelectedAllNote_Click(sender As System.Object, e As System.EventArgs)
-        '===========================================================================================================================
+        '====================================================================================
         Try
             ''For i As Integer = 0 To grdPlanning_Ordered.Rows.Count - 1
             ''    Dim pName As String = grdPlanning_Ordered.Rows(i).Cells(0).Value
@@ -4638,7 +4639,45 @@ Public Class Process_frmMain
 
     End Sub
 
+    Private Sub cmdSealPart_Click(sender As Object, e As EventArgs) Handles cmdSealPart.Click
+        '====================================================================================
+        SaveData()
+        SaveToDB()
+        Me.Close()
+    End Sub
 
+    Private Sub cmbPartFamily_MouseHover(sender As Object, e As EventArgs) Handles cmbPartFamily.MouseHover
+        '==================================================================================================
+        ToolTip1.SetToolTip(cmbPartFamily, "Enter Data in SealPart.")
+        cmdSealPart.Focus()
+    End Sub
+
+    Private Sub cmbPartFamily_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbPartFamily.SelectedIndexChanged
+        '======================================================================================================================
+        cmbPartFamily.Text = gPartProject.PNR.SealType.ToString() & "-Seal"
+    End Sub
+
+    Private Sub cmbPartFamily_MouseLeave(sender As Object, e As EventArgs) Handles cmbPartFamily.MouseLeave
+        '==================================================================================================
+        cmbPartFamily.Focus()
+    End Sub
+
+    Private Sub cmbApp_Face_POrient_SelectedIndexChanged(sender As Object, e As EventArgs) _
+                                                         Handles cmbApp_Face_POrient.SelectedIndexChanged
+        '================================================================================================
+        cmbApp_Face_POrient.Text = gPartProject.PNR.HW.POrient
+    End Sub
+
+    Private Sub cmbApp_Face_POrient_MouseHover(sender As Object, e As EventArgs) Handles cmbApp_Face_POrient.MouseHover
+        '=============================================================================================================
+        ToolTip1.SetToolTip(cmbApp_Face_POrient, "Enter Data in SealPart.")
+        cmdSealPart.Focus()
+    End Sub
+
+    Private Sub cmbApp_Face_POrient_MouseLeave(sender As Object, e As EventArgs) Handles cmbApp_Face_POrient.MouseLeave
+        '==============================================================================================================
+        cmbApp_Face_POrient.Focus()
+    End Sub
 
 
     'Private Sub FileToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles mnuUserGroup.Click
