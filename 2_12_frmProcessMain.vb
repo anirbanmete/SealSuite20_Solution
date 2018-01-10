@@ -2415,15 +2415,15 @@ Public Class Process_frmMain
                     grdPurchase_ToolNGages.Rows(i).Cells(0).Value = mProcess_Project.Manf.ToolNGage.PartNo(i)
                     grdPurchase_ToolNGages.Rows(i).Cells(1).Value = mProcess_Project.Manf.ToolNGage.Desc(i)
                     grdPurchase_ToolNGages.Rows(i).Cells(2).Value = mProcess_Project.Manf.ToolNGage.Type(i)
-                    grdPurchase_ToolNGages.Rows(i).Cells(3).Value = mProcess_Project.Manf.ToolNGage.Status(i)
+                    'grdPurchase_ToolNGages.Rows(i).Cells(3).Value = mProcess_Project.Manf.ToolNGage.Status(i)
 
                     If (Math.Abs(mProcess_Project.Manf.ToolNGage.LeadTime(i)) > gcEPS) Then
-                        grdPurchase_ToolNGages.Rows(i).Cells(4).Value = mProcess_Project.Manf.ToolNGage.LeadTime(i)
+                        grdPurchase_ToolNGages.Rows(i).Cells(3).Value = mProcess_Project.Manf.ToolNGage.LeadTime(i)
                     Else
-                        grdPurchase_ToolNGages.Rows(i).Cells(4).Value = ""
+                        grdPurchase_ToolNGages.Rows(i).Cells(3).Value = ""
                     End If
 
-                    'grdPurchase_ToolNGages.Rows(i).Cells(5).Value = mProcess_Project.Manf.ToolNGage.DesignResponsibility(i)
+                    grdPurchase_ToolNGages.Rows(i).Cells(4).Value = mProcess_Project.Manf.ToolNGage.DesignResponsibility(i)
                 End If
             Next
         End If
@@ -2995,7 +2995,7 @@ Public Class Process_frmMain
         '==================================================================================================
         If (chkITAR_Export_UserSigned.Checked) Then
             cmdITAR_Export_UserSign.Text = "Signed"
-            txtITAR_Export_UserName.Text = "Jeffrey LaBonte"
+            'txtITAR_Export_UserName.Text = "Jeffrey LaBonte"
             txtITAR_Export_UserDate.Text = DateTime.Now.ToShortDateString()
         Else
             cmdITAR_Export_UserSign.Text = "Sign"
@@ -3009,7 +3009,7 @@ Public Class Process_frmMain
         '===============================================================================================
         If (chkOrdEntry_UserSigned.Checked) Then
             cmdOrdEntry_UserSign.Text = "Signed"
-            txtOrdEntry_UserName.Text = "Jeffrey LaBonte"
+            'txtOrdEntry_UserName.Text = "Jeffrey LaBonte"
             txtOrdEntry_UserDate.Text = DateTime.Now.ToShortDateString()
         Else
             cmdOrdEntry_UserSign.Text = "Sign"
@@ -3023,7 +3023,7 @@ Public Class Process_frmMain
         '===========================================================================================
         If (chkCost_UserSigned.Checked) Then
             cmdCost_UserSign.Text = "Signed"
-            txtCost_UserName.Text = "Jeffrey LaBonte"
+            'txtCost_UserName.Text = "Jeffrey LaBonte"
             txtCost_UserDate.Text = DateTime.Now.ToShortDateString()
         Else
             cmdCost_UserSign.Text = "Sign"
