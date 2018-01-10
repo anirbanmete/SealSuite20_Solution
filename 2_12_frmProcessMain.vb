@@ -249,7 +249,6 @@ Public Class Process_frmMain
         cmbPartType.SelectedIndex = 0
         cmbPreOrderChannel.SelectedIndex = 1
 
-
         '....Pre-Order
         PopulateMarketingMgr()
 
