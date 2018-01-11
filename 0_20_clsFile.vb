@@ -19,7 +19,8 @@ Imports System.Text
 Imports System.Data.Entity
 Imports System.Runtime.Serialization
 Imports System.Runtime.Serialization.Formatters.Binary
-Imports System.Data.Entity.Core.EntityClient
+'Imports System.Data.Entity.Core.EntityClient
+Imports System.Data.EntityClient
 
 <Serializable()> _
 Public Class clsFile

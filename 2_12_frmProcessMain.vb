@@ -465,7 +465,7 @@ Public Class Process_frmMain
 
         '....Attendies
         Dim pQryRole = (From pRec In pSealSuiteEntities.tblRole
-                        Select pRec).ToList()
+                        Where pRec.fldRole <> "Admin" Select pRec).ToList()
         If (pQryRole.Count > 0) Then
             For i As Integer = 0 To pQryRole.Count - 1
                 grdApproval_Attendees.Rows.Add()
@@ -1765,7 +1765,6 @@ Public Class Process_frmMain
 
 
         '.... "Drawing:"
-
         With mProcess_Project.Dwg
             cmbDwg_DesignLevel.Text = .DesignLevel
 
@@ -1793,6 +1792,7 @@ Public Class Process_frmMain
                     grdDrawing_BOM.Rows(j).Cells(2).Value = ""
                 End If
             Next
+
 
         End With
 
@@ -4365,7 +4365,7 @@ Public Class Process_frmMain
 
             If (cmbQuality_VisualInspection.Text = "Y") Then
                 .VisualInspection = True
-                .VisualInspection_Type = cmbQuality_VisualInspection.Text
+                .VisualInspection_Type = cmbQuality_VisualInspection_Type.Text
             Else
                 .VisualInspection = False
                 .VisualInspection_Type = ""

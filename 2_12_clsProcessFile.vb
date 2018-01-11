@@ -4,7 +4,7 @@
 '                      CLASS MODULE  :  clsProcessFile                         '
 '                        VERSION NO  :  1.1                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  04JAN18                                '
+'                     LAST MODIFIED  :  11JAN18                                '
 '                                                                              '
 '===============================================================================
 
@@ -40,7 +40,7 @@ Public Class clsProcessFile
     Private Const mcDriveRoot As String = "C:"
 
     Private Const mcDirRoot As String = mcDriveRoot & "\SealSuite\SealProcess\"
-    Private Const mcPDSMappingFile As String = mcDirRoot & "Program Data Files\PD_PDSRevW_Mapping_04JAN18.xls"
+    Private Const mcPDSMappingFile As String = mcDirRoot & "Program Data Files\PD_PDSRevW_Mapping_11JAN18.xls"
 
     'PDS Template File:
     '------------------------
@@ -63,6 +63,12 @@ Public Class clsProcessFile
     Private mTool_Gage_PartNo As String
     Private mTool_Gage_Desc As String
     Private mTool_Gage_Response As String
+    Private mDwg_Needed_DwgNo As String
+    Private mDwg_Needed_DwgDesc As String
+    Private mBOM_Parent_PartNo As String
+    Private mBOM_Child_PartNo As String
+    Private mBOM_Qty As String
+
     Private mAttendeesStartColName_Dept As String
     Private mAttendeesStartColName_Sign As String
     Private mAttendeesStartColName_Name As String
@@ -1315,20 +1321,154 @@ Public Class clsProcessFile
                 Case "Tooling and Gages Responsibility"
                     mTool_Gage_Response = mPDS_CellColName(i)
 
-                    ''        Case "Attendees Department"
-                    ''            mAttendeesStartColName_Dept = mPDS_CellColName(i)
+                    '....Quality
+                Case "Approved Suppliers Only?"
+                    mPDS_Val(i) = IIf(ProcessProj_In.Qlty.IsApvdSupplierOnly = True, "Yes", "No")
 
-                    ''        Case "Attendees Signature"
-                    ''            mAttendeesStartColName_Sign = mPDS_CellColName(i)
+                Case "Separate Tooling and Inspectin Gages (Split Ring)?"
+                    mPDS_Val(i) = IIf(ProcessProj_In.Qlty.Separate_Tool_Gage_Reqd = True, "Yes", "No")
 
-                    ''        Case "Attendees Name"
-                    ''            mAttendeesStartColName_Name = mPDS_CellColName(i)
+                'Case "Customer Complaints on Similar Products"
+                '    mPDS_Val(i) = IIf(ProcessProj_In.Qlty.HasCustComplaint = True, "Yes", "No")
 
-                    ''        Case "Attendees Title"
-                    ''            mAttendeesStartColName_Title = mPDS_CellColName(i)
+                Case "Visual Inspection with magnification"
+                    Dim pVisualInspection As String = ""
+                    If (ProcessProj_In.Qlty.VisualInspection) Then
+                        pVisualInspection = "Yes, " & ProcessProj_In.Qlty.VisualInspection_Type
+                    Else
+                        pVisualInspection = "No"
+                    End If
+                    mPDS_Val(i) = pVisualInspection
 
-                    ''        Case "Attendees Date"
-                    ''            mAttendeesStartColName_Date = mPDS_CellColName(i)
+                Case "Customer Acceptance Standards"
+                    mPDS_Val(i) = ProcessProj_In.Qlty.CustAcceptStd
+
+                Case "SPC Required?"
+                    mPDS_Val(i) = IIf(ProcessProj_In.Qlty.SPC_Reqd = True, "Yes", "No")
+
+                Case "Gage R&Rs Required?"
+                    mPDS_Val(i) = IIf(ProcessProj_In.Qlty.GageRnR_Reqd = True, "Yes", "No")
+
+                    '....Drawing
+                Case "Design Level"
+                    mPDS_Val(i) = ProcessProj_In.Dwg.DesignLevel
+
+                Case "Drawing No"
+                    mDwg_Needed_DwgNo = mPDS_CellColName(i)
+
+                Case "Drawing Description"
+                    mDwg_Needed_DwgDesc = mPDS_CellColName(i)
+
+                Case "BOM's Parent Part No"
+                    mBOM_Parent_PartNo = mPDS_CellColName(i)
+
+                Case "BOM's Child Part No"
+                    mBOM_Child_PartNo = mPDS_CellColName(i)
+
+                Case "BOM's Qty"
+                    mBOM_Qty = mPDS_CellColName(i)
+
+                    '....Testing
+                Case "Leak Compress To (Pre-Plate)"
+                    mPDS_Val(i) = ProcessProj_In.Test.Leak.Compress_Unplated
+
+                Case "Leak Media (Pre-Plate)"
+                    mPDS_Val(i) = ProcessProj_In.Test.Leak.Medium_Unplated
+
+                Case "Leak Pressure (Pre-Plate)"
+                    mPDS_Val(i) = ProcessProj_In.Test.Leak.Press_Unplated
+
+                Case "Leak Requirement (Pre-Plate)"
+                    mPDS_Val(i) = ProcessProj_In.Test.Leak.Max_Unplated
+
+                Case "Leak Qty (Pre-Plate)"
+                    mPDS_Val(i) = ProcessProj_In.Test.Leak.Qty_Unplated
+
+                Case "Leak Frequency (Pre-Plate)"
+                    mPDS_Val(i) = ProcessProj_In.Test.Leak.Freq_Unplated
+
+                Case "Leak Compress To (Post-Plate)"
+                    mPDS_Val(i) = ProcessProj_In.Test.Leak.Compress_Plated
+
+                Case "Leak Media (Post-Plate)"
+                    mPDS_Val(i) = ProcessProj_In.Test.Leak.Medium_Plated
+
+                Case "Leak Pressure (Post-Plate)"
+                    mPDS_Val(i) = ProcessProj_In.Test.Leak.Press_Plated
+
+                Case "Leak Requirement (Post-Plate)"
+                    mPDS_Val(i) = ProcessProj_In.Test.Leak.Max_Plated
+
+                Case "Leak Qty (Post-Plate)"
+                    mPDS_Val(i) = ProcessProj_In.Test.Leak.Qty_Plated
+
+                Case "Leak Frequency (Post-Plate)"
+                    mPDS_Val(i) = ProcessProj_In.Test.Leak.Freq_Plated
+
+                Case "Load Compress To (Pre-Plate)"
+                    mPDS_Val(i) = ProcessProj_In.Test.Load.Compress_Unplated
+
+                Case "Load Requirement (Pre-Plate)"
+                    mPDS_Val(i) = ProcessProj_In.Test.Load.Max_Unplated
+
+                Case "Load Qty (Pre-Plate)"
+                    mPDS_Val(i) = ProcessProj_In.Test.Load.Qty_Unplated
+
+                Case "Load Frequency (Pre-Plate)"
+                    mPDS_Val(i) = ProcessProj_In.Test.Load.Freq_Unplated
+
+                Case "Load Compress To (Post-Plate)"
+                    mPDS_Val(i) = ProcessProj_In.Test.Load.Compress_Plated
+
+                Case "Load Requirement (Post-Plate)"
+                    mPDS_Val(i) = ProcessProj_In.Test.Load.Max_Plated
+
+                Case "Load Qty (Post-Plate)"
+                    mPDS_Val(i) = ProcessProj_In.Test.Load.Qty_Plated
+
+                Case "Load Frequency (Post-Plate)"
+                    mPDS_Val(i) = ProcessProj_In.Test.Load.Freq_Plated
+
+                Case "Springback Compress To (Pre-Plate)"
+                    mPDS_Val(i) = ProcessProj_In.Test.SpringBack.Compress_Unplated
+
+                Case "Springback Requirement (Pre-Plate)"
+                    mPDS_Val(i) = ProcessProj_In.Test.SpringBack.Max_Unplated
+
+                Case "Springback Qty (Pre-Plate)"
+                    mPDS_Val(i) = ProcessProj_In.Test.SpringBack.Qty_Unplated
+
+                Case "Springback Frequency (Pre-Plate)"
+                    mPDS_Val(i) = ProcessProj_In.Test.SpringBack.Freq_Unplated
+
+                Case "Springback Compress To (Post-Plate)"
+                    mPDS_Val(i) = ProcessProj_In.Test.SpringBack.Compress_Plated
+
+                Case "Springback Requirement (Post-Plate)"
+                    mPDS_Val(i) = ProcessProj_In.Test.SpringBack.Max_Plated
+
+                Case "Springback Qty (Post-Plate)"
+                    mPDS_Val(i) = ProcessProj_In.Test.SpringBack.Qty_Plated
+
+                Case "Springback Frequency (Post-Plate)"
+                    mPDS_Val(i) = ProcessProj_In.Test.SpringBack.Freq_Plated
+
+
+                    '....Approval
+                Case "Attendees Department"
+                    mAttendeesStartColName_Dept = mPDS_CellColName(i)
+
+                Case "Attendees Signature"
+                    mAttendeesStartColName_Sign = mPDS_CellColName(i)
+
+                Case "Attendees Name"
+                    mAttendeesStartColName_Name = mPDS_CellColName(i)
+
+                Case "Attendees Title"
+                    mAttendeesStartColName_Title = mPDS_CellColName(i)
+
+                Case "Attendees Date"
+                    mAttendeesStartColName_Date = mPDS_CellColName(i)
 
 
             End Select
@@ -1391,7 +1531,6 @@ Public Class clsProcessFile
                 pExcelCellRange = pWkSheet.Range(pColumn_Interpretation & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.Design.CustSpec.Interpret(i)
             Next
 
-            'mSealDimName
             '....Seal Dim
             For i As Integer = 0 To ProcessProj_In.Design.SealDim.ID_Seal.Count - 1
                 Dim pColumn_Name As String = mSealDimName.Substring(0, 1)
@@ -1446,6 +1585,30 @@ Public Class clsProcessFile
                     pStatus = "No" & "  " & ProcessProj_In.Manf.ToolNGage.DesignResponsibility(i)
                 End If
                 pExcelCellRange = pWkSheet.Range(pColumn_Response & pIndex.ToString()) : pExcelCellRange.Value = pStatus
+
+            Next
+
+            '....Dwg_Needed
+            For i As Integer = 0 To ProcessProj_In.Dwg.Needed.ID_Needed.Count - 1
+                Dim pColumn_DwgNo As String = mDwg_Needed_DwgNo.Substring(0, 1)
+                Dim pColumn_DwgDesc As String = mDwg_Needed_DwgDesc.Substring(0, 1)
+
+                Dim pIndex As Integer = ConvertToInt(mDwg_Needed_DwgNo.Substring(1, mDwg_Needed_DwgNo.Length - 1)) + i
+                pExcelCellRange = pWkSheet.Range(pColumn_DwgNo & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.Dwg.Needed.DwgNo(i)
+                pExcelCellRange = pWkSheet.Range(pColumn_DwgDesc & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.Dwg.Needed.Desc(i)
+
+            Next
+
+            '....BOM
+            For i As Integer = 0 To ProcessProj_In.Dwg.BOM.ID_BOM.Count - 1
+                Dim pColumn_ParentPartNo As String = mBOM_Parent_PartNo.Substring(0, 1)
+                Dim pColumn_ChildPartNo As String = mBOM_Child_PartNo.Substring(0, 1)
+                Dim pColumn_Qty As String = mBOM_Qty.Substring(0, 1)
+
+                Dim pIndex As Integer = ConvertToInt(mBOM_Parent_PartNo.Substring(1, mBOM_Parent_PartNo.Length - 1)) + i
+                pExcelCellRange = pWkSheet.Range(pColumn_ParentPartNo & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.Dwg.BOM.Parent_PartNo(i)
+                pExcelCellRange = pWkSheet.Range(pColumn_ChildPartNo & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.Dwg.BOM.Child_PartNo(i)
+                pExcelCellRange = pWkSheet.Range(pColumn_Qty & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.Dwg.BOM.Qty(i)
 
             Next
 
