@@ -156,6 +156,8 @@ Public Class Process_frmMain
 
         GetPartProjectInfo()
 
+        Initialize_tbTesting_Controls()
+
         If (gPartProject.PNR.SealType.ToString() = "SC") Then
             PopulateMatComboBox(gPartProject.PNR.SealType.ToString(), cmbDesign_Mat_Spring)
         Else
@@ -535,6 +537,72 @@ Public Class Process_frmMain
 
     End Sub
 
+    Private Sub Initialize_tbTesting_Controls()
+        '======================================
+        If (gPartProject.PNR.SealType = clsPartProject.clsPNR.eType.C Or gPartProject.PNR.SealType = clsPartProject.clsPNR.eType.SC) Then
+            If (gPartProject.PNR.HW.Plating.Exists) Then
+                '....Leak
+                txtTest_CompressPost_Leak.Enabled = True
+                cmbTest_MediaPost_Leak.Enabled = True
+                txtTest_PressPost_Leak.Enabled = True
+                txtTest_ReqPost_Leak.Enabled = True
+                cmbTest_QtyPost_Leak.Enabled = True
+                cmbTest_FreqPost_Leak.Enabled = True
+
+                '....Load
+                txtTest_CompressPost_Load.Enabled = True
+                txtTest_ReqPost_Load.Enabled = True
+                cmbTest_QtyPost_Load.Enabled = True
+                cmbTest_FreqPost_Load.Enabled = True
+
+                '....SpringBack
+                txtTest_CompressPost_SpringBack.Enabled = True
+                txtTest_ReqPost_SpringBack.Enabled = True
+                cmbTest_QtyPost_SpringBack.Enabled = True
+                cmbTest_FreqPost_SpringBack.Enabled = True
+            Else
+                '....Leak
+                txtTest_CompressPost_Leak.Enabled = False
+                cmbTest_MediaPost_Leak.Enabled = False
+                txtTest_PressPost_Leak.Enabled = False
+                txtTest_ReqPost_Leak.Enabled = False
+                cmbTest_QtyPost_Leak.Enabled = False
+                cmbTest_FreqPost_Leak.Enabled = False
+
+                '....Load
+                txtTest_CompressPost_Load.Enabled = False
+                txtTest_ReqPost_Load.Enabled = False
+                cmbTest_QtyPost_Load.Enabled = False
+                cmbTest_FreqPost_Load.Enabled = False
+
+                '....SpringBack
+                txtTest_CompressPost_SpringBack.Enabled = False
+                txtTest_ReqPost_SpringBack.Enabled = False
+                cmbTest_QtyPost_SpringBack.Enabled = False
+                cmbTest_FreqPost_SpringBack.Enabled = False
+            End If
+        Else
+            '....Leak
+            txtTest_CompressPost_Leak.Enabled = False
+            cmbTest_MediaPost_Leak.Enabled = False
+            txtTest_PressPost_Leak.Enabled = False
+            txtTest_ReqPost_Leak.Enabled = False
+            cmbTest_QtyPost_Leak.Enabled = False
+            cmbTest_FreqPost_Leak.Enabled = False
+
+            '....Load
+            txtTest_CompressPost_Load.Enabled = False
+            txtTest_ReqPost_Load.Enabled = False
+            cmbTest_QtyPost_Load.Enabled = False
+            cmbTest_FreqPost_Load.Enabled = False
+
+            '....SpringBack
+            txtTest_CompressPost_SpringBack.Enabled = False
+            txtTest_ReqPost_SpringBack.Enabled = False
+            cmbTest_QtyPost_SpringBack.Enabled = False
+            cmbTest_FreqPost_SpringBack.Enabled = False
+        End If
+    End Sub
     Private Sub PopulateMatComboBox(ByVal SealType_In As String, ByRef cmbBox As ComboBox)
         '=================================================================================
         Dim pMCSEntities As New SealIPEMCSDBEntities()
