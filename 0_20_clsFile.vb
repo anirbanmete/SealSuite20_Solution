@@ -16,9 +16,10 @@ Imports System.Xml
 Imports System.Configuration
 Imports System.Data.SqlClient
 Imports System.Text
-Imports System.Data.EntityClient
+Imports System.Data.Entity
 Imports System.Runtime.Serialization
 Imports System.Runtime.Serialization.Formatters.Binary
+Imports System.Data.Entity.Core.EntityClient
 
 <Serializable()> _
 Public Class clsFile

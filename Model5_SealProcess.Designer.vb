@@ -18,7 +18,7 @@ Imports System.Runtime.Serialization
 Imports System.Xml.Serialization
 
 
-<Assembly: EdmSchemaAttribute("c3209c14-77f7-40c2-abe7-b29c82f06b49")>
+<Assembly: EdmSchemaAttribute("b6465a91-ad01-43bb-b156-9f1934b07335")>
 #Region "EDM Relationship Metadata"
 <Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblApp_Cavity_tblApp1", "tblApp", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblApp), "tblApp_Cavity", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(tblApp_Cavity), True)>
 <Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblApp_CavityFlange_tblApp", "tblApp", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblApp), "tblApp_CavityFlange", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(tblApp_CavityFlange), True)>
@@ -36,9 +36,10 @@ Imports System.Xml.Serialization
 <Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblDesign_tblProcessProject", "tblProcessProject", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblProcessProject), "tblDesign", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(tblDesign), True)>
 <Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblDesign_Verification_tblDesign", "tblDesign", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblDesign), "tblDesign_Verification", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(tblDesign_Verification), True)>
 <Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblDwg_BOM_tblDwg", "tblDwg", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblDwg), "tblDwg_BOM", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(tblDwg_BOM), True)>
-<Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblDwg_Need_tblDwg", "tblDwg", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblDwg), "tblDwg_Need", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(tblDwg_Need), True)>
+<Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblDwg_Need_tblDwg", "tblDwg", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblDwg), "tblDwg_Needed", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(tblDwg_Needed), True)>
 <Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblDwg_tblProcessProject", "tblProcessProject", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblProcessProject), "tblDwg", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(tblDwg), True)>
 <Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblEditedBy_tblProcessProject", "tblProcessProject", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblProcessProject), "tblEditedBy", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(tblEditedBy), True)>
+<Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblRiskAnaQSet_tblRiskAnaQSet_History", "tblFileHistory_RiskAnaQSet", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblFileHistory_RiskAnaQSet), "tblRiskAnaQSet", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(tblRiskAnaQSet), True)>
 <Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblIssueComnt_tblProcessProject", "tblProcessProject", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblProcessProject), "tblIssueComnt", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(tblIssueComnt), True)>
 <Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblITAR_Export_tblProcessProject", "tblProcessProject", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblProcessProject), "tblITAR_Export", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(tblITAR_Export), True)>
 <Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblDesign_KeyCharacteristics_tblProcessProject1", "tblProcessProject", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblProcessProject), "tblKeyChar", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(tblKeyChar), True)>
@@ -59,7 +60,6 @@ Imports System.Xml.Serialization
 <Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblTest_tblProcessProject", "tblProcessProject", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblProcessProject), "tblTest", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(tblTest), True)>
 <Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblPurchase_Drawing_tblProcessProject", "tblPurchase", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblPurchase), "tblPurchase_Dwg", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(tblPurchase_Dwg), True)>
 <Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblPurchase_Mat_tblProcessProject", "tblPurchase", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblPurchase), "tblPurchase_Mat", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(tblPurchase_Mat), True)>
-<Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblRiskAnaQSet_tblRiskAnaQSet_History", "tblRiskAnaQSet_History", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblRiskAnaQSet_History), "tblRiskAnaQSet", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(tblRiskAnaQSet), True)>
 <Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblTest_Leak_tblTest", "tblTest", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblTest), "tblTest_Leak", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(tblTest_Leak), True)>
 <Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblTest_Load_tblTest", "tblTest", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblTest), "tblTest_Load", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(tblTest_Load), True)>
 <Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblTest_SpringBack_tblTest", "tblTest", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblTest), "tblTest_SpringBack", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(tblTest_SpringBack), True)>
@@ -355,16 +355,16 @@ Public Partial Class SealProcessDBEntities
     ''' <summary>
     ''' No Metadata Documentation available.
     ''' </summary>
-    Public ReadOnly Property tblDwg_Need() As ObjectSet(Of tblDwg_Need)
+    Public ReadOnly Property tblDwg_Needed() As ObjectSet(Of tblDwg_Needed)
         Get
-            If (_tblDwg_Need Is Nothing) Then
-                _tblDwg_Need = MyBase.CreateObjectSet(Of tblDwg_Need)("tblDwg_Need")
+            If (_tblDwg_Needed Is Nothing) Then
+                _tblDwg_Needed = MyBase.CreateObjectSet(Of tblDwg_Needed)("tblDwg_Needed")
             End If
-            Return _tblDwg_Need
+            Return _tblDwg_Needed
         End Get
     End Property
 
-    Private _tblDwg_Need As ObjectSet(Of tblDwg_Need)
+    Private _tblDwg_Needed As ObjectSet(Of tblDwg_Needed)
 
     ''' <summary>
     ''' No Metadata Documentation available.
@@ -379,6 +379,20 @@ Public Partial Class SealProcessDBEntities
     End Property
 
     Private _tblEditedBy As ObjectSet(Of tblEditedBy)
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    Public ReadOnly Property tblFileHistory_RiskAnaQSet() As ObjectSet(Of tblFileHistory_RiskAnaQSet)
+        Get
+            If (_tblFileHistory_RiskAnaQSet Is Nothing) Then
+                _tblFileHistory_RiskAnaQSet = MyBase.CreateObjectSet(Of tblFileHistory_RiskAnaQSet)("tblFileHistory_RiskAnaQSet")
+            End If
+            Return _tblFileHistory_RiskAnaQSet
+        End Get
+    End Property
+
+    Private _tblFileHistory_RiskAnaQSet As ObjectSet(Of tblFileHistory_RiskAnaQSet)
 
     ''' <summary>
     ''' No Metadata Documentation available.
@@ -677,20 +691,6 @@ Public Partial Class SealProcessDBEntities
     ''' <summary>
     ''' No Metadata Documentation available.
     ''' </summary>
-    Public ReadOnly Property tblRiskAnaQSet_History() As ObjectSet(Of tblRiskAnaQSet_History)
-        Get
-            If (_tblRiskAnaQSet_History Is Nothing) Then
-                _tblRiskAnaQSet_History = MyBase.CreateObjectSet(Of tblRiskAnaQSet_History)("tblRiskAnaQSet_History")
-            End If
-            Return _tblRiskAnaQSet_History
-        End Get
-    End Property
-
-    Private _tblRiskAnaQSet_History As ObjectSet(Of tblRiskAnaQSet_History)
-
-    ''' <summary>
-    ''' No Metadata Documentation available.
-    ''' </summary>
     Public ReadOnly Property tblRolePrivilege() As ObjectSet(Of tblRolePrivilege)
         Get
             If (_tblRolePrivilege Is Nothing) Then
@@ -896,10 +896,10 @@ Public Partial Class SealProcessDBEntities
     End Sub
 
     ''' <summary>
-    ''' Deprecated Method for adding a new object to the tblDwg_Need EntitySet. Consider using the .Add method of the associated ObjectSet(Of T) property instead.
+    ''' Deprecated Method for adding a new object to the tblDwg_Needed EntitySet. Consider using the .Add method of the associated ObjectSet(Of T) property instead.
     ''' </summary>
-    Public Sub AddTotblDwg_Need(ByVal tblDwg_Need As tblDwg_Need)
-        MyBase.AddObject("tblDwg_Need", tblDwg_Need)
+    Public Sub AddTotblDwg_Needed(ByVal tblDwg_Needed As tblDwg_Needed)
+        MyBase.AddObject("tblDwg_Needed", tblDwg_Needed)
     End Sub
 
     ''' <summary>
@@ -907,6 +907,13 @@ Public Partial Class SealProcessDBEntities
     ''' </summary>
     Public Sub AddTotblEditedBy(ByVal tblEditedBy As tblEditedBy)
         MyBase.AddObject("tblEditedBy", tblEditedBy)
+    End Sub
+
+    ''' <summary>
+    ''' Deprecated Method for adding a new object to the tblFileHistory_RiskAnaQSet EntitySet. Consider using the .Add method of the associated ObjectSet(Of T) property instead.
+    ''' </summary>
+    Public Sub AddTotblFileHistory_RiskAnaQSet(ByVal tblFileHistory_RiskAnaQSet As tblFileHistory_RiskAnaQSet)
+        MyBase.AddObject("tblFileHistory_RiskAnaQSet", tblFileHistory_RiskAnaQSet)
     End Sub
 
     ''' <summary>
@@ -1054,13 +1061,6 @@ Public Partial Class SealProcessDBEntities
     ''' </summary>
     Public Sub AddTotblRiskAnaQSet(ByVal tblRiskAnaQSet As tblRiskAnaQSet)
         MyBase.AddObject("tblRiskAnaQSet", tblRiskAnaQSet)
-    End Sub
-
-    ''' <summary>
-    ''' Deprecated Method for adding a new object to the tblRiskAnaQSet_History EntitySet. Consider using the .Add method of the associated ObjectSet(Of T) property instead.
-    ''' </summary>
-    Public Sub AddTotblRiskAnaQSet_History(ByVal tblRiskAnaQSet_History As tblRiskAnaQSet_History)
-        MyBase.AddObject("tblRiskAnaQSet_History", tblRiskAnaQSet_History)
     End Sub
 
     ''' <summary>
@@ -3334,11 +3334,11 @@ Public Partial Class tblApproval
     ''' Create a new tblApproval object.
     ''' </summary>
     ''' <param name="fldProcessProjectID">Initial value of the fldProcessProjectID property.</param>
-    ''' <param name="fldSN">Initial value of the fldSN property.</param>
-    Public Shared Function CreatetblApproval(fldProcessProjectID As Global.System.Decimal, fldSN As Global.System.Int32) As tblApproval
+    ''' <param name="fldID">Initial value of the fldID property.</param>
+    Public Shared Function CreatetblApproval(fldProcessProjectID As Global.System.Decimal, fldID As Global.System.Int32) As tblApproval
         Dim tblApproval as tblApproval = New tblApproval
         tblApproval.fldProcessProjectID = fldProcessProjectID
-        tblApproval.fldSN = fldSN
+        tblApproval.fldID = fldID
         Return tblApproval
     End Function
 
@@ -3378,26 +3378,26 @@ Public Partial Class tblApproval
     ''' </summary>
     <EdmScalarPropertyAttribute(EntityKeyProperty:=true, IsNullable:=false)>
     <DataMemberAttribute()>
-    Public Property fldSN() As Global.System.Int32
+    Public Property fldID() As Global.System.Int32
         Get
-            Return _fldSN
+            Return _fldID
         End Get
         Set
-            If (_fldSN <> Value) Then
-                OnfldSNChanging(value)
-                ReportPropertyChanging("fldSN")
-                _fldSN = StructuralObject.SetValidValue(value)
-                ReportPropertyChanged("fldSN")
-                OnfldSNChanged()
+            If (_fldID <> Value) Then
+                OnfldIDChanging(value)
+                ReportPropertyChanging("fldID")
+                _fldID = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("fldID")
+                OnfldIDChanged()
             End If
         End Set
     End Property
 
-    Private _fldSN As Global.System.Int32
-    Private Partial Sub OnfldSNChanging(value As Global.System.Int32)
+    Private _fldID As Global.System.Int32
+    Private Partial Sub OnfldIDChanging(value As Global.System.Int32)
     End Sub
 
-    Private Partial Sub OnfldSNChanged()
+    Private Partial Sub OnfldIDChanged()
     End Sub
 
     ''' <summary>
@@ -5508,14 +5508,14 @@ Public Partial Class tblDwg
     <XmlIgnoreAttribute()>
     <SoapIgnoreAttribute()>
     <DataMemberAttribute()>
-    <EdmRelationshipNavigationPropertyAttribute("SealProcessDBModel", "FK_tblDwg_Need_tblDwg", "tblDwg_Need")>
-     Public Property tblDwg_Need() As EntityCollection(Of tblDwg_Need)
+    <EdmRelationshipNavigationPropertyAttribute("SealProcessDBModel", "FK_tblDwg_Need_tblDwg", "tblDwg_Needed")>
+     Public Property tblDwg_Needed() As EntityCollection(Of tblDwg_Needed)
         Get
-            Return CType(Me,IEntityWithRelationships).RelationshipManager.GetRelatedCollection(Of tblDwg_Need)("SealProcessDBModel.FK_tblDwg_Need_tblDwg", "tblDwg_Need")
+            Return CType(Me,IEntityWithRelationships).RelationshipManager.GetRelatedCollection(Of tblDwg_Needed)("SealProcessDBModel.FK_tblDwg_Need_tblDwg", "tblDwg_Needed")
         End Get
         Set
             If (Not value Is Nothing)
-                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of tblDwg_Need)("SealProcessDBModel.FK_tblDwg_Need_tblDwg", "tblDwg_Need", value)
+                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of tblDwg_Needed)("SealProcessDBModel.FK_tblDwg_Need_tblDwg", "tblDwg_Needed", value)
             End If
         End Set
     End Property
@@ -5752,25 +5752,25 @@ End Class
 ''' <summary>
 ''' No Metadata Documentation available.
 ''' </summary>
-<EdmEntityTypeAttribute(NamespaceName:="SealProcessDBModel", Name:="tblDwg_Need")>
+<EdmEntityTypeAttribute(NamespaceName:="SealProcessDBModel", Name:="tblDwg_Needed")>
 <Serializable()>
 <DataContractAttribute(IsReference:=True)>
-Public Partial Class tblDwg_Need
+Public Partial Class tblDwg_Needed
     Inherits EntityObject
     #Region "Factory Method"
 
     ''' <summary>
-    ''' Create a new tblDwg_Need object.
+    ''' Create a new tblDwg_Needed object.
     ''' </summary>
     ''' <param name="fldProcessProjectID">Initial value of the fldProcessProjectID property.</param>
     ''' <param name="fldID">Initial value of the fldID property.</param>
     ''' <param name="fldDwgNo">Initial value of the fldDwgNo property.</param>
-    Public Shared Function CreatetblDwg_Need(fldProcessProjectID As Global.System.Decimal, fldID As Global.System.Decimal, fldDwgNo As Global.System.String) As tblDwg_Need
-        Dim tblDwg_Need as tblDwg_Need = New tblDwg_Need
-        tblDwg_Need.fldProcessProjectID = fldProcessProjectID
-        tblDwg_Need.fldID = fldID
-        tblDwg_Need.fldDwgNo = fldDwgNo
-        Return tblDwg_Need
+    Public Shared Function CreatetblDwg_Needed(fldProcessProjectID As Global.System.Decimal, fldID As Global.System.Decimal, fldDwgNo As Global.System.String) As tblDwg_Needed
+        Dim tblDwg_Needed as tblDwg_Needed = New tblDwg_Needed
+        tblDwg_Needed.fldProcessProjectID = fldProcessProjectID
+        tblDwg_Needed.fldID = fldID
+        tblDwg_Needed.fldDwgNo = fldDwgNo
+        Return tblDwg_Needed
     End Function
 
     #End Region
@@ -5985,12 +5985,12 @@ Public Partial Class tblEditedBy
     ''' </summary>
     ''' <param name="fldProcessProjectID">Initial value of the fldProcessProjectID property.</param>
     ''' <param name="fldTabName">Initial value of the fldTabName property.</param>
-    ''' <param name="fldSN">Initial value of the fldSN property.</param>
-    Public Shared Function CreatetblEditedBy(fldProcessProjectID As Global.System.Decimal, fldTabName As Global.System.String, fldSN As Global.System.Int32) As tblEditedBy
+    ''' <param name="fldID">Initial value of the fldID property.</param>
+    Public Shared Function CreatetblEditedBy(fldProcessProjectID As Global.System.Decimal, fldTabName As Global.System.String, fldID As Global.System.Int32) As tblEditedBy
         Dim tblEditedBy as tblEditedBy = New tblEditedBy
         tblEditedBy.fldProcessProjectID = fldProcessProjectID
         tblEditedBy.fldTabName = fldTabName
-        tblEditedBy.fldSN = fldSN
+        tblEditedBy.fldID = fldID
         Return tblEditedBy
     End Function
 
@@ -6057,26 +6057,26 @@ Public Partial Class tblEditedBy
     ''' </summary>
     <EdmScalarPropertyAttribute(EntityKeyProperty:=true, IsNullable:=false)>
     <DataMemberAttribute()>
-    Public Property fldSN() As Global.System.Int32
+    Public Property fldID() As Global.System.Int32
         Get
-            Return _fldSN
+            Return _fldID
         End Get
         Set
-            If (_fldSN <> Value) Then
-                OnfldSNChanging(value)
-                ReportPropertyChanging("fldSN")
-                _fldSN = StructuralObject.SetValidValue(value)
-                ReportPropertyChanged("fldSN")
-                OnfldSNChanged()
+            If (_fldID <> Value) Then
+                OnfldIDChanging(value)
+                ReportPropertyChanging("fldID")
+                _fldID = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("fldID")
+                OnfldIDChanged()
             End If
         End Set
     End Property
 
-    Private _fldSN As Global.System.Int32
-    Private Partial Sub OnfldSNChanging(value As Global.System.Int32)
+    Private _fldID As Global.System.Int32
+    Private Partial Sub OnfldIDChanging(value As Global.System.Int32)
     End Sub
 
-    Private Partial Sub OnfldSNChanged()
+    Private Partial Sub OnfldIDChanged()
     End Sub
 
     ''' <summary>
@@ -6196,6 +6196,133 @@ End Class
 ''' <summary>
 ''' No Metadata Documentation available.
 ''' </summary>
+<EdmEntityTypeAttribute(NamespaceName:="SealProcessDBModel", Name:="tblFileHistory_RiskAnaQSet")>
+<Serializable()>
+<DataContractAttribute(IsReference:=True)>
+Public Partial Class tblFileHistory_RiskAnaQSet
+    Inherits EntityObject
+    #Region "Factory Method"
+
+    ''' <summary>
+    ''' Create a new tblFileHistory_RiskAnaQSet object.
+    ''' </summary>
+    ''' <param name="fldID">Initial value of the fldID property.</param>
+    Public Shared Function CreatetblFileHistory_RiskAnaQSet(fldID As Global.System.Decimal) As tblFileHistory_RiskAnaQSet
+        Dim tblFileHistory_RiskAnaQSet as tblFileHistory_RiskAnaQSet = New tblFileHistory_RiskAnaQSet
+        tblFileHistory_RiskAnaQSet.fldID = fldID
+        Return tblFileHistory_RiskAnaQSet
+    End Function
+
+    #End Region
+
+    #Region "Primitive Properties"
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=true, IsNullable:=false)>
+    <DataMemberAttribute()>
+    Public Property fldID() As Global.System.Decimal
+        Get
+            Return _fldID
+        End Get
+        Set
+            If (_fldID <> Value) Then
+                OnfldIDChanging(value)
+                ReportPropertyChanging("fldID")
+                _fldID = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("fldID")
+                OnfldIDChanged()
+            End If
+        End Set
+    End Property
+
+    Private _fldID As Global.System.Decimal
+    Private Partial Sub OnfldIDChanging(value As Global.System.Decimal)
+    End Sub
+
+    Private Partial Sub OnfldIDChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property fldFileName() As Global.System.String
+        Get
+            Return _fldFileName
+        End Get
+        Set
+            OnfldFileNameChanging(value)
+            ReportPropertyChanging("fldFileName")
+            _fldFileName = StructuralObject.SetValidValue(value, true)
+            ReportPropertyChanged("fldFileName")
+            OnfldFileNameChanged()
+        End Set
+    End Property
+
+    Private _fldFileName As Global.System.String
+    Private Partial Sub OnfldFileNameChanging(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnfldFileNameChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property fldDate() As Nullable(Of Global.System.DateTime)
+        Get
+            Return _fldDate
+        End Get
+        Set
+            OnfldDateChanging(value)
+            ReportPropertyChanging("fldDate")
+            _fldDate = StructuralObject.SetValidValue(value)
+            ReportPropertyChanged("fldDate")
+            OnfldDateChanged()
+        End Set
+    End Property
+
+    Private _fldDate As Nullable(Of Global.System.DateTime)
+    Private Partial Sub OnfldDateChanging(value As Nullable(Of Global.System.DateTime))
+    End Sub
+
+    Private Partial Sub OnfldDateChanged()
+    End Sub
+
+    #End Region
+
+    #Region "Navigation Properties"
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <XmlIgnoreAttribute()>
+    <SoapIgnoreAttribute()>
+    <DataMemberAttribute()>
+    <EdmRelationshipNavigationPropertyAttribute("SealProcessDBModel", "FK_tblRiskAnaQSet_tblRiskAnaQSet_History", "tblRiskAnaQSet")>
+     Public Property tblRiskAnaQSet() As EntityCollection(Of tblRiskAnaQSet)
+        Get
+            Return CType(Me,IEntityWithRelationships).RelationshipManager.GetRelatedCollection(Of tblRiskAnaQSet)("SealProcessDBModel.FK_tblRiskAnaQSet_tblRiskAnaQSet_History", "tblRiskAnaQSet")
+        End Get
+        Set
+            If (Not value Is Nothing)
+                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of tblRiskAnaQSet)("SealProcessDBModel.FK_tblRiskAnaQSet_tblRiskAnaQSet_History", "tblRiskAnaQSet", value)
+            End If
+        End Set
+    End Property
+
+    #End Region
+
+End Class
+
+''' <summary>
+''' No Metadata Documentation available.
+''' </summary>
 <EdmEntityTypeAttribute(NamespaceName:="SealProcessDBModel", Name:="tblIssueComnt")>
 <Serializable()>
 <DataContractAttribute(IsReference:=True)>
@@ -6207,11 +6334,11 @@ Public Partial Class tblIssueComnt
     ''' Create a new tblIssueComnt object.
     ''' </summary>
     ''' <param name="fldProcessProjectID">Initial value of the fldProcessProjectID property.</param>
-    ''' <param name="fldSN">Initial value of the fldSN property.</param>
-    Public Shared Function CreatetblIssueComnt(fldProcessProjectID As Global.System.Decimal, fldSN As Global.System.Int32) As tblIssueComnt
+    ''' <param name="fldID">Initial value of the fldID property.</param>
+    Public Shared Function CreatetblIssueComnt(fldProcessProjectID As Global.System.Decimal, fldID As Global.System.Int32) As tblIssueComnt
         Dim tblIssueComnt as tblIssueComnt = New tblIssueComnt
         tblIssueComnt.fldProcessProjectID = fldProcessProjectID
-        tblIssueComnt.fldSN = fldSN
+        tblIssueComnt.fldID = fldID
         Return tblIssueComnt
     End Function
 
@@ -6251,26 +6378,26 @@ Public Partial Class tblIssueComnt
     ''' </summary>
     <EdmScalarPropertyAttribute(EntityKeyProperty:=true, IsNullable:=false)>
     <DataMemberAttribute()>
-    Public Property fldSN() As Global.System.Int32
+    Public Property fldID() As Global.System.Int32
         Get
-            Return _fldSN
+            Return _fldID
         End Get
         Set
-            If (_fldSN <> Value) Then
-                OnfldSNChanging(value)
-                ReportPropertyChanging("fldSN")
-                _fldSN = StructuralObject.SetValidValue(value)
-                ReportPropertyChanged("fldSN")
-                OnfldSNChanged()
+            If (_fldID <> Value) Then
+                OnfldIDChanging(value)
+                ReportPropertyChanging("fldID")
+                _fldID = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("fldID")
+                OnfldIDChanged()
             End If
         End Set
     End Property
 
-    Private _fldSN As Global.System.Int32
-    Private Partial Sub OnfldSNChanging(value As Global.System.Int32)
+    Private _fldID As Global.System.Int32
+    Private Partial Sub OnfldIDChanging(value As Global.System.Int32)
     End Sub
 
-    Private Partial Sub OnfldSNChanged()
+    Private Partial Sub OnfldIDChanged()
     End Sub
 
     ''' <summary>
@@ -11804,12 +11931,12 @@ Public Partial Class tblRisk
     ''' </summary>
     ''' <param name="fldProcessProjectID">Initial value of the fldProcessProjectID property.</param>
     ''' <param name="fldTabName">Initial value of the fldTabName property.</param>
-    ''' <param name="fldSN">Initial value of the fldSN property.</param>
-    Public Shared Function CreatetblRisk(fldProcessProjectID As Global.System.Decimal, fldTabName As Global.System.String, fldSN As Global.System.Int32) As tblRisk
+    ''' <param name="fldID">Initial value of the fldID property.</param>
+    Public Shared Function CreatetblRisk(fldProcessProjectID As Global.System.Decimal, fldTabName As Global.System.String, fldID As Global.System.Int32) As tblRisk
         Dim tblRisk as tblRisk = New tblRisk
         tblRisk.fldProcessProjectID = fldProcessProjectID
         tblRisk.fldTabName = fldTabName
-        tblRisk.fldSN = fldSN
+        tblRisk.fldID = fldID
         Return tblRisk
     End Function
 
@@ -11876,26 +12003,26 @@ Public Partial Class tblRisk
     ''' </summary>
     <EdmScalarPropertyAttribute(EntityKeyProperty:=true, IsNullable:=false)>
     <DataMemberAttribute()>
-    Public Property fldSN() As Global.System.Int32
+    Public Property fldID() As Global.System.Int32
         Get
-            Return _fldSN
+            Return _fldID
         End Get
         Set
-            If (_fldSN <> Value) Then
-                OnfldSNChanging(value)
-                ReportPropertyChanging("fldSN")
-                _fldSN = StructuralObject.SetValidValue(value)
-                ReportPropertyChanged("fldSN")
-                OnfldSNChanged()
+            If (_fldID <> Value) Then
+                OnfldIDChanging(value)
+                ReportPropertyChanging("fldID")
+                _fldID = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("fldID")
+                OnfldIDChanged()
             End If
         End Set
     End Property
 
-    Private _fldSN As Global.System.Int32
-    Private Partial Sub OnfldSNChanging(value As Global.System.Int32)
+    Private _fldID As Global.System.Int32
+    Private Partial Sub OnfldIDChanging(value As Global.System.Int32)
     End Sub
 
-    Private Partial Sub OnfldSNChanged()
+    Private Partial Sub OnfldIDChanged()
     End Sub
 
     ''' <summary>
@@ -12177,13 +12304,13 @@ Public Partial Class tblRiskAnaQSet
     <XmlIgnoreAttribute()>
     <SoapIgnoreAttribute()>
     <DataMemberAttribute()>
-    <EdmRelationshipNavigationPropertyAttribute("SealProcessDBModel", "FK_tblRiskAnaQSet_tblRiskAnaQSet_History", "tblRiskAnaQSet_History")>
-    Public Property tblRiskAnaQSet_History() As tblRiskAnaQSet_History
+    <EdmRelationshipNavigationPropertyAttribute("SealProcessDBModel", "FK_tblRiskAnaQSet_tblRiskAnaQSet_History", "tblFileHistory_RiskAnaQSet")>
+    Public Property tblFileHistory_RiskAnaQSet() As tblFileHistory_RiskAnaQSet
         Get
-            Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of tblRiskAnaQSet_History)("SealProcessDBModel.FK_tblRiskAnaQSet_tblRiskAnaQSet_History", "tblRiskAnaQSet_History").Value
+            Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of tblFileHistory_RiskAnaQSet)("SealProcessDBModel.FK_tblRiskAnaQSet_tblRiskAnaQSet_History", "tblFileHistory_RiskAnaQSet").Value
         End Get
         Set
-            CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of tblRiskAnaQSet_History)("SealProcessDBModel.FK_tblRiskAnaQSet_tblRiskAnaQSet_History", "tblRiskAnaQSet_History").Value = value
+            CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of tblFileHistory_RiskAnaQSet)("SealProcessDBModel.FK_tblRiskAnaQSet_tblRiskAnaQSet_History", "tblFileHistory_RiskAnaQSet").Value = value
         End Set
     End Property
     ''' <summary>
@@ -12191,140 +12318,13 @@ Public Partial Class tblRiskAnaQSet
     ''' </summary>
     <BrowsableAttribute(False)>
     <DataMemberAttribute()>
-    Public Property tblRiskAnaQSet_HistoryReference() As EntityReference(Of tblRiskAnaQSet_History)
+    Public Property tblFileHistory_RiskAnaQSetReference() As EntityReference(Of tblFileHistory_RiskAnaQSet)
         Get
-            Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of tblRiskAnaQSet_History)("SealProcessDBModel.FK_tblRiskAnaQSet_tblRiskAnaQSet_History", "tblRiskAnaQSet_History")
+            Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of tblFileHistory_RiskAnaQSet)("SealProcessDBModel.FK_tblRiskAnaQSet_tblRiskAnaQSet_History", "tblFileHistory_RiskAnaQSet")
         End Get
         Set
             If (Not value Is Nothing)
-                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of tblRiskAnaQSet_History)("SealProcessDBModel.FK_tblRiskAnaQSet_tblRiskAnaQSet_History", "tblRiskAnaQSet_History", value)
-            End If
-        End Set
-    End Property
-
-    #End Region
-
-End Class
-
-''' <summary>
-''' No Metadata Documentation available.
-''' </summary>
-<EdmEntityTypeAttribute(NamespaceName:="SealProcessDBModel", Name:="tblRiskAnaQSet_History")>
-<Serializable()>
-<DataContractAttribute(IsReference:=True)>
-Public Partial Class tblRiskAnaQSet_History
-    Inherits EntityObject
-    #Region "Factory Method"
-
-    ''' <summary>
-    ''' Create a new tblRiskAnaQSet_History object.
-    ''' </summary>
-    ''' <param name="fldID">Initial value of the fldID property.</param>
-    Public Shared Function CreatetblRiskAnaQSet_History(fldID As Global.System.Decimal) As tblRiskAnaQSet_History
-        Dim tblRiskAnaQSet_History as tblRiskAnaQSet_History = New tblRiskAnaQSet_History
-        tblRiskAnaQSet_History.fldID = fldID
-        Return tblRiskAnaQSet_History
-    End Function
-
-    #End Region
-
-    #Region "Primitive Properties"
-
-    ''' <summary>
-    ''' No Metadata Documentation available.
-    ''' </summary>
-    <EdmScalarPropertyAttribute(EntityKeyProperty:=true, IsNullable:=false)>
-    <DataMemberAttribute()>
-    Public Property fldID() As Global.System.Decimal
-        Get
-            Return _fldID
-        End Get
-        Set
-            If (_fldID <> Value) Then
-                OnfldIDChanging(value)
-                ReportPropertyChanging("fldID")
-                _fldID = StructuralObject.SetValidValue(value)
-                ReportPropertyChanged("fldID")
-                OnfldIDChanged()
-            End If
-        End Set
-    End Property
-
-    Private _fldID As Global.System.Decimal
-    Private Partial Sub OnfldIDChanging(value As Global.System.Decimal)
-    End Sub
-
-    Private Partial Sub OnfldIDChanged()
-    End Sub
-
-    ''' <summary>
-    ''' No Metadata Documentation available.
-    ''' </summary>
-    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
-    <DataMemberAttribute()>
-    Public Property fldFileName() As Global.System.String
-        Get
-            Return _fldFileName
-        End Get
-        Set
-            OnfldFileNameChanging(value)
-            ReportPropertyChanging("fldFileName")
-            _fldFileName = StructuralObject.SetValidValue(value, true)
-            ReportPropertyChanged("fldFileName")
-            OnfldFileNameChanged()
-        End Set
-    End Property
-
-    Private _fldFileName As Global.System.String
-    Private Partial Sub OnfldFileNameChanging(value As Global.System.String)
-    End Sub
-
-    Private Partial Sub OnfldFileNameChanged()
-    End Sub
-
-    ''' <summary>
-    ''' No Metadata Documentation available.
-    ''' </summary>
-    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
-    <DataMemberAttribute()>
-    Public Property fldDate() As Nullable(Of Global.System.DateTime)
-        Get
-            Return _fldDate
-        End Get
-        Set
-            OnfldDateChanging(value)
-            ReportPropertyChanging("fldDate")
-            _fldDate = StructuralObject.SetValidValue(value)
-            ReportPropertyChanged("fldDate")
-            OnfldDateChanged()
-        End Set
-    End Property
-
-    Private _fldDate As Nullable(Of Global.System.DateTime)
-    Private Partial Sub OnfldDateChanging(value As Nullable(Of Global.System.DateTime))
-    End Sub
-
-    Private Partial Sub OnfldDateChanged()
-    End Sub
-
-    #End Region
-
-    #Region "Navigation Properties"
-
-    ''' <summary>
-    ''' No Metadata Documentation available.
-    ''' </summary>
-    <XmlIgnoreAttribute()>
-    <SoapIgnoreAttribute()>
-    <DataMemberAttribute()>
-    <EdmRelationshipNavigationPropertyAttribute("SealProcessDBModel", "FK_tblRiskAnaQSet_tblRiskAnaQSet_History", "tblRiskAnaQSet")>
-     Public Property tblRiskAnaQSet() As EntityCollection(Of tblRiskAnaQSet)
-        Get
-            Return CType(Me,IEntityWithRelationships).RelationshipManager.GetRelatedCollection(Of tblRiskAnaQSet)("SealProcessDBModel.FK_tblRiskAnaQSet_tblRiskAnaQSet_History", "tblRiskAnaQSet")
-        End Get
-        Set
-            If (Not value Is Nothing)
-                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of tblRiskAnaQSet)("SealProcessDBModel.FK_tblRiskAnaQSet_tblRiskAnaQSet_History", "tblRiskAnaQSet", value)
+                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of tblFileHistory_RiskAnaQSet)("SealProcessDBModel.FK_tblRiskAnaQSet_tblRiskAnaQSet_History", "tblFileHistory_RiskAnaQSet", value)
             End If
         End Set
     End Property

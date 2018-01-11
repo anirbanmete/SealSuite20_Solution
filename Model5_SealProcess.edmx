@@ -23,8 +23,9 @@
           <EntitySet Name="tblDesign_Verification" EntityType="SealProcessDBModel.Store.tblDesign_Verification" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblDwg" EntityType="SealProcessDBModel.Store.tblDwg" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblDwg_BOM" EntityType="SealProcessDBModel.Store.tblDwg_BOM" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="tblDwg_Need" EntityType="SealProcessDBModel.Store.tblDwg_Need" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblDwg_Needed" EntityType="SealProcessDBModel.Store.tblDwg_Needed" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblEditedBy" EntityType="SealProcessDBModel.Store.tblEditedBy" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblFileHistory_RiskAnaQSet" EntityType="SealProcessDBModel.Store.tblFileHistory_RiskAnaQSet" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblIssueComnt" EntityType="SealProcessDBModel.Store.tblIssueComnt" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblITAR_Export" EntityType="SealProcessDBModel.Store.tblITAR_Export" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblKeyChar" EntityType="SealProcessDBModel.Store.tblKeyChar" store:Type="Tables" Schema="dbo" />
@@ -46,7 +47,6 @@
           <EntitySet Name="tblQlty" EntityType="SealProcessDBModel.Store.tblQlty" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblRisk" EntityType="SealProcessDBModel.Store.tblRisk" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblRiskAnaQSet" EntityType="SealProcessDBModel.Store.tblRiskAnaQSet" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="tblRiskAnaQSet_History" EntityType="SealProcessDBModel.Store.tblRiskAnaQSet_History" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblRolePrivilege" EntityType="SealProcessDBModel.Store.tblRolePrivilege" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblShipping" EntityType="SealProcessDBModel.Store.tblShipping" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblTest" EntityType="SealProcessDBModel.Store.tblTest" store:Type="Tables" Schema="dbo" />
@@ -123,7 +123,7 @@
           </AssociationSet>
           <AssociationSet Name="FK_tblDwg_Need_tblDwg" Association="SealProcessDBModel.Store.FK_tblDwg_Need_tblDwg">
             <End Role="tblDwg" EntitySet="tblDwg" />
-            <End Role="tblDwg_Need" EntitySet="tblDwg_Need" />
+            <End Role="tblDwg_Needed" EntitySet="tblDwg_Needed" />
           </AssociationSet>
           <AssociationSet Name="FK_tblDwg_tblProcessProject" Association="SealProcessDBModel.Store.FK_tblDwg_tblProcessProject">
             <End Role="tblProcessProject" EntitySet="tblProcessProject" />
@@ -202,7 +202,7 @@
             <End Role="tblRisk" EntitySet="tblRisk" />
           </AssociationSet>
           <AssociationSet Name="FK_tblRiskAnaQSet_tblRiskAnaQSet_History" Association="SealProcessDBModel.Store.FK_tblRiskAnaQSet_tblRiskAnaQSet_History">
-            <End Role="tblRiskAnaQSet_History" EntitySet="tblRiskAnaQSet_History" />
+            <End Role="tblFileHistory_RiskAnaQSet" EntitySet="tblFileHistory_RiskAnaQSet" />
             <End Role="tblRiskAnaQSet" EntitySet="tblRiskAnaQSet" />
           </AssociationSet>
           <AssociationSet Name="FK_tblShipping_tblProcessProject" Association="SealProcessDBModel.Store.FK_tblShipping_tblProcessProject">
@@ -328,10 +328,10 @@
         <EntityType Name="tblApproval">
           <Key>
             <PropertyRef Name="fldProcessProjectID" />
-            <PropertyRef Name="fldSN" />
+            <PropertyRef Name="fldID" />
           </Key>
           <Property Name="fldProcessProjectID" Type="numeric" Nullable="false" />
-          <Property Name="fldSN" Type="int" Nullable="false" />
+          <Property Name="fldID" Type="int" Nullable="false" />
           <Property Name="fldDept" Type="nvarchar" MaxLength="100" />
           <Property Name="fldName" Type="nvarchar" MaxLength="100" />
           <Property Name="fldTitle" Type="nvarchar" MaxLength="100" />
@@ -447,7 +447,7 @@
           <Property Name="fldChild_PartNo" Type="nvarchar(max)" />
           <Property Name="fldQty" Type="int" />
         </EntityType>
-        <EntityType Name="tblDwg_Need">
+        <EntityType Name="tblDwg_Needed">
           <Key>
             <PropertyRef Name="fldProcessProjectID" />
             <PropertyRef Name="fldID" />
@@ -463,22 +463,30 @@
           <Key>
             <PropertyRef Name="fldProcessProjectID" />
             <PropertyRef Name="fldTabName" />
-            <PropertyRef Name="fldSN" />
+            <PropertyRef Name="fldID" />
           </Key>
           <Property Name="fldProcessProjectID" Type="numeric" Nullable="false" />
           <Property Name="fldTabName" Type="nvarchar" Nullable="false" MaxLength="100" />
-          <Property Name="fldSN" Type="int" Nullable="false" />
+          <Property Name="fldID" Type="int" Nullable="false" />
           <Property Name="fldDate" Type="date" />
           <Property Name="fldName" Type="nvarchar(max)" />
           <Property Name="fldComment" Type="nvarchar(max)" />
         </EntityType>
+        <EntityType Name="tblFileHistory_RiskAnaQSet">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="numeric" Nullable="false" />
+          <Property Name="fldFileName" Type="nvarchar(max)" />
+          <Property Name="fldDate" Type="date" />
+        </EntityType>
         <EntityType Name="tblIssueComnt">
           <Key>
             <PropertyRef Name="fldProcessProjectID" />
-            <PropertyRef Name="fldSN" />
+            <PropertyRef Name="fldID" />
           </Key>
           <Property Name="fldProcessProjectID" Type="numeric" Nullable="false" />
-          <Property Name="fldSN" Type="int" Nullable="false" />
+          <Property Name="fldID" Type="int" Nullable="false" />
           <Property Name="fldComment" Type="nvarchar(max)" />
           <Property Name="fldByDept" Type="nvarchar" MaxLength="100" />
           <Property Name="fldByName" Type="nvarchar" MaxLength="100" />
@@ -731,11 +739,11 @@
           <Key>
             <PropertyRef Name="fldProcessProjectID" />
             <PropertyRef Name="fldTabName" />
-            <PropertyRef Name="fldSN" />
+            <PropertyRef Name="fldID" />
           </Key>
           <Property Name="fldProcessProjectID" Type="numeric" Nullable="false" />
           <Property Name="fldTabName" Type="nvarchar" Nullable="false" MaxLength="100" />
-          <Property Name="fldSN" Type="int" Nullable="false" />
+          <Property Name="fldID" Type="int" Nullable="false" />
           <Property Name="fldRiskAnalysisQ_ID" Type="numeric" />
           <Property Name="fldRiskAnalysisQ" Type="nvarchar(max)" />
           <Property Name="fldAnswered" Type="bit" />
@@ -750,14 +758,6 @@
           <Property Name="fldID" Type="numeric" Nullable="false" />
           <Property Name="fldTabName" Type="nvarchar(max)" />
           <Property Name="fldDesc" Type="nvarchar(max)" />
-        </EntityType>
-        <EntityType Name="tblRiskAnaQSet_History">
-          <Key>
-            <PropertyRef Name="fldID" />
-          </Key>
-          <Property Name="fldID" Type="numeric" Nullable="false" />
-          <Property Name="fldFileName" Type="nvarchar(max)" />
-          <Property Name="fldDate" Type="date" />
         </EntityType>
         <EntityType Name="tblRolePrivilege">
           <Key>
@@ -1087,12 +1087,12 @@
           <End Role="tblDwg" Type="SealProcessDBModel.Store.tblDwg" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="tblDwg_Need" Type="SealProcessDBModel.Store.tblDwg_Need" Multiplicity="*" />
+          <End Role="tblDwg_Needed" Type="SealProcessDBModel.Store.tblDwg_Needed" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblDwg">
               <PropertyRef Name="fldProcessProjectID" />
             </Principal>
-            <Dependent Role="tblDwg_Need">
+            <Dependent Role="tblDwg_Needed">
               <PropertyRef Name="fldProcessProjectID" />
             </Dependent>
           </ReferentialConstraint>
@@ -1364,12 +1364,12 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tblRiskAnaQSet_tblRiskAnaQSet_History">
-          <End Role="tblRiskAnaQSet_History" Type="SealProcessDBModel.Store.tblRiskAnaQSet_History" Multiplicity="1">
+          <End Role="tblFileHistory_RiskAnaQSet" Type="SealProcessDBModel.Store.tblFileHistory_RiskAnaQSet" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="tblRiskAnaQSet" Type="SealProcessDBModel.Store.tblRiskAnaQSet" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tblRiskAnaQSet_History">
+            <Principal Role="tblFileHistory_RiskAnaQSet">
               <PropertyRef Name="fldID" />
             </Principal>
             <Dependent Role="tblRiskAnaQSet">
@@ -1470,8 +1470,9 @@
           <EntitySet Name="tblDesign_Verification" EntityType="SealProcessDBModel.tblDesign_Verification" />
           <EntitySet Name="tblDwg" EntityType="SealProcessDBModel.tblDwg" />
           <EntitySet Name="tblDwg_BOM" EntityType="SealProcessDBModel.tblDwg_BOM" />
-          <EntitySet Name="tblDwg_Need" EntityType="SealProcessDBModel.tblDwg_Need" />
+          <EntitySet Name="tblDwg_Needed" EntityType="SealProcessDBModel.tblDwg_Needed" />
           <EntitySet Name="tblEditedBy" EntityType="SealProcessDBModel.tblEditedBy" />
+          <EntitySet Name="tblFileHistory_RiskAnaQSet" EntityType="SealProcessDBModel.tblFileHistory_RiskAnaQSet" />
           <EntitySet Name="tblIssueComnt" EntityType="SealProcessDBModel.tblIssueComnt" />
           <EntitySet Name="tblITAR_Export" EntityType="SealProcessDBModel.tblITAR_Export" />
           <EntitySet Name="tblKeyChar" EntityType="SealProcessDBModel.tblKeyChar" />
@@ -1493,7 +1494,6 @@
           <EntitySet Name="tblQlty" EntityType="SealProcessDBModel.tblQlty" />
           <EntitySet Name="tblRisk" EntityType="SealProcessDBModel.tblRisk" />
           <EntitySet Name="tblRiskAnaQSet" EntityType="SealProcessDBModel.tblRiskAnaQSet" />
-          <EntitySet Name="tblRiskAnaQSet_History" EntityType="SealProcessDBModel.tblRiskAnaQSet_History" />
           <EntitySet Name="tblRolePrivilege" EntityType="SealProcessDBModel.tblRolePrivilege" />
           <EntitySet Name="tblShipping" EntityType="SealProcessDBModel.tblShipping" />
           <EntitySet Name="tblTest" EntityType="SealProcessDBModel.tblTest" />
@@ -1566,7 +1566,7 @@
           </AssociationSet>
           <AssociationSet Name="FK_tblDwg_Need_tblDwg" Association="SealProcessDBModel.FK_tblDwg_Need_tblDwg">
             <End Role="tblDwg" EntitySet="tblDwg" />
-            <End Role="tblDwg_Need" EntitySet="tblDwg_Need" />
+            <End Role="tblDwg_Needed" EntitySet="tblDwg_Needed" />
           </AssociationSet>
           <AssociationSet Name="FK_tblDwg_tblProcessProject" Association="SealProcessDBModel.FK_tblDwg_tblProcessProject">
             <End Role="tblProcessProject" EntitySet="tblProcessProject" />
@@ -1575,6 +1575,10 @@
           <AssociationSet Name="FK_tblEditedBy_tblProcessProject" Association="SealProcessDBModel.FK_tblEditedBy_tblProcessProject">
             <End Role="tblProcessProject" EntitySet="tblProcessProject" />
             <End Role="tblEditedBy" EntitySet="tblEditedBy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRiskAnaQSet_tblRiskAnaQSet_History" Association="SealProcessDBModel.FK_tblRiskAnaQSet_tblRiskAnaQSet_History">
+            <End Role="tblFileHistory_RiskAnaQSet" EntitySet="tblFileHistory_RiskAnaQSet" />
+            <End Role="tblRiskAnaQSet" EntitySet="tblRiskAnaQSet" />
           </AssociationSet>
           <AssociationSet Name="FK_tblIssueComnt_tblProcessProject" Association="SealProcessDBModel.FK_tblIssueComnt_tblProcessProject">
             <End Role="tblProcessProject" EntitySet="tblProcessProject" />
@@ -1655,10 +1659,6 @@
           <AssociationSet Name="FK_tblPurchase_Mat_tblProcessProject" Association="SealProcessDBModel.FK_tblPurchase_Mat_tblProcessProject">
             <End Role="tblPurchase" EntitySet="tblPurchase" />
             <End Role="tblPurchase_Mat" EntitySet="tblPurchase_Mat" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblRiskAnaQSet_tblRiskAnaQSet_History" Association="SealProcessDBModel.FK_tblRiskAnaQSet_tblRiskAnaQSet_History">
-            <End Role="tblRiskAnaQSet_History" EntitySet="tblRiskAnaQSet_History" />
-            <End Role="tblRiskAnaQSet" EntitySet="tblRiskAnaQSet" />
           </AssociationSet>
           <AssociationSet Name="FK_tblTest_Leak_tblTest" Association="SealProcessDBModel.FK_tblTest_Leak_tblTest">
             <End Role="tblTest" EntitySet="tblTest" />
@@ -1788,10 +1788,10 @@
         <EntityType Name="tblApproval">
           <Key>
             <PropertyRef Name="fldProcessProjectID" />
-            <PropertyRef Name="fldSN" />
+            <PropertyRef Name="fldID" />
           </Key>
           <Property Name="fldProcessProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="fldSN" Type="Int32" Nullable="false" />
+          <Property Name="fldID" Type="Int32" Nullable="false" />
           <Property Name="fldDept" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
           <Property Name="fldName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
           <Property Name="fldTitle" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
@@ -1909,7 +1909,7 @@
           <Property Name="fldSigned" Type="Boolean" />
           <Property Name="fldDateSigned" Type="DateTime" />
           <NavigationProperty Name="tblDwg_BOM" Relationship="SealProcessDBModel.FK_tblDwg_BOM_tblDwg" FromRole="tblDwg" ToRole="tblDwg_BOM" />
-          <NavigationProperty Name="tblDwg_Need" Relationship="SealProcessDBModel.FK_tblDwg_Need_tblDwg" FromRole="tblDwg" ToRole="tblDwg_Need" />
+          <NavigationProperty Name="tblDwg_Needed" Relationship="SealProcessDBModel.FK_tblDwg_Need_tblDwg" FromRole="tblDwg" ToRole="tblDwg_Needed" />
           <NavigationProperty Name="tblProcessProject" Relationship="SealProcessDBModel.FK_tblDwg_tblProcessProject" FromRole="tblDwg" ToRole="tblProcessProject" />
         </EntityType>
         <EntityType Name="tblDwg_BOM">
@@ -1924,7 +1924,7 @@
           <Property Name="fldQty" Type="Int32" />
           <NavigationProperty Name="tblDwg" Relationship="SealProcessDBModel.FK_tblDwg_BOM_tblDwg" FromRole="tblDwg_BOM" ToRole="tblDwg" />
         </EntityType>
-        <EntityType Name="tblDwg_Need">
+        <EntityType Name="tblDwg_Needed">
           <Key>
             <PropertyRef Name="fldProcessProjectID" />
             <PropertyRef Name="fldID" />
@@ -1935,29 +1935,38 @@
           <Property Name="fldDesc" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="fldStatus" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="fldLeadTime" Type="Single" />
-          <NavigationProperty Name="tblDwg" Relationship="SealProcessDBModel.FK_tblDwg_Need_tblDwg" FromRole="tblDwg_Need" ToRole="tblDwg" />
+          <NavigationProperty Name="tblDwg" Relationship="SealProcessDBModel.FK_tblDwg_Need_tblDwg" FromRole="tblDwg_Needed" ToRole="tblDwg" />
         </EntityType>
         <EntityType Name="tblEditedBy">
           <Key>
             <PropertyRef Name="fldProcessProjectID" />
             <PropertyRef Name="fldTabName" />
-            <PropertyRef Name="fldSN" />
+            <PropertyRef Name="fldID" />
           </Key>
           <Property Name="fldProcessProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="fldTabName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="fldSN" Type="Int32" Nullable="false" />
+          <Property Name="fldID" Type="Int32" Nullable="false" />
           <Property Name="fldDate" Type="DateTime" />
           <Property Name="fldName" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="fldComment" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="tblProcessProject" Relationship="SealProcessDBModel.FK_tblEditedBy_tblProcessProject" FromRole="tblEditedBy" ToRole="tblProcessProject" />
         </EntityType>
+        <EntityType Name="tblFileHistory_RiskAnaQSet">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fldFileName" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="fldDate" Type="DateTime" />
+          <NavigationProperty Name="tblRiskAnaQSet" Relationship="SealProcessDBModel.FK_tblRiskAnaQSet_tblRiskAnaQSet_History" FromRole="tblFileHistory_RiskAnaQSet" ToRole="tblRiskAnaQSet" />
+        </EntityType>
         <EntityType Name="tblIssueComnt">
           <Key>
             <PropertyRef Name="fldProcessProjectID" />
-            <PropertyRef Name="fldSN" />
+            <PropertyRef Name="fldID" />
           </Key>
           <Property Name="fldProcessProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="fldSN" Type="Int32" Nullable="false" />
+          <Property Name="fldID" Type="Int32" Nullable="false" />
           <Property Name="fldComment" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="fldByDept" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
           <Property Name="fldByName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
@@ -2253,11 +2262,11 @@
           <Key>
             <PropertyRef Name="fldProcessProjectID" />
             <PropertyRef Name="fldTabName" />
-            <PropertyRef Name="fldSN" />
+            <PropertyRef Name="fldID" />
           </Key>
           <Property Name="fldProcessProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="fldTabName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="fldSN" Type="Int32" Nullable="false" />
+          <Property Name="fldID" Type="Int32" Nullable="false" />
           <Property Name="fldRiskAnalysisQ_ID" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="fldRiskAnalysisQ" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="fldAnswered" Type="Boolean" />
@@ -2273,16 +2282,7 @@
           <Property Name="fldID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="fldTabName" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="fldDesc" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="tblRiskAnaQSet_History" Relationship="SealProcessDBModel.FK_tblRiskAnaQSet_tblRiskAnaQSet_History" FromRole="tblRiskAnaQSet" ToRole="tblRiskAnaQSet_History" />
-        </EntityType>
-        <EntityType Name="tblRiskAnaQSet_History">
-          <Key>
-            <PropertyRef Name="fldID" />
-          </Key>
-          <Property Name="fldID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="fldFileName" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="fldDate" Type="DateTime" />
-          <NavigationProperty Name="tblRiskAnaQSet" Relationship="SealProcessDBModel.FK_tblRiskAnaQSet_tblRiskAnaQSet_History" FromRole="tblRiskAnaQSet_History" ToRole="tblRiskAnaQSet" />
+          <NavigationProperty Name="tblFileHistory_RiskAnaQSet" Relationship="SealProcessDBModel.FK_tblRiskAnaQSet_tblRiskAnaQSet_History" FromRole="tblRiskAnaQSet" ToRole="tblFileHistory_RiskAnaQSet" />
         </EntityType>
         <EntityType Name="tblRolePrivilege">
           <Key>
@@ -2606,12 +2606,12 @@
           <End Role="tblDwg" Type="SealProcessDBModel.tblDwg" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="tblDwg_Need" Type="SealProcessDBModel.tblDwg_Need" Multiplicity="*" />
+          <End Role="tblDwg_Needed" Type="SealProcessDBModel.tblDwg_Needed" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblDwg">
               <PropertyRef Name="fldProcessProjectID" />
             </Principal>
-            <Dependent Role="tblDwg_Need">
+            <Dependent Role="tblDwg_Needed">
               <PropertyRef Name="fldProcessProjectID" />
             </Dependent>
           </ReferentialConstraint>
@@ -2641,6 +2641,20 @@
             </Principal>
             <Dependent Role="tblEditedBy">
               <PropertyRef Name="fldProcessProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRiskAnaQSet_tblRiskAnaQSet_History">
+          <End Role="tblFileHistory_RiskAnaQSet" Type="SealProcessDBModel.tblFileHistory_RiskAnaQSet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblRiskAnaQSet" Type="SealProcessDBModel.tblRiskAnaQSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFileHistory_RiskAnaQSet">
+              <PropertyRef Name="fldID" />
+            </Principal>
+            <Dependent Role="tblRiskAnaQSet">
+              <PropertyRef Name="fldHistoryID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2924,20 +2938,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tblRiskAnaQSet_tblRiskAnaQSet_History">
-          <End Role="tblRiskAnaQSet_History" Type="SealProcessDBModel.tblRiskAnaQSet_History" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="tblRiskAnaQSet" Type="SealProcessDBModel.tblRiskAnaQSet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblRiskAnaQSet_History">
-              <PropertyRef Name="fldID" />
-            </Principal>
-            <Dependent Role="tblRiskAnaQSet">
-              <PropertyRef Name="fldHistoryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_tblTest_Leak_tblTest">
           <End Role="tblTest" Type="SealProcessDBModel.tblTest" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -3095,7 +3095,7 @@
             <EntityTypeMapping TypeName="SealProcessDBModel.tblApproval">
               <MappingFragment StoreEntitySet="tblApproval">
                 <ScalarProperty Name="fldProcessProjectID" ColumnName="fldProcessProjectID" />
-                <ScalarProperty Name="fldSN" ColumnName="fldSN" />
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
                 <ScalarProperty Name="fldDept" ColumnName="fldDept" />
                 <ScalarProperty Name="fldName" ColumnName="fldName" />
                 <ScalarProperty Name="fldTitle" ColumnName="fldTitle" />
@@ -3216,9 +3216,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblDwg_Need">
-            <EntityTypeMapping TypeName="SealProcessDBModel.tblDwg_Need">
-              <MappingFragment StoreEntitySet="tblDwg_Need">
+          <EntitySetMapping Name="tblDwg_Needed">
+            <EntityTypeMapping TypeName="SealProcessDBModel.tblDwg_Needed">
+              <MappingFragment StoreEntitySet="tblDwg_Needed">
                 <ScalarProperty Name="fldProcessProjectID" ColumnName="fldProcessProjectID" />
                 <ScalarProperty Name="fldID" ColumnName="fldID" />
                 <ScalarProperty Name="fldDwgNo" ColumnName="fldDwgNo" />
@@ -3233,10 +3233,19 @@
               <MappingFragment StoreEntitySet="tblEditedBy">
                 <ScalarProperty Name="fldProcessProjectID" ColumnName="fldProcessProjectID" />
                 <ScalarProperty Name="fldTabName" ColumnName="fldTabName" />
-                <ScalarProperty Name="fldSN" ColumnName="fldSN" />
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
                 <ScalarProperty Name="fldDate" ColumnName="fldDate" />
                 <ScalarProperty Name="fldName" ColumnName="fldName" />
                 <ScalarProperty Name="fldComment" ColumnName="fldComment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFileHistory_RiskAnaQSet">
+            <EntityTypeMapping TypeName="SealProcessDBModel.tblFileHistory_RiskAnaQSet">
+              <MappingFragment StoreEntitySet="tblFileHistory_RiskAnaQSet">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldFileName" ColumnName="fldFileName" />
+                <ScalarProperty Name="fldDate" ColumnName="fldDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3244,7 +3253,7 @@
             <EntityTypeMapping TypeName="SealProcessDBModel.tblIssueComnt">
               <MappingFragment StoreEntitySet="tblIssueComnt">
                 <ScalarProperty Name="fldProcessProjectID" ColumnName="fldProcessProjectID" />
-                <ScalarProperty Name="fldSN" ColumnName="fldSN" />
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
                 <ScalarProperty Name="fldComment" ColumnName="fldComment" />
                 <ScalarProperty Name="fldByDept" ColumnName="fldByDept" />
                 <ScalarProperty Name="fldByName" ColumnName="fldByName" />
@@ -3509,7 +3518,7 @@
               <MappingFragment StoreEntitySet="tblRisk">
                 <ScalarProperty Name="fldProcessProjectID" ColumnName="fldProcessProjectID" />
                 <ScalarProperty Name="fldTabName" ColumnName="fldTabName" />
-                <ScalarProperty Name="fldSN" ColumnName="fldSN" />
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
                 <ScalarProperty Name="fldRiskAnalysisQ_ID" ColumnName="fldRiskAnalysisQ_ID" />
                 <ScalarProperty Name="fldRiskAnalysisQ" ColumnName="fldRiskAnalysisQ" />
                 <ScalarProperty Name="fldAnswered" ColumnName="fldAnswered" />
@@ -3524,15 +3533,6 @@
                 <ScalarProperty Name="fldID" ColumnName="fldID" />
                 <ScalarProperty Name="fldTabName" ColumnName="fldTabName" />
                 <ScalarProperty Name="fldDesc" ColumnName="fldDesc" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblRiskAnaQSet_History">
-            <EntityTypeMapping TypeName="SealProcessDBModel.tblRiskAnaQSet_History">
-              <MappingFragment StoreEntitySet="tblRiskAnaQSet_History">
-                <ScalarProperty Name="fldID" ColumnName="fldID" />
-                <ScalarProperty Name="fldFileName" ColumnName="fldFileName" />
-                <ScalarProperty Name="fldDate" ColumnName="fldDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3668,9 +3668,10 @@
         <EntityTypeShape EntityType="SealProcessDBModel.tblDesign_Verification" Width="1.5" PointX="5.25" PointY="42.375" Height="2.1725878906250102" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblDwg" Width="1.5" PointX="3" PointY="46.625" Height="2.5571907552083388" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblDwg_BOM" Width="1.5" PointX="5.25" PointY="45.375" Height="2.1725878906250102" IsExpanded="true" />
-        <EntityTypeShape EntityType="SealProcessDBModel.tblDwg_Need" Width="1.5" PointX="5.25" PointY="48.25" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcessDBModel.tblDwg_Needed" Width="1.5" PointX="5.25" PointY="48.25" Height="2.3648893229166674" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblEditedBy" Width="1.5" PointX="3" PointY="51.375" Height="2.3648893229166674" IsExpanded="true" />
-        <EntityTypeShape EntityType="SealProcessDBModel.tblIssueComnt" Width="1.5" PointX="3" PointY="54.5" Height="3.3263964843750102" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcessDBModel.tblFileHistory_RiskAnaQSet" Width="1.5" PointX="0.75" PointY="1" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcessDBModel.tblIssueComnt" Width="1.5" PointX="3" PointY="54.5" Height="3.326396484374996" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblITAR_Export" Width="1.5" PointX="3" PointY="58.5" Height="3.7109993489583246" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblKeyChar" Width="1.5" PointX="3" PointY="63" Height="2.7494921874999889" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblManf" Width="1.5" PointX="3" PointY="66.5" Height="2.9417936197916674" IsExpanded="true" />
@@ -3684,14 +3685,13 @@
         <EntityTypeShape EntityType="SealProcessDBModel.tblPreOrder_Quote" Width="1.5" PointX="5.25" PointY="84.25" Height="1.9802864583333246" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblPreOrder_SalesData" Width="1.5" PointX="5.25" PointY="86.875" Height="2.3648893229166674" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblProcessFile" Width="1.5" PointX="0.75" PointY="3.75" Height="1.4033821614583246" IsExpanded="true" />
-        <EntityTypeShape EntityType="SealProcessDBModel.tblProcessProject" Width="1.5" PointX="0.75" PointY="59" Height="6.2109179687500173" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcessDBModel.tblProcessProject" Width="1.5" PointX="0.75" PointY="59" Height="6.21091796875001" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblPurchase" Width="1.5" PointX="3" PointY="91.5" Height="2.3648893229166674" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblPurchase_Dwg" Width="1.5" PointX="5.25" PointY="90" Height="2.1725878906249818" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblPurchase_Mat" Width="1.5" PointX="5.25" PointY="93" Height="2.3648893229166674" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblQlty" Width="1.5" PointX="3" PointY="96.125" Height="3.7109993489583246" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblRisk" Width="1.5" PointX="3" PointY="100.5" Height="2.5571907552083246" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblRiskAnaQSet" Width="1.5" PointX="3" PointY="0.875" Height="1.9802864583333246" IsExpanded="true" />
-        <EntityTypeShape EntityType="SealProcessDBModel.tblRiskAnaQSet_History" Width="1.5" PointX="0.75" PointY="1" Height="1.7879850260416674" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblRolePrivilege" Width="1.5" PointX="5.75" PointY="0.75" Height="4.2879036458333246" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblShipping" Width="1.5" PointX="3" PointY="103.875" Height="2.1725878906250102" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblTest" Width="1.5" PointX="3" PointY="111" Height="2.7494921875000102" IsExpanded="true" />
@@ -3806,22 +3806,26 @@
           <ConnectorPoint PointX="2.1927120833333333" PointY="52.557444661458334" />
           <ConnectorPoint PointX="3" PointY="52.557444661458334" />
         </AssociationConnector>
+        <AssociationConnector Association="SealProcessDBModel.FK_tblRiskAnaQSet_tblRiskAnaQSet_History" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="1.8939925130208337" />
+          <ConnectorPoint PointX="3" PointY="1.8939925130208337" />
+        </AssociationConnector>
         <AssociationConnector Association="SealProcessDBModel.FK_tblIssueComnt_tblProcessProject" ManuallyRouted="false">
           <ConnectorPoint PointX="0.89062125" PointY="59" />
-          <ConnectorPoint PointX="0.89062125" PointY="56.163198242187505" />
-          <ConnectorPoint PointX="1.0104141666666668" PointY="56.163198242187505" />
-          <ConnectorPoint PointX="1.1770808333333334" PointY="56.163198242187505" />
-          <ConnectorPoint PointX="1.2135404166666668" PointY="56.163198242187505" />
-          <ConnectorPoint PointX="1.3802070833333333" PointY="56.163198242187505" />
-          <ConnectorPoint PointX="1.4166666666666667" PointY="56.163198242187505" />
-          <ConnectorPoint PointX="1.5833333333333333" PointY="56.163198242187505" />
-          <ConnectorPoint PointX="1.6197929166666667" PointY="56.163198242187505" />
-          <ConnectorPoint PointX="1.7864595833333332" PointY="56.163198242187505" />
-          <ConnectorPoint PointX="1.8229191666666667" PointY="56.163198242187505" />
-          <ConnectorPoint PointX="1.9895858333333332" PointY="56.163198242187505" />
-          <ConnectorPoint PointX="2.0260454166666664" PointY="56.163198242187505" />
-          <ConnectorPoint PointX="2.1927120833333333" PointY="56.163198242187505" />
-          <ConnectorPoint PointX="3" PointY="56.163198242187505" />
+          <ConnectorPoint PointX="0.89062125" PointY="56.1631982421875" />
+          <ConnectorPoint PointX="1.0104141666666668" PointY="56.1631982421875" />
+          <ConnectorPoint PointX="1.1770808333333334" PointY="56.1631982421875" />
+          <ConnectorPoint PointX="1.2135404166666668" PointY="56.1631982421875" />
+          <ConnectorPoint PointX="1.3802070833333333" PointY="56.1631982421875" />
+          <ConnectorPoint PointX="1.4166666666666667" PointY="56.1631982421875" />
+          <ConnectorPoint PointX="1.5833333333333333" PointY="56.1631982421875" />
+          <ConnectorPoint PointX="1.6197929166666667" PointY="56.1631982421875" />
+          <ConnectorPoint PointX="1.7864595833333332" PointY="56.1631982421875" />
+          <ConnectorPoint PointX="1.8229191666666667" PointY="56.1631982421875" />
+          <ConnectorPoint PointX="1.9895858333333332" PointY="56.1631982421875" />
+          <ConnectorPoint PointX="2.0260454166666664" PointY="56.1631982421875" />
+          <ConnectorPoint PointX="2.1927120833333333" PointY="56.1631982421875" />
+          <ConnectorPoint PointX="3" PointY="56.1631982421875" />
         </AssociationConnector>
         <AssociationConnector Association="SealProcessDBModel.FK_tblITAR_Export_tblProcessProject" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="60.605499674479162" />
@@ -3933,10 +3937,6 @@
         <AssociationConnector Association="SealProcessDBModel.FK_tblPurchase_Mat_tblProcessProject" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="93.432444661458334" />
           <ConnectorPoint PointX="5.25" PointY="93.432444661458334" />
-        </AssociationConnector>
-        <AssociationConnector Association="SealProcessDBModel.FK_tblRiskAnaQSet_tblRiskAnaQSet_History" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="1.8939925130208337" />
-          <ConnectorPoint PointX="3" PointY="1.8939925130208337" />
         </AssociationConnector>
         <AssociationConnector Association="SealProcessDBModel.FK_tblTest_Leak_tblTest" ManuallyRouted="false">
           <ConnectorPoint PointX="3.75" PointY="111" />

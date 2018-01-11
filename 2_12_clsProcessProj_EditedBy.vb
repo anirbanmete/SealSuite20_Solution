@@ -24,7 +24,7 @@ Public Class clsProcessProj_EditedBy
 
 #Region "MEMBER VARIABLES:"
 
-    Private mGUI_TabName As String
+    Private mTabName As String
     Private mDateEdited As New List(Of Date)
     Private mName As New List(Of String)
     Private mComment As New List(Of String)
@@ -35,15 +35,15 @@ Public Class clsProcessProj_EditedBy
 
 #Region "PROPERTY ROUTINES:"
 
-    '....GUI_TabName
-    Public Property GUI_TabName() As String
+    '....TabName
+    Public Property TabName() As String
         '======================================
         Get
-            Return mGUI_TabName
+            Return mTabName
         End Get
 
         Set(Obj As String)
-            mGUI_TabName = Obj
+            mTabName = Obj
         End Set
     End Property
 

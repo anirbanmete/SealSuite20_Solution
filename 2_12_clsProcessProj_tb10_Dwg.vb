@@ -278,12 +278,12 @@ Public Class clsProcessProj_Dwg
 
             Try
                 '....tblDwgNeeded
-                Dim pQryNeededCount As Integer = (From pRec In pSealProcessDBEntities.tblDwg_Need
+                Dim pQryNeededCount As Integer = (From pRec In pSealProcessDBEntities.tblDwg_Needed
                                    Where pRec.fldProcessProjectID = ProjectID_In Select pRec).Count()
 
                 If (pQryNeededCount > 0) Then
 
-                    Dim pQryDwgNeeded = (From pRec In pSealProcessDBEntities.tblDwg_Need
+                    Dim pQryDwgNeeded = (From pRec In pSealProcessDBEntities.tblDwg_Needed
                                        Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
 
                     For i As Integer = 0 To pQryDwgNeeded.Count - 1
@@ -307,7 +307,7 @@ Public Class clsProcessProj_Dwg
 
             Dim pSealProcessDBEntities As New SealProcessDBEntities()
 
-            Dim pQryDwgNeeded = (From DwgNeeded In pSealProcessDBEntities.tblDwg_Need
+            Dim pQryDwgNeeded = (From DwgNeeded In pSealProcessDBEntities.tblDwg_Needed
                                                 Where DwgNeeded.fldProcessProjectID = ProjectID_In Select DwgNeeded).ToList()
 
             If (pQryDwgNeeded.Count > 0) Then
@@ -317,10 +317,10 @@ Public Class clsProcessProj_Dwg
                 Next
             End If
 
-            Dim pDwgNeeded As New List(Of tblDwg_Need)
+            Dim pDwgNeeded As New List(Of tblDwg_Needed)
 
             For j As Integer = 0 To mID_Needed.Count - 1
-                Dim pDwg_Needed As New tblDwg_Need
+                Dim pDwg_Needed As New tblDwg_Needed
                 pDwgNeeded.Add(pDwg_Needed)
                 With pDwgNeeded(j)
                     .fldProcessProjectID = ProjectID_In
@@ -332,7 +332,7 @@ Public Class clsProcessProj_Dwg
 
                 End With
 
-                pSealProcessDBEntities.AddTotblDwg_Need(pDwgNeeded(j))
+                pSealProcessDBEntities.AddTotblDwg_Needed(pDwgNeeded(j))
             Next
             pSealProcessDBEntities.SaveChanges()
 

@@ -185,7 +185,7 @@ Public Class clsProcessProj_IssueComment
                                    Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
 
                 For i As Integer = 0 To pQryIssue.Count - 1
-                    mSN.Add(pQryIssue(i).fldSN)
+                    mSN.Add(pQryIssue(i).fldID)
                     mComment.Add(pQryIssue(i).fldComment)
                     mByDept.Add(pQryIssue(i).fldByDept)
                     mByName.Add(pQryIssue(i).fldByName)
@@ -229,7 +229,7 @@ Public Class clsProcessProj_IssueComment
             pIssueComment.Add(IssueComment)
             With pIssueComment(j)
                 .fldProcessProjectID = ProjectID_In
-                .fldSN = j + 1
+                .fldID = j + 1
                 .fldComment = mComment(j)
                 .fldByDept = mByDept(j)
                 .fldByName = mByName(j)

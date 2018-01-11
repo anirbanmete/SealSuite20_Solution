@@ -8,6 +8,15 @@
 '                                                                              '
 '===============================================================================
 Imports System.Globalization
+Imports System.IO.FileSystemWatcher
+Imports System.Runtime.Serialization
+Imports System.Runtime.Serialization.Formatters.Binary
+Imports System.Linq
+Imports EXCEL = Microsoft.Office.Interop.Excel
+Imports System.Reflection
+Imports System.IO
+Imports System.Threading
+Imports System.Windows.Forms
 
 Public Class Process_frmMain
 
@@ -638,7 +647,8 @@ Public Class Process_frmMain
     Private Sub DisplayData()
         '====================
 
-#Region "General:"
+        '.... "General:"
+
         txtParkerPart.Text = gPartProject.PNR.PN
         txtPN_Rev.Text = gPartProject.PNR.PN_Rev
 
@@ -667,9 +677,9 @@ Public Class Process_frmMain
             txtModifiedBy.Text = .LastModifiedBy
         End With
 
-#End Region
 
-#Region "PreOrder:"
+
+        '.... "PreOrder:"
 
         With mProcess_Project.PreOrder
             Dim pCI As New CultureInfo("en-US")
@@ -782,9 +792,8 @@ Public Class Process_frmMain
 
         End With
 
-#End Region
 
-#Region "ITAR_Export:"
+        '.... "ITAR_Export:"
 
         With mProcess_Project.ITAR_Export
 
@@ -838,9 +847,8 @@ Public Class Process_frmMain
             End If
         End With
 
-#End Region
 
-#Region "OrderEntrty:"
+        '.... "OrderEntrty:"
 
         With mProcess_Project.OrdEntry
             txtOrdEntry_SalesOrderNo.Text = .SalesOrderNo
@@ -921,9 +929,8 @@ Public Class Process_frmMain
 
         End With
 
-#End Region
 
-#Region "Cost Estimating:"
+        '.... "Cost Estimating:"
 
         With mProcess_Project.Cost
             cmbCost_QuoteFile.Text = .QuoteFileLoc
@@ -950,9 +957,8 @@ Public Class Process_frmMain
 
         End With
 
-#End Region
 
-#Region "Application:"
+        '.... "Application:"
 
         With mProcess_Project.App
             txtApp_Equip.Text = .Eqp
@@ -1288,9 +1294,8 @@ Public Class Process_frmMain
 
         End With
 
-#End Region
 
-#Region "Design:"
+        '...."Design:"
 
         With mProcess_Project.Design
 
@@ -1489,9 +1494,8 @@ Public Class Process_frmMain
 
         End With
 
-#End Region
 
-#Region "Manufacturing:"
+        '.... "Manufacturing:"
 
         With mProcess_Project.Manf
 
@@ -1549,9 +1553,6 @@ Public Class Process_frmMain
                 grdManf_ToolNGage.Rows(i).Cells(5).Value = .ToolNGage.DesignResponsibility(i)
             Next
 
-#End Region
-
-#Region "Purchasing:"
 
             '....Purchasing
             For i As Integer = 0 To .ToolNGage.ID_Tool.Count - 1
@@ -1637,9 +1638,8 @@ Public Class Process_frmMain
 
         End With
 
-#End Region
 
-#Region "Quality:"
+        '.... "Quality:"
 
         With mProcess_Project.Qlty
             If (.IsApvdSupplierOnly) Then
@@ -1695,9 +1695,8 @@ Public Class Process_frmMain
 
         End With
 
-#End Region
 
-#Region "Drawing:"
+        '.... "Drawing:"
 
         With mProcess_Project.Dwg
             cmbDwg_DesignLevel.Text = .DesignLevel
@@ -1729,9 +1728,8 @@ Public Class Process_frmMain
 
         End With
 
-#End Region
 
-#Region "Testing:"
+        '.... "Testing:"
 
         With mProcess_Project.Test
             txtTest_Other.Text = .Other
@@ -1846,9 +1844,8 @@ Public Class Process_frmMain
 
         End With
 
-#End Region
 
-#Region "Planning:"
+        '.... "Planning:"
 
         '....Planning
         ''With mProcess_Project.Planning
@@ -1897,9 +1894,8 @@ Public Class Process_frmMain
 
         ''End With
 
-#End Region
 
-#Region "Shipping:"
+        '.... "Shipping:"
 
         With mProcess_Project.Shipping
 
@@ -1913,9 +1909,8 @@ Public Class Process_frmMain
             txtShipping_Notes.Text = .Notes
         End With
 
-#End Region
 
-#Region "IssueComment:"
+        '.... "IssueComment:"
 
         With mProcess_Project.IssueCommnt
             Dim pCI As New CultureInfo("en-US")
@@ -1947,13 +1942,12 @@ Public Class Process_frmMain
             Next
         End With
 
-#End Region
 
-#Region "Approval:"
+        '.... "Approval:"
 
         With mProcess_Project.Approval
 
-            For j As Integer = 0 To .SN.Count - 1
+            For j As Integer = 0 To .ID_Approval.Count - 1
                 grdApproval_Attendees.Rows(j).Cells(1).Value = .Name(j)
                 grdApproval_Attendees.Rows(j).Cells(2).Value = .Title(j)
                 grdApproval_Attendees.Rows(j).Cells(3).Value = .Signed(j)
@@ -1969,7 +1963,6 @@ Public Class Process_frmMain
 
         End With
 
-#End Region
 
     End Sub
 
@@ -3475,7 +3468,7 @@ Public Class Process_frmMain
     Private Sub SaveData()
         '==================
 
-#Region "Header:"
+        '.... "Header:"
 
         With mProcess_Project
             .POPCoding = cmbPopCoding.Text
@@ -3501,9 +3494,8 @@ Public Class Process_frmMain
 
         End With
 
-#End Region
 
-#Region "Pre-Order:"
+        '...."Pre-Order:"
 
         With mProcess_Project.PreOrder
             .Mgr_PreOrder = cmbMgrPreOrder.Text
@@ -3605,9 +3597,8 @@ Public Class Process_frmMain
 
         End With
 
-#End Region
 
-#Region "ITAR_Export:"
+        '...."ITAR_Export:"
 
         With mProcess_Project.ITAR_Export
             .IsCustOnDenialList = IIf(cmbITAR_Export_CustOnDenialList.Text = "Y", True, False)
@@ -3632,9 +3623,8 @@ Public Class Process_frmMain
             End If
         End With
 
-#End Region
 
-#Region "OrderEntry:"
+        '.... "OrderEntry:"
 
         With mProcess_Project.OrdEntry
             .SalesOrderNo = txtOrdEntry_SalesOrderNo.Text
@@ -3682,9 +3672,8 @@ Public Class Process_frmMain
 
         End With
 
-#End Region
 
-#Region "Cost Estimating:"
+        '.... "Cost Estimating:"
 
         With mProcess_Project.Cost
             .QuoteFileLoc = cmbCost_QuoteFile.Text
@@ -3765,9 +3754,8 @@ Public Class Process_frmMain
 
         End With
 
-#End Region
 
-#Region "Application:"
+        '.... "Application:"
 
         With mProcess_Project.App
             .Eqp = txtApp_Equip.Text
@@ -4043,9 +4031,7 @@ Public Class Process_frmMain
 
         End With
 
-#End Region
-
-#Region "Design:"
+        '.... "Design:"
 
 
         With mProcess_Project.Design
@@ -4158,9 +4144,8 @@ Public Class Process_frmMain
 
         End With
 
-#End Region
 
-#Region "Manufacturing:"
+        '.... "Manufacturing:"
 
         With mProcess_Project.Manf
             .BaseMat_PartNo = txtManf_MatPartNo_Base.Text
@@ -4206,9 +4191,8 @@ Public Class Process_frmMain
 
         End With
 
-#End Region
 
-#Region "Purchasing:"
+        '.... "Purchasing:"
 
         '....Purchase
         With mProcess_Project.Purchase
@@ -4288,9 +4272,7 @@ Public Class Process_frmMain
             Next
         End With
 
-#End Region
-
-#Region "Qlty:"
+        '.... "Qlty:"
 
         With mProcess_Project.Qlty
             If (cmbQuality_ApprovedSupplier.Text = "Y") Then
@@ -4380,9 +4362,8 @@ Public Class Process_frmMain
 
         End With
 
-#End Region
 
-#Region "Drawing:"
+        '.... "Drawing:"
 
         With mProcess_Project.Dwg
             .DesignLevel = cmbDwg_DesignLevel.Text
@@ -4425,9 +4406,7 @@ Public Class Process_frmMain
 
         End With
 
-#End Region
-
-#Region "Testing:"
+        '.... "Testing:"
 
         With mProcess_Project.Test
 
@@ -4576,9 +4555,7 @@ Public Class Process_frmMain
 
         End With
 
-#End Region
-
-#Region "Planning:"
+        '.... "Planning:"
 
         ' ''....Planning
         '' ''With mProcess_Project.Planning
@@ -4622,17 +4599,15 @@ Public Class Process_frmMain
 
         '' ''End With
 
-#End Region
 
-#Region "Shipping:"
+        '.... "Shipping:"
 
         With mProcess_Project.Shipping
             .Notes = txtShipping_Notes.Text
 
         End With
-#End Region
 
-#Region "IssueCommnt:"
+        '.... "IssueCommnt:"
 
         ''With mProcess_Project.IssueCommnt
         ''    '....IssueCommnt
@@ -4680,12 +4655,11 @@ Public Class Process_frmMain
 
         ''End With
 
-#End Region
 
-#Region "Approval:"
+        '.... "Approval:"
 
         With mProcess_Project.Approval
-            .SN.Clear()
+            .ID_Approval.Clear()
             .Dept.Clear()
             .Name.Clear()
             .Title.Clear()
@@ -4693,7 +4667,7 @@ Public Class Process_frmMain
             .DateSigned.Clear()
 
             For j As Integer = 0 To grdApproval_Attendees.Rows.Count - 1
-                .SN.Add(j + 1)
+                .ID_Approval.Add(j + 1)
                 .Dept.Add(grdApproval_Attendees.Rows(j).Cells(0).Value)
                 .Name.Add(grdApproval_Attendees.Rows(j).Cells(1).Value)
                 .Title.Add(grdApproval_Attendees.Rows(j).Cells(2).Value)
@@ -4706,8 +4680,6 @@ Public Class Process_frmMain
 
             Next
         End With
-
-#End Region
 
         gProcessProject = mProcess_Project.Clone()
 
