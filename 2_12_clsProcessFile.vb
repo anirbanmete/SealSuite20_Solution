@@ -2,9 +2,9 @@
 '                                                                              '
 '                          SOFTWARE  :  "SealProcess"                          '
 '                      CLASS MODULE  :  clsProcessFile                         '
-'                        VERSION NO  :  1.1                                    '
+'                        VERSION NO  :  1.2                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  11JAN18                                '
+'                     LAST MODIFIED  :  12JAN18                                '
 '                                                                              '
 '===============================================================================
 
@@ -178,1302 +178,1309 @@ Public Class clsProcessFile
         '===================================================================================================
 
         Dim pCI As New CultureInfo("en-US")
-        For i As Integer = 0 To mPDS_FieldName.Count - 1
-            mPDS_Val.Add("")
 
-            Select Case mPDS_FieldName(i)
-                Case "Parker Part #"
-                    mPDS_Val(i) = PartProj_In.PNR.PN()
-
-                Case "Parker Rev"
-                    mPDS_Val(i) = PartProj_In.PNR.PN_Rev()
-
-                Case "Customer Name"
-                    mPDS_Val(i) = PartProj_In.CustInfo.CustName
-
-                Case "Customer Location"
-                    mPDS_Val(i) = PartProj_In.CustInfo.LocName
-
-                Case "Customer Part #"
-                    mPDS_Val(i) = PartProj_In.CustInfo.PN_Cust
-
-                Case "Customer Rev"
-                    mPDS_Val(i) = PartProj_In.CustInfo.PN_Cust_Rev
-
-                Case "Customer POP Coding"
-                    mPDS_Val(i) = ProcessProj_In.POPCoding
-
-                Case "Export Controlled"
-                    mPDS_Val(i) = IIf(ProcessProj_In.ITAR_Export.IsUnder_ITAR_Reg = True, "Yes, Non Military", "No")
-
-                Case "Last Modified Date"
-                    mPDS_Val(i) = ProcessProj_In.DateLastModified.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-
-                Case "Quote No"
-                    If (ProcessProj_In.PreOrder.Quote.QID.Count > 0) Then
-                        mPDS_Val(i) = ProcessProj_In.PreOrder.Quote.No(0)
-                    End If
-
-                Case "Quote Date"
-                    If (ProcessProj_In.PreOrder.Quote.QID.Count > 0) Then
-                        mPDS_Val(i) = ProcessProj_In.PreOrder.Quote.QDate(0).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    End If
-
-                Case "Winnovation No"
-                    If (ProcessProj_In.Design.IsWinnovation) Then
-                        mPDS_Val(i) = ProcessProj_In.Design.WinnovationNo
-                    Else
-                        mPDS_Val(i) = "No"
-                    End If
+        Try
 
 
-                Case "Parker Manager Marketing"
-                    mPDS_Val(i) = ProcessProj_In.PreOrder.Mgr.Mkt
+            For i As Integer = 0 To mPDS_FieldName.Count - 1
+                mPDS_Val.Add("")
 
-                Case "Sales"
-                    mPDS_Val(i) = ProcessProj_In.PreOrder.Mgr.Sales
+                Select Case mPDS_FieldName(i)
+                    Case "Parker Part #"
+                        mPDS_Val(i) = PartProj_In.PNR.PN()
 
-                Case "Customer Contact Engineering Name"
-                    For j As Integer = 0 To ProcessProj_In.CustContact.DeptName.Count - 1
-                        If (ProcessProj_In.CustContact.DeptName(j) = "Engineering") Then
-                            mPDS_Val(i) = ProcessProj_In.CustContact.Name(j)
-                            Exit For
+                    Case "Parker Rev"
+                        mPDS_Val(i) = PartProj_In.PNR.PN_Rev()
+
+                    Case "Customer Name"
+                        mPDS_Val(i) = PartProj_In.CustInfo.CustName
+
+                    Case "Customer Location"
+                        mPDS_Val(i) = PartProj_In.CustInfo.LocName
+
+                    Case "Customer Part #"
+                        mPDS_Val(i) = PartProj_In.CustInfo.PN_Cust
+
+                    Case "Customer Rev"
+                        mPDS_Val(i) = PartProj_In.CustInfo.PN_Cust_Rev
+
+                    Case "Customer POP Coding"
+                        mPDS_Val(i) = ProcessProj_In.POPCoding
+
+                    Case "Export Controlled"
+                        mPDS_Val(i) = IIf(ProcessProj_In.ITAR_Export.IsUnder_ITAR_Reg = True, "Yes, Non Military", "No")
+
+                    Case "Last Modified Date"
+                        mPDS_Val(i) = ProcessProj_In.DateLastModified.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+
+                    Case "Quote No"
+                        If (ProcessProj_In.PreOrder.Quote.QID.Count > 0) Then
+                            mPDS_Val(i) = ProcessProj_In.PreOrder.Quote.No(0)
                         End If
-                    Next
 
-                Case "Customer Contact Engineering Phone"
-                    For j As Integer = 0 To ProcessProj_In.CustContact.DeptName.Count - 1
-                        If (ProcessProj_In.CustContact.DeptName(j) = "Engineering") Then
-                            mPDS_Val(i) = ProcessProj_In.CustContact.Phone(j)
-                            Exit For
+                    Case "Quote Date"
+                        If (ProcessProj_In.PreOrder.Quote.QID.Count > 0) Then
+                            mPDS_Val(i) = ProcessProj_In.PreOrder.Quote.QDate(0).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
                         End If
-                    Next
 
-                Case "Customer Contact Engineering Email"
-                    For j As Integer = 0 To ProcessProj_In.CustContact.DeptName.Count - 1
-                        If (ProcessProj_In.CustContact.DeptName(j) = "Engineering") Then
-                            mPDS_Val(i) = ProcessProj_In.CustContact.Email(j)
-                            Exit For
+                    Case "Winnovation No"
+                        If (ProcessProj_In.Design.IsWinnovation) Then
+                            mPDS_Val(i) = ProcessProj_In.Design.WinnovationNo
+                        Else
+                            mPDS_Val(i) = "No"
                         End If
-                    Next
 
-                Case "Customer Contact Purchasing Name"
-                    For j As Integer = 0 To ProcessProj_In.CustContact.DeptName.Count - 1
-                        If (ProcessProj_In.CustContact.DeptName(j) = "Purchasing") Then
-                            mPDS_Val(i) = ProcessProj_In.CustContact.Name(j)
-                            Exit For
+
+                    Case "Parker Manager Marketing"
+                        mPDS_Val(i) = ProcessProj_In.PreOrder.Mgr.Mkt
+
+                    Case "Sales"
+                        mPDS_Val(i) = ProcessProj_In.PreOrder.Mgr.Sales
+
+                    Case "Customer Contact Engineering Name"
+                        For j As Integer = 0 To ProcessProj_In.CustContact.DeptName.Count - 1
+                            If (ProcessProj_In.CustContact.DeptName(j) = "Engineering") Then
+                                mPDS_Val(i) = ProcessProj_In.CustContact.Name(j)
+                                Exit For
+                            End If
+                        Next
+
+                    Case "Customer Contact Engineering Phone"
+                        For j As Integer = 0 To ProcessProj_In.CustContact.DeptName.Count - 1
+                            If (ProcessProj_In.CustContact.DeptName(j) = "Engineering") Then
+                                mPDS_Val(i) = ProcessProj_In.CustContact.Phone(j)
+                                Exit For
+                            End If
+                        Next
+
+                    Case "Customer Contact Engineering Email"
+                        For j As Integer = 0 To ProcessProj_In.CustContact.DeptName.Count - 1
+                            If (ProcessProj_In.CustContact.DeptName(j) = "Engineering") Then
+                                mPDS_Val(i) = ProcessProj_In.CustContact.Email(j)
+                                Exit For
+                            End If
+                        Next
+
+                    Case "Customer Contact Purchasing Name"
+                        For j As Integer = 0 To ProcessProj_In.CustContact.DeptName.Count - 1
+                            If (ProcessProj_In.CustContact.DeptName(j) = "Purchasing") Then
+                                mPDS_Val(i) = ProcessProj_In.CustContact.Name(j)
+                                Exit For
+                            End If
+                        Next
+
+                    Case "Customer Contact Purchasing Phone"
+                        For j As Integer = 0 To ProcessProj_In.CustContact.DeptName.Count - 1
+                            If (ProcessProj_In.CustContact.DeptName(j) = "Purchasing") Then
+                                mPDS_Val(i) = ProcessProj_In.CustContact.Phone(j)
+                                Exit For
+                            End If
+                        Next
+
+                    Case "Customer Contact Purchasing Email"
+                        For j As Integer = 0 To ProcessProj_In.CustContact.DeptName.Count - 1
+                            If (ProcessProj_In.CustContact.DeptName(j) = "Purchasing") Then
+                                mPDS_Val(i) = ProcessProj_In.CustContact.Email(j)
+                                Exit For
+                            End If
+                        Next
+
+                    Case "Customer Contact Distributor Name"
+                        For j As Integer = 0 To ProcessProj_In.CustContact.DeptName.Count - 1
+                            If (ProcessProj_In.CustContact.DeptName(j) = "Distributor") Then
+                                mPDS_Val(i) = ProcessProj_In.CustContact.Name(j)
+                                Exit For
+                            End If
+                        Next
+
+                    Case "Customer Contact Distributor Phone"
+                        For j As Integer = 0 To ProcessProj_In.CustContact.DeptName.Count - 1
+                            If (ProcessProj_In.CustContact.DeptName(j) = "Distributor") Then
+                                mPDS_Val(i) = ProcessProj_In.CustContact.Phone(j)
+                                Exit For
+                            End If
+                        Next
+
+                    Case "Customer Contact Distributor Email"
+                        For j As Integer = 0 To ProcessProj_In.CustContact.DeptName.Count - 1
+                            If (ProcessProj_In.CustContact.DeptName(j) = "Distributor") Then
+                                mPDS_Val(i) = ProcessProj_In.CustContact.Email(j)
+                                Exit For
+                            End If
+                        Next
+
+                    Case "Customer Contact Quality Name"
+                        For j As Integer = 0 To ProcessProj_In.CustContact.DeptName.Count - 1
+                            If (ProcessProj_In.CustContact.DeptName(j) = "Quality") Then
+                                mPDS_Val(i) = ProcessProj_In.CustContact.Name(j)
+                                Exit For
+                            End If
+                        Next
+
+                    Case "Customer Contact Quality Phone"
+                        For j As Integer = 0 To ProcessProj_In.CustContact.DeptName.Count - 1
+                            If (ProcessProj_In.CustContact.DeptName(j) = "Quality") Then
+                                mPDS_Val(i) = ProcessProj_In.CustContact.Phone(j)
+                                Exit For
+                            End If
+                        Next
+
+                    Case "Customer Contact Quality Email"
+                        For j As Integer = 0 To ProcessProj_In.CustContact.DeptName.Count - 1
+                            If (ProcessProj_In.CustContact.DeptName(j) = "Quality") Then
+                                mPDS_Val(i) = ProcessProj_In.CustContact.Email(j)
+                                Exit For
+                            End If
+                        Next
+
+                    Case "Market Segment"
+                        mPDS_Val(i) = ProcessProj_In.PreOrder.Mkt.Seg
+
+                    Case "PreOrder Notes"
+                        mPDS_Val(i) = ProcessProj_In.PreOrder.Notes
+
+                    Case "Is the product under ITAR regulations?"
+                        mPDS_Val(i) = IIf(ProcessProj_In.ITAR_Export.IsUnder_ITAR_Reg = True, "Yes", "No")
+
+                    Case "Does sale of this part require and export license?"
+                        mPDS_Val(i) = IIf(ProcessProj_In.ITAR_Export.SaleExportControlled = True, "Yes", "No")
+
+                    Case "Sales Order No"
+                        mPDS_Val(i) = ProcessProj_In.OrdEntry.SalesOrderNo
+
+                    Case "PO #"
+                        mPDS_Val(i) = ProcessProj_In.OrdEntry.PONo
+
+                    Case "PO Date Received"
+                        mPDS_Val(i) = ProcessProj_In.OrdEntry.DatePO.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+
+                    Case "Special PO Requirements?"
+                        mPDS_Val(i) = IIf(ProcessProj_In.OrdEntry.HasSplReq = True, "Yes", "No")
+
+                    Case "Tooling on PO?"
+                        mPDS_Val(i) = IIf(ProcessProj_In.OrdEntry.Tool_Reqd = True, "Yes", "No")
+
+                    Case "Special Packaging & Labeling"
+                        mPDS_Val(i) = IIf(ProcessProj_In.OrdEntry.SplPkg_Lbl_Reqd = True, "Yes", "No")
+
+                    Case "Order Qty"
+                        If (ProcessProj_In.OrdEntry.OrdQty > 0) Then
+                            mPDS_Val(i) = ProcessProj_In.OrdEntry.OrdQty
+                        Else
+                            mPDS_Val(i) = ""
                         End If
-                    Next
 
-                Case "Customer Contact Purchasing Phone"
-                    For j As Integer = 0 To ProcessProj_In.CustContact.DeptName.Count - 1
-                        If (ProcessProj_In.CustContact.DeptName(j) = "Purchasing") Then
-                            mPDS_Val(i) = ProcessProj_In.CustContact.Phone(j)
-                            Exit For
+                    Case "Required Ship Date"
+                        mPDS_Val(i) = ProcessProj_In.OrdEntry.DateOrdShip.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+
+                    Case "Expedited?"
+                        mPDS_Val(i) = IIf(ProcessProj_In.OrdEntry.Expedited = True, "Yes", "No")
+
+                    Case "DFAR Clauses?"
+                        mPDS_Val(i) = IIf(ProcessProj_In.OrdEntry.IsDFAR = True, "Yes", "No")
+
+                    Case "Is Pressure Cyclic?"
+                        mPDS_Val(i) = IIf(ProcessProj_In.App.IsPressCyclic = True, "Yes", "No")
+
+                    Case "Frequency"
+                        If (ProcessProj_In.App.PressCycle_Freq > gcEPS) Then
+                            mPDS_Val(i) = ProcessProj_In.App.PressCycle_Freq
+                        Else
+                            mPDS_Val(i) = ""
                         End If
-                    Next
 
-                Case "Customer Contact Purchasing Email"
-                    For j As Integer = 0 To ProcessProj_In.CustContact.DeptName.Count - 1
-                        If (ProcessProj_In.CustContact.DeptName(j) = "Purchasing") Then
-                            mPDS_Val(i) = ProcessProj_In.CustContact.Email(j)
-                            Exit For
+                    Case "Amplitude"
+                        If (ProcessProj_In.App.PressCycle_Amp > gcEPS) Then
+                            mPDS_Val(i) = ProcessProj_In.App.PressCycle_Amp
+                        Else
+                            mPDS_Val(i) = ""
                         End If
-                    Next
 
-                Case "Customer Contact Distributor Name"
-                    For j As Integer = 0 To ProcessProj_In.CustContact.DeptName.Count - 1
-                        If (ProcessProj_In.CustContact.DeptName(j) = "Distributor") Then
-                            mPDS_Val(i) = ProcessProj_In.CustContact.Name(j)
-                            Exit For
+
+                    Case "Fluid Medium"
+                        mPDS_Val(i) = ProcessProj_In.App.Fluid
+
+                    Case "Max Leakage Rate"
+                        If (ProcessProj_In.App.MaxLeak > gcEPS) Then
+                            mPDS_Val(i) = ProcessProj_In.App.MaxLeak
+                        Else
+                            mPDS_Val(i) = ""
                         End If
-                    Next
 
-                Case "Customer Contact Distributor Phone"
-                    For j As Integer = 0 To ProcessProj_In.CustContact.DeptName.Count - 1
-                        If (ProcessProj_In.CustContact.DeptName(j) = "Distributor") Then
-                            mPDS_Val(i) = ProcessProj_In.CustContact.Phone(j)
-                            Exit For
+                    Case "Shaped?"
+                        mPDS_Val(i) = IIf(ProcessProj_In.App.Shaped = True, "Yes", "No")
+
+                    Case "Out of Round?"
+                        mPDS_Val(i) = IIf(ProcessProj_In.App.IsOoR = True, "Yes", "No")
+
+                    Case "Split Ring?"
+                        mPDS_Val(i) = IIf(ProcessProj_In.App.IsSplitRing = True, "Yes", "No")
+
+                    Case "Precompressed?"
+                        mPDS_Val(i) = IIf(ProcessProj_In.App.IsPreComp = True, "Yes", "No")
+
+                    Case "Operating Conditions Temp Assy (F)"
+                        If (ProcessProj_In.App.OpCond.T.Assy > gcEPS) Then
+                            mPDS_Val(i) = ProcessProj_In.App.OpCond.T.Assy
+                        Else
+                            mPDS_Val(i) = ""
                         End If
-                    Next
 
-                Case "Customer Contact Distributor Email"
-                    For j As Integer = 0 To ProcessProj_In.CustContact.DeptName.Count - 1
-                        If (ProcessProj_In.CustContact.DeptName(j) = "Distributor") Then
-                            mPDS_Val(i) = ProcessProj_In.CustContact.Email(j)
-                            Exit For
+
+                    Case "Operating Conditions Temp Min (F)"
+                        If (ProcessProj_In.App.OpCond.T.Min > gcEPS) Then
+                            mPDS_Val(i) = ProcessProj_In.App.OpCond.T.Min
+                        Else
+                            mPDS_Val(i) = ""
                         End If
-                    Next
 
-                Case "Customer Contact Quality Name"
-                    For j As Integer = 0 To ProcessProj_In.CustContact.DeptName.Count - 1
-                        If (ProcessProj_In.CustContact.DeptName(j) = "Quality") Then
-                            mPDS_Val(i) = ProcessProj_In.CustContact.Name(j)
-                            Exit For
+
+                    Case "Operating Conditions Temp Max (F)"
+                        If (ProcessProj_In.App.OpCond.T.Max > gcEPS) Then
+                            mPDS_Val(i) = ProcessProj_In.App.OpCond.T.Max
+                        Else
+                            mPDS_Val(i) = ""
                         End If
-                    Next
 
-                Case "Customer Contact Quality Phone"
-                    For j As Integer = 0 To ProcessProj_In.CustContact.DeptName.Count - 1
-                        If (ProcessProj_In.CustContact.DeptName(j) = "Quality") Then
-                            mPDS_Val(i) = ProcessProj_In.CustContact.Phone(j)
-                            Exit For
+                    Case "Operating Conditions Temp Operating (F)"
+                        If (ProcessProj_In.App.OpCond.T.Oper > gcEPS) Then
+                            mPDS_Val(i) = ProcessProj_In.App.OpCond.T.Oper
+                        Else
+                            mPDS_Val(i) = ""
                         End If
-                    Next
-
-                Case "Customer Contact Quality Email"
-                    For j As Integer = 0 To ProcessProj_In.CustContact.DeptName.Count - 1
-                        If (ProcessProj_In.CustContact.DeptName(j) = "Quality") Then
-                            mPDS_Val(i) = ProcessProj_In.CustContact.Email(j)
-                            Exit For
-                        End If
-                    Next
-
-                Case "Market Segment"
-                    mPDS_Val(i) = ProcessProj_In.PreOrder.Mkt.Seg
-
-                Case "PreOrder Notes"
-                    mPDS_Val(i) = ProcessProj_In.PreOrder.Notes
-
-                Case "Is the product under ITAR regulations?"
-                    mPDS_Val(i) = IIf(ProcessProj_In.ITAR_Export.IsUnder_ITAR_Reg = True, "Yes", "No")
-
-                Case "Does sale of this part require and export license?"
-                    mPDS_Val(i) = IIf(ProcessProj_In.ITAR_Export.SaleExportControlled = True, "Yes", "No")
-
-                Case "Sales Order No"
-                    mPDS_Val(i) = ProcessProj_In.OrdEntry.SalesOrderNo
-
-                Case "PO #"
-                    mPDS_Val(i) = ProcessProj_In.OrdEntry.PONo
-
-                Case "PO Date Received"
-                    mPDS_Val(i) = ProcessProj_In.OrdEntry.DatePO.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-
-                Case "Special PO Requirements?"
-                    mPDS_Val(i) = IIf(ProcessProj_In.OrdEntry.HasSplReq = True, "Yes", "No")
-
-                Case "Tooling on PO?"
-                    mPDS_Val(i) = IIf(ProcessProj_In.OrdEntry.Tool_Reqd = True, "Yes", "No")
-
-                Case "Special Packaging & Labeling"
-                    mPDS_Val(i) = IIf(ProcessProj_In.OrdEntry.SplPkg_Lbl_Reqd = True, "Yes", "No")
-
-                Case "Order Qty"
-                    If (ProcessProj_In.OrdEntry.OrdQty > 0) Then
-                        mPDS_Val(i) = ProcessProj_In.OrdEntry.OrdQty
-                    Else
-                        mPDS_Val(i) = ""
-                    End If
-
-                Case "Required Ship Date"
-                    mPDS_Val(i) = ProcessProj_In.OrdEntry.DateOrdShip.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-
-                Case "Expedited?"
-                    mPDS_Val(i) = IIf(ProcessProj_In.OrdEntry.Expedited = True, "Yes", "No")
-
-                Case "DFAR Clauses?"
-                    mPDS_Val(i) = IIf(ProcessProj_In.OrdEntry.IsDFAR = True, "Yes", "No")
-
-                Case "Is Pressure Cyclic?"
-                    mPDS_Val(i) = IIf(ProcessProj_In.App.IsPressCyclic = True, "Yes", "No")
-
-                Case "Frequency"
-                    If (ProcessProj_In.App.PressCycle_Freq > gcEPS) Then
-                        mPDS_Val(i) = ProcessProj_In.App.PressCycle_Freq
-                    Else
-                        mPDS_Val(i) = ""
-                    End If
-
-                Case "Amplitude"
-                    If (ProcessProj_In.App.PressCycle_Amp > gcEPS) Then
-                        mPDS_Val(i) = ProcessProj_In.App.PressCycle_Amp
-                    Else
-                        mPDS_Val(i) = ""
-                    End If
-
-
-                Case "Fluid Medium"
-                    mPDS_Val(i) = ProcessProj_In.App.Fluid
-
-                Case "Max Leakage Rate"
-                    If (ProcessProj_In.App.MaxLeak > gcEPS) Then
-                        mPDS_Val(i) = ProcessProj_In.App.MaxLeak
-                    Else
-                        mPDS_Val(i) = ""
-                    End If
-
-                Case "Shaped?"
-                    mPDS_Val(i) = IIf(ProcessProj_In.App.Shaped = True, "Yes", "No")
-
-                Case "Out of Round?"
-                    mPDS_Val(i) = IIf(ProcessProj_In.App.IsOoR = True, "Yes", "No")
-
-                Case "Split Ring?"
-                    mPDS_Val(i) = IIf(ProcessProj_In.App.IsSplitRing = True, "Yes", "No")
-
-                Case "Precompressed?"
-                    mPDS_Val(i) = IIf(ProcessProj_In.App.IsPreComp = True, "Yes", "No")
-
-                Case "Operating Conditions Temp Assy (F)"
-                    If (ProcessProj_In.App.OpCond.T.Assy > gcEPS) Then
-                        mPDS_Val(i) = ProcessProj_In.App.OpCond.T.Assy
-                    Else
-                        mPDS_Val(i) = ""
-                    End If
-
-
-                Case "Operating Conditions Temp Min (F)"
-                    If (ProcessProj_In.App.OpCond.T.Min > gcEPS) Then
-                        mPDS_Val(i) = ProcessProj_In.App.OpCond.T.Min
-                    Else
-                        mPDS_Val(i) = ""
-                    End If
-
-
-                Case "Operating Conditions Temp Max (F)"
-                    If (ProcessProj_In.App.OpCond.T.Max > gcEPS) Then
-                        mPDS_Val(i) = ProcessProj_In.App.OpCond.T.Max
-                    Else
-                        mPDS_Val(i) = ""
-                    End If
-
-                Case "Operating Conditions Temp Operating (F)"
-                    If (ProcessProj_In.App.OpCond.T.Oper > gcEPS) Then
-                        mPDS_Val(i) = ProcessProj_In.App.OpCond.T.Oper
-                    Else
-                        mPDS_Val(i) = ""
-                    End If
                     '-------------------------------
-                Case "Operating Conditions Temp Assy (C)"
-                    If (ProcessProj_In.App.OpCond.T.Assy > gcEPS) Then
-                        mPDS_Val(i) = ConvFtoC(ProcessProj_In.App.OpCond.T.Assy)
-                    Else
-                        mPDS_Val(i) = ""
-                    End If
+                    Case "Operating Conditions Temp Assy (C)"
+                        If (ProcessProj_In.App.OpCond.T.Assy > gcEPS) Then
+                            mPDS_Val(i) = ConvFtoC(ProcessProj_In.App.OpCond.T.Assy)
+                        Else
+                            mPDS_Val(i) = ""
+                        End If
 
 
-                Case "Operating Conditions Temp Min (C)"
-                    If (ProcessProj_In.App.OpCond.T.Min > gcEPS) Then
-                        mPDS_Val(i) = ConvFtoC(ProcessProj_In.App.OpCond.T.Min)
-                    Else
-                        mPDS_Val(i) = ""
-                    End If
+                    Case "Operating Conditions Temp Min (C)"
+                        If (ProcessProj_In.App.OpCond.T.Min > gcEPS) Then
+                            mPDS_Val(i) = ConvFtoC(ProcessProj_In.App.OpCond.T.Min)
+                        Else
+                            mPDS_Val(i) = ""
+                        End If
 
 
-                Case "Operating Conditions Temp Max (C)"
-                    If (ProcessProj_In.App.OpCond.T.Max > gcEPS) Then
-                        mPDS_Val(i) = ConvFtoC(ProcessProj_In.App.OpCond.T.Max)
-                    Else
-                        mPDS_Val(i) = ""
-                    End If
+                    Case "Operating Conditions Temp Max (C)"
+                        If (ProcessProj_In.App.OpCond.T.Max > gcEPS) Then
+                            mPDS_Val(i) = ConvFtoC(ProcessProj_In.App.OpCond.T.Max)
+                        Else
+                            mPDS_Val(i) = ""
+                        End If
 
-                Case "Operating Conditions Temp Operating (C)"
-                    If (ProcessProj_In.App.OpCond.T.Oper > gcEPS) Then
-                        mPDS_Val(i) = ConvFtoC(ProcessProj_In.App.OpCond.T.Oper)
-                    Else
-                        mPDS_Val(i) = ""
-                    End If
+                    Case "Operating Conditions Temp Operating (C)"
+                        If (ProcessProj_In.App.OpCond.T.Oper > gcEPS) Then
+                            mPDS_Val(i) = ConvFtoC(ProcessProj_In.App.OpCond.T.Oper)
+                        Else
+                            mPDS_Val(i) = ""
+                        End If
 
                     '-----------------------
-                Case "Operating Conditions Pressure Assy (PSI)"
-                    If (ProcessProj_In.App.OpCond.Press.Assy > gcEPS) Then
-                        mPDS_Val(i) = ProcessProj_In.App.OpCond.Press.Assy
-                    Else
-                        mPDS_Val(i) = ""
-                    End If
+                    Case "Operating Conditions Pressure Assy (PSI)"
+                        If (ProcessProj_In.App.OpCond.Press.Assy > gcEPS) Then
+                            mPDS_Val(i) = ProcessProj_In.App.OpCond.Press.Assy
+                        Else
+                            mPDS_Val(i) = ""
+                        End If
 
-                Case "Operating Conditions Pressure Min (PSI)"
-                    If (ProcessProj_In.App.OpCond.Press.Min > gcEPS) Then
-                        mPDS_Val(i) = ProcessProj_In.App.OpCond.Press.Min
-                    Else
-                        mPDS_Val(i) = ""
-                    End If
+                    Case "Operating Conditions Pressure Min (PSI)"
+                        If (ProcessProj_In.App.OpCond.Press.Min > gcEPS) Then
+                            mPDS_Val(i) = ProcessProj_In.App.OpCond.Press.Min
+                        Else
+                            mPDS_Val(i) = ""
+                        End If
 
-                Case "Operating Conditions Pressure Max (PSI)"
-                    If (ProcessProj_In.App.OpCond.Press.Max > gcEPS) Then
-                        mPDS_Val(i) = ProcessProj_In.App.OpCond.Press.Max
-                    Else
-                        mPDS_Val(i) = ""
-                    End If
+                    Case "Operating Conditions Pressure Max (PSI)"
+                        If (ProcessProj_In.App.OpCond.Press.Max > gcEPS) Then
+                            mPDS_Val(i) = ProcessProj_In.App.OpCond.Press.Max
+                        Else
+                            mPDS_Val(i) = ""
+                        End If
 
-                Case "Operating Conditions Pressure Operating (PSI)"
-                    If (ProcessProj_In.App.OpCond.Press.Oper > gcEPS) Then
-                        mPDS_Val(i) = ProcessProj_In.App.OpCond.Press.Oper
-                    Else
-                        mPDS_Val(i) = ""
-                    End If
+                    Case "Operating Conditions Pressure Operating (PSI)"
+                        If (ProcessProj_In.App.OpCond.Press.Oper > gcEPS) Then
+                            mPDS_Val(i) = ProcessProj_In.App.OpCond.Press.Oper
+                        Else
+                            mPDS_Val(i) = ""
+                        End If
 
                     '-----------
-                Case "Operating Conditions Pressure Assy (Bar)"
-                    If (ProcessProj_In.App.OpCond.Press.Assy > gcEPS) Then
-                        mPDS_Val(i) = ConvPSIToBar(ProcessProj_In.App.OpCond.Press.Assy)
-                    Else
-                        mPDS_Val(i) = ""
-                    End If
+                    Case "Operating Conditions Pressure Assy (Bar)"
+                        If (ProcessProj_In.App.OpCond.Press.Assy > gcEPS) Then
+                            mPDS_Val(i) = ConvPSIToBar(ProcessProj_In.App.OpCond.Press.Assy)
+                        Else
+                            mPDS_Val(i) = ""
+                        End If
 
-                Case "Operating Conditions Pressure Min (Bar)"
-                    If (ProcessProj_In.App.OpCond.Press.Min > gcEPS) Then
-                        mPDS_Val(i) = ConvPSIToBar(ProcessProj_In.App.OpCond.Press.Min)
-                    Else
-                        mPDS_Val(i) = ""
-                    End If
+                    Case "Operating Conditions Pressure Min (Bar)"
+                        If (ProcessProj_In.App.OpCond.Press.Min > gcEPS) Then
+                            mPDS_Val(i) = ConvPSIToBar(ProcessProj_In.App.OpCond.Press.Min)
+                        Else
+                            mPDS_Val(i) = ""
+                        End If
 
-                Case "Operating Conditions Pressure Max (Bar)"
-                    If (ProcessProj_In.App.OpCond.Press.Max > gcEPS) Then
-                        mPDS_Val(i) = ConvPSIToBar(ProcessProj_In.App.OpCond.Press.Max)
-                    Else
-                        mPDS_Val(i) = ""
-                    End If
+                    Case "Operating Conditions Pressure Max (Bar)"
+                        If (ProcessProj_In.App.OpCond.Press.Max > gcEPS) Then
+                            mPDS_Val(i) = ConvPSIToBar(ProcessProj_In.App.OpCond.Press.Max)
+                        Else
+                            mPDS_Val(i) = ""
+                        End If
 
-                Case "Operating Conditions Pressure Operating (Bar)"
-                    If (ProcessProj_In.App.OpCond.Press.Oper > gcEPS) Then
-                        mPDS_Val(i) = ConvPSIToBar(ProcessProj_In.App.OpCond.Press.Oper)
-                    Else
-                        mPDS_Val(i) = ""
-                    End If
+                    Case "Operating Conditions Pressure Operating (Bar)"
+                        If (ProcessProj_In.App.OpCond.Press.Oper > gcEPS) Then
+                            mPDS_Val(i) = ConvPSIToBar(ProcessProj_In.App.OpCond.Press.Oper)
+                        Else
+                            mPDS_Val(i) = ""
+                        End If
                     '----------
 
-                Case "Pressure Direction"
-                    mPDS_Val(i) = ProcessProj_In.App.Face.POrient
+                    Case "Pressure Direction"
+                        mPDS_Val(i) = ProcessProj_In.App.Face.POrient
 
-                Case "Max Flange Separation"
-                    mPDS_Val(i) = ProcessProj_In.App.Face.MaxFlangeSep
+                    Case "Max Flange Separation"
+                        mPDS_Val(i) = ProcessProj_In.App.Face.MaxFlangeSep
 
-                Case "CavityDepthAssyMin (in)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Depth") Then
-                            If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
-                                mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Min
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityDepthAssyMin (in)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Depth") Then
+                                If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
+                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Min
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityDepthAssyMax (in)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Depth") Then
-                            If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
-                                mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Max
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityDepthAssyMax (in)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Depth") Then
+                                If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
+                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Max
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityDepthOpMin (in)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Depth") Then
-                            If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
-                                mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Min
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityDepthOpMin (in)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Depth") Then
+                                If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
+                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Min
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityDepthOpMax (in)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Depth") Then
-                            If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
-                                mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Max
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityDepthOpMax (in)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Depth") Then
+                                If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
+                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Max
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
                     '--------
-                Case "CavityAxialLenAssyMin (in)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Axial L") Then
-                            If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
-                                mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Min
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityAxialLenAssyMin (in)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Axial L") Then
+                                If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
+                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Min
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityAxialLenAssyMax (in)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Axial L") Then
-                            If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
-                                mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Max
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityAxialLenAssyMax (in)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Axial L") Then
+                                If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
+                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Max
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityAxialLenOpMin (in)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Axial L") Then
-                            If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
-                                mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Min
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityAxialLenOpMin (in)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Axial L") Then
+                                If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
+                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Min
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityAxialLenOpMax (in)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Axial L") Then
-                            If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
-                                mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Max
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityAxialLenOpMax (in)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Axial L") Then
+                                If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
+                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Max
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
                     '--------
-                Case "CavityRadialWidthAssyMin (in)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Radial Wid") Then
-                            If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
-                                mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Min
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityRadialWidthAssyMin (in)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Radial Wid") Then
+                                If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
+                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Min
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityRadialWidthAssyMax (in)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Radial Wid") Then
-                            If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
-                                mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Max
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityRadialWidthAssyMax (in)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Radial Wid") Then
+                                If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
+                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Max
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityRadialWidthOpMin (in)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Radial Wid") Then
-                            If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
-                                mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Min
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityRadialWidthOpMin (in)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Radial Wid") Then
+                                If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
+                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Min
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityRadialWidthOpMax (in)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Radial Wid") Then
-                            If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
-                                mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Max
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityRadialWidthOpMax (in)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Radial Wid") Then
+                                If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
+                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Max
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
                     '------
 
-                Case "CavityIDAssyMin (in)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "ID") Then
-                            If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
-                                mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Min
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityIDAssyMin (in)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "ID") Then
+                                If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
+                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Min
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityIDAssyMax (in)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "ID") Then
-                            If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
-                                mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Max
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityIDAssyMax (in)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "ID") Then
+                                If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
+                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Max
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityIDOpMin (in)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "ID") Then
-                            If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
-                                mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Min
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityIDOpMin (in)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "ID") Then
+                                If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
+                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Min
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityIDOpMax (in)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "ID") Then
-                            If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
-                                mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Max
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityIDOpMax (in)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "ID") Then
+                                If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
+                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Max
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
                     '------
 
-                Case "CavityODAssyMin (in)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "OD") Then
-                            If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
-                                mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Min
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityODAssyMin (in)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "OD") Then
+                                If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
+                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Min
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityODAssyMax (in)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "OD") Then
-                            If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
-                                mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Max
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityODAssyMax (in)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "OD") Then
+                                If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
+                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Max
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityODOpMin (in)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "OD") Then
-                            If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
-                                mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Min
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityODOpMin (in)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "OD") Then
+                                If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
+                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Min
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityODOpMax (in)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "OD") Then
-                            If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
-                                mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Max
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityODOpMax (in)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "OD") Then
+                                If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
+                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Max
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
                     '----
-                Case "CavityCornerRadAssyMin (in)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Corner Radius") Then
-                            If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
-                                mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Min
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityCornerRadAssyMin (in)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Corner Radius") Then
+                                If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
+                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Min
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityCornerRadAssyMax (in)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Corner Radius") Then
-                            If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
-                                mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Max
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityCornerRadAssyMax (in)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Corner Radius") Then
+                                If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
+                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Max
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityCornerRadOpMin (in)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Corner Radius") Then
-                            If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
-                                mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Min
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityCornerRadOpMin (in)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Corner Radius") Then
+                                If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
+                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Min
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityCornerRadOpMax (in)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Corner Radius") Then
-                            If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
-                                mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Max
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityCornerRadOpMax (in)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Corner Radius") Then
+                                If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
+                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Max
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
                     '....mm
-                Case "CavityDepthAssyMin (mm)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Depth") Then
-                            If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
-                                mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Min)
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityDepthAssyMin (mm)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Depth") Then
+                                If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
+                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Min)
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityDepthAssyMax (mm)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Depth") Then
-                            If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
-                                mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Max)
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityDepthAssyMax (mm)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Depth") Then
+                                If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
+                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Max)
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityDepthOpMin (mm)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Depth") Then
-                            If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
-                                mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Min)
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityDepthOpMin (mm)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Depth") Then
+                                If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
+                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Min)
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityDepthOpMax (mm)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Depth") Then
-                            If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
-                                mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Max)
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityDepthOpMax (mm)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Depth") Then
+                                If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
+                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Max)
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
                     '--------
-                Case "CavityAxialLenAssyMin (mm)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Axial L") Then
-                            If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
-                                mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Min)
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityAxialLenAssyMin (mm)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Axial L") Then
+                                If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
+                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Min)
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityAxialLenAssyMax (mm)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Axial L") Then
-                            If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
-                                mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Max)
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityAxialLenAssyMax (mm)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Axial L") Then
+                                If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
+                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Max)
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityAxialLenOpMin (mm)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Axial L") Then
-                            If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
-                                mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Min)
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityAxialLenOpMin (mm)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Axial L") Then
+                                If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
+                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Min)
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityAxialLenOpMax (mm)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Axial L") Then
-                            If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
-                                mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Max)
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityAxialLenOpMax (mm)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Axial L") Then
+                                If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
+                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Max)
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
                     '--------
-                Case "CavityRadialWidthAssyMin (mm)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Radial Wid") Then
-                            If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
-                                mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Min)
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityRadialWidthAssyMin (mm)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Radial Wid") Then
+                                If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
+                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Min)
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityRadialWidthAssyMax (mm)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Radial Wid") Then
-                            If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
-                                mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Max)
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityRadialWidthAssyMax (mm)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Radial Wid") Then
+                                If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
+                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Max)
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityRadialWidthOpMin (mm)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Radial Wid") Then
-                            If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
-                                mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Min)
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityRadialWidthOpMin (mm)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Radial Wid") Then
+                                If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
+                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Min)
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityRadialWidthOpMax (mm)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Radial Wid") Then
-                            If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
-                                mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Max)
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityRadialWidthOpMax (mm)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Radial Wid") Then
+                                If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
+                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Max)
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
                     '------
 
-                Case "CavityIDAssyMin (mm)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "ID") Then
-                            If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
-                                mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Min)
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityIDAssyMin (mm)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "ID") Then
+                                If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
+                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Min)
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityIDAssyMax (mm)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "ID") Then
-                            If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
-                                mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Max)
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityIDAssyMax (mm)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "ID") Then
+                                If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
+                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Max)
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityIDOpMin (mm)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "ID") Then
-                            If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
-                                mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Min)
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityIDOpMin (mm)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "ID") Then
+                                If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
+                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Min)
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityIDOpMax (mm)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "ID") Then
-                            If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
-                                mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Max)
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityIDOpMax (mm)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "ID") Then
+                                If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
+                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Max)
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
                     '------
 
-                Case "CavityODAssyMin (mm)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "OD") Then
-                            If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
-                                mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Min)
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityODAssyMin (mm)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "OD") Then
+                                If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
+                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Min)
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityODAssyMax (mm)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "OD") Then
-                            If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
-                                mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Max)
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityODAssyMax (mm)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "OD") Then
+                                If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
+                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Max)
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityODOpMin (mm)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "OD") Then
-                            If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
-                                mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Min)
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityODOpMin (mm)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "OD") Then
+                                If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
+                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Min)
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityODOpMax (mm)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "OD") Then
-                            If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
-                                mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Max)
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityODOpMax (mm)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "OD") Then
+                                If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
+                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Max)
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
                     '----
-                Case "CavityCornerRadAssyMin (mm)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Corner Radius") Then
-                            If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
-                                mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Min)
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityCornerRadAssyMin (mm)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Corner Radius") Then
+                                If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
+                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Min)
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityCornerRadAssyMax (mm)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Corner Radius") Then
-                            If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
-                                mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Max)
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityCornerRadAssyMax (mm)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Corner Radius") Then
+                                If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
+                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Max)
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityCornerRadOpMin (mm)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Corner Radius") Then
-                            If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
-                                mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Min)
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityCornerRadOpMin (mm)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Corner Radius") Then
+                                If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
+                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Min)
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
 
-                Case "CavityCornerRadOpMax (mm)"
-                    For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
-                        If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Corner Radius") Then
-                            If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
-                                mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Max)
-                            Else
-                                mPDS_Val(i) = ""
+                    Case "CavityCornerRadOpMax (mm)"
+                        For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
+                            If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Corner Radius") Then
+                                If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
+                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Max)
+                                Else
+                                    mPDS_Val(i) = ""
+                                End If
+                                Exit For
                             End If
-                            Exit For
-                        End If
-                    Next
+                        Next
                     '----
 
-                Case "Static?"
-                    mPDS_Val(i) = IIf(ProcessProj_In.App.Axial.IsStatic = True, "Yes", "No")
+                    Case "Static?"
+                        mPDS_Val(i) = IIf(ProcessProj_In.App.Axial.IsStatic = True, "Yes", "No")
 
-                Case "Rotating?"
-                    mPDS_Val(i) = IIf(ProcessProj_In.App.Axial.IsRotating = True, "Yes", "No")
+                    Case "Rotating?"
+                        mPDS_Val(i) = IIf(ProcessProj_In.App.Axial.IsRotating = True, "Yes", "No")
 
-                Case "RPM"
-                    If (ProcessProj_In.App.Axial.RPM > gcEPS) Then
-                        mPDS_Val(i) = ProcessProj_In.App.Axial.RPM
-                    Else
-                        mPDS_Val(i) = ""
-                    End If
+                    Case "RPM"
+                        If (ProcessProj_In.App.Axial.RPM > gcEPS) Then
+                            mPDS_Val(i) = ProcessProj_In.App.Axial.RPM
+                        Else
+                            mPDS_Val(i) = ""
+                        End If
 
-                Case "Reciprocating?"
-                    mPDS_Val(i) = IIf(ProcessProj_In.App.Axial.IsRecip = True, "Yes", "No")
+                    Case "Reciprocating?"
+                        mPDS_Val(i) = IIf(ProcessProj_In.App.Axial.IsRecip = True, "Yes", "No")
 
-                Case "Recip_Stroke"
-                    If (ProcessProj_In.App.Axial.Recip_Stroke > gcEPS) Then
-                        mPDS_Val(i) = ProcessProj_In.App.Axial.Recip_Stroke
-                    Else
-                        mPDS_Val(i) = ""
-                    End If
+                    Case "Recip_Stroke"
+                        If (ProcessProj_In.App.Axial.Recip_Stroke > gcEPS) Then
+                            mPDS_Val(i) = ProcessProj_In.App.Axial.Recip_Stroke
+                        Else
+                            mPDS_Val(i) = ""
+                        End If
 
-                Case "Recip_Velocity"
-                    If (ProcessProj_In.App.Axial.Recip_V > gcEPS) Then
-                        mPDS_Val(i) = ProcessProj_In.App.Axial.Recip_V
-                    Else
-                        mPDS_Val(i) = ""
-                    End If
+                    Case "Recip_Velocity"
+                        If (ProcessProj_In.App.Axial.Recip_V > gcEPS) Then
+                            mPDS_Val(i) = ProcessProj_In.App.Axial.Recip_V
+                        Else
+                            mPDS_Val(i) = ""
+                        End If
 
-                Case "Recip_Cycle Rate"
-                    If (ProcessProj_In.App.Axial.Recip_CycleRate > gcEPS) Then
-                        mPDS_Val(i) = ProcessProj_In.App.Axial.Recip_CycleRate
-                    Else
-                        mPDS_Val(i) = ""
-                    End If
+                    Case "Recip_Cycle Rate"
+                        If (ProcessProj_In.App.Axial.Recip_CycleRate > gcEPS) Then
+                            mPDS_Val(i) = ProcessProj_In.App.Axial.Recip_CycleRate
+                        Else
+                            mPDS_Val(i) = ""
+                        End If
 
-                Case "Oscillatory?"
-                    mPDS_Val(i) = IIf(ProcessProj_In.App.Axial.IsOscilatory = True, "Yes", "No")
+                    Case "Oscillatory?"
+                        mPDS_Val(i) = IIf(ProcessProj_In.App.Axial.IsOscilatory = True, "Yes", "No")
 
-                Case "Oscilate_Rot"
-                    If (ProcessProj_In.App.Axial.Oscilate_Rot > gcEPS) Then
-                        mPDS_Val(i) = ProcessProj_In.App.Axial.Oscilate_Rot
-                    Else
-                        mPDS_Val(i) = ""
-                    End If
+                    Case "Oscilate_Rot"
+                        If (ProcessProj_In.App.Axial.Oscilate_Rot > gcEPS) Then
+                            mPDS_Val(i) = ProcessProj_In.App.Axial.Oscilate_Rot
+                        Else
+                            mPDS_Val(i) = ""
+                        End If
 
-                Case "Oscilate_Velocity"
-                    If (ProcessProj_In.App.Axial.Oscilate_V > gcEPS) Then
-                        mPDS_Val(i) = ProcessProj_In.App.Axial.Oscilate_V
-                    Else
-                        mPDS_Val(i) = ""
-                    End If
+                    Case "Oscilate_Velocity"
+                        If (ProcessProj_In.App.Axial.Oscilate_V > gcEPS) Then
+                            mPDS_Val(i) = ProcessProj_In.App.Axial.Oscilate_V
+                        Else
+                            mPDS_Val(i) = ""
+                        End If
 
-                Case "Oscilate_Cycle Rate"
-                    If (ProcessProj_In.App.Axial.Oscilate_CycleRate > gcEPS) Then
-                        mPDS_Val(i) = ProcessProj_In.App.Axial.Oscilate_CycleRate
-                    Else
-                        mPDS_Val(i) = ""
-                    End If
+                    Case "Oscilate_Cycle Rate"
+                        If (ProcessProj_In.App.Axial.Oscilate_CycleRate > gcEPS) Then
+                            mPDS_Val(i) = ProcessProj_In.App.Axial.Oscilate_CycleRate
+                        Else
+                            mPDS_Val(i) = ""
+                        End If
 
-                Case "Customer Drawing #"
-                    mPDS_Val(i) = ProcessProj_In.Design.CustDwgNo
+                    Case "Customer Drawing #"
+                        mPDS_Val(i) = ProcessProj_In.Design.CustDwgNo
 
-                Case "Customer Drawing Rev"
-                    mPDS_Val(i) = ProcessProj_In.Design.CustDwgRev
+                    Case "Customer Drawing Rev"
+                        mPDS_Val(i) = ProcessProj_In.Design.CustDwgRev
 
-                Case "Frozen Desgin?"
-                    mPDS_Val(i) = IIf(ProcessProj_In.Design.Frozen.Design = True, "Yes", "No")
+                    Case "Frozen Desgin?"
+                        mPDS_Val(i) = IIf(ProcessProj_In.Design.Frozen.Design = True, "Yes", "No")
 
-                Case "Frozen Process?"
-                    mPDS_Val(i) = IIf(ProcessProj_In.Design.Frozen.Process = True, "Yes", "No")
+                    Case "Frozen Process?"
+                        mPDS_Val(i) = IIf(ProcessProj_In.Design.Frozen.Process = True, "Yes", "No")
 
-                Case "Class 1?"
-                    mPDS_Val(i) = IIf(ProcessProj_In.Design.IsClass1 = True, "Yes", "No")
+                    Case "Class 1?"
+                        mPDS_Val(i) = IIf(ProcessProj_In.Design.IsClass1 = True, "Yes", "No")
 
-                Case "Build to Print?"
-                    mPDS_Val(i) = IIf(ProcessProj_In.Design.IsBuildToPrint = True, "Yes", "No")
-
-
-                Case "Winnovation No"
-                    If (ProcessProj_In.Design.IsWinnovation) Then
-                        mPDS_Val(i) = ProcessProj_In.Design.WinnovationNo
-                    Else
-                        mPDS_Val(i) = ""
-                    End If
+                    Case "Build to Print?"
+                        mPDS_Val(i) = IIf(ProcessProj_In.Design.IsBuildToPrint = True, "Yes", "No")
 
 
-                Case "Material Specification Seal"
-                    mPDS_Val(i) = PartProj_In.PNR.HW.MatName
+                    Case "Winnovation No"
+                        If (ProcessProj_In.Design.IsWinnovation) Then
+                            mPDS_Val(i) = ProcessProj_In.Design.WinnovationNo
+                        Else
+                            mPDS_Val(i) = ""
+                        End If
+
+
+                    Case "Material Specification Seal"
+                        mPDS_Val(i) = PartProj_In.PNR.HW.MatName
 
                     'Case "Spring Material Specification"
                     '    mPDS_Val(i) = ProcessProj_In.Design.CustDwgRev
 
-                Case "Heat Treat Type"
-                    Dim pTemperCode As Integer = PartProj_In.PNR.HW.Temper
+                    Case "Heat Treat Type"
+                        Dim pTemperCode As Integer = PartProj_In.PNR.HW.Temper
 
-                    If (pTemperCode = 1) Then
-                        mPDS_Val(i) = "Work Hardened"
-                    ElseIf (pTemperCode = 2) Then
-                        mPDS_Val(i) = "Age Hardened"
-                    ElseIf (pTemperCode = 4) Then
-                        mPDS_Val(i) = "Annealed"
-                    ElseIf (pTemperCode = 6) Then
-                        mPDS_Val(i) = "Solution and Precip"
-                    ElseIf (pTemperCode = 8) Then
-                        mPDS_Val(i) = "NACE"
-                    Else
-                        mPDS_Val(i) = ""
-                    End If
-
-
-                Case "Plating/Coating Type"
-                    If (PartProj_In.PNR.SealType = clsPartProject.clsPNR.eType.E) Then
-                        If (PartProj_In.PNR.HW.Coating = "None") Then
-                            mPDS_Val(i) = "None"
+                        If (pTemperCode = 1) Then
+                            mPDS_Val(i) = "Work Hardened"
+                        ElseIf (pTemperCode = 2) Then
+                            mPDS_Val(i) = "Age Hardened"
+                        ElseIf (pTemperCode = 4) Then
+                            mPDS_Val(i) = "Annealed"
+                        ElseIf (pTemperCode = 6) Then
+                            mPDS_Val(i) = "Solution and Precip"
+                        ElseIf (pTemperCode = 8) Then
+                            mPDS_Val(i) = "NACE"
                         Else
-                            mPDS_Val(i) = PartProj_In.PNR.HW.Coating
+                            mPDS_Val(i) = ""
                         End If
 
-                    ElseIf (PartProj_In.PNR.SealType = clsPartProject.clsPNR.eType.C Or PartProj_In.PNR.SealType = clsPartProject.clsPNR.eType.SC) Then
-                        If (PartProj_In.PNR.HW.Plating.Code <> "") Then
-                            mPDS_Val(i) = PartProj_In.PNR.HW.Plating.Code
-                        Else
-                            mPDS_Val(i) = "None"
+
+                    Case "Plating/Coating Type"
+                        If (PartProj_In.PNR.SealType = clsPartProject.clsPNR.eType.E) Then
+                            If (PartProj_In.PNR.HW.Coating = "None") Then
+                                mPDS_Val(i) = "None"
+                            Else
+                                mPDS_Val(i) = PartProj_In.PNR.HW.Coating
+                            End If
+
+                        ElseIf (PartProj_In.PNR.SealType = clsPartProject.clsPNR.eType.C Or PartProj_In.PNR.SealType = clsPartProject.clsPNR.eType.SC) Then
+                            If (PartProj_In.PNR.HW.Plating.Code <> "") Then
+                                mPDS_Val(i) = PartProj_In.PNR.HW.Plating.Code
+                            Else
+                                mPDS_Val(i) = "None"
+
+                            End If
 
                         End If
 
-                    End If
+                    Case "Plating Thickness"
+                        If (PartProj_In.PNR.SealType = clsPartProject.clsPNR.eType.C Or PartProj_In.PNR.SealType = clsPartProject.clsPNR.eType.SC) Then
+                            If (PartProj_In.PNR.HW.Plating.Code <> "") Then
+                                mPDS_Val(i) = PartProj_In.PNR.HW.Plating.ThickCode
+                            End If
 
-                Case "Plating Thickness"
-                    If (PartProj_In.PNR.SealType = clsPartProject.clsPNR.eType.C Or PartProj_In.PNR.SealType = clsPartProject.clsPNR.eType.SC) Then
-                        If (PartProj_In.PNR.HW.Plating.Code <> "") Then
-                            mPDS_Val(i) = PartProj_In.PNR.HW.Plating.ThickCode
                         End If
 
-                    End If
+                    Case "Plating/Coating by Outside Vendor?"
+                        mPDS_Val(i) = IIf(ProcessProj_In.Design.IsMat_OutsideVender = True, "Yes", "No")
 
-                Case "Plating/Coating by Outside Vendor?"
-                    mPDS_Val(i) = IIf(ProcessProj_In.Design.IsMat_OutsideVender = True, "Yes", "No")
+                    Case "Lessons Learned"
+                        mPDS_Val(i) = ProcessProj_In.Design.LessonsLearned
 
-                Case "Lessons Learned"
-                    mPDS_Val(i) = ProcessProj_In.Design.LessonsLearned
+                    Case "Design Inputs"
+                        mDesignInput = mPDS_CellColName(i)
 
-                Case "Design Inputs"
-                    mDesignInput = mPDS_CellColName(i)
+                    Case "FOD Design Risks"
+                        mPDS_Val(i) = ProcessProj_In.Design.FOD_Risks
 
-                Case "FOD Design Risks"
-                    mPDS_Val(i) = ProcessProj_In.Design.FOD_Risks
+                    Case "Raw Material Part No"
+                        mPDS_Val(i) = ProcessProj_In.Manf.BaseMat_PartNo
 
-                Case "Raw Material Part No"
-                    mPDS_Val(i) = ProcessProj_In.Manf.BaseMat_PartNo
+                    Case "Spring Material Part No"
+                        mPDS_Val(i) = ProcessProj_In.Manf.SpringMat_PartNo
 
-                Case "Spring Material Part No"
-                    mPDS_Val(i) = ProcessProj_In.Manf.SpringMat_PartNo
+                    Case "Heat Treat Process No"
+                        mPDS_Val(i) = ProcessProj_In.Manf.HT
 
-                Case "Heat Treat Process No"
-                    mPDS_Val(i) = ProcessProj_In.Manf.HT
+                    Case "Precompression Glue"
+                        mPDS_Val(i) = ProcessProj_In.Manf.PreComp_Glue
 
-                Case "Precompression Glue"
-                    mPDS_Val(i) = ProcessProj_In.Manf.PreComp_Glue
+                    Case "Precompression Glue"
+                        mPDS_Val(i) = ProcessProj_In.Manf.PreComp_Glue
 
-                Case "Precompression Glue"
-                    mPDS_Val(i) = ProcessProj_In.Manf.PreComp_Glue
+                    Case "CustSpecType"
+                        mCustSpecType = mPDS_CellColName(i)
 
-                Case "CustSpecType"
-                    mCustSpecType = mPDS_CellColName(i)
+                    Case "CustSpecInterpretation"
+                        mCustSpecInterpretation = mPDS_CellColName(i)
 
-                Case "CustSpecInterpretation"
-                    mCustSpecInterpretation = mPDS_CellColName(i)
+                    Case "Seal Dimensions Name"
+                        mSealDimName = mPDS_CellColName(i)
 
-                Case "Seal Dimensions Name"
-                    mSealDimName = mPDS_CellColName(i)
+                    Case "Seal Dimensions Min (in)"
+                        mSealDimMin_in = mPDS_CellColName(i)
 
-                Case "Seal Dimensions Min (in)"
-                    mSealDimMin_in = mPDS_CellColName(i)
+                    Case "Seal Dimensions Max (in)"
+                        mSealDimMax_in = mPDS_CellColName(i)
 
-                Case "Seal Dimensions Max (in)"
-                    mSealDimMax_in = mPDS_CellColName(i)
+                    Case "Seal Dimensions Min (mm)"
+                        mSealDimMin_mm = mPDS_CellColName(i)
 
-                Case "Seal Dimensions Min (mm)"
-                    mSealDimMin_mm = mPDS_CellColName(i)
+                    Case "Seal Dimensions Max (mm)"
+                        mSealDimMax_mm = mPDS_CellColName(i)
 
-                Case "Seal Dimensions Max (mm)"
-                    mSealDimMax_mm = mPDS_CellColName(i)
+                    Case "Tooling and Gages Part No"
+                        mTool_Gage_PartNo = mPDS_CellColName(i)
 
-                Case "Tooling and Gages Part No"
-                    mTool_Gage_PartNo = mPDS_CellColName(i)
+                    Case "Tooling and Gages Description"
+                        mTool_Gage_Desc = mPDS_CellColName(i)
 
-                Case "Tooling and Gages Description"
-                    mTool_Gage_Desc = mPDS_CellColName(i)
-
-                Case "Tooling and Gages Responsibility"
-                    mTool_Gage_Response = mPDS_CellColName(i)
+                    Case "Tooling and Gages Responsibility"
+                        mTool_Gage_Response = mPDS_CellColName(i)
 
                     '....Quality
-                Case "Approved Suppliers Only?"
-                    mPDS_Val(i) = IIf(ProcessProj_In.Qlty.IsApvdSupplierOnly = True, "Yes", "No")
+                    Case "Approved Suppliers Only?"
+                        mPDS_Val(i) = IIf(ProcessProj_In.Qlty.IsApvdSupplierOnly = True, "Yes", "No")
 
-                Case "Separate Tooling and Inspectin Gages (Split Ring)?"
-                    mPDS_Val(i) = IIf(ProcessProj_In.Qlty.Separate_Tool_Gage_Reqd = True, "Yes", "No")
+                    Case "Separate Tooling and Inspectin Gages (Split Ring)?"
+                        mPDS_Val(i) = IIf(ProcessProj_In.Qlty.Separate_Tool_Gage_Reqd = True, "Yes", "No")
 
                 'Case "Customer Complaints on Similar Products"
                 '    mPDS_Val(i) = IIf(ProcessProj_In.Qlty.HasCustComplaint = True, "Yes", "No")
 
-                Case "Visual Inspection with magnification"
-                    Dim pVisualInspection As String = ""
-                    If (ProcessProj_In.Qlty.VisualInspection) Then
-                        pVisualInspection = "Yes, " & ProcessProj_In.Qlty.VisualInspection_Type
-                    Else
-                        pVisualInspection = "No"
-                    End If
-                    mPDS_Val(i) = pVisualInspection
+                    Case "Visual Inspection with magnification"
+                        Dim pVisualInspection As String = ""
+                        If (ProcessProj_In.Qlty.VisualInspection) Then
+                            pVisualInspection = "Yes, " & ProcessProj_In.Qlty.VisualInspection_Type
+                        Else
+                            pVisualInspection = "No"
+                        End If
+                        mPDS_Val(i) = pVisualInspection
 
-                Case "Customer Acceptance Standards"
-                    mPDS_Val(i) = ProcessProj_In.Qlty.CustAcceptStd
+                    Case "Customer Acceptance Standards"
+                        mPDS_Val(i) = ProcessProj_In.Qlty.CustAcceptStd
 
-                Case "SPC Required?"
-                    mPDS_Val(i) = IIf(ProcessProj_In.Qlty.SPC_Reqd = True, "Yes", "No")
+                    Case "SPC Required?"
+                        mPDS_Val(i) = IIf(ProcessProj_In.Qlty.SPC_Reqd = True, "Yes", "No")
 
-                Case "Gage R&Rs Required?"
-                    mPDS_Val(i) = IIf(ProcessProj_In.Qlty.GageRnR_Reqd = True, "Yes", "No")
+                    Case "Gage R&Rs Required?"
+                        mPDS_Val(i) = IIf(ProcessProj_In.Qlty.GageRnR_Reqd = True, "Yes", "No")
 
                     '....Drawing
-                Case "Design Level"
-                    mPDS_Val(i) = ProcessProj_In.Dwg.DesignLevel
+                    Case "Design Level"
+                        mPDS_Val(i) = ProcessProj_In.Dwg.DesignLevel
 
-                Case "Drawing No"
-                    mDwg_Needed_DwgNo = mPDS_CellColName(i)
+                    Case "Drawing No"
+                        mDwg_Needed_DwgNo = mPDS_CellColName(i)
 
-                Case "Drawing Description"
-                    mDwg_Needed_DwgDesc = mPDS_CellColName(i)
+                    Case "Drawing Description"
+                        mDwg_Needed_DwgDesc = mPDS_CellColName(i)
 
-                Case "BOM's Parent Part No"
-                    mBOM_Parent_PartNo = mPDS_CellColName(i)
+                    Case "BOM's Parent Part No"
+                        mBOM_Parent_PartNo = mPDS_CellColName(i)
 
-                Case "BOM's Child Part No"
-                    mBOM_Child_PartNo = mPDS_CellColName(i)
+                    Case "BOM's Child Part No"
+                        mBOM_Child_PartNo = mPDS_CellColName(i)
 
-                Case "BOM's Qty"
-                    mBOM_Qty = mPDS_CellColName(i)
+                    Case "BOM's Qty"
+                        mBOM_Qty = mPDS_CellColName(i)
 
                     '....Testing
-                Case "Leak Compress To (Pre-Plate)"
-                    mPDS_Val(i) = ProcessProj_In.Test.Leak.Compress_Unplated
+                    Case "Leak Compress To (Pre-Plate)"
+                        mPDS_Val(i) = ProcessProj_In.Test.Leak.Compress_Unplated
 
-                Case "Leak Media (Pre-Plate)"
-                    mPDS_Val(i) = ProcessProj_In.Test.Leak.Medium_Unplated
+                    Case "Leak Media (Pre-Plate)"
+                        mPDS_Val(i) = ProcessProj_In.Test.Leak.Medium_Unplated
 
-                Case "Leak Pressure (Pre-Plate)"
-                    mPDS_Val(i) = ProcessProj_In.Test.Leak.Press_Unplated
+                    Case "Leak Pressure (Pre-Plate)"
+                        mPDS_Val(i) = ProcessProj_In.Test.Leak.Press_Unplated
 
-                Case "Leak Requirement (Pre-Plate)"
-                    mPDS_Val(i) = ProcessProj_In.Test.Leak.Max_Unplated
+                    Case "Leak Requirement (Pre-Plate)"
+                        mPDS_Val(i) = ProcessProj_In.Test.Leak.Max_Unplated
 
-                Case "Leak Qty (Pre-Plate)"
-                    mPDS_Val(i) = ProcessProj_In.Test.Leak.Qty_Unplated
+                    Case "Leak Qty (Pre-Plate)"
+                        mPDS_Val(i) = ProcessProj_In.Test.Leak.Qty_Unplated
 
-                Case "Leak Frequency (Pre-Plate)"
-                    mPDS_Val(i) = ProcessProj_In.Test.Leak.Freq_Unplated
+                    Case "Leak Frequency (Pre-Plate)"
+                        mPDS_Val(i) = ProcessProj_In.Test.Leak.Freq_Unplated
 
-                Case "Leak Compress To (Post-Plate)"
-                    mPDS_Val(i) = ProcessProj_In.Test.Leak.Compress_Plated
+                    Case "Leak Compress To (Post-Plate)"
+                        mPDS_Val(i) = ProcessProj_In.Test.Leak.Compress_Plated
 
-                Case "Leak Media (Post-Plate)"
-                    mPDS_Val(i) = ProcessProj_In.Test.Leak.Medium_Plated
+                    Case "Leak Media (Post-Plate)"
+                        mPDS_Val(i) = ProcessProj_In.Test.Leak.Medium_Plated
 
-                Case "Leak Pressure (Post-Plate)"
-                    mPDS_Val(i) = ProcessProj_In.Test.Leak.Press_Plated
+                    Case "Leak Pressure (Post-Plate)"
+                        mPDS_Val(i) = ProcessProj_In.Test.Leak.Press_Plated
 
-                Case "Leak Requirement (Post-Plate)"
-                    mPDS_Val(i) = ProcessProj_In.Test.Leak.Max_Plated
+                    Case "Leak Requirement (Post-Plate)"
+                        mPDS_Val(i) = ProcessProj_In.Test.Leak.Max_Plated
 
-                Case "Leak Qty (Post-Plate)"
-                    mPDS_Val(i) = ProcessProj_In.Test.Leak.Qty_Plated
+                    Case "Leak Qty (Post-Plate)"
+                        mPDS_Val(i) = ProcessProj_In.Test.Leak.Qty_Plated
 
-                Case "Leak Frequency (Post-Plate)"
-                    mPDS_Val(i) = ProcessProj_In.Test.Leak.Freq_Plated
+                    Case "Leak Frequency (Post-Plate)"
+                        mPDS_Val(i) = ProcessProj_In.Test.Leak.Freq_Plated
 
-                Case "Load Compress To (Pre-Plate)"
-                    mPDS_Val(i) = ProcessProj_In.Test.Load.Compress_Unplated
+                    Case "Load Compress To (Pre-Plate)"
+                        mPDS_Val(i) = ProcessProj_In.Test.Load.Compress_Unplated
 
-                Case "Load Requirement (Pre-Plate)"
-                    mPDS_Val(i) = ProcessProj_In.Test.Load.Max_Unplated
+                    Case "Load Requirement (Pre-Plate)"
+                        mPDS_Val(i) = ProcessProj_In.Test.Load.Max_Unplated
 
-                Case "Load Qty (Pre-Plate)"
-                    mPDS_Val(i) = ProcessProj_In.Test.Load.Qty_Unplated
+                    Case "Load Qty (Pre-Plate)"
+                        mPDS_Val(i) = ProcessProj_In.Test.Load.Qty_Unplated
 
-                Case "Load Frequency (Pre-Plate)"
-                    mPDS_Val(i) = ProcessProj_In.Test.Load.Freq_Unplated
+                    Case "Load Frequency (Pre-Plate)"
+                        mPDS_Val(i) = ProcessProj_In.Test.Load.Freq_Unplated
 
-                Case "Load Compress To (Post-Plate)"
-                    mPDS_Val(i) = ProcessProj_In.Test.Load.Compress_Plated
+                    Case "Load Compress To (Post-Plate)"
+                        mPDS_Val(i) = ProcessProj_In.Test.Load.Compress_Plated
 
-                Case "Load Requirement (Post-Plate)"
-                    mPDS_Val(i) = ProcessProj_In.Test.Load.Max_Plated
+                    Case "Load Requirement (Post-Plate)"
+                        mPDS_Val(i) = ProcessProj_In.Test.Load.Max_Plated
 
-                Case "Load Qty (Post-Plate)"
-                    mPDS_Val(i) = ProcessProj_In.Test.Load.Qty_Plated
+                    Case "Load Qty (Post-Plate)"
+                        mPDS_Val(i) = ProcessProj_In.Test.Load.Qty_Plated
 
-                Case "Load Frequency (Post-Plate)"
-                    mPDS_Val(i) = ProcessProj_In.Test.Load.Freq_Plated
+                    Case "Load Frequency (Post-Plate)"
+                        mPDS_Val(i) = ProcessProj_In.Test.Load.Freq_Plated
 
-                Case "Springback Compress To (Pre-Plate)"
-                    mPDS_Val(i) = ProcessProj_In.Test.SpringBack.Compress_Unplated
+                    Case "Springback Compress To (Pre-Plate)"
+                        mPDS_Val(i) = ProcessProj_In.Test.SpringBack.Compress_Unplated
 
-                Case "Springback Requirement (Pre-Plate)"
-                    mPDS_Val(i) = ProcessProj_In.Test.SpringBack.Max_Unplated
+                    Case "Springback Requirement (Pre-Plate)"
+                        mPDS_Val(i) = ProcessProj_In.Test.SpringBack.Max_Unplated
 
-                Case "Springback Qty (Pre-Plate)"
-                    mPDS_Val(i) = ProcessProj_In.Test.SpringBack.Qty_Unplated
+                    Case "Springback Qty (Pre-Plate)"
+                        mPDS_Val(i) = ProcessProj_In.Test.SpringBack.Qty_Unplated
 
-                Case "Springback Frequency (Pre-Plate)"
-                    mPDS_Val(i) = ProcessProj_In.Test.SpringBack.Freq_Unplated
+                    Case "Springback Frequency (Pre-Plate)"
+                        mPDS_Val(i) = ProcessProj_In.Test.SpringBack.Freq_Unplated
 
-                Case "Springback Compress To (Post-Plate)"
-                    mPDS_Val(i) = ProcessProj_In.Test.SpringBack.Compress_Plated
+                    Case "Springback Compress To (Post-Plate)"
+                        mPDS_Val(i) = ProcessProj_In.Test.SpringBack.Compress_Plated
 
-                Case "Springback Requirement (Post-Plate)"
-                    mPDS_Val(i) = ProcessProj_In.Test.SpringBack.Max_Plated
+                    Case "Springback Requirement (Post-Plate)"
+                        mPDS_Val(i) = ProcessProj_In.Test.SpringBack.Max_Plated
 
-                Case "Springback Qty (Post-Plate)"
-                    mPDS_Val(i) = ProcessProj_In.Test.SpringBack.Qty_Plated
+                    Case "Springback Qty (Post-Plate)"
+                        mPDS_Val(i) = ProcessProj_In.Test.SpringBack.Qty_Plated
 
-                Case "Springback Frequency (Post-Plate)"
-                    mPDS_Val(i) = ProcessProj_In.Test.SpringBack.Freq_Plated
-
+                    Case "Springback Frequency (Post-Plate)"
+                        mPDS_Val(i) = ProcessProj_In.Test.SpringBack.Freq_Plated
 
                     '....Approval
-                Case "Attendees Department"
-                    mAttendeesStartColName_Dept = mPDS_CellColName(i)
+                    Case "Attendees Department"
+                        mAttendeesStartColName_Dept = mPDS_CellColName(i)
 
-                Case "Attendees Signature"
-                    mAttendeesStartColName_Sign = mPDS_CellColName(i)
+                    Case "Attendees Signature"
+                        mAttendeesStartColName_Sign = mPDS_CellColName(i)
 
-                Case "Attendees Name"
-                    mAttendeesStartColName_Name = mPDS_CellColName(i)
+                    Case "Attendees Name"
+                        mAttendeesStartColName_Name = mPDS_CellColName(i)
 
-                Case "Attendees Title"
-                    mAttendeesStartColName_Title = mPDS_CellColName(i)
+                    Case "Attendees Title"
+                        mAttendeesStartColName_Title = mPDS_CellColName(i)
 
-                Case "Attendees Date"
-                    mAttendeesStartColName_Date = mPDS_CellColName(i)
+                    Case "Attendees Date"
+                        mAttendeesStartColName_Date = mPDS_CellColName(i)
 
 
-            End Select
+                End Select
 
-        Next
+            Next
+
+        Catch ex As Exception
+
+        End Try
 
     End Sub
 

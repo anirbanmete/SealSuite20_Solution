@@ -4,7 +4,7 @@
 '                      FORM MODULE   :  Process_frmMain                        '
 '                        VERSION NO  :  1.2                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  10JAN18                                '
+'                     LAST MODIFIED  :  12JAN18                                '
 '                                                                              '
 '===============================================================================
 Imports System.Globalization
@@ -1763,7 +1763,6 @@ Public Class Process_frmMain
 
         End With
 
-
         '.... "Drawing:"
         With mProcess_Project.Dwg
             cmbDwg_DesignLevel.Text = .DesignLevel
@@ -1793,12 +1792,10 @@ Public Class Process_frmMain
                 End If
             Next
 
-
         End With
 
 
         '.... "Testing:"
-
         With mProcess_Project.Test
             txtTest_Other.Text = .Other
 
@@ -1964,7 +1961,6 @@ Public Class Process_frmMain
 
 
         '.... "Shipping:"
-
         With mProcess_Project.Shipping
 
             For i As Integer = 0 To mProcess_Project.Design.CustSpec.ID_Cust.Count - 1
@@ -1979,7 +1975,6 @@ Public Class Process_frmMain
 
 
         '.... "IssueComment:"
-
         With mProcess_Project.IssueCommnt
             Dim pCI As New CultureInfo("en-US")
             For i As Integer = 0 To .SN.Count - 1
@@ -2012,7 +2007,6 @@ Public Class Process_frmMain
 
 
         '.... "Approval:"
-
         With mProcess_Project.Approval
 
             For j As Integer = 0 To .ID_Approval.Count - 1
@@ -2425,7 +2419,6 @@ Public Class Process_frmMain
 #End Region
 
 #End Region
-
 
 #End Region
 
