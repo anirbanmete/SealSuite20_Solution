@@ -18,7 +18,7 @@ Imports System.Runtime.Serialization
 Imports System.Xml.Serialization
 
 
-<Assembly: EdmSchemaAttribute("9744d11b-751c-4618-ae2f-be0a6821d4f9")>
+<Assembly: EdmSchemaAttribute("3a6cda18-fa25-4e38-9e97-89b827260c97")>
 #Region "Contexts"
 
 ''' <summary>

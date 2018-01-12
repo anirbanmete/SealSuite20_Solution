@@ -8,17 +8,17 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("SealSuite21")> 
+<Assembly: AssemblyTitle("SealSuite22")>
 <Assembly: AssemblyDescription("")> 
-<Assembly: AssemblyCompany("")> 
-<Assembly: AssemblyProduct("SealSuite21")> 
+<Assembly: AssemblyCompany("")>
+<Assembly: AssemblyProduct("SealSuite22")>
 <Assembly: AssemblyCopyright("Copyright ©  2018")> 
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("32ac26d7-19e0-443e-b8fa-addd2253aa8d")> 
+<Assembly: Guid("32ac26d7-19e0-443e-b8fa-addd2253aa8d")>
 
 ' Version information for an assembly consists of the following four values:
 '
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("2.1.0.0")> 
-<Assembly: AssemblyFileVersion("2.1.0.0")> 
+<Assembly: AssemblyVersion("2.2.0.0")>
+<Assembly: AssemblyFileVersion("2.2.0.0")>

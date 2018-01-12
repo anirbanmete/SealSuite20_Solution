@@ -22,67 +22,96 @@ Partial Class Process_frmMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Process_frmMain))
-        Dim DataGridViewCellStyle175 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle176 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle177 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle178 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle179 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle180 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle181 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle182 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle183 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle184 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle185 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle186 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle187 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle188 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle189 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle190 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle191 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle192 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle193 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle194 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle195 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle196 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle197 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle198 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle199 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle200 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle201 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle202 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle203 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle204 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle205 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle206 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle207 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle208 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle209 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle210 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle211 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle212 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle213 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle214 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle215 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle216 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle217 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle218 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle219 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle220 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle221 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle222 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle223 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle224 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle225 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle226 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle227 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle228 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle229 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle230 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle231 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle232 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle33 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle38 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle39 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle40 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle41 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle42 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle43 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle47 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle48 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle49 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle51 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle53 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle55 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle56 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle57 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle60 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle61 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle66 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle67 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle69 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle71 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle72 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle73 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle74 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle75 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle76 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle77 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle78 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle79 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle80 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle81 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle82 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle83 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle84 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle85 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle29 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle30 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle31 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle32 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle34 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle35 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle36 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle37 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle44 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle45 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle46 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle50 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle58 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle59 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle54 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle52 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle62 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle63 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle64 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle65 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle70 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle68 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lblBorder = New System.Windows.Forms.Label()
         Me.pnlPanel1 = New System.Windows.Forms.Panel()
+        Me.cmdSealPart = New System.Windows.Forms.Button()
         Me.cmdIssueComment = New System.Windows.Forms.Button()
         Me.txtStatus = New System.Windows.Forms.TextBox()
         Me.cmdSetUnits = New System.Windows.Forms.Button()
@@ -126,7 +155,6 @@ Partial Class Process_frmMain
         Me.cmbType = New System.Windows.Forms.ComboBox()
         Me.Label201 = New System.Windows.Forms.Label()
         Me.Label219 = New System.Windows.Forms.Label()
-        Me.cmdRiskAna = New System.Windows.Forms.Button()
         Me.cmdCancel = New System.Windows.Forms.Button()
         Me.cmdOK = New System.Windows.Forms.Button()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
@@ -198,10 +226,6 @@ Partial Class Process_frmMain
         Me.Label25 = New System.Windows.Forms.Label()
         Me.GroupBox27 = New System.Windows.Forms.GroupBox()
         Me.grdPreOrder_SalesData = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewComboBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label207 = New System.Windows.Forms.Label()
         Me.txtPreOrderPriceNotes = New System.Windows.Forms.TextBox()
         Me.tabExport = New System.Windows.Forms.TabPage()
@@ -324,10 +348,6 @@ Partial Class Process_frmMain
         Me.Label4 = New System.Windows.Forms.Label()
         Me.GroupBox46 = New System.Windows.Forms.GroupBox()
         Me.grdCost_SplOperation = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn71 = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.Column18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn72 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox20 = New System.Windows.Forms.GroupBox()
         Me.cmbCost_QuoteFile = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -342,9 +362,6 @@ Partial Class Process_frmMain
         Me.lblApp_MaxLeak_Unit = New System.Windows.Forms.Label()
         Me.GroupBox39 = New System.Windows.Forms.GroupBox()
         Me.grdApp_Load = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn42 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.txtApp_Fluid = New System.Windows.Forms.TextBox()
         Me.Label83 = New System.Windows.Forms.Label()
         Me.Label73 = New System.Windows.Forms.Label()
@@ -352,11 +369,6 @@ Partial Class Process_frmMain
         Me.lblApp_Press_Unit = New System.Windows.Forms.Label()
         Me.lblApp_T_Unit = New System.Windows.Forms.Label()
         Me.grdApp_OpCond = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn30 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn31 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn32 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label37 = New System.Windows.Forms.Label()
         Me.txtApp_MaxLeak = New System.Windows.Forms.TextBox()
         Me.lblMedium = New System.Windows.Forms.Label()
@@ -416,11 +428,6 @@ Partial Class Process_frmMain
         Me.Label32 = New System.Windows.Forms.Label()
         Me.GroupBox38 = New System.Windows.Forms.GroupBox()
         Me.grdApp_Face_Cavity = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewComboBoxColumn5 = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.DataGridViewTextBoxColumn77 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn78 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn79 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn80 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cmbApp_Face_POrient = New System.Windows.Forms.ComboBox()
         Me.Label229 = New System.Windows.Forms.Label()
         Me.txtApp_Face_MaxFlangeSeparation = New System.Windows.Forms.TextBox()
@@ -446,11 +453,6 @@ Partial Class Process_frmMain
         Me.Label141 = New System.Windows.Forms.Label()
         Me.GroupBox30 = New System.Windows.Forms.GroupBox()
         Me.grdApp_Axial_Cavity = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewComboBoxColumn6 = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.DataGridViewTextBoxColumn81 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn82 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn83 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn84 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.txtApp_OscServiceLife_Axial = New System.Windows.Forms.TextBox()
         Me.cmbApp_Static_Axial = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -496,7 +498,7 @@ Partial Class Process_frmMain
         Me.Label155 = New System.Windows.Forms.Label()
         Me.cmbDesign_Winnovation = New System.Windows.Forms.ComboBox()
         Me.txtDesign_WinnovationNo = New System.Windows.Forms.TextBox()
-        Me.GroupBox42 = New System.Windows.Forms.GroupBox()
+        Me.grpRefPN = New System.Windows.Forms.GroupBox()
         Me.chkNewRef_Notes = New System.Windows.Forms.CheckBox()
         Me.chkLegacyRef_Notes = New System.Windows.Forms.CheckBox()
         Me.chkLegacyRef_Dim = New System.Windows.Forms.CheckBox()
@@ -595,10 +597,6 @@ Partial Class Process_frmMain
         Me.grpGroupBox14 = New System.Windows.Forms.GroupBox()
         Me.Label176 = New System.Windows.Forms.Label()
         Me.grdDesign_Seal = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.txtDesign_LessonsLearned = New System.Windows.Forms.TextBox()
         Me.Label243 = New System.Windows.Forms.Label()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
@@ -620,12 +618,6 @@ Partial Class Process_frmMain
         Me.DataGridViewTextBoxColumn63 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label117 = New System.Windows.Forms.Label()
         Me.grdManf_ToolNGage = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.Column7 = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column8 = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.cmbManf_PrecompressionGlue = New System.Windows.Forms.ComboBox()
         Me.Label102 = New System.Windows.Forms.Label()
         Me.Label101 = New System.Windows.Forms.Label()
@@ -640,16 +632,8 @@ Partial Class Process_frmMain
         Me.Label112 = New System.Windows.Forms.Label()
         Me.Label42 = New System.Windows.Forms.Label()
         Me.grdPurchase_Drawing = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn92 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn93 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn94 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label33 = New System.Windows.Forms.Label()
         Me.grdPurchase_ToolNGages = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn90 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewComboBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewComboBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn91 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewComboBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox34 = New System.Windows.Forms.GroupBox()
         Me.chkPurchase_UserSigned = New System.Windows.Forms.CheckBox()
         Me.cmdPurchase_UserSign = New System.Windows.Forms.Button()
@@ -661,17 +645,9 @@ Partial Class Process_frmMain
         Me.DataGridViewTextBoxColumn50 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn66 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.grdPurchase_Mat = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn64 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewComboBoxColumn3 = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.DataGridViewTextBoxColumn65 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tabQuality = New System.Windows.Forms.TabPage()
         Me.GroupBox57 = New System.Windows.Forms.GroupBox()
         Me.grdQuality_SplOperation = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewComboBoxColumn8 = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.DataGridViewTextBoxColumn74 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn75 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn76 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label113 = New System.Windows.Forms.Label()
         Me.GroupBox25 = New System.Windows.Forms.GroupBox()
         Me.chkQuality_UserSigned = New System.Windows.Forms.CheckBox()
@@ -715,14 +691,7 @@ Partial Class Process_frmMain
         Me.Label150 = New System.Windows.Forms.Label()
         Me.Label149 = New System.Windows.Forms.Label()
         Me.grdDrawing_BOM = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn23 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.grdDrawing_Needed = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn21 = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.Column11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label148 = New System.Windows.Forms.Label()
         Me.cmbDwg_DesignLevel = New System.Windows.Forms.ComboBox()
         Me.cmdNotes = New System.Windows.Forms.Button()
@@ -740,7 +709,7 @@ Partial Class Process_frmMain
         Me.DataGridViewTextBoxColumn97 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.txtTest_Other = New System.Windows.Forms.TextBox()
         Me.Label152 = New System.Windows.Forms.Label()
-        Me.txtTest_CompressPre_Load = New System.Windows.Forms.TabControl()
+        Me.tbTest = New System.Windows.Forms.TabControl()
         Me.TabPage17 = New System.Windows.Forms.TabPage()
         Me.cmbTest_FreqPost_Leak = New System.Windows.Forms.ComboBox()
         Me.cmbTest_FreqPre_Leak = New System.Windows.Forms.ComboBox()
@@ -775,7 +744,7 @@ Partial Class Process_frmMain
         Me.txtTest_ReqPost_Load = New System.Windows.Forms.TextBox()
         Me.txtTest_CompressPost_Load = New System.Windows.Forms.TextBox()
         Me.txtTest_ReqPre_Load = New System.Windows.Forms.TextBox()
-        Me.TextBox142 = New System.Windows.Forms.TextBox()
+        Me.txtTest_CompressPre_Load = New System.Windows.Forms.TextBox()
         Me.Label170 = New System.Windows.Forms.Label()
         Me.Label171 = New System.Windows.Forms.Label()
         Me.Label172 = New System.Windows.Forms.Label()
@@ -882,148 +851,208 @@ Partial Class Process_frmMain
         Me.menuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.TabViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.openFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.pnlPanel1.SuspendLayout
-        Me.GroupBox43.SuspendLayout
-        Me.GroupBox37.SuspendLayout
-        Me.GroupBox1.SuspendLayout
-        Me.grpParker.SuspendLayout
-        Me.GroupBox7.SuspendLayout
-        Me.TabControl1.SuspendLayout
-        Me.tabMarketingInfo.SuspendLayout
-        Me.TabControl3.SuspendLayout
-        Me.TabPage3.SuspendLayout
-        Me.GroupBox44.SuspendLayout
-        Me.GroupBox9.SuspendLayout
-        Me.grpQuote.SuspendLayout
-        CType(Me.grdQuote,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.GroupBox13.SuspendLayout
-        Me.grpGroupBox10.SuspendLayout
-        Me.GroupBox8.SuspendLayout
-        CType(Me.grdCustContact,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.grpGroupBox2.SuspendLayout
-        Me.TabPage6.SuspendLayout
-        Me.GroupBox17.SuspendLayout
-        CType(Me.grdPreOrderEditedBy,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.grpPreOrder_RiskAna.SuspendLayout
-        CType(Me.grdPreOrderRiskAna,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.GroupBox15.SuspendLayout
-        Me.GroupBox36.SuspendLayout
-        Me.GroupBox27.SuspendLayout
-        CType(Me.grdPreOrder_SalesData,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.tabExport.SuspendLayout
-        Me.GroupBox14.SuspendLayout
-        CType(Me.grdExport_EditedBy,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.tabOrder.SuspendLayout
-        Me.GroupBox53.SuspendLayout
-        CType(Me.grdOrdEntry_CustContact,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.GroupBox52.SuspendLayout
-        Me.GroupBox51.SuspendLayout
-        Me.GroupBox31.SuspendLayout
-        Me.GroupBox18.SuspendLayout
-        Me.GroupBox22.SuspendLayout
-        CType(Me.grdOrdEntry_EditedBy,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.GroupBox21.SuspendLayout
-        Me.GroupBox19.SuspendLayout
-        Me.tabCosting.SuspendLayout
-        Me.GroupBox47.SuspendLayout
-        Me.GroupBox23.SuspendLayout
-        CType(Me.grdCost_EditedBy,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.GroupBox46.SuspendLayout
-        CType(Me.grdCost_SplOperation,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.GroupBox20.SuspendLayout
-        Me.tabApplication.SuspendLayout
-        Me.tbApp.SuspendLayout
-        Me.tbpGen.SuspendLayout
-        Me.GroupBox45.SuspendLayout
-        Me.GroupBox39.SuspendLayout
-        CType(Me.grdApp_Load,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.GroupBox26.SuspendLayout
-        CType(Me.grdApp_OpCond,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.GroupBox24.SuspendLayout
-        Me.GroupBox2.SuspendLayout
-        Me.tbpFace.SuspendLayout
-        Me.GroupBox54.SuspendLayout
-        Me.GroupBox40.SuspendLayout
-        CType(Me.grdApp_EditedBy_Face,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.GroupBox38.SuspendLayout
-        CType(Me.grdApp_Face_Cavity,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.tbpAxial.SuspendLayout
-        Me.GroupBox55.SuspendLayout
-        Me.GroupBox30.SuspendLayout
-        CType(Me.grdApp_Axial_Cavity,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.GroupBox41.SuspendLayout
-        CType(Me.grdApp_EditedBy_Axial,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.tabDesign.SuspendLayout
-        Me.TabControl2.SuspendLayout
-        Me.TabPage1.SuspendLayout
-        CType(Me.grdDesign_Verification,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.GroupBox56.SuspendLayout
-        Me.GroupBox42.SuspendLayout
-        CType(Me.grdDesign_Input,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.DataGridView33,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.grpPlating.SuspendLayout
-        Me.grpCoating.SuspendLayout
-        Me.GroupBox48.SuspendLayout
-        Me.GroupBox35.SuspendLayout
-        Me.GroupBox3.SuspendLayout
-        Me.GroupBox12.SuspendLayout
-        Me.TabPage2.SuspendLayout
-        Me.GroupBox10.SuspendLayout
-        CType(Me.grdDesign_EditedBy,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.grpGroupBox14.SuspendLayout
-        CType(Me.grdDesign_Seal,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.GroupBox5.SuspendLayout
-        CType(Me.grdDesign_CustSpec,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.tabManufacturing.SuspendLayout
-        Me.GroupBox33.SuspendLayout
-        CType(Me.grdManf_EditedBy,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.grdManf_ToolNGage,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.GroupBox6.SuspendLayout
-        Me.tabPurchasing.SuspendLayout
-        CType(Me.grdPurchase_Drawing,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.grdPurchase_ToolNGages,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.GroupBox34.SuspendLayout
-        CType(Me.grdPurchase_EditedBy,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.grdPurchase_Mat,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.tabQuality.SuspendLayout
-        Me.GroupBox57.SuspendLayout
-        CType(Me.grdQuality_SplOperation,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.GroupBox25.SuspendLayout
-        CType(Me.grdQuality_EditedBy,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.tabDrawing.SuspendLayout
-        Me.GroupBox29.SuspendLayout
-        CType(Me.grdDwg_EditedBy,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.grdDrawing_BOM,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.grdDrawing_Needed,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.tabTesting.SuspendLayout
-        Me.GroupBox32.SuspendLayout
-        CType(Me.grdTest_EditedBy,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.txtTest_CompressPre_Load.SuspendLayout
-        Me.TabPage17.SuspendLayout
-        Me.TabPage18.SuspendLayout
-        Me.TabPage19.SuspendLayout
-        Me.tabPlanning.SuspendLayout
-        CType(Me.DataGridView2,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.grdPlanning_Ordered,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.GroupBox60.SuspendLayout
-        Me.GroupBox4.SuspendLayout
-        CType(Me.grdPlanning_EditedBy,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.tabShipping.SuspendLayout
-        Me.GroupBox59.SuspendLayout
-        Me.grpCustSpec_Shipping.SuspendLayout
-        CType(Me.grdShipping_CustSpec,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.GroupBox28.SuspendLayout
-        CType(Me.grdShipping_EditedBy,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.tabKeyChar.SuspendLayout
-        Me.grpKeyChar.SuspendLayout
-        CType(Me.grdDesign_KeyChar,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.tabIssue.SuspendLayout
-        CType(Me.grdIssueComment,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.tabApproval.SuspendLayout
-        Me.GroupBox63.SuspendLayout
-        CType(Me.grdApproval_Attendees,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.menuStrip1.SuspendLayout
-        Me.SuspendLayout
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewComboBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn71 = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.Column18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn72 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn30 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn31 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn32 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn42 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewComboBoxColumn5 = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.DataGridViewTextBoxColumn77 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn78 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn79 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn80 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewComboBoxColumn6 = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.DataGridViewTextBoxColumn81 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn82 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn83 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn84 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.Column7 = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column8 = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.DataGridViewTextBoxColumn64 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewComboBoxColumn3 = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.DataGridViewTextBoxColumn65 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn90 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewComboBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewComboBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn91 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewComboBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn92 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn93 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn94 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewComboBoxColumn8 = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.DataGridViewTextBoxColumn74 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn75 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn76 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn21 = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.Column11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn23 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.pnlPanel1.SuspendLayout()
+        Me.GroupBox43.SuspendLayout()
+        Me.GroupBox37.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
+        Me.grpParker.SuspendLayout()
+        Me.GroupBox7.SuspendLayout()
+        Me.TabControl1.SuspendLayout()
+        Me.tabMarketingInfo.SuspendLayout()
+        Me.TabControl3.SuspendLayout()
+        Me.TabPage3.SuspendLayout()
+        Me.GroupBox44.SuspendLayout()
+        Me.GroupBox9.SuspendLayout()
+        Me.grpQuote.SuspendLayout()
+        CType(Me.grdQuote, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox13.SuspendLayout()
+        Me.grpGroupBox10.SuspendLayout()
+        Me.GroupBox8.SuspendLayout()
+        CType(Me.grdCustContact, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.grpGroupBox2.SuspendLayout()
+        Me.TabPage6.SuspendLayout()
+        Me.GroupBox17.SuspendLayout()
+        CType(Me.grdPreOrderEditedBy, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.grpPreOrder_RiskAna.SuspendLayout()
+        CType(Me.grdPreOrderRiskAna, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox15.SuspendLayout()
+        Me.GroupBox36.SuspendLayout()
+        Me.GroupBox27.SuspendLayout()
+        CType(Me.grdPreOrder_SalesData, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tabExport.SuspendLayout()
+        Me.GroupBox14.SuspendLayout()
+        CType(Me.grdExport_EditedBy, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tabOrder.SuspendLayout()
+        Me.GroupBox53.SuspendLayout()
+        CType(Me.grdOrdEntry_CustContact, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox52.SuspendLayout()
+        Me.GroupBox51.SuspendLayout()
+        Me.GroupBox31.SuspendLayout()
+        Me.GroupBox18.SuspendLayout()
+        Me.GroupBox22.SuspendLayout()
+        CType(Me.grdOrdEntry_EditedBy, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox21.SuspendLayout()
+        Me.GroupBox19.SuspendLayout()
+        Me.tabCosting.SuspendLayout()
+        Me.GroupBox47.SuspendLayout()
+        Me.GroupBox23.SuspendLayout()
+        CType(Me.grdCost_EditedBy, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox46.SuspendLayout()
+        CType(Me.grdCost_SplOperation, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox20.SuspendLayout()
+        Me.tabApplication.SuspendLayout()
+        Me.tbApp.SuspendLayout()
+        Me.tbpGen.SuspendLayout()
+        Me.GroupBox45.SuspendLayout()
+        Me.GroupBox39.SuspendLayout()
+        CType(Me.grdApp_Load, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox26.SuspendLayout()
+        CType(Me.grdApp_OpCond, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox24.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
+        Me.tbpFace.SuspendLayout()
+        Me.GroupBox54.SuspendLayout()
+        Me.GroupBox40.SuspendLayout()
+        CType(Me.grdApp_EditedBy_Face, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox38.SuspendLayout()
+        CType(Me.grdApp_Face_Cavity, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tbpAxial.SuspendLayout()
+        Me.GroupBox55.SuspendLayout()
+        Me.GroupBox30.SuspendLayout()
+        CType(Me.grdApp_Axial_Cavity, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox41.SuspendLayout()
+        CType(Me.grdApp_EditedBy_Axial, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tabDesign.SuspendLayout()
+        Me.TabControl2.SuspendLayout()
+        Me.TabPage1.SuspendLayout()
+        CType(Me.grdDesign_Verification, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox56.SuspendLayout()
+        Me.grpRefPN.SuspendLayout()
+        CType(Me.grdDesign_Input, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridView33, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.grpPlating.SuspendLayout()
+        Me.grpCoating.SuspendLayout()
+        Me.GroupBox48.SuspendLayout()
+        Me.GroupBox35.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
+        Me.GroupBox12.SuspendLayout()
+        Me.TabPage2.SuspendLayout()
+        Me.GroupBox10.SuspendLayout()
+        CType(Me.grdDesign_EditedBy, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.grpGroupBox14.SuspendLayout()
+        CType(Me.grdDesign_Seal, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox5.SuspendLayout()
+        CType(Me.grdDesign_CustSpec, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tabManufacturing.SuspendLayout()
+        Me.GroupBox33.SuspendLayout()
+        CType(Me.grdManf_EditedBy, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdManf_ToolNGage, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox6.SuspendLayout()
+        Me.tabPurchasing.SuspendLayout()
+        CType(Me.grdPurchase_Drawing, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdPurchase_ToolNGages, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox34.SuspendLayout()
+        CType(Me.grdPurchase_EditedBy, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdPurchase_Mat, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tabQuality.SuspendLayout()
+        Me.GroupBox57.SuspendLayout()
+        CType(Me.grdQuality_SplOperation, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox25.SuspendLayout()
+        CType(Me.grdQuality_EditedBy, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tabDrawing.SuspendLayout()
+        Me.GroupBox29.SuspendLayout()
+        CType(Me.grdDwg_EditedBy, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdDrawing_BOM, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdDrawing_Needed, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tabTesting.SuspendLayout()
+        Me.GroupBox32.SuspendLayout()
+        CType(Me.grdTest_EditedBy, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tbTest.SuspendLayout()
+        Me.TabPage17.SuspendLayout()
+        Me.TabPage18.SuspendLayout()
+        Me.TabPage19.SuspendLayout()
+        Me.tabPlanning.SuspendLayout()
+        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdPlanning_Ordered, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox60.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
+        CType(Me.grdPlanning_EditedBy, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tabShipping.SuspendLayout()
+        Me.GroupBox59.SuspendLayout()
+        Me.grpCustSpec_Shipping.SuspendLayout()
+        CType(Me.grdShipping_CustSpec, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox28.SuspendLayout()
+        CType(Me.grdShipping_EditedBy, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tabKeyChar.SuspendLayout()
+        Me.grpKeyChar.SuspendLayout()
+        CType(Me.grdDesign_KeyChar, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tabIssue.SuspendLayout()
+        CType(Me.grdIssueComment, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tabApproval.SuspendLayout()
+        Me.GroupBox63.SuspendLayout()
+        CType(Me.grdApproval_Attendees, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.menuStrip1.SuspendLayout()
+        Me.SuspendLayout()
         '
         'lblBorder
         '
@@ -1035,9 +1064,10 @@ Partial Class Process_frmMain
         '
         'pnlPanel1
         '
-        Me.pnlPanel1.AutoScroll = true
-        Me.pnlPanel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
+        Me.pnlPanel1.AutoScroll = True
+        Me.pnlPanel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.pnlPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pnlPanel1.Controls.Add(Me.cmdSealPart)
         Me.pnlPanel1.Controls.Add(Me.cmdIssueComment)
         Me.pnlPanel1.Controls.Add(Me.txtStatus)
         Me.pnlPanel1.Controls.Add(Me.cmdSetUnits)
@@ -1052,7 +1082,6 @@ Partial Class Process_frmMain
         Me.pnlPanel1.Controls.Add(Me.cmbType)
         Me.pnlPanel1.Controls.Add(Me.Label201)
         Me.pnlPanel1.Controls.Add(Me.Label219)
-        Me.pnlPanel1.Controls.Add(Me.cmdRiskAna)
         Me.pnlPanel1.Controls.Add(Me.cmdCancel)
         Me.pnlPanel1.Controls.Add(Me.cmdOK)
         Me.pnlPanel1.Controls.Add(Me.TabControl1)
@@ -1062,26 +1091,38 @@ Partial Class Process_frmMain
         Me.pnlPanel1.Size = New System.Drawing.Size(1108, 846)
         Me.pnlPanel1.TabIndex = 5
         '
+        'cmdSealPart
+        '
+        Me.cmdSealPart.BackColor = System.Drawing.Color.Silver
+        Me.cmdSealPart.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdSealPart.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cmdSealPart.Location = New System.Drawing.Point(41, 810)
+        Me.cmdSealPart.Name = "cmdSealPart"
+        Me.cmdSealPart.Size = New System.Drawing.Size(90, 30)
+        Me.cmdSealPart.TabIndex = 687
+        Me.cmdSealPart.Text = "Seal Part"
+        Me.cmdSealPart.UseVisualStyleBackColor = False
+        '
         'cmdIssueComment
         '
         Me.cmdIssueComment.BackColor = System.Drawing.Color.Silver
-        Me.cmdIssueComment.Enabled = false
-        Me.cmdIssueComment.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.cmdIssueComment.Enabled = False
+        Me.cmdIssueComment.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdIssueComment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdIssueComment.Location = New System.Drawing.Point(466, 810)
+        Me.cmdIssueComment.Location = New System.Drawing.Point(184, 810)
         Me.cmdIssueComment.Name = "cmdIssueComment"
-        Me.cmdIssueComment.Size = New System.Drawing.Size(142, 30)
+        Me.cmdIssueComment.Size = New System.Drawing.Size(136, 30)
         Me.cmdIssueComment.TabIndex = 686
         Me.cmdIssueComment.Text = "Issues / Comments"
-        Me.cmdIssueComment.UseVisualStyleBackColor = false
+        Me.cmdIssueComment.UseVisualStyleBackColor = False
         '
         'txtStatus
         '
-        Me.txtStatus.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtStatus.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtStatus.ForeColor = System.Drawing.Color.Black
         Me.txtStatus.Location = New System.Drawing.Point(148, 141)
         Me.txtStatus.Name = "txtStatus"
-        Me.txtStatus.ReadOnly = true
+        Me.txtStatus.ReadOnly = True
         Me.txtStatus.Size = New System.Drawing.Size(52, 21)
         Me.txtStatus.TabIndex = 685
         Me.txtStatus.Text = "Active"
@@ -1089,10 +1130,10 @@ Partial Class Process_frmMain
         '
         'cmdSetUnits
         '
-        Me.cmdSetUnits.AutoSize = true
+        Me.cmdSetUnits.AutoSize = True
         Me.cmdSetUnits.BackColor = System.Drawing.Color.Silver
-        Me.cmdSetUnits.Enabled = false
-        Me.cmdSetUnits.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.cmdSetUnits.Enabled = False
+        Me.cmdSetUnits.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdSetUnits.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdSetUnits.Location = New System.Drawing.Point(1012, 131)
         Me.cmdSetUnits.Name = "cmdSetUnits"
@@ -1100,20 +1141,20 @@ Partial Class Process_frmMain
         Me.cmdSetUnits.TabIndex = 684
         Me.cmdSetUnits.Tag = "AOnly"
         Me.cmdSetUnits.Text = "Set Units"
-        Me.cmdSetUnits.UseVisualStyleBackColor = false
+        Me.cmdSetUnits.UseVisualStyleBackColor = False
         '
         'cmdCreatePDS
         '
         Me.cmdCreatePDS.BackColor = System.Drawing.Color.Silver
-        Me.cmdCreatePDS.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmdCreatePDS.Image = CType(resources.GetObject("cmdCreatePDS.Image"),System.Drawing.Image)
+        Me.cmdCreatePDS.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdCreatePDS.Image = CType(resources.GetObject("cmdCreatePDS.Image"), System.Drawing.Image)
         Me.cmdCreatePDS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdCreatePDS.Location = New System.Drawing.Point(41, 810)
+        Me.cmdCreatePDS.Location = New System.Drawing.Point(373, 811)
         Me.cmdCreatePDS.Name = "cmdCreatePDS"
         Me.cmdCreatePDS.Size = New System.Drawing.Size(116, 30)
         Me.cmdCreatePDS.TabIndex = 682
         Me.cmdCreatePDS.Text = "Create &PDS"
-        Me.cmdCreatePDS.UseVisualStyleBackColor = false
+        Me.cmdCreatePDS.UseVisualStyleBackColor = False
         '
         'GroupBox43
         '
@@ -1122,12 +1163,12 @@ Partial Class Process_frmMain
         Me.GroupBox43.Controls.Add(Me.cmdFilter)
         Me.GroupBox43.Controls.Add(Me.cmdCopyFrom)
         Me.GroupBox43.Controls.Add(Me.cmdOpenAgain)
-        Me.GroupBox43.Enabled = false
+        Me.GroupBox43.Enabled = False
         Me.GroupBox43.Location = New System.Drawing.Point(224, 107)
         Me.GroupBox43.Name = "GroupBox43"
         Me.GroupBox43.Size = New System.Drawing.Size(299, 66)
         Me.GroupBox43.TabIndex = 681
-        Me.GroupBox43.TabStop = false
+        Me.GroupBox43.TabStop = False
         Me.GroupBox43.Text = "Project:"
         '
         'cmdClose
@@ -1137,7 +1178,7 @@ Partial Class Process_frmMain
         Me.cmdClose.Size = New System.Drawing.Size(75, 23)
         Me.cmdClose.TabIndex = 2
         Me.cmdClose.Text = "Close"
-        Me.cmdClose.UseVisualStyleBackColor = true
+        Me.cmdClose.UseVisualStyleBackColor = True
         '
         'cmdDelete
         '
@@ -1146,7 +1187,7 @@ Partial Class Process_frmMain
         Me.cmdDelete.Size = New System.Drawing.Size(75, 23)
         Me.cmdDelete.TabIndex = 0
         Me.cmdDelete.Text = "Delete"
-        Me.cmdDelete.UseVisualStyleBackColor = true
+        Me.cmdDelete.UseVisualStyleBackColor = True
         '
         'cmdFilter
         '
@@ -1155,7 +1196,7 @@ Partial Class Process_frmMain
         Me.cmdFilter.Size = New System.Drawing.Size(75, 23)
         Me.cmdFilter.TabIndex = 665
         Me.cmdFilter.Text = "Filter"
-        Me.cmdFilter.UseVisualStyleBackColor = true
+        Me.cmdFilter.UseVisualStyleBackColor = True
         '
         'cmdCopyFrom
         '
@@ -1164,7 +1205,7 @@ Partial Class Process_frmMain
         Me.cmdCopyFrom.Size = New System.Drawing.Size(86, 23)
         Me.cmdCopyFrom.TabIndex = 1
         Me.cmdCopyFrom.Text = "Copy From"
-        Me.cmdCopyFrom.UseVisualStyleBackColor = true
+        Me.cmdCopyFrom.UseVisualStyleBackColor = True
         '
         'cmdOpenAgain
         '
@@ -1173,13 +1214,13 @@ Partial Class Process_frmMain
         Me.cmdOpenAgain.Size = New System.Drawing.Size(86, 23)
         Me.cmdOpenAgain.TabIndex = 666
         Me.cmdOpenAgain.Text = "Open Again"
-        Me.cmdOpenAgain.UseVisualStyleBackColor = true
+        Me.cmdOpenAgain.UseVisualStyleBackColor = True
         '
         'cmbRating
         '
         Me.cmbRating.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbRating.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbRating.FormattingEnabled = true
+        Me.cmbRating.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbRating.FormattingEnabled = True
         Me.cmbRating.Location = New System.Drawing.Point(1012, 65)
         Me.cmbRating.Name = "cmbRating"
         Me.cmbRating.Size = New System.Drawing.Size(60, 21)
@@ -1191,29 +1232,29 @@ Partial Class Process_frmMain
         Me.GroupBox37.Controls.Add(Me.Label12)
         Me.GroupBox37.Controls.Add(Me.Label199)
         Me.GroupBox37.Controls.Add(Me.txtExportControlled)
-        Me.GroupBox37.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox37.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox37.Location = New System.Drawing.Point(770, 33)
         Me.GroupBox37.Name = "GroupBox37"
         Me.GroupBox37.Size = New System.Drawing.Size(192, 65)
         Me.GroupBox37.TabIndex = 665
-        Me.GroupBox37.TabStop = false
+        Me.GroupBox37.TabStop = False
         Me.GroupBox37.Text = "Export:"
         '
         'txtExportStatus
         '
-        Me.txtExportStatus.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtExportStatus.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtExportStatus.ForeColor = System.Drawing.Color.Black
         Me.txtExportStatus.Location = New System.Drawing.Point(81, 32)
         Me.txtExportStatus.Name = "txtExportStatus"
-        Me.txtExportStatus.ReadOnly = true
+        Me.txtExportStatus.ReadOnly = True
         Me.txtExportStatus.Size = New System.Drawing.Size(90, 21)
         Me.txtExportStatus.TabIndex = 718
         '
         'Label12
         '
-        Me.Label12.AutoSize = true
-        Me.Label12.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label12.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label12.AutoSize = True
+        Me.Label12.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label12.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label12.Location = New System.Drawing.Point(79, 16)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(43, 13)
@@ -1223,9 +1264,9 @@ Partial Class Process_frmMain
         '
         'Label199
         '
-        Me.Label199.AutoSize = true
-        Me.Label199.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label199.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label199.AutoSize = True
+        Me.Label199.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label199.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label199.Location = New System.Drawing.Point(7, 16)
         Me.Label199.Name = "Label199"
         Me.Label199.Size = New System.Drawing.Size(66, 13)
@@ -1235,20 +1276,20 @@ Partial Class Process_frmMain
         '
         'txtExportControlled
         '
-        Me.txtExportControlled.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtExportControlled.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtExportControlled.ForeColor = System.Drawing.Color.Black
         Me.txtExportControlled.Location = New System.Drawing.Point(24, 32)
         Me.txtExportControlled.Name = "txtExportControlled"
-        Me.txtExportControlled.ReadOnly = true
+        Me.txtExportControlled.ReadOnly = True
         Me.txtExportControlled.Size = New System.Drawing.Size(29, 21)
         Me.txtExportControlled.TabIndex = 662
         Me.txtExportControlled.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label81
         '
-        Me.Label81.AutoSize = true
-        Me.Label81.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label81.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label81.AutoSize = True
+        Me.Label81.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label81.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label81.Location = New System.Drawing.Point(145, 122)
         Me.Label81.Name = "Label81"
         Me.Label81.Size = New System.Drawing.Size(43, 13)
@@ -1266,19 +1307,19 @@ Partial Class Process_frmMain
         Me.GroupBox1.Controls.Add(Me.dtpStartDate)
         Me.GroupBox1.Controls.Add(Me.Label203)
         Me.GroupBox1.Controls.Add(Me.txtModifiedBy)
-        Me.GroupBox1.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox1.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(545, 107)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(417, 66)
         Me.GroupBox1.TabIndex = 660
-        Me.GroupBox1.TabStop = false
+        Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Date:"
         '
         'Label202
         '
-        Me.Label202.AutoSize = true
-        Me.Label202.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label202.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label202.AutoSize = True
+        Me.Label202.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label202.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label202.Location = New System.Drawing.Point(11, 15)
         Me.Label202.Name = "Label202"
         Me.Label202.Size = New System.Drawing.Size(37, 13)
@@ -1289,7 +1330,7 @@ Partial Class Process_frmMain
         'txtStartDate
         '
         Me.txtStartDate.BackColor = System.Drawing.Color.White
-        Me.txtStartDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtStartDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtStartDate.ForeColor = System.Drawing.Color.Black
         Me.txtStartDate.Location = New System.Drawing.Point(11, 31)
         Me.txtStartDate.Name = "txtStartDate"
@@ -1300,7 +1341,7 @@ Partial Class Process_frmMain
         'txtDateMod
         '
         Me.txtDateMod.BackColor = System.Drawing.Color.White
-        Me.txtDateMod.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtDateMod.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDateMod.ForeColor = System.Drawing.Color.Black
         Me.txtDateMod.Location = New System.Drawing.Point(120, 31)
         Me.txtDateMod.Name = "txtDateMod"
@@ -1310,9 +1351,9 @@ Partial Class Process_frmMain
         '
         'Label204
         '
-        Me.Label204.AutoSize = true
-        Me.Label204.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label204.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label204.AutoSize = True
+        Me.Label204.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label204.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label204.Location = New System.Drawing.Point(229, 15)
         Me.Label204.Name = "Label204"
         Me.Label204.Size = New System.Drawing.Size(100, 13)
@@ -1340,9 +1381,9 @@ Partial Class Process_frmMain
         '
         'Label203
         '
-        Me.Label203.AutoSize = true
-        Me.Label203.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label203.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label203.AutoSize = True
+        Me.Label203.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label203.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label203.Location = New System.Drawing.Point(120, 15)
         Me.Label203.Name = "Label203"
         Me.Label203.Size = New System.Drawing.Size(81, 13)
@@ -1352,7 +1393,7 @@ Partial Class Process_frmMain
         '
         'txtModifiedBy
         '
-        Me.txtModifiedBy.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtModifiedBy.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtModifiedBy.ForeColor = System.Drawing.Color.Black
         Me.txtModifiedBy.Location = New System.Drawing.Point(235, 32)
         Me.txtModifiedBy.Name = "txtModifiedBy"
@@ -1369,14 +1410,14 @@ Partial Class Process_frmMain
         Me.grpParker.Name = "grpParker"
         Me.grpParker.Size = New System.Drawing.Size(285, 65)
         Me.grpParker.TabIndex = 659
-        Me.grpParker.TabStop = false
+        Me.grpParker.TabStop = False
         Me.grpParker.Text = "Parker:"
         '
         'label41
         '
-        Me.label41.AutoSize = true
-        Me.label41.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.label41.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.label41.AutoSize = True
+        Me.label41.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.label41.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.label41.Location = New System.Drawing.Point(18, 16)
         Me.label41.Name = "label41"
         Me.label41.Size = New System.Drawing.Size(27, 13)
@@ -1386,7 +1427,7 @@ Partial Class Process_frmMain
         '
         'txtParkerPart
         '
-        Me.txtParkerPart.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtParkerPart.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtParkerPart.ForeColor = System.Drawing.Color.Black
         Me.txtParkerPart.Location = New System.Drawing.Point(18, 32)
         Me.txtParkerPart.Name = "txtParkerPart"
@@ -1395,7 +1436,7 @@ Partial Class Process_frmMain
         '
         'txtPN_Rev
         '
-        Me.txtPN_Rev.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtPN_Rev.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPN_Rev.ForeColor = System.Drawing.Color.Black
         Me.txtPN_Rev.Location = New System.Drawing.Point(244, 32)
         Me.txtPN_Rev.Name = "txtPN_Rev"
@@ -1404,9 +1445,9 @@ Partial Class Process_frmMain
         '
         'Label197
         '
-        Me.Label197.AutoSize = true
-        Me.Label197.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label197.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label197.AutoSize = True
+        Me.Label197.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label197.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label197.Location = New System.Drawing.Point(244, 16)
         Me.Label197.Name = "Label197"
         Me.Label197.Size = New System.Drawing.Size(29, 13)
@@ -1424,17 +1465,17 @@ Partial Class Process_frmMain
         Me.GroupBox7.Controls.Add(Me.txtCustomerPN)
         Me.GroupBox7.Controls.Add(Me.cmbPopCoding)
         Me.GroupBox7.Controls.Add(Me.Label198)
-        Me.GroupBox7.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox7.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox7.Location = New System.Drawing.Point(302, 33)
         Me.GroupBox7.Name = "GroupBox7"
         Me.GroupBox7.Size = New System.Drawing.Size(458, 65)
         Me.GroupBox7.TabIndex = 658
-        Me.GroupBox7.TabStop = false
+        Me.GroupBox7.TabStop = False
         Me.GroupBox7.Text = "Customer:"
         '
         'txtCustomerPN_Rev
         '
-        Me.txtCustomerPN_Rev.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtCustomerPN_Rev.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCustomerPN_Rev.ForeColor = System.Drawing.Color.Black
         Me.txtCustomerPN_Rev.Location = New System.Drawing.Point(323, 32)
         Me.txtCustomerPN_Rev.Name = "txtCustomerPN_Rev"
@@ -1443,9 +1484,9 @@ Partial Class Process_frmMain
         '
         'Label28
         '
-        Me.Label28.AutoSize = true
-        Me.Label28.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label28.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label28.AutoSize = True
+        Me.Label28.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label28.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label28.Location = New System.Drawing.Point(323, 16)
         Me.Label28.Name = "Label28"
         Me.Label28.Size = New System.Drawing.Size(29, 13)
@@ -1455,7 +1496,7 @@ Partial Class Process_frmMain
         '
         'txtCustomer
         '
-        Me.txtCustomer.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtCustomer.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCustomer.ForeColor = System.Drawing.Color.Black
         Me.txtCustomer.Location = New System.Drawing.Point(18, 32)
         Me.txtCustomer.Name = "txtCustomer"
@@ -1464,9 +1505,9 @@ Partial Class Process_frmMain
         '
         'Label195
         '
-        Me.Label195.AutoSize = true
-        Me.Label195.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label195.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label195.AutoSize = True
+        Me.Label195.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label195.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label195.Location = New System.Drawing.Point(18, 16)
         Me.Label195.Name = "Label195"
         Me.Label195.Size = New System.Drawing.Size(40, 13)
@@ -1476,9 +1517,9 @@ Partial Class Process_frmMain
         '
         'Label196
         '
-        Me.Label196.AutoSize = true
-        Me.Label196.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label196.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label196.AutoSize = True
+        Me.Label196.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label196.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label196.Location = New System.Drawing.Point(217, 16)
         Me.Label196.Name = "Label196"
         Me.Label196.Size = New System.Drawing.Size(27, 13)
@@ -1488,7 +1529,7 @@ Partial Class Process_frmMain
         '
         'txtCustomerPN
         '
-        Me.txtCustomerPN.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtCustomerPN.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCustomerPN.ForeColor = System.Drawing.Color.Black
         Me.txtCustomerPN.Location = New System.Drawing.Point(217, 32)
         Me.txtCustomerPN.Name = "txtCustomerPN"
@@ -1498,8 +1539,8 @@ Partial Class Process_frmMain
         'cmbPopCoding
         '
         Me.cmbPopCoding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbPopCoding.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbPopCoding.FormattingEnabled = true
+        Me.cmbPopCoding.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbPopCoding.FormattingEnabled = True
         Me.cmbPopCoding.Items.AddRange(New Object() {"Premier", "Select"})
         Me.cmbPopCoding.Location = New System.Drawing.Point(368, 32)
         Me.cmbPopCoding.Name = "cmbPopCoding"
@@ -1508,9 +1549,9 @@ Partial Class Process_frmMain
         '
         'Label198
         '
-        Me.Label198.AutoSize = true
-        Me.Label198.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label198.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label198.AutoSize = True
+        Me.Label198.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label198.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label198.Location = New System.Drawing.Point(368, 16)
         Me.Label198.Name = "Label198"
         Me.Label198.Size = New System.Drawing.Size(74, 13)
@@ -1521,8 +1562,8 @@ Partial Class Process_frmMain
         'cmbType
         '
         Me.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbType.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbType.FormattingEnabled = true
+        Me.cmbType.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbType.FormattingEnabled = True
         Me.cmbType.Location = New System.Drawing.Point(46, 141)
         Me.cmbType.Name = "cmbType"
         Me.cmbType.Size = New System.Drawing.Size(85, 21)
@@ -1530,9 +1571,9 @@ Partial Class Process_frmMain
         '
         'Label201
         '
-        Me.Label201.AutoSize = true
-        Me.Label201.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label201.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label201.AutoSize = True
+        Me.Label201.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label201.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label201.Location = New System.Drawing.Point(46, 122)
         Me.Label201.Name = "Label201"
         Me.Label201.Size = New System.Drawing.Size(35, 13)
@@ -1542,9 +1583,9 @@ Partial Class Process_frmMain
         '
         'Label219
         '
-        Me.Label219.AutoSize = true
-        Me.Label219.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label219.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label219.AutoSize = True
+        Me.Label219.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label219.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label219.Location = New System.Drawing.Point(1010, 49)
         Me.Label219.Name = "Label219"
         Me.Label219.Size = New System.Drawing.Size(43, 13)
@@ -1552,45 +1593,31 @@ Partial Class Process_frmMain
         Me.Label219.Text = "Rating"
         Me.Label219.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'cmdRiskAna
-        '
-        Me.cmdRiskAna.BackColor = System.Drawing.Color.Silver
-        Me.cmdRiskAna.Enabled = false
-        Me.cmdRiskAna.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmdRiskAna.Image = CType(resources.GetObject("cmdRiskAna.Image"),System.Drawing.Image)
-        Me.cmdRiskAna.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdRiskAna.Location = New System.Drawing.Point(312, 810)
-        Me.cmdRiskAna.Name = "cmdRiskAna"
-        Me.cmdRiskAna.Size = New System.Drawing.Size(124, 30)
-        Me.cmdRiskAna.TabIndex = 581
-        Me.cmdRiskAna.Text = "   Risk &Analysis"
-        Me.cmdRiskAna.UseVisualStyleBackColor = false
-        '
         'cmdCancel
         '
         Me.cmdCancel.BackColor = System.Drawing.Color.Silver
-        Me.cmdCancel.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmdCancel.Image = CType(resources.GetObject("cmdCancel.Image"),System.Drawing.Image)
+        Me.cmdCancel.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdCancel.Image = CType(resources.GetObject("cmdCancel.Image"), System.Drawing.Image)
         Me.cmdCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdCancel.Location = New System.Drawing.Point(1008, 810)
         Me.cmdCancel.Name = "cmdCancel"
         Me.cmdCancel.Size = New System.Drawing.Size(80, 30)
         Me.cmdCancel.TabIndex = 66
         Me.cmdCancel.Text = " &Cancel"
-        Me.cmdCancel.UseVisualStyleBackColor = false
+        Me.cmdCancel.UseVisualStyleBackColor = False
         '
         'cmdOK
         '
         Me.cmdOK.BackColor = System.Drawing.Color.Silver
-        Me.cmdOK.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmdOK.Image = CType(resources.GetObject("cmdOK.Image"),System.Drawing.Image)
+        Me.cmdOK.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdOK.Image = CType(resources.GetObject("cmdOK.Image"), System.Drawing.Image)
         Me.cmdOK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdOK.Location = New System.Drawing.Point(913, 810)
         Me.cmdOK.Name = "cmdOK"
         Me.cmdOK.Size = New System.Drawing.Size(80, 30)
         Me.cmdOK.TabIndex = 65
         Me.cmdOK.Text = "&OK"
-        Me.cmdOK.UseVisualStyleBackColor = false
+        Me.cmdOK.UseVisualStyleBackColor = False
         '
         'TabControl1
         '
@@ -1610,9 +1637,9 @@ Partial Class Process_frmMain
         Me.TabControl1.Controls.Add(Me.tabKeyChar)
         Me.TabControl1.Controls.Add(Me.tabIssue)
         Me.TabControl1.Controls.Add(Me.tabApproval)
-        Me.TabControl1.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.TabControl1.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TabControl1.Location = New System.Drawing.Point(41, 183)
-        Me.TabControl1.Multiline = true
+        Me.TabControl1.Multiline = True
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
         Me.TabControl1.Size = New System.Drawing.Size(1047, 621)
@@ -1620,7 +1647,7 @@ Partial Class Process_frmMain
         '
         'tabMarketingInfo
         '
-        Me.tabMarketingInfo.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
+        Me.tabMarketingInfo.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.tabMarketingInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tabMarketingInfo.Controls.Add(Me.TabControl3)
         Me.tabMarketingInfo.Location = New System.Drawing.Point(4, 40)
@@ -1641,7 +1668,7 @@ Partial Class Process_frmMain
         '
         'TabPage3
         '
-        Me.TabPage3.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
+        Me.TabPage3.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.TabPage3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TabPage3.Controls.Add(Me.Label64)
         Me.TabPage3.Controls.Add(Me.GroupBox44)
@@ -1663,7 +1690,7 @@ Partial Class Process_frmMain
         '
         Me.Label64.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label64.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label64.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label64.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label64.Location = New System.Drawing.Point(0, 444)
         Me.Label64.Name = "Label64"
         Me.Label64.Size = New System.Drawing.Size(970, 2)
@@ -1672,20 +1699,20 @@ Partial Class Process_frmMain
         'GroupBox44
         '
         Me.GroupBox44.Controls.Add(Me.txtPreOrderNotes)
-        Me.GroupBox44.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox44.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox44.Location = New System.Drawing.Point(12, 449)
         Me.GroupBox44.Name = "GroupBox44"
         Me.GroupBox44.Size = New System.Drawing.Size(845, 81)
         Me.GroupBox44.TabIndex = 750
-        Me.GroupBox44.TabStop = false
+        Me.GroupBox44.TabStop = False
         Me.GroupBox44.Text = "Notes:"
         '
         'txtPreOrderNotes
         '
-        Me.txtPreOrderNotes.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtPreOrderNotes.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPreOrderNotes.ForeColor = System.Drawing.Color.Black
         Me.txtPreOrderNotes.Location = New System.Drawing.Point(11, 20)
-        Me.txtPreOrderNotes.Multiline = true
+        Me.txtPreOrderNotes.Multiline = True
         Me.txtPreOrderNotes.Name = "txtPreOrderNotes"
         Me.txtPreOrderNotes.Size = New System.Drawing.Size(827, 47)
         Me.txtPreOrderNotes.TabIndex = 750
@@ -1697,18 +1724,18 @@ Partial Class Process_frmMain
         Me.GroupBox9.Controls.Add(Me.cmbPreOrderChannel)
         Me.GroupBox9.Controls.Add(Me.Label23)
         Me.GroupBox9.Controls.Add(Me.Label24)
-        Me.GroupBox9.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox9.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox9.Location = New System.Drawing.Point(12, 303)
         Me.GroupBox9.Name = "GroupBox9"
         Me.GroupBox9.Size = New System.Drawing.Size(757, 129)
         Me.GroupBox9.TabIndex = 748
-        Me.GroupBox9.TabStop = false
+        Me.GroupBox9.TabStop = False
         Me.GroupBox9.Text = "Market:"
         '
         'cmbPreOrderSeg
         '
-        Me.cmbPreOrderSeg.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbPreOrderSeg.FormattingEnabled = true
+        Me.cmbPreOrderSeg.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbPreOrderSeg.FormattingEnabled = True
         Me.cmbPreOrderSeg.Items.AddRange(New Object() {"Custom", "Design Guide", "Design Guide +"})
         Me.cmbPreOrderSeg.Location = New System.Drawing.Point(77, 28)
         Me.cmbPreOrderSeg.Name = "cmbPreOrderSeg"
@@ -1718,23 +1745,23 @@ Partial Class Process_frmMain
         'grpQuote
         '
         Me.grpQuote.Controls.Add(Me.grdQuote)
-        Me.grpQuote.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.grpQuote.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grpQuote.Location = New System.Drawing.Point(452, 15)
         Me.grpQuote.Name = "grpQuote"
         Me.grpQuote.Size = New System.Drawing.Size(285, 102)
         Me.grpQuote.TabIndex = 711
-        Me.grpQuote.TabStop = false
+        Me.grpQuote.TabStop = False
         Me.grpQuote.Text = "Quote:"
         '
         'grdQuote
         '
-        DataGridViewCellStyle175.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdQuote.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle175
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdQuote.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.grdQuote.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdQuote.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn16, Me.DataGridViewTextBoxColumn6})
         Me.grdQuote.Location = New System.Drawing.Point(16, 20)
         Me.grdQuote.Name = "grdQuote"
-        Me.grdQuote.RowHeadersVisible = false
+        Me.grdQuote.RowHeadersVisible = False
         Me.grdQuote.Size = New System.Drawing.Size(254, 68)
         Me.grdQuote.TabIndex = 740
         '
@@ -1753,8 +1780,8 @@ Partial Class Process_frmMain
         'cmbPreOrderChannel
         '
         Me.cmbPreOrderChannel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbPreOrderChannel.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbPreOrderChannel.FormattingEnabled = true
+        Me.cmbPreOrderChannel.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbPreOrderChannel.FormattingEnabled = True
         Me.cmbPreOrderChannel.Items.AddRange(New Object() {"Direct", "Distribution", "TP", "ICTP"})
         Me.cmbPreOrderChannel.Location = New System.Drawing.Point(302, 28)
         Me.cmbPreOrderChannel.Name = "cmbPreOrderChannel"
@@ -1763,9 +1790,9 @@ Partial Class Process_frmMain
         '
         'Label23
         '
-        Me.Label23.AutoSize = true
-        Me.Label23.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label23.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label23.AutoSize = True
+        Me.Label23.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label23.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label23.Location = New System.Drawing.Point(13, 31)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(58, 13)
@@ -1775,9 +1802,9 @@ Partial Class Process_frmMain
         '
         'Label24
         '
-        Me.Label24.AutoSize = true
-        Me.Label24.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label24.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label24.AutoSize = True
+        Me.Label24.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label24.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label24.Location = New System.Drawing.Point(243, 32)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(54, 13)
@@ -1789,7 +1816,7 @@ Partial Class Process_frmMain
         '
         Me.Label21.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label21.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label21.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label21.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label21.Location = New System.Drawing.Point(-18, 296)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(970, 2)
@@ -1805,17 +1832,17 @@ Partial Class Process_frmMain
         Me.GroupBox13.Controls.Add(Me.txtPartParent)
         Me.GroupBox13.Controls.Add(Me.Label214)
         Me.GroupBox13.Controls.Add(Me.Label215)
-        Me.GroupBox13.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox13.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox13.Location = New System.Drawing.Point(10, 216)
         Me.GroupBox13.Name = "GroupBox13"
         Me.GroupBox13.Size = New System.Drawing.Size(759, 68)
         Me.GroupBox13.TabIndex = 746
-        Me.GroupBox13.TabStop = false
+        Me.GroupBox13.TabStop = False
         Me.GroupBox13.Text = "Part:"
         '
         'txtPartChild
         '
-        Me.txtPartChild.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtPartChild.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPartChild.ForeColor = System.Drawing.Color.Black
         Me.txtPartChild.Location = New System.Drawing.Point(605, 32)
         Me.txtPartChild.Name = "txtPartChild"
@@ -1825,8 +1852,8 @@ Partial Class Process_frmMain
         'cmbPartFamily
         '
         Me.cmbPartFamily.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbPartFamily.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbPartFamily.FormattingEnabled = true
+        Me.cmbPartFamily.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbPartFamily.FormattingEnabled = True
         Me.cmbPartFamily.Items.AddRange(New Object() {"E-Seal", "C-Seal", "S-Seal", "U-Seal", "Wire Ring", "O-Ring", "Air Duct", "EnerSeal", "PG11", "PG7"})
         Me.cmbPartFamily.Location = New System.Drawing.Point(83, 32)
         Me.cmbPartFamily.Name = "cmbPartFamily"
@@ -1836,8 +1863,8 @@ Partial Class Process_frmMain
         'cmbPartType
         '
         Me.cmbPartType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbPartType.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbPartType.FormattingEnabled = true
+        Me.cmbPartType.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbPartType.FormattingEnabled = True
         Me.cmbPartType.Items.AddRange(New Object() {"Custom", "Design Guide"})
         Me.cmbPartType.Location = New System.Drawing.Point(279, 32)
         Me.cmbPartType.Name = "cmbPartType"
@@ -1846,9 +1873,9 @@ Partial Class Process_frmMain
         '
         'Label105
         '
-        Me.Label105.AutoSize = true
-        Me.Label105.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label105.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label105.AutoSize = True
+        Me.Label105.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label105.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label105.Location = New System.Drawing.Point(238, 36)
         Me.Label105.Name = "Label105"
         Me.Label105.Size = New System.Drawing.Size(35, 13)
@@ -1858,9 +1885,9 @@ Partial Class Process_frmMain
         '
         'Label213
         '
-        Me.Label213.AutoSize = true
-        Me.Label213.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label213.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label213.AutoSize = True
+        Me.Label213.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label213.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label213.Location = New System.Drawing.Point(33, 35)
         Me.Label213.Name = "Label213"
         Me.Label213.Size = New System.Drawing.Size(44, 13)
@@ -1870,7 +1897,7 @@ Partial Class Process_frmMain
         '
         'txtPartParent
         '
-        Me.txtPartParent.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtPartParent.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPartParent.ForeColor = System.Drawing.Color.Black
         Me.txtPartParent.Location = New System.Drawing.Point(432, 32)
         Me.txtPartParent.Name = "txtPartParent"
@@ -1879,9 +1906,9 @@ Partial Class Process_frmMain
         '
         'Label214
         '
-        Me.Label214.AutoSize = true
-        Me.Label214.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label214.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label214.AutoSize = True
+        Me.Label214.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label214.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label214.Location = New System.Drawing.Point(432, 16)
         Me.Label214.Name = "Label214"
         Me.Label214.Size = New System.Drawing.Size(44, 13)
@@ -1891,9 +1918,9 @@ Partial Class Process_frmMain
         '
         'Label215
         '
-        Me.Label215.AutoSize = true
-        Me.Label215.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label215.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label215.AutoSize = True
+        Me.Label215.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label215.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label215.Location = New System.Drawing.Point(605, 16)
         Me.Label215.Name = "Label215"
         Me.Label215.Size = New System.Drawing.Size(36, 13)
@@ -1905,7 +1932,7 @@ Partial Class Process_frmMain
         '
         Me.lblSplitter1.BackColor = System.Drawing.SystemColors.ControlDark
         Me.lblSplitter1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.lblSplitter1.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblSplitter1.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSplitter1.Location = New System.Drawing.Point(-17, 209)
         Me.lblSplitter1.Name = "lblSplitter1"
         Me.lblSplitter1.Size = New System.Drawing.Size(970, 2)
@@ -1918,17 +1945,17 @@ Partial Class Process_frmMain
         Me.grpGroupBox10.Controls.Add(Me.cmbMgrPreOrder)
         Me.grpGroupBox10.Controls.Add(Me.Label118)
         Me.grpGroupBox10.Controls.Add(Me.Label22)
-        Me.grpGroupBox10.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.grpGroupBox10.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grpGroupBox10.Location = New System.Drawing.Point(10, 8)
         Me.grpGroupBox10.Name = "grpGroupBox10"
         Me.grpGroupBox10.Size = New System.Drawing.Size(278, 94)
         Me.grpGroupBox10.TabIndex = 743
-        Me.grpGroupBox10.TabStop = false
+        Me.grpGroupBox10.TabStop = False
         Me.grpGroupBox10.Text = "Parker Manager:"
         '
         'txtMgrSales
         '
-        Me.txtMgrSales.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtMgrSales.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtMgrSales.ForeColor = System.Drawing.Color.Black
         Me.txtMgrSales.Location = New System.Drawing.Point(83, 61)
         Me.txtMgrSales.Name = "txtMgrSales"
@@ -1938,8 +1965,8 @@ Partial Class Process_frmMain
         'cmbMgrPreOrder
         '
         Me.cmbMgrPreOrder.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbMgrPreOrder.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbMgrPreOrder.FormattingEnabled = true
+        Me.cmbMgrPreOrder.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbMgrPreOrder.FormattingEnabled = True
         Me.cmbMgrPreOrder.Location = New System.Drawing.Point(82, 26)
         Me.cmbMgrPreOrder.Name = "cmbMgrPreOrder"
         Me.cmbMgrPreOrder.Size = New System.Drawing.Size(182, 21)
@@ -1947,9 +1974,9 @@ Partial Class Process_frmMain
         '
         'Label118
         '
-        Me.Label118.AutoSize = true
-        Me.Label118.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label118.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label118.AutoSize = True
+        Me.Label118.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label118.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label118.Location = New System.Drawing.Point(15, 64)
         Me.Label118.Name = "Label118"
         Me.Label118.Size = New System.Drawing.Size(38, 13)
@@ -1959,9 +1986,9 @@ Partial Class Process_frmMain
         '
         'Label22
         '
-        Me.Label22.AutoSize = true
-        Me.Label22.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label22.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label22.AutoSize = True
+        Me.Label22.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label22.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label22.Location = New System.Drawing.Point(13, 30)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(63, 13)
@@ -1972,23 +1999,23 @@ Partial Class Process_frmMain
         'GroupBox8
         '
         Me.GroupBox8.Controls.Add(Me.grdCustContact)
-        Me.GroupBox8.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox8.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox8.Location = New System.Drawing.Point(305, 8)
         Me.GroupBox8.Name = "GroupBox8"
         Me.GroupBox8.Size = New System.Drawing.Size(614, 189)
         Me.GroupBox8.TabIndex = 742
-        Me.GroupBox8.TabStop = false
+        Me.GroupBox8.TabStop = False
         Me.GroupBox8.Text = "Customer Contact:"
         '
         'grdCustContact
         '
-        DataGridViewCellStyle176.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdCustContact.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle176
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdCustContact.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle2
         Me.grdCustContact.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdCustContact.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewComboBoxColumn4, Me.DataGridViewTextBoxColumn68, Me.DataGridViewTextBoxColumn69, Me.DataGridViewTextBoxColumn70})
         Me.grdCustContact.Location = New System.Drawing.Point(8, 26)
         Me.grdCustContact.Name = "grdCustContact"
-        Me.grdCustContact.RowHeadersVisible = false
+        Me.grdCustContact.RowHeadersVisible = False
         Me.grdCustContact.Size = New System.Drawing.Size(596, 152)
         Me.grdCustContact.TabIndex = 742
         '
@@ -2025,19 +2052,19 @@ Partial Class Process_frmMain
         Me.grpGroupBox2.Controls.Add(Me.Label18)
         Me.grpGroupBox2.Controls.Add(Me.cmbExport_Reqd)
         Me.grpGroupBox2.Controls.Add(Me.cmbExport_Status)
-        Me.grpGroupBox2.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.grpGroupBox2.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grpGroupBox2.Location = New System.Drawing.Point(12, 113)
         Me.grpGroupBox2.Name = "grpGroupBox2"
         Me.grpGroupBox2.Size = New System.Drawing.Size(276, 84)
         Me.grpGroupBox2.TabIndex = 741
-        Me.grpGroupBox2.TabStop = false
+        Me.grpGroupBox2.TabStop = False
         Me.grpGroupBox2.Text = "Export Compliance:"
         '
         'Label20
         '
-        Me.Label20.AutoSize = true
-        Me.Label20.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label20.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label20.AutoSize = True
+        Me.Label20.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label20.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label20.Location = New System.Drawing.Point(15, 55)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(43, 13)
@@ -2047,9 +2074,9 @@ Partial Class Process_frmMain
         '
         'Label18
         '
-        Me.Label18.AutoSize = true
-        Me.Label18.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label18.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label18.AutoSize = True
+        Me.Label18.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label18.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label18.Location = New System.Drawing.Point(15, 22)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(58, 13)
@@ -2060,8 +2087,8 @@ Partial Class Process_frmMain
         'cmbExport_Reqd
         '
         Me.cmbExport_Reqd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbExport_Reqd.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbExport_Reqd.FormattingEnabled = true
+        Me.cmbExport_Reqd.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbExport_Reqd.FormattingEnabled = True
         Me.cmbExport_Reqd.Items.AddRange(New Object() {"Y", "N"})
         Me.cmbExport_Reqd.Location = New System.Drawing.Point(95, 19)
         Me.cmbExport_Reqd.Name = "cmbExport_Reqd"
@@ -2071,8 +2098,8 @@ Partial Class Process_frmMain
         'cmbExport_Status
         '
         Me.cmbExport_Status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbExport_Status.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbExport_Status.FormattingEnabled = true
+        Me.cmbExport_Status.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbExport_Status.FormattingEnabled = True
         Me.cmbExport_Status.Items.AddRange(New Object() {"Submitted", "Filed"})
         Me.cmbExport_Status.Location = New System.Drawing.Point(95, 52)
         Me.cmbExport_Status.Name = "cmbExport_Status"
@@ -2081,7 +2108,7 @@ Partial Class Process_frmMain
         '
         'TabPage6
         '
-        Me.TabPage6.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
+        Me.TabPage6.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.TabPage6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TabPage6.Controls.Add(Me.GroupBox17)
         Me.TabPage6.Controls.Add(Me.Label27)
@@ -2103,13 +2130,13 @@ Partial Class Process_frmMain
         Me.GroupBox17.Controls.Add(Me.txtPreOrderUserDate)
         Me.GroupBox17.Controls.Add(Me.dtpPreOrderUserDate)
         Me.GroupBox17.Controls.Add(Me.grdPreOrderEditedBy)
-        Me.GroupBox17.Enabled = false
-        Me.GroupBox17.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox17.Enabled = False
+        Me.GroupBox17.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox17.Location = New System.Drawing.Point(15, 401)
         Me.GroupBox17.Name = "GroupBox17"
         Me.GroupBox17.Size = New System.Drawing.Size(867, 132)
         Me.GroupBox17.TabIndex = 873
-        Me.GroupBox17.TabStop = false
+        Me.GroupBox17.TabStop = False
         Me.GroupBox17.Text = "Edited by:"
         '
         'chkPreOrderUserSigned
@@ -2120,11 +2147,11 @@ Partial Class Process_frmMain
         Me.chkPreOrderUserSigned.Size = New System.Drawing.Size(15, 14)
         Me.chkPreOrderUserSigned.TabIndex = 745
         Me.chkPreOrderUserSigned.Tag = "Tester"
-        Me.chkPreOrderUserSigned.UseVisualStyleBackColor = true
+        Me.chkPreOrderUserSigned.UseVisualStyleBackColor = True
         '
         'cmdPreOrderUserSign
         '
-        Me.cmdPreOrderUserSign.AutoSize = true
+        Me.cmdPreOrderUserSign.AutoSize = True
         Me.cmdPreOrderUserSign.BackColor = System.Drawing.Color.Silver
         Me.cmdPreOrderUserSign.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdPreOrderUserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -2134,11 +2161,11 @@ Partial Class Process_frmMain
         Me.cmdPreOrderUserSign.TabIndex = 746
         Me.cmdPreOrderUserSign.Tag = "Tester"
         Me.cmdPreOrderUserSign.Text = "Sign"
-        Me.cmdPreOrderUserSign.UseVisualStyleBackColor = false
+        Me.cmdPreOrderUserSign.UseVisualStyleBackColor = False
         '
         'txtPreOrderUserName
         '
-        Me.txtPreOrderUserName.Enabled = false
+        Me.txtPreOrderUserName.Enabled = False
         Me.txtPreOrderUserName.Location = New System.Drawing.Point(130, 105)
         Me.txtPreOrderUserName.Name = "txtPreOrderUserName"
         Me.txtPreOrderUserName.Size = New System.Drawing.Size(196, 21)
@@ -2148,7 +2175,7 @@ Partial Class Process_frmMain
         'txtPreOrderUserDate
         '
         Me.txtPreOrderUserDate.BackColor = System.Drawing.Color.White
-        Me.txtPreOrderUserDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtPreOrderUserDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPreOrderUserDate.ForeColor = System.Drawing.Color.Black
         Me.txtPreOrderUserDate.Location = New System.Drawing.Point(25, 105)
         Me.txtPreOrderUserDate.Name = "txtPreOrderUserDate"
@@ -2167,13 +2194,13 @@ Partial Class Process_frmMain
         '
         'grdPreOrderEditedBy
         '
-        DataGridViewCellStyle177.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdPreOrderEditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle177
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdPreOrderEditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
         Me.grdPreOrderEditedBy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdPreOrderEditedBy.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn24, Me.DataGridViewTextBoxColumn25, Me.DataGridViewTextBoxColumn53})
         Me.grdPreOrderEditedBy.Location = New System.Drawing.Point(25, 23)
         Me.grdPreOrderEditedBy.Name = "grdPreOrderEditedBy"
-        Me.grdPreOrderEditedBy.RowHeadersVisible = false
+        Me.grdPreOrderEditedBy.RowHeadersVisible = False
         Me.grdPreOrderEditedBy.Size = New System.Drawing.Size(823, 74)
         Me.grdPreOrderEditedBy.TabIndex = 741
         '
@@ -2199,7 +2226,7 @@ Partial Class Process_frmMain
         '
         Me.Label27.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label27.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label27.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label27.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label27.Location = New System.Drawing.Point(0, 392)
         Me.Label27.Name = "Label27"
         Me.Label27.Size = New System.Drawing.Size(970, 2)
@@ -2208,24 +2235,24 @@ Partial Class Process_frmMain
         'grpPreOrder_RiskAna
         '
         Me.grpPreOrder_RiskAna.Controls.Add(Me.grdPreOrderRiskAna)
-        Me.grpPreOrder_RiskAna.Enabled = false
-        Me.grpPreOrder_RiskAna.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.grpPreOrder_RiskAna.Enabled = False
+        Me.grpPreOrder_RiskAna.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grpPreOrder_RiskAna.Location = New System.Drawing.Point(14, 244)
         Me.grpPreOrder_RiskAna.Name = "grpPreOrder_RiskAna"
         Me.grpPreOrder_RiskAna.Size = New System.Drawing.Size(867, 137)
         Me.grpPreOrder_RiskAna.TabIndex = 748
-        Me.grpPreOrder_RiskAna.TabStop = false
+        Me.grpPreOrder_RiskAna.TabStop = False
         Me.grpPreOrder_RiskAna.Text = "Risk Analysis:"
         '
         'grdPreOrderRiskAna
         '
-        DataGridViewCellStyle178.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdPreOrderRiskAna.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle178
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdPreOrderRiskAna.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
         Me.grdPreOrderRiskAna.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdPreOrderRiskAna.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn10, Me.DataGridViewComboBoxColumn2, Me.DataGridViewTextBoxColumn11})
         Me.grdPreOrderRiskAna.Location = New System.Drawing.Point(25, 22)
         Me.grdPreOrderRiskAna.Name = "grdPreOrderRiskAna"
-        Me.grdPreOrderRiskAna.RowHeadersVisible = false
+        Me.grdPreOrderRiskAna.RowHeadersVisible = False
         Me.grdPreOrderRiskAna.Size = New System.Drawing.Size(823, 104)
         Me.grdPreOrderRiskAna.TabIndex = 741
         '
@@ -2254,7 +2281,7 @@ Partial Class Process_frmMain
         '
         Me.Label26.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label26.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label26.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label26.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label26.Location = New System.Drawing.Point(-15, 235)
         Me.Label26.Name = "Label26"
         Me.Label26.Size = New System.Drawing.Size(970, 2)
@@ -2266,12 +2293,12 @@ Partial Class Process_frmMain
         Me.GroupBox15.Controls.Add(Me.GroupBox27)
         Me.GroupBox15.Controls.Add(Me.Label207)
         Me.GroupBox15.Controls.Add(Me.txtPreOrderPriceNotes)
-        Me.GroupBox15.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox15.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox15.Location = New System.Drawing.Point(14, 8)
         Me.GroupBox15.Name = "GroupBox15"
         Me.GroupBox15.Size = New System.Drawing.Size(867, 218)
         Me.GroupBox15.TabIndex = 746
-        Me.GroupBox15.TabStop = false
+        Me.GroupBox15.TabStop = False
         Me.GroupBox15.Text = "Pricing:"
         '
         'GroupBox36
@@ -2284,13 +2311,13 @@ Partial Class Process_frmMain
         Me.GroupBox36.Name = "GroupBox36"
         Me.GroupBox36.Size = New System.Drawing.Size(326, 97)
         Me.GroupBox36.TabIndex = 742
-        Me.GroupBox36.TabStop = false
+        Me.GroupBox36.TabStop = False
         Me.GroupBox36.Text = "Location:"
         '
         'cmbRFQPkgLoc
         '
-        Me.cmbRFQPkgLoc.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbRFQPkgLoc.FormattingEnabled = true
+        Me.cmbRFQPkgLoc.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbRFQPkgLoc.FormattingEnabled = True
         Me.cmbRFQPkgLoc.Location = New System.Drawing.Point(112, 62)
         Me.cmbRFQPkgLoc.Name = "cmbRFQPkgLoc"
         Me.cmbRFQPkgLoc.Size = New System.Drawing.Size(190, 21)
@@ -2298,8 +2325,8 @@ Partial Class Process_frmMain
         '
         'cmbCostFileLoc
         '
-        Me.cmbCostFileLoc.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbCostFileLoc.FormattingEnabled = true
+        Me.cmbCostFileLoc.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbCostFileLoc.FormattingEnabled = True
         Me.cmbCostFileLoc.Location = New System.Drawing.Point(111, 29)
         Me.cmbCostFileLoc.Name = "cmbCostFileLoc"
         Me.cmbCostFileLoc.Size = New System.Drawing.Size(191, 21)
@@ -2307,9 +2334,9 @@ Partial Class Process_frmMain
         '
         'Label104
         '
-        Me.Label104.AutoSize = true
-        Me.Label104.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label104.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label104.AutoSize = True
+        Me.Label104.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label104.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label104.Location = New System.Drawing.Point(32, 33)
         Me.Label104.Name = "Label104"
         Me.Label104.Size = New System.Drawing.Size(73, 13)
@@ -2319,9 +2346,9 @@ Partial Class Process_frmMain
         '
         'Label25
         '
-        Me.Label25.AutoSize = true
-        Me.Label25.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label25.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label25.AutoSize = True
+        Me.Label25.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label25.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label25.Location = New System.Drawing.Point(24, 66)
         Me.Label25.Name = "Label25"
         Me.Label25.Size = New System.Drawing.Size(82, 13)
@@ -2332,56 +2359,31 @@ Partial Class Process_frmMain
         'GroupBox27
         '
         Me.GroupBox27.Controls.Add(Me.grdPreOrder_SalesData)
-        Me.GroupBox27.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox27.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox27.Location = New System.Drawing.Point(490, 12)
         Me.GroupBox27.Name = "GroupBox27"
         Me.GroupBox27.Size = New System.Drawing.Size(359, 144)
         Me.GroupBox27.TabIndex = 741
-        Me.GroupBox27.TabStop = false
+        Me.GroupBox27.TabStop = False
         Me.GroupBox27.Text = "Forecast:"
         '
         'grdPreOrder_SalesData
         '
-        DataGridViewCellStyle179.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdPreOrder_SalesData.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle179
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdPreOrder_SalesData.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
         Me.grdPreOrder_SalesData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdPreOrder_SalesData.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn8, Me.DataGridViewComboBoxColumn1, Me.DataGridViewTextBoxColumn9, Me.Column4})
         Me.grdPreOrder_SalesData.Location = New System.Drawing.Point(19, 20)
         Me.grdPreOrder_SalesData.Name = "grdPreOrder_SalesData"
-        Me.grdPreOrder_SalesData.RowHeadersVisible = false
+        Me.grdPreOrder_SalesData.RowHeadersVisible = False
         Me.grdPreOrder_SalesData.Size = New System.Drawing.Size(325, 118)
         Me.grdPreOrder_SalesData.TabIndex = 740
         '
-        'DataGridViewTextBoxColumn8
-        '
-        Me.DataGridViewTextBoxColumn8.HeaderText = "Year"
-        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        Me.DataGridViewTextBoxColumn8.Width = 60
-        '
-        'DataGridViewComboBoxColumn1
-        '
-        Me.DataGridViewComboBoxColumn1.HeaderText = "Qty"
-        Me.DataGridViewComboBoxColumn1.Name = "DataGridViewComboBoxColumn1"
-        Me.DataGridViewComboBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewComboBoxColumn1.Width = 40
-        '
-        'DataGridViewTextBoxColumn9
-        '
-        Me.DataGridViewTextBoxColumn9.HeaderText = "Price ($)"
-        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
-        Me.DataGridViewTextBoxColumn9.Width = 110
-        '
-        'Column4
-        '
-        Me.Column4.HeaderText = "Total ($)"
-        Me.Column4.Name = "Column4"
-        Me.Column4.Width = 110
-        '
         'Label207
         '
-        Me.Label207.AutoSize = true
-        Me.Label207.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label207.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label207.AutoSize = True
+        Me.Label207.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label207.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label207.Location = New System.Drawing.Point(22, 143)
         Me.Label207.Name = "Label207"
         Me.Label207.Size = New System.Drawing.Size(119, 13)
@@ -2391,17 +2393,17 @@ Partial Class Process_frmMain
         '
         'txtPreOrderPriceNotes
         '
-        Me.txtPreOrderPriceNotes.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtPreOrderPriceNotes.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPreOrderPriceNotes.ForeColor = System.Drawing.Color.Black
         Me.txtPreOrderPriceNotes.Location = New System.Drawing.Point(21, 162)
-        Me.txtPreOrderPriceNotes.Multiline = true
+        Me.txtPreOrderPriceNotes.Multiline = True
         Me.txtPreOrderPriceNotes.Name = "txtPreOrderPriceNotes"
         Me.txtPreOrderPriceNotes.Size = New System.Drawing.Size(827, 47)
         Me.txtPreOrderPriceNotes.TabIndex = 722
         '
         'tabExport
         '
-        Me.tabExport.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
+        Me.tabExport.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.tabExport.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tabExport.Controls.Add(Me.cmdExport_HTS)
         Me.tabExport.Controls.Add(Me.txtITAR_Export_HTS_Classification)
@@ -2432,17 +2434,17 @@ Partial Class Process_frmMain
         '
         'cmdExport_HTS
         '
-        Me.cmdExport_HTS.Enabled = false
+        Me.cmdExport_HTS.Enabled = False
         Me.cmdExport_HTS.Location = New System.Drawing.Point(698, 212)
         Me.cmdExport_HTS.Name = "cmdExport_HTS"
         Me.cmdExport_HTS.Size = New System.Drawing.Size(75, 23)
         Me.cmdExport_HTS.TabIndex = 880
         Me.cmdExport_HTS.Text = "HTS"
-        Me.cmdExport_HTS.UseVisualStyleBackColor = true
+        Me.cmdExport_HTS.UseVisualStyleBackColor = True
         '
         'txtITAR_Export_HTS_Classification
         '
-        Me.txtITAR_Export_HTS_Classification.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtITAR_Export_HTS_Classification.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtITAR_Export_HTS_Classification.ForeColor = System.Drawing.Color.Black
         Me.txtITAR_Export_HTS_Classification.Location = New System.Drawing.Point(507, 214)
         Me.txtITAR_Export_HTS_Classification.Name = "txtITAR_Export_HTS_Classification"
@@ -2451,9 +2453,9 @@ Partial Class Process_frmMain
         '
         'Label60
         '
-        Me.Label60.AutoSize = true
-        Me.Label60.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label60.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label60.AutoSize = True
+        Me.Label60.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label60.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label60.Location = New System.Drawing.Point(393, 218)
         Me.Label60.Name = "Label60"
         Me.Label60.Size = New System.Drawing.Size(109, 13)
@@ -2463,7 +2465,7 @@ Partial Class Process_frmMain
         '
         'txtITAR_Export_ITAR_Classification
         '
-        Me.txtITAR_Export_ITAR_Classification.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtITAR_Export_ITAR_Classification.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtITAR_Export_ITAR_Classification.ForeColor = System.Drawing.Color.Black
         Me.txtITAR_Export_ITAR_Classification.Location = New System.Drawing.Point(507, 137)
         Me.txtITAR_Export_ITAR_Classification.Name = "txtITAR_Export_ITAR_Classification"
@@ -2472,9 +2474,9 @@ Partial Class Process_frmMain
         '
         'Label57
         '
-        Me.Label57.AutoSize = true
-        Me.Label57.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label57.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label57.AutoSize = True
+        Me.Label57.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label57.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label57.Location = New System.Drawing.Point(388, 141)
         Me.Label57.Name = "Label57"
         Me.Label57.Size = New System.Drawing.Size(114, 13)
@@ -2486,7 +2488,7 @@ Partial Class Process_frmMain
         '
         Me.Label65.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label65.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label65.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label65.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label65.Location = New System.Drawing.Point(0, 421)
         Me.Label65.Name = "Label65"
         Me.Label65.Size = New System.Drawing.Size(1040, 2)
@@ -2500,13 +2502,13 @@ Partial Class Process_frmMain
         Me.GroupBox14.Controls.Add(Me.txtITAR_Export_UserDate)
         Me.GroupBox14.Controls.Add(Me.dtpITAR_Export_UserDate)
         Me.GroupBox14.Controls.Add(Me.grdExport_EditedBy)
-        Me.GroupBox14.Enabled = false
-        Me.GroupBox14.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox14.Enabled = False
+        Me.GroupBox14.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox14.Location = New System.Drawing.Point(15, 436)
         Me.GroupBox14.Name = "GroupBox14"
         Me.GroupBox14.Size = New System.Drawing.Size(867, 132)
         Me.GroupBox14.TabIndex = 874
-        Me.GroupBox14.TabStop = false
+        Me.GroupBox14.TabStop = False
         Me.GroupBox14.Text = "Edited by:"
         '
         'chkITAR_Export_UserSigned
@@ -2517,11 +2519,11 @@ Partial Class Process_frmMain
         Me.chkITAR_Export_UserSigned.Size = New System.Drawing.Size(15, 14)
         Me.chkITAR_Export_UserSigned.TabIndex = 745
         Me.chkITAR_Export_UserSigned.Tag = "Tester"
-        Me.chkITAR_Export_UserSigned.UseVisualStyleBackColor = true
+        Me.chkITAR_Export_UserSigned.UseVisualStyleBackColor = True
         '
         'cmdITAR_Export_UserSign
         '
-        Me.cmdITAR_Export_UserSign.AutoSize = true
+        Me.cmdITAR_Export_UserSign.AutoSize = True
         Me.cmdITAR_Export_UserSign.BackColor = System.Drawing.Color.Silver
         Me.cmdITAR_Export_UserSign.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdITAR_Export_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -2531,11 +2533,11 @@ Partial Class Process_frmMain
         Me.cmdITAR_Export_UserSign.TabIndex = 746
         Me.cmdITAR_Export_UserSign.Tag = "Tester"
         Me.cmdITAR_Export_UserSign.Text = "Sign"
-        Me.cmdITAR_Export_UserSign.UseVisualStyleBackColor = false
+        Me.cmdITAR_Export_UserSign.UseVisualStyleBackColor = False
         '
         'txtITAR_Export_UserName
         '
-        Me.txtITAR_Export_UserName.Enabled = false
+        Me.txtITAR_Export_UserName.Enabled = False
         Me.txtITAR_Export_UserName.Location = New System.Drawing.Point(130, 105)
         Me.txtITAR_Export_UserName.Name = "txtITAR_Export_UserName"
         Me.txtITAR_Export_UserName.Size = New System.Drawing.Size(196, 21)
@@ -2545,7 +2547,7 @@ Partial Class Process_frmMain
         'txtITAR_Export_UserDate
         '
         Me.txtITAR_Export_UserDate.BackColor = System.Drawing.Color.White
-        Me.txtITAR_Export_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtITAR_Export_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtITAR_Export_UserDate.ForeColor = System.Drawing.Color.Black
         Me.txtITAR_Export_UserDate.Location = New System.Drawing.Point(25, 105)
         Me.txtITAR_Export_UserDate.Name = "txtITAR_Export_UserDate"
@@ -2564,13 +2566,13 @@ Partial Class Process_frmMain
         '
         'grdExport_EditedBy
         '
-        DataGridViewCellStyle180.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdExport_EditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle180
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdExport_EditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle9
         Me.grdExport_EditedBy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdExport_EditedBy.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn36, Me.DataGridViewTextBoxColumn37, Me.DataGridViewTextBoxColumn95})
         Me.grdExport_EditedBy.Location = New System.Drawing.Point(25, 23)
         Me.grdExport_EditedBy.Name = "grdExport_EditedBy"
-        Me.grdExport_EditedBy.RowHeadersVisible = false
+        Me.grdExport_EditedBy.RowHeadersVisible = False
         Me.grdExport_EditedBy.Size = New System.Drawing.Size(823, 74)
         Me.grdExport_EditedBy.TabIndex = 741
         '
@@ -2595,8 +2597,8 @@ Partial Class Process_frmMain
         'cmbITAR_Export_SaleExportControlled
         '
         Me.cmbITAR_Export_SaleExportControlled.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbITAR_Export_SaleExportControlled.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbITAR_Export_SaleExportControlled.FormattingEnabled = true
+        Me.cmbITAR_Export_SaleExportControlled.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbITAR_Export_SaleExportControlled.FormattingEnabled = True
         Me.cmbITAR_Export_SaleExportControlled.Items.AddRange(New Object() {"Y", "N"})
         Me.cmbITAR_Export_SaleExportControlled.Location = New System.Drawing.Point(266, 175)
         Me.cmbITAR_Export_SaleExportControlled.Name = "cmbITAR_Export_SaleExportControlled"
@@ -2605,9 +2607,9 @@ Partial Class Process_frmMain
         '
         'Label240
         '
-        Me.Label240.AutoSize = true
-        Me.Label240.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label240.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label240.AutoSize = True
+        Me.Label240.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label240.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label240.Location = New System.Drawing.Point(43, 178)
         Me.Label240.Name = "Label240"
         Me.Label240.Size = New System.Drawing.Size(209, 13)
@@ -2618,8 +2620,8 @@ Partial Class Process_frmMain
         'cmbITAR_Export_ProductITAR_Reg
         '
         Me.cmbITAR_Export_ProductITAR_Reg.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbITAR_Export_ProductITAR_Reg.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbITAR_Export_ProductITAR_Reg.FormattingEnabled = true
+        Me.cmbITAR_Export_ProductITAR_Reg.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbITAR_Export_ProductITAR_Reg.FormattingEnabled = True
         Me.cmbITAR_Export_ProductITAR_Reg.Items.AddRange(New Object() {"Y", "N"})
         Me.cmbITAR_Export_ProductITAR_Reg.Location = New System.Drawing.Point(266, 138)
         Me.cmbITAR_Export_ProductITAR_Reg.Name = "cmbITAR_Export_ProductITAR_Reg"
@@ -2628,9 +2630,9 @@ Partial Class Process_frmMain
         '
         'Label239
         '
-        Me.Label239.AutoSize = true
-        Me.Label239.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label239.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label239.AutoSize = True
+        Me.Label239.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label239.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label239.Location = New System.Drawing.Point(66, 141)
         Me.Label239.Name = "Label239"
         Me.Label239.Size = New System.Drawing.Size(186, 13)
@@ -2641,8 +2643,8 @@ Partial Class Process_frmMain
         'cmbITAR_Export_Status
         '
         Me.cmbITAR_Export_Status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbITAR_Export_Status.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbITAR_Export_Status.FormattingEnabled = true
+        Me.cmbITAR_Export_Status.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbITAR_Export_Status.FormattingEnabled = True
         Me.cmbITAR_Export_Status.Items.AddRange(New Object() {"Approved", "Disapproved", "Review"})
         Me.cmbITAR_Export_Status.Location = New System.Drawing.Point(266, 214)
         Me.cmbITAR_Export_Status.Name = "cmbITAR_Export_Status"
@@ -2651,9 +2653,9 @@ Partial Class Process_frmMain
         '
         'Label29
         '
-        Me.Label29.AutoSize = true
-        Me.Label29.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label29.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label29.AutoSize = True
+        Me.Label29.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label29.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label29.Location = New System.Drawing.Point(204, 217)
         Me.Label29.Name = "Label29"
         Me.Label29.Size = New System.Drawing.Size(43, 13)
@@ -2663,7 +2665,7 @@ Partial Class Process_frmMain
         '
         'txtITAR_Export_EAR_Classification
         '
-        Me.txtITAR_Export_EAR_Classification.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtITAR_Export_EAR_Classification.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtITAR_Export_EAR_Classification.ForeColor = System.Drawing.Color.Black
         Me.txtITAR_Export_EAR_Classification.Location = New System.Drawing.Point(507, 174)
         Me.txtITAR_Export_EAR_Classification.Name = "txtITAR_Export_EAR_Classification"
@@ -2672,9 +2674,9 @@ Partial Class Process_frmMain
         '
         'Label17
         '
-        Me.Label17.AutoSize = true
-        Me.Label17.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label17.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label17.AutoSize = True
+        Me.Label17.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label17.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label17.Location = New System.Drawing.Point(393, 178)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(109, 13)
@@ -2685,8 +2687,8 @@ Partial Class Process_frmMain
         'cmbITAR_Export_AntiBoycottLang
         '
         Me.cmbITAR_Export_AntiBoycottLang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbITAR_Export_AntiBoycottLang.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbITAR_Export_AntiBoycottLang.FormattingEnabled = true
+        Me.cmbITAR_Export_AntiBoycottLang.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbITAR_Export_AntiBoycottLang.FormattingEnabled = True
         Me.cmbITAR_Export_AntiBoycottLang.Items.AddRange(New Object() {"Y", "N"})
         Me.cmbITAR_Export_AntiBoycottLang.Location = New System.Drawing.Point(266, 98)
         Me.cmbITAR_Export_AntiBoycottLang.Name = "cmbITAR_Export_AntiBoycottLang"
@@ -2695,9 +2697,9 @@ Partial Class Process_frmMain
         '
         'Label16
         '
-        Me.Label16.AutoSize = true
-        Me.Label16.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label16.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label16.AutoSize = True
+        Me.Label16.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label16.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label16.Location = New System.Drawing.Point(14, 101)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(238, 13)
@@ -2708,8 +2710,8 @@ Partial Class Process_frmMain
         'cmbITAR_Export_CountryProhibited
         '
         Me.cmbITAR_Export_CountryProhibited.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbITAR_Export_CountryProhibited.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbITAR_Export_CountryProhibited.FormattingEnabled = true
+        Me.cmbITAR_Export_CountryProhibited.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbITAR_Export_CountryProhibited.FormattingEnabled = True
         Me.cmbITAR_Export_CountryProhibited.Items.AddRange(New Object() {"Y", "N"})
         Me.cmbITAR_Export_CountryProhibited.Location = New System.Drawing.Point(266, 63)
         Me.cmbITAR_Export_CountryProhibited.Name = "cmbITAR_Export_CountryProhibited"
@@ -2718,9 +2720,9 @@ Partial Class Process_frmMain
         '
         'Label14
         '
-        Me.Label14.AutoSize = true
-        Me.Label14.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label14.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label14.AutoSize = True
+        Me.Label14.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label14.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label14.Location = New System.Drawing.Point(34, 66)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(218, 13)
@@ -2731,8 +2733,8 @@ Partial Class Process_frmMain
         'cmbITAR_Export_CustOnDenialList
         '
         Me.cmbITAR_Export_CustOnDenialList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbITAR_Export_CustOnDenialList.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbITAR_Export_CustOnDenialList.FormattingEnabled = true
+        Me.cmbITAR_Export_CustOnDenialList.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbITAR_Export_CustOnDenialList.FormattingEnabled = True
         Me.cmbITAR_Export_CustOnDenialList.Items.AddRange(New Object() {"Y", "N"})
         Me.cmbITAR_Export_CustOnDenialList.Location = New System.Drawing.Point(266, 27)
         Me.cmbITAR_Export_CustOnDenialList.Name = "cmbITAR_Export_CustOnDenialList"
@@ -2741,9 +2743,9 @@ Partial Class Process_frmMain
         '
         'Label15
         '
-        Me.Label15.AutoSize = true
-        Me.Label15.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label15.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label15.AutoSize = True
+        Me.Label15.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label15.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label15.Location = New System.Drawing.Point(40, 30)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(212, 13)
@@ -2753,7 +2755,7 @@ Partial Class Process_frmMain
         '
         'tabOrder
         '
-        Me.tabOrder.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
+        Me.tabOrder.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.tabOrder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tabOrder.Controls.Add(Me.Label68)
         Me.tabOrder.Controls.Add(Me.txtOrderEntry_QtdLeadTime)
@@ -2778,9 +2780,9 @@ Partial Class Process_frmMain
         '
         'Label68
         '
-        Me.Label68.AutoSize = true
-        Me.Label68.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label68.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label68.AutoSize = True
+        Me.Label68.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label68.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label68.Location = New System.Drawing.Point(199, 117)
         Me.Label68.Name = "Label68"
         Me.Label68.Size = New System.Drawing.Size(39, 13)
@@ -2791,19 +2793,20 @@ Partial Class Process_frmMain
         'txtOrderEntry_QtdLeadTime
         '
         Me.txtOrderEntry_QtdLeadTime.BackColor = System.Drawing.Color.White
-        Me.txtOrderEntry_QtdLeadTime.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtOrderEntry_QtdLeadTime.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtOrderEntry_QtdLeadTime.ForeColor = System.Drawing.Color.Black
         Me.txtOrderEntry_QtdLeadTime.Location = New System.Drawing.Point(146, 114)
         Me.txtOrderEntry_QtdLeadTime.Name = "txtOrderEntry_QtdLeadTime"
         Me.txtOrderEntry_QtdLeadTime.Size = New System.Drawing.Size(50, 21)
         Me.txtOrderEntry_QtdLeadTime.TabIndex = 882
         Me.txtOrderEntry_QtdLeadTime.Tag = "Tester"
+        Me.txtOrderEntry_QtdLeadTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label63
         '
-        Me.Label63.AutoSize = true
-        Me.Label63.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label63.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label63.AutoSize = True
+        Me.Label63.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label63.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label63.Location = New System.Drawing.Point(32, 117)
         Me.Label63.Name = "Label63"
         Me.Label63.Size = New System.Drawing.Size(111, 13)
@@ -2814,23 +2817,23 @@ Partial Class Process_frmMain
         'GroupBox53
         '
         Me.GroupBox53.Controls.Add(Me.grdOrdEntry_CustContact)
-        Me.GroupBox53.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox53.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox53.Location = New System.Drawing.Point(333, 9)
         Me.GroupBox53.Name = "GroupBox53"
         Me.GroupBox53.Size = New System.Drawing.Size(614, 180)
         Me.GroupBox53.TabIndex = 880
-        Me.GroupBox53.TabStop = false
+        Me.GroupBox53.TabStop = False
         Me.GroupBox53.Text = "Customer Contact:"
         '
         'grdOrdEntry_CustContact
         '
-        DataGridViewCellStyle181.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdOrdEntry_CustContact.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle181
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdOrdEntry_CustContact.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle10
         Me.grdOrdEntry_CustContact.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdOrdEntry_CustContact.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewComboBoxColumn9, Me.DataGridViewTextBoxColumn105, Me.DataGridViewTextBoxColumn106, Me.DataGridViewTextBoxColumn107})
         Me.grdOrdEntry_CustContact.Location = New System.Drawing.Point(8, 19)
         Me.grdOrdEntry_CustContact.Name = "grdOrdEntry_CustContact"
-        Me.grdOrdEntry_CustContact.RowHeadersVisible = false
+        Me.grdOrdEntry_CustContact.RowHeadersVisible = False
         Me.grdOrdEntry_CustContact.Size = New System.Drawing.Size(596, 152)
         Me.grdOrdEntry_CustContact.TabIndex = 742
         '
@@ -2869,18 +2872,18 @@ Partial Class Process_frmMain
         Me.GroupBox52.Controls.Add(Me.Label138)
         Me.GroupBox52.Controls.Add(Me.Label151)
         Me.GroupBox52.Controls.Add(Me.cmbOrdEntry_Tooling)
-        Me.GroupBox52.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox52.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox52.Location = New System.Drawing.Point(422, 207)
         Me.GroupBox52.Name = "GroupBox52"
         Me.GroupBox52.Size = New System.Drawing.Size(505, 86)
         Me.GroupBox52.TabIndex = 879
-        Me.GroupBox52.TabStop = false
+        Me.GroupBox52.TabStop = False
         '
         'cmbOrdEntry_SplPkgNLbl
         '
         Me.cmbOrdEntry_SplPkgNLbl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbOrdEntry_SplPkgNLbl.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbOrdEntry_SplPkgNLbl.FormattingEnabled = true
+        Me.cmbOrdEntry_SplPkgNLbl.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbOrdEntry_SplPkgNLbl.FormattingEnabled = True
         Me.cmbOrdEntry_SplPkgNLbl.Items.AddRange(New Object() {"Y", "N"})
         Me.cmbOrdEntry_SplPkgNLbl.Location = New System.Drawing.Point(231, 50)
         Me.cmbOrdEntry_SplPkgNLbl.Name = "cmbOrdEntry_SplPkgNLbl"
@@ -2889,8 +2892,8 @@ Partial Class Process_frmMain
         '
         'Label137
         '
-        Me.Label137.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label137.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label137.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label137.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label137.Location = New System.Drawing.Point(230, 20)
         Me.Label137.Name = "Label137"
         Me.Label137.Size = New System.Drawing.Size(137, 27)
@@ -2901,8 +2904,8 @@ Partial Class Process_frmMain
         'cmbOrdEntry_SpecialReq
         '
         Me.cmbOrdEntry_SpecialReq.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbOrdEntry_SpecialReq.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbOrdEntry_SpecialReq.FormattingEnabled = true
+        Me.cmbOrdEntry_SpecialReq.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbOrdEntry_SpecialReq.FormattingEnabled = True
         Me.cmbOrdEntry_SpecialReq.Items.AddRange(New Object() {"Y", "N"})
         Me.cmbOrdEntry_SpecialReq.Location = New System.Drawing.Point(25, 50)
         Me.cmbOrdEntry_SpecialReq.Name = "cmbOrdEntry_SpecialReq"
@@ -2911,9 +2914,9 @@ Partial Class Process_frmMain
         '
         'Label138
         '
-        Me.Label138.AutoSize = true
-        Me.Label138.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label138.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label138.AutoSize = True
+        Me.Label138.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label138.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label138.Location = New System.Drawing.Point(138, 34)
         Me.Label138.Name = "Label138"
         Me.Label138.Size = New System.Drawing.Size(48, 13)
@@ -2923,8 +2926,8 @@ Partial Class Process_frmMain
         '
         'Label151
         '
-        Me.Label151.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label151.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label151.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label151.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label151.Location = New System.Drawing.Point(24, 20)
         Me.Label151.Name = "Label151"
         Me.Label151.Size = New System.Drawing.Size(96, 27)
@@ -2935,8 +2938,8 @@ Partial Class Process_frmMain
         'cmbOrdEntry_Tooling
         '
         Me.cmbOrdEntry_Tooling.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbOrdEntry_Tooling.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbOrdEntry_Tooling.FormattingEnabled = true
+        Me.cmbOrdEntry_Tooling.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbOrdEntry_Tooling.FormattingEnabled = True
         Me.cmbOrdEntry_Tooling.Items.AddRange(New Object() {"Y", "N"})
         Me.cmbOrdEntry_Tooling.Location = New System.Drawing.Point(139, 50)
         Me.cmbOrdEntry_Tooling.Name = "cmbOrdEntry_Tooling"
@@ -2953,12 +2956,12 @@ Partial Class Process_frmMain
         Me.GroupBox51.Controls.Add(Me.Label135)
         Me.GroupBox51.Controls.Add(Me.Label136)
         Me.GroupBox51.Controls.Add(Me.txtOrdEntry_PONo)
-        Me.GroupBox51.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox51.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox51.Location = New System.Drawing.Point(10, 207)
         Me.GroupBox51.Name = "GroupBox51"
         Me.GroupBox51.Size = New System.Drawing.Size(367, 86)
         Me.GroupBox51.TabIndex = 878
-        Me.GroupBox51.TabStop = false
+        Me.GroupBox51.TabStop = False
         Me.GroupBox51.Text = "PO:"
         '
         'dtpOrdEntry_PODate_EDI
@@ -2982,7 +2985,7 @@ Partial Class Process_frmMain
         'txtOrdEntry_PODate
         '
         Me.txtOrdEntry_PODate.BackColor = System.Drawing.Color.White
-        Me.txtOrdEntry_PODate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtOrdEntry_PODate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtOrdEntry_PODate.ForeColor = System.Drawing.Color.Black
         Me.txtOrdEntry_PODate.Location = New System.Drawing.Point(132, 47)
         Me.txtOrdEntry_PODate.Name = "txtOrdEntry_PODate"
@@ -2993,7 +2996,7 @@ Partial Class Process_frmMain
         'txtOrdEntry_PODate_EDI
         '
         Me.txtOrdEntry_PODate_EDI.BackColor = System.Drawing.Color.White
-        Me.txtOrdEntry_PODate_EDI.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtOrdEntry_PODate_EDI.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtOrdEntry_PODate_EDI.ForeColor = System.Drawing.Color.Black
         Me.txtOrdEntry_PODate_EDI.Location = New System.Drawing.Point(259, 47)
         Me.txtOrdEntry_PODate_EDI.Name = "txtOrdEntry_PODate_EDI"
@@ -3003,9 +3006,9 @@ Partial Class Process_frmMain
         '
         'Label134
         '
-        Me.Label134.AutoSize = true
-        Me.Label134.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label134.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label134.AutoSize = True
+        Me.Label134.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label134.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label134.Location = New System.Drawing.Point(132, 31)
         Me.Label134.Name = "Label134"
         Me.Label134.Size = New System.Drawing.Size(34, 13)
@@ -3015,9 +3018,9 @@ Partial Class Process_frmMain
         '
         'Label135
         '
-        Me.Label135.AutoSize = true
-        Me.Label135.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label135.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label135.AutoSize = True
+        Me.Label135.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label135.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label135.Location = New System.Drawing.Point(259, 31)
         Me.Label135.Name = "Label135"
         Me.Label135.Size = New System.Drawing.Size(59, 13)
@@ -3027,9 +3030,9 @@ Partial Class Process_frmMain
         '
         'Label136
         '
-        Me.Label136.AutoSize = true
-        Me.Label136.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label136.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label136.AutoSize = True
+        Me.Label136.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label136.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label136.Location = New System.Drawing.Point(15, 31)
         Me.Label136.Name = "Label136"
         Me.Label136.Size = New System.Drawing.Size(16, 13)
@@ -3039,7 +3042,7 @@ Partial Class Process_frmMain
         '
         'txtOrdEntry_PONo
         '
-        Me.txtOrdEntry_PONo.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtOrdEntry_PONo.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtOrdEntry_PONo.ForeColor = System.Drawing.Color.Black
         Me.txtOrdEntry_PONo.Location = New System.Drawing.Point(15, 47)
         Me.txtOrdEntry_PONo.Name = "txtOrdEntry_PONo"
@@ -3054,18 +3057,18 @@ Partial Class Process_frmMain
         Me.GroupBox31.Controls.Add(Me.Label222)
         Me.GroupBox31.Controls.Add(Me.Label221)
         Me.GroupBox31.Controls.Add(Me.ComboBox58)
-        Me.GroupBox31.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox31.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox31.Location = New System.Drawing.Point(422, 207)
         Me.GroupBox31.Name = "GroupBox31"
         Me.GroupBox31.Size = New System.Drawing.Size(505, 86)
         Me.GroupBox31.TabIndex = 879
-        Me.GroupBox31.TabStop = false
+        Me.GroupBox31.TabStop = False
         '
         'ComboBox49
         '
         Me.ComboBox49.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox49.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.ComboBox49.FormattingEnabled = true
+        Me.ComboBox49.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ComboBox49.FormattingEnabled = True
         Me.ComboBox49.Items.AddRange(New Object() {"Y", "N"})
         Me.ComboBox49.Location = New System.Drawing.Point(231, 50)
         Me.ComboBox49.Name = "ComboBox49"
@@ -3074,8 +3077,8 @@ Partial Class Process_frmMain
         '
         'Label10
         '
-        Me.Label10.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label10.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label10.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label10.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.Location = New System.Drawing.Point(230, 20)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(137, 27)
@@ -3086,8 +3089,8 @@ Partial Class Process_frmMain
         'ComboBox57
         '
         Me.ComboBox57.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox57.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.ComboBox57.FormattingEnabled = true
+        Me.ComboBox57.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ComboBox57.FormattingEnabled = True
         Me.ComboBox57.Items.AddRange(New Object() {"Y", "N"})
         Me.ComboBox57.Location = New System.Drawing.Point(25, 50)
         Me.ComboBox57.Name = "ComboBox57"
@@ -3096,9 +3099,9 @@ Partial Class Process_frmMain
         '
         'Label222
         '
-        Me.Label222.AutoSize = true
-        Me.Label222.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label222.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label222.AutoSize = True
+        Me.Label222.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label222.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label222.Location = New System.Drawing.Point(138, 34)
         Me.Label222.Name = "Label222"
         Me.Label222.Size = New System.Drawing.Size(48, 13)
@@ -3108,8 +3111,8 @@ Partial Class Process_frmMain
         '
         'Label221
         '
-        Me.Label221.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label221.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label221.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label221.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label221.Location = New System.Drawing.Point(24, 20)
         Me.Label221.Name = "Label221"
         Me.Label221.Size = New System.Drawing.Size(96, 27)
@@ -3120,8 +3123,8 @@ Partial Class Process_frmMain
         'ComboBox58
         '
         Me.ComboBox58.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox58.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.ComboBox58.FormattingEnabled = true
+        Me.ComboBox58.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ComboBox58.FormattingEnabled = True
         Me.ComboBox58.Items.AddRange(New Object() {"Y", "N"})
         Me.ComboBox58.Location = New System.Drawing.Point(139, 50)
         Me.ComboBox58.Name = "ComboBox58"
@@ -3138,12 +3141,12 @@ Partial Class Process_frmMain
         Me.GroupBox18.Controls.Add(Me.Label106)
         Me.GroupBox18.Controls.Add(Me.Label45)
         Me.GroupBox18.Controls.Add(Me.TextBox36)
-        Me.GroupBox18.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox18.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox18.Location = New System.Drawing.Point(10, 207)
         Me.GroupBox18.Name = "GroupBox18"
         Me.GroupBox18.Size = New System.Drawing.Size(367, 86)
         Me.GroupBox18.TabIndex = 878
-        Me.GroupBox18.TabStop = false
+        Me.GroupBox18.TabStop = False
         Me.GroupBox18.Text = "PO:"
         '
         'DateTimePicker17
@@ -3167,7 +3170,7 @@ Partial Class Process_frmMain
         'TextBox31
         '
         Me.TextBox31.BackColor = System.Drawing.Color.White
-        Me.TextBox31.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.TextBox31.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox31.ForeColor = System.Drawing.Color.Black
         Me.TextBox31.Location = New System.Drawing.Point(132, 47)
         Me.TextBox31.Name = "TextBox31"
@@ -3178,7 +3181,7 @@ Partial Class Process_frmMain
         'TextBox179
         '
         Me.TextBox179.BackColor = System.Drawing.Color.White
-        Me.TextBox179.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.TextBox179.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox179.ForeColor = System.Drawing.Color.Black
         Me.TextBox179.Location = New System.Drawing.Point(259, 47)
         Me.TextBox179.Name = "TextBox179"
@@ -3188,9 +3191,9 @@ Partial Class Process_frmMain
         '
         'Label36
         '
-        Me.Label36.AutoSize = true
-        Me.Label36.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label36.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label36.AutoSize = True
+        Me.Label36.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label36.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label36.Location = New System.Drawing.Point(132, 31)
         Me.Label36.Name = "Label36"
         Me.Label36.Size = New System.Drawing.Size(34, 13)
@@ -3200,9 +3203,9 @@ Partial Class Process_frmMain
         '
         'Label106
         '
-        Me.Label106.AutoSize = true
-        Me.Label106.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label106.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label106.AutoSize = True
+        Me.Label106.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label106.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label106.Location = New System.Drawing.Point(259, 31)
         Me.Label106.Name = "Label106"
         Me.Label106.Size = New System.Drawing.Size(59, 13)
@@ -3212,9 +3215,9 @@ Partial Class Process_frmMain
         '
         'Label45
         '
-        Me.Label45.AutoSize = true
-        Me.Label45.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label45.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label45.AutoSize = True
+        Me.Label45.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label45.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label45.Location = New System.Drawing.Point(15, 31)
         Me.Label45.Name = "Label45"
         Me.Label45.Size = New System.Drawing.Size(16, 13)
@@ -3224,7 +3227,7 @@ Partial Class Process_frmMain
         '
         'TextBox36
         '
-        Me.TextBox36.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.TextBox36.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox36.ForeColor = System.Drawing.Color.Black
         Me.TextBox36.Location = New System.Drawing.Point(15, 47)
         Me.TextBox36.Name = "TextBox36"
@@ -3239,13 +3242,13 @@ Partial Class Process_frmMain
         Me.GroupBox22.Controls.Add(Me.txtOrdEntry_UserDate)
         Me.GroupBox22.Controls.Add(Me.dtpOrdEntry_UserDate)
         Me.GroupBox22.Controls.Add(Me.grdOrdEntry_EditedBy)
-        Me.GroupBox22.Enabled = false
-        Me.GroupBox22.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox22.Enabled = False
+        Me.GroupBox22.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox22.Location = New System.Drawing.Point(15, 436)
         Me.GroupBox22.Name = "GroupBox22"
         Me.GroupBox22.Size = New System.Drawing.Size(867, 132)
         Me.GroupBox22.TabIndex = 876
-        Me.GroupBox22.TabStop = false
+        Me.GroupBox22.TabStop = False
         Me.GroupBox22.Text = "Edited by:"
         '
         'chkOrdEntry_UserSigned
@@ -3256,11 +3259,11 @@ Partial Class Process_frmMain
         Me.chkOrdEntry_UserSigned.Size = New System.Drawing.Size(15, 14)
         Me.chkOrdEntry_UserSigned.TabIndex = 745
         Me.chkOrdEntry_UserSigned.Tag = "Tester"
-        Me.chkOrdEntry_UserSigned.UseVisualStyleBackColor = true
+        Me.chkOrdEntry_UserSigned.UseVisualStyleBackColor = True
         '
         'cmdOrdEntry_UserSign
         '
-        Me.cmdOrdEntry_UserSign.AutoSize = true
+        Me.cmdOrdEntry_UserSign.AutoSize = True
         Me.cmdOrdEntry_UserSign.BackColor = System.Drawing.Color.Silver
         Me.cmdOrdEntry_UserSign.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdOrdEntry_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -3270,11 +3273,11 @@ Partial Class Process_frmMain
         Me.cmdOrdEntry_UserSign.TabIndex = 746
         Me.cmdOrdEntry_UserSign.Tag = "Tester"
         Me.cmdOrdEntry_UserSign.Text = "Sign"
-        Me.cmdOrdEntry_UserSign.UseVisualStyleBackColor = false
+        Me.cmdOrdEntry_UserSign.UseVisualStyleBackColor = False
         '
         'txtOrdEntry_UserName
         '
-        Me.txtOrdEntry_UserName.Enabled = false
+        Me.txtOrdEntry_UserName.Enabled = False
         Me.txtOrdEntry_UserName.Location = New System.Drawing.Point(130, 105)
         Me.txtOrdEntry_UserName.Name = "txtOrdEntry_UserName"
         Me.txtOrdEntry_UserName.Size = New System.Drawing.Size(196, 21)
@@ -3284,7 +3287,7 @@ Partial Class Process_frmMain
         'txtOrdEntry_UserDate
         '
         Me.txtOrdEntry_UserDate.BackColor = System.Drawing.Color.White
-        Me.txtOrdEntry_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtOrdEntry_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtOrdEntry_UserDate.ForeColor = System.Drawing.Color.Black
         Me.txtOrdEntry_UserDate.Location = New System.Drawing.Point(25, 105)
         Me.txtOrdEntry_UserDate.Name = "txtOrdEntry_UserDate"
@@ -3303,13 +3306,13 @@ Partial Class Process_frmMain
         '
         'grdOrdEntry_EditedBy
         '
-        DataGridViewCellStyle182.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdOrdEntry_EditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle182
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdOrdEntry_EditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle11
         Me.grdOrdEntry_EditedBy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdOrdEntry_EditedBy.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn26, Me.DataGridViewTextBoxColumn27, Me.DataGridViewTextBoxColumn58})
         Me.grdOrdEntry_EditedBy.Location = New System.Drawing.Point(25, 23)
         Me.grdOrdEntry_EditedBy.Name = "grdOrdEntry_EditedBy"
-        Me.grdOrdEntry_EditedBy.RowHeadersVisible = false
+        Me.grdOrdEntry_EditedBy.RowHeadersVisible = False
         Me.grdOrdEntry_EditedBy.Size = New System.Drawing.Size(823, 74)
         Me.grdOrdEntry_EditedBy.TabIndex = 741
         '
@@ -3335,7 +3338,7 @@ Partial Class Process_frmMain
         '
         Me.Label128.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label128.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label128.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label128.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label128.Location = New System.Drawing.Point(0, 421)
         Me.Label128.Name = "Label128"
         Me.Label128.Size = New System.Drawing.Size(1045, 2)
@@ -3352,28 +3355,29 @@ Partial Class Process_frmMain
         Me.GroupBox21.Controls.Add(Me.Label220)
         Me.GroupBox21.Controls.Add(Me.Label218)
         Me.GroupBox21.Controls.Add(Me.cmbOrdEntry_DFAR)
-        Me.GroupBox21.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox21.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox21.Location = New System.Drawing.Point(10, 322)
         Me.GroupBox21.Name = "GroupBox21"
         Me.GroupBox21.Size = New System.Drawing.Size(420, 86)
         Me.GroupBox21.TabIndex = 741
-        Me.GroupBox21.TabStop = false
+        Me.GroupBox21.TabStop = False
         Me.GroupBox21.Text = "Order:"
         '
         'txtOrdEntry_OrderQty
         '
-        Me.txtOrdEntry_OrderQty.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtOrdEntry_OrderQty.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtOrdEntry_OrderQty.ForeColor = System.Drawing.Color.Black
         Me.txtOrdEntry_OrderQty.Location = New System.Drawing.Point(17, 44)
         Me.txtOrdEntry_OrderQty.Name = "txtOrdEntry_OrderQty"
         Me.txtOrdEntry_OrderQty.Size = New System.Drawing.Size(69, 21)
         Me.txtOrdEntry_OrderQty.TabIndex = 639
+        Me.txtOrdEntry_OrderQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label43
         '
-        Me.Label43.AutoSize = true
-        Me.Label43.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label43.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label43.AutoSize = True
+        Me.Label43.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label43.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label43.Location = New System.Drawing.Point(17, 28)
         Me.Label43.Name = "Label43"
         Me.Label43.Size = New System.Drawing.Size(27, 13)
@@ -3383,9 +3387,9 @@ Partial Class Process_frmMain
         '
         'Label217
         '
-        Me.Label217.AutoSize = true
-        Me.Label217.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label217.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label217.AutoSize = True
+        Me.Label217.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label217.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label217.Location = New System.Drawing.Point(131, 28)
         Me.Label217.Name = "Label217"
         Me.Label217.Size = New System.Drawing.Size(63, 13)
@@ -3396,7 +3400,7 @@ Partial Class Process_frmMain
         'txtOrdEntry_OrderShipDate
         '
         Me.txtOrdEntry_OrderShipDate.BackColor = System.Drawing.Color.White
-        Me.txtOrdEntry_OrderShipDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtOrdEntry_OrderShipDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtOrdEntry_OrderShipDate.ForeColor = System.Drawing.Color.Black
         Me.txtOrdEntry_OrderShipDate.Location = New System.Drawing.Point(131, 44)
         Me.txtOrdEntry_OrderShipDate.Name = "txtOrdEntry_OrderShipDate"
@@ -3416,8 +3420,8 @@ Partial Class Process_frmMain
         'cmbOrdEntry_Expedited
         '
         Me.cmbOrdEntry_Expedited.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbOrdEntry_Expedited.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbOrdEntry_Expedited.FormattingEnabled = true
+        Me.cmbOrdEntry_Expedited.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbOrdEntry_Expedited.FormattingEnabled = True
         Me.cmbOrdEntry_Expedited.Items.AddRange(New Object() {"Y", "N"})
         Me.cmbOrdEntry_Expedited.Location = New System.Drawing.Point(271, 44)
         Me.cmbOrdEntry_Expedited.Name = "cmbOrdEntry_Expedited"
@@ -3426,9 +3430,9 @@ Partial Class Process_frmMain
         '
         'Label220
         '
-        Me.Label220.AutoSize = true
-        Me.Label220.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label220.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label220.AutoSize = True
+        Me.Label220.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label220.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label220.Location = New System.Drawing.Point(357, 31)
         Me.Label220.Name = "Label220"
         Me.Label220.Size = New System.Drawing.Size(38, 13)
@@ -3438,9 +3442,9 @@ Partial Class Process_frmMain
         '
         'Label218
         '
-        Me.Label218.AutoSize = true
-        Me.Label218.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label218.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label218.AutoSize = True
+        Me.Label218.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label218.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label218.Location = New System.Drawing.Point(271, 28)
         Me.Label218.Name = "Label218"
         Me.Label218.Size = New System.Drawing.Size(63, 13)
@@ -3451,8 +3455,8 @@ Partial Class Process_frmMain
         'cmbOrdEntry_DFAR
         '
         Me.cmbOrdEntry_DFAR.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbOrdEntry_DFAR.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbOrdEntry_DFAR.FormattingEnabled = true
+        Me.cmbOrdEntry_DFAR.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbOrdEntry_DFAR.FormattingEnabled = True
         Me.cmbOrdEntry_DFAR.Items.AddRange(New Object() {"Y", "N"})
         Me.cmbOrdEntry_DFAR.Location = New System.Drawing.Point(357, 47)
         Me.cmbOrdEntry_DFAR.Name = "cmbOrdEntry_DFAR"
@@ -3463,7 +3467,7 @@ Partial Class Process_frmMain
         '
         Me.Label133.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label133.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label133.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label133.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label133.Location = New System.Drawing.Point(0, 199)
         Me.Label133.Name = "Label133"
         Me.Label133.Size = New System.Drawing.Size(1040, 2)
@@ -3473,7 +3477,7 @@ Partial Class Process_frmMain
         '
         Me.Label127.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label127.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label127.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label127.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label127.Location = New System.Drawing.Point(-4, 308)
         Me.Label127.Name = "Label127"
         Me.Label127.Size = New System.Drawing.Size(1045, 2)
@@ -3483,7 +3487,7 @@ Partial Class Process_frmMain
         '
         Me.Label46.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label46.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label46.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label46.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label46.Location = New System.Drawing.Point(0, 199)
         Me.Label46.Name = "Label46"
         Me.Label46.Size = New System.Drawing.Size(1040, 2)
@@ -3496,17 +3500,17 @@ Partial Class Process_frmMain
         Me.GroupBox19.Controls.Add(Me.Label38)
         Me.GroupBox19.Controls.Add(Me.txtOrdEntry_SalesDate)
         Me.GroupBox19.Controls.Add(Me.dtpOrdEntry_SalesDate)
-        Me.GroupBox19.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox19.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox19.Location = New System.Drawing.Point(15, 9)
         Me.GroupBox19.Name = "GroupBox19"
         Me.GroupBox19.Size = New System.Drawing.Size(245, 87)
         Me.GroupBox19.TabIndex = 711
-        Me.GroupBox19.TabStop = false
+        Me.GroupBox19.TabStop = False
         Me.GroupBox19.Text = "Sales:"
         '
         'txtOrdEntry_SalesOrderNo
         '
-        Me.txtOrdEntry_SalesOrderNo.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtOrdEntry_SalesOrderNo.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtOrdEntry_SalesOrderNo.ForeColor = System.Drawing.Color.Black
         Me.txtOrdEntry_SalesOrderNo.Location = New System.Drawing.Point(17, 41)
         Me.txtOrdEntry_SalesOrderNo.Name = "txtOrdEntry_SalesOrderNo"
@@ -3515,9 +3519,9 @@ Partial Class Process_frmMain
         '
         'Label44
         '
-        Me.Label44.AutoSize = true
-        Me.Label44.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label44.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label44.AutoSize = True
+        Me.Label44.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label44.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label44.Location = New System.Drawing.Point(17, 25)
         Me.Label44.Name = "Label44"
         Me.Label44.Size = New System.Drawing.Size(53, 13)
@@ -3527,9 +3531,9 @@ Partial Class Process_frmMain
         '
         'Label38
         '
-        Me.Label38.AutoSize = true
-        Me.Label38.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label38.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label38.AutoSize = True
+        Me.Label38.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label38.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label38.Location = New System.Drawing.Point(131, 25)
         Me.Label38.Name = "Label38"
         Me.Label38.Size = New System.Drawing.Size(34, 13)
@@ -3540,7 +3544,7 @@ Partial Class Process_frmMain
         'txtOrdEntry_SalesDate
         '
         Me.txtOrdEntry_SalesDate.BackColor = System.Drawing.Color.White
-        Me.txtOrdEntry_SalesDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtOrdEntry_SalesDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtOrdEntry_SalesDate.ForeColor = System.Drawing.Color.Black
         Me.txtOrdEntry_SalesDate.Location = New System.Drawing.Point(131, 41)
         Me.txtOrdEntry_SalesDate.Name = "txtOrdEntry_SalesDate"
@@ -3559,7 +3563,7 @@ Partial Class Process_frmMain
         '
         'tabCosting
         '
-        Me.tabCosting.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
+        Me.tabCosting.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.tabCosting.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tabCosting.Controls.Add(Me.Label5)
         Me.tabCosting.Controls.Add(Me.GroupBox47)
@@ -3579,7 +3583,7 @@ Partial Class Process_frmMain
         '
         Me.Label5.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label5.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label5.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.Location = New System.Drawing.Point(0, 421)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(1040, 2)
@@ -3588,20 +3592,20 @@ Partial Class Process_frmMain
         'GroupBox47
         '
         Me.GroupBox47.Controls.Add(Me.txtCost_Notes)
-        Me.GroupBox47.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox47.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox47.Location = New System.Drawing.Point(27, 312)
         Me.GroupBox47.Name = "GroupBox47"
         Me.GroupBox47.Size = New System.Drawing.Size(855, 81)
         Me.GroupBox47.TabIndex = 878
-        Me.GroupBox47.TabStop = false
+        Me.GroupBox47.TabStop = False
         Me.GroupBox47.Text = "Notes:"
         '
         'txtCost_Notes
         '
-        Me.txtCost_Notes.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtCost_Notes.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCost_Notes.ForeColor = System.Drawing.Color.Black
         Me.txtCost_Notes.Location = New System.Drawing.Point(11, 20)
-        Me.txtCost_Notes.Multiline = true
+        Me.txtCost_Notes.Multiline = True
         Me.txtCost_Notes.Name = "txtCost_Notes"
         Me.txtCost_Notes.Size = New System.Drawing.Size(827, 47)
         Me.txtCost_Notes.TabIndex = 750
@@ -3614,13 +3618,13 @@ Partial Class Process_frmMain
         Me.GroupBox23.Controls.Add(Me.txtCost_UserDate)
         Me.GroupBox23.Controls.Add(Me.dtpCost_UserDate)
         Me.GroupBox23.Controls.Add(Me.grdCost_EditedBy)
-        Me.GroupBox23.Enabled = false
-        Me.GroupBox23.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox23.Enabled = False
+        Me.GroupBox23.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox23.Location = New System.Drawing.Point(15, 436)
         Me.GroupBox23.Name = "GroupBox23"
         Me.GroupBox23.Size = New System.Drawing.Size(867, 132)
         Me.GroupBox23.TabIndex = 877
-        Me.GroupBox23.TabStop = false
+        Me.GroupBox23.TabStop = False
         Me.GroupBox23.Text = "Edited by:"
         '
         'chkCost_UserSigned
@@ -3631,11 +3635,11 @@ Partial Class Process_frmMain
         Me.chkCost_UserSigned.Size = New System.Drawing.Size(15, 14)
         Me.chkCost_UserSigned.TabIndex = 745
         Me.chkCost_UserSigned.Tag = "Tester"
-        Me.chkCost_UserSigned.UseVisualStyleBackColor = true
+        Me.chkCost_UserSigned.UseVisualStyleBackColor = True
         '
         'cmdCost_UserSign
         '
-        Me.cmdCost_UserSign.AutoSize = true
+        Me.cmdCost_UserSign.AutoSize = True
         Me.cmdCost_UserSign.BackColor = System.Drawing.Color.Silver
         Me.cmdCost_UserSign.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdCost_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -3645,11 +3649,11 @@ Partial Class Process_frmMain
         Me.cmdCost_UserSign.TabIndex = 746
         Me.cmdCost_UserSign.Tag = "Tester"
         Me.cmdCost_UserSign.Text = "Sign"
-        Me.cmdCost_UserSign.UseVisualStyleBackColor = false
+        Me.cmdCost_UserSign.UseVisualStyleBackColor = False
         '
         'txtCost_UserName
         '
-        Me.txtCost_UserName.Enabled = false
+        Me.txtCost_UserName.Enabled = False
         Me.txtCost_UserName.Location = New System.Drawing.Point(130, 105)
         Me.txtCost_UserName.Name = "txtCost_UserName"
         Me.txtCost_UserName.Size = New System.Drawing.Size(196, 21)
@@ -3659,7 +3663,7 @@ Partial Class Process_frmMain
         'txtCost_UserDate
         '
         Me.txtCost_UserDate.BackColor = System.Drawing.Color.White
-        Me.txtCost_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtCost_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCost_UserDate.ForeColor = System.Drawing.Color.Black
         Me.txtCost_UserDate.Location = New System.Drawing.Point(25, 105)
         Me.txtCost_UserDate.Name = "txtCost_UserDate"
@@ -3678,13 +3682,13 @@ Partial Class Process_frmMain
         '
         'grdCost_EditedBy
         '
-        DataGridViewCellStyle183.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdCost_EditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle183
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdCost_EditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle12
         Me.grdCost_EditedBy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdCost_EditedBy.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn28, Me.DataGridViewTextBoxColumn29, Me.DataGridViewTextBoxColumn73})
         Me.grdCost_EditedBy.Location = New System.Drawing.Point(25, 23)
         Me.grdCost_EditedBy.Name = "grdCost_EditedBy"
-        Me.grdCost_EditedBy.RowHeadersVisible = false
+        Me.grdCost_EditedBy.RowHeadersVisible = False
         Me.grdCost_EditedBy.Size = New System.Drawing.Size(823, 74)
         Me.grdCost_EditedBy.TabIndex = 741
         '
@@ -3710,7 +3714,7 @@ Partial Class Process_frmMain
         '
         Me.Label4.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label4.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label4.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.Location = New System.Drawing.Point(-2, 294)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(1040, 2)
@@ -3719,69 +3723,33 @@ Partial Class Process_frmMain
         'GroupBox46
         '
         Me.GroupBox46.Controls.Add(Me.grdCost_SplOperation)
-        Me.GroupBox46.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox46.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox46.Location = New System.Drawing.Point(25, 123)
         Me.GroupBox46.Name = "GroupBox46"
         Me.GroupBox46.Size = New System.Drawing.Size(565, 158)
         Me.GroupBox46.TabIndex = 874
-        Me.GroupBox46.TabStop = false
+        Me.GroupBox46.TabStop = False
         Me.GroupBox46.Text = "Special Operation:"
         '
         'grdCost_SplOperation
         '
-        DataGridViewCellStyle184.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdCost_SplOperation.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle184
-        DataGridViewCellStyle185.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle185.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle185.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        DataGridViewCellStyle185.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle185.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle185.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle185.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdCost_SplOperation.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle185
+        DataGridViewCellStyle13.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdCost_SplOperation.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdCost_SplOperation.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle14
         Me.grdCost_SplOperation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdCost_SplOperation.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn71, Me.Column18, Me.Column19, Me.DataGridViewTextBoxColumn72})
         Me.grdCost_SplOperation.Location = New System.Drawing.Point(13, 27)
         Me.grdCost_SplOperation.Name = "grdCost_SplOperation"
-        Me.grdCost_SplOperation.RowHeadersVisible = false
+        Me.grdCost_SplOperation.RowHeadersVisible = False
         Me.grdCost_SplOperation.Size = New System.Drawing.Size(534, 118)
         Me.grdCost_SplOperation.TabIndex = 741
-        '
-        'DataGridViewTextBoxColumn71
-        '
-        DataGridViewCellStyle186.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.DataGridViewTextBoxColumn71.DefaultCellStyle = DataGridViewCellStyle186
-        Me.DataGridViewTextBoxColumn71.HeaderText = "Description"
-        Me.DataGridViewTextBoxColumn71.Items.AddRange(New Object() {"X-Ray", "FPI", "Outside Cleaning", "Semi-Quant. Spectro", "Outside Heat Treat"})
-        Me.DataGridViewTextBoxColumn71.Name = "DataGridViewTextBoxColumn71"
-        Me.DataGridViewTextBoxColumn71.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn71.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.DataGridViewTextBoxColumn71.Width = 150
-        '
-        'Column18
-        '
-        DataGridViewCellStyle187.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.Column18.DefaultCellStyle = DataGridViewCellStyle187
-        Me.Column18.HeaderText = "Spec"
-        Me.Column18.Name = "Column18"
-        Me.Column18.Width = 200
-        '
-        'Column19
-        '
-        DataGridViewCellStyle188.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.Column19.DefaultCellStyle = DataGridViewCellStyle188
-        Me.Column19.HeaderText = "Lead Time (wks)"
-        Me.Column19.Name = "Column19"
-        Me.Column19.Width = 90
-        '
-        'DataGridViewTextBoxColumn72
-        '
-        DataGridViewCellStyle189.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.DataGridViewTextBoxColumn72.DefaultCellStyle = DataGridViewCellStyle189
-        Me.DataGridViewTextBoxColumn72.HeaderText = "Cost"
-        Me.DataGridViewTextBoxColumn72.Name = "DataGridViewTextBoxColumn72"
-        Me.DataGridViewTextBoxColumn72.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn72.Width = 80
         '
         'GroupBox20
         '
@@ -3791,13 +3759,13 @@ Partial Class Process_frmMain
         Me.GroupBox20.Name = "GroupBox20"
         Me.GroupBox20.Size = New System.Drawing.Size(326, 69)
         Me.GroupBox20.TabIndex = 749
-        Me.GroupBox20.TabStop = false
+        Me.GroupBox20.TabStop = False
         Me.GroupBox20.Text = "Location:"
         '
         'cmbCost_QuoteFile
         '
-        Me.cmbCost_QuoteFile.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbCost_QuoteFile.FormattingEnabled = true
+        Me.cmbCost_QuoteFile.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbCost_QuoteFile.FormattingEnabled = True
         Me.cmbCost_QuoteFile.Items.AddRange(New Object() {"Product Drive -Part", "Product Drive -Customer", "Enovia"})
         Me.cmbCost_QuoteFile.Location = New System.Drawing.Point(111, 29)
         Me.cmbCost_QuoteFile.Name = "cmbCost_QuoteFile"
@@ -3806,9 +3774,9 @@ Partial Class Process_frmMain
         '
         'Label3
         '
-        Me.Label3.AutoSize = true
-        Me.Label3.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label3.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label3.AutoSize = True
+        Me.Label3.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label3.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(32, 33)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(64, 13)
@@ -3820,7 +3788,7 @@ Partial Class Process_frmMain
         '
         Me.Label2.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label2.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label2.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(0, 108)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(1040, 2)
@@ -3828,7 +3796,7 @@ Partial Class Process_frmMain
         '
         'tabApplication
         '
-        Me.tabApplication.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
+        Me.tabApplication.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.tabApplication.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tabApplication.Controls.Add(Me.tbApp)
         Me.tabApplication.Location = New System.Drawing.Point(4, 40)
@@ -3850,7 +3818,7 @@ Partial Class Process_frmMain
         '
         'tbpGen
         '
-        Me.tbpGen.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
+        Me.tbpGen.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.tbpGen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tbpGen.Controls.Add(Me.GroupBox45)
         Me.tbpGen.Controls.Add(Me.Label66)
@@ -3890,42 +3858,42 @@ Partial Class Process_frmMain
         '
         Me.GroupBox45.Controls.Add(Me.optApp_Cust_Gen)
         Me.GroupBox45.Controls.Add(Me.optApp_Parker_Gen)
-        Me.GroupBox45.Enabled = false
-        Me.GroupBox45.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox45.Enabled = False
+        Me.GroupBox45.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox45.Location = New System.Drawing.Point(552, 233)
         Me.GroupBox45.Name = "GroupBox45"
         Me.GroupBox45.Size = New System.Drawing.Size(184, 51)
         Me.GroupBox45.TabIndex = 929
-        Me.GroupBox45.TabStop = false
+        Me.GroupBox45.TabStop = False
         Me.GroupBox45.Text = "Units:"
         '
         'optApp_Cust_Gen
         '
-        Me.optApp_Cust_Gen.AutoSize = true
-        Me.optApp_Cust_Gen.Checked = true
+        Me.optApp_Cust_Gen.AutoSize = True
+        Me.optApp_Cust_Gen.Checked = True
         Me.optApp_Cust_Gen.Location = New System.Drawing.Point(91, 23)
         Me.optApp_Cust_Gen.Name = "optApp_Cust_Gen"
         Me.optApp_Cust_Gen.Size = New System.Drawing.Size(81, 17)
         Me.optApp_Cust_Gen.TabIndex = 1
-        Me.optApp_Cust_Gen.TabStop = true
+        Me.optApp_Cust_Gen.TabStop = True
         Me.optApp_Cust_Gen.Text = "Customer"
-        Me.optApp_Cust_Gen.UseVisualStyleBackColor = true
+        Me.optApp_Cust_Gen.UseVisualStyleBackColor = True
         '
         'optApp_Parker_Gen
         '
-        Me.optApp_Parker_Gen.AutoSize = true
+        Me.optApp_Parker_Gen.AutoSize = True
         Me.optApp_Parker_Gen.Location = New System.Drawing.Point(13, 23)
         Me.optApp_Parker_Gen.Name = "optApp_Parker_Gen"
         Me.optApp_Parker_Gen.Size = New System.Drawing.Size(63, 17)
         Me.optApp_Parker_Gen.TabIndex = 0
         Me.optApp_Parker_Gen.Text = "Parker"
-        Me.optApp_Parker_Gen.UseVisualStyleBackColor = true
+        Me.optApp_Parker_Gen.UseVisualStyleBackColor = True
         '
         'Label66
         '
         Me.Label66.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label66.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label66.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label66.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label66.Location = New System.Drawing.Point(-23, 366)
         Me.Label66.Name = "Label66"
         Me.Label66.Size = New System.Drawing.Size(970, 2)
@@ -3933,8 +3901,8 @@ Partial Class Process_frmMain
         '
         'lblApp_MaxLeak_Unit
         '
-        Me.lblApp_MaxLeak_Unit.AutoSize = true
-        Me.lblApp_MaxLeak_Unit.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblApp_MaxLeak_Unit.AutoSize = True
+        Me.lblApp_MaxLeak_Unit.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblApp_MaxLeak_Unit.Location = New System.Drawing.Point(267, 93)
         Me.lblApp_MaxLeak_Unit.Name = "lblApp_MaxLeak_Unit"
         Me.lblApp_MaxLeak_Unit.Size = New System.Drawing.Size(30, 13)
@@ -3944,49 +3912,29 @@ Partial Class Process_frmMain
         'GroupBox39
         '
         Me.GroupBox39.Controls.Add(Me.grdApp_Load)
-        Me.GroupBox39.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox39.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox39.Location = New System.Drawing.Point(6, 379)
         Me.GroupBox39.Name = "GroupBox39"
         Me.GroupBox39.Size = New System.Drawing.Size(293, 122)
         Me.GroupBox39.TabIndex = 872
-        Me.GroupBox39.TabStop = false
+        Me.GroupBox39.TabStop = False
         Me.GroupBox39.Text = "Load (lbf/in):"
         '
         'grdApp_Load
         '
-        DataGridViewCellStyle190.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdApp_Load.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle190
+        DataGridViewCellStyle19.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdApp_Load.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle19
         Me.grdApp_Load.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdApp_Load.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn15, Me.DataGridViewTextBoxColumn17, Me.DataGridViewTextBoxColumn42})
         Me.grdApp_Load.Location = New System.Drawing.Point(14, 23)
         Me.grdApp_Load.Name = "grdApp_Load"
-        Me.grdApp_Load.RowHeadersVisible = false
+        Me.grdApp_Load.RowHeadersVisible = False
         Me.grdApp_Load.Size = New System.Drawing.Size(258, 84)
         Me.grdApp_Load.TabIndex = 724
         '
-        'DataGridViewTextBoxColumn15
-        '
-        Me.DataGridViewTextBoxColumn15.HeaderText = ""
-        Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
-        Me.DataGridViewTextBoxColumn15.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn15.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.DataGridViewTextBoxColumn15.Width = 90
-        '
-        'DataGridViewTextBoxColumn17
-        '
-        Me.DataGridViewTextBoxColumn17.HeaderText = "Min"
-        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
-        Me.DataGridViewTextBoxColumn17.Width = 80
-        '
-        'DataGridViewTextBoxColumn42
-        '
-        Me.DataGridViewTextBoxColumn42.HeaderText = "Max"
-        Me.DataGridViewTextBoxColumn42.Name = "DataGridViewTextBoxColumn42"
-        Me.DataGridViewTextBoxColumn42.Width = 80
-        '
         'txtApp_Fluid
         '
-        Me.txtApp_Fluid.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtApp_Fluid.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApp_Fluid.ForeColor = System.Drawing.Color.Black
         Me.txtApp_Fluid.Location = New System.Drawing.Point(26, 89)
         Me.txtApp_Fluid.Name = "txtApp_Fluid"
@@ -3997,7 +3945,7 @@ Partial Class Process_frmMain
         '
         Me.Label83.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label83.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label83.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label83.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label83.Location = New System.Drawing.Point(-23, 217)
         Me.Label83.Name = "Label83"
         Me.Label83.Size = New System.Drawing.Size(970, 2)
@@ -4007,7 +3955,7 @@ Partial Class Process_frmMain
         '
         Me.Label73.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label73.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label73.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label73.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label73.Location = New System.Drawing.Point(-9, 146)
         Me.Label73.Name = "Label73"
         Me.Label73.Size = New System.Drawing.Size(970, 2)
@@ -4018,19 +3966,19 @@ Partial Class Process_frmMain
         Me.GroupBox26.Controls.Add(Me.lblApp_Press_Unit)
         Me.GroupBox26.Controls.Add(Me.lblApp_T_Unit)
         Me.GroupBox26.Controls.Add(Me.grdApp_OpCond)
-        Me.GroupBox26.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox26.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox26.Location = New System.Drawing.Point(6, 233)
         Me.GroupBox26.Name = "GroupBox26"
         Me.GroupBox26.Size = New System.Drawing.Size(525, 114)
         Me.GroupBox26.TabIndex = 865
-        Me.GroupBox26.TabStop = false
+        Me.GroupBox26.TabStop = False
         Me.GroupBox26.Text = "Operating Conditions:"
         '
         'lblApp_Press_Unit
         '
-        Me.lblApp_Press_Unit.AutoSize = true
-        Me.lblApp_Press_Unit.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.lblApp_Press_Unit.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblApp_Press_Unit.AutoSize = True
+        Me.lblApp_Press_Unit.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.lblApp_Press_Unit.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblApp_Press_Unit.Location = New System.Drawing.Point(448, 72)
         Me.lblApp_Press_Unit.Name = "lblApp_Press_Unit"
         Me.lblApp_Press_Unit.Size = New System.Drawing.Size(23, 13)
@@ -4040,63 +3988,33 @@ Partial Class Process_frmMain
         '
         'lblApp_T_Unit
         '
-        Me.lblApp_T_Unit.AutoSize = true
-        Me.lblApp_T_Unit.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.lblApp_T_Unit.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblApp_T_Unit.AutoSize = True
+        Me.lblApp_T_Unit.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.lblApp_T_Unit.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblApp_T_Unit.Location = New System.Drawing.Point(448, 48)
         Me.lblApp_T_Unit.Name = "lblApp_T_Unit"
-        Me.lblApp_T_Unit.Size = New System.Drawing.Size(19, 13)
+        Me.lblApp_T_Unit.Size = New System.Drawing.Size(22, 13)
         Me.lblApp_T_Unit.TabIndex = 850
-        Me.lblApp_T_Unit.Text = "ºF"
+        Me.lblApp_T_Unit.Text = "ºC"
         Me.lblApp_T_Unit.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'grdApp_OpCond
         '
-        DataGridViewCellStyle191.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdApp_OpCond.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle191
+        DataGridViewCellStyle22.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdApp_OpCond.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle22
         Me.grdApp_OpCond.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdApp_OpCond.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn30, Me.DataGridViewTextBoxColumn31, Me.DataGridViewTextBoxColumn32})
         Me.grdApp_OpCond.Location = New System.Drawing.Point(20, 22)
         Me.grdApp_OpCond.Name = "grdApp_OpCond"
-        Me.grdApp_OpCond.RowHeadersVisible = false
+        Me.grdApp_OpCond.RowHeadersVisible = False
         Me.grdApp_OpCond.Size = New System.Drawing.Size(417, 84)
         Me.grdApp_OpCond.TabIndex = 727
         '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.HeaderText = ""
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.Width = 90
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Assembly"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.Width = 80
-        '
-        'DataGridViewTextBoxColumn30
-        '
-        Me.DataGridViewTextBoxColumn30.HeaderText = "Min"
-        Me.DataGridViewTextBoxColumn30.Name = "DataGridViewTextBoxColumn30"
-        Me.DataGridViewTextBoxColumn30.Width = 80
-        '
-        'DataGridViewTextBoxColumn31
-        '
-        Me.DataGridViewTextBoxColumn31.HeaderText = "Max"
-        Me.DataGridViewTextBoxColumn31.Name = "DataGridViewTextBoxColumn31"
-        Me.DataGridViewTextBoxColumn31.Width = 80
-        '
-        'DataGridViewTextBoxColumn32
-        '
-        Me.DataGridViewTextBoxColumn32.HeaderText = "Operating"
-        Me.DataGridViewTextBoxColumn32.Name = "DataGridViewTextBoxColumn32"
-        Me.DataGridViewTextBoxColumn32.Width = 80
-        '
         'Label37
         '
-        Me.Label37.AutoSize = true
-        Me.Label37.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label37.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label37.AutoSize = True
+        Me.Label37.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label37.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label37.Location = New System.Drawing.Point(205, 73)
         Me.Label37.Name = "Label37"
         Me.Label37.Size = New System.Drawing.Size(82, 13)
@@ -4106,18 +4024,19 @@ Partial Class Process_frmMain
         '
         'txtApp_MaxLeak
         '
-        Me.txtApp_MaxLeak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtApp_MaxLeak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApp_MaxLeak.ForeColor = System.Drawing.Color.Black
         Me.txtApp_MaxLeak.Location = New System.Drawing.Point(207, 89)
         Me.txtApp_MaxLeak.Name = "txtApp_MaxLeak"
         Me.txtApp_MaxLeak.Size = New System.Drawing.Size(54, 21)
         Me.txtApp_MaxLeak.TabIndex = 863
+        Me.txtApp_MaxLeak.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'lblMedium
         '
-        Me.lblMedium.AutoSize = true
-        Me.lblMedium.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.lblMedium.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblMedium.AutoSize = True
+        Me.lblMedium.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.lblMedium.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblMedium.Location = New System.Drawing.Point(23, 73)
         Me.lblMedium.Name = "lblMedium"
         Me.lblMedium.Size = New System.Drawing.Size(33, 13)
@@ -4132,19 +4051,19 @@ Partial Class Process_frmMain
         Me.GroupBox24.Controls.Add(Me.txtApp_PressCycleFreq)
         Me.GroupBox24.Controls.Add(Me.Label53)
         Me.GroupBox24.Controls.Add(Me.Label52)
-        Me.GroupBox24.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox24.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox24.Location = New System.Drawing.Point(432, 62)
         Me.GroupBox24.Name = "GroupBox24"
         Me.GroupBox24.Size = New System.Drawing.Size(321, 64)
         Me.GroupBox24.TabIndex = 860
-        Me.GroupBox24.TabStop = false
+        Me.GroupBox24.TabStop = False
         Me.GroupBox24.Text = "Pressure Cyclic:"
         '
         'cmbApp_PressCycle
         '
         Me.cmbApp_PressCycle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbApp_PressCycle.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbApp_PressCycle.FormattingEnabled = true
+        Me.cmbApp_PressCycle.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbApp_PressCycle.FormattingEnabled = True
         Me.cmbApp_PressCycle.Items.AddRange(New Object() {"Y", "N"})
         Me.cmbApp_PressCycle.Location = New System.Drawing.Point(17, 32)
         Me.cmbApp_PressCycle.Name = "cmbApp_PressCycle"
@@ -4153,27 +4072,29 @@ Partial Class Process_frmMain
         '
         'txtApp_PressCycleAmp
         '
-        Me.txtApp_PressCycleAmp.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtApp_PressCycleAmp.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApp_PressCycleAmp.ForeColor = System.Drawing.Color.Black
         Me.txtApp_PressCycleAmp.Location = New System.Drawing.Point(205, 32)
         Me.txtApp_PressCycleAmp.Name = "txtApp_PressCycleAmp"
         Me.txtApp_PressCycleAmp.Size = New System.Drawing.Size(99, 21)
         Me.txtApp_PressCycleAmp.TabIndex = 692
+        Me.txtApp_PressCycleAmp.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'txtApp_PressCycleFreq
         '
-        Me.txtApp_PressCycleFreq.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtApp_PressCycleFreq.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApp_PressCycleFreq.ForeColor = System.Drawing.Color.Black
         Me.txtApp_PressCycleFreq.Location = New System.Drawing.Point(80, 32)
         Me.txtApp_PressCycleFreq.Name = "txtApp_PressCycleFreq"
         Me.txtApp_PressCycleFreq.Size = New System.Drawing.Size(99, 21)
         Me.txtApp_PressCycleFreq.TabIndex = 690
+        Me.txtApp_PressCycleFreq.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label53
         '
-        Me.Label53.AutoSize = true
-        Me.Label53.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label53.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label53.AutoSize = True
+        Me.Label53.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label53.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label53.Location = New System.Drawing.Point(80, 16)
         Me.Label53.Name = "Label53"
         Me.Label53.Size = New System.Drawing.Size(66, 13)
@@ -4183,9 +4104,9 @@ Partial Class Process_frmMain
         '
         'Label52
         '
-        Me.Label52.AutoSize = true
-        Me.Label52.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label52.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label52.AutoSize = True
+        Me.Label52.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label52.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label52.Location = New System.Drawing.Point(203, 16)
         Me.Label52.Name = "Label52"
         Me.Label52.Size = New System.Drawing.Size(64, 13)
@@ -4196,8 +4117,8 @@ Partial Class Process_frmMain
         'cmbApp_InsertLoc
         '
         Me.cmbApp_InsertLoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbApp_InsertLoc.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbApp_InsertLoc.FormattingEnabled = true
+        Me.cmbApp_InsertLoc.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbApp_InsertLoc.FormattingEnabled = True
         Me.cmbApp_InsertLoc.Items.AddRange(New Object() {"Face", "Axial"})
         Me.cmbApp_InsertLoc.Location = New System.Drawing.Point(564, 30)
         Me.cmbApp_InsertLoc.Name = "cmbApp_InsertLoc"
@@ -4206,9 +4127,9 @@ Partial Class Process_frmMain
         '
         'Label9
         '
-        Me.Label9.AutoSize = true
-        Me.Label9.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label9.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label9.AutoSize = True
+        Me.Label9.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label9.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.Location = New System.Drawing.Point(561, 14)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(109, 13)
@@ -4218,9 +4139,9 @@ Partial Class Process_frmMain
         '
         'Label7
         '
-        Me.Label7.AutoSize = true
-        Me.Label7.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label7.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label7.AutoSize = True
+        Me.Label7.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label7.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.Location = New System.Drawing.Point(430, 14)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(80, 13)
@@ -4230,7 +4151,7 @@ Partial Class Process_frmMain
         '
         'txtApp_ExistingSeal
         '
-        Me.txtApp_ExistingSeal.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtApp_ExistingSeal.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApp_ExistingSeal.ForeColor = System.Drawing.Color.Black
         Me.txtApp_ExistingSeal.Location = New System.Drawing.Point(432, 30)
         Me.txtApp_ExistingSeal.Name = "txtApp_ExistingSeal"
@@ -4239,9 +4160,9 @@ Partial Class Process_frmMain
         '
         'Label8
         '
-        Me.Label8.AutoSize = true
-        Me.Label8.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label8.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label8.AutoSize = True
+        Me.Label8.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label8.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.Location = New System.Drawing.Point(20, 14)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(134, 13)
@@ -4251,7 +4172,7 @@ Partial Class Process_frmMain
         '
         'txtApp_Equip
         '
-        Me.txtApp_Equip.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtApp_Equip.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApp_Equip.ForeColor = System.Drawing.Color.Black
         Me.txtApp_Equip.Location = New System.Drawing.Point(23, 30)
         Me.txtApp_Equip.Name = "txtApp_Equip"
@@ -4267,11 +4188,11 @@ Partial Class Process_frmMain
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(182, 44)
         Me.GroupBox2.TabIndex = 853
-        Me.GroupBox2.TabStop = false
+        Me.GroupBox2.TabStop = False
         '
         'txtSegNo
         '
-        Me.txtSegNo.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtSegNo.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtSegNo.Location = New System.Drawing.Point(137, 15)
         Me.txtSegNo.Name = "txtSegNo"
         Me.txtSegNo.Size = New System.Drawing.Size(27, 21)
@@ -4279,8 +4200,8 @@ Partial Class Process_frmMain
         '
         'lblSegNo
         '
-        Me.lblSegNo.AutoSize = true
-        Me.lblSegNo.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblSegNo.AutoSize = True
+        Me.lblSegNo.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSegNo.Location = New System.Drawing.Point(116, 19)
         Me.lblSegNo.Name = "lblSegNo"
         Me.lblSegNo.Size = New System.Drawing.Size(16, 13)
@@ -4289,8 +4210,8 @@ Partial Class Process_frmMain
         '
         'chkSeg
         '
-        Me.chkSeg.AutoSize = true
-        Me.chkSeg.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.chkSeg.AutoSize = True
+        Me.chkSeg.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkSeg.Location = New System.Drawing.Point(12, 17)
         Me.chkSeg.Name = "chkSeg"
         Me.chkSeg.Size = New System.Drawing.Size(91, 17)
@@ -4300,8 +4221,8 @@ Partial Class Process_frmMain
         'cmbApp_PreComp
         '
         Me.cmbApp_PreComp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbApp_PreComp.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbApp_PreComp.FormattingEnabled = true
+        Me.cmbApp_PreComp.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbApp_PreComp.FormattingEnabled = True
         Me.cmbApp_PreComp.Items.AddRange(New Object() {"Y", "N"})
         Me.cmbApp_PreComp.Location = New System.Drawing.Point(319, 178)
         Me.cmbApp_PreComp.Name = "cmbApp_PreComp"
@@ -4310,9 +4231,9 @@ Partial Class Process_frmMain
         '
         'Label50
         '
-        Me.Label50.AutoSize = true
-        Me.Label50.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label50.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label50.AutoSize = True
+        Me.Label50.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label50.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label50.Location = New System.Drawing.Point(234, 162)
         Me.Label50.Name = "Label50"
         Me.Label50.Size = New System.Drawing.Size(61, 13)
@@ -4323,8 +4244,8 @@ Partial Class Process_frmMain
         'cmbApp_SplitRing
         '
         Me.cmbApp_SplitRing.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbApp_SplitRing.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbApp_SplitRing.FormattingEnabled = true
+        Me.cmbApp_SplitRing.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbApp_SplitRing.FormattingEnabled = True
         Me.cmbApp_SplitRing.Items.AddRange(New Object() {"Y", "N"})
         Me.cmbApp_SplitRing.Location = New System.Drawing.Point(237, 178)
         Me.cmbApp_SplitRing.Name = "cmbApp_SplitRing"
@@ -4333,9 +4254,9 @@ Partial Class Process_frmMain
         '
         'Label51
         '
-        Me.Label51.AutoSize = true
-        Me.Label51.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label51.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label51.AutoSize = True
+        Me.Label51.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label51.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label51.Location = New System.Drawing.Point(132, 162)
         Me.Label51.Name = "Label51"
         Me.Label51.Size = New System.Drawing.Size(82, 13)
@@ -4345,9 +4266,9 @@ Partial Class Process_frmMain
         '
         'Label47
         '
-        Me.Label47.AutoSize = true
-        Me.Label47.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label47.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label47.AutoSize = True
+        Me.Label47.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label47.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label47.Location = New System.Drawing.Point(316, 162)
         Me.Label47.Name = "Label47"
         Me.Label47.Size = New System.Drawing.Size(99, 13)
@@ -4358,8 +4279,8 @@ Partial Class Process_frmMain
         'cmbApp_OutOfRound
         '
         Me.cmbApp_OutOfRound.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbApp_OutOfRound.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbApp_OutOfRound.FormattingEnabled = true
+        Me.cmbApp_OutOfRound.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbApp_OutOfRound.FormattingEnabled = True
         Me.cmbApp_OutOfRound.Items.AddRange(New Object() {"Y", "N"})
         Me.cmbApp_OutOfRound.Location = New System.Drawing.Point(135, 178)
         Me.cmbApp_OutOfRound.Name = "cmbApp_OutOfRound"
@@ -4369,8 +4290,8 @@ Partial Class Process_frmMain
         'cmbApp_Shaped
         '
         Me.cmbApp_Shaped.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbApp_Shaped.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbApp_Shaped.FormattingEnabled = true
+        Me.cmbApp_Shaped.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbApp_Shaped.FormattingEnabled = True
         Me.cmbApp_Shaped.Items.AddRange(New Object() {"Y", "N"})
         Me.cmbApp_Shaped.Location = New System.Drawing.Point(23, 178)
         Me.cmbApp_Shaped.Name = "cmbApp_Shaped"
@@ -4379,9 +4300,9 @@ Partial Class Process_frmMain
         '
         'Label49
         '
-        Me.Label49.AutoSize = true
-        Me.Label49.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label49.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label49.AutoSize = True
+        Me.Label49.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label49.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label49.Location = New System.Drawing.Point(23, 162)
         Me.Label49.Name = "Label49"
         Me.Label49.Size = New System.Drawing.Size(50, 13)
@@ -4391,7 +4312,7 @@ Partial Class Process_frmMain
         '
         'tbpFace
         '
-        Me.tbpFace.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
+        Me.tbpFace.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.tbpFace.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tbpFace.Controls.Add(Me.txtApp_Mat2_Face)
         Me.tbpFace.Controls.Add(Me.txtApp_Mat1_Face)
@@ -4425,7 +4346,7 @@ Partial Class Process_frmMain
         '
         'txtApp_Mat2_Face
         '
-        Me.txtApp_Mat2_Face.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtApp_Mat2_Face.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApp_Mat2_Face.ForeColor = System.Drawing.Color.Black
         Me.txtApp_Mat2_Face.Location = New System.Drawing.Point(708, 74)
         Me.txtApp_Mat2_Face.Name = "txtApp_Mat2_Face"
@@ -4434,7 +4355,7 @@ Partial Class Process_frmMain
         '
         'txtApp_Mat1_Face
         '
-        Me.txtApp_Mat1_Face.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtApp_Mat1_Face.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApp_Mat1_Face.ForeColor = System.Drawing.Color.Black
         Me.txtApp_Mat1_Face.Location = New System.Drawing.Point(597, 74)
         Me.txtApp_Mat1_Face.Name = "txtApp_Mat1_Face"
@@ -4443,9 +4364,9 @@ Partial Class Process_frmMain
         '
         'Label153
         '
-        Me.Label153.AutoSize = true
-        Me.Label153.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label153.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label153.AutoSize = True
+        Me.Label153.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label153.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label153.Location = New System.Drawing.Point(530, 78)
         Me.Label153.Name = "Label153"
         Me.Label153.Size = New System.Drawing.Size(52, 13)
@@ -4457,42 +4378,42 @@ Partial Class Process_frmMain
         '
         Me.GroupBox54.Controls.Add(Me.optApp_Cust_Face)
         Me.GroupBox54.Controls.Add(Me.optApp_Parker_Face)
-        Me.GroupBox54.Enabled = false
-        Me.GroupBox54.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox54.Enabled = False
+        Me.GroupBox54.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox54.Location = New System.Drawing.Point(533, 186)
         Me.GroupBox54.Name = "GroupBox54"
         Me.GroupBox54.Size = New System.Drawing.Size(184, 51)
         Me.GroupBox54.TabIndex = 928
-        Me.GroupBox54.TabStop = false
+        Me.GroupBox54.TabStop = False
         Me.GroupBox54.Text = "Units:"
         '
         'optApp_Cust_Face
         '
-        Me.optApp_Cust_Face.AutoSize = true
-        Me.optApp_Cust_Face.Checked = true
+        Me.optApp_Cust_Face.AutoSize = True
+        Me.optApp_Cust_Face.Checked = True
         Me.optApp_Cust_Face.Location = New System.Drawing.Point(91, 23)
         Me.optApp_Cust_Face.Name = "optApp_Cust_Face"
         Me.optApp_Cust_Face.Size = New System.Drawing.Size(81, 17)
         Me.optApp_Cust_Face.TabIndex = 1
-        Me.optApp_Cust_Face.TabStop = true
+        Me.optApp_Cust_Face.TabStop = True
         Me.optApp_Cust_Face.Text = "Customer"
-        Me.optApp_Cust_Face.UseVisualStyleBackColor = true
+        Me.optApp_Cust_Face.UseVisualStyleBackColor = True
         '
         'optApp_Parker_Face
         '
-        Me.optApp_Parker_Face.AutoSize = true
+        Me.optApp_Parker_Face.AutoSize = True
         Me.optApp_Parker_Face.Location = New System.Drawing.Point(13, 23)
         Me.optApp_Parker_Face.Name = "optApp_Parker_Face"
         Me.optApp_Parker_Face.Size = New System.Drawing.Size(63, 17)
         Me.optApp_Parker_Face.TabIndex = 0
         Me.optApp_Parker_Face.Text = "Parker"
-        Me.optApp_Parker_Face.UseVisualStyleBackColor = true
+        Me.optApp_Parker_Face.UseVisualStyleBackColor = True
         '
         'Label140
         '
         Me.Label140.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label140.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label140.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label140.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label140.Location = New System.Drawing.Point(0, 382)
         Me.Label140.Name = "Label140"
         Me.Label140.Size = New System.Drawing.Size(970, 2)
@@ -4501,8 +4422,8 @@ Partial Class Process_frmMain
         'cmbFace_SF_Unit
         '
         Me.cmbFace_SF_Unit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbFace_SF_Unit.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbFace_SF_Unit.FormattingEnabled = true
+        Me.cmbFace_SF_Unit.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbFace_SF_Unit.FormattingEnabled = True
         Me.cmbFace_SF_Unit.Items.AddRange(New Object() {"µin", "µm"})
         Me.cmbFace_SF_Unit.Location = New System.Drawing.Point(862, 141)
         Me.cmbFace_SF_Unit.Name = "cmbFace_SF_Unit"
@@ -4512,8 +4433,8 @@ Partial Class Process_frmMain
         'cmbFace_SF_ProcessName
         '
         Me.cmbFace_SF_ProcessName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbFace_SF_ProcessName.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbFace_SF_ProcessName.FormattingEnabled = true
+        Me.cmbFace_SF_ProcessName.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbFace_SF_ProcessName.FormattingEnabled = True
         Me.cmbFace_SF_ProcessName.Items.AddRange(New Object() {"Ra", "rms"})
         Me.cmbFace_SF_ProcessName.Location = New System.Drawing.Point(814, 141)
         Me.cmbFace_SF_ProcessName.Name = "cmbFace_SF_ProcessName"
@@ -4522,9 +4443,9 @@ Partial Class Process_frmMain
         '
         'lblApp_Face_Hardness_Unit
         '
-        Me.lblApp_Face_Hardness_Unit.AutoSize = true
-        Me.lblApp_Face_Hardness_Unit.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.lblApp_Face_Hardness_Unit.Font = New System.Drawing.Font("Verdana", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblApp_Face_Hardness_Unit.AutoSize = True
+        Me.lblApp_Face_Hardness_Unit.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.lblApp_Face_Hardness_Unit.Font = New System.Drawing.Font("Verdana", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblApp_Face_Hardness_Unit.Location = New System.Drawing.Point(812, 110)
         Me.lblApp_Face_Hardness_Unit.Name = "lblApp_Face_Hardness_Unit"
         Me.lblApp_Face_Hardness_Unit.Size = New System.Drawing.Size(60, 12)
@@ -4534,9 +4455,9 @@ Partial Class Process_frmMain
         '
         'Label58
         '
-        Me.Label58.AutoSize = true
-        Me.Label58.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label58.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label58.AutoSize = True
+        Me.Label58.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label58.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label58.Location = New System.Drawing.Point(530, 145)
         Me.Label58.Name = "Label58"
         Me.Label58.Size = New System.Drawing.Size(47, 13)
@@ -4546,9 +4467,9 @@ Partial Class Process_frmMain
         '
         'Label82
         '
-        Me.Label82.AutoSize = true
-        Me.Label82.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label82.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label82.AutoSize = True
+        Me.Label82.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label82.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label82.Location = New System.Drawing.Point(752, 55)
         Me.Label82.Name = "Label82"
         Me.Label82.Size = New System.Drawing.Size(14, 13)
@@ -4558,9 +4479,9 @@ Partial Class Process_frmMain
         '
         'Label84
         '
-        Me.Label84.AutoSize = true
-        Me.Label84.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label84.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label84.AutoSize = True
+        Me.Label84.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label84.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label84.Location = New System.Drawing.Point(641, 55)
         Me.Label84.Name = "Label84"
         Me.Label84.Size = New System.Drawing.Size(14, 13)
@@ -4570,45 +4491,49 @@ Partial Class Process_frmMain
         '
         'txtApp_SF2_Face
         '
-        Me.txtApp_SF2_Face.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtApp_SF2_Face.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApp_SF2_Face.ForeColor = System.Drawing.Color.Black
         Me.txtApp_SF2_Face.Location = New System.Drawing.Point(709, 141)
         Me.txtApp_SF2_Face.Name = "txtApp_SF2_Face"
         Me.txtApp_SF2_Face.Size = New System.Drawing.Size(100, 21)
         Me.txtApp_SF2_Face.TabIndex = 923
+        Me.txtApp_SF2_Face.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'txtApp_SF1_Face
         '
-        Me.txtApp_SF1_Face.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtApp_SF1_Face.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApp_SF1_Face.ForeColor = System.Drawing.Color.Black
         Me.txtApp_SF1_Face.Location = New System.Drawing.Point(597, 141)
         Me.txtApp_SF1_Face.Name = "txtApp_SF1_Face"
         Me.txtApp_SF1_Face.Size = New System.Drawing.Size(100, 21)
         Me.txtApp_SF1_Face.TabIndex = 922
+        Me.txtApp_SF1_Face.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'txtApp_Hardness2_Face
         '
-        Me.txtApp_Hardness2_Face.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtApp_Hardness2_Face.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApp_Hardness2_Face.ForeColor = System.Drawing.Color.Black
         Me.txtApp_Hardness2_Face.Location = New System.Drawing.Point(709, 106)
         Me.txtApp_Hardness2_Face.Name = "txtApp_Hardness2_Face"
         Me.txtApp_Hardness2_Face.Size = New System.Drawing.Size(100, 21)
         Me.txtApp_Hardness2_Face.TabIndex = 921
+        Me.txtApp_Hardness2_Face.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'txtApp_Hardness1_Face
         '
-        Me.txtApp_Hardness1_Face.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtApp_Hardness1_Face.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApp_Hardness1_Face.ForeColor = System.Drawing.Color.Black
         Me.txtApp_Hardness1_Face.Location = New System.Drawing.Point(598, 106)
         Me.txtApp_Hardness1_Face.Name = "txtApp_Hardness1_Face"
         Me.txtApp_Hardness1_Face.Size = New System.Drawing.Size(100, 21)
         Me.txtApp_Hardness1_Face.TabIndex = 920
+        Me.txtApp_Hardness1_Face.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label89
         '
-        Me.Label89.AutoSize = true
-        Me.Label89.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label89.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label89.AutoSize = True
+        Me.Label89.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label89.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label89.Location = New System.Drawing.Point(530, 110)
         Me.Label89.Name = "Label89"
         Me.Label89.Size = New System.Drawing.Size(60, 13)
@@ -4624,13 +4549,13 @@ Partial Class Process_frmMain
         Me.GroupBox40.Controls.Add(Me.txtApp_UserDate_Face)
         Me.GroupBox40.Controls.Add(Me.dtpApp_UserDate_Face)
         Me.GroupBox40.Controls.Add(Me.grdApp_EditedBy_Face)
-        Me.GroupBox40.Enabled = false
-        Me.GroupBox40.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox40.Enabled = False
+        Me.GroupBox40.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox40.Location = New System.Drawing.Point(15, 398)
         Me.GroupBox40.Name = "GroupBox40"
         Me.GroupBox40.Size = New System.Drawing.Size(867, 132)
         Me.GroupBox40.TabIndex = 877
-        Me.GroupBox40.TabStop = false
+        Me.GroupBox40.TabStop = False
         Me.GroupBox40.Text = "Edited by:"
         '
         'chkApp_UserSigned_Face
@@ -4641,11 +4566,11 @@ Partial Class Process_frmMain
         Me.chkApp_UserSigned_Face.Size = New System.Drawing.Size(15, 14)
         Me.chkApp_UserSigned_Face.TabIndex = 745
         Me.chkApp_UserSigned_Face.Tag = "Tester"
-        Me.chkApp_UserSigned_Face.UseVisualStyleBackColor = true
+        Me.chkApp_UserSigned_Face.UseVisualStyleBackColor = True
         '
         'cmdApp_UserSign_Face
         '
-        Me.cmdApp_UserSign_Face.AutoSize = true
+        Me.cmdApp_UserSign_Face.AutoSize = True
         Me.cmdApp_UserSign_Face.BackColor = System.Drawing.Color.Silver
         Me.cmdApp_UserSign_Face.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdApp_UserSign_Face.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -4655,11 +4580,11 @@ Partial Class Process_frmMain
         Me.cmdApp_UserSign_Face.TabIndex = 746
         Me.cmdApp_UserSign_Face.Tag = "Tester"
         Me.cmdApp_UserSign_Face.Text = "Sign"
-        Me.cmdApp_UserSign_Face.UseVisualStyleBackColor = false
+        Me.cmdApp_UserSign_Face.UseVisualStyleBackColor = False
         '
         'txtApp_UserName_Face
         '
-        Me.txtApp_UserName_Face.Enabled = false
+        Me.txtApp_UserName_Face.Enabled = False
         Me.txtApp_UserName_Face.Location = New System.Drawing.Point(130, 105)
         Me.txtApp_UserName_Face.Name = "txtApp_UserName_Face"
         Me.txtApp_UserName_Face.Size = New System.Drawing.Size(196, 21)
@@ -4669,7 +4594,7 @@ Partial Class Process_frmMain
         'txtApp_UserDate_Face
         '
         Me.txtApp_UserDate_Face.BackColor = System.Drawing.Color.White
-        Me.txtApp_UserDate_Face.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtApp_UserDate_Face.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApp_UserDate_Face.ForeColor = System.Drawing.Color.Black
         Me.txtApp_UserDate_Face.Location = New System.Drawing.Point(25, 105)
         Me.txtApp_UserDate_Face.Name = "txtApp_UserDate_Face"
@@ -4688,13 +4613,13 @@ Partial Class Process_frmMain
         '
         'grdApp_EditedBy_Face
         '
-        DataGridViewCellStyle192.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdApp_EditedBy_Face.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle192
+        DataGridViewCellStyle27.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdApp_EditedBy_Face.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle27
         Me.grdApp_EditedBy_Face.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdApp_EditedBy_Face.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn44, Me.DataGridViewTextBoxColumn45, Me.DataGridViewTextBoxColumn85})
         Me.grdApp_EditedBy_Face.Location = New System.Drawing.Point(25, 23)
         Me.grdApp_EditedBy_Face.Name = "grdApp_EditedBy_Face"
-        Me.grdApp_EditedBy_Face.RowHeadersVisible = false
+        Me.grdApp_EditedBy_Face.RowHeadersVisible = False
         Me.grdApp_EditedBy_Face.Size = New System.Drawing.Size(823, 74)
         Me.grdApp_EditedBy_Face.TabIndex = 741
         '
@@ -4718,9 +4643,9 @@ Partial Class Process_frmMain
         '
         'Label32
         '
-        Me.Label32.AutoSize = true
-        Me.Label32.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label32.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label32.AutoSize = True
+        Me.Label32.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label32.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label32.Location = New System.Drawing.Point(165, 247)
         Me.Label32.Name = "Label32"
         Me.Label32.Size = New System.Drawing.Size(34, 13)
@@ -4731,65 +4656,31 @@ Partial Class Process_frmMain
         'GroupBox38
         '
         Me.GroupBox38.Controls.Add(Me.grdApp_Face_Cavity)
-        Me.GroupBox38.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox38.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox38.Location = New System.Drawing.Point(22, 19)
         Me.GroupBox38.Name = "GroupBox38"
         Me.GroupBox38.Size = New System.Drawing.Size(488, 218)
         Me.GroupBox38.TabIndex = 873
-        Me.GroupBox38.TabStop = false
+        Me.GroupBox38.TabStop = False
         Me.GroupBox38.Text = "Cavity Dimensions (in):"
         '
         'grdApp_Face_Cavity
         '
-        DataGridViewCellStyle193.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdApp_Face_Cavity.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle193
+        DataGridViewCellStyle28.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdApp_Face_Cavity.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle28
         Me.grdApp_Face_Cavity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdApp_Face_Cavity.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewComboBoxColumn5, Me.DataGridViewTextBoxColumn77, Me.DataGridViewTextBoxColumn78, Me.DataGridViewTextBoxColumn79, Me.DataGridViewTextBoxColumn80})
         Me.grdApp_Face_Cavity.Location = New System.Drawing.Point(15, 19)
         Me.grdApp_Face_Cavity.Name = "grdApp_Face_Cavity"
-        Me.grdApp_Face_Cavity.RowHeadersVisible = false
+        Me.grdApp_Face_Cavity.RowHeadersVisible = False
         Me.grdApp_Face_Cavity.Size = New System.Drawing.Size(460, 188)
         Me.grdApp_Face_Cavity.TabIndex = 683
-        '
-        'DataGridViewComboBoxColumn5
-        '
-        Me.DataGridViewComboBoxColumn5.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
-        Me.DataGridViewComboBoxColumn5.HeaderText = "Name"
-        Me.DataGridViewComboBoxColumn5.Items.AddRange(New Object() {"Depth", "Axial L", "Radial Wid", "ID", "OD", "Corner Radius"})
-        Me.DataGridViewComboBoxColumn5.Name = "DataGridViewComboBoxColumn5"
-        Me.DataGridViewComboBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewComboBoxColumn5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.DataGridViewComboBoxColumn5.Width = 120
-        '
-        'DataGridViewTextBoxColumn77
-        '
-        Me.DataGridViewTextBoxColumn77.HeaderText = "Assy. Min"
-        Me.DataGridViewTextBoxColumn77.Name = "DataGridViewTextBoxColumn77"
-        Me.DataGridViewTextBoxColumn77.Width = 80
-        '
-        'DataGridViewTextBoxColumn78
-        '
-        Me.DataGridViewTextBoxColumn78.HeaderText = "Assy. Max"
-        Me.DataGridViewTextBoxColumn78.Name = "DataGridViewTextBoxColumn78"
-        Me.DataGridViewTextBoxColumn78.Width = 80
-        '
-        'DataGridViewTextBoxColumn79
-        '
-        Me.DataGridViewTextBoxColumn79.HeaderText = "Oper. Min"
-        Me.DataGridViewTextBoxColumn79.Name = "DataGridViewTextBoxColumn79"
-        Me.DataGridViewTextBoxColumn79.Width = 80
-        '
-        'DataGridViewTextBoxColumn80
-        '
-        Me.DataGridViewTextBoxColumn80.HeaderText = "Oper. Max"
-        Me.DataGridViewTextBoxColumn80.Name = "DataGridViewTextBoxColumn80"
-        Me.DataGridViewTextBoxColumn80.Width = 80
         '
         'cmbApp_Face_POrient
         '
         Me.cmbApp_Face_POrient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbApp_Face_POrient.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbApp_Face_POrient.FormattingEnabled = true
+        Me.cmbApp_Face_POrient.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbApp_Face_POrient.FormattingEnabled = True
         Me.cmbApp_Face_POrient.Items.AddRange(New Object() {"Internal", "External"})
         Me.cmbApp_Face_POrient.Location = New System.Drawing.Point(22, 277)
         Me.cmbApp_Face_POrient.Name = "cmbApp_Face_POrient"
@@ -4798,9 +4689,9 @@ Partial Class Process_frmMain
         '
         'Label229
         '
-        Me.Label229.AutoSize = true
-        Me.Label229.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label229.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label229.AutoSize = True
+        Me.Label229.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label229.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label229.Location = New System.Drawing.Point(165, 261)
         Me.Label229.Name = "Label229"
         Me.Label229.Size = New System.Drawing.Size(110, 13)
@@ -4810,18 +4701,19 @@ Partial Class Process_frmMain
         '
         'txtApp_Face_MaxFlangeSeparation
         '
-        Me.txtApp_Face_MaxFlangeSeparation.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtApp_Face_MaxFlangeSeparation.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApp_Face_MaxFlangeSeparation.ForeColor = System.Drawing.Color.Black
         Me.txtApp_Face_MaxFlangeSeparation.Location = New System.Drawing.Point(166, 277)
         Me.txtApp_Face_MaxFlangeSeparation.Name = "txtApp_Face_MaxFlangeSeparation"
         Me.txtApp_Face_MaxFlangeSeparation.Size = New System.Drawing.Size(54, 21)
         Me.txtApp_Face_MaxFlangeSeparation.TabIndex = 689
+        Me.txtApp_Face_MaxFlangeSeparation.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label232
         '
-        Me.Label232.AutoSize = true
-        Me.Label232.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label232.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label232.AutoSize = True
+        Me.Label232.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label232.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label232.Location = New System.Drawing.Point(21, 261)
         Me.Label232.Name = "Label232"
         Me.Label232.Size = New System.Drawing.Size(112, 13)
@@ -4831,7 +4723,7 @@ Partial Class Process_frmMain
         '
         'tbpAxial
         '
-        Me.tbpAxial.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
+        Me.tbpAxial.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.tbpAxial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tbpAxial.Controls.Add(Me.txtApp_Mat2_Axial)
         Me.tbpAxial.Controls.Add(Me.txtApp_Mat1_Axial)
@@ -4882,7 +4774,7 @@ Partial Class Process_frmMain
         '
         'txtApp_Mat2_Axial
         '
-        Me.txtApp_Mat2_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtApp_Mat2_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApp_Mat2_Axial.ForeColor = System.Drawing.Color.Black
         Me.txtApp_Mat2_Axial.Location = New System.Drawing.Point(708, 74)
         Me.txtApp_Mat2_Axial.Name = "txtApp_Mat2_Axial"
@@ -4891,7 +4783,7 @@ Partial Class Process_frmMain
         '
         'txtApp_Mat1_Axial
         '
-        Me.txtApp_Mat1_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtApp_Mat1_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApp_Mat1_Axial.ForeColor = System.Drawing.Color.Black
         Me.txtApp_Mat1_Axial.Location = New System.Drawing.Point(597, 74)
         Me.txtApp_Mat1_Axial.Name = "txtApp_Mat1_Axial"
@@ -4900,9 +4792,9 @@ Partial Class Process_frmMain
         '
         'Label48
         '
-        Me.Label48.AutoSize = true
-        Me.Label48.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label48.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label48.AutoSize = True
+        Me.Label48.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label48.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label48.Location = New System.Drawing.Point(530, 78)
         Me.Label48.Name = "Label48"
         Me.Label48.Size = New System.Drawing.Size(52, 13)
@@ -4914,42 +4806,42 @@ Partial Class Process_frmMain
         '
         Me.GroupBox55.Controls.Add(Me.optApp_Cust_Axial)
         Me.GroupBox55.Controls.Add(Me.optApp_Parker_Axial)
-        Me.GroupBox55.Enabled = false
-        Me.GroupBox55.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox55.Enabled = False
+        Me.GroupBox55.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox55.Location = New System.Drawing.Point(533, 186)
         Me.GroupBox55.Name = "GroupBox55"
         Me.GroupBox55.Size = New System.Drawing.Size(184, 51)
         Me.GroupBox55.TabIndex = 952
-        Me.GroupBox55.TabStop = false
+        Me.GroupBox55.TabStop = False
         Me.GroupBox55.Text = "Units:"
         '
         'optApp_Cust_Axial
         '
-        Me.optApp_Cust_Axial.AutoSize = true
-        Me.optApp_Cust_Axial.Checked = true
+        Me.optApp_Cust_Axial.AutoSize = True
+        Me.optApp_Cust_Axial.Checked = True
         Me.optApp_Cust_Axial.Location = New System.Drawing.Point(91, 23)
         Me.optApp_Cust_Axial.Name = "optApp_Cust_Axial"
         Me.optApp_Cust_Axial.Size = New System.Drawing.Size(81, 17)
         Me.optApp_Cust_Axial.TabIndex = 1
-        Me.optApp_Cust_Axial.TabStop = true
+        Me.optApp_Cust_Axial.TabStop = True
         Me.optApp_Cust_Axial.Text = "Customer"
-        Me.optApp_Cust_Axial.UseVisualStyleBackColor = true
+        Me.optApp_Cust_Axial.UseVisualStyleBackColor = True
         '
         'optApp_Parker_Axial
         '
-        Me.optApp_Parker_Axial.AutoSize = true
+        Me.optApp_Parker_Axial.AutoSize = True
         Me.optApp_Parker_Axial.Location = New System.Drawing.Point(13, 23)
         Me.optApp_Parker_Axial.Name = "optApp_Parker_Axial"
         Me.optApp_Parker_Axial.Size = New System.Drawing.Size(63, 17)
         Me.optApp_Parker_Axial.TabIndex = 0
         Me.optApp_Parker_Axial.Text = "Parker"
-        Me.optApp_Parker_Axial.UseVisualStyleBackColor = true
+        Me.optApp_Parker_Axial.UseVisualStyleBackColor = True
         '
         'cmbAxial_SF_Unit
         '
         Me.cmbAxial_SF_Unit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbAxial_SF_Unit.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbAxial_SF_Unit.FormattingEnabled = true
+        Me.cmbAxial_SF_Unit.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbAxial_SF_Unit.FormattingEnabled = True
         Me.cmbAxial_SF_Unit.Items.AddRange(New Object() {"µin", "µm"})
         Me.cmbAxial_SF_Unit.Location = New System.Drawing.Point(862, 141)
         Me.cmbAxial_SF_Unit.Name = "cmbAxial_SF_Unit"
@@ -4959,8 +4851,8 @@ Partial Class Process_frmMain
         'cmbAxial_SF_ProcessName
         '
         Me.cmbAxial_SF_ProcessName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbAxial_SF_ProcessName.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbAxial_SF_ProcessName.FormattingEnabled = true
+        Me.cmbAxial_SF_ProcessName.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbAxial_SF_ProcessName.FormattingEnabled = True
         Me.cmbAxial_SF_ProcessName.Items.AddRange(New Object() {"Ra", "rms"})
         Me.cmbAxial_SF_ProcessName.Location = New System.Drawing.Point(814, 141)
         Me.cmbAxial_SF_ProcessName.Name = "cmbAxial_SF_ProcessName"
@@ -4969,9 +4861,9 @@ Partial Class Process_frmMain
         '
         'lblApp_Axial_Hardness_Unit
         '
-        Me.lblApp_Axial_Hardness_Unit.AutoSize = true
-        Me.lblApp_Axial_Hardness_Unit.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.lblApp_Axial_Hardness_Unit.Font = New System.Drawing.Font("Verdana", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblApp_Axial_Hardness_Unit.AutoSize = True
+        Me.lblApp_Axial_Hardness_Unit.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.lblApp_Axial_Hardness_Unit.Font = New System.Drawing.Font("Verdana", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblApp_Axial_Hardness_Unit.Location = New System.Drawing.Point(812, 110)
         Me.lblApp_Axial_Hardness_Unit.Name = "lblApp_Axial_Hardness_Unit"
         Me.lblApp_Axial_Hardness_Unit.Size = New System.Drawing.Size(60, 12)
@@ -4981,9 +4873,9 @@ Partial Class Process_frmMain
         '
         'Label92
         '
-        Me.Label92.AutoSize = true
-        Me.Label92.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label92.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label92.AutoSize = True
+        Me.Label92.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label92.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label92.Location = New System.Drawing.Point(530, 145)
         Me.Label92.Name = "Label92"
         Me.Label92.Size = New System.Drawing.Size(47, 13)
@@ -4993,9 +4885,9 @@ Partial Class Process_frmMain
         '
         'Label93
         '
-        Me.Label93.AutoSize = true
-        Me.Label93.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label93.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label93.AutoSize = True
+        Me.Label93.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label93.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label93.Location = New System.Drawing.Point(752, 55)
         Me.Label93.Name = "Label93"
         Me.Label93.Size = New System.Drawing.Size(14, 13)
@@ -5005,9 +4897,9 @@ Partial Class Process_frmMain
         '
         'Label95
         '
-        Me.Label95.AutoSize = true
-        Me.Label95.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label95.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label95.AutoSize = True
+        Me.Label95.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label95.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label95.Location = New System.Drawing.Point(641, 55)
         Me.Label95.Name = "Label95"
         Me.Label95.Size = New System.Drawing.Size(14, 13)
@@ -5017,45 +4909,49 @@ Partial Class Process_frmMain
         '
         'txtApp_SF2_Axial
         '
-        Me.txtApp_SF2_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtApp_SF2_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApp_SF2_Axial.ForeColor = System.Drawing.Color.Black
         Me.txtApp_SF2_Axial.Location = New System.Drawing.Point(709, 141)
         Me.txtApp_SF2_Axial.Name = "txtApp_SF2_Axial"
         Me.txtApp_SF2_Axial.Size = New System.Drawing.Size(100, 21)
         Me.txtApp_SF2_Axial.TabIndex = 948
+        Me.txtApp_SF2_Axial.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'txtApp_SF1_Axial
         '
-        Me.txtApp_SF1_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtApp_SF1_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApp_SF1_Axial.ForeColor = System.Drawing.Color.Black
         Me.txtApp_SF1_Axial.Location = New System.Drawing.Point(597, 141)
         Me.txtApp_SF1_Axial.Name = "txtApp_SF1_Axial"
         Me.txtApp_SF1_Axial.Size = New System.Drawing.Size(100, 21)
         Me.txtApp_SF1_Axial.TabIndex = 947
+        Me.txtApp_SF1_Axial.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'txtApp_Hardness2_Axial
         '
-        Me.txtApp_Hardness2_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtApp_Hardness2_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApp_Hardness2_Axial.ForeColor = System.Drawing.Color.Black
         Me.txtApp_Hardness2_Axial.Location = New System.Drawing.Point(709, 106)
         Me.txtApp_Hardness2_Axial.Name = "txtApp_Hardness2_Axial"
         Me.txtApp_Hardness2_Axial.Size = New System.Drawing.Size(100, 21)
         Me.txtApp_Hardness2_Axial.TabIndex = 946
+        Me.txtApp_Hardness2_Axial.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'txtApp_Hardness1_Axial
         '
-        Me.txtApp_Hardness1_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtApp_Hardness1_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApp_Hardness1_Axial.ForeColor = System.Drawing.Color.Black
         Me.txtApp_Hardness1_Axial.Location = New System.Drawing.Point(598, 106)
         Me.txtApp_Hardness1_Axial.Name = "txtApp_Hardness1_Axial"
         Me.txtApp_Hardness1_Axial.Size = New System.Drawing.Size(100, 21)
         Me.txtApp_Hardness1_Axial.TabIndex = 945
+        Me.txtApp_Hardness1_Axial.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label154
         '
-        Me.Label154.AutoSize = true
-        Me.Label154.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label154.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label154.AutoSize = True
+        Me.Label154.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label154.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label154.Location = New System.Drawing.Point(530, 110)
         Me.Label154.Name = "Label154"
         Me.Label154.Size = New System.Drawing.Size(60, 13)
@@ -5067,7 +4963,7 @@ Partial Class Process_frmMain
         '
         Me.Label141.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label141.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label141.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label141.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label141.Location = New System.Drawing.Point(0, 388)
         Me.Label141.Name = "Label141"
         Me.Label141.Size = New System.Drawing.Size(970, 2)
@@ -5076,63 +4972,29 @@ Partial Class Process_frmMain
         'GroupBox30
         '
         Me.GroupBox30.Controls.Add(Me.grdApp_Axial_Cavity)
-        Me.GroupBox30.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox30.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox30.Location = New System.Drawing.Point(22, 19)
         Me.GroupBox30.Name = "GroupBox30"
         Me.GroupBox30.Size = New System.Drawing.Size(488, 218)
         Me.GroupBox30.TabIndex = 939
-        Me.GroupBox30.TabStop = false
+        Me.GroupBox30.TabStop = False
         Me.GroupBox30.Text = "Cavity Dimensions (in):"
         '
         'grdApp_Axial_Cavity
         '
-        DataGridViewCellStyle194.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdApp_Axial_Cavity.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle194
+        DataGridViewCellStyle33.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdApp_Axial_Cavity.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle33
         Me.grdApp_Axial_Cavity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdApp_Axial_Cavity.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewComboBoxColumn6, Me.DataGridViewTextBoxColumn81, Me.DataGridViewTextBoxColumn82, Me.DataGridViewTextBoxColumn83, Me.DataGridViewTextBoxColumn84})
         Me.grdApp_Axial_Cavity.Location = New System.Drawing.Point(15, 19)
         Me.grdApp_Axial_Cavity.Name = "grdApp_Axial_Cavity"
-        Me.grdApp_Axial_Cavity.RowHeadersVisible = false
+        Me.grdApp_Axial_Cavity.RowHeadersVisible = False
         Me.grdApp_Axial_Cavity.Size = New System.Drawing.Size(460, 188)
         Me.grdApp_Axial_Cavity.TabIndex = 683
         '
-        'DataGridViewComboBoxColumn6
-        '
-        Me.DataGridViewComboBoxColumn6.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
-        Me.DataGridViewComboBoxColumn6.HeaderText = "Name"
-        Me.DataGridViewComboBoxColumn6.Items.AddRange(New Object() {"Depth", "Axial L", "Radial Wid", "ID", "OD", "Corner Radius"})
-        Me.DataGridViewComboBoxColumn6.Name = "DataGridViewComboBoxColumn6"
-        Me.DataGridViewComboBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewComboBoxColumn6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.DataGridViewComboBoxColumn6.Width = 120
-        '
-        'DataGridViewTextBoxColumn81
-        '
-        Me.DataGridViewTextBoxColumn81.HeaderText = "Assy. Min"
-        Me.DataGridViewTextBoxColumn81.Name = "DataGridViewTextBoxColumn81"
-        Me.DataGridViewTextBoxColumn81.Width = 80
-        '
-        'DataGridViewTextBoxColumn82
-        '
-        Me.DataGridViewTextBoxColumn82.HeaderText = "Assy. Max"
-        Me.DataGridViewTextBoxColumn82.Name = "DataGridViewTextBoxColumn82"
-        Me.DataGridViewTextBoxColumn82.Width = 80
-        '
-        'DataGridViewTextBoxColumn83
-        '
-        Me.DataGridViewTextBoxColumn83.HeaderText = "Oper. Min"
-        Me.DataGridViewTextBoxColumn83.Name = "DataGridViewTextBoxColumn83"
-        Me.DataGridViewTextBoxColumn83.Width = 80
-        '
-        'DataGridViewTextBoxColumn84
-        '
-        Me.DataGridViewTextBoxColumn84.HeaderText = "Oper. Max"
-        Me.DataGridViewTextBoxColumn84.Name = "DataGridViewTextBoxColumn84"
-        Me.DataGridViewTextBoxColumn84.Width = 80
-        '
         'txtApp_OscServiceLife_Axial
         '
-        Me.txtApp_OscServiceLife_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtApp_OscServiceLife_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApp_OscServiceLife_Axial.ForeColor = System.Drawing.Color.Black
         Me.txtApp_OscServiceLife_Axial.Location = New System.Drawing.Point(571, 350)
         Me.txtApp_OscServiceLife_Axial.Name = "txtApp_OscServiceLife_Axial"
@@ -5143,8 +5005,8 @@ Partial Class Process_frmMain
         'cmbApp_Static_Axial
         '
         Me.cmbApp_Static_Axial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbApp_Static_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbApp_Static_Axial.FormattingEnabled = true
+        Me.cmbApp_Static_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbApp_Static_Axial.FormattingEnabled = True
         Me.cmbApp_Static_Axial.Items.AddRange(New Object() {"Y", "N"})
         Me.cmbApp_Static_Axial.Location = New System.Drawing.Point(102, 250)
         Me.cmbApp_Static_Axial.Name = "cmbApp_Static_Axial"
@@ -5153,9 +5015,9 @@ Partial Class Process_frmMain
         '
         'Label1
         '
-        Me.Label1.AutoSize = true
-        Me.Label1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label1.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label1.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(57, 254)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(39, 13)
@@ -5165,7 +5027,7 @@ Partial Class Process_frmMain
         '
         'txtApp_OscCycleRate_Axial
         '
-        Me.txtApp_OscCycleRate_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtApp_OscCycleRate_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApp_OscCycleRate_Axial.ForeColor = System.Drawing.Color.Black
         Me.txtApp_OscCycleRate_Axial.Location = New System.Drawing.Point(463, 350)
         Me.txtApp_OscCycleRate_Axial.Name = "txtApp_OscCycleRate_Axial"
@@ -5175,7 +5037,7 @@ Partial Class Process_frmMain
         '
         'txtApp_RecipServiceLife_Axial
         '
-        Me.txtApp_RecipServiceLife_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtApp_RecipServiceLife_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApp_RecipServiceLife_Axial.ForeColor = System.Drawing.Color.Black
         Me.txtApp_RecipServiceLife_Axial.Location = New System.Drawing.Point(571, 318)
         Me.txtApp_RecipServiceLife_Axial.Name = "txtApp_RecipServiceLife_Axial"
@@ -5185,9 +5047,9 @@ Partial Class Process_frmMain
         '
         'Label6
         '
-        Me.Label6.AutoSize = true
-        Me.Label6.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label6.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label6.AutoSize = True
+        Me.Label6.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label6.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.Location = New System.Drawing.Point(569, 302)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(74, 13)
@@ -5197,7 +5059,7 @@ Partial Class Process_frmMain
         '
         'txtApp_OscV_Axial
         '
-        Me.txtApp_OscV_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtApp_OscV_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApp_OscV_Axial.ForeColor = System.Drawing.Color.Black
         Me.txtApp_OscV_Axial.Location = New System.Drawing.Point(355, 350)
         Me.txtApp_OscV_Axial.Name = "txtApp_OscV_Axial"
@@ -5208,8 +5070,8 @@ Partial Class Process_frmMain
         'cmbApp_Rotate_Axial
         '
         Me.cmbApp_Rotate_Axial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbApp_Rotate_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbApp_Rotate_Axial.FormattingEnabled = true
+        Me.cmbApp_Rotate_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbApp_Rotate_Axial.FormattingEnabled = True
         Me.cmbApp_Rotate_Axial.Items.AddRange(New Object() {"Y", "N"})
         Me.cmbApp_Rotate_Axial.Location = New System.Drawing.Point(102, 283)
         Me.cmbApp_Rotate_Axial.Name = "cmbApp_Rotate_Axial"
@@ -5218,9 +5080,9 @@ Partial Class Process_frmMain
         '
         'Label11
         '
-        Me.Label11.AutoSize = true
-        Me.Label11.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label11.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label11.AutoSize = True
+        Me.Label11.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label11.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label11.Location = New System.Drawing.Point(42, 287)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(54, 13)
@@ -5230,7 +5092,7 @@ Partial Class Process_frmMain
         '
         'txtApp_OscRot_Axial
         '
-        Me.txtApp_OscRot_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtApp_OscRot_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApp_OscRot_Axial.ForeColor = System.Drawing.Color.Black
         Me.txtApp_OscRot_Axial.Location = New System.Drawing.Point(247, 350)
         Me.txtApp_OscRot_Axial.Name = "txtApp_OscRot_Axial"
@@ -5240,9 +5102,9 @@ Partial Class Process_frmMain
         '
         'Label13
         '
-        Me.Label13.AutoSize = true
-        Me.Label13.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label13.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label13.AutoSize = True
+        Me.Label13.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label13.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label13.Location = New System.Drawing.Point(187, 354)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(54, 13)
@@ -5252,7 +5114,7 @@ Partial Class Process_frmMain
         '
         'txtApp_RotateRPM_Axial
         '
-        Me.txtApp_RotateRPM_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtApp_RotateRPM_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApp_RotateRPM_Axial.ForeColor = System.Drawing.Color.Black
         Me.txtApp_RotateRPM_Axial.Location = New System.Drawing.Point(247, 283)
         Me.txtApp_RotateRPM_Axial.Name = "txtApp_RotateRPM_Axial"
@@ -5262,9 +5124,9 @@ Partial Class Process_frmMain
         '
         'Label19
         '
-        Me.Label19.AutoSize = true
-        Me.Label19.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label19.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label19.AutoSize = True
+        Me.Label19.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label19.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label19.Location = New System.Drawing.Point(210, 287)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(31, 13)
@@ -5275,8 +5137,8 @@ Partial Class Process_frmMain
         'cmbApp_Osc_Axial
         '
         Me.cmbApp_Osc_Axial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbApp_Osc_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbApp_Osc_Axial.FormattingEnabled = true
+        Me.cmbApp_Osc_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbApp_Osc_Axial.FormattingEnabled = True
         Me.cmbApp_Osc_Axial.Items.AddRange(New Object() {"Y", "N"})
         Me.cmbApp_Osc_Axial.Location = New System.Drawing.Point(102, 350)
         Me.cmbApp_Osc_Axial.Name = "cmbApp_Osc_Axial"
@@ -5285,9 +5147,9 @@ Partial Class Process_frmMain
         '
         'Label30
         '
-        Me.Label30.AutoSize = true
-        Me.Label30.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label30.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label30.AutoSize = True
+        Me.Label30.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label30.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label30.Location = New System.Drawing.Point(12, 322)
         Me.Label30.Name = "Label30"
         Me.Label30.Size = New System.Drawing.Size(84, 13)
@@ -5297,9 +5159,9 @@ Partial Class Process_frmMain
         '
         'Label31
         '
-        Me.Label31.AutoSize = true
-        Me.Label31.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label31.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label31.AutoSize = True
+        Me.Label31.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label31.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label31.Location = New System.Drawing.Point(29, 354)
         Me.Label31.Name = "Label31"
         Me.Label31.Size = New System.Drawing.Size(67, 13)
@@ -5310,8 +5172,8 @@ Partial Class Process_frmMain
         'cmbApp_Recip_Axial
         '
         Me.cmbApp_Recip_Axial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbApp_Recip_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbApp_Recip_Axial.FormattingEnabled = true
+        Me.cmbApp_Recip_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbApp_Recip_Axial.FormattingEnabled = True
         Me.cmbApp_Recip_Axial.Items.AddRange(New Object() {"Y", "N"})
         Me.cmbApp_Recip_Axial.Location = New System.Drawing.Point(102, 318)
         Me.cmbApp_Recip_Axial.Name = "cmbApp_Recip_Axial"
@@ -5320,9 +5182,9 @@ Partial Class Process_frmMain
         '
         'Label34
         '
-        Me.Label34.AutoSize = true
-        Me.Label34.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label34.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label34.AutoSize = True
+        Me.Label34.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label34.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label34.Location = New System.Drawing.Point(154, 322)
         Me.Label34.Name = "Label34"
         Me.Label34.Size = New System.Drawing.Size(87, 13)
@@ -5332,7 +5194,7 @@ Partial Class Process_frmMain
         '
         'txtApp_RecipStrokeL_Axial
         '
-        Me.txtApp_RecipStrokeL_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtApp_RecipStrokeL_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApp_RecipStrokeL_Axial.ForeColor = System.Drawing.Color.Black
         Me.txtApp_RecipStrokeL_Axial.Location = New System.Drawing.Point(247, 318)
         Me.txtApp_RecipStrokeL_Axial.Name = "txtApp_RecipStrokeL_Axial"
@@ -5342,9 +5204,9 @@ Partial Class Process_frmMain
         '
         'Label35
         '
-        Me.Label35.AutoSize = true
-        Me.Label35.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label35.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label35.AutoSize = True
+        Me.Label35.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label35.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label35.Location = New System.Drawing.Point(364, 302)
         Me.Label35.Name = "Label35"
         Me.Label35.Size = New System.Drawing.Size(52, 13)
@@ -5354,7 +5216,7 @@ Partial Class Process_frmMain
         '
         'txtApp_RecipV_Axial
         '
-        Me.txtApp_RecipV_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtApp_RecipV_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApp_RecipV_Axial.ForeColor = System.Drawing.Color.Black
         Me.txtApp_RecipV_Axial.Location = New System.Drawing.Point(355, 318)
         Me.txtApp_RecipV_Axial.Name = "txtApp_RecipV_Axial"
@@ -5364,7 +5226,7 @@ Partial Class Process_frmMain
         '
         'txtApp_RecipCycleRate_Axial
         '
-        Me.txtApp_RecipCycleRate_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtApp_RecipCycleRate_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApp_RecipCycleRate_Axial.ForeColor = System.Drawing.Color.Black
         Me.txtApp_RecipCycleRate_Axial.Location = New System.Drawing.Point(463, 318)
         Me.txtApp_RecipCycleRate_Axial.Name = "txtApp_RecipCycleRate_Axial"
@@ -5374,9 +5236,9 @@ Partial Class Process_frmMain
         '
         'Label39
         '
-        Me.Label39.AutoSize = true
-        Me.Label39.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label39.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label39.AutoSize = True
+        Me.Label39.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label39.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label39.Location = New System.Drawing.Point(464, 302)
         Me.Label39.Name = "Label39"
         Me.Label39.Size = New System.Drawing.Size(69, 13)
@@ -5392,13 +5254,13 @@ Partial Class Process_frmMain
         Me.GroupBox41.Controls.Add(Me.txtApp_UserDate_Axial)
         Me.GroupBox41.Controls.Add(Me.dtpApp_UserDate_Axial)
         Me.GroupBox41.Controls.Add(Me.grdApp_EditedBy_Axial)
-        Me.GroupBox41.Enabled = false
-        Me.GroupBox41.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox41.Enabled = False
+        Me.GroupBox41.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox41.Location = New System.Drawing.Point(15, 398)
         Me.GroupBox41.Name = "GroupBox41"
         Me.GroupBox41.Size = New System.Drawing.Size(867, 132)
         Me.GroupBox41.TabIndex = 878
-        Me.GroupBox41.TabStop = false
+        Me.GroupBox41.TabStop = False
         Me.GroupBox41.Text = "Edited by:"
         '
         'chkApp_UserSigned_Axial
@@ -5409,11 +5271,11 @@ Partial Class Process_frmMain
         Me.chkApp_UserSigned_Axial.Size = New System.Drawing.Size(15, 14)
         Me.chkApp_UserSigned_Axial.TabIndex = 745
         Me.chkApp_UserSigned_Axial.Tag = "Tester"
-        Me.chkApp_UserSigned_Axial.UseVisualStyleBackColor = true
+        Me.chkApp_UserSigned_Axial.UseVisualStyleBackColor = True
         '
         'cmdApp_UserSign_Axial
         '
-        Me.cmdApp_UserSign_Axial.AutoSize = true
+        Me.cmdApp_UserSign_Axial.AutoSize = True
         Me.cmdApp_UserSign_Axial.BackColor = System.Drawing.Color.Silver
         Me.cmdApp_UserSign_Axial.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdApp_UserSign_Axial.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -5423,11 +5285,11 @@ Partial Class Process_frmMain
         Me.cmdApp_UserSign_Axial.TabIndex = 746
         Me.cmdApp_UserSign_Axial.Tag = "Tester"
         Me.cmdApp_UserSign_Axial.Text = "Sign"
-        Me.cmdApp_UserSign_Axial.UseVisualStyleBackColor = false
+        Me.cmdApp_UserSign_Axial.UseVisualStyleBackColor = False
         '
         'txtApp_UserName_Axial
         '
-        Me.txtApp_UserName_Axial.Enabled = false
+        Me.txtApp_UserName_Axial.Enabled = False
         Me.txtApp_UserName_Axial.Location = New System.Drawing.Point(130, 105)
         Me.txtApp_UserName_Axial.Name = "txtApp_UserName_Axial"
         Me.txtApp_UserName_Axial.Size = New System.Drawing.Size(196, 21)
@@ -5437,7 +5299,7 @@ Partial Class Process_frmMain
         'txtApp_UserDate_Axial
         '
         Me.txtApp_UserDate_Axial.BackColor = System.Drawing.Color.White
-        Me.txtApp_UserDate_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtApp_UserDate_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApp_UserDate_Axial.ForeColor = System.Drawing.Color.Black
         Me.txtApp_UserDate_Axial.Location = New System.Drawing.Point(25, 105)
         Me.txtApp_UserDate_Axial.Name = "txtApp_UserDate_Axial"
@@ -5456,13 +5318,13 @@ Partial Class Process_frmMain
         '
         'grdApp_EditedBy_Axial
         '
-        DataGridViewCellStyle195.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdApp_EditedBy_Axial.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle195
+        DataGridViewCellStyle38.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdApp_EditedBy_Axial.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle38
         Me.grdApp_EditedBy_Axial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdApp_EditedBy_Axial.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn86, Me.DataGridViewTextBoxColumn87, Me.DataGridViewTextBoxColumn88})
         Me.grdApp_EditedBy_Axial.Location = New System.Drawing.Point(25, 23)
         Me.grdApp_EditedBy_Axial.Name = "grdApp_EditedBy_Axial"
-        Me.grdApp_EditedBy_Axial.RowHeadersVisible = false
+        Me.grdApp_EditedBy_Axial.RowHeadersVisible = False
         Me.grdApp_EditedBy_Axial.Size = New System.Drawing.Size(823, 74)
         Me.grdApp_EditedBy_Axial.TabIndex = 741
         '
@@ -5486,7 +5348,7 @@ Partial Class Process_frmMain
         '
         'tabDesign
         '
-        Me.tabDesign.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
+        Me.tabDesign.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.tabDesign.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tabDesign.Controls.Add(Me.TabControl2)
         Me.tabDesign.Location = New System.Drawing.Point(4, 40)
@@ -5507,12 +5369,12 @@ Partial Class Process_frmMain
         '
         'TabPage1
         '
-        Me.TabPage1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
+        Me.TabPage1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.TabPage1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TabPage1.Controls.Add(Me.grdDesign_Verification)
         Me.TabPage1.Controls.Add(Me.Label61)
         Me.TabPage1.Controls.Add(Me.GroupBox56)
-        Me.TabPage1.Controls.Add(Me.GroupBox42)
+        Me.TabPage1.Controls.Add(Me.grpRefPN)
         Me.TabPage1.Controls.Add(Me.txtDesign_MCS)
         Me.TabPage1.Controls.Add(Me.Label40)
         Me.TabPage1.Controls.Add(Me.grdDesign_Input)
@@ -5553,13 +5415,13 @@ Partial Class Process_frmMain
         '
         'grdDesign_Verification
         '
-        DataGridViewCellStyle196.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdDesign_Verification.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle196
+        DataGridViewCellStyle39.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdDesign_Verification.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle39
         Me.grdDesign_Verification.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdDesign_Verification.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewComboBoxColumn10, Me.Column23, Me.Column24})
         Me.grdDesign_Verification.Location = New System.Drawing.Point(17, 110)
         Me.grdDesign_Verification.Name = "grdDesign_Verification"
-        Me.grdDesign_Verification.RowHeadersVisible = false
+        Me.grdDesign_Verification.RowHeadersVisible = False
         Me.grdDesign_Verification.Size = New System.Drawing.Size(432, 119)
         Me.grdDesign_Verification.TabIndex = 816
         '
@@ -5587,8 +5449,8 @@ Partial Class Process_frmMain
         '
         'Label61
         '
-        Me.Label61.AutoSize = true
-        Me.Label61.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label61.AutoSize = True
+        Me.Label61.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label61.Location = New System.Drawing.Point(17, 91)
         Me.Label61.Name = "Label61"
         Me.Label61.Size = New System.Drawing.Size(114, 13)
@@ -5601,20 +5463,20 @@ Partial Class Process_frmMain
         Me.GroupBox56.Controls.Add(Me.Label155)
         Me.GroupBox56.Controls.Add(Me.cmbDesign_Winnovation)
         Me.GroupBox56.Controls.Add(Me.txtDesign_WinnovationNo)
-        Me.GroupBox56.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox56.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox56.Location = New System.Drawing.Point(624, 139)
         Me.GroupBox56.Name = "GroupBox56"
         Me.GroupBox56.Size = New System.Drawing.Size(246, 52)
         Me.GroupBox56.TabIndex = 814
-        Me.GroupBox56.TabStop = false
+        Me.GroupBox56.TabStop = False
         Me.GroupBox56.Text = "Winnovation:"
         '
         'Label155
         '
-        Me.Label155.AutoSize = true
-        Me.Label155.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
+        Me.Label155.AutoSize = True
+        Me.Label155.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.Label155.Cursor = System.Windows.Forms.Cursors.Default
-        Me.Label155.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label155.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label155.ForeColor = System.Drawing.SystemColors.ControlText
         Me.Label155.Location = New System.Drawing.Point(65, 24)
         Me.Label155.Name = "Label155"
@@ -5626,8 +5488,8 @@ Partial Class Process_frmMain
         'cmbDesign_Winnovation
         '
         Me.cmbDesign_Winnovation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbDesign_Winnovation.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbDesign_Winnovation.FormattingEnabled = true
+        Me.cmbDesign_Winnovation.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbDesign_Winnovation.FormattingEnabled = True
         Me.cmbDesign_Winnovation.Items.AddRange(New Object() {"Y", "N"})
         Me.cmbDesign_Winnovation.Location = New System.Drawing.Point(13, 20)
         Me.cmbDesign_Winnovation.Name = "cmbDesign_Winnovation"
@@ -5636,90 +5498,90 @@ Partial Class Process_frmMain
         '
         'txtDesign_WinnovationNo
         '
-        Me.txtDesign_WinnovationNo.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtDesign_WinnovationNo.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDesign_WinnovationNo.ForeColor = System.Drawing.Color.Black
         Me.txtDesign_WinnovationNo.Location = New System.Drawing.Point(95, 20)
         Me.txtDesign_WinnovationNo.Name = "txtDesign_WinnovationNo"
         Me.txtDesign_WinnovationNo.Size = New System.Drawing.Size(132, 21)
         Me.txtDesign_WinnovationNo.TabIndex = 602
         '
-        'GroupBox42
+        'grpRefPN
         '
-        Me.GroupBox42.Controls.Add(Me.chkNewRef_Notes)
-        Me.GroupBox42.Controls.Add(Me.chkLegacyRef_Notes)
-        Me.GroupBox42.Controls.Add(Me.chkLegacyRef_Dim)
-        Me.GroupBox42.Controls.Add(Me.chkNewRef_Dim)
-        Me.GroupBox42.Controls.Add(Me.txtParkerPN_Rev_Notes_Dim)
-        Me.GroupBox42.Controls.Add(Me.cmbParkerPN_Part2_Notes_Dim)
-        Me.GroupBox42.Controls.Add(Me.txtParkerPN_Part3_Notes_Dim)
-        Me.GroupBox42.Controls.Add(Me.txtParkerPN_Part1_Notes_Dim)
-        Me.GroupBox42.Controls.Add(Me.Label142)
-        Me.GroupBox42.Controls.Add(Me.Label143)
-        Me.GroupBox42.Controls.Add(Me.Label144)
-        Me.GroupBox42.Controls.Add(Me.txtPN_PH_Rev_NewRef_Dim)
-        Me.GroupBox42.Controls.Add(Me.cmbParkerPN_Part2_NewRef_Dim)
-        Me.GroupBox42.Controls.Add(Me.txtParkerPN_Part3_NewRef_Dim)
-        Me.GroupBox42.Controls.Add(Me.Label145)
-        Me.GroupBox42.Controls.Add(Me.txtLegacyRef_Notes_Rev)
-        Me.GroupBox42.Controls.Add(Me.txtLegacyRef_Notes)
-        Me.GroupBox42.Controls.Add(Me.txtParkerPN_Part1_NewRef_Dim)
-        Me.GroupBox42.Controls.Add(Me.Label146)
-        Me.GroupBox42.Controls.Add(Me.txtLegacyRef_Dim_Rev)
-        Me.GroupBox42.Controls.Add(Me.txtLegacyRef_Dim)
-        Me.GroupBox42.Controls.Add(Me.Label147)
-        Me.GroupBox42.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.GroupBox42.Location = New System.Drawing.Point(468, 12)
-        Me.GroupBox42.Name = "GroupBox42"
-        Me.GroupBox42.Size = New System.Drawing.Size(536, 112)
-        Me.GroupBox42.TabIndex = 813
-        Me.GroupBox42.TabStop = false
-        Me.GroupBox42.Text = "Reference P/N:"
+        Me.grpRefPN.Controls.Add(Me.chkNewRef_Notes)
+        Me.grpRefPN.Controls.Add(Me.chkLegacyRef_Notes)
+        Me.grpRefPN.Controls.Add(Me.chkLegacyRef_Dim)
+        Me.grpRefPN.Controls.Add(Me.chkNewRef_Dim)
+        Me.grpRefPN.Controls.Add(Me.txtParkerPN_Rev_Notes_Dim)
+        Me.grpRefPN.Controls.Add(Me.cmbParkerPN_Part2_Notes_Dim)
+        Me.grpRefPN.Controls.Add(Me.txtParkerPN_Part3_Notes_Dim)
+        Me.grpRefPN.Controls.Add(Me.txtParkerPN_Part1_Notes_Dim)
+        Me.grpRefPN.Controls.Add(Me.Label142)
+        Me.grpRefPN.Controls.Add(Me.Label143)
+        Me.grpRefPN.Controls.Add(Me.Label144)
+        Me.grpRefPN.Controls.Add(Me.txtPN_PH_Rev_NewRef_Dim)
+        Me.grpRefPN.Controls.Add(Me.cmbParkerPN_Part2_NewRef_Dim)
+        Me.grpRefPN.Controls.Add(Me.txtParkerPN_Part3_NewRef_Dim)
+        Me.grpRefPN.Controls.Add(Me.Label145)
+        Me.grpRefPN.Controls.Add(Me.txtLegacyRef_Notes_Rev)
+        Me.grpRefPN.Controls.Add(Me.txtLegacyRef_Notes)
+        Me.grpRefPN.Controls.Add(Me.txtParkerPN_Part1_NewRef_Dim)
+        Me.grpRefPN.Controls.Add(Me.Label146)
+        Me.grpRefPN.Controls.Add(Me.txtLegacyRef_Dim_Rev)
+        Me.grpRefPN.Controls.Add(Me.txtLegacyRef_Dim)
+        Me.grpRefPN.Controls.Add(Me.Label147)
+        Me.grpRefPN.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grpRefPN.Location = New System.Drawing.Point(468, 12)
+        Me.grpRefPN.Name = "grpRefPN"
+        Me.grpRefPN.Size = New System.Drawing.Size(536, 112)
+        Me.grpRefPN.TabIndex = 813
+        Me.grpRefPN.TabStop = False
+        Me.grpRefPN.Text = "Reference P/N:"
         '
         'chkNewRef_Notes
         '
-        Me.chkNewRef_Notes.AutoSize = true
-        Me.chkNewRef_Notes.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.chkNewRef_Notes.AutoSize = True
+        Me.chkNewRef_Notes.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkNewRef_Notes.Location = New System.Drawing.Point(301, 51)
         Me.chkNewRef_Notes.Name = "chkNewRef_Notes"
         Me.chkNewRef_Notes.Size = New System.Drawing.Size(15, 14)
         Me.chkNewRef_Notes.TabIndex = 778
-        Me.chkNewRef_Notes.UseVisualStyleBackColor = true
+        Me.chkNewRef_Notes.UseVisualStyleBackColor = True
         '
         'chkLegacyRef_Notes
         '
-        Me.chkLegacyRef_Notes.AutoSize = true
-        Me.chkLegacyRef_Notes.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.chkLegacyRef_Notes.AutoSize = True
+        Me.chkLegacyRef_Notes.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkLegacyRef_Notes.Location = New System.Drawing.Point(301, 85)
         Me.chkLegacyRef_Notes.Name = "chkLegacyRef_Notes"
         Me.chkLegacyRef_Notes.Size = New System.Drawing.Size(15, 14)
         Me.chkLegacyRef_Notes.TabIndex = 779
-        Me.chkLegacyRef_Notes.UseVisualStyleBackColor = true
+        Me.chkLegacyRef_Notes.UseVisualStyleBackColor = True
         '
         'chkLegacyRef_Dim
         '
-        Me.chkLegacyRef_Dim.AutoSize = true
-        Me.chkLegacyRef_Dim.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.chkLegacyRef_Dim.AutoSize = True
+        Me.chkLegacyRef_Dim.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkLegacyRef_Dim.Location = New System.Drawing.Point(8, 82)
         Me.chkLegacyRef_Dim.Name = "chkLegacyRef_Dim"
         Me.chkLegacyRef_Dim.Size = New System.Drawing.Size(66, 17)
         Me.chkLegacyRef_Dim.TabIndex = 793
         Me.chkLegacyRef_Dim.Text = "Legacy"
-        Me.chkLegacyRef_Dim.UseVisualStyleBackColor = true
+        Me.chkLegacyRef_Dim.UseVisualStyleBackColor = True
         '
         'chkNewRef_Dim
         '
-        Me.chkNewRef_Dim.AutoSize = true
-        Me.chkNewRef_Dim.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.chkNewRef_Dim.AutoSize = True
+        Me.chkNewRef_Dim.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkNewRef_Dim.Location = New System.Drawing.Point(8, 48)
         Me.chkNewRef_Dim.Name = "chkNewRef_Dim"
         Me.chkNewRef_Dim.Size = New System.Drawing.Size(15, 14)
         Me.chkNewRef_Dim.TabIndex = 792
-        Me.chkNewRef_Dim.UseVisualStyleBackColor = true
+        Me.chkNewRef_Dim.UseVisualStyleBackColor = True
         '
         'txtParkerPN_Rev_Notes_Dim
         '
         Me.txtParkerPN_Rev_Notes_Dim.BackColor = System.Drawing.Color.White
-        Me.txtParkerPN_Rev_Notes_Dim.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtParkerPN_Rev_Notes_Dim.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtParkerPN_Rev_Notes_Dim.ForeColor = System.Drawing.Color.Black
         Me.txtParkerPN_Rev_Notes_Dim.Location = New System.Drawing.Point(496, 48)
         Me.txtParkerPN_Rev_Notes_Dim.Name = "txtParkerPN_Rev_Notes_Dim"
@@ -5729,8 +5591,8 @@ Partial Class Process_frmMain
         'cmbParkerPN_Part2_Notes_Dim
         '
         Me.cmbParkerPN_Part2_Notes_Dim.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbParkerPN_Part2_Notes_Dim.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbParkerPN_Part2_Notes_Dim.FormattingEnabled = true
+        Me.cmbParkerPN_Part2_Notes_Dim.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbParkerPN_Part2_Notes_Dim.FormattingEnabled = True
         Me.cmbParkerPN_Part2_Notes_Dim.Location = New System.Drawing.Point(360, 47)
         Me.cmbParkerPN_Part2_Notes_Dim.Name = "cmbParkerPN_Part2_Notes_Dim"
         Me.cmbParkerPN_Part2_Notes_Dim.Size = New System.Drawing.Size(42, 21)
@@ -5738,7 +5600,7 @@ Partial Class Process_frmMain
         '
         'txtParkerPN_Part3_Notes_Dim
         '
-        Me.txtParkerPN_Part3_Notes_Dim.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtParkerPN_Part3_Notes_Dim.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtParkerPN_Part3_Notes_Dim.Location = New System.Drawing.Point(411, 47)
         Me.txtParkerPN_Part3_Notes_Dim.Mask = "0000"
         Me.txtParkerPN_Part3_Notes_Dim.Name = "txtParkerPN_Part3_Notes_Dim"
@@ -5750,11 +5612,11 @@ Partial Class Process_frmMain
         'txtParkerPN_Part1_Notes_Dim
         '
         Me.txtParkerPN_Part1_Notes_Dim.BackColor = System.Drawing.SystemColors.Window
-        Me.txtParkerPN_Part1_Notes_Dim.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtParkerPN_Part1_Notes_Dim.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtParkerPN_Part1_Notes_Dim.ForeColor = System.Drawing.Color.Black
         Me.txtParkerPN_Part1_Notes_Dim.Location = New System.Drawing.Point(320, 47)
         Me.txtParkerPN_Part1_Notes_Dim.Name = "txtParkerPN_Part1_Notes_Dim"
-        Me.txtParkerPN_Part1_Notes_Dim.ReadOnly = true
+        Me.txtParkerPN_Part1_Notes_Dim.ReadOnly = True
         Me.txtParkerPN_Part1_Notes_Dim.Size = New System.Drawing.Size(24, 21)
         Me.txtParkerPN_Part1_Notes_Dim.TabIndex = 786
         Me.txtParkerPN_Part1_Notes_Dim.Text = "NH"
@@ -5762,7 +5624,7 @@ Partial Class Process_frmMain
         '
         'Label142
         '
-        Me.Label142.AutoSize = true
+        Me.Label142.AutoSize = True
         Me.Label142.Location = New System.Drawing.Point(346, 50)
         Me.Label142.Name = "Label142"
         Me.Label142.Size = New System.Drawing.Size(12, 13)
@@ -5771,9 +5633,9 @@ Partial Class Process_frmMain
         '
         'Label143
         '
-        Me.Label143.AutoSize = true
-        Me.Label143.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label143.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label143.AutoSize = True
+        Me.Label143.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label143.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label143.ForeColor = System.Drawing.Color.Black
         Me.Label143.Location = New System.Drawing.Point(496, 32)
         Me.Label143.Name = "Label143"
@@ -5784,9 +5646,9 @@ Partial Class Process_frmMain
         '
         'Label144
         '
-        Me.Label144.AutoSize = true
-        Me.Label144.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label144.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label144.AutoSize = True
+        Me.Label144.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label144.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label144.ForeColor = System.Drawing.Color.Black
         Me.Label144.Location = New System.Drawing.Point(120, 17)
         Me.Label144.Name = "Label144"
@@ -5798,7 +5660,7 @@ Partial Class Process_frmMain
         'txtPN_PH_Rev_NewRef_Dim
         '
         Me.txtPN_PH_Rev_NewRef_Dim.BackColor = System.Drawing.Color.White
-        Me.txtPN_PH_Rev_NewRef_Dim.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtPN_PH_Rev_NewRef_Dim.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPN_PH_Rev_NewRef_Dim.ForeColor = System.Drawing.Color.Black
         Me.txtPN_PH_Rev_NewRef_Dim.Location = New System.Drawing.Point(252, 47)
         Me.txtPN_PH_Rev_NewRef_Dim.Name = "txtPN_PH_Rev_NewRef_Dim"
@@ -5808,8 +5670,8 @@ Partial Class Process_frmMain
         'cmbParkerPN_Part2_NewRef_Dim
         '
         Me.cmbParkerPN_Part2_NewRef_Dim.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbParkerPN_Part2_NewRef_Dim.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbParkerPN_Part2_NewRef_Dim.FormattingEnabled = true
+        Me.cmbParkerPN_Part2_NewRef_Dim.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbParkerPN_Part2_NewRef_Dim.FormattingEnabled = True
         Me.cmbParkerPN_Part2_NewRef_Dim.Location = New System.Drawing.Point(116, 47)
         Me.cmbParkerPN_Part2_NewRef_Dim.Name = "cmbParkerPN_Part2_NewRef_Dim"
         Me.cmbParkerPN_Part2_NewRef_Dim.Size = New System.Drawing.Size(42, 21)
@@ -5817,7 +5679,7 @@ Partial Class Process_frmMain
         '
         'txtParkerPN_Part3_NewRef_Dim
         '
-        Me.txtParkerPN_Part3_NewRef_Dim.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtParkerPN_Part3_NewRef_Dim.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtParkerPN_Part3_NewRef_Dim.Location = New System.Drawing.Point(167, 47)
         Me.txtParkerPN_Part3_NewRef_Dim.Mask = "0000"
         Me.txtParkerPN_Part3_NewRef_Dim.Name = "txtParkerPN_Part3_NewRef_Dim"
@@ -5828,9 +5690,9 @@ Partial Class Process_frmMain
         '
         'Label145
         '
-        Me.Label145.AutoSize = true
-        Me.Label145.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label145.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label145.AutoSize = True
+        Me.Label145.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label145.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label145.ForeColor = System.Drawing.Color.Black
         Me.Label145.Location = New System.Drawing.Point(376, 17)
         Me.Label145.Name = "Label145"
@@ -5842,7 +5704,7 @@ Partial Class Process_frmMain
         'txtLegacyRef_Notes_Rev
         '
         Me.txtLegacyRef_Notes_Rev.BackColor = System.Drawing.Color.White
-        Me.txtLegacyRef_Notes_Rev.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtLegacyRef_Notes_Rev.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtLegacyRef_Notes_Rev.ForeColor = System.Drawing.Color.Black
         Me.txtLegacyRef_Notes_Rev.Location = New System.Drawing.Point(496, 80)
         Me.txtLegacyRef_Notes_Rev.Name = "txtLegacyRef_Notes_Rev"
@@ -5852,7 +5714,7 @@ Partial Class Process_frmMain
         'txtLegacyRef_Notes
         '
         Me.txtLegacyRef_Notes.BackColor = System.Drawing.Color.White
-        Me.txtLegacyRef_Notes.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtLegacyRef_Notes.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtLegacyRef_Notes.ForeColor = System.Drawing.Color.Black
         Me.txtLegacyRef_Notes.Location = New System.Drawing.Point(320, 80)
         Me.txtLegacyRef_Notes.Name = "txtLegacyRef_Notes"
@@ -5862,11 +5724,11 @@ Partial Class Process_frmMain
         'txtParkerPN_Part1_NewRef_Dim
         '
         Me.txtParkerPN_Part1_NewRef_Dim.BackColor = System.Drawing.SystemColors.Window
-        Me.txtParkerPN_Part1_NewRef_Dim.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtParkerPN_Part1_NewRef_Dim.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtParkerPN_Part1_NewRef_Dim.ForeColor = System.Drawing.Color.Black
         Me.txtParkerPN_Part1_NewRef_Dim.Location = New System.Drawing.Point(76, 47)
         Me.txtParkerPN_Part1_NewRef_Dim.Name = "txtParkerPN_Part1_NewRef_Dim"
-        Me.txtParkerPN_Part1_NewRef_Dim.ReadOnly = true
+        Me.txtParkerPN_Part1_NewRef_Dim.ReadOnly = True
         Me.txtParkerPN_Part1_NewRef_Dim.Size = New System.Drawing.Size(24, 21)
         Me.txtParkerPN_Part1_NewRef_Dim.TabIndex = 5
         Me.txtParkerPN_Part1_NewRef_Dim.Text = "NH"
@@ -5874,7 +5736,7 @@ Partial Class Process_frmMain
         '
         'Label146
         '
-        Me.Label146.AutoSize = true
+        Me.Label146.AutoSize = True
         Me.Label146.Location = New System.Drawing.Point(102, 50)
         Me.Label146.Name = "Label146"
         Me.Label146.Size = New System.Drawing.Size(12, 13)
@@ -5884,7 +5746,7 @@ Partial Class Process_frmMain
         'txtLegacyRef_Dim_Rev
         '
         Me.txtLegacyRef_Dim_Rev.BackColor = System.Drawing.Color.White
-        Me.txtLegacyRef_Dim_Rev.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtLegacyRef_Dim_Rev.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtLegacyRef_Dim_Rev.ForeColor = System.Drawing.Color.Black
         Me.txtLegacyRef_Dim_Rev.Location = New System.Drawing.Point(252, 80)
         Me.txtLegacyRef_Dim_Rev.Name = "txtLegacyRef_Dim_Rev"
@@ -5894,7 +5756,7 @@ Partial Class Process_frmMain
         'txtLegacyRef_Dim
         '
         Me.txtLegacyRef_Dim.BackColor = System.Drawing.Color.White
-        Me.txtLegacyRef_Dim.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtLegacyRef_Dim.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtLegacyRef_Dim.ForeColor = System.Drawing.Color.Black
         Me.txtLegacyRef_Dim.Location = New System.Drawing.Point(76, 80)
         Me.txtLegacyRef_Dim.Name = "txtLegacyRef_Dim"
@@ -5903,9 +5765,9 @@ Partial Class Process_frmMain
         '
         'Label147
         '
-        Me.Label147.AutoSize = true
-        Me.Label147.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label147.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label147.AutoSize = True
+        Me.Label147.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label147.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label147.ForeColor = System.Drawing.Color.Black
         Me.Label147.Location = New System.Drawing.Point(252, 31)
         Me.Label147.Name = "Label147"
@@ -5916,7 +5778,8 @@ Partial Class Process_frmMain
         '
         'txtDesign_MCS
         '
-        Me.txtDesign_MCS.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtDesign_MCS.Enabled = False
+        Me.txtDesign_MCS.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDesign_MCS.ForeColor = System.Drawing.Color.Black
         Me.txtDesign_MCS.Location = New System.Drawing.Point(509, 159)
         Me.txtDesign_MCS.Name = "txtDesign_MCS"
@@ -5925,9 +5788,9 @@ Partial Class Process_frmMain
         '
         'Label40
         '
-        Me.Label40.AutoSize = true
-        Me.Label40.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label40.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label40.AutoSize = True
+        Me.Label40.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label40.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label40.Location = New System.Drawing.Point(533, 143)
         Me.Label40.Name = "Label40"
         Me.Label40.Size = New System.Drawing.Size(33, 13)
@@ -5937,13 +5800,13 @@ Partial Class Process_frmMain
         '
         'grdDesign_Input
         '
-        DataGridViewCellStyle197.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdDesign_Input.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle197
+        DataGridViewCellStyle40.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdDesign_Input.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle40
         Me.grdDesign_Input.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdDesign_Input.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewComboBoxColumn7})
         Me.grdDesign_Input.Location = New System.Drawing.Point(14, 377)
         Me.grdDesign_Input.Name = "grdDesign_Input"
-        Me.grdDesign_Input.RowHeadersVisible = false
+        Me.grdDesign_Input.RowHeadersVisible = False
         Me.grdDesign_Input.Size = New System.Drawing.Size(286, 145)
         Me.grdDesign_Input.TabIndex = 810
         '
@@ -5959,13 +5822,13 @@ Partial Class Process_frmMain
         '
         'DataGridView33
         '
-        DataGridViewCellStyle198.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.DataGridView33.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle198
+        DataGridViewCellStyle41.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DataGridView33.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle41
         Me.DataGridView33.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView33.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn89})
         Me.DataGridView33.Location = New System.Drawing.Point(14, 377)
         Me.DataGridView33.Name = "DataGridView33"
-        Me.DataGridView33.RowHeadersVisible = false
+        Me.DataGridView33.RowHeadersVisible = False
         Me.DataGridView33.Size = New System.Drawing.Size(286, 145)
         Me.DataGridView33.TabIndex = 810
         '
@@ -5982,7 +5845,7 @@ Partial Class Process_frmMain
         '
         Me.Label132.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label132.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label132.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label132.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label132.Location = New System.Drawing.Point(0, 338)
         Me.Label132.Name = "Label132"
         Me.Label132.Size = New System.Drawing.Size(1020, 2)
@@ -5992,7 +5855,7 @@ Partial Class Process_frmMain
         '
         Me.Label59.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label59.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label59.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label59.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label59.Location = New System.Drawing.Point(0, 338)
         Me.Label59.Name = "Label59"
         Me.Label59.Size = New System.Drawing.Size(1020, 2)
@@ -6003,18 +5866,17 @@ Partial Class Process_frmMain
         Me.grpPlating.Controls.Add(Me.cmbPlatingCode)
         Me.grpPlating.Controls.Add(Me.chkPlating)
         Me.grpPlating.Controls.Add(Me.cmbPlatingThickCode)
-        Me.grpPlating.Enabled = false
         Me.grpPlating.Location = New System.Drawing.Point(698, 261)
         Me.grpPlating.Name = "grpPlating"
         Me.grpPlating.Size = New System.Drawing.Size(113, 68)
         Me.grpPlating.TabIndex = 800
-        Me.grpPlating.TabStop = false
+        Me.grpPlating.TabStop = False
         '
         'cmbPlatingCode
         '
         Me.cmbPlatingCode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbPlatingCode.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbPlatingCode.FormattingEnabled = true
+        Me.cmbPlatingCode.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbPlatingCode.FormattingEnabled = True
         Me.cmbPlatingCode.Items.AddRange(New Object() {"AP", "CP", "GP", "IP", "LP", "NP", "PC", "SA", "SC", "SG", "SI", "SL", "SN", "SP", "SS", "TC"})
         Me.cmbPlatingCode.Location = New System.Drawing.Point(14, 34)
         Me.cmbPlatingCode.Name = "cmbPlatingCode"
@@ -6023,19 +5885,20 @@ Partial Class Process_frmMain
         '
         'chkPlating
         '
-        Me.chkPlating.AutoSize = true
+        Me.chkPlating.AutoSize = True
+        Me.chkPlating.Enabled = False
         Me.chkPlating.Location = New System.Drawing.Point(14, 15)
         Me.chkPlating.Name = "chkPlating"
         Me.chkPlating.Size = New System.Drawing.Size(68, 17)
         Me.chkPlating.TabIndex = 677
         Me.chkPlating.Text = " Plating"
-        Me.chkPlating.UseVisualStyleBackColor = true
+        Me.chkPlating.UseVisualStyleBackColor = True
         '
         'cmbPlatingThickCode
         '
         Me.cmbPlatingThickCode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbPlatingThickCode.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbPlatingThickCode.FormattingEnabled = true
+        Me.cmbPlatingThickCode.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbPlatingThickCode.FormattingEnabled = True
         Me.cmbPlatingThickCode.Items.AddRange(New Object() {"A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "M", "N"})
         Me.cmbPlatingThickCode.Location = New System.Drawing.Point(62, 34)
         Me.cmbPlatingThickCode.Name = "cmbPlatingThickCode"
@@ -6045,8 +5908,8 @@ Partial Class Process_frmMain
         'cmbDesign_OutsideVendor
         '
         Me.cmbDesign_OutsideVendor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbDesign_OutsideVendor.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbDesign_OutsideVendor.FormattingEnabled = true
+        Me.cmbDesign_OutsideVendor.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbDesign_OutsideVendor.FormattingEnabled = True
         Me.cmbDesign_OutsideVendor.Items.AddRange(New Object() {"Y", "N"})
         Me.cmbDesign_OutsideVendor.Location = New System.Drawing.Point(830, 295)
         Me.cmbDesign_OutsideVendor.Name = "cmbDesign_OutsideVendor"
@@ -6061,19 +5924,18 @@ Partial Class Process_frmMain
         Me.grpCoating.Controls.Add(Me.lblSFinish)
         Me.grpCoating.Controls.Add(Me.cmbSFinish)
         Me.grpCoating.Controls.Add(Me.lblUnitSFinish)
-        Me.grpCoating.Enabled = false
         Me.grpCoating.Location = New System.Drawing.Point(505, 261)
         Me.grpCoating.Name = "grpCoating"
         Me.grpCoating.Size = New System.Drawing.Size(182, 66)
         Me.grpCoating.TabIndex = 799
-        Me.grpCoating.TabStop = false
+        Me.grpCoating.TabStop = False
         '
         'cmbCoating
         '
         Me.cmbCoating.BackColor = System.Drawing.SystemColors.Window
         Me.cmbCoating.Cursor = System.Windows.Forms.Cursors.Default
         Me.cmbCoating.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbCoating.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.cmbCoating.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbCoating.ForeColor = System.Drawing.SystemColors.WindowText
         Me.cmbCoating.Items.AddRange(New Object() {"Tricom", "T800"})
         Me.cmbCoating.Location = New System.Drawing.Point(12, 34)
@@ -6084,8 +5946,8 @@ Partial Class Process_frmMain
         '
         'Label56
         '
-        Me.Label56.AutoSize = true
-        Me.Label56.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label56.AutoSize = True
+        Me.Label56.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label56.Location = New System.Drawing.Point(26, 16)
         Me.Label56.Name = "Label56"
         Me.Label56.Size = New System.Drawing.Size(51, 13)
@@ -6095,21 +5957,22 @@ Partial Class Process_frmMain
         '
         'chkCoating
         '
-        Me.chkCoating.BackColor = System.Drawing.Color.FromArgb(CType(CType(192,Byte),Integer), CType(CType(192,Byte),Integer), CType(CType(192,Byte),Integer))
+        Me.chkCoating.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.chkCoating.Cursor = System.Windows.Forms.Cursors.Default
-        Me.chkCoating.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.chkCoating.Enabled = False
+        Me.chkCoating.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkCoating.ForeColor = System.Drawing.SystemColors.ControlText
         Me.chkCoating.Location = New System.Drawing.Point(12, 16)
         Me.chkCoating.Name = "chkCoating"
         Me.chkCoating.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.chkCoating.Size = New System.Drawing.Size(13, 14)
         Me.chkCoating.TabIndex = 182
-        Me.chkCoating.UseVisualStyleBackColor = false
+        Me.chkCoating.UseVisualStyleBackColor = False
         '
         'lblSFinish
         '
-        Me.lblSFinish.AutoSize = true
-        Me.lblSFinish.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblSFinish.AutoSize = True
+        Me.lblSFinish.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSFinish.Location = New System.Drawing.Point(93, 15)
         Me.lblSFinish.Name = "lblSFinish"
         Me.lblSFinish.Size = New System.Drawing.Size(47, 13)
@@ -6122,7 +5985,7 @@ Partial Class Process_frmMain
         Me.cmbSFinish.BackColor = System.Drawing.SystemColors.Window
         Me.cmbSFinish.Cursor = System.Windows.Forms.Cursors.Default
         Me.cmbSFinish.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbSFinish.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.cmbSFinish.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbSFinish.ForeColor = System.Drawing.SystemColors.WindowText
         Me.cmbSFinish.Items.AddRange(New Object() {"65", "125"})
         Me.cmbSFinish.Location = New System.Drawing.Point(92, 34)
@@ -6133,10 +5996,10 @@ Partial Class Process_frmMain
         '
         'lblUnitSFinish
         '
-        Me.lblUnitSFinish.AutoSize = true
-        Me.lblUnitSFinish.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
+        Me.lblUnitSFinish.AutoSize = True
+        Me.lblUnitSFinish.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.lblUnitSFinish.Cursor = System.Windows.Forms.Cursors.Default
-        Me.lblUnitSFinish.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblUnitSFinish.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblUnitSFinish.ForeColor = System.Drawing.SystemColors.ControlText
         Me.lblUnitSFinish.Location = New System.Drawing.Point(146, 37)
         Me.lblUnitSFinish.Name = "lblUnitSFinish"
@@ -6151,20 +6014,19 @@ Partial Class Process_frmMain
         Me.GroupBox48.Controls.Add(Me.cmbDesign_Mat_Seal)
         Me.GroupBox48.Controls.Add(Me.cmbDesign_Mat_Spring)
         Me.GroupBox48.Controls.Add(Me.Label126)
-        Me.GroupBox48.Enabled = false
-        Me.GroupBox48.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox48.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox48.Location = New System.Drawing.Point(10, 262)
         Me.GroupBox48.Name = "GroupBox48"
         Me.GroupBox48.Size = New System.Drawing.Size(308, 65)
         Me.GroupBox48.TabIndex = 798
-        Me.GroupBox48.TabStop = false
+        Me.GroupBox48.TabStop = False
         Me.GroupBox48.Text = "Material:"
         '
         'Label125
         '
-        Me.Label125.AutoSize = true
-        Me.Label125.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label125.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label125.AutoSize = True
+        Me.Label125.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label125.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label125.Location = New System.Drawing.Point(11, 17)
         Me.Label125.Name = "Label125"
         Me.Label125.Size = New System.Drawing.Size(32, 13)
@@ -6177,7 +6039,7 @@ Partial Class Process_frmMain
         Me.cmbDesign_Mat_Seal.BackColor = System.Drawing.SystemColors.Window
         Me.cmbDesign_Mat_Seal.Cursor = System.Windows.Forms.Cursors.Default
         Me.cmbDesign_Mat_Seal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbDesign_Mat_Seal.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.cmbDesign_Mat_Seal.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbDesign_Mat_Seal.ForeColor = System.Drawing.SystemColors.WindowText
         Me.cmbDesign_Mat_Seal.Location = New System.Drawing.Point(11, 33)
         Me.cmbDesign_Mat_Seal.Name = "cmbDesign_Mat_Seal"
@@ -6190,7 +6052,7 @@ Partial Class Process_frmMain
         Me.cmbDesign_Mat_Spring.BackColor = System.Drawing.SystemColors.Window
         Me.cmbDesign_Mat_Spring.Cursor = System.Windows.Forms.Cursors.Default
         Me.cmbDesign_Mat_Spring.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbDesign_Mat_Spring.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.cmbDesign_Mat_Spring.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbDesign_Mat_Spring.ForeColor = System.Drawing.SystemColors.WindowText
         Me.cmbDesign_Mat_Spring.Location = New System.Drawing.Point(127, 33)
         Me.cmbDesign_Mat_Spring.Name = "cmbDesign_Mat_Spring"
@@ -6200,8 +6062,8 @@ Partial Class Process_frmMain
         '
         'Label126
         '
-        Me.Label126.AutoSize = true
-        Me.Label126.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label126.AutoSize = True
+        Me.Label126.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label126.Location = New System.Drawing.Point(127, 17)
         Me.Label126.Name = "Label126"
         Me.Label126.Size = New System.Drawing.Size(44, 13)
@@ -6212,8 +6074,8 @@ Partial Class Process_frmMain
         'ComboBox76
         '
         Me.ComboBox76.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox76.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.ComboBox76.FormattingEnabled = true
+        Me.ComboBox76.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ComboBox76.FormattingEnabled = True
         Me.ComboBox76.Items.AddRange(New Object() {"Y", "N"})
         Me.ComboBox76.Location = New System.Drawing.Point(830, 295)
         Me.ComboBox76.Name = "ComboBox76"
@@ -6222,8 +6084,8 @@ Partial Class Process_frmMain
         '
         'Label124
         '
-        Me.Label124.AutoSize = true
-        Me.Label124.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label124.AutoSize = True
+        Me.Label124.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label124.Location = New System.Drawing.Point(827, 278)
         Me.Label124.Name = "Label124"
         Me.Label124.Size = New System.Drawing.Size(95, 13)
@@ -6237,19 +6099,19 @@ Partial Class Process_frmMain
         Me.GroupBox35.Controls.Add(Me.ComboBox79)
         Me.GroupBox35.Controls.Add(Me.ComboBox75)
         Me.GroupBox35.Controls.Add(Me.Label78)
-        Me.GroupBox35.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox35.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox35.Location = New System.Drawing.Point(10, 262)
         Me.GroupBox35.Name = "GroupBox35"
         Me.GroupBox35.Size = New System.Drawing.Size(283, 65)
         Me.GroupBox35.TabIndex = 798
-        Me.GroupBox35.TabStop = false
+        Me.GroupBox35.TabStop = False
         Me.GroupBox35.Text = "Material:"
         '
         'Label55
         '
-        Me.Label55.AutoSize = true
-        Me.Label55.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label55.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label55.AutoSize = True
+        Me.Label55.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label55.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label55.Location = New System.Drawing.Point(27, 17)
         Me.Label55.Name = "Label55"
         Me.Label55.Size = New System.Drawing.Size(32, 13)
@@ -6262,7 +6124,7 @@ Partial Class Process_frmMain
         Me.ComboBox79.BackColor = System.Drawing.SystemColors.Window
         Me.ComboBox79.Cursor = System.Windows.Forms.Cursors.Default
         Me.ComboBox79.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox79.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.ComboBox79.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboBox79.ForeColor = System.Drawing.SystemColors.WindowText
         Me.ComboBox79.Items.AddRange(New Object() {"Alloy718", "Waspaloy", "Rene41", "X-750"})
         Me.ComboBox79.Location = New System.Drawing.Point(27, 33)
@@ -6276,7 +6138,7 @@ Partial Class Process_frmMain
         Me.ComboBox75.BackColor = System.Drawing.SystemColors.Window
         Me.ComboBox75.Cursor = System.Windows.Forms.Cursors.Default
         Me.ComboBox75.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox75.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.ComboBox75.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboBox75.ForeColor = System.Drawing.SystemColors.WindowText
         Me.ComboBox75.Items.AddRange(New Object() {"Alloy718", "Waspaloy", "Rene41", "X-750"})
         Me.ComboBox75.Location = New System.Drawing.Point(148, 33)
@@ -6287,8 +6149,8 @@ Partial Class Process_frmMain
         '
         'Label78
         '
-        Me.Label78.AutoSize = true
-        Me.Label78.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label78.AutoSize = True
+        Me.Label78.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label78.Location = New System.Drawing.Point(148, 17)
         Me.Label78.Name = "Label78"
         Me.Label78.Size = New System.Drawing.Size(44, 13)
@@ -6300,7 +6162,7 @@ Partial Class Process_frmMain
         '
         Me.Label123.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label123.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label123.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label123.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label123.Location = New System.Drawing.Point(0, 245)
         Me.Label123.Name = "Label123"
         Me.Label123.Size = New System.Drawing.Size(1020, 2)
@@ -6308,8 +6170,8 @@ Partial Class Process_frmMain
         '
         'Label79
         '
-        Me.Label79.AutoSize = true
-        Me.Label79.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label79.AutoSize = True
+        Me.Label79.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label79.Location = New System.Drawing.Point(827, 278)
         Me.Label79.Name = "Label79"
         Me.Label79.Size = New System.Drawing.Size(95, 13)
@@ -6321,7 +6183,7 @@ Partial Class Process_frmMain
         '
         Me.Label54.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label54.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label54.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label54.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label54.Location = New System.Drawing.Point(0, 245)
         Me.Label54.Name = "Label54"
         Me.Label54.Size = New System.Drawing.Size(1020, 2)
@@ -6329,7 +6191,7 @@ Partial Class Process_frmMain
         '
         'txtDesign_FOD_Risks
         '
-        Me.txtDesign_FOD_Risks.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtDesign_FOD_Risks.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDesign_FOD_Risks.ForeColor = System.Drawing.Color.Black
         Me.txtDesign_FOD_Risks.Location = New System.Drawing.Point(320, 377)
         Me.txtDesign_FOD_Risks.Name = "txtDesign_FOD_Risks"
@@ -6338,8 +6200,8 @@ Partial Class Process_frmMain
         '
         'Label121
         '
-        Me.Label121.AutoSize = true
-        Me.Label121.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label121.AutoSize = True
+        Me.Label121.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label121.Location = New System.Drawing.Point(320, 358)
         Me.Label121.Name = "Label121"
         Me.Label121.Size = New System.Drawing.Size(65, 13)
@@ -6349,7 +6211,7 @@ Partial Class Process_frmMain
         '
         'TextBox55
         '
-        Me.TextBox55.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.TextBox55.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox55.ForeColor = System.Drawing.Color.Black
         Me.TextBox55.Location = New System.Drawing.Point(320, 377)
         Me.TextBox55.Name = "TextBox55"
@@ -6359,8 +6221,8 @@ Partial Class Process_frmMain
         '
         'Label242
         '
-        Me.Label242.AutoSize = true
-        Me.Label242.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label242.AutoSize = True
+        Me.Label242.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label242.Location = New System.Drawing.Point(320, 358)
         Me.Label242.Name = "Label242"
         Me.Label242.Size = New System.Drawing.Size(65, 13)
@@ -6370,8 +6232,8 @@ Partial Class Process_frmMain
         '
         'Label110
         '
-        Me.Label110.AutoSize = true
-        Me.Label110.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label110.AutoSize = True
+        Me.Label110.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label110.Location = New System.Drawing.Point(14, 358)
         Me.Label110.Name = "Label110"
         Me.Label110.Size = New System.Drawing.Size(37, 13)
@@ -6384,8 +6246,7 @@ Partial Class Process_frmMain
         Me.cmbDesign_TemperType.BackColor = System.Drawing.SystemColors.Window
         Me.cmbDesign_TemperType.Cursor = System.Windows.Forms.Cursors.Default
         Me.cmbDesign_TemperType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbDesign_TemperType.Enabled = false
-        Me.cmbDesign_TemperType.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.cmbDesign_TemperType.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbDesign_TemperType.ForeColor = System.Drawing.SystemColors.WindowText
         Me.cmbDesign_TemperType.Items.AddRange(New Object() {"Work Hardened", "Age Hardened", "Annealed", "Solution and Precip", "NACE"})
         Me.cmbDesign_TemperType.Location = New System.Drawing.Point(344, 295)
@@ -6396,8 +6257,8 @@ Partial Class Process_frmMain
         '
         'Label109
         '
-        Me.Label109.AutoSize = true
-        Me.Label109.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label109.AutoSize = True
+        Me.Label109.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label109.Location = New System.Drawing.Point(344, 279)
         Me.Label109.Name = "Label109"
         Me.Label109.Size = New System.Drawing.Size(83, 13)
@@ -6410,7 +6271,7 @@ Partial Class Process_frmMain
         Me.ComboBox78.BackColor = System.Drawing.SystemColors.Window
         Me.ComboBox78.Cursor = System.Windows.Forms.Cursors.Default
         Me.ComboBox78.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox78.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.ComboBox78.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboBox78.ForeColor = System.Drawing.SystemColors.WindowText
         Me.ComboBox78.Items.AddRange(New Object() {"Work Hardened", "Age Hardened", "Annealed", "Solution and Precip", "NACE"})
         Me.ComboBox78.Location = New System.Drawing.Point(344, 295)
@@ -6421,8 +6282,8 @@ Partial Class Process_frmMain
         '
         'Label236
         '
-        Me.Label236.AutoSize = true
-        Me.Label236.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label236.AutoSize = True
+        Me.Label236.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label236.Location = New System.Drawing.Point(344, 279)
         Me.Label236.Name = "Label236"
         Me.Label236.Size = New System.Drawing.Size(83, 13)
@@ -6433,8 +6294,8 @@ Partial Class Process_frmMain
         'cmbDesign_BuildToPrint
         '
         Me.cmbDesign_BuildToPrint.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbDesign_BuildToPrint.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbDesign_BuildToPrint.FormattingEnabled = true
+        Me.cmbDesign_BuildToPrint.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbDesign_BuildToPrint.FormattingEnabled = True
         Me.cmbDesign_BuildToPrint.Items.AddRange(New Object() {"Y", "N"})
         Me.cmbDesign_BuildToPrint.Location = New System.Drawing.Point(417, 45)
         Me.cmbDesign_BuildToPrint.Name = "cmbDesign_BuildToPrint"
@@ -6443,8 +6304,8 @@ Partial Class Process_frmMain
         '
         'Label74
         '
-        Me.Label74.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label74.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label74.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label74.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label74.Location = New System.Drawing.Point(414, 12)
         Me.Label74.Name = "Label74"
         Me.Label74.Size = New System.Drawing.Size(51, 30)
@@ -6454,9 +6315,9 @@ Partial Class Process_frmMain
         '
         'Label77
         '
-        Me.Label77.AutoSize = true
-        Me.Label77.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label77.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label77.AutoSize = True
+        Me.Label77.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label77.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label77.Location = New System.Drawing.Point(355, 29)
         Me.Label77.Name = "Label77"
         Me.Label77.Size = New System.Drawing.Size(49, 13)
@@ -6470,19 +6331,19 @@ Partial Class Process_frmMain
         Me.GroupBox3.Controls.Add(Me.cmbDesign_Frozen)
         Me.GroupBox3.Controls.Add(Me.Label76)
         Me.GroupBox3.Controls.Add(Me.cmbDesign_Process)
-        Me.GroupBox3.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox3.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox3.Location = New System.Drawing.Point(209, 12)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(135, 65)
         Me.GroupBox3.TabIndex = 788
-        Me.GroupBox3.TabStop = false
+        Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Frozen:"
         '
         'Label75
         '
-        Me.Label75.AutoSize = true
-        Me.Label75.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label75.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label75.AutoSize = True
+        Me.Label75.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label75.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label75.Location = New System.Drawing.Point(12, 17)
         Me.Label75.Name = "Label75"
         Me.Label75.Size = New System.Drawing.Size(46, 13)
@@ -6493,8 +6354,8 @@ Partial Class Process_frmMain
         'cmbDesign_Frozen
         '
         Me.cmbDesign_Frozen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbDesign_Frozen.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbDesign_Frozen.FormattingEnabled = true
+        Me.cmbDesign_Frozen.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbDesign_Frozen.FormattingEnabled = True
         Me.cmbDesign_Frozen.Items.AddRange(New Object() {"Y", "N"})
         Me.cmbDesign_Frozen.Location = New System.Drawing.Point(12, 33)
         Me.cmbDesign_Frozen.Name = "cmbDesign_Frozen"
@@ -6503,9 +6364,9 @@ Partial Class Process_frmMain
         '
         'Label76
         '
-        Me.Label76.AutoSize = true
-        Me.Label76.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label76.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label76.AutoSize = True
+        Me.Label76.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label76.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label76.Location = New System.Drawing.Point(71, 17)
         Me.Label76.Name = "Label76"
         Me.Label76.Size = New System.Drawing.Size(51, 13)
@@ -6516,8 +6377,8 @@ Partial Class Process_frmMain
         'cmbDesign_Process
         '
         Me.cmbDesign_Process.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbDesign_Process.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbDesign_Process.FormattingEnabled = true
+        Me.cmbDesign_Process.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbDesign_Process.FormattingEnabled = True
         Me.cmbDesign_Process.Items.AddRange(New Object() {"Y", "N"})
         Me.cmbDesign_Process.Location = New System.Drawing.Point(77, 33)
         Me.cmbDesign_Process.Name = "cmbDesign_Process"
@@ -6527,8 +6388,8 @@ Partial Class Process_frmMain
         'cmbDesign_Class1
         '
         Me.cmbDesign_Class1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbDesign_Class1.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbDesign_Class1.FormattingEnabled = true
+        Me.cmbDesign_Class1.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbDesign_Class1.FormattingEnabled = True
         Me.cmbDesign_Class1.Items.AddRange(New Object() {"Y", "N"})
         Me.cmbDesign_Class1.Location = New System.Drawing.Point(358, 45)
         Me.cmbDesign_Class1.Name = "cmbDesign_Class1"
@@ -6541,19 +6402,19 @@ Partial Class Process_frmMain
         Me.GroupBox12.Controls.Add(Me.txtDesign_CustDwgNo)
         Me.GroupBox12.Controls.Add(Me.txtDesign_CustDwgRev)
         Me.GroupBox12.Controls.Add(Me.Label210)
-        Me.GroupBox12.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox12.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox12.Location = New System.Drawing.Point(10, 12)
         Me.GroupBox12.Name = "GroupBox12"
         Me.GroupBox12.Size = New System.Drawing.Size(189, 65)
         Me.GroupBox12.TabIndex = 789
-        Me.GroupBox12.TabStop = false
+        Me.GroupBox12.TabStop = False
         Me.GroupBox12.Text = "Customer Drawing:"
         '
         'Label209
         '
-        Me.Label209.AutoSize = true
-        Me.Label209.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label209.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label209.AutoSize = True
+        Me.Label209.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label209.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label209.Location = New System.Drawing.Point(23, 17)
         Me.Label209.Name = "Label209"
         Me.Label209.Size = New System.Drawing.Size(22, 13)
@@ -6563,7 +6424,7 @@ Partial Class Process_frmMain
         '
         'txtDesign_CustDwgNo
         '
-        Me.txtDesign_CustDwgNo.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtDesign_CustDwgNo.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDesign_CustDwgNo.ForeColor = System.Drawing.Color.Black
         Me.txtDesign_CustDwgNo.Location = New System.Drawing.Point(23, 33)
         Me.txtDesign_CustDwgNo.Name = "txtDesign_CustDwgNo"
@@ -6572,7 +6433,7 @@ Partial Class Process_frmMain
         '
         'txtDesign_CustDwgRev
         '
-        Me.txtDesign_CustDwgRev.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtDesign_CustDwgRev.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDesign_CustDwgRev.ForeColor = System.Drawing.Color.Black
         Me.txtDesign_CustDwgRev.Location = New System.Drawing.Point(132, 33)
         Me.txtDesign_CustDwgRev.Name = "txtDesign_CustDwgRev"
@@ -6581,9 +6442,9 @@ Partial Class Process_frmMain
         '
         'Label210
         '
-        Me.Label210.AutoSize = true
-        Me.Label210.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label210.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label210.AutoSize = True
+        Me.Label210.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label210.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label210.Location = New System.Drawing.Point(132, 17)
         Me.Label210.Name = "Label210"
         Me.Label210.Size = New System.Drawing.Size(29, 13)
@@ -6593,7 +6454,7 @@ Partial Class Process_frmMain
         '
         'TabPage2
         '
-        Me.TabPage2.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
+        Me.TabPage2.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.TabPage2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TabPage2.Controls.Add(Me.Label177)
         Me.TabPage2.Controls.Add(Me.txtDesign_Notes)
@@ -6615,7 +6476,7 @@ Partial Class Process_frmMain
         '
         Me.Label177.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label177.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label177.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label177.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label177.Location = New System.Drawing.Point(-17, 327)
         Me.Label177.Name = "Label177"
         Me.Label177.Size = New System.Drawing.Size(1045, 2)
@@ -6623,19 +6484,19 @@ Partial Class Process_frmMain
         '
         'txtDesign_Notes
         '
-        Me.txtDesign_Notes.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtDesign_Notes.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDesign_Notes.ForeColor = System.Drawing.Color.Black
         Me.txtDesign_Notes.Location = New System.Drawing.Point(22, 349)
-        Me.txtDesign_Notes.Multiline = true
+        Me.txtDesign_Notes.Multiline = True
         Me.txtDesign_Notes.Name = "txtDesign_Notes"
         Me.txtDesign_Notes.Size = New System.Drawing.Size(836, 39)
         Me.txtDesign_Notes.TabIndex = 880
         '
         'Label98
         '
-        Me.Label98.AutoSize = true
-        Me.Label98.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label98.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label98.AutoSize = True
+        Me.Label98.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label98.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label98.Location = New System.Drawing.Point(22, 333)
         Me.Label98.Name = "Label98"
         Me.Label98.Size = New System.Drawing.Size(39, 13)
@@ -6647,7 +6508,7 @@ Partial Class Process_frmMain
         '
         Me.Label67.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label67.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label67.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label67.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label67.Location = New System.Drawing.Point(0, 395)
         Me.Label67.Name = "Label67"
         Me.Label67.Size = New System.Drawing.Size(1045, 2)
@@ -6661,13 +6522,13 @@ Partial Class Process_frmMain
         Me.GroupBox10.Controls.Add(Me.txtDesign_UserDate_Face)
         Me.GroupBox10.Controls.Add(Me.dtpDesign_UserDate_Face)
         Me.GroupBox10.Controls.Add(Me.grdDesign_EditedBy)
-        Me.GroupBox10.Enabled = false
-        Me.GroupBox10.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox10.Enabled = False
+        Me.GroupBox10.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox10.Location = New System.Drawing.Point(15, 399)
         Me.GroupBox10.Name = "GroupBox10"
         Me.GroupBox10.Size = New System.Drawing.Size(867, 132)
         Me.GroupBox10.TabIndex = 878
-        Me.GroupBox10.TabStop = false
+        Me.GroupBox10.TabStop = False
         Me.GroupBox10.Text = "Edited by:"
         '
         'chkDesign_UserSigned_Face
@@ -6678,11 +6539,11 @@ Partial Class Process_frmMain
         Me.chkDesign_UserSigned_Face.Size = New System.Drawing.Size(15, 14)
         Me.chkDesign_UserSigned_Face.TabIndex = 745
         Me.chkDesign_UserSigned_Face.Tag = "Tester"
-        Me.chkDesign_UserSigned_Face.UseVisualStyleBackColor = true
+        Me.chkDesign_UserSigned_Face.UseVisualStyleBackColor = True
         '
         'cmdDesign_UserSign_Face
         '
-        Me.cmdDesign_UserSign_Face.AutoSize = true
+        Me.cmdDesign_UserSign_Face.AutoSize = True
         Me.cmdDesign_UserSign_Face.BackColor = System.Drawing.Color.Silver
         Me.cmdDesign_UserSign_Face.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdDesign_UserSign_Face.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -6692,11 +6553,11 @@ Partial Class Process_frmMain
         Me.cmdDesign_UserSign_Face.TabIndex = 746
         Me.cmdDesign_UserSign_Face.Tag = "Tester"
         Me.cmdDesign_UserSign_Face.Text = "Sign"
-        Me.cmdDesign_UserSign_Face.UseVisualStyleBackColor = false
+        Me.cmdDesign_UserSign_Face.UseVisualStyleBackColor = False
         '
         'txtDesign_UserName_Face
         '
-        Me.txtDesign_UserName_Face.Enabled = false
+        Me.txtDesign_UserName_Face.Enabled = False
         Me.txtDesign_UserName_Face.Location = New System.Drawing.Point(130, 105)
         Me.txtDesign_UserName_Face.Name = "txtDesign_UserName_Face"
         Me.txtDesign_UserName_Face.Size = New System.Drawing.Size(196, 21)
@@ -6706,7 +6567,7 @@ Partial Class Process_frmMain
         'txtDesign_UserDate_Face
         '
         Me.txtDesign_UserDate_Face.BackColor = System.Drawing.Color.White
-        Me.txtDesign_UserDate_Face.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtDesign_UserDate_Face.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDesign_UserDate_Face.ForeColor = System.Drawing.Color.Black
         Me.txtDesign_UserDate_Face.Location = New System.Drawing.Point(25, 105)
         Me.txtDesign_UserDate_Face.Name = "txtDesign_UserDate_Face"
@@ -6725,13 +6586,13 @@ Partial Class Process_frmMain
         '
         'grdDesign_EditedBy
         '
-        DataGridViewCellStyle199.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdDesign_EditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle199
+        DataGridViewCellStyle42.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdDesign_EditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle42
         Me.grdDesign_EditedBy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdDesign_EditedBy.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn35, Me.DataGridViewTextBoxColumn46, Me.DataGridViewTextBoxColumn96})
         Me.grdDesign_EditedBy.Location = New System.Drawing.Point(25, 23)
         Me.grdDesign_EditedBy.Name = "grdDesign_EditedBy"
-        Me.grdDesign_EditedBy.RowHeadersVisible = false
+        Me.grdDesign_EditedBy.RowHeadersVisible = False
         Me.grdDesign_EditedBy.Size = New System.Drawing.Size(823, 74)
         Me.grdDesign_EditedBy.TabIndex = 741
         '
@@ -6757,19 +6618,19 @@ Partial Class Process_frmMain
         '
         Me.grpGroupBox14.Controls.Add(Me.Label176)
         Me.grpGroupBox14.Controls.Add(Me.grdDesign_Seal)
-        Me.grpGroupBox14.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.grpGroupBox14.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grpGroupBox14.Location = New System.Drawing.Point(15, 209)
         Me.grpGroupBox14.Name = "grpGroupBox14"
         Me.grpGroupBox14.Size = New System.Drawing.Size(400, 110)
         Me.grpGroupBox14.TabIndex = 799
-        Me.grpGroupBox14.TabStop = false
+        Me.grpGroupBox14.TabStop = False
         Me.grpGroupBox14.Text = "Seal Dimensions (in):"
         '
         'Label176
         '
         Me.Label176.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label176.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label176.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label176.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label176.Location = New System.Drawing.Point(-89, 118)
         Me.Label176.Name = "Label176"
         Me.Label176.Size = New System.Drawing.Size(1045, 2)
@@ -6777,57 +6638,31 @@ Partial Class Process_frmMain
         '
         'grdDesign_Seal
         '
-        DataGridViewCellStyle200.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdDesign_Seal.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle200
+        DataGridViewCellStyle43.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdDesign_Seal.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle43
         Me.grdDesign_Seal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdDesign_Seal.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn18, Me.DataGridViewTextBoxColumn19, Me.Column1, Me.DataGridViewTextBoxColumn20})
         Me.grdDesign_Seal.Location = New System.Drawing.Point(15, 19)
         Me.grdDesign_Seal.Name = "grdDesign_Seal"
-        Me.grdDesign_Seal.RowHeadersVisible = false
+        Me.grdDesign_Seal.RowHeadersVisible = False
         Me.grdDesign_Seal.Size = New System.Drawing.Size(369, 84)
         Me.grdDesign_Seal.TabIndex = 683
         '
-        'DataGridViewTextBoxColumn18
-        '
-        Me.DataGridViewTextBoxColumn18.HeaderText = "Name"
-        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
-        Me.DataGridViewTextBoxColumn18.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn18.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.DataGridViewTextBoxColumn18.Width = 120
-        '
-        'DataGridViewTextBoxColumn19
-        '
-        Me.DataGridViewTextBoxColumn19.HeaderText = "Min"
-        Me.DataGridViewTextBoxColumn19.Name = "DataGridViewTextBoxColumn19"
-        Me.DataGridViewTextBoxColumn19.Width = 80
-        '
-        'Column1
-        '
-        Me.Column1.HeaderText = "Nom"
-        Me.Column1.Name = "Column1"
-        Me.Column1.Width = 80
-        '
-        'DataGridViewTextBoxColumn20
-        '
-        Me.DataGridViewTextBoxColumn20.HeaderText = "Max"
-        Me.DataGridViewTextBoxColumn20.Name = "DataGridViewTextBoxColumn20"
-        Me.DataGridViewTextBoxColumn20.Width = 80
-        '
         'txtDesign_LessonsLearned
         '
-        Me.txtDesign_LessonsLearned.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtDesign_LessonsLearned.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDesign_LessonsLearned.ForeColor = System.Drawing.Color.Black
         Me.txtDesign_LessonsLearned.Location = New System.Drawing.Point(15, 165)
-        Me.txtDesign_LessonsLearned.Multiline = true
+        Me.txtDesign_LessonsLearned.Multiline = True
         Me.txtDesign_LessonsLearned.Name = "txtDesign_LessonsLearned"
         Me.txtDesign_LessonsLearned.Size = New System.Drawing.Size(848, 36)
         Me.txtDesign_LessonsLearned.TabIndex = 797
         '
         'Label243
         '
-        Me.Label243.AutoSize = true
-        Me.Label243.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label243.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label243.AutoSize = True
+        Me.Label243.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label243.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label243.Location = New System.Drawing.Point(12, 149)
         Me.Label243.Name = "Label243"
         Me.Label243.Size = New System.Drawing.Size(102, 13)
@@ -6838,23 +6673,23 @@ Partial Class Process_frmMain
         'GroupBox5
         '
         Me.GroupBox5.Controls.Add(Me.grdDesign_CustSpec)
-        Me.GroupBox5.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox5.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox5.Location = New System.Drawing.Point(15, 7)
         Me.GroupBox5.Name = "GroupBox5"
         Me.GroupBox5.Size = New System.Drawing.Size(538, 134)
         Me.GroupBox5.TabIndex = 796
-        Me.GroupBox5.TabStop = false
+        Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Customer Specification:"
         '
         'grdDesign_CustSpec
         '
-        DataGridViewCellStyle201.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdDesign_CustSpec.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle201
+        DataGridViewCellStyle47.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdDesign_CustSpec.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle47
         Me.grdDesign_CustSpec.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdDesign_CustSpec.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn34})
         Me.grdDesign_CustSpec.Location = New System.Drawing.Point(12, 20)
         Me.grdDesign_CustSpec.Name = "grdDesign_CustSpec"
-        Me.grdDesign_CustSpec.RowHeadersVisible = false
+        Me.grdDesign_CustSpec.RowHeadersVisible = False
         Me.grdDesign_CustSpec.Size = New System.Drawing.Size(507, 108)
         Me.grdDesign_CustSpec.TabIndex = 684
         '
@@ -6880,7 +6715,7 @@ Partial Class Process_frmMain
         '
         'tabManufacturing
         '
-        Me.tabManufacturing.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
+        Me.tabManufacturing.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.tabManufacturing.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tabManufacturing.Controls.Add(Me.Label111)
         Me.tabManufacturing.Controls.Add(Me.GroupBox33)
@@ -6901,7 +6736,7 @@ Partial Class Process_frmMain
         '
         Me.Label111.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label111.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label111.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label111.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label111.Location = New System.Drawing.Point(0, 421)
         Me.Label111.Name = "Label111"
         Me.Label111.Size = New System.Drawing.Size(1045, 2)
@@ -6915,13 +6750,13 @@ Partial Class Process_frmMain
         Me.GroupBox33.Controls.Add(Me.txtManf_UserDate_Face)
         Me.GroupBox33.Controls.Add(Me.dtpManf_UserDate)
         Me.GroupBox33.Controls.Add(Me.grdManf_EditedBy)
-        Me.GroupBox33.Enabled = false
-        Me.GroupBox33.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox33.Enabled = False
+        Me.GroupBox33.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox33.Location = New System.Drawing.Point(15, 436)
         Me.GroupBox33.Name = "GroupBox33"
         Me.GroupBox33.Size = New System.Drawing.Size(867, 132)
         Me.GroupBox33.TabIndex = 876
-        Me.GroupBox33.TabStop = false
+        Me.GroupBox33.TabStop = False
         Me.GroupBox33.Text = "Edited by:"
         '
         'chkManf_UserSigned
@@ -6932,11 +6767,11 @@ Partial Class Process_frmMain
         Me.chkManf_UserSigned.Size = New System.Drawing.Size(15, 14)
         Me.chkManf_UserSigned.TabIndex = 745
         Me.chkManf_UserSigned.Tag = "Tester"
-        Me.chkManf_UserSigned.UseVisualStyleBackColor = true
+        Me.chkManf_UserSigned.UseVisualStyleBackColor = True
         '
         'cmdManf_UserSign
         '
-        Me.cmdManf_UserSign.AutoSize = true
+        Me.cmdManf_UserSign.AutoSize = True
         Me.cmdManf_UserSign.BackColor = System.Drawing.Color.Silver
         Me.cmdManf_UserSign.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdManf_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -6946,11 +6781,11 @@ Partial Class Process_frmMain
         Me.cmdManf_UserSign.TabIndex = 746
         Me.cmdManf_UserSign.Tag = "Tester"
         Me.cmdManf_UserSign.Text = "Sign"
-        Me.cmdManf_UserSign.UseVisualStyleBackColor = false
+        Me.cmdManf_UserSign.UseVisualStyleBackColor = False
         '
         'txtManf_UserName
         '
-        Me.txtManf_UserName.Enabled = false
+        Me.txtManf_UserName.Enabled = False
         Me.txtManf_UserName.Location = New System.Drawing.Point(130, 105)
         Me.txtManf_UserName.Name = "txtManf_UserName"
         Me.txtManf_UserName.Size = New System.Drawing.Size(196, 21)
@@ -6960,7 +6795,7 @@ Partial Class Process_frmMain
         'txtManf_UserDate_Face
         '
         Me.txtManf_UserDate_Face.BackColor = System.Drawing.Color.White
-        Me.txtManf_UserDate_Face.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtManf_UserDate_Face.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtManf_UserDate_Face.ForeColor = System.Drawing.Color.Black
         Me.txtManf_UserDate_Face.Location = New System.Drawing.Point(25, 105)
         Me.txtManf_UserDate_Face.Name = "txtManf_UserDate_Face"
@@ -6979,13 +6814,13 @@ Partial Class Process_frmMain
         '
         'grdManf_EditedBy
         '
-        DataGridViewCellStyle202.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdManf_EditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle202
+        DataGridViewCellStyle48.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdManf_EditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle48
         Me.grdManf_EditedBy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdManf_EditedBy.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn47, Me.DataGridViewTextBoxColumn48, Me.DataGridViewTextBoxColumn63})
         Me.grdManf_EditedBy.Location = New System.Drawing.Point(25, 23)
         Me.grdManf_EditedBy.Name = "grdManf_EditedBy"
-        Me.grdManf_EditedBy.RowHeadersVisible = false
+        Me.grdManf_EditedBy.RowHeadersVisible = False
         Me.grdManf_EditedBy.Size = New System.Drawing.Size(823, 74)
         Me.grdManf_EditedBy.TabIndex = 741
         '
@@ -7009,9 +6844,9 @@ Partial Class Process_frmMain
         '
         'Label117
         '
-        Me.Label117.AutoSize = true
-        Me.Label117.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label117.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label117.AutoSize = True
+        Me.Label117.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label117.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label117.Location = New System.Drawing.Point(26, 136)
         Me.Label117.Name = "Label117"
         Me.Label117.Size = New System.Drawing.Size(118, 13)
@@ -7021,63 +6856,26 @@ Partial Class Process_frmMain
         '
         'grdManf_ToolNGage
         '
-        DataGridViewCellStyle203.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle203.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle203.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        DataGridViewCellStyle203.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle203.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle203.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle203.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdManf_ToolNGage.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle203
+        DataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle49.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle49.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle49.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle49.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle49.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle49.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdManf_ToolNGage.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle49
         Me.grdManf_ToolNGage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdManf_ToolNGage.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn12, Me.Column2, Me.Column7, Me.Column6, Me.Column8})
         Me.grdManf_ToolNGage.Location = New System.Drawing.Point(29, 154)
         Me.grdManf_ToolNGage.Name = "grdManf_ToolNGage"
-        Me.grdManf_ToolNGage.RowHeadersVisible = false
+        Me.grdManf_ToolNGage.RowHeadersVisible = False
         Me.grdManf_ToolNGage.Size = New System.Drawing.Size(780, 140)
         Me.grdManf_ToolNGage.TabIndex = 683
         '
-        'DataGridViewTextBoxColumn7
-        '
-        Me.DataGridViewTextBoxColumn7.HeaderText = "Part #"
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        '
-        'DataGridViewTextBoxColumn12
-        '
-        Me.DataGridViewTextBoxColumn12.HeaderText = "Description"
-        Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
-        Me.DataGridViewTextBoxColumn12.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.DataGridViewTextBoxColumn12.Width = 180
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "Type"
-        Me.Column2.Name = "Column2"
-        Me.Column2.Width = 200
-        '
-        'Column7
-        '
-        Me.Column7.HeaderText = "Status"
-        Me.Column7.Name = "Column7"
-        '
-        'Column6
-        '
-        Me.Column6.HeaderText = "Lead Time (wks)"
-        Me.Column6.Name = "Column6"
-        Me.Column6.Width = 90
-        '
-        'Column8
-        '
-        Me.Column8.HeaderText = "Design Responsibility"
-        Me.Column8.Name = "Column8"
-        Me.Column8.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        '
         'cmbManf_PrecompressionGlue
         '
-        Me.cmbManf_PrecompressionGlue.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbManf_PrecompressionGlue.FormattingEnabled = true
+        Me.cmbManf_PrecompressionGlue.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbManf_PrecompressionGlue.FormattingEnabled = True
         Me.cmbManf_PrecompressionGlue.Items.AddRange(New Object() {"Yes", "No"})
         Me.cmbManf_PrecompressionGlue.Location = New System.Drawing.Point(595, 43)
         Me.cmbManf_PrecompressionGlue.Name = "cmbManf_PrecompressionGlue"
@@ -7086,9 +6884,9 @@ Partial Class Process_frmMain
         '
         'Label102
         '
-        Me.Label102.AutoSize = true
-        Me.Label102.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label102.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label102.AutoSize = True
+        Me.Label102.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label102.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label102.Location = New System.Drawing.Point(595, 27)
         Me.Label102.Name = "Label102"
         Me.Label102.Size = New System.Drawing.Size(128, 13)
@@ -7098,9 +6896,9 @@ Partial Class Process_frmMain
         '
         'Label101
         '
-        Me.Label101.AutoSize = true
-        Me.Label101.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label101.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label101.AutoSize = True
+        Me.Label101.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label101.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label101.Location = New System.Drawing.Point(355, 27)
         Me.Label101.Name = "Label101"
         Me.Label101.Size = New System.Drawing.Size(96, 13)
@@ -7110,7 +6908,7 @@ Partial Class Process_frmMain
         '
         'txtManf_HT
         '
-        Me.txtManf_HT.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtManf_HT.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtManf_HT.ForeColor = System.Drawing.Color.Black
         Me.txtManf_HT.Location = New System.Drawing.Point(355, 43)
         Me.txtManf_HT.Name = "txtManf_HT"
@@ -7123,19 +6921,19 @@ Partial Class Process_frmMain
         Me.GroupBox6.Controls.Add(Me.txtManf_MatPartNo_Spring)
         Me.GroupBox6.Controls.Add(Me.Label114)
         Me.GroupBox6.Controls.Add(Me.txtManf_MatPartNo_Base)
-        Me.GroupBox6.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox6.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox6.Location = New System.Drawing.Point(29, 19)
         Me.GroupBox6.Name = "GroupBox6"
         Me.GroupBox6.Size = New System.Drawing.Size(218, 102)
         Me.GroupBox6.TabIndex = 619
-        Me.GroupBox6.TabStop = false
+        Me.GroupBox6.TabStop = False
         Me.GroupBox6.Text = "Material Part #:"
         '
         'Label116
         '
-        Me.Label116.AutoSize = true
-        Me.Label116.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label116.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label116.AutoSize = True
+        Me.Label116.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label116.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label116.Location = New System.Drawing.Point(18, 62)
         Me.Label116.Name = "Label116"
         Me.Label116.Size = New System.Drawing.Size(44, 13)
@@ -7145,7 +6943,7 @@ Partial Class Process_frmMain
         '
         'txtManf_MatPartNo_Spring
         '
-        Me.txtManf_MatPartNo_Spring.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtManf_MatPartNo_Spring.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtManf_MatPartNo_Spring.ForeColor = System.Drawing.Color.Black
         Me.txtManf_MatPartNo_Spring.Location = New System.Drawing.Point(68, 59)
         Me.txtManf_MatPartNo_Spring.Name = "txtManf_MatPartNo_Spring"
@@ -7154,9 +6952,9 @@ Partial Class Process_frmMain
         '
         'Label114
         '
-        Me.Label114.AutoSize = true
-        Me.Label114.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label114.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label114.AutoSize = True
+        Me.Label114.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label114.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label114.Location = New System.Drawing.Point(18, 27)
         Me.Label114.Name = "Label114"
         Me.Label114.Size = New System.Drawing.Size(35, 13)
@@ -7166,7 +6964,7 @@ Partial Class Process_frmMain
         '
         'txtManf_MatPartNo_Base
         '
-        Me.txtManf_MatPartNo_Base.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtManf_MatPartNo_Base.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtManf_MatPartNo_Base.ForeColor = System.Drawing.Color.Black
         Me.txtManf_MatPartNo_Base.Location = New System.Drawing.Point(68, 24)
         Me.txtManf_MatPartNo_Base.Name = "txtManf_MatPartNo_Base"
@@ -7175,7 +6973,7 @@ Partial Class Process_frmMain
         '
         'tabPurchasing
         '
-        Me.tabPurchasing.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
+        Me.tabPurchasing.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.tabPurchasing.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tabPurchasing.Controls.Add(Me.Label69)
         Me.tabPurchasing.Controls.Add(Me.Label112)
@@ -7193,9 +6991,9 @@ Partial Class Process_frmMain
         '
         'Label69
         '
-        Me.Label69.AutoSize = true
-        Me.Label69.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label69.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label69.AutoSize = True
+        Me.Label69.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label69.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label69.Location = New System.Drawing.Point(37, 27)
         Me.Label69.Name = "Label69"
         Me.Label69.Size = New System.Drawing.Size(57, 13)
@@ -7207,7 +7005,7 @@ Partial Class Process_frmMain
         '
         Me.Label112.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label112.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label112.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label112.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label112.Location = New System.Drawing.Point(0, 427)
         Me.Label112.Name = "Label112"
         Me.Label112.Size = New System.Drawing.Size(1045, 2)
@@ -7215,9 +7013,9 @@ Partial Class Process_frmMain
         '
         'Label42
         '
-        Me.Label42.AutoSize = true
-        Me.Label42.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label42.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label42.AutoSize = True
+        Me.Label42.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label42.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label42.Location = New System.Drawing.Point(37, 295)
         Me.Label42.Name = "Label42"
         Me.Label42.Size = New System.Drawing.Size(59, 13)
@@ -7227,45 +7025,27 @@ Partial Class Process_frmMain
         '
         'grdPurchase_Drawing
         '
-        DataGridViewCellStyle204.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle204.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle204.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        DataGridViewCellStyle204.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle204.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle204.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle204.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdPurchase_Drawing.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle204
+        DataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle51.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle51.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle51.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle51.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle51.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle51.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdPurchase_Drawing.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle51
         Me.grdPurchase_Drawing.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdPurchase_Drawing.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn92, Me.DataGridViewTextBoxColumn93, Me.DataGridViewTextBoxColumn94})
         Me.grdPurchase_Drawing.Location = New System.Drawing.Point(40, 311)
         Me.grdPurchase_Drawing.Name = "grdPurchase_Drawing"
-        Me.grdPurchase_Drawing.RowHeadersVisible = false
+        Me.grdPurchase_Drawing.RowHeadersVisible = False
         Me.grdPurchase_Drawing.Size = New System.Drawing.Size(577, 104)
         Me.grdPurchase_Drawing.TabIndex = 882
         '
-        'DataGridViewTextBoxColumn92
-        '
-        Me.DataGridViewTextBoxColumn92.HeaderText = "Drawing #"
-        Me.DataGridViewTextBoxColumn92.Name = "DataGridViewTextBoxColumn92"
-        Me.DataGridViewTextBoxColumn92.Width = 106
-        '
-        'DataGridViewTextBoxColumn93
-        '
-        Me.DataGridViewTextBoxColumn93.HeaderText = "Description"
-        Me.DataGridViewTextBoxColumn93.Name = "DataGridViewTextBoxColumn93"
-        Me.DataGridViewTextBoxColumn93.Width = 370
-        '
-        'DataGridViewTextBoxColumn94
-        '
-        Me.DataGridViewTextBoxColumn94.HeaderText = "Lead Time (wks)"
-        Me.DataGridViewTextBoxColumn94.Name = "DataGridViewTextBoxColumn94"
-        Me.DataGridViewTextBoxColumn94.Width = 90
-        '
         'Label33
         '
-        Me.Label33.AutoSize = true
-        Me.Label33.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label33.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label33.AutoSize = True
+        Me.Label33.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label33.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label33.Location = New System.Drawing.Point(37, 164)
         Me.Label33.Name = "Label33"
         Me.Label33.Size = New System.Drawing.Size(118, 13)
@@ -7275,54 +7055,22 @@ Partial Class Process_frmMain
         '
         'grdPurchase_ToolNGages
         '
-        DataGridViewCellStyle205.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle205.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle205.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        DataGridViewCellStyle205.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle205.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle205.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle205.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdPurchase_ToolNGages.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle205
+        DataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle53.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle53.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle53.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle53.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle53.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle53.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdPurchase_ToolNGages.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle53
         Me.grdPurchase_ToolNGages.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdPurchase_ToolNGages.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn90, Me.DataGridViewComboBoxColumn11, Me.DataGridViewComboBoxColumn12, Me.DataGridViewTextBoxColumn91, Me.DataGridViewComboBoxColumn14})
-        Me.grdPurchase_ToolNGages.Enabled = false
+        Me.grdPurchase_ToolNGages.Enabled = False
         Me.grdPurchase_ToolNGages.Location = New System.Drawing.Point(40, 182)
         Me.grdPurchase_ToolNGages.Name = "grdPurchase_ToolNGages"
-        Me.grdPurchase_ToolNGages.RowHeadersVisible = false
+        Me.grdPurchase_ToolNGages.RowHeadersVisible = False
         Me.grdPurchase_ToolNGages.Size = New System.Drawing.Size(678, 104)
         Me.grdPurchase_ToolNGages.TabIndex = 880
-        '
-        'DataGridViewTextBoxColumn90
-        '
-        Me.DataGridViewTextBoxColumn90.HeaderText = "Part #"
-        Me.DataGridViewTextBoxColumn90.Name = "DataGridViewTextBoxColumn90"
-        '
-        'DataGridViewComboBoxColumn11
-        '
-        Me.DataGridViewComboBoxColumn11.HeaderText = "Description"
-        Me.DataGridViewComboBoxColumn11.Name = "DataGridViewComboBoxColumn11"
-        Me.DataGridViewComboBoxColumn11.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewComboBoxColumn11.Width = 180
-        '
-        'DataGridViewComboBoxColumn12
-        '
-        Me.DataGridViewComboBoxColumn12.HeaderText = "Type"
-        Me.DataGridViewComboBoxColumn12.Name = "DataGridViewComboBoxColumn12"
-        Me.DataGridViewComboBoxColumn12.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewComboBoxColumn12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.DataGridViewComboBoxColumn12.Width = 200
-        '
-        'DataGridViewTextBoxColumn91
-        '
-        Me.DataGridViewTextBoxColumn91.HeaderText = "Lead Time (wks)"
-        Me.DataGridViewTextBoxColumn91.Name = "DataGridViewTextBoxColumn91"
-        Me.DataGridViewTextBoxColumn91.Width = 90
-        '
-        'DataGridViewComboBoxColumn14
-        '
-        Me.DataGridViewComboBoxColumn14.HeaderText = "Design Responsibility"
-        Me.DataGridViewComboBoxColumn14.Name = "DataGridViewComboBoxColumn14"
-        Me.DataGridViewComboBoxColumn14.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         '
         'GroupBox34
         '
@@ -7332,13 +7080,13 @@ Partial Class Process_frmMain
         Me.GroupBox34.Controls.Add(Me.txtPurchase_UserDate)
         Me.GroupBox34.Controls.Add(Me.dtpPurchase_UserDate)
         Me.GroupBox34.Controls.Add(Me.grdPurchase_EditedBy)
-        Me.GroupBox34.Enabled = false
-        Me.GroupBox34.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox34.Enabled = False
+        Me.GroupBox34.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox34.Location = New System.Drawing.Point(15, 436)
         Me.GroupBox34.Name = "GroupBox34"
         Me.GroupBox34.Size = New System.Drawing.Size(867, 132)
         Me.GroupBox34.TabIndex = 879
-        Me.GroupBox34.TabStop = false
+        Me.GroupBox34.TabStop = False
         Me.GroupBox34.Text = "Edited by:"
         '
         'chkPurchase_UserSigned
@@ -7349,11 +7097,11 @@ Partial Class Process_frmMain
         Me.chkPurchase_UserSigned.Size = New System.Drawing.Size(15, 14)
         Me.chkPurchase_UserSigned.TabIndex = 745
         Me.chkPurchase_UserSigned.Tag = "Tester"
-        Me.chkPurchase_UserSigned.UseVisualStyleBackColor = true
+        Me.chkPurchase_UserSigned.UseVisualStyleBackColor = True
         '
         'cmdPurchase_UserSign
         '
-        Me.cmdPurchase_UserSign.AutoSize = true
+        Me.cmdPurchase_UserSign.AutoSize = True
         Me.cmdPurchase_UserSign.BackColor = System.Drawing.Color.Silver
         Me.cmdPurchase_UserSign.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdPurchase_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -7363,11 +7111,11 @@ Partial Class Process_frmMain
         Me.cmdPurchase_UserSign.TabIndex = 746
         Me.cmdPurchase_UserSign.Tag = "Tester"
         Me.cmdPurchase_UserSign.Text = "Sign"
-        Me.cmdPurchase_UserSign.UseVisualStyleBackColor = false
+        Me.cmdPurchase_UserSign.UseVisualStyleBackColor = False
         '
         'txtPurchase_UserName
         '
-        Me.txtPurchase_UserName.Enabled = false
+        Me.txtPurchase_UserName.Enabled = False
         Me.txtPurchase_UserName.Location = New System.Drawing.Point(130, 105)
         Me.txtPurchase_UserName.Name = "txtPurchase_UserName"
         Me.txtPurchase_UserName.Size = New System.Drawing.Size(196, 21)
@@ -7377,7 +7125,7 @@ Partial Class Process_frmMain
         'txtPurchase_UserDate
         '
         Me.txtPurchase_UserDate.BackColor = System.Drawing.Color.White
-        Me.txtPurchase_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtPurchase_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPurchase_UserDate.ForeColor = System.Drawing.Color.Black
         Me.txtPurchase_UserDate.Location = New System.Drawing.Point(25, 105)
         Me.txtPurchase_UserDate.Name = "txtPurchase_UserDate"
@@ -7396,13 +7144,13 @@ Partial Class Process_frmMain
         '
         'grdPurchase_EditedBy
         '
-        DataGridViewCellStyle206.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdPurchase_EditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle206
+        DataGridViewCellStyle55.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdPurchase_EditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle55
         Me.grdPurchase_EditedBy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdPurchase_EditedBy.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn49, Me.DataGridViewTextBoxColumn50, Me.DataGridViewTextBoxColumn66})
         Me.grdPurchase_EditedBy.Location = New System.Drawing.Point(25, 23)
         Me.grdPurchase_EditedBy.Name = "grdPurchase_EditedBy"
-        Me.grdPurchase_EditedBy.RowHeadersVisible = false
+        Me.grdPurchase_EditedBy.RowHeadersVisible = False
         Me.grdPurchase_EditedBy.Size = New System.Drawing.Size(823, 74)
         Me.grdPurchase_EditedBy.TabIndex = 741
         '
@@ -7426,52 +7174,27 @@ Partial Class Process_frmMain
         '
         'grdPurchase_Mat
         '
-        DataGridViewCellStyle207.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdPurchase_Mat.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle207
-        DataGridViewCellStyle208.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle208.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle208.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        DataGridViewCellStyle208.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle208.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle208.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle208.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdPurchase_Mat.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle208
+        DataGridViewCellStyle56.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdPurchase_Mat.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle56
+        DataGridViewCellStyle57.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle57.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle57.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle57.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle57.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle57.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle57.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdPurchase_Mat.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle57
         Me.grdPurchase_Mat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdPurchase_Mat.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn64, Me.Column5, Me.DataGridViewComboBoxColumn3, Me.DataGridViewTextBoxColumn65})
         Me.grdPurchase_Mat.Location = New System.Drawing.Point(40, 45)
         Me.grdPurchase_Mat.Name = "grdPurchase_Mat"
-        Me.grdPurchase_Mat.RowHeadersVisible = false
+        Me.grdPurchase_Mat.RowHeadersVisible = False
         Me.grdPurchase_Mat.Size = New System.Drawing.Size(495, 104)
         Me.grdPurchase_Mat.TabIndex = 878
         '
-        'DataGridViewTextBoxColumn64
-        '
-        Me.DataGridViewTextBoxColumn64.HeaderText = "Item"
-        Me.DataGridViewTextBoxColumn64.Name = "DataGridViewTextBoxColumn64"
-        Me.DataGridViewTextBoxColumn64.Width = 200
-        '
-        'Column5
-        '
-        Me.Column5.HeaderText = "Est. Qty"
-        Me.Column5.Name = "Column5"
-        '
-        'DataGridViewComboBoxColumn3
-        '
-        Me.DataGridViewComboBoxColumn3.HeaderText = "Status"
-        Me.DataGridViewComboBoxColumn3.Items.AddRange(New Object() {"Inventory", "Make", "Buy"})
-        Me.DataGridViewComboBoxColumn3.Name = "DataGridViewComboBoxColumn3"
-        Me.DataGridViewComboBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewComboBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        '
-        'DataGridViewTextBoxColumn65
-        '
-        Me.DataGridViewTextBoxColumn65.HeaderText = "Lead Time (wks)"
-        Me.DataGridViewTextBoxColumn65.Name = "DataGridViewTextBoxColumn65"
-        Me.DataGridViewTextBoxColumn65.Width = 90
-        '
         'tabQuality
         '
-        Me.tabQuality.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
+        Me.tabQuality.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.tabQuality.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tabQuality.Controls.Add(Me.GroupBox57)
         Me.tabQuality.Controls.Add(Me.Label113)
@@ -7502,76 +7225,39 @@ Partial Class Process_frmMain
         'GroupBox57
         '
         Me.GroupBox57.Controls.Add(Me.grdQuality_SplOperation)
-        Me.GroupBox57.Enabled = false
-        Me.GroupBox57.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox57.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox57.Location = New System.Drawing.Point(9, 123)
         Me.GroupBox57.Name = "GroupBox57"
         Me.GroupBox57.Size = New System.Drawing.Size(563, 144)
         Me.GroupBox57.TabIndex = 879
-        Me.GroupBox57.TabStop = false
+        Me.GroupBox57.TabStop = False
         Me.GroupBox57.Text = "Special Operation:"
         '
         'grdQuality_SplOperation
         '
-        DataGridViewCellStyle209.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdQuality_SplOperation.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle209
-        DataGridViewCellStyle210.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle210.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle210.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        DataGridViewCellStyle210.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle210.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle210.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle210.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdQuality_SplOperation.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle210
+        DataGridViewCellStyle60.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdQuality_SplOperation.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle60
+        DataGridViewCellStyle61.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle61.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle61.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle61.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle61.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle61.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle61.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdQuality_SplOperation.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle61
         Me.grdQuality_SplOperation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdQuality_SplOperation.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewComboBoxColumn8, Me.DataGridViewTextBoxColumn74, Me.DataGridViewTextBoxColumn75, Me.DataGridViewTextBoxColumn76})
         Me.grdQuality_SplOperation.Location = New System.Drawing.Point(13, 19)
         Me.grdQuality_SplOperation.Name = "grdQuality_SplOperation"
-        Me.grdQuality_SplOperation.RowHeadersVisible = false
+        Me.grdQuality_SplOperation.RowHeadersVisible = False
         Me.grdQuality_SplOperation.Size = New System.Drawing.Size(532, 118)
         Me.grdQuality_SplOperation.TabIndex = 741
-        '
-        'DataGridViewComboBoxColumn8
-        '
-        DataGridViewCellStyle211.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.DataGridViewComboBoxColumn8.DefaultCellStyle = DataGridViewCellStyle211
-        Me.DataGridViewComboBoxColumn8.HeaderText = "Description"
-        Me.DataGridViewComboBoxColumn8.Items.AddRange(New Object() {"X-Ray", "FPI", "Outside Cleaning", "Semi-Quant. Spectro"})
-        Me.DataGridViewComboBoxColumn8.Name = "DataGridViewComboBoxColumn8"
-        Me.DataGridViewComboBoxColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewComboBoxColumn8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.DataGridViewComboBoxColumn8.Width = 150
-        '
-        'DataGridViewTextBoxColumn74
-        '
-        DataGridViewCellStyle212.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.DataGridViewTextBoxColumn74.DefaultCellStyle = DataGridViewCellStyle212
-        Me.DataGridViewTextBoxColumn74.HeaderText = "Spec"
-        Me.DataGridViewTextBoxColumn74.Name = "DataGridViewTextBoxColumn74"
-        Me.DataGridViewTextBoxColumn74.Width = 200
-        '
-        'DataGridViewTextBoxColumn75
-        '
-        DataGridViewCellStyle213.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.DataGridViewTextBoxColumn75.DefaultCellStyle = DataGridViewCellStyle213
-        Me.DataGridViewTextBoxColumn75.HeaderText = "Lead Time (wks)"
-        Me.DataGridViewTextBoxColumn75.Name = "DataGridViewTextBoxColumn75"
-        Me.DataGridViewTextBoxColumn75.Width = 90
-        '
-        'DataGridViewTextBoxColumn76
-        '
-        DataGridViewCellStyle214.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.DataGridViewTextBoxColumn76.DefaultCellStyle = DataGridViewCellStyle214
-        Me.DataGridViewTextBoxColumn76.HeaderText = "Cost"
-        Me.DataGridViewTextBoxColumn76.Name = "DataGridViewTextBoxColumn76"
-        Me.DataGridViewTextBoxColumn76.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn76.Width = 80
         '
         'Label113
         '
         Me.Label113.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label113.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label113.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label113.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label113.Location = New System.Drawing.Point(0, 426)
         Me.Label113.Name = "Label113"
         Me.Label113.Size = New System.Drawing.Size(1045, 2)
@@ -7585,13 +7271,13 @@ Partial Class Process_frmMain
         Me.GroupBox25.Controls.Add(Me.txtQuality_UserDate)
         Me.GroupBox25.Controls.Add(Me.dtpQuality_UserDate)
         Me.GroupBox25.Controls.Add(Me.grdQuality_EditedBy)
-        Me.GroupBox25.Enabled = false
-        Me.GroupBox25.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox25.Enabled = False
+        Me.GroupBox25.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox25.Location = New System.Drawing.Point(15, 436)
         Me.GroupBox25.Name = "GroupBox25"
         Me.GroupBox25.Size = New System.Drawing.Size(867, 132)
         Me.GroupBox25.TabIndex = 876
-        Me.GroupBox25.TabStop = false
+        Me.GroupBox25.TabStop = False
         Me.GroupBox25.Text = "Edited by:"
         '
         'chkQuality_UserSigned
@@ -7602,11 +7288,11 @@ Partial Class Process_frmMain
         Me.chkQuality_UserSigned.Size = New System.Drawing.Size(15, 14)
         Me.chkQuality_UserSigned.TabIndex = 745
         Me.chkQuality_UserSigned.Tag = "Tester"
-        Me.chkQuality_UserSigned.UseVisualStyleBackColor = true
+        Me.chkQuality_UserSigned.UseVisualStyleBackColor = True
         '
         'cmdQuality_UserSign
         '
-        Me.cmdQuality_UserSign.AutoSize = true
+        Me.cmdQuality_UserSign.AutoSize = True
         Me.cmdQuality_UserSign.BackColor = System.Drawing.Color.Silver
         Me.cmdQuality_UserSign.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdQuality_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -7616,11 +7302,11 @@ Partial Class Process_frmMain
         Me.cmdQuality_UserSign.TabIndex = 746
         Me.cmdQuality_UserSign.Tag = "Tester"
         Me.cmdQuality_UserSign.Text = "Sign"
-        Me.cmdQuality_UserSign.UseVisualStyleBackColor = false
+        Me.cmdQuality_UserSign.UseVisualStyleBackColor = False
         '
         'txtQuality_UserName
         '
-        Me.txtQuality_UserName.Enabled = false
+        Me.txtQuality_UserName.Enabled = False
         Me.txtQuality_UserName.Location = New System.Drawing.Point(130, 105)
         Me.txtQuality_UserName.Name = "txtQuality_UserName"
         Me.txtQuality_UserName.Size = New System.Drawing.Size(196, 21)
@@ -7630,7 +7316,7 @@ Partial Class Process_frmMain
         'txtQuality_UserDate
         '
         Me.txtQuality_UserDate.BackColor = System.Drawing.Color.White
-        Me.txtQuality_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtQuality_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtQuality_UserDate.ForeColor = System.Drawing.Color.Black
         Me.txtQuality_UserDate.Location = New System.Drawing.Point(25, 105)
         Me.txtQuality_UserDate.Name = "txtQuality_UserDate"
@@ -7649,13 +7335,13 @@ Partial Class Process_frmMain
         '
         'grdQuality_EditedBy
         '
-        DataGridViewCellStyle215.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdQuality_EditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle215
+        DataGridViewCellStyle66.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdQuality_EditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle66
         Me.grdQuality_EditedBy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdQuality_EditedBy.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn38, Me.DataGridViewTextBoxColumn39, Me.DataGridViewTextBoxColumn59})
         Me.grdQuality_EditedBy.Location = New System.Drawing.Point(25, 23)
         Me.grdQuality_EditedBy.Name = "grdQuality_EditedBy"
-        Me.grdQuality_EditedBy.RowHeadersVisible = false
+        Me.grdQuality_EditedBy.RowHeadersVisible = False
         Me.grdQuality_EditedBy.Size = New System.Drawing.Size(823, 74)
         Me.grdQuality_EditedBy.TabIndex = 741
         '
@@ -7681,8 +7367,7 @@ Partial Class Process_frmMain
         '
         Me.cmbQuality_CustAcceptStd.BackColor = System.Drawing.SystemColors.Window
         Me.cmbQuality_CustAcceptStd.Cursor = System.Windows.Forms.Cursors.Default
-        Me.cmbQuality_CustAcceptStd.Enabled = false
-        Me.cmbQuality_CustAcceptStd.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.cmbQuality_CustAcceptStd.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbQuality_CustAcceptStd.ForeColor = System.Drawing.SystemColors.WindowText
         Me.cmbQuality_CustAcceptStd.Items.AddRange(New Object() {"DVI", "MPP", "PPAP", "APQP", "Vendor Substantiation", "HARDNESS TEST FOR NACE COMPLIANCE.  C OF C, MATL CERTS"})
         Me.cmbQuality_CustAcceptStd.Location = New System.Drawing.Point(245, 316)
@@ -7696,8 +7381,7 @@ Partial Class Process_frmMain
         '
         Me.cmbQuality_VisualInspection_Type.BackColor = System.Drawing.SystemColors.Window
         Me.cmbQuality_VisualInspection_Type.Cursor = System.Windows.Forms.Cursors.Default
-        Me.cmbQuality_VisualInspection_Type.Enabled = false
-        Me.cmbQuality_VisualInspection_Type.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.cmbQuality_VisualInspection_Type.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbQuality_VisualInspection_Type.ForeColor = System.Drawing.SystemColors.WindowText
         Me.cmbQuality_VisualInspection_Type.Items.AddRange(New Object() {"Naked Eye", "10x", "100x"})
         Me.cmbQuality_VisualInspection_Type.Location = New System.Drawing.Point(198, 277)
@@ -7710,9 +7394,8 @@ Partial Class Process_frmMain
         'cmbQuality_VisualInspection
         '
         Me.cmbQuality_VisualInspection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbQuality_VisualInspection.Enabled = false
-        Me.cmbQuality_VisualInspection.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbQuality_VisualInspection.FormattingEnabled = true
+        Me.cmbQuality_VisualInspection.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbQuality_VisualInspection.FormattingEnabled = True
         Me.cmbQuality_VisualInspection.Items.AddRange(New Object() {"Y", "N"})
         Me.cmbQuality_VisualInspection.Location = New System.Drawing.Point(141, 277)
         Me.cmbQuality_VisualInspection.Name = "cmbQuality_VisualInspection"
@@ -7721,9 +7404,9 @@ Partial Class Process_frmMain
         '
         'Label100
         '
-        Me.Label100.AutoSize = true
-        Me.Label100.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label100.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label100.AutoSize = True
+        Me.Label100.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label100.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label100.Location = New System.Drawing.Point(442, 67)
         Me.Label100.Name = "Label100"
         Me.Label100.Size = New System.Drawing.Size(49, 13)
@@ -7733,8 +7416,7 @@ Partial Class Process_frmMain
         '
         'txtQuality_Reason
         '
-        Me.txtQuality_Reason.Enabled = false
-        Me.txtQuality_Reason.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtQuality_Reason.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtQuality_Reason.ForeColor = System.Drawing.Color.Black
         Me.txtQuality_Reason.Location = New System.Drawing.Point(442, 83)
         Me.txtQuality_Reason.Name = "txtQuality_Reason"
@@ -7743,9 +7425,9 @@ Partial Class Process_frmMain
         '
         'Label183
         '
-        Me.Label183.AutoSize = true
-        Me.Label183.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label183.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label183.AutoSize = True
+        Me.Label183.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label183.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label183.Location = New System.Drawing.Point(141, 353)
         Me.Label183.Name = "Label183"
         Me.Label183.Size = New System.Drawing.Size(126, 13)
@@ -7756,9 +7438,8 @@ Partial Class Process_frmMain
         'cmbQuality_GageRnR_Reqd
         '
         Me.cmbQuality_GageRnR_Reqd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbQuality_GageRnR_Reqd.Enabled = false
-        Me.cmbQuality_GageRnR_Reqd.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbQuality_GageRnR_Reqd.FormattingEnabled = true
+        Me.cmbQuality_GageRnR_Reqd.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbQuality_GageRnR_Reqd.FormattingEnabled = True
         Me.cmbQuality_GageRnR_Reqd.Items.AddRange(New Object() {"Y", "N"})
         Me.cmbQuality_GageRnR_Reqd.Location = New System.Drawing.Point(141, 369)
         Me.cmbQuality_GageRnR_Reqd.Name = "cmbQuality_GageRnR_Reqd"
@@ -7767,9 +7448,9 @@ Partial Class Process_frmMain
         '
         'Label184
         '
-        Me.Label184.AutoSize = true
-        Me.Label184.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label184.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label184.AutoSize = True
+        Me.Label184.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label184.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label184.Location = New System.Drawing.Point(22, 353)
         Me.Label184.Name = "Label184"
         Me.Label184.Size = New System.Drawing.Size(86, 13)
@@ -7780,9 +7461,8 @@ Partial Class Process_frmMain
         'cmbQuality_SPC
         '
         Me.cmbQuality_SPC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbQuality_SPC.Enabled = false
-        Me.cmbQuality_SPC.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbQuality_SPC.FormattingEnabled = true
+        Me.cmbQuality_SPC.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbQuality_SPC.FormattingEnabled = True
         Me.cmbQuality_SPC.Items.AddRange(New Object() {"Y", "N"})
         Me.cmbQuality_SPC.Location = New System.Drawing.Point(25, 369)
         Me.cmbQuality_SPC.Name = "cmbQuality_SPC"
@@ -7791,9 +7471,9 @@ Partial Class Process_frmMain
         '
         'Label186
         '
-        Me.Label186.AutoSize = true
-        Me.Label186.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label186.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label186.AutoSize = True
+        Me.Label186.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label186.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label186.Location = New System.Drawing.Point(16, 320)
         Me.Label186.Name = "Label186"
         Me.Label186.Size = New System.Drawing.Size(194, 13)
@@ -7803,9 +7483,9 @@ Partial Class Process_frmMain
         '
         'Label187
         '
-        Me.Label187.AutoSize = true
-        Me.Label187.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label187.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label187.AutoSize = True
+        Me.Label187.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label187.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label187.Location = New System.Drawing.Point(16, 280)
         Me.Label187.Name = "Label187"
         Me.Label187.Size = New System.Drawing.Size(104, 13)
@@ -7816,9 +7496,8 @@ Partial Class Process_frmMain
         'cmbQuality_CustComplaint
         '
         Me.cmbQuality_CustComplaint.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbQuality_CustComplaint.Enabled = false
-        Me.cmbQuality_CustComplaint.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbQuality_CustComplaint.FormattingEnabled = true
+        Me.cmbQuality_CustComplaint.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbQuality_CustComplaint.FormattingEnabled = True
         Me.cmbQuality_CustComplaint.Items.AddRange(New Object() {"Y", "N"})
         Me.cmbQuality_CustComplaint.Location = New System.Drawing.Point(353, 83)
         Me.cmbQuality_CustComplaint.Name = "cmbQuality_CustComplaint"
@@ -7827,9 +7506,9 @@ Partial Class Process_frmMain
         '
         'Label108
         '
-        Me.Label108.AutoSize = true
-        Me.Label108.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label108.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label108.AutoSize = True
+        Me.Label108.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label108.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label108.Location = New System.Drawing.Point(16, 87)
         Me.Label108.Name = "Label108"
         Me.Label108.Size = New System.Drawing.Size(246, 13)
@@ -7840,9 +7519,8 @@ Partial Class Process_frmMain
         'cmbQuality_TNG
         '
         Me.cmbQuality_TNG.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbQuality_TNG.Enabled = false
-        Me.cmbQuality_TNG.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbQuality_TNG.FormattingEnabled = true
+        Me.cmbQuality_TNG.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbQuality_TNG.FormattingEnabled = True
         Me.cmbQuality_TNG.Items.AddRange(New Object() {"Y", "N"})
         Me.cmbQuality_TNG.Location = New System.Drawing.Point(353, 48)
         Me.cmbQuality_TNG.Name = "cmbQuality_TNG"
@@ -7851,9 +7529,9 @@ Partial Class Process_frmMain
         '
         'Label107
         '
-        Me.Label107.AutoSize = true
-        Me.Label107.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label107.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label107.AutoSize = True
+        Me.Label107.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label107.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label107.Location = New System.Drawing.Point(16, 52)
         Me.Label107.Name = "Label107"
         Me.Label107.Size = New System.Drawing.Size(300, 13)
@@ -7864,9 +7542,8 @@ Partial Class Process_frmMain
         'cmbQuality_ApprovedSupplier
         '
         Me.cmbQuality_ApprovedSupplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbQuality_ApprovedSupplier.Enabled = false
-        Me.cmbQuality_ApprovedSupplier.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbQuality_ApprovedSupplier.FormattingEnabled = true
+        Me.cmbQuality_ApprovedSupplier.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbQuality_ApprovedSupplier.FormattingEnabled = True
         Me.cmbQuality_ApprovedSupplier.Items.AddRange(New Object() {"Y", "N"})
         Me.cmbQuality_ApprovedSupplier.Location = New System.Drawing.Point(353, 14)
         Me.cmbQuality_ApprovedSupplier.Name = "cmbQuality_ApprovedSupplier"
@@ -7875,9 +7552,9 @@ Partial Class Process_frmMain
         '
         'Label103
         '
-        Me.Label103.AutoSize = true
-        Me.Label103.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label103.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label103.AutoSize = True
+        Me.Label103.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label103.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label103.Location = New System.Drawing.Point(16, 18)
         Me.Label103.Name = "Label103"
         Me.Label103.Size = New System.Drawing.Size(149, 13)
@@ -7887,7 +7564,7 @@ Partial Class Process_frmMain
         '
         'tabDrawing
         '
-        Me.tabDrawing.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
+        Me.tabDrawing.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.tabDrawing.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tabDrawing.Controls.Add(Me.Label115)
         Me.tabDrawing.Controls.Add(Me.GroupBox29)
@@ -7908,7 +7585,7 @@ Partial Class Process_frmMain
         '
         Me.Label115.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label115.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label115.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label115.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label115.Location = New System.Drawing.Point(0, 428)
         Me.Label115.Name = "Label115"
         Me.Label115.Size = New System.Drawing.Size(1045, 2)
@@ -7922,13 +7599,13 @@ Partial Class Process_frmMain
         Me.GroupBox29.Controls.Add(Me.txtDwg_UserDate)
         Me.GroupBox29.Controls.Add(Me.dtpDwg_UserDate)
         Me.GroupBox29.Controls.Add(Me.grdDwg_EditedBy)
-        Me.GroupBox29.Enabled = false
-        Me.GroupBox29.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox29.Enabled = False
+        Me.GroupBox29.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox29.Location = New System.Drawing.Point(15, 436)
         Me.GroupBox29.Name = "GroupBox29"
         Me.GroupBox29.Size = New System.Drawing.Size(867, 132)
         Me.GroupBox29.TabIndex = 877
-        Me.GroupBox29.TabStop = false
+        Me.GroupBox29.TabStop = False
         Me.GroupBox29.Text = "Edited by:"
         '
         'chkDwg_UserSigned
@@ -7939,11 +7616,11 @@ Partial Class Process_frmMain
         Me.chkDwg_UserSigned.Size = New System.Drawing.Size(15, 14)
         Me.chkDwg_UserSigned.TabIndex = 745
         Me.chkDwg_UserSigned.Tag = "Tester"
-        Me.chkDwg_UserSigned.UseVisualStyleBackColor = true
+        Me.chkDwg_UserSigned.UseVisualStyleBackColor = True
         '
         'cmdDwg_UserSign
         '
-        Me.cmdDwg_UserSign.AutoSize = true
+        Me.cmdDwg_UserSign.AutoSize = True
         Me.cmdDwg_UserSign.BackColor = System.Drawing.Color.Silver
         Me.cmdDwg_UserSign.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdDwg_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -7953,11 +7630,11 @@ Partial Class Process_frmMain
         Me.cmdDwg_UserSign.TabIndex = 746
         Me.cmdDwg_UserSign.Tag = "Tester"
         Me.cmdDwg_UserSign.Text = "Sign"
-        Me.cmdDwg_UserSign.UseVisualStyleBackColor = false
+        Me.cmdDwg_UserSign.UseVisualStyleBackColor = False
         '
         'txtDwg_UserName
         '
-        Me.txtDwg_UserName.Enabled = false
+        Me.txtDwg_UserName.Enabled = False
         Me.txtDwg_UserName.Location = New System.Drawing.Point(130, 105)
         Me.txtDwg_UserName.Name = "txtDwg_UserName"
         Me.txtDwg_UserName.Size = New System.Drawing.Size(196, 21)
@@ -7967,7 +7644,7 @@ Partial Class Process_frmMain
         'txtDwg_UserDate
         '
         Me.txtDwg_UserDate.BackColor = System.Drawing.Color.White
-        Me.txtDwg_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtDwg_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDwg_UserDate.ForeColor = System.Drawing.Color.Black
         Me.txtDwg_UserDate.Location = New System.Drawing.Point(25, 105)
         Me.txtDwg_UserDate.Name = "txtDwg_UserDate"
@@ -7986,13 +7663,13 @@ Partial Class Process_frmMain
         '
         'grdDwg_EditedBy
         '
-        DataGridViewCellStyle216.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdDwg_EditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle216
+        DataGridViewCellStyle67.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdDwg_EditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle67
         Me.grdDwg_EditedBy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdDwg_EditedBy.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn51, Me.DataGridViewTextBoxColumn52, Me.DataGridViewTextBoxColumn67})
         Me.grdDwg_EditedBy.Location = New System.Drawing.Point(25, 23)
         Me.grdDwg_EditedBy.Name = "grdDwg_EditedBy"
-        Me.grdDwg_EditedBy.RowHeadersVisible = false
+        Me.grdDwg_EditedBy.RowHeadersVisible = False
         Me.grdDwg_EditedBy.Size = New System.Drawing.Size(823, 74)
         Me.grdDwg_EditedBy.TabIndex = 741
         '
@@ -8016,9 +7693,9 @@ Partial Class Process_frmMain
         '
         'Label150
         '
-        Me.Label150.AutoSize = true
-        Me.Label150.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label150.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label150.AutoSize = True
+        Me.Label150.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label150.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label150.Location = New System.Drawing.Point(24, 63)
         Me.Label150.Name = "Label150"
         Me.Label150.Size = New System.Drawing.Size(50, 13)
@@ -8028,9 +7705,9 @@ Partial Class Process_frmMain
         '
         'Label149
         '
-        Me.Label149.AutoSize = true
-        Me.Label149.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label149.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label149.AutoSize = True
+        Me.Label149.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label149.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label149.Location = New System.Drawing.Point(25, 234)
         Me.Label149.Name = "Label149"
         Me.Label149.Size = New System.Drawing.Size(39, 13)
@@ -8042,81 +7719,35 @@ Partial Class Process_frmMain
         '
         Me.grdDrawing_BOM.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdDrawing_BOM.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn22, Me.Column3, Me.DataGridViewTextBoxColumn23})
-        Me.grdDrawing_BOM.Enabled = false
         Me.grdDrawing_BOM.Location = New System.Drawing.Point(25, 250)
         Me.grdDrawing_BOM.Name = "grdDrawing_BOM"
-        Me.grdDrawing_BOM.RowHeadersVisible = false
+        Me.grdDrawing_BOM.RowHeadersVisible = False
         Me.grdDrawing_BOM.Size = New System.Drawing.Size(384, 163)
         Me.grdDrawing_BOM.TabIndex = 685
         '
-        'DataGridViewTextBoxColumn22
-        '
-        Me.DataGridViewTextBoxColumn22.HeaderText = "Parent Part #"
-        Me.DataGridViewTextBoxColumn22.Name = "DataGridViewTextBoxColumn22"
-        Me.DataGridViewTextBoxColumn22.Width = 140
-        '
-        'Column3
-        '
-        Me.Column3.HeaderText = "Child Part #"
-        Me.Column3.Name = "Column3"
-        Me.Column3.Width = 140
-        '
-        'DataGridViewTextBoxColumn23
-        '
-        Me.DataGridViewTextBoxColumn23.HeaderText = "Qty"
-        Me.DataGridViewTextBoxColumn23.Name = "DataGridViewTextBoxColumn23"
-        '
         'grdDrawing_Needed
         '
-        DataGridViewCellStyle217.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle217.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle217.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        DataGridViewCellStyle217.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle217.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle217.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle217.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdDrawing_Needed.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle217
+        DataGridViewCellStyle69.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle69.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle69.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle69.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle69.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle69.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle69.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdDrawing_Needed.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle69
         Me.grdDrawing_Needed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdDrawing_Needed.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn13, Me.DataGridViewTextBoxColumn14, Me.DataGridViewTextBoxColumn21, Me.Column11})
-        Me.grdDrawing_Needed.Enabled = false
         Me.grdDrawing_Needed.Location = New System.Drawing.Point(25, 79)
         Me.grdDrawing_Needed.Name = "grdDrawing_Needed"
-        Me.grdDrawing_Needed.RowHeadersVisible = false
+        Me.grdDrawing_Needed.RowHeadersVisible = False
         Me.grdDrawing_Needed.Size = New System.Drawing.Size(713, 129)
         Me.grdDrawing_Needed.TabIndex = 684
         '
-        'DataGridViewTextBoxColumn13
-        '
-        Me.DataGridViewTextBoxColumn13.HeaderText = "Drawing #"
-        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
-        Me.DataGridViewTextBoxColumn13.Width = 106
-        '
-        'DataGridViewTextBoxColumn14
-        '
-        Me.DataGridViewTextBoxColumn14.HeaderText = "Description"
-        Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
-        Me.DataGridViewTextBoxColumn14.Width = 420
-        '
-        'DataGridViewTextBoxColumn21
-        '
-        Me.DataGridViewTextBoxColumn21.HeaderText = "Status"
-        Me.DataGridViewTextBoxColumn21.Items.AddRange(New Object() {"Inventory", "Make", "Buy"})
-        Me.DataGridViewTextBoxColumn21.Name = "DataGridViewTextBoxColumn21"
-        Me.DataGridViewTextBoxColumn21.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn21.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.DataGridViewTextBoxColumn21.Width = 90
-        '
-        'Column11
-        '
-        Me.Column11.HeaderText = "Lead Time (wks)"
-        Me.Column11.Name = "Column11"
-        Me.Column11.Width = 90
-        '
         'Label148
         '
-        Me.Label148.AutoSize = true
-        Me.Label148.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label148.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label148.AutoSize = True
+        Me.Label148.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label148.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label148.Location = New System.Drawing.Point(28, 14)
         Me.Label148.Name = "Label148"
         Me.Label148.Size = New System.Drawing.Size(80, 13)
@@ -8127,9 +7758,8 @@ Partial Class Process_frmMain
         'cmbDwg_DesignLevel
         '
         Me.cmbDwg_DesignLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbDwg_DesignLevel.Enabled = false
-        Me.cmbDwg_DesignLevel.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbDwg_DesignLevel.FormattingEnabled = true
+        Me.cmbDwg_DesignLevel.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbDwg_DesignLevel.FormattingEnabled = True
         Me.cmbDwg_DesignLevel.Items.AddRange(New Object() {"I", "II", "III", "IV"})
         Me.cmbDwg_DesignLevel.Location = New System.Drawing.Point(28, 30)
         Me.cmbDwg_DesignLevel.Name = "cmbDwg_DesignLevel"
@@ -8139,26 +7769,26 @@ Partial Class Process_frmMain
         'cmdNotes
         '
         Me.cmdNotes.BackColor = System.Drawing.Color.Silver
-        Me.cmdNotes.Enabled = false
-        Me.cmdNotes.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmdNotes.Image = CType(resources.GetObject("cmdNotes.Image"),System.Drawing.Image)
+        Me.cmdNotes.Enabled = False
+        Me.cmdNotes.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdNotes.Image = CType(resources.GetObject("cmdNotes.Image"), System.Drawing.Image)
         Me.cmdNotes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdNotes.Location = New System.Drawing.Point(807, 81)
         Me.cmdNotes.Name = "cmdNotes"
         Me.cmdNotes.Size = New System.Drawing.Size(140, 41)
         Me.cmdNotes.TabIndex = 688
         Me.cmdNotes.Text = "&Notes"
-        Me.cmdNotes.UseVisualStyleBackColor = false
+        Me.cmdNotes.UseVisualStyleBackColor = False
         '
         'tabTesting
         '
-        Me.tabTesting.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
+        Me.tabTesting.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.tabTesting.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tabTesting.Controls.Add(Me.Label119)
         Me.tabTesting.Controls.Add(Me.GroupBox32)
         Me.tabTesting.Controls.Add(Me.txtTest_Other)
         Me.tabTesting.Controls.Add(Me.Label152)
-        Me.tabTesting.Controls.Add(Me.txtTest_CompressPre_Load)
+        Me.tabTesting.Controls.Add(Me.tbTest)
         Me.tabTesting.Location = New System.Drawing.Point(4, 40)
         Me.tabTesting.Name = "tabTesting"
         Me.tabTesting.Size = New System.Drawing.Size(1039, 577)
@@ -8169,7 +7799,7 @@ Partial Class Process_frmMain
         '
         Me.Label119.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label119.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label119.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label119.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label119.Location = New System.Drawing.Point(0, 421)
         Me.Label119.Name = "Label119"
         Me.Label119.Size = New System.Drawing.Size(1045, 2)
@@ -8183,13 +7813,13 @@ Partial Class Process_frmMain
         Me.GroupBox32.Controls.Add(Me.txtTest_UserDate)
         Me.GroupBox32.Controls.Add(Me.dtpTest_UserDate)
         Me.GroupBox32.Controls.Add(Me.grdTest_EditedBy)
-        Me.GroupBox32.Enabled = false
-        Me.GroupBox32.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox32.Enabled = False
+        Me.GroupBox32.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox32.Location = New System.Drawing.Point(15, 436)
         Me.GroupBox32.Name = "GroupBox32"
         Me.GroupBox32.Size = New System.Drawing.Size(867, 132)
         Me.GroupBox32.TabIndex = 878
-        Me.GroupBox32.TabStop = false
+        Me.GroupBox32.TabStop = False
         Me.GroupBox32.Text = "Edited by:"
         '
         'chkTest_UserSigned
@@ -8200,11 +7830,11 @@ Partial Class Process_frmMain
         Me.chkTest_UserSigned.Size = New System.Drawing.Size(15, 14)
         Me.chkTest_UserSigned.TabIndex = 745
         Me.chkTest_UserSigned.Tag = "Tester"
-        Me.chkTest_UserSigned.UseVisualStyleBackColor = true
+        Me.chkTest_UserSigned.UseVisualStyleBackColor = True
         '
         'cmdTest_UserSign
         '
-        Me.cmdTest_UserSign.AutoSize = true
+        Me.cmdTest_UserSign.AutoSize = True
         Me.cmdTest_UserSign.BackColor = System.Drawing.Color.Silver
         Me.cmdTest_UserSign.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdTest_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -8214,11 +7844,11 @@ Partial Class Process_frmMain
         Me.cmdTest_UserSign.TabIndex = 746
         Me.cmdTest_UserSign.Tag = "Tester"
         Me.cmdTest_UserSign.Text = "Sign"
-        Me.cmdTest_UserSign.UseVisualStyleBackColor = false
+        Me.cmdTest_UserSign.UseVisualStyleBackColor = False
         '
         'txtTest_UserName
         '
-        Me.txtTest_UserName.Enabled = false
+        Me.txtTest_UserName.Enabled = False
         Me.txtTest_UserName.Location = New System.Drawing.Point(130, 105)
         Me.txtTest_UserName.Name = "txtTest_UserName"
         Me.txtTest_UserName.Size = New System.Drawing.Size(196, 21)
@@ -8228,7 +7858,7 @@ Partial Class Process_frmMain
         'txtTest_UserDate
         '
         Me.txtTest_UserDate.BackColor = System.Drawing.Color.White
-        Me.txtTest_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtTest_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTest_UserDate.ForeColor = System.Drawing.Color.Black
         Me.txtTest_UserDate.Location = New System.Drawing.Point(25, 105)
         Me.txtTest_UserDate.Name = "txtTest_UserDate"
@@ -8247,13 +7877,13 @@ Partial Class Process_frmMain
         '
         'grdTest_EditedBy
         '
-        DataGridViewCellStyle218.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdTest_EditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle218
+        DataGridViewCellStyle71.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdTest_EditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle71
         Me.grdTest_EditedBy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdTest_EditedBy.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn40, Me.DataGridViewTextBoxColumn41, Me.DataGridViewTextBoxColumn97})
         Me.grdTest_EditedBy.Location = New System.Drawing.Point(25, 23)
         Me.grdTest_EditedBy.Name = "grdTest_EditedBy"
-        Me.grdTest_EditedBy.RowHeadersVisible = false
+        Me.grdTest_EditedBy.RowHeadersVisible = False
         Me.grdTest_EditedBy.Size = New System.Drawing.Size(823, 74)
         Me.grdTest_EditedBy.TabIndex = 741
         '
@@ -8277,20 +7907,19 @@ Partial Class Process_frmMain
         '
         'txtTest_Other
         '
-        Me.txtTest_Other.Enabled = false
-        Me.txtTest_Other.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtTest_Other.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTest_Other.ForeColor = System.Drawing.Color.Black
         Me.txtTest_Other.Location = New System.Drawing.Point(32, 337)
-        Me.txtTest_Other.Multiline = true
+        Me.txtTest_Other.Multiline = True
         Me.txtTest_Other.Name = "txtTest_Other"
         Me.txtTest_Other.Size = New System.Drawing.Size(551, 65)
         Me.txtTest_Other.TabIndex = 724
         '
         'Label152
         '
-        Me.Label152.AutoSize = true
-        Me.Label152.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label152.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label152.AutoSize = True
+        Me.Label152.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label152.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label152.Location = New System.Drawing.Point(32, 321)
         Me.Label152.Name = "Label152"
         Me.Label152.Size = New System.Drawing.Size(39, 13)
@@ -8298,21 +7927,20 @@ Partial Class Process_frmMain
         Me.Label152.Text = "Other"
         Me.Label152.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'txtTest_CompressPre_Load
+        'tbTest
         '
-        Me.txtTest_CompressPre_Load.Controls.Add(Me.TabPage17)
-        Me.txtTest_CompressPre_Load.Controls.Add(Me.TabPage18)
-        Me.txtTest_CompressPre_Load.Controls.Add(Me.TabPage19)
-        Me.txtTest_CompressPre_Load.Enabled = false
-        Me.txtTest_CompressPre_Load.Location = New System.Drawing.Point(29, 17)
-        Me.txtTest_CompressPre_Load.Name = "txtTest_CompressPre_Load"
-        Me.txtTest_CompressPre_Load.SelectedIndex = 0
-        Me.txtTest_CompressPre_Load.Size = New System.Drawing.Size(355, 292)
-        Me.txtTest_CompressPre_Load.TabIndex = 0
+        Me.tbTest.Controls.Add(Me.TabPage17)
+        Me.tbTest.Controls.Add(Me.TabPage18)
+        Me.tbTest.Controls.Add(Me.TabPage19)
+        Me.tbTest.Location = New System.Drawing.Point(29, 17)
+        Me.tbTest.Name = "tbTest"
+        Me.tbTest.SelectedIndex = 0
+        Me.tbTest.Size = New System.Drawing.Size(355, 292)
+        Me.tbTest.TabIndex = 0
         '
         'TabPage17
         '
-        Me.TabPage17.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
+        Me.TabPage17.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.TabPage17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TabPage17.Controls.Add(Me.cmbTest_FreqPost_Leak)
         Me.TabPage17.Controls.Add(Me.cmbTest_FreqPre_Leak)
@@ -8346,8 +7974,8 @@ Partial Class Process_frmMain
         '
         'cmbTest_FreqPost_Leak
         '
-        Me.cmbTest_FreqPost_Leak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbTest_FreqPost_Leak.FormattingEnabled = true
+        Me.cmbTest_FreqPost_Leak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbTest_FreqPost_Leak.FormattingEnabled = True
         Me.cmbTest_FreqPost_Leak.Items.AddRange(New Object() {"1st Lot", "Every Lot"})
         Me.cmbTest_FreqPost_Leak.Location = New System.Drawing.Point(220, 225)
         Me.cmbTest_FreqPost_Leak.Name = "cmbTest_FreqPost_Leak"
@@ -8357,8 +7985,8 @@ Partial Class Process_frmMain
         '
         'cmbTest_FreqPre_Leak
         '
-        Me.cmbTest_FreqPre_Leak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbTest_FreqPre_Leak.FormattingEnabled = true
+        Me.cmbTest_FreqPre_Leak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbTest_FreqPre_Leak.FormattingEnabled = True
         Me.cmbTest_FreqPre_Leak.Items.AddRange(New Object() {"1st Lot", "Every Lot"})
         Me.cmbTest_FreqPre_Leak.Location = New System.Drawing.Point(106, 225)
         Me.cmbTest_FreqPre_Leak.Name = "cmbTest_FreqPre_Leak"
@@ -8367,9 +7995,9 @@ Partial Class Process_frmMain
         '
         'lblTest_Req_Unit_Leak
         '
-        Me.lblTest_Req_Unit_Leak.AutoSize = true
-        Me.lblTest_Req_Unit_Leak.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.lblTest_Req_Unit_Leak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblTest_Req_Unit_Leak.AutoSize = True
+        Me.lblTest_Req_Unit_Leak.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.lblTest_Req_Unit_Leak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTest_Req_Unit_Leak.Location = New System.Drawing.Point(277, 152)
         Me.lblTest_Req_Unit_Leak.Name = "lblTest_Req_Unit_Leak"
         Me.lblTest_Req_Unit_Leak.Size = New System.Drawing.Size(30, 13)
@@ -8379,32 +8007,32 @@ Partial Class Process_frmMain
         '
         'txtTest_Press_Unit_Leak
         '
-        Me.txtTest_Press_Unit_Leak.AutoSize = true
-        Me.txtTest_Press_Unit_Leak.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.txtTest_Press_Unit_Leak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtTest_Press_Unit_Leak.AutoSize = True
+        Me.txtTest_Press_Unit_Leak.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.txtTest_Press_Unit_Leak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTest_Press_Unit_Leak.Location = New System.Drawing.Point(277, 114)
         Me.txtTest_Press_Unit_Leak.Name = "txtTest_Press_Unit_Leak"
-        Me.txtTest_Press_Unit_Leak.Size = New System.Drawing.Size(26, 13)
+        Me.txtTest_Press_Unit_Leak.Size = New System.Drawing.Size(23, 13)
         Me.txtTest_Press_Unit_Leak.TabIndex = 820
-        Me.txtTest_Press_Unit_Leak.Text = "bar"
+        Me.txtTest_Press_Unit_Leak.Text = "psi"
         Me.txtTest_Press_Unit_Leak.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'lblTest_CompressTo_Unit_Leak
         '
-        Me.lblTest_CompressTo_Unit_Leak.AutoSize = true
-        Me.lblTest_CompressTo_Unit_Leak.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.lblTest_CompressTo_Unit_Leak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblTest_CompressTo_Unit_Leak.AutoSize = True
+        Me.lblTest_CompressTo_Unit_Leak.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.lblTest_CompressTo_Unit_Leak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTest_CompressTo_Unit_Leak.Location = New System.Drawing.Point(277, 38)
         Me.lblTest_CompressTo_Unit_Leak.Name = "lblTest_CompressTo_Unit_Leak"
-        Me.lblTest_CompressTo_Unit_Leak.Size = New System.Drawing.Size(29, 13)
+        Me.lblTest_CompressTo_Unit_Leak.Size = New System.Drawing.Size(17, 13)
         Me.lblTest_CompressTo_Unit_Leak.TabIndex = 819
-        Me.lblTest_CompressTo_Unit_Leak.Text = "mm"
+        Me.lblTest_CompressTo_Unit_Leak.Text = "in"
         Me.lblTest_CompressTo_Unit_Leak.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'cmbTest_QtyPost_Leak
         '
-        Me.cmbTest_QtyPost_Leak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbTest_QtyPost_Leak.FormattingEnabled = true
+        Me.cmbTest_QtyPost_Leak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbTest_QtyPost_Leak.FormattingEnabled = True
         Me.cmbTest_QtyPost_Leak.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"})
         Me.cmbTest_QtyPost_Leak.Location = New System.Drawing.Point(220, 186)
         Me.cmbTest_QtyPost_Leak.Name = "cmbTest_QtyPost_Leak"
@@ -8413,8 +8041,8 @@ Partial Class Process_frmMain
         '
         'cmbTest_QtyPre_Leak
         '
-        Me.cmbTest_QtyPre_Leak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbTest_QtyPre_Leak.FormattingEnabled = true
+        Me.cmbTest_QtyPre_Leak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbTest_QtyPre_Leak.FormattingEnabled = True
         Me.cmbTest_QtyPre_Leak.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"})
         Me.cmbTest_QtyPre_Leak.Location = New System.Drawing.Point(106, 186)
         Me.cmbTest_QtyPre_Leak.Name = "cmbTest_QtyPre_Leak"
@@ -8423,22 +8051,20 @@ Partial Class Process_frmMain
         '
         'txtTest_ReqPost_Leak
         '
-        Me.txtTest_ReqPost_Leak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtTest_ReqPost_Leak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTest_ReqPost_Leak.ForeColor = System.Drawing.Color.Black
         Me.txtTest_ReqPost_Leak.Location = New System.Drawing.Point(220, 148)
         Me.txtTest_ReqPost_Leak.Name = "txtTest_ReqPost_Leak"
-        Me.txtTest_ReqPost_Leak.ReadOnly = true
         Me.txtTest_ReqPost_Leak.Size = New System.Drawing.Size(54, 21)
         Me.txtTest_ReqPost_Leak.TabIndex = 815
         Me.txtTest_ReqPost_Leak.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'txtTest_PressPost_Leak
         '
-        Me.txtTest_PressPost_Leak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtTest_PressPost_Leak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTest_PressPost_Leak.ForeColor = System.Drawing.Color.Black
         Me.txtTest_PressPost_Leak.Location = New System.Drawing.Point(220, 110)
         Me.txtTest_PressPost_Leak.Name = "txtTest_PressPost_Leak"
-        Me.txtTest_PressPost_Leak.ReadOnly = true
         Me.txtTest_PressPost_Leak.Size = New System.Drawing.Size(54, 21)
         Me.txtTest_PressPost_Leak.TabIndex = 814
         Me.txtTest_PressPost_Leak.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -8446,8 +8072,8 @@ Partial Class Process_frmMain
         'cmbTest_MediaPost_Leak
         '
         Me.cmbTest_MediaPost_Leak.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbTest_MediaPost_Leak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbTest_MediaPost_Leak.FormattingEnabled = true
+        Me.cmbTest_MediaPost_Leak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbTest_MediaPost_Leak.FormattingEnabled = True
         Me.cmbTest_MediaPost_Leak.Items.AddRange(New Object() {"Nitrogen", "Hileum", "Air"})
         Me.cmbTest_MediaPost_Leak.Location = New System.Drawing.Point(220, 72)
         Me.cmbTest_MediaPost_Leak.Name = "cmbTest_MediaPost_Leak"
@@ -8457,8 +8083,8 @@ Partial Class Process_frmMain
         'cmbTest_MediaPre_Leak
         '
         Me.cmbTest_MediaPre_Leak.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbTest_MediaPre_Leak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbTest_MediaPre_Leak.FormattingEnabled = true
+        Me.cmbTest_MediaPre_Leak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbTest_MediaPre_Leak.FormattingEnabled = True
         Me.cmbTest_MediaPre_Leak.Items.AddRange(New Object() {"Nitrogen", "Hileum", "Air"})
         Me.cmbTest_MediaPre_Leak.Location = New System.Drawing.Point(106, 72)
         Me.cmbTest_MediaPre_Leak.Name = "cmbTest_MediaPre_Leak"
@@ -8467,53 +8093,49 @@ Partial Class Process_frmMain
         '
         'txtTest_CompressPost_Leak
         '
-        Me.txtTest_CompressPost_Leak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtTest_CompressPost_Leak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTest_CompressPost_Leak.ForeColor = System.Drawing.Color.Black
         Me.txtTest_CompressPost_Leak.Location = New System.Drawing.Point(220, 34)
         Me.txtTest_CompressPost_Leak.Name = "txtTest_CompressPost_Leak"
-        Me.txtTest_CompressPost_Leak.ReadOnly = true
         Me.txtTest_CompressPost_Leak.Size = New System.Drawing.Size(54, 21)
         Me.txtTest_CompressPost_Leak.TabIndex = 778
         Me.txtTest_CompressPost_Leak.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'txtTest_ReqPre_Leak
         '
-        Me.txtTest_ReqPre_Leak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtTest_ReqPre_Leak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTest_ReqPre_Leak.ForeColor = System.Drawing.Color.Black
         Me.txtTest_ReqPre_Leak.Location = New System.Drawing.Point(106, 148)
         Me.txtTest_ReqPre_Leak.Name = "txtTest_ReqPre_Leak"
-        Me.txtTest_ReqPre_Leak.ReadOnly = true
         Me.txtTest_ReqPre_Leak.Size = New System.Drawing.Size(54, 21)
         Me.txtTest_ReqPre_Leak.TabIndex = 775
         Me.txtTest_ReqPre_Leak.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'txtTest_PressPre_Leak
         '
-        Me.txtTest_PressPre_Leak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtTest_PressPre_Leak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTest_PressPre_Leak.ForeColor = System.Drawing.Color.Black
         Me.txtTest_PressPre_Leak.Location = New System.Drawing.Point(106, 110)
         Me.txtTest_PressPre_Leak.Name = "txtTest_PressPre_Leak"
-        Me.txtTest_PressPre_Leak.ReadOnly = true
         Me.txtTest_PressPre_Leak.Size = New System.Drawing.Size(54, 21)
         Me.txtTest_PressPre_Leak.TabIndex = 774
         Me.txtTest_PressPre_Leak.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'txtTest_CompressPre_Leak
         '
-        Me.txtTest_CompressPre_Leak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtTest_CompressPre_Leak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTest_CompressPre_Leak.ForeColor = System.Drawing.Color.Black
         Me.txtTest_CompressPre_Leak.Location = New System.Drawing.Point(106, 34)
         Me.txtTest_CompressPre_Leak.Name = "txtTest_CompressPre_Leak"
-        Me.txtTest_CompressPre_Leak.ReadOnly = true
         Me.txtTest_CompressPre_Leak.Size = New System.Drawing.Size(54, 21)
         Me.txtTest_CompressPre_Leak.TabIndex = 772
         Me.txtTest_CompressPre_Leak.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label164
         '
-        Me.Label164.AutoSize = true
-        Me.Label164.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label164.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label164.AutoSize = True
+        Me.Label164.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label164.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label164.Location = New System.Drawing.Point(37, 228)
         Me.Label164.Name = "Label164"
         Me.Label164.Size = New System.Drawing.Size(66, 13)
@@ -8523,9 +8145,9 @@ Partial Class Process_frmMain
         '
         'Label163
         '
-        Me.Label163.AutoSize = true
-        Me.Label163.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label163.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label163.AutoSize = True
+        Me.Label163.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label163.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label163.Location = New System.Drawing.Point(76, 190)
         Me.Label163.Name = "Label163"
         Me.Label163.Size = New System.Drawing.Size(27, 13)
@@ -8535,9 +8157,9 @@ Partial Class Process_frmMain
         '
         'Label159
         '
-        Me.Label159.AutoSize = true
-        Me.Label159.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label159.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label159.AutoSize = True
+        Me.Label159.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label159.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label159.Location = New System.Drawing.Point(23, 152)
         Me.Label159.Name = "Label159"
         Me.Label159.Size = New System.Drawing.Size(80, 13)
@@ -8547,9 +8169,9 @@ Partial Class Process_frmMain
         '
         'Label160
         '
-        Me.Label160.AutoSize = true
-        Me.Label160.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label160.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label160.AutoSize = True
+        Me.Label160.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label160.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label160.Location = New System.Drawing.Point(46, 114)
         Me.Label160.Name = "Label160"
         Me.Label160.Size = New System.Drawing.Size(57, 13)
@@ -8559,9 +8181,9 @@ Partial Class Process_frmMain
         '
         'Label161
         '
-        Me.Label161.AutoSize = true
-        Me.Label161.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label161.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label161.AutoSize = True
+        Me.Label161.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label161.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label161.Location = New System.Drawing.Point(63, 76)
         Me.Label161.Name = "Label161"
         Me.Label161.Size = New System.Drawing.Size(40, 13)
@@ -8571,9 +8193,9 @@ Partial Class Process_frmMain
         '
         'Label162
         '
-        Me.Label162.AutoSize = true
-        Me.Label162.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label162.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label162.AutoSize = True
+        Me.Label162.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label162.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label162.Location = New System.Drawing.Point(20, 38)
         Me.Label162.Name = "Label162"
         Me.Label162.Size = New System.Drawing.Size(83, 13)
@@ -8583,9 +8205,9 @@ Partial Class Process_frmMain
         '
         'Label157
         '
-        Me.Label157.AutoSize = true
-        Me.Label157.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label157.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label157.AutoSize = True
+        Me.Label157.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label157.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label157.Location = New System.Drawing.Point(226, 16)
         Me.Label157.Name = "Label157"
         Me.Label157.Size = New System.Drawing.Size(42, 13)
@@ -8595,9 +8217,9 @@ Partial Class Process_frmMain
         '
         'Label158
         '
-        Me.Label158.AutoSize = true
-        Me.Label158.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label158.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label158.AutoSize = True
+        Me.Label158.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label158.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label158.Location = New System.Drawing.Point(105, 16)
         Me.Label158.Name = "Label158"
         Me.Label158.Size = New System.Drawing.Size(57, 13)
@@ -8607,7 +8229,7 @@ Partial Class Process_frmMain
         '
         'TabPage18
         '
-        Me.TabPage18.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
+        Me.TabPage18.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.TabPage18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TabPage18.Controls.Add(Me.lblTest_Req_Unit_Load)
         Me.TabPage18.Controls.Add(Me.lblTest_CompressTo_Unit_Load)
@@ -8618,7 +8240,7 @@ Partial Class Process_frmMain
         Me.TabPage18.Controls.Add(Me.txtTest_ReqPost_Load)
         Me.TabPage18.Controls.Add(Me.txtTest_CompressPost_Load)
         Me.TabPage18.Controls.Add(Me.txtTest_ReqPre_Load)
-        Me.TabPage18.Controls.Add(Me.TextBox142)
+        Me.TabPage18.Controls.Add(Me.txtTest_CompressPre_Load)
         Me.TabPage18.Controls.Add(Me.Label170)
         Me.TabPage18.Controls.Add(Me.Label171)
         Me.TabPage18.Controls.Add(Me.Label172)
@@ -8634,32 +8256,32 @@ Partial Class Process_frmMain
         '
         'lblTest_Req_Unit_Load
         '
-        Me.lblTest_Req_Unit_Load.AutoSize = true
-        Me.lblTest_Req_Unit_Load.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.lblTest_Req_Unit_Load.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblTest_Req_Unit_Load.AutoSize = True
+        Me.lblTest_Req_Unit_Load.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.lblTest_Req_Unit_Load.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTest_Req_Unit_Load.Location = New System.Drawing.Point(277, 74)
         Me.lblTest_Req_Unit_Load.Name = "lblTest_Req_Unit_Load"
-        Me.lblTest_Req_Unit_Load.Size = New System.Drawing.Size(42, 13)
+        Me.lblTest_Req_Unit_Load.Size = New System.Drawing.Size(36, 13)
         Me.lblTest_Req_Unit_Load.TabIndex = 827
-        Me.lblTest_Req_Unit_Load.Text = "N/mm"
+        Me.lblTest_Req_Unit_Load.Text = "lbf/in"
         Me.lblTest_Req_Unit_Load.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'lblTest_CompressTo_Unit_Load
         '
-        Me.lblTest_CompressTo_Unit_Load.AutoSize = true
-        Me.lblTest_CompressTo_Unit_Load.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.lblTest_CompressTo_Unit_Load.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblTest_CompressTo_Unit_Load.AutoSize = True
+        Me.lblTest_CompressTo_Unit_Load.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.lblTest_CompressTo_Unit_Load.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTest_CompressTo_Unit_Load.Location = New System.Drawing.Point(277, 38)
         Me.lblTest_CompressTo_Unit_Load.Name = "lblTest_CompressTo_Unit_Load"
-        Me.lblTest_CompressTo_Unit_Load.Size = New System.Drawing.Size(29, 13)
+        Me.lblTest_CompressTo_Unit_Load.Size = New System.Drawing.Size(17, 13)
         Me.lblTest_CompressTo_Unit_Load.TabIndex = 826
-        Me.lblTest_CompressTo_Unit_Load.Text = "mm"
+        Me.lblTest_CompressTo_Unit_Load.Text = "in"
         Me.lblTest_CompressTo_Unit_Load.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'cmbTest_FreqPost_Load
         '
-        Me.cmbTest_FreqPost_Load.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbTest_FreqPost_Load.FormattingEnabled = true
+        Me.cmbTest_FreqPost_Load.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbTest_FreqPost_Load.FormattingEnabled = True
         Me.cmbTest_FreqPost_Load.Items.AddRange(New Object() {"1st Lot", "Every Lot"})
         Me.cmbTest_FreqPost_Load.Location = New System.Drawing.Point(219, 147)
         Me.cmbTest_FreqPost_Load.Name = "cmbTest_FreqPost_Load"
@@ -8669,8 +8291,8 @@ Partial Class Process_frmMain
         '
         'cmbTest_FreqPre_Load
         '
-        Me.cmbTest_FreqPre_Load.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbTest_FreqPre_Load.FormattingEnabled = true
+        Me.cmbTest_FreqPre_Load.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbTest_FreqPre_Load.FormattingEnabled = True
         Me.cmbTest_FreqPre_Load.Items.AddRange(New Object() {"1st Lot", "Every Lot"})
         Me.cmbTest_FreqPre_Load.Location = New System.Drawing.Point(107, 147)
         Me.cmbTest_FreqPre_Load.Name = "cmbTest_FreqPre_Load"
@@ -8679,8 +8301,8 @@ Partial Class Process_frmMain
         '
         'cmbTest_QtyPost_Load
         '
-        Me.cmbTest_QtyPost_Load.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbTest_QtyPost_Load.FormattingEnabled = true
+        Me.cmbTest_QtyPost_Load.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbTest_QtyPost_Load.FormattingEnabled = True
         Me.cmbTest_QtyPost_Load.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"})
         Me.cmbTest_QtyPost_Load.Location = New System.Drawing.Point(220, 109)
         Me.cmbTest_QtyPost_Load.Name = "cmbTest_QtyPost_Load"
@@ -8689,8 +8311,8 @@ Partial Class Process_frmMain
         '
         'cmbTest_QtyPre_Load
         '
-        Me.cmbTest_QtyPre_Load.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbTest_QtyPre_Load.FormattingEnabled = true
+        Me.cmbTest_QtyPre_Load.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbTest_QtyPre_Load.FormattingEnabled = True
         Me.cmbTest_QtyPre_Load.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"})
         Me.cmbTest_QtyPre_Load.Location = New System.Drawing.Point(106, 110)
         Me.cmbTest_QtyPre_Load.Name = "cmbTest_QtyPre_Load"
@@ -8699,53 +8321,49 @@ Partial Class Process_frmMain
         '
         'txtTest_ReqPost_Load
         '
-        Me.txtTest_ReqPost_Load.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtTest_ReqPost_Load.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTest_ReqPost_Load.ForeColor = System.Drawing.Color.Black
         Me.txtTest_ReqPost_Load.Location = New System.Drawing.Point(220, 69)
         Me.txtTest_ReqPost_Load.Name = "txtTest_ReqPost_Load"
-        Me.txtTest_ReqPost_Load.ReadOnly = true
         Me.txtTest_ReqPost_Load.Size = New System.Drawing.Size(54, 21)
         Me.txtTest_ReqPost_Load.TabIndex = 798
         Me.txtTest_ReqPost_Load.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'txtTest_CompressPost_Load
         '
-        Me.txtTest_CompressPost_Load.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtTest_CompressPost_Load.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTest_CompressPost_Load.ForeColor = System.Drawing.Color.Black
         Me.txtTest_CompressPost_Load.Location = New System.Drawing.Point(220, 34)
         Me.txtTest_CompressPost_Load.Name = "txtTest_CompressPost_Load"
-        Me.txtTest_CompressPost_Load.ReadOnly = true
         Me.txtTest_CompressPost_Load.Size = New System.Drawing.Size(54, 21)
         Me.txtTest_CompressPost_Load.TabIndex = 797
         Me.txtTest_CompressPost_Load.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'txtTest_ReqPre_Load
         '
-        Me.txtTest_ReqPre_Load.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtTest_ReqPre_Load.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTest_ReqPre_Load.ForeColor = System.Drawing.Color.Black
         Me.txtTest_ReqPre_Load.Location = New System.Drawing.Point(106, 72)
         Me.txtTest_ReqPre_Load.Name = "txtTest_ReqPre_Load"
-        Me.txtTest_ReqPre_Load.ReadOnly = true
         Me.txtTest_ReqPre_Load.Size = New System.Drawing.Size(54, 21)
         Me.txtTest_ReqPre_Load.TabIndex = 794
         Me.txtTest_ReqPre_Load.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'TextBox142
+        'txtTest_CompressPre_Load
         '
-        Me.TextBox142.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.TextBox142.ForeColor = System.Drawing.Color.Black
-        Me.TextBox142.Location = New System.Drawing.Point(106, 34)
-        Me.TextBox142.Name = "TextBox142"
-        Me.TextBox142.ReadOnly = true
-        Me.TextBox142.Size = New System.Drawing.Size(54, 21)
-        Me.TextBox142.TabIndex = 793
-        Me.TextBox142.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtTest_CompressPre_Load.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtTest_CompressPre_Load.ForeColor = System.Drawing.Color.Black
+        Me.txtTest_CompressPre_Load.Location = New System.Drawing.Point(106, 34)
+        Me.txtTest_CompressPre_Load.Name = "txtTest_CompressPre_Load"
+        Me.txtTest_CompressPre_Load.Size = New System.Drawing.Size(54, 21)
+        Me.txtTest_CompressPre_Load.TabIndex = 793
+        Me.txtTest_CompressPre_Load.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label170
         '
-        Me.Label170.AutoSize = true
-        Me.Label170.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label170.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label170.AutoSize = True
+        Me.Label170.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label170.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label170.Location = New System.Drawing.Point(37, 150)
         Me.Label170.Name = "Label170"
         Me.Label170.Size = New System.Drawing.Size(66, 13)
@@ -8755,9 +8373,9 @@ Partial Class Process_frmMain
         '
         'Label171
         '
-        Me.Label171.AutoSize = true
-        Me.Label171.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label171.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label171.AutoSize = True
+        Me.Label171.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label171.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label171.Location = New System.Drawing.Point(76, 114)
         Me.Label171.Name = "Label171"
         Me.Label171.Size = New System.Drawing.Size(27, 13)
@@ -8767,9 +8385,9 @@ Partial Class Process_frmMain
         '
         'Label172
         '
-        Me.Label172.AutoSize = true
-        Me.Label172.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label172.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label172.AutoSize = True
+        Me.Label172.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label172.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label172.Location = New System.Drawing.Point(23, 76)
         Me.Label172.Name = "Label172"
         Me.Label172.Size = New System.Drawing.Size(80, 13)
@@ -8779,9 +8397,9 @@ Partial Class Process_frmMain
         '
         'Label173
         '
-        Me.Label173.AutoSize = true
-        Me.Label173.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label173.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label173.AutoSize = True
+        Me.Label173.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label173.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label173.Location = New System.Drawing.Point(20, 38)
         Me.Label173.Name = "Label173"
         Me.Label173.Size = New System.Drawing.Size(83, 13)
@@ -8791,9 +8409,9 @@ Partial Class Process_frmMain
         '
         'Label174
         '
-        Me.Label174.AutoSize = true
-        Me.Label174.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label174.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label174.AutoSize = True
+        Me.Label174.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label174.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label174.Location = New System.Drawing.Point(226, 16)
         Me.Label174.Name = "Label174"
         Me.Label174.Size = New System.Drawing.Size(42, 13)
@@ -8803,9 +8421,9 @@ Partial Class Process_frmMain
         '
         'Label175
         '
-        Me.Label175.AutoSize = true
-        Me.Label175.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label175.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label175.AutoSize = True
+        Me.Label175.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label175.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label175.Location = New System.Drawing.Point(105, 16)
         Me.Label175.Name = "Label175"
         Me.Label175.Size = New System.Drawing.Size(57, 13)
@@ -8815,7 +8433,7 @@ Partial Class Process_frmMain
         '
         'TabPage19
         '
-        Me.TabPage19.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
+        Me.TabPage19.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.TabPage19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TabPage19.Controls.Add(Me.cmbTest_FreqPost_SpringBack)
         Me.TabPage19.Controls.Add(Me.cmbTest_FreqPre_SpringBack)
@@ -8842,8 +8460,8 @@ Partial Class Process_frmMain
         '
         'cmbTest_FreqPost_SpringBack
         '
-        Me.cmbTest_FreqPost_SpringBack.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbTest_FreqPost_SpringBack.FormattingEnabled = true
+        Me.cmbTest_FreqPost_SpringBack.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbTest_FreqPost_SpringBack.FormattingEnabled = True
         Me.cmbTest_FreqPost_SpringBack.Items.AddRange(New Object() {"1st Lot", "Every Lot"})
         Me.cmbTest_FreqPost_SpringBack.Location = New System.Drawing.Point(219, 147)
         Me.cmbTest_FreqPost_SpringBack.Name = "cmbTest_FreqPost_SpringBack"
@@ -8853,8 +8471,8 @@ Partial Class Process_frmMain
         '
         'cmbTest_FreqPre_SpringBack
         '
-        Me.cmbTest_FreqPre_SpringBack.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbTest_FreqPre_SpringBack.FormattingEnabled = true
+        Me.cmbTest_FreqPre_SpringBack.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbTest_FreqPre_SpringBack.FormattingEnabled = True
         Me.cmbTest_FreqPre_SpringBack.Items.AddRange(New Object() {"1st Lot", "Every Lot"})
         Me.cmbTest_FreqPre_SpringBack.Location = New System.Drawing.Point(107, 147)
         Me.cmbTest_FreqPre_SpringBack.Name = "cmbTest_FreqPre_SpringBack"
@@ -8863,9 +8481,9 @@ Partial Class Process_frmMain
         '
         'Label80
         '
-        Me.Label80.AutoSize = true
-        Me.Label80.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label80.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label80.AutoSize = True
+        Me.Label80.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label80.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label80.Location = New System.Drawing.Point(37, 150)
         Me.Label80.Name = "Label80"
         Me.Label80.Size = New System.Drawing.Size(66, 13)
@@ -8875,32 +8493,32 @@ Partial Class Process_frmMain
         '
         'lblTest_Req_Unit_SpringBack
         '
-        Me.lblTest_Req_Unit_SpringBack.AutoSize = true
-        Me.lblTest_Req_Unit_SpringBack.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.lblTest_Req_Unit_SpringBack.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblTest_Req_Unit_SpringBack.AutoSize = True
+        Me.lblTest_Req_Unit_SpringBack.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.lblTest_Req_Unit_SpringBack.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTest_Req_Unit_SpringBack.Location = New System.Drawing.Point(277, 74)
         Me.lblTest_Req_Unit_SpringBack.Name = "lblTest_Req_Unit_SpringBack"
-        Me.lblTest_Req_Unit_SpringBack.Size = New System.Drawing.Size(29, 13)
+        Me.lblTest_Req_Unit_SpringBack.Size = New System.Drawing.Size(17, 13)
         Me.lblTest_Req_Unit_SpringBack.TabIndex = 829
-        Me.lblTest_Req_Unit_SpringBack.Text = "mm"
+        Me.lblTest_Req_Unit_SpringBack.Text = "in"
         Me.lblTest_Req_Unit_SpringBack.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'lblTest_CompressTo_Unit_SpringBack
         '
-        Me.lblTest_CompressTo_Unit_SpringBack.AutoSize = true
-        Me.lblTest_CompressTo_Unit_SpringBack.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.lblTest_CompressTo_Unit_SpringBack.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblTest_CompressTo_Unit_SpringBack.AutoSize = True
+        Me.lblTest_CompressTo_Unit_SpringBack.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.lblTest_CompressTo_Unit_SpringBack.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTest_CompressTo_Unit_SpringBack.Location = New System.Drawing.Point(277, 38)
         Me.lblTest_CompressTo_Unit_SpringBack.Name = "lblTest_CompressTo_Unit_SpringBack"
-        Me.lblTest_CompressTo_Unit_SpringBack.Size = New System.Drawing.Size(29, 13)
+        Me.lblTest_CompressTo_Unit_SpringBack.Size = New System.Drawing.Size(17, 13)
         Me.lblTest_CompressTo_Unit_SpringBack.TabIndex = 828
-        Me.lblTest_CompressTo_Unit_SpringBack.Text = "mm"
+        Me.lblTest_CompressTo_Unit_SpringBack.Text = "in"
         Me.lblTest_CompressTo_Unit_SpringBack.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'cmbTest_QtyPost_SpringBack
         '
-        Me.cmbTest_QtyPost_SpringBack.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbTest_QtyPost_SpringBack.FormattingEnabled = true
+        Me.cmbTest_QtyPost_SpringBack.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbTest_QtyPost_SpringBack.FormattingEnabled = True
         Me.cmbTest_QtyPost_SpringBack.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"})
         Me.cmbTest_QtyPost_SpringBack.Location = New System.Drawing.Point(220, 109)
         Me.cmbTest_QtyPost_SpringBack.Name = "cmbTest_QtyPost_SpringBack"
@@ -8909,8 +8527,8 @@ Partial Class Process_frmMain
         '
         'cmbTest_QtyPre_SpringBack
         '
-        Me.cmbTest_QtyPre_SpringBack.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbTest_QtyPre_SpringBack.FormattingEnabled = true
+        Me.cmbTest_QtyPre_SpringBack.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbTest_QtyPre_SpringBack.FormattingEnabled = True
         Me.cmbTest_QtyPre_SpringBack.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"})
         Me.cmbTest_QtyPre_SpringBack.Location = New System.Drawing.Point(106, 110)
         Me.cmbTest_QtyPre_SpringBack.Name = "cmbTest_QtyPre_SpringBack"
@@ -8919,9 +8537,9 @@ Partial Class Process_frmMain
         '
         'Label90
         '
-        Me.Label90.AutoSize = true
-        Me.Label90.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label90.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label90.AutoSize = True
+        Me.Label90.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label90.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label90.Location = New System.Drawing.Point(76, 114)
         Me.Label90.Name = "Label90"
         Me.Label90.Size = New System.Drawing.Size(27, 13)
@@ -8931,53 +8549,49 @@ Partial Class Process_frmMain
         '
         'txtTest_ReqPost_SpringBack
         '
-        Me.txtTest_ReqPost_SpringBack.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtTest_ReqPost_SpringBack.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTest_ReqPost_SpringBack.ForeColor = System.Drawing.Color.Black
         Me.txtTest_ReqPost_SpringBack.Location = New System.Drawing.Point(220, 69)
         Me.txtTest_ReqPost_SpringBack.Name = "txtTest_ReqPost_SpringBack"
-        Me.txtTest_ReqPost_SpringBack.ReadOnly = true
         Me.txtTest_ReqPost_SpringBack.Size = New System.Drawing.Size(54, 21)
         Me.txtTest_ReqPost_SpringBack.TabIndex = 819
         Me.txtTest_ReqPost_SpringBack.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'txtTest_CompressPost_SpringBack
         '
-        Me.txtTest_CompressPost_SpringBack.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtTest_CompressPost_SpringBack.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTest_CompressPost_SpringBack.ForeColor = System.Drawing.Color.Black
         Me.txtTest_CompressPost_SpringBack.Location = New System.Drawing.Point(220, 34)
         Me.txtTest_CompressPost_SpringBack.Name = "txtTest_CompressPost_SpringBack"
-        Me.txtTest_CompressPost_SpringBack.ReadOnly = true
         Me.txtTest_CompressPost_SpringBack.Size = New System.Drawing.Size(54, 21)
         Me.txtTest_CompressPost_SpringBack.TabIndex = 818
         Me.txtTest_CompressPost_SpringBack.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'txtTest_ReqPre_SpringBack
         '
-        Me.txtTest_ReqPre_SpringBack.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtTest_ReqPre_SpringBack.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTest_ReqPre_SpringBack.ForeColor = System.Drawing.Color.Black
         Me.txtTest_ReqPre_SpringBack.Location = New System.Drawing.Point(106, 72)
         Me.txtTest_ReqPre_SpringBack.Name = "txtTest_ReqPre_SpringBack"
-        Me.txtTest_ReqPre_SpringBack.ReadOnly = true
         Me.txtTest_ReqPre_SpringBack.Size = New System.Drawing.Size(54, 21)
         Me.txtTest_ReqPre_SpringBack.TabIndex = 817
         Me.txtTest_ReqPre_SpringBack.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'txtTest_CompressPre_SpringBack
         '
-        Me.txtTest_CompressPre_SpringBack.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtTest_CompressPre_SpringBack.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTest_CompressPre_SpringBack.ForeColor = System.Drawing.Color.Black
         Me.txtTest_CompressPre_SpringBack.Location = New System.Drawing.Point(106, 34)
         Me.txtTest_CompressPre_SpringBack.Name = "txtTest_CompressPre_SpringBack"
-        Me.txtTest_CompressPre_SpringBack.ReadOnly = true
         Me.txtTest_CompressPre_SpringBack.Size = New System.Drawing.Size(54, 21)
         Me.txtTest_CompressPre_SpringBack.TabIndex = 816
         Me.txtTest_CompressPre_SpringBack.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label85
         '
-        Me.Label85.AutoSize = true
-        Me.Label85.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label85.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label85.AutoSize = True
+        Me.Label85.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label85.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label85.Location = New System.Drawing.Point(23, 76)
         Me.Label85.Name = "Label85"
         Me.Label85.Size = New System.Drawing.Size(80, 13)
@@ -8987,9 +8601,9 @@ Partial Class Process_frmMain
         '
         'Label86
         '
-        Me.Label86.AutoSize = true
-        Me.Label86.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label86.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label86.AutoSize = True
+        Me.Label86.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label86.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label86.Location = New System.Drawing.Point(20, 38)
         Me.Label86.Name = "Label86"
         Me.Label86.Size = New System.Drawing.Size(83, 13)
@@ -8999,9 +8613,9 @@ Partial Class Process_frmMain
         '
         'Label87
         '
-        Me.Label87.AutoSize = true
-        Me.Label87.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label87.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label87.AutoSize = True
+        Me.Label87.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label87.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label87.Location = New System.Drawing.Point(226, 16)
         Me.Label87.Name = "Label87"
         Me.Label87.Size = New System.Drawing.Size(42, 13)
@@ -9011,9 +8625,9 @@ Partial Class Process_frmMain
         '
         'Label88
         '
-        Me.Label88.AutoSize = true
-        Me.Label88.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label88.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label88.AutoSize = True
+        Me.Label88.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label88.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label88.Location = New System.Drawing.Point(105, 16)
         Me.Label88.Name = "Label88"
         Me.Label88.Size = New System.Drawing.Size(57, 13)
@@ -9023,7 +8637,7 @@ Partial Class Process_frmMain
         '
         'tabPlanning
         '
-        Me.tabPlanning.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
+        Me.tabPlanning.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.tabPlanning.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tabPlanning.Controls.Add(Me.Label62)
         Me.tabPlanning.Controls.Add(Me.DataGridView2)
@@ -9044,9 +8658,9 @@ Partial Class Process_frmMain
         '
         'Label62
         '
-        Me.Label62.AutoSize = true
-        Me.Label62.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label62.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label62.AutoSize = True
+        Me.Label62.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label62.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label62.Location = New System.Drawing.Point(18, 22)
         Me.Label62.Name = "Label62"
         Me.Label62.Size = New System.Drawing.Size(115, 13)
@@ -9056,16 +8670,16 @@ Partial Class Process_frmMain
         '
         'DataGridView2
         '
-        DataGridViewCellStyle219.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.DataGridView2.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle219
+        DataGridViewCellStyle72.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DataGridView2.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle72
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn104, Me.DataGridViewTextBoxColumn108, Me.Column29})
-        Me.DataGridView2.Enabled = false
+        Me.DataGridView2.Enabled = False
         Me.DataGridView2.Location = New System.Drawing.Point(16, 37)
         Me.DataGridView2.Name = "DataGridView2"
         Me.DataGridView2.RowHeadersWidth = 20
-        DataGridViewCellStyle220.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.DataGridView2.RowsDefaultCellStyle = DataGridViewCellStyle220
+        DataGridViewCellStyle73.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DataGridView2.RowsDefaultCellStyle = DataGridViewCellStyle73
         Me.DataGridView2.Size = New System.Drawing.Size(261, 276)
         Me.DataGridView2.TabIndex = 897
         '
@@ -9091,24 +8705,24 @@ Partial Class Process_frmMain
         '
         'grdPlanning_Ordered
         '
-        DataGridViewCellStyle221.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdPlanning_Ordered.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle221
-        DataGridViewCellStyle222.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle222.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle222.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        DataGridViewCellStyle222.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle222.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle222.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle222.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdPlanning_Ordered.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle222
+        DataGridViewCellStyle74.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdPlanning_Ordered.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle74
+        DataGridViewCellStyle75.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle75.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle75.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle75.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle75.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle75.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle75.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdPlanning_Ordered.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle75
         Me.grdPlanning_Ordered.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdPlanning_Ordered.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column26, Me.Column27, Me.Column28, Me.DataGridViewTextBoxColumn103, Me.Column22, Me.Column30, Me.Column31, Me.Column32, Me.Column33})
-        Me.grdPlanning_Ordered.Enabled = false
+        Me.grdPlanning_Ordered.Enabled = False
         Me.grdPlanning_Ordered.Location = New System.Drawing.Point(343, 34)
         Me.grdPlanning_Ordered.Name = "grdPlanning_Ordered"
         Me.grdPlanning_Ordered.RowHeadersWidth = 20
-        DataGridViewCellStyle223.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdPlanning_Ordered.RowsDefaultCellStyle = DataGridViewCellStyle223
+        DataGridViewCellStyle76.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdPlanning_Ordered.RowsDefaultCellStyle = DataGridViewCellStyle76
         Me.grdPlanning_Ordered.Size = New System.Drawing.Size(655, 279)
         Me.grdPlanning_Ordered.TabIndex = 895
         '
@@ -9180,9 +8794,9 @@ Partial Class Process_frmMain
         '
         'Label165
         '
-        Me.Label165.AutoSize = true
-        Me.Label165.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.Label165.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label165.AutoSize = True
+        Me.Label165.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.Label165.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label165.Location = New System.Drawing.Point(345, 18)
         Me.Label165.Name = "Label165"
         Me.Label165.Size = New System.Drawing.Size(176, 13)
@@ -9194,7 +8808,7 @@ Partial Class Process_frmMain
         '
         Me.Label156.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label156.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label156.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label156.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label156.Location = New System.Drawing.Point(0, 337)
         Me.Label156.Name = "Label156"
         Me.Label156.Size = New System.Drawing.Size(1050, 2)
@@ -9203,21 +8817,21 @@ Partial Class Process_frmMain
         'GroupBox60
         '
         Me.GroupBox60.Controls.Add(Me.txtPlanning_Notes)
-        Me.GroupBox60.Enabled = false
-        Me.GroupBox60.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox60.Enabled = False
+        Me.GroupBox60.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox60.Location = New System.Drawing.Point(15, 343)
         Me.GroupBox60.Name = "GroupBox60"
         Me.GroupBox60.Size = New System.Drawing.Size(845, 73)
         Me.GroupBox60.TabIndex = 884
-        Me.GroupBox60.TabStop = false
+        Me.GroupBox60.TabStop = False
         Me.GroupBox60.Text = "Notes:"
         '
         'txtPlanning_Notes
         '
-        Me.txtPlanning_Notes.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtPlanning_Notes.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPlanning_Notes.ForeColor = System.Drawing.Color.Black
         Me.txtPlanning_Notes.Location = New System.Drawing.Point(11, 15)
-        Me.txtPlanning_Notes.Multiline = true
+        Me.txtPlanning_Notes.Multiline = True
         Me.txtPlanning_Notes.Name = "txtPlanning_Notes"
         Me.txtPlanning_Notes.Size = New System.Drawing.Size(827, 52)
         Me.txtPlanning_Notes.TabIndex = 750
@@ -9226,7 +8840,7 @@ Partial Class Process_frmMain
         '
         Me.Label120.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label120.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label120.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label120.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label120.Location = New System.Drawing.Point(0, 429)
         Me.Label120.Name = "Label120"
         Me.Label120.Size = New System.Drawing.Size(1045, 2)
@@ -9240,13 +8854,13 @@ Partial Class Process_frmMain
         Me.GroupBox4.Controls.Add(Me.txtPlanning_UserDate)
         Me.GroupBox4.Controls.Add(Me.dtpPlanning_UserDate)
         Me.GroupBox4.Controls.Add(Me.grdPlanning_EditedBy)
-        Me.GroupBox4.Enabled = false
-        Me.GroupBox4.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox4.Enabled = False
+        Me.GroupBox4.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox4.Location = New System.Drawing.Point(15, 436)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(867, 132)
         Me.GroupBox4.TabIndex = 874
-        Me.GroupBox4.TabStop = false
+        Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Edited by:"
         '
         'chkPlanning_UserSigned
@@ -9257,11 +8871,11 @@ Partial Class Process_frmMain
         Me.chkPlanning_UserSigned.Size = New System.Drawing.Size(15, 14)
         Me.chkPlanning_UserSigned.TabIndex = 745
         Me.chkPlanning_UserSigned.Tag = "Tester"
-        Me.chkPlanning_UserSigned.UseVisualStyleBackColor = true
+        Me.chkPlanning_UserSigned.UseVisualStyleBackColor = True
         '
         'cmdPlanning_UserSign
         '
-        Me.cmdPlanning_UserSign.AutoSize = true
+        Me.cmdPlanning_UserSign.AutoSize = True
         Me.cmdPlanning_UserSign.BackColor = System.Drawing.Color.Silver
         Me.cmdPlanning_UserSign.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdPlanning_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -9271,11 +8885,11 @@ Partial Class Process_frmMain
         Me.cmdPlanning_UserSign.TabIndex = 746
         Me.cmdPlanning_UserSign.Tag = "Tester"
         Me.cmdPlanning_UserSign.Text = "Sign"
-        Me.cmdPlanning_UserSign.UseVisualStyleBackColor = false
+        Me.cmdPlanning_UserSign.UseVisualStyleBackColor = False
         '
         'txtPlanning_UserName
         '
-        Me.txtPlanning_UserName.Enabled = false
+        Me.txtPlanning_UserName.Enabled = False
         Me.txtPlanning_UserName.Location = New System.Drawing.Point(130, 105)
         Me.txtPlanning_UserName.Name = "txtPlanning_UserName"
         Me.txtPlanning_UserName.Size = New System.Drawing.Size(196, 21)
@@ -9285,7 +8899,7 @@ Partial Class Process_frmMain
         'txtPlanning_UserDate
         '
         Me.txtPlanning_UserDate.BackColor = System.Drawing.Color.White
-        Me.txtPlanning_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtPlanning_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPlanning_UserDate.ForeColor = System.Drawing.Color.Black
         Me.txtPlanning_UserDate.Location = New System.Drawing.Point(25, 105)
         Me.txtPlanning_UserDate.Name = "txtPlanning_UserDate"
@@ -9304,13 +8918,13 @@ Partial Class Process_frmMain
         '
         'grdPlanning_EditedBy
         '
-        DataGridViewCellStyle224.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdPlanning_EditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle224
+        DataGridViewCellStyle77.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdPlanning_EditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle77
         Me.grdPlanning_EditedBy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdPlanning_EditedBy.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn33, Me.DataGridViewTextBoxColumn54})
         Me.grdPlanning_EditedBy.Location = New System.Drawing.Point(25, 23)
         Me.grdPlanning_EditedBy.Name = "grdPlanning_EditedBy"
-        Me.grdPlanning_EditedBy.RowHeadersVisible = false
+        Me.grdPlanning_EditedBy.RowHeadersVisible = False
         Me.grdPlanning_EditedBy.Size = New System.Drawing.Size(823, 74)
         Me.grdPlanning_EditedBy.TabIndex = 741
         '
@@ -9336,37 +8950,37 @@ Partial Class Process_frmMain
         '
         Me.cmdResetSelectedAllNote.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.cmdResetSelectedAllNote.BackColor = System.Drawing.Color.SteelBlue
-        Me.cmdResetSelectedAllNote.BackgroundImage = CType(resources.GetObject("cmdResetSelectedAllNote.BackgroundImage"),System.Drawing.Image)
+        Me.cmdResetSelectedAllNote.BackgroundImage = CType(resources.GetObject("cmdResetSelectedAllNote.BackgroundImage"), System.Drawing.Image)
         Me.cmdResetSelectedAllNote.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.cmdResetSelectedAllNote.Enabled = false
+        Me.cmdResetSelectedAllNote.Enabled = False
         Me.cmdResetSelectedAllNote.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.cmdResetSelectedAllNote.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.cmdResetSelectedAllNote.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdResetSelectedAllNote.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdResetSelectedAllNote.Location = New System.Drawing.Point(295, 179)
         Me.cmdResetSelectedAllNote.Name = "cmdResetSelectedAllNote"
         Me.cmdResetSelectedAllNote.Size = New System.Drawing.Size(32, 24)
         Me.cmdResetSelectedAllNote.TabIndex = 892
-        Me.cmdResetSelectedAllNote.UseVisualStyleBackColor = false
+        Me.cmdResetSelectedAllNote.UseVisualStyleBackColor = False
         '
         'cmdSelectAllNote
         '
         Me.cmdSelectAllNote.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.cmdSelectAllNote.BackColor = System.Drawing.Color.SteelBlue
-        Me.cmdSelectAllNote.BackgroundImage = CType(resources.GetObject("cmdSelectAllNote.BackgroundImage"),System.Drawing.Image)
+        Me.cmdSelectAllNote.BackgroundImage = CType(resources.GetObject("cmdSelectAllNote.BackgroundImage"), System.Drawing.Image)
         Me.cmdSelectAllNote.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.cmdSelectAllNote.Enabled = false
+        Me.cmdSelectAllNote.Enabled = False
         Me.cmdSelectAllNote.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.cmdSelectAllNote.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.cmdSelectAllNote.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdSelectAllNote.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdSelectAllNote.Location = New System.Drawing.Point(295, 149)
         Me.cmdSelectAllNote.Name = "cmdSelectAllNote"
         Me.cmdSelectAllNote.Size = New System.Drawing.Size(32, 24)
         Me.cmdSelectAllNote.TabIndex = 890
-        Me.cmdSelectAllNote.UseVisualStyleBackColor = false
+        Me.cmdSelectAllNote.UseVisualStyleBackColor = False
         '
         'tabShipping
         '
-        Me.tabShipping.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
+        Me.tabShipping.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.tabShipping.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tabShipping.Controls.Add(Me.Label72)
         Me.tabShipping.Controls.Add(Me.GroupBox59)
@@ -9383,7 +8997,7 @@ Partial Class Process_frmMain
         '
         Me.Label72.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label72.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label72.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label72.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label72.Location = New System.Drawing.Point(0, 305)
         Me.Label72.Name = "Label72"
         Me.Label72.Size = New System.Drawing.Size(1050, 2)
@@ -9392,21 +9006,20 @@ Partial Class Process_frmMain
         'GroupBox59
         '
         Me.GroupBox59.Controls.Add(Me.txtShipping_Notes)
-        Me.GroupBox59.Enabled = false
-        Me.GroupBox59.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox59.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox59.Location = New System.Drawing.Point(15, 323)
         Me.GroupBox59.Name = "GroupBox59"
         Me.GroupBox59.Size = New System.Drawing.Size(845, 81)
         Me.GroupBox59.TabIndex = 882
-        Me.GroupBox59.TabStop = false
+        Me.GroupBox59.TabStop = False
         Me.GroupBox59.Text = "Notes:"
         '
         'txtShipping_Notes
         '
-        Me.txtShipping_Notes.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtShipping_Notes.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtShipping_Notes.ForeColor = System.Drawing.Color.Black
         Me.txtShipping_Notes.Location = New System.Drawing.Point(11, 20)
-        Me.txtShipping_Notes.Multiline = true
+        Me.txtShipping_Notes.Multiline = True
         Me.txtShipping_Notes.Name = "txtShipping_Notes"
         Me.txtShipping_Notes.Size = New System.Drawing.Size(827, 47)
         Me.txtShipping_Notes.TabIndex = 750
@@ -9414,24 +9027,24 @@ Partial Class Process_frmMain
         'grpCustSpec_Shipping
         '
         Me.grpCustSpec_Shipping.Controls.Add(Me.grdShipping_CustSpec)
-        Me.grpCustSpec_Shipping.Enabled = false
-        Me.grpCustSpec_Shipping.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.grpCustSpec_Shipping.Enabled = False
+        Me.grpCustSpec_Shipping.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grpCustSpec_Shipping.Location = New System.Drawing.Point(15, 21)
         Me.grpCustSpec_Shipping.Name = "grpCustSpec_Shipping"
         Me.grpCustSpec_Shipping.Size = New System.Drawing.Size(435, 134)
         Me.grpCustSpec_Shipping.TabIndex = 881
-        Me.grpCustSpec_Shipping.TabStop = false
+        Me.grpCustSpec_Shipping.TabStop = False
         Me.grpCustSpec_Shipping.Text = "Customer Specification:"
         '
         'grdShipping_CustSpec
         '
-        DataGridViewCellStyle225.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdShipping_CustSpec.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle225
+        DataGridViewCellStyle78.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdShipping_CustSpec.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle78
         Me.grdShipping_CustSpec.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdShipping_CustSpec.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn60, Me.DataGridViewTextBoxColumn61})
         Me.grdShipping_CustSpec.Location = New System.Drawing.Point(12, 20)
         Me.grdShipping_CustSpec.Name = "grdShipping_CustSpec"
-        Me.grdShipping_CustSpec.RowHeadersVisible = false
+        Me.grdShipping_CustSpec.RowHeadersVisible = False
         Me.grdShipping_CustSpec.Size = New System.Drawing.Size(406, 108)
         Me.grdShipping_CustSpec.TabIndex = 684
         '
@@ -9451,7 +9064,7 @@ Partial Class Process_frmMain
         '
         Me.Label139.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Label139.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label139.Font = New System.Drawing.Font("Arial", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label139.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label139.Location = New System.Drawing.Point(0, 421)
         Me.Label139.Name = "Label139"
         Me.Label139.Size = New System.Drawing.Size(1045, 2)
@@ -9465,13 +9078,13 @@ Partial Class Process_frmMain
         Me.GroupBox28.Controls.Add(Me.txtShipping_UserDate)
         Me.GroupBox28.Controls.Add(Me.dtpShipping_UserDate)
         Me.GroupBox28.Controls.Add(Me.grdShipping_EditedBy)
-        Me.GroupBox28.Enabled = false
-        Me.GroupBox28.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox28.Enabled = False
+        Me.GroupBox28.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox28.Location = New System.Drawing.Point(15, 436)
         Me.GroupBox28.Name = "GroupBox28"
         Me.GroupBox28.Size = New System.Drawing.Size(867, 132)
         Me.GroupBox28.TabIndex = 875
-        Me.GroupBox28.TabStop = false
+        Me.GroupBox28.TabStop = False
         Me.GroupBox28.Text = "Edited by:"
         '
         'chkShipping_UserSigned
@@ -9482,11 +9095,11 @@ Partial Class Process_frmMain
         Me.chkShipping_UserSigned.Size = New System.Drawing.Size(15, 14)
         Me.chkShipping_UserSigned.TabIndex = 745
         Me.chkShipping_UserSigned.Tag = "Tester"
-        Me.chkShipping_UserSigned.UseVisualStyleBackColor = true
+        Me.chkShipping_UserSigned.UseVisualStyleBackColor = True
         '
         'cmdShipping_UserSign_Face
         '
-        Me.cmdShipping_UserSign_Face.AutoSize = true
+        Me.cmdShipping_UserSign_Face.AutoSize = True
         Me.cmdShipping_UserSign_Face.BackColor = System.Drawing.Color.Silver
         Me.cmdShipping_UserSign_Face.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdShipping_UserSign_Face.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -9496,11 +9109,11 @@ Partial Class Process_frmMain
         Me.cmdShipping_UserSign_Face.TabIndex = 746
         Me.cmdShipping_UserSign_Face.Tag = "Tester"
         Me.cmdShipping_UserSign_Face.Text = "Sign"
-        Me.cmdShipping_UserSign_Face.UseVisualStyleBackColor = false
+        Me.cmdShipping_UserSign_Face.UseVisualStyleBackColor = False
         '
         'txtShipping_UserName
         '
-        Me.txtShipping_UserName.Enabled = false
+        Me.txtShipping_UserName.Enabled = False
         Me.txtShipping_UserName.Location = New System.Drawing.Point(130, 105)
         Me.txtShipping_UserName.Name = "txtShipping_UserName"
         Me.txtShipping_UserName.Size = New System.Drawing.Size(196, 21)
@@ -9510,7 +9123,7 @@ Partial Class Process_frmMain
         'txtShipping_UserDate
         '
         Me.txtShipping_UserDate.BackColor = System.Drawing.Color.White
-        Me.txtShipping_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtShipping_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtShipping_UserDate.ForeColor = System.Drawing.Color.Black
         Me.txtShipping_UserDate.Location = New System.Drawing.Point(25, 105)
         Me.txtShipping_UserDate.Name = "txtShipping_UserDate"
@@ -9529,13 +9142,13 @@ Partial Class Process_frmMain
         '
         'grdShipping_EditedBy
         '
-        DataGridViewCellStyle226.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdShipping_EditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle226
+        DataGridViewCellStyle79.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdShipping_EditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle79
         Me.grdShipping_EditedBy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdShipping_EditedBy.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn55, Me.DataGridViewTextBoxColumn56, Me.DataGridViewTextBoxColumn57})
         Me.grdShipping_EditedBy.Location = New System.Drawing.Point(25, 23)
         Me.grdShipping_EditedBy.Name = "grdShipping_EditedBy"
-        Me.grdShipping_EditedBy.RowHeadersVisible = false
+        Me.grdShipping_EditedBy.RowHeadersVisible = False
         Me.grdShipping_EditedBy.Size = New System.Drawing.Size(823, 74)
         Me.grdShipping_EditedBy.TabIndex = 741
         '
@@ -9559,7 +9172,7 @@ Partial Class Process_frmMain
         '
         'tabKeyChar
         '
-        Me.tabKeyChar.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
+        Me.tabKeyChar.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.tabKeyChar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tabKeyChar.Controls.Add(Me.grpKeyChar)
         Me.tabKeyChar.Location = New System.Drawing.Point(4, 40)
@@ -9571,23 +9184,23 @@ Partial Class Process_frmMain
         'grpKeyChar
         '
         Me.grpKeyChar.Controls.Add(Me.grdDesign_KeyChar)
-        Me.grpKeyChar.Enabled = false
-        Me.grpKeyChar.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.grpKeyChar.Enabled = False
+        Me.grpKeyChar.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grpKeyChar.Location = New System.Drawing.Point(34, 23)
         Me.grpKeyChar.Name = "grpKeyChar"
         Me.grpKeyChar.Size = New System.Drawing.Size(794, 365)
         Me.grpKeyChar.TabIndex = 798
-        Me.grpKeyChar.TabStop = false
+        Me.grpKeyChar.TabStop = False
         '
         'grdDesign_KeyChar
         '
-        DataGridViewCellStyle227.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdDesign_KeyChar.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle227
+        DataGridViewCellStyle80.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdDesign_KeyChar.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle80
         Me.grdDesign_KeyChar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdDesign_KeyChar.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewComboBoxColumn13, Me.DataGridViewTextBoxColumn98, Me.DataGridViewTextBoxColumn102, Me.Column25})
         Me.grdDesign_KeyChar.Location = New System.Drawing.Point(13, 20)
         Me.grdDesign_KeyChar.Name = "grdDesign_KeyChar"
-        Me.grdDesign_KeyChar.RowHeadersVisible = false
+        Me.grdDesign_KeyChar.RowHeadersVisible = False
         Me.grdDesign_KeyChar.Size = New System.Drawing.Size(766, 329)
         Me.grdDesign_KeyChar.TabIndex = 684
         '
@@ -9620,7 +9233,7 @@ Partial Class Process_frmMain
         '
         'tabIssue
         '
-        Me.tabIssue.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
+        Me.tabIssue.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.tabIssue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tabIssue.Controls.Add(Me.cmdDel_Issue)
         Me.tabIssue.Controls.Add(Me.grdIssueComment)
@@ -9633,23 +9246,23 @@ Partial Class Process_frmMain
         'cmdDel_Issue
         '
         Me.cmdDel_Issue.BackColor = System.Drawing.Color.Silver
-        Me.cmdDel_Issue.Enabled = false
-        Me.cmdDel_Issue.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.cmdDel_Issue.Enabled = False
+        Me.cmdDel_Issue.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdDel_Issue.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdDel_Issue.Location = New System.Drawing.Point(20, 523)
         Me.cmdDel_Issue.Name = "cmdDel_Issue"
         Me.cmdDel_Issue.Size = New System.Drawing.Size(103, 30)
         Me.cmdDel_Issue.TabIndex = 743
         Me.cmdDel_Issue.Text = "Delete Record"
-        Me.cmdDel_Issue.UseVisualStyleBackColor = false
+        Me.cmdDel_Issue.UseVisualStyleBackColor = False
         '
         'grdIssueComment
         '
-        DataGridViewCellStyle228.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdIssueComment.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle228
+        DataGridViewCellStyle81.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdIssueComment.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle81
         Me.grdIssueComment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdIssueComment.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn100, Me.DataGridViewTextBoxColumn99, Me.Column10, Me.Column12, Me.Column14, Me.Column16, Me.Column13, Me.Column15, Me.Column17})
-        Me.grdIssueComment.Enabled = false
+        Me.grdIssueComment.Enabled = False
         Me.grdIssueComment.Location = New System.Drawing.Point(20, 29)
         Me.grdIssueComment.Name = "grdIssueComment"
         Me.grdIssueComment.RowHeadersWidth = 25
@@ -9716,7 +9329,7 @@ Partial Class Process_frmMain
         '
         'tabApproval
         '
-        Me.tabApproval.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
+        Me.tabApproval.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.tabApproval.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tabApproval.Controls.Add(Me.cmdApproval_Sign)
         Me.tabApproval.Controls.Add(Me.GroupBox63)
@@ -9729,9 +9342,8 @@ Partial Class Process_frmMain
         '
         'cmdApproval_Sign
         '
-        Me.cmdApproval_Sign.AutoSize = true
+        Me.cmdApproval_Sign.AutoSize = True
         Me.cmdApproval_Sign.BackColor = System.Drawing.Color.Silver
-        Me.cmdApproval_Sign.Enabled = false
         Me.cmdApproval_Sign.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdApproval_Sign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdApproval_Sign.Location = New System.Drawing.Point(818, 59)
@@ -9740,32 +9352,31 @@ Partial Class Process_frmMain
         Me.cmdApproval_Sign.TabIndex = 889
         Me.cmdApproval_Sign.Tag = "Tester"
         Me.cmdApproval_Sign.Text = "Sign"
-        Me.cmdApproval_Sign.UseVisualStyleBackColor = false
+        Me.cmdApproval_Sign.UseVisualStyleBackColor = False
         '
         'GroupBox63
         '
         Me.GroupBox63.Controls.Add(Me.grdApproval_Attendees)
-        Me.GroupBox63.Enabled = false
-        Me.GroupBox63.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.GroupBox63.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox63.Location = New System.Drawing.Point(26, 25)
         Me.GroupBox63.Name = "GroupBox63"
         Me.GroupBox63.Size = New System.Drawing.Size(751, 459)
         Me.GroupBox63.TabIndex = 888
-        Me.GroupBox63.TabStop = false
+        Me.GroupBox63.TabStop = False
         Me.GroupBox63.Text = "Attendees:"
         '
         'grdApproval_Attendees
         '
-        DataGridViewCellStyle229.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.grdApproval_Attendees.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle229
-        DataGridViewCellStyle230.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle230.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle230.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        DataGridViewCellStyle230.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle230.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle230.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle230.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdApproval_Attendees.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle230
+        DataGridViewCellStyle82.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdApproval_Attendees.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle82
+        DataGridViewCellStyle83.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle83.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle83.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle83.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle83.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle83.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle83.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdApproval_Attendees.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle83
         Me.grdApproval_Attendees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdApproval_Attendees.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewComboBoxColumn16, Me.DataGridViewTextBoxColumn62, Me.Column9, Me.Column20, Me.Column21})
         Me.grdApproval_Attendees.Location = New System.Drawing.Point(14, 20)
@@ -9775,18 +9386,18 @@ Partial Class Process_frmMain
         '
         'DataGridViewComboBoxColumn16
         '
-        DataGridViewCellStyle231.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.DataGridViewComboBoxColumn16.DefaultCellStyle = DataGridViewCellStyle231
+        DataGridViewCellStyle84.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.DataGridViewComboBoxColumn16.DefaultCellStyle = DataGridViewCellStyle84
         Me.DataGridViewComboBoxColumn16.HeaderText = "Dept. Name"
         Me.DataGridViewComboBoxColumn16.Name = "DataGridViewComboBoxColumn16"
-        Me.DataGridViewComboBoxColumn16.ReadOnly = true
+        Me.DataGridViewComboBoxColumn16.ReadOnly = True
         Me.DataGridViewComboBoxColumn16.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridViewComboBoxColumn16.Width = 150
         '
         'DataGridViewTextBoxColumn62
         '
-        DataGridViewCellStyle232.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.DataGridViewTextBoxColumn62.DefaultCellStyle = DataGridViewCellStyle232
+        DataGridViewCellStyle85.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.DataGridViewTextBoxColumn62.DefaultCellStyle = DataGridViewCellStyle85
         Me.DataGridViewTextBoxColumn62.HeaderText = "Name"
         Me.DataGridViewTextBoxColumn62.Name = "DataGridViewTextBoxColumn62"
         Me.DataGridViewTextBoxColumn62.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
@@ -9797,14 +9408,14 @@ Partial Class Process_frmMain
         '
         Me.Column9.HeaderText = "Title"
         Me.Column9.Name = "Column9"
-        Me.Column9.ReadOnly = true
+        Me.Column9.ReadOnly = True
         Me.Column9.Width = 150
         '
         'Column20
         '
         Me.Column20.HeaderText = "Signature"
         Me.Column20.Name = "Column20"
-        Me.Column20.ReadOnly = true
+        Me.Column20.ReadOnly = True
         Me.Column20.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.Column20.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         Me.Column20.Width = 70
@@ -9813,7 +9424,7 @@ Partial Class Process_frmMain
         '
         Me.Column21.HeaderText = "Date"
         Me.Column21.Name = "Column21"
-        Me.Column21.ReadOnly = true
+        Me.Column21.ReadOnly = True
         '
         'menuStrip1
         '
@@ -9827,8 +9438,8 @@ Partial Class Process_frmMain
         '
         'TabViewToolStripMenuItem
         '
-        Me.TabViewToolStripMenuItem.Enabled = false
-        Me.TabViewToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 9!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.TabViewToolStripMenuItem.Enabled = False
+        Me.TabViewToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TabViewToolStripMenuItem.Name = "TabViewToolStripMenuItem"
         Me.TabViewToolStripMenuItem.Size = New System.Drawing.Size(76, 20)
         Me.TabViewToolStripMenuItem.Text = "Tab View"
@@ -9837,234 +9448,685 @@ Partial Class Process_frmMain
         '
         Me.openFileDialog1.FileName = "OpenFileDialog1"
         '
+        'DataGridViewTextBoxColumn8
+        '
+        Me.DataGridViewTextBoxColumn8.HeaderText = "Year"
+        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
+        Me.DataGridViewTextBoxColumn8.Width = 60
+        '
+        'DataGridViewComboBoxColumn1
+        '
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewComboBoxColumn1.DefaultCellStyle = DataGridViewCellStyle6
+        Me.DataGridViewComboBoxColumn1.HeaderText = "Qty"
+        Me.DataGridViewComboBoxColumn1.Name = "DataGridViewComboBoxColumn1"
+        Me.DataGridViewComboBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewComboBoxColumn1.Width = 40
+        '
+        'DataGridViewTextBoxColumn9
+        '
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn9.DefaultCellStyle = DataGridViewCellStyle7
+        Me.DataGridViewTextBoxColumn9.HeaderText = "Price ($)"
+        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
+        Me.DataGridViewTextBoxColumn9.Width = 110
+        '
+        'Column4
+        '
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column4.DefaultCellStyle = DataGridViewCellStyle8
+        Me.Column4.HeaderText = "Total ($)"
+        Me.Column4.Name = "Column4"
+        Me.Column4.Width = 110
+        '
+        'DataGridViewTextBoxColumn71
+        '
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.DataGridViewTextBoxColumn71.DefaultCellStyle = DataGridViewCellStyle15
+        Me.DataGridViewTextBoxColumn71.HeaderText = "Description"
+        Me.DataGridViewTextBoxColumn71.Items.AddRange(New Object() {"X-Ray", "FPI", "Outside Cleaning", "Semi-Quant. Spectro", "Outside Heat Treat"})
+        Me.DataGridViewTextBoxColumn71.Name = "DataGridViewTextBoxColumn71"
+        Me.DataGridViewTextBoxColumn71.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn71.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.DataGridViewTextBoxColumn71.Width = 150
+        '
+        'Column18
+        '
+        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.Column18.DefaultCellStyle = DataGridViewCellStyle16
+        Me.Column18.HeaderText = "Spec"
+        Me.Column18.Name = "Column18"
+        Me.Column18.Width = 200
+        '
+        'Column19
+        '
+        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column19.DefaultCellStyle = DataGridViewCellStyle17
+        Me.Column19.HeaderText = "Lead Time (wks)"
+        Me.Column19.Name = "Column19"
+        Me.Column19.Width = 90
+        '
+        'DataGridViewTextBoxColumn72
+        '
+        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn72.DefaultCellStyle = DataGridViewCellStyle18
+        Me.DataGridViewTextBoxColumn72.HeaderText = "Cost ($)"
+        Me.DataGridViewTextBoxColumn72.Name = "DataGridViewTextBoxColumn72"
+        Me.DataGridViewTextBoxColumn72.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn72.Width = 80
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.HeaderText = ""
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.Width = 90
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn5.DefaultCellStyle = DataGridViewCellStyle23
+        Me.DataGridViewTextBoxColumn5.HeaderText = "Assembly"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.Width = 80
+        '
+        'DataGridViewTextBoxColumn30
+        '
+        DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn30.DefaultCellStyle = DataGridViewCellStyle24
+        Me.DataGridViewTextBoxColumn30.HeaderText = "Min"
+        Me.DataGridViewTextBoxColumn30.Name = "DataGridViewTextBoxColumn30"
+        Me.DataGridViewTextBoxColumn30.Width = 80
+        '
+        'DataGridViewTextBoxColumn31
+        '
+        DataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn31.DefaultCellStyle = DataGridViewCellStyle25
+        Me.DataGridViewTextBoxColumn31.HeaderText = "Max"
+        Me.DataGridViewTextBoxColumn31.Name = "DataGridViewTextBoxColumn31"
+        Me.DataGridViewTextBoxColumn31.Width = 80
+        '
+        'DataGridViewTextBoxColumn32
+        '
+        DataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn32.DefaultCellStyle = DataGridViewCellStyle26
+        Me.DataGridViewTextBoxColumn32.HeaderText = "Operating"
+        Me.DataGridViewTextBoxColumn32.Name = "DataGridViewTextBoxColumn32"
+        Me.DataGridViewTextBoxColumn32.Width = 80
+        '
+        'DataGridViewTextBoxColumn15
+        '
+        Me.DataGridViewTextBoxColumn15.HeaderText = ""
+        Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
+        Me.DataGridViewTextBoxColumn15.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn15.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.DataGridViewTextBoxColumn15.Width = 90
+        '
+        'DataGridViewTextBoxColumn17
+        '
+        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn17.DefaultCellStyle = DataGridViewCellStyle20
+        Me.DataGridViewTextBoxColumn17.HeaderText = "Min"
+        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
+        Me.DataGridViewTextBoxColumn17.Width = 80
+        '
+        'DataGridViewTextBoxColumn42
+        '
+        DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn42.DefaultCellStyle = DataGridViewCellStyle21
+        Me.DataGridViewTextBoxColumn42.HeaderText = "Max"
+        Me.DataGridViewTextBoxColumn42.Name = "DataGridViewTextBoxColumn42"
+        Me.DataGridViewTextBoxColumn42.Width = 80
+        '
+        'DataGridViewComboBoxColumn5
+        '
+        Me.DataGridViewComboBoxColumn5.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
+        Me.DataGridViewComboBoxColumn5.HeaderText = "Name"
+        Me.DataGridViewComboBoxColumn5.Items.AddRange(New Object() {"Depth", "Axial L", "Radial Wid", "ID", "OD", "Corner Radius"})
+        Me.DataGridViewComboBoxColumn5.Name = "DataGridViewComboBoxColumn5"
+        Me.DataGridViewComboBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewComboBoxColumn5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.DataGridViewComboBoxColumn5.Width = 120
+        '
+        'DataGridViewTextBoxColumn77
+        '
+        DataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn77.DefaultCellStyle = DataGridViewCellStyle29
+        Me.DataGridViewTextBoxColumn77.HeaderText = "Assy. Min"
+        Me.DataGridViewTextBoxColumn77.Name = "DataGridViewTextBoxColumn77"
+        Me.DataGridViewTextBoxColumn77.Width = 80
+        '
+        'DataGridViewTextBoxColumn78
+        '
+        DataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn78.DefaultCellStyle = DataGridViewCellStyle30
+        Me.DataGridViewTextBoxColumn78.HeaderText = "Assy. Max"
+        Me.DataGridViewTextBoxColumn78.Name = "DataGridViewTextBoxColumn78"
+        Me.DataGridViewTextBoxColumn78.Width = 80
+        '
+        'DataGridViewTextBoxColumn79
+        '
+        DataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn79.DefaultCellStyle = DataGridViewCellStyle31
+        Me.DataGridViewTextBoxColumn79.HeaderText = "Oper. Min"
+        Me.DataGridViewTextBoxColumn79.Name = "DataGridViewTextBoxColumn79"
+        Me.DataGridViewTextBoxColumn79.Width = 80
+        '
+        'DataGridViewTextBoxColumn80
+        '
+        DataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn80.DefaultCellStyle = DataGridViewCellStyle32
+        Me.DataGridViewTextBoxColumn80.HeaderText = "Oper. Max"
+        Me.DataGridViewTextBoxColumn80.Name = "DataGridViewTextBoxColumn80"
+        Me.DataGridViewTextBoxColumn80.Width = 80
+        '
+        'DataGridViewComboBoxColumn6
+        '
+        Me.DataGridViewComboBoxColumn6.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
+        Me.DataGridViewComboBoxColumn6.HeaderText = "Name"
+        Me.DataGridViewComboBoxColumn6.Items.AddRange(New Object() {"Depth", "Axial L", "Radial Wid", "ID", "OD", "Corner Radius"})
+        Me.DataGridViewComboBoxColumn6.Name = "DataGridViewComboBoxColumn6"
+        Me.DataGridViewComboBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewComboBoxColumn6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.DataGridViewComboBoxColumn6.Width = 120
+        '
+        'DataGridViewTextBoxColumn81
+        '
+        DataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn81.DefaultCellStyle = DataGridViewCellStyle34
+        Me.DataGridViewTextBoxColumn81.HeaderText = "Assy. Min"
+        Me.DataGridViewTextBoxColumn81.Name = "DataGridViewTextBoxColumn81"
+        Me.DataGridViewTextBoxColumn81.Width = 80
+        '
+        'DataGridViewTextBoxColumn82
+        '
+        DataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn82.DefaultCellStyle = DataGridViewCellStyle35
+        Me.DataGridViewTextBoxColumn82.HeaderText = "Assy. Max"
+        Me.DataGridViewTextBoxColumn82.Name = "DataGridViewTextBoxColumn82"
+        Me.DataGridViewTextBoxColumn82.Width = 80
+        '
+        'DataGridViewTextBoxColumn83
+        '
+        DataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn83.DefaultCellStyle = DataGridViewCellStyle36
+        Me.DataGridViewTextBoxColumn83.HeaderText = "Oper. Min"
+        Me.DataGridViewTextBoxColumn83.Name = "DataGridViewTextBoxColumn83"
+        Me.DataGridViewTextBoxColumn83.Width = 80
+        '
+        'DataGridViewTextBoxColumn84
+        '
+        DataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn84.DefaultCellStyle = DataGridViewCellStyle37
+        Me.DataGridViewTextBoxColumn84.HeaderText = "Oper. Max"
+        Me.DataGridViewTextBoxColumn84.Name = "DataGridViewTextBoxColumn84"
+        Me.DataGridViewTextBoxColumn84.Width = 80
+        '
+        'DataGridViewTextBoxColumn18
+        '
+        Me.DataGridViewTextBoxColumn18.HeaderText = "Name"
+        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
+        Me.DataGridViewTextBoxColumn18.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn18.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.DataGridViewTextBoxColumn18.Width = 120
+        '
+        'DataGridViewTextBoxColumn19
+        '
+        DataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn19.DefaultCellStyle = DataGridViewCellStyle44
+        Me.DataGridViewTextBoxColumn19.HeaderText = "Min"
+        Me.DataGridViewTextBoxColumn19.Name = "DataGridViewTextBoxColumn19"
+        Me.DataGridViewTextBoxColumn19.Width = 80
+        '
+        'Column1
+        '
+        DataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column1.DefaultCellStyle = DataGridViewCellStyle45
+        Me.Column1.HeaderText = "Nom"
+        Me.Column1.Name = "Column1"
+        Me.Column1.Width = 80
+        '
+        'DataGridViewTextBoxColumn20
+        '
+        DataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn20.DefaultCellStyle = DataGridViewCellStyle46
+        Me.DataGridViewTextBoxColumn20.HeaderText = "Max"
+        Me.DataGridViewTextBoxColumn20.Name = "DataGridViewTextBoxColumn20"
+        Me.DataGridViewTextBoxColumn20.Width = 80
+        '
+        'DataGridViewTextBoxColumn7
+        '
+        Me.DataGridViewTextBoxColumn7.HeaderText = "Part #"
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        '
+        'DataGridViewTextBoxColumn12
+        '
+        Me.DataGridViewTextBoxColumn12.HeaderText = "Description"
+        Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
+        Me.DataGridViewTextBoxColumn12.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.DataGridViewTextBoxColumn12.Width = 180
+        '
+        'Column2
+        '
+        Me.Column2.HeaderText = "Type"
+        Me.Column2.Name = "Column2"
+        Me.Column2.Width = 200
+        '
+        'Column7
+        '
+        Me.Column7.HeaderText = "Status"
+        Me.Column7.Name = "Column7"
+        '
+        'Column6
+        '
+        DataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column6.DefaultCellStyle = DataGridViewCellStyle50
+        Me.Column6.HeaderText = "Lead Time (wks)"
+        Me.Column6.Name = "Column6"
+        Me.Column6.Width = 90
+        '
+        'Column8
+        '
+        Me.Column8.HeaderText = "Design Responsibility"
+        Me.Column8.Name = "Column8"
+        Me.Column8.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
+        'DataGridViewTextBoxColumn64
+        '
+        Me.DataGridViewTextBoxColumn64.HeaderText = "Item"
+        Me.DataGridViewTextBoxColumn64.Name = "DataGridViewTextBoxColumn64"
+        Me.DataGridViewTextBoxColumn64.Width = 200
+        '
+        'Column5
+        '
+        DataGridViewCellStyle58.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column5.DefaultCellStyle = DataGridViewCellStyle58
+        Me.Column5.HeaderText = "Est. Qty"
+        Me.Column5.Name = "Column5"
+        '
+        'DataGridViewComboBoxColumn3
+        '
+        Me.DataGridViewComboBoxColumn3.HeaderText = "Status"
+        Me.DataGridViewComboBoxColumn3.Items.AddRange(New Object() {"Inventory", "Make", "Buy"})
+        Me.DataGridViewComboBoxColumn3.Name = "DataGridViewComboBoxColumn3"
+        Me.DataGridViewComboBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewComboBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
+        'DataGridViewTextBoxColumn65
+        '
+        DataGridViewCellStyle59.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn65.DefaultCellStyle = DataGridViewCellStyle59
+        Me.DataGridViewTextBoxColumn65.HeaderText = "Lead Time (wks)"
+        Me.DataGridViewTextBoxColumn65.Name = "DataGridViewTextBoxColumn65"
+        Me.DataGridViewTextBoxColumn65.Width = 90
+        '
+        'DataGridViewTextBoxColumn90
+        '
+        Me.DataGridViewTextBoxColumn90.HeaderText = "Part #"
+        Me.DataGridViewTextBoxColumn90.Name = "DataGridViewTextBoxColumn90"
+        '
+        'DataGridViewComboBoxColumn11
+        '
+        Me.DataGridViewComboBoxColumn11.HeaderText = "Description"
+        Me.DataGridViewComboBoxColumn11.Name = "DataGridViewComboBoxColumn11"
+        Me.DataGridViewComboBoxColumn11.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewComboBoxColumn11.Width = 180
+        '
+        'DataGridViewComboBoxColumn12
+        '
+        Me.DataGridViewComboBoxColumn12.HeaderText = "Type"
+        Me.DataGridViewComboBoxColumn12.Name = "DataGridViewComboBoxColumn12"
+        Me.DataGridViewComboBoxColumn12.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewComboBoxColumn12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.DataGridViewComboBoxColumn12.Width = 200
+        '
+        'DataGridViewTextBoxColumn91
+        '
+        DataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn91.DefaultCellStyle = DataGridViewCellStyle54
+        Me.DataGridViewTextBoxColumn91.HeaderText = "Lead Time (wks)"
+        Me.DataGridViewTextBoxColumn91.Name = "DataGridViewTextBoxColumn91"
+        Me.DataGridViewTextBoxColumn91.Width = 90
+        '
+        'DataGridViewComboBoxColumn14
+        '
+        Me.DataGridViewComboBoxColumn14.HeaderText = "Design Responsibility"
+        Me.DataGridViewComboBoxColumn14.Name = "DataGridViewComboBoxColumn14"
+        Me.DataGridViewComboBoxColumn14.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        '
+        'DataGridViewTextBoxColumn92
+        '
+        Me.DataGridViewTextBoxColumn92.HeaderText = "Drawing #"
+        Me.DataGridViewTextBoxColumn92.Name = "DataGridViewTextBoxColumn92"
+        Me.DataGridViewTextBoxColumn92.Width = 106
+        '
+        'DataGridViewTextBoxColumn93
+        '
+        Me.DataGridViewTextBoxColumn93.HeaderText = "Description"
+        Me.DataGridViewTextBoxColumn93.Name = "DataGridViewTextBoxColumn93"
+        Me.DataGridViewTextBoxColumn93.Width = 370
+        '
+        'DataGridViewTextBoxColumn94
+        '
+        DataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn94.DefaultCellStyle = DataGridViewCellStyle52
+        Me.DataGridViewTextBoxColumn94.HeaderText = "Lead Time (wks)"
+        Me.DataGridViewTextBoxColumn94.Name = "DataGridViewTextBoxColumn94"
+        Me.DataGridViewTextBoxColumn94.Width = 90
+        '
+        'DataGridViewComboBoxColumn8
+        '
+        DataGridViewCellStyle62.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.DataGridViewComboBoxColumn8.DefaultCellStyle = DataGridViewCellStyle62
+        Me.DataGridViewComboBoxColumn8.HeaderText = "Description"
+        Me.DataGridViewComboBoxColumn8.Items.AddRange(New Object() {"X-Ray", "FPI", "Outside Cleaning", "Semi-Quant. Spectro"})
+        Me.DataGridViewComboBoxColumn8.Name = "DataGridViewComboBoxColumn8"
+        Me.DataGridViewComboBoxColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewComboBoxColumn8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.DataGridViewComboBoxColumn8.Width = 150
+        '
+        'DataGridViewTextBoxColumn74
+        '
+        DataGridViewCellStyle63.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.DataGridViewTextBoxColumn74.DefaultCellStyle = DataGridViewCellStyle63
+        Me.DataGridViewTextBoxColumn74.HeaderText = "Spec"
+        Me.DataGridViewTextBoxColumn74.Name = "DataGridViewTextBoxColumn74"
+        Me.DataGridViewTextBoxColumn74.Width = 200
+        '
+        'DataGridViewTextBoxColumn75
+        '
+        DataGridViewCellStyle64.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn75.DefaultCellStyle = DataGridViewCellStyle64
+        Me.DataGridViewTextBoxColumn75.HeaderText = "Lead Time (wks)"
+        Me.DataGridViewTextBoxColumn75.Name = "DataGridViewTextBoxColumn75"
+        Me.DataGridViewTextBoxColumn75.Width = 90
+        '
+        'DataGridViewTextBoxColumn76
+        '
+        DataGridViewCellStyle65.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn76.DefaultCellStyle = DataGridViewCellStyle65
+        Me.DataGridViewTextBoxColumn76.HeaderText = "Cost ($)"
+        Me.DataGridViewTextBoxColumn76.Name = "DataGridViewTextBoxColumn76"
+        Me.DataGridViewTextBoxColumn76.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn76.Width = 80
+        '
+        'DataGridViewTextBoxColumn13
+        '
+        Me.DataGridViewTextBoxColumn13.HeaderText = "Drawing #"
+        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
+        Me.DataGridViewTextBoxColumn13.Width = 106
+        '
+        'DataGridViewTextBoxColumn14
+        '
+        Me.DataGridViewTextBoxColumn14.HeaderText = "Description"
+        Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
+        Me.DataGridViewTextBoxColumn14.Width = 420
+        '
+        'DataGridViewTextBoxColumn21
+        '
+        Me.DataGridViewTextBoxColumn21.HeaderText = "Status"
+        Me.DataGridViewTextBoxColumn21.Items.AddRange(New Object() {"Inventory", "Make", "Buy"})
+        Me.DataGridViewTextBoxColumn21.Name = "DataGridViewTextBoxColumn21"
+        Me.DataGridViewTextBoxColumn21.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn21.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.DataGridViewTextBoxColumn21.Width = 90
+        '
+        'Column11
+        '
+        DataGridViewCellStyle70.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column11.DefaultCellStyle = DataGridViewCellStyle70
+        Me.Column11.HeaderText = "Lead Time (wks)"
+        Me.Column11.Name = "Column11"
+        Me.Column11.Width = 90
+        '
+        'DataGridViewTextBoxColumn22
+        '
+        Me.DataGridViewTextBoxColumn22.HeaderText = "Parent Part #"
+        Me.DataGridViewTextBoxColumn22.Name = "DataGridViewTextBoxColumn22"
+        Me.DataGridViewTextBoxColumn22.Width = 140
+        '
+        'Column3
+        '
+        Me.Column3.HeaderText = "Child Part #"
+        Me.Column3.Name = "Column3"
+        Me.Column3.Width = 140
+        '
+        'DataGridViewTextBoxColumn23
+        '
+        DataGridViewCellStyle68.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn23.DefaultCellStyle = DataGridViewCellStyle68
+        Me.DataGridViewTextBoxColumn23.HeaderText = "Qty"
+        Me.DataGridViewTextBoxColumn23.Name = "DataGridViewTextBoxColumn23"
+        '
         'Process_frmMain
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7!, 13!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1114, 672)
-        Me.ControlBox = false
+        Me.ClientSize = New System.Drawing.Size(1114, 851)
+        Me.ControlBox = False
         Me.Controls.Add(Me.pnlPanel1)
         Me.Controls.Add(Me.lblBorder)
-        Me.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MainMenuStrip = Me.menuStrip1
         Me.Name = "Process_frmMain"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "SealProcess 1.1: Main Form                                                       "& _ 
+        Me.Text = "SealProcess 1.2: Main Form                                                       " &
     "Metalic Seal: Engineering Process Management System"
-        Me.pnlPanel1.ResumeLayout(false)
-        Me.pnlPanel1.PerformLayout
-        Me.GroupBox43.ResumeLayout(false)
-        Me.GroupBox37.ResumeLayout(false)
-        Me.GroupBox37.PerformLayout
-        Me.GroupBox1.ResumeLayout(false)
-        Me.GroupBox1.PerformLayout
-        Me.grpParker.ResumeLayout(false)
-        Me.grpParker.PerformLayout
-        Me.GroupBox7.ResumeLayout(false)
-        Me.GroupBox7.PerformLayout
-        Me.TabControl1.ResumeLayout(false)
-        Me.tabMarketingInfo.ResumeLayout(false)
-        Me.TabControl3.ResumeLayout(false)
-        Me.TabPage3.ResumeLayout(false)
-        Me.GroupBox44.ResumeLayout(false)
-        Me.GroupBox44.PerformLayout
-        Me.GroupBox9.ResumeLayout(false)
-        Me.GroupBox9.PerformLayout
-        Me.grpQuote.ResumeLayout(false)
-        CType(Me.grdQuote,System.ComponentModel.ISupportInitialize).EndInit
-        Me.GroupBox13.ResumeLayout(false)
-        Me.GroupBox13.PerformLayout
-        Me.grpGroupBox10.ResumeLayout(false)
-        Me.grpGroupBox10.PerformLayout
-        Me.GroupBox8.ResumeLayout(false)
-        CType(Me.grdCustContact,System.ComponentModel.ISupportInitialize).EndInit
-        Me.grpGroupBox2.ResumeLayout(false)
-        Me.grpGroupBox2.PerformLayout
-        Me.TabPage6.ResumeLayout(false)
-        Me.GroupBox17.ResumeLayout(false)
-        Me.GroupBox17.PerformLayout
-        CType(Me.grdPreOrderEditedBy,System.ComponentModel.ISupportInitialize).EndInit
-        Me.grpPreOrder_RiskAna.ResumeLayout(false)
-        CType(Me.grdPreOrderRiskAna,System.ComponentModel.ISupportInitialize).EndInit
-        Me.GroupBox15.ResumeLayout(false)
-        Me.GroupBox15.PerformLayout
-        Me.GroupBox36.ResumeLayout(false)
-        Me.GroupBox36.PerformLayout
-        Me.GroupBox27.ResumeLayout(false)
-        CType(Me.grdPreOrder_SalesData,System.ComponentModel.ISupportInitialize).EndInit
-        Me.tabExport.ResumeLayout(false)
-        Me.tabExport.PerformLayout
-        Me.GroupBox14.ResumeLayout(false)
-        Me.GroupBox14.PerformLayout
-        CType(Me.grdExport_EditedBy,System.ComponentModel.ISupportInitialize).EndInit
-        Me.tabOrder.ResumeLayout(false)
-        Me.tabOrder.PerformLayout
-        Me.GroupBox53.ResumeLayout(false)
-        CType(Me.grdOrdEntry_CustContact,System.ComponentModel.ISupportInitialize).EndInit
-        Me.GroupBox52.ResumeLayout(false)
-        Me.GroupBox52.PerformLayout
-        Me.GroupBox51.ResumeLayout(false)
-        Me.GroupBox51.PerformLayout
-        Me.GroupBox31.ResumeLayout(false)
-        Me.GroupBox31.PerformLayout
-        Me.GroupBox18.ResumeLayout(false)
-        Me.GroupBox18.PerformLayout
-        Me.GroupBox22.ResumeLayout(false)
-        Me.GroupBox22.PerformLayout
-        CType(Me.grdOrdEntry_EditedBy,System.ComponentModel.ISupportInitialize).EndInit
-        Me.GroupBox21.ResumeLayout(false)
-        Me.GroupBox21.PerformLayout
-        Me.GroupBox19.ResumeLayout(false)
-        Me.GroupBox19.PerformLayout
-        Me.tabCosting.ResumeLayout(false)
-        Me.GroupBox47.ResumeLayout(false)
-        Me.GroupBox47.PerformLayout
-        Me.GroupBox23.ResumeLayout(false)
-        Me.GroupBox23.PerformLayout
-        CType(Me.grdCost_EditedBy,System.ComponentModel.ISupportInitialize).EndInit
-        Me.GroupBox46.ResumeLayout(false)
-        CType(Me.grdCost_SplOperation,System.ComponentModel.ISupportInitialize).EndInit
-        Me.GroupBox20.ResumeLayout(false)
-        Me.GroupBox20.PerformLayout
-        Me.tabApplication.ResumeLayout(false)
-        Me.tbApp.ResumeLayout(false)
-        Me.tbpGen.ResumeLayout(false)
-        Me.tbpGen.PerformLayout
-        Me.GroupBox45.ResumeLayout(false)
-        Me.GroupBox45.PerformLayout
-        Me.GroupBox39.ResumeLayout(false)
-        CType(Me.grdApp_Load,System.ComponentModel.ISupportInitialize).EndInit
-        Me.GroupBox26.ResumeLayout(false)
-        Me.GroupBox26.PerformLayout
-        CType(Me.grdApp_OpCond,System.ComponentModel.ISupportInitialize).EndInit
-        Me.GroupBox24.ResumeLayout(false)
-        Me.GroupBox24.PerformLayout
-        Me.GroupBox2.ResumeLayout(false)
-        Me.GroupBox2.PerformLayout
-        Me.tbpFace.ResumeLayout(false)
-        Me.tbpFace.PerformLayout
-        Me.GroupBox54.ResumeLayout(false)
-        Me.GroupBox54.PerformLayout
-        Me.GroupBox40.ResumeLayout(false)
-        Me.GroupBox40.PerformLayout
-        CType(Me.grdApp_EditedBy_Face,System.ComponentModel.ISupportInitialize).EndInit
-        Me.GroupBox38.ResumeLayout(false)
-        CType(Me.grdApp_Face_Cavity,System.ComponentModel.ISupportInitialize).EndInit
-        Me.tbpAxial.ResumeLayout(false)
-        Me.tbpAxial.PerformLayout
-        Me.GroupBox55.ResumeLayout(false)
-        Me.GroupBox55.PerformLayout
-        Me.GroupBox30.ResumeLayout(false)
-        CType(Me.grdApp_Axial_Cavity,System.ComponentModel.ISupportInitialize).EndInit
-        Me.GroupBox41.ResumeLayout(false)
-        Me.GroupBox41.PerformLayout
-        CType(Me.grdApp_EditedBy_Axial,System.ComponentModel.ISupportInitialize).EndInit
-        Me.tabDesign.ResumeLayout(false)
-        Me.TabControl2.ResumeLayout(false)
-        Me.TabPage1.ResumeLayout(false)
-        Me.TabPage1.PerformLayout
-        CType(Me.grdDesign_Verification,System.ComponentModel.ISupportInitialize).EndInit
-        Me.GroupBox56.ResumeLayout(false)
-        Me.GroupBox56.PerformLayout
-        Me.GroupBox42.ResumeLayout(false)
-        Me.GroupBox42.PerformLayout
-        CType(Me.grdDesign_Input,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.DataGridView33,System.ComponentModel.ISupportInitialize).EndInit
-        Me.grpPlating.ResumeLayout(false)
-        Me.grpPlating.PerformLayout
-        Me.grpCoating.ResumeLayout(false)
-        Me.grpCoating.PerformLayout
-        Me.GroupBox48.ResumeLayout(false)
-        Me.GroupBox48.PerformLayout
-        Me.GroupBox35.ResumeLayout(false)
-        Me.GroupBox35.PerformLayout
-        Me.GroupBox3.ResumeLayout(false)
-        Me.GroupBox3.PerformLayout
-        Me.GroupBox12.ResumeLayout(false)
-        Me.GroupBox12.PerformLayout
-        Me.TabPage2.ResumeLayout(false)
-        Me.TabPage2.PerformLayout
-        Me.GroupBox10.ResumeLayout(false)
-        Me.GroupBox10.PerformLayout
-        CType(Me.grdDesign_EditedBy,System.ComponentModel.ISupportInitialize).EndInit
-        Me.grpGroupBox14.ResumeLayout(false)
-        CType(Me.grdDesign_Seal,System.ComponentModel.ISupportInitialize).EndInit
-        Me.GroupBox5.ResumeLayout(false)
-        CType(Me.grdDesign_CustSpec,System.ComponentModel.ISupportInitialize).EndInit
-        Me.tabManufacturing.ResumeLayout(false)
-        Me.tabManufacturing.PerformLayout
-        Me.GroupBox33.ResumeLayout(false)
-        Me.GroupBox33.PerformLayout
-        CType(Me.grdManf_EditedBy,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.grdManf_ToolNGage,System.ComponentModel.ISupportInitialize).EndInit
-        Me.GroupBox6.ResumeLayout(false)
-        Me.GroupBox6.PerformLayout
-        Me.tabPurchasing.ResumeLayout(false)
-        Me.tabPurchasing.PerformLayout
-        CType(Me.grdPurchase_Drawing,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.grdPurchase_ToolNGages,System.ComponentModel.ISupportInitialize).EndInit
-        Me.GroupBox34.ResumeLayout(false)
-        Me.GroupBox34.PerformLayout
-        CType(Me.grdPurchase_EditedBy,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.grdPurchase_Mat,System.ComponentModel.ISupportInitialize).EndInit
-        Me.tabQuality.ResumeLayout(false)
-        Me.tabQuality.PerformLayout
-        Me.GroupBox57.ResumeLayout(false)
-        CType(Me.grdQuality_SplOperation,System.ComponentModel.ISupportInitialize).EndInit
-        Me.GroupBox25.ResumeLayout(false)
-        Me.GroupBox25.PerformLayout
-        CType(Me.grdQuality_EditedBy,System.ComponentModel.ISupportInitialize).EndInit
-        Me.tabDrawing.ResumeLayout(false)
-        Me.tabDrawing.PerformLayout
-        Me.GroupBox29.ResumeLayout(false)
-        Me.GroupBox29.PerformLayout
-        CType(Me.grdDwg_EditedBy,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.grdDrawing_BOM,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.grdDrawing_Needed,System.ComponentModel.ISupportInitialize).EndInit
-        Me.tabTesting.ResumeLayout(false)
-        Me.tabTesting.PerformLayout
-        Me.GroupBox32.ResumeLayout(false)
-        Me.GroupBox32.PerformLayout
-        CType(Me.grdTest_EditedBy,System.ComponentModel.ISupportInitialize).EndInit
-        Me.txtTest_CompressPre_Load.ResumeLayout(false)
-        Me.TabPage17.ResumeLayout(false)
-        Me.TabPage17.PerformLayout
-        Me.TabPage18.ResumeLayout(false)
-        Me.TabPage18.PerformLayout
-        Me.TabPage19.ResumeLayout(false)
-        Me.TabPage19.PerformLayout
-        Me.tabPlanning.ResumeLayout(false)
-        Me.tabPlanning.PerformLayout
-        CType(Me.DataGridView2,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.grdPlanning_Ordered,System.ComponentModel.ISupportInitialize).EndInit
-        Me.GroupBox60.ResumeLayout(false)
-        Me.GroupBox60.PerformLayout
-        Me.GroupBox4.ResumeLayout(false)
-        Me.GroupBox4.PerformLayout
-        CType(Me.grdPlanning_EditedBy,System.ComponentModel.ISupportInitialize).EndInit
-        Me.tabShipping.ResumeLayout(false)
-        Me.GroupBox59.ResumeLayout(false)
-        Me.GroupBox59.PerformLayout
-        Me.grpCustSpec_Shipping.ResumeLayout(false)
-        CType(Me.grdShipping_CustSpec,System.ComponentModel.ISupportInitialize).EndInit
-        Me.GroupBox28.ResumeLayout(false)
-        Me.GroupBox28.PerformLayout
-        CType(Me.grdShipping_EditedBy,System.ComponentModel.ISupportInitialize).EndInit
-        Me.tabKeyChar.ResumeLayout(false)
-        Me.grpKeyChar.ResumeLayout(false)
-        CType(Me.grdDesign_KeyChar,System.ComponentModel.ISupportInitialize).EndInit
-        Me.tabIssue.ResumeLayout(false)
-        CType(Me.grdIssueComment,System.ComponentModel.ISupportInitialize).EndInit
-        Me.tabApproval.ResumeLayout(false)
-        Me.tabApproval.PerformLayout
-        Me.GroupBox63.ResumeLayout(false)
-        CType(Me.grdApproval_Attendees,System.ComponentModel.ISupportInitialize).EndInit
-        Me.menuStrip1.ResumeLayout(false)
-        Me.menuStrip1.PerformLayout
-        Me.ResumeLayout(false)
+        Me.pnlPanel1.ResumeLayout(False)
+        Me.pnlPanel1.PerformLayout()
+        Me.GroupBox43.ResumeLayout(False)
+        Me.GroupBox37.ResumeLayout(False)
+        Me.GroupBox37.PerformLayout()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
+        Me.grpParker.ResumeLayout(False)
+        Me.grpParker.PerformLayout()
+        Me.GroupBox7.ResumeLayout(False)
+        Me.GroupBox7.PerformLayout()
+        Me.TabControl1.ResumeLayout(False)
+        Me.tabMarketingInfo.ResumeLayout(False)
+        Me.TabControl3.ResumeLayout(False)
+        Me.TabPage3.ResumeLayout(False)
+        Me.GroupBox44.ResumeLayout(False)
+        Me.GroupBox44.PerformLayout()
+        Me.GroupBox9.ResumeLayout(False)
+        Me.GroupBox9.PerformLayout()
+        Me.grpQuote.ResumeLayout(False)
+        CType(Me.grdQuote, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox13.ResumeLayout(False)
+        Me.GroupBox13.PerformLayout()
+        Me.grpGroupBox10.ResumeLayout(False)
+        Me.grpGroupBox10.PerformLayout()
+        Me.GroupBox8.ResumeLayout(False)
+        CType(Me.grdCustContact, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.grpGroupBox2.ResumeLayout(False)
+        Me.grpGroupBox2.PerformLayout()
+        Me.TabPage6.ResumeLayout(False)
+        Me.GroupBox17.ResumeLayout(False)
+        Me.GroupBox17.PerformLayout()
+        CType(Me.grdPreOrderEditedBy, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.grpPreOrder_RiskAna.ResumeLayout(False)
+        CType(Me.grdPreOrderRiskAna, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox15.ResumeLayout(False)
+        Me.GroupBox15.PerformLayout()
+        Me.GroupBox36.ResumeLayout(False)
+        Me.GroupBox36.PerformLayout()
+        Me.GroupBox27.ResumeLayout(False)
+        CType(Me.grdPreOrder_SalesData, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tabExport.ResumeLayout(False)
+        Me.tabExport.PerformLayout()
+        Me.GroupBox14.ResumeLayout(False)
+        Me.GroupBox14.PerformLayout()
+        CType(Me.grdExport_EditedBy, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tabOrder.ResumeLayout(False)
+        Me.tabOrder.PerformLayout()
+        Me.GroupBox53.ResumeLayout(False)
+        CType(Me.grdOrdEntry_CustContact, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox52.ResumeLayout(False)
+        Me.GroupBox52.PerformLayout()
+        Me.GroupBox51.ResumeLayout(False)
+        Me.GroupBox51.PerformLayout()
+        Me.GroupBox31.ResumeLayout(False)
+        Me.GroupBox31.PerformLayout()
+        Me.GroupBox18.ResumeLayout(False)
+        Me.GroupBox18.PerformLayout()
+        Me.GroupBox22.ResumeLayout(False)
+        Me.GroupBox22.PerformLayout()
+        CType(Me.grdOrdEntry_EditedBy, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox21.ResumeLayout(False)
+        Me.GroupBox21.PerformLayout()
+        Me.GroupBox19.ResumeLayout(False)
+        Me.GroupBox19.PerformLayout()
+        Me.tabCosting.ResumeLayout(False)
+        Me.GroupBox47.ResumeLayout(False)
+        Me.GroupBox47.PerformLayout()
+        Me.GroupBox23.ResumeLayout(False)
+        Me.GroupBox23.PerformLayout()
+        CType(Me.grdCost_EditedBy, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox46.ResumeLayout(False)
+        CType(Me.grdCost_SplOperation, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox20.ResumeLayout(False)
+        Me.GroupBox20.PerformLayout()
+        Me.tabApplication.ResumeLayout(False)
+        Me.tbApp.ResumeLayout(False)
+        Me.tbpGen.ResumeLayout(False)
+        Me.tbpGen.PerformLayout()
+        Me.GroupBox45.ResumeLayout(False)
+        Me.GroupBox45.PerformLayout()
+        Me.GroupBox39.ResumeLayout(False)
+        CType(Me.grdApp_Load, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox26.ResumeLayout(False)
+        Me.GroupBox26.PerformLayout()
+        CType(Me.grdApp_OpCond, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox24.ResumeLayout(False)
+        Me.GroupBox24.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
+        Me.tbpFace.ResumeLayout(False)
+        Me.tbpFace.PerformLayout()
+        Me.GroupBox54.ResumeLayout(False)
+        Me.GroupBox54.PerformLayout()
+        Me.GroupBox40.ResumeLayout(False)
+        Me.GroupBox40.PerformLayout()
+        CType(Me.grdApp_EditedBy_Face, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox38.ResumeLayout(False)
+        CType(Me.grdApp_Face_Cavity, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tbpAxial.ResumeLayout(False)
+        Me.tbpAxial.PerformLayout()
+        Me.GroupBox55.ResumeLayout(False)
+        Me.GroupBox55.PerformLayout()
+        Me.GroupBox30.ResumeLayout(False)
+        CType(Me.grdApp_Axial_Cavity, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox41.ResumeLayout(False)
+        Me.GroupBox41.PerformLayout()
+        CType(Me.grdApp_EditedBy_Axial, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tabDesign.ResumeLayout(False)
+        Me.TabControl2.ResumeLayout(False)
+        Me.TabPage1.ResumeLayout(False)
+        Me.TabPage1.PerformLayout()
+        CType(Me.grdDesign_Verification, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox56.ResumeLayout(False)
+        Me.GroupBox56.PerformLayout()
+        Me.grpRefPN.ResumeLayout(False)
+        Me.grpRefPN.PerformLayout()
+        CType(Me.grdDesign_Input, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridView33, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.grpPlating.ResumeLayout(False)
+        Me.grpPlating.PerformLayout()
+        Me.grpCoating.ResumeLayout(False)
+        Me.grpCoating.PerformLayout()
+        Me.GroupBox48.ResumeLayout(False)
+        Me.GroupBox48.PerformLayout()
+        Me.GroupBox35.ResumeLayout(False)
+        Me.GroupBox35.PerformLayout()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
+        Me.GroupBox12.ResumeLayout(False)
+        Me.GroupBox12.PerformLayout()
+        Me.TabPage2.ResumeLayout(False)
+        Me.TabPage2.PerformLayout()
+        Me.GroupBox10.ResumeLayout(False)
+        Me.GroupBox10.PerformLayout()
+        CType(Me.grdDesign_EditedBy, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.grpGroupBox14.ResumeLayout(False)
+        CType(Me.grdDesign_Seal, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox5.ResumeLayout(False)
+        CType(Me.grdDesign_CustSpec, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tabManufacturing.ResumeLayout(False)
+        Me.tabManufacturing.PerformLayout()
+        Me.GroupBox33.ResumeLayout(False)
+        Me.GroupBox33.PerformLayout()
+        CType(Me.grdManf_EditedBy, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdManf_ToolNGage, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox6.ResumeLayout(False)
+        Me.GroupBox6.PerformLayout()
+        Me.tabPurchasing.ResumeLayout(False)
+        Me.tabPurchasing.PerformLayout()
+        CType(Me.grdPurchase_Drawing, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdPurchase_ToolNGages, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox34.ResumeLayout(False)
+        Me.GroupBox34.PerformLayout()
+        CType(Me.grdPurchase_EditedBy, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdPurchase_Mat, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tabQuality.ResumeLayout(False)
+        Me.tabQuality.PerformLayout()
+        Me.GroupBox57.ResumeLayout(False)
+        CType(Me.grdQuality_SplOperation, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox25.ResumeLayout(False)
+        Me.GroupBox25.PerformLayout()
+        CType(Me.grdQuality_EditedBy, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tabDrawing.ResumeLayout(False)
+        Me.tabDrawing.PerformLayout()
+        Me.GroupBox29.ResumeLayout(False)
+        Me.GroupBox29.PerformLayout()
+        CType(Me.grdDwg_EditedBy, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdDrawing_BOM, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdDrawing_Needed, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tabTesting.ResumeLayout(False)
+        Me.tabTesting.PerformLayout()
+        Me.GroupBox32.ResumeLayout(False)
+        Me.GroupBox32.PerformLayout()
+        CType(Me.grdTest_EditedBy, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tbTest.ResumeLayout(False)
+        Me.TabPage17.ResumeLayout(False)
+        Me.TabPage17.PerformLayout()
+        Me.TabPage18.ResumeLayout(False)
+        Me.TabPage18.PerformLayout()
+        Me.TabPage19.ResumeLayout(False)
+        Me.TabPage19.PerformLayout()
+        Me.tabPlanning.ResumeLayout(False)
+        Me.tabPlanning.PerformLayout()
+        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdPlanning_Ordered, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox60.ResumeLayout(False)
+        Me.GroupBox60.PerformLayout()
+        Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox4.PerformLayout()
+        CType(Me.grdPlanning_EditedBy, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tabShipping.ResumeLayout(False)
+        Me.GroupBox59.ResumeLayout(False)
+        Me.GroupBox59.PerformLayout()
+        Me.grpCustSpec_Shipping.ResumeLayout(False)
+        CType(Me.grdShipping_CustSpec, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox28.ResumeLayout(False)
+        Me.GroupBox28.PerformLayout()
+        CType(Me.grdShipping_EditedBy, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tabKeyChar.ResumeLayout(False)
+        Me.grpKeyChar.ResumeLayout(False)
+        CType(Me.grdDesign_KeyChar, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tabIssue.ResumeLayout(False)
+        CType(Me.grdIssueComment, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tabApproval.ResumeLayout(False)
+        Me.tabApproval.PerformLayout()
+        Me.GroupBox63.ResumeLayout(False)
+        CType(Me.grdApproval_Attendees, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.menuStrip1.ResumeLayout(False)
+        Me.menuStrip1.PerformLayout()
+        Me.ResumeLayout(False)
 
-End Sub
+    End Sub
     Friend WithEvents lblBorder As System.Windows.Forms.Label
     Friend WithEvents pnlPanel1 As System.Windows.Forms.Panel
     Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
@@ -10081,7 +10143,6 @@ End Sub
     Friend WithEvents tabTesting As System.Windows.Forms.TabPage
     Friend WithEvents tabQuality As System.Windows.Forms.TabPage
     Friend WithEvents Label43 As System.Windows.Forms.Label
-    Private WithEvents cmdRiskAna As System.Windows.Forms.Button
     Private WithEvents cmdCancel As System.Windows.Forms.Button
     Private WithEvents cmdOK As System.Windows.Forms.Button
     Friend WithEvents GroupBox6 As System.Windows.Forms.GroupBox
@@ -10089,7 +10150,7 @@ End Sub
     Private WithEvents txtManf_MatPartNo_Spring As System.Windows.Forms.TextBox
     Friend WithEvents Label114 As System.Windows.Forms.Label
     Private WithEvents txtManf_MatPartNo_Base As System.Windows.Forms.TextBox
-    Friend WithEvents txtTest_CompressPre_Load As System.Windows.Forms.TabControl
+    Friend WithEvents tbTest As System.Windows.Forms.TabControl
     Friend WithEvents TabPage17 As System.Windows.Forms.TabPage
     Private WithEvents txtTest_CompressPost_Leak As System.Windows.Forms.TextBox
     Private WithEvents txtTest_ReqPre_Leak As System.Windows.Forms.TextBox
@@ -10108,7 +10169,7 @@ End Sub
     Private WithEvents txtTest_ReqPost_Load As System.Windows.Forms.TextBox
     Private WithEvents txtTest_CompressPost_Load As System.Windows.Forms.TextBox
     Private WithEvents txtTest_ReqPre_Load As System.Windows.Forms.TextBox
-    Private WithEvents TextBox142 As System.Windows.Forms.TextBox
+    Private WithEvents txtTest_CompressPre_Load As System.Windows.Forms.TextBox
     Friend WithEvents Label170 As System.Windows.Forms.Label
     Friend WithEvents Label171 As System.Windows.Forms.Label
     Friend WithEvents Label172 As System.Windows.Forms.Label
@@ -10263,10 +10324,6 @@ End Sub
     Friend WithEvents GroupBox15 As System.Windows.Forms.GroupBox
     Friend WithEvents GroupBox27 As System.Windows.Forms.GroupBox
     Friend WithEvents grdPreOrder_SalesData As System.Windows.Forms.DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn8 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewComboBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn9 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Label207 As System.Windows.Forms.Label
     Private WithEvents txtPreOrderPriceNotes As System.Windows.Forms.TextBox
     Friend WithEvents Label25 As System.Windows.Forms.Label
@@ -10366,11 +10423,6 @@ End Sub
     Friend WithEvents grdDesign_CustSpec As System.Windows.Forms.DataGridView
     Public WithEvents cmbQuality_VisualInspection_Type As System.Windows.Forms.ComboBox
     Private WithEvents cmbQuality_VisualInspection As System.Windows.Forms.ComboBox
-    Friend WithEvents DataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn5 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn30 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn31 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn32 As System.Windows.Forms.DataGridViewTextBoxColumn
     Private WithEvents cmbTest_FreqPost_Leak As System.Windows.Forms.ComboBox
     Private WithEvents cmbTest_FreqPre_Leak As System.Windows.Forms.ComboBox
     Friend WithEvents lblTest_Req_Unit_Leak As System.Windows.Forms.Label
@@ -10572,9 +10624,6 @@ End Sub
     Friend WithEvents grdPurchase_Drawing As System.Windows.Forms.DataGridView
     Friend WithEvents Label33 As System.Windows.Forms.Label
     Friend WithEvents grdPurchase_ToolNGages As System.Windows.Forms.DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn22 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn23 As System.Windows.Forms.DataGridViewTextBoxColumn
     Private WithEvents cmdCreatePDS As System.Windows.Forms.Button
     Friend WithEvents menuStrip1 As System.Windows.Forms.MenuStrip
     Friend WithEvents GroupBox14 As System.Windows.Forms.GroupBox
@@ -10598,11 +10647,6 @@ End Sub
     Private WithEvents txtApp_Hardness2_Face As System.Windows.Forms.TextBox
     Private WithEvents txtApp_Hardness1_Face As System.Windows.Forms.TextBox
     Friend WithEvents Label89 As System.Windows.Forms.Label
-    Friend WithEvents DataGridViewComboBoxColumn5 As System.Windows.Forms.DataGridViewComboBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn77 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn78 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn79 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn80 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents GroupBox10 As System.Windows.Forms.GroupBox
     Friend WithEvents chkDesign_UserSigned_Face As System.Windows.Forms.CheckBox
     Private WithEvents cmdDesign_UserSign_Face As System.Windows.Forms.Button
@@ -10627,17 +10671,9 @@ End Sub
     Friend WithEvents grdIssueComment As System.Windows.Forms.DataGridView
     Private WithEvents cmdSetUnits As System.Windows.Forms.Button
     Friend WithEvents lblApp_T_Unit As System.Windows.Forms.Label
-    Friend WithEvents DataGridViewTextBoxColumn15 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn17 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn42 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents lblApp_Press_Unit As System.Windows.Forms.Label
     Friend WithEvents GroupBox30 As System.Windows.Forms.GroupBox
     Friend WithEvents grdApp_Axial_Cavity As System.Windows.Forms.DataGridView
-    Friend WithEvents DataGridViewComboBoxColumn6 As System.Windows.Forms.DataGridViewComboBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn81 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn82 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn83 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn84 As System.Windows.Forms.DataGridViewTextBoxColumn
     Private WithEvents txtDesign_MCS As System.Windows.Forms.TextBox
     Friend WithEvents Label40 As System.Windows.Forms.Label
     Friend WithEvents grdDesign_Input As System.Windows.Forms.DataGridView
@@ -10670,7 +10706,7 @@ End Sub
     Friend WithEvents Label141 As System.Windows.Forms.Label
     Friend WithEvents Label120 As System.Windows.Forms.Label
     Friend WithEvents Label139 As System.Windows.Forms.Label
-    Friend WithEvents GroupBox42 As System.Windows.Forms.GroupBox
+    Friend WithEvents grpRefPN As System.Windows.Forms.GroupBox
     Friend WithEvents chkNewRef_Notes As System.Windows.Forms.CheckBox
     Friend WithEvents chkLegacyRef_Notes As System.Windows.Forms.CheckBox
     Friend WithEvents chkLegacyRef_Dim As System.Windows.Forms.CheckBox
@@ -10766,29 +10802,9 @@ End Sub
     Friend WithEvents DataGridViewTextBoxColumn61 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents GroupBox60 As System.Windows.Forms.GroupBox
     Private WithEvents txtPlanning_Notes As System.Windows.Forms.TextBox
-    Friend WithEvents DataGridViewComboBoxColumn8 As System.Windows.Forms.DataGridViewComboBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn74 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn75 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn76 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn92 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn93 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn94 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn64 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewComboBoxColumn3 As System.Windows.Forms.DataGridViewComboBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn65 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn13 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn14 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn21 As System.Windows.Forms.DataGridViewComboBoxColumn
-    Friend WithEvents Column11 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Label156 As System.Windows.Forms.Label
     Friend WithEvents GroupBox63 As System.Windows.Forms.GroupBox
     Friend WithEvents grdApproval_Attendees As System.Windows.Forms.DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn90 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewComboBoxColumn11 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewComboBoxColumn12 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn91 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewComboBoxColumn14 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Label177 As System.Windows.Forms.Label
     Private WithEvents txtDesign_Notes As System.Windows.Forms.TextBox
     Friend WithEvents Label98 As System.Windows.Forms.Label
@@ -10802,10 +10818,6 @@ End Sub
     Friend WithEvents Column9 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column20 As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents Column21 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn18 As System.Windows.Forms.DataGridViewComboBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn19 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn20 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn100 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn99 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column10 As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -10815,22 +10827,12 @@ End Sub
     Friend WithEvents Column13 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column15 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column17 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn7 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn12 As System.Windows.Forms.DataGridViewComboBoxColumn
-    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewComboBoxColumn
-    Friend WithEvents Column7 As System.Windows.Forms.DataGridViewComboBoxColumn
-    Friend WithEvents Column6 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column8 As System.Windows.Forms.DataGridViewComboBoxColumn
     Friend WithEvents TabViewToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Private WithEvents txtITAR_Export_HTS_Classification As System.Windows.Forms.TextBox
     Friend WithEvents Label60 As System.Windows.Forms.Label
     Private WithEvents txtITAR_Export_ITAR_Classification As System.Windows.Forms.TextBox
     Friend WithEvents Label57 As System.Windows.Forms.Label
     Friend WithEvents cmdExport_HTS As System.Windows.Forms.Button
-    Friend WithEvents DataGridViewTextBoxColumn71 As System.Windows.Forms.DataGridViewComboBoxColumn
-    Friend WithEvents Column18 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column19 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn72 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents grdDesign_Verification As System.Windows.Forms.DataGridView
     Friend WithEvents DataGridViewComboBoxColumn10 As System.Windows.Forms.DataGridViewComboBoxColumn
     Friend WithEvents Column23 As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -10866,4 +10868,65 @@ End Sub
     Friend WithEvents Column29 As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents openFileDialog1 As System.Windows.Forms.OpenFileDialog
     Friend WithEvents Label69 As System.Windows.Forms.Label
+    Private WithEvents cmdSealPart As Button
+    Friend WithEvents ToolTip1 As ToolTip
+    Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewComboBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn9 As DataGridViewTextBoxColumn
+    Friend WithEvents Column4 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn71 As DataGridViewComboBoxColumn
+    Friend WithEvents Column18 As DataGridViewTextBoxColumn
+    Friend WithEvents Column19 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn72 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn15 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn17 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn42 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn30 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn31 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn32 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewComboBoxColumn5 As DataGridViewComboBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn77 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn78 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn79 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn80 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewComboBoxColumn6 As DataGridViewComboBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn81 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn82 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn83 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn84 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn18 As DataGridViewComboBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn19 As DataGridViewTextBoxColumn
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn20 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn12 As DataGridViewComboBoxColumn
+    Friend WithEvents Column2 As DataGridViewComboBoxColumn
+    Friend WithEvents Column7 As DataGridViewComboBoxColumn
+    Friend WithEvents Column6 As DataGridViewTextBoxColumn
+    Friend WithEvents Column8 As DataGridViewComboBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn92 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn93 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn94 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn90 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewComboBoxColumn11 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewComboBoxColumn12 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn91 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewComboBoxColumn14 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn64 As DataGridViewTextBoxColumn
+    Friend WithEvents Column5 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewComboBoxColumn3 As DataGridViewComboBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn65 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewComboBoxColumn8 As DataGridViewComboBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn74 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn75 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn76 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn22 As DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn23 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn13 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn14 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn21 As DataGridViewComboBoxColumn
+    Friend WithEvents Column11 As DataGridViewTextBoxColumn
 End Class

@@ -13,7 +13,7 @@ Public Class clsProcessProj_Approval
 
 #Region "MEMBER VARIABLES:"
 
-    Private mSN As New List(Of Integer)
+    Private mID_Approval As New List(Of Integer)
     Private mDept As New List(Of String)
     Private mName As New List(Of String)
     Private mTitle As New List(Of String)
@@ -24,15 +24,15 @@ Public Class clsProcessProj_Approval
 
 #Region "PROPERTY ROUTINES:"
 
-    '....SN
-    Public Property SN() As List(Of Integer)
+    '....ID_Approval
+    Public Property ID_Approval() As List(Of Integer)
         '======================================
         Get
-            Return mSN
+            Return mID_Approval
         End Get
 
         Set(Obj As List(Of Integer))
-            mSN = Obj
+            mID_Approval = Obj
         End Set
     End Property
 
@@ -117,7 +117,7 @@ Public Class clsProcessProj_Approval
                                    Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
 
                 For i As Integer = 0 To pQryApproval.Count - 1
-                    mSN.Add(pQryApproval(i).fldSN)
+                    mID_Approval.Add(pQryApproval(i).fldID)
                     mDept.Add(pQryApproval(i).fldDept)
                     mName.Add(pQryApproval(i).fldName)
                     mTitle.Add(pQryApproval(i).fldTitle)
@@ -151,12 +151,12 @@ Public Class clsProcessProj_Approval
 
         Dim pApproval As New List(Of tblApproval)
 
-        For j As Integer = 0 To mSN.Count - 1
+        For j As Integer = 0 To mID_Approval.Count - 1
             Dim pApprv As New tblApproval
             pApproval.Add(pApprv)
             With pApproval(j)
                 .fldProcessProjectID = ProjectID_In
-                .fldSN = j + 1
+                .fldID = j + 1
                 .fldDept = mDept(j)
                 .fldName = mName(j)
                 .fldTitle = mTitle(j)

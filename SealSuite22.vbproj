@@ -8,9 +8,9 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{C7F10AE0-1A98-4ED2-BF8E-C0A93E9D9A8A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>SealSuite21.My.MyApplication</StartupObject>
-    <RootNamespace>SealSuite21</RootNamespace>
-    <AssemblyName>SealSuite21</AssemblyName>
+    <StartupObject>SealSuite22.My.MyApplication</StartupObject>
+    <RootNamespace>SealSuite22</RootNamespace>
+    <AssemblyName>SealSuite22</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
@@ -23,7 +23,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>SealSuite21.xml</DocumentationFile>
+    <DocumentationFile>SealSuite22.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
@@ -33,7 +33,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>SealSuite21.xml</DocumentationFile>
+    <DocumentationFile>SealSuite22.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -56,6 +56,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\ClassLibrary11.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Interop.Acrobat">
       <HintPath>obj\x86\Debug\Interop.Acrobat.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -75,6 +81,7 @@
     </Reference>
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -431,10 +438,10 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ApplicationEvents.vb" />
-    <Compile Include="2_11_frmProcessMain_tb10Dwg_Notes.Designer.vb">
-      <DependentUpon>2_11_frmProcessMain_tb10Dwg_Notes.vb</DependentUpon>
+    <Compile Include="2_12_frmProcessMain_tb10Dwg_Notes.Designer.vb">
+      <DependentUpon>2_12_frmProcessMain_tb10Dwg_Notes.vb</DependentUpon>
     </Compile>
-    <Compile Include="2_11_frmProcessMain_tb10Dwg_Notes.vb">
+    <Compile Include="2_12_frmProcessMain_tb10Dwg_Notes.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="1_14_frmPartHW.designer.vb">
@@ -469,43 +476,43 @@
     <Compile Include="0_20_frmUserGroup.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="2_11_clsProcessFile.vb" />
+    <Compile Include="2_12_clsProcessFile.vb" />
     <Compile Include="0_20_frmUserRole.Designer.vb">
       <DependentUpon>0_20_frmUserRole.vb</DependentUpon>
     </Compile>
     <Compile Include="0_20_frmUserRole.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="2_11_clsProcessProj_Risk.vb" />
-    <Compile Include="Model0_SealProcess.Designer.vb">
+    <Compile Include="2_12_clsProcessProj_Risk.vb" />
+    <Compile Include="Model0_SealSuite.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model0_SealProcess.edmx</DependentUpon>
+      <DependentUpon>Model0_SealSuite.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model2_SealMCS.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model2_SealMCS.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model5_SealProcess.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model5_SealProcess.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model4_SealIPE.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model4_SealIPE.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model3_SealTest.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model3_SealTest.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Model1_SealPart.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1_SealPart.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Model2_SealTest.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model2_SealTest.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Model4_SealIPEMCS.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model4_SealIPEMCS.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Model3_SealIPE.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model3_SealIPE.edmx</DependentUpon>
     </Compile>
     <Compile Include="modMain_Process.vb" />
     <Compile Include="modMain_IPE.vb" />
@@ -527,45 +534,45 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="modMain_Part.vb" />
-    <Compile Include="2_11_frmProcessMain.Designer.vb">
-      <DependentUpon>2_11_frmProcessMain.vb</DependentUpon>
+    <Compile Include="2_12_frmProcessMain.Designer.vb">
+      <DependentUpon>2_12_frmProcessMain.vb</DependentUpon>
     </Compile>
-    <Compile Include="2_11_frmProcessMain.vb">
+    <Compile Include="2_12_frmProcessMain.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="2_11_frmProcessMain_SetUnit.Designer.vb">
-      <DependentUpon>2_11_frmProcessMain_SetUnit.vb</DependentUpon>
+    <Compile Include="2_12_frmProcessMain_SetUnit.Designer.vb">
+      <DependentUpon>2_12_frmProcessMain_SetUnit.vb</DependentUpon>
     </Compile>
-    <Compile Include="2_11_frmProcessMain_SetUnit.vb">
+    <Compile Include="2_12_frmProcessMain_SetUnit.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="2_11_clsProcessProj.vb" />
-    <Compile Include="2_11_clsProcessProj_tb01_PreOrder.vb" />
-    <Compile Include="2_11_clsProcessProj_tb02_ITAR_Export.vb" />
-    <Compile Include="2_11_clsProcessProj_tb03_OrdEntry.vb" />
-    <Compile Include="2_11_clsProcessProj_tb04_Cost.vb" />
-    <Compile Include="2_11_clsProcessProj_tb05_App.vb" />
-    <Compile Include="2_11_clsProcessProj_tb06_Design.vb" />
-    <Compile Include="2_11_clsProcessProj_tb07_Manf.vb" />
-    <Compile Include="2_11_clsProcessProj_tb08_Purchase.vb" />
-    <Compile Include="2_11_clsProcessProj_tb09_Qlty.vb" />
-    <Compile Include="2_11_clsProcessProj_tb10_Dwg.vb" />
-    <Compile Include="2_11_clsProcessProj_tb11_Test.vb" />
-    <Compile Include="2_11_clsProcessProj_tb12_Planning.vb" />
-    <Compile Include="2_11_clsProcessProj_tb13_Shipping.vb" />
-    <Compile Include="2_11_clsProcessProj_tb14_IssueComment.vb" />
-    <Compile Include="2_11_clsProcessProj_EditedBy.vb" />
-    <Compile Include="2_11_clsProcessProj_tb15_Approval.vb" />
-    <Compile Include="2_11_frmProcessMain_CustomizeTab.Designer.vb">
-      <DependentUpon>2_11_frmProcessMain_CustomizeTab.vb</DependentUpon>
+    <Compile Include="2_12_clsProcessProj.vb" />
+    <Compile Include="2_12_clsProcessProj_tb01_PreOrder.vb" />
+    <Compile Include="2_12_clsProcessProj_tb02_ITAR_Export.vb" />
+    <Compile Include="2_12_clsProcessProj_tb03_OrdEntry.vb" />
+    <Compile Include="2_12_clsProcessProj_tb04_Cost.vb" />
+    <Compile Include="2_12_clsProcessProj_tb05_App.vb" />
+    <Compile Include="2_12_clsProcessProj_tb06_Design.vb" />
+    <Compile Include="2_12_clsProcessProj_tb07_Manf.vb" />
+    <Compile Include="2_12_clsProcessProj_tb08_Purchase.vb" />
+    <Compile Include="2_12_clsProcessProj_tb09_Qlty.vb" />
+    <Compile Include="2_12_clsProcessProj_tb10_Dwg.vb" />
+    <Compile Include="2_12_clsProcessProj_tb11_Test.vb" />
+    <Compile Include="2_12_clsProcessProj_tb12_Planning.vb" />
+    <Compile Include="2_12_clsProcessProj_tb13_Shipping.vb" />
+    <Compile Include="2_12_clsProcessProj_tb14_IssueComment.vb" />
+    <Compile Include="2_12_clsProcessProj_EditedBy.vb" />
+    <Compile Include="2_12_clsProcessProj_tb15_Approval.vb" />
+    <Compile Include="2_12_frmProcessMain_CustomizeTab.Designer.vb">
+      <DependentUpon>2_12_frmProcessMain_CustomizeTab.vb</DependentUpon>
     </Compile>
-    <Compile Include="2_11_frmProcessMain_CustomizeTab.vb">
+    <Compile Include="2_12_frmProcessMain_CustomizeTab.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="2_11_frmProcessIssueComnt.Designer.vb">
-      <DependentUpon>2_11_frmProcessIssueComnt.vb</DependentUpon>
+    <Compile Include="2_12_frmProcessIssueComnt.Designer.vb">
+      <DependentUpon>2_12_frmProcessIssueComnt.vb</DependentUpon>
     </Compile>
-    <Compile Include="2_11_frmProcessIssueComnt.vb">
+    <Compile Include="2_12_frmProcessIssueComnt.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
@@ -576,8 +583,8 @@
     <EmbeddedResource Include="1_14_frmPartLegacyPN.resx">
       <DependentUpon>1_14_frmPartLegacyPN.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="2_11_frmProcessMain_tb10Dwg_Notes.resx">
-      <DependentUpon>2_11_frmProcessMain_tb10Dwg_Notes.vb</DependentUpon>
+    <EmbeddedResource Include="2_12_frmProcessMain_tb10Dwg_Notes.resx">
+      <DependentUpon>2_12_frmProcessMain_tb10Dwg_Notes.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="0_20_frmUserGroup.resx">
       <DependentUpon>0_20_frmUserGroup.vb</DependentUpon>
@@ -771,47 +778,46 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="2_11_frmProcessMain.resx">
-      <DependentUpon>2_11_frmProcessMain.vb</DependentUpon>
+    <EmbeddedResource Include="2_12_frmProcessMain.resx">
+      <DependentUpon>2_12_frmProcessMain.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="2_11_frmProcessMain_SetUnit.resx">
-      <DependentUpon>2_11_frmProcessMain_SetUnit.vb</DependentUpon>
+    <EmbeddedResource Include="2_12_frmProcessMain_SetUnit.resx">
+      <DependentUpon>2_12_frmProcessMain_SetUnit.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="2_11_frmProcessMain_CustomizeTab.resx">
-      <DependentUpon>2_11_frmProcessMain_CustomizeTab.vb</DependentUpon>
+    <EmbeddedResource Include="2_12_frmProcessMain_CustomizeTab.resx">
+      <DependentUpon>2_12_frmProcessMain_CustomizeTab.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="2_11_frmProcessIssueComnt.resx">
-      <DependentUpon>2_11_frmProcessIssueComnt.vb</DependentUpon>
+    <EmbeddedResource Include="2_12_frmProcessIssueComnt.resx">
+      <DependentUpon>2_12_frmProcessIssueComnt.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <EntityDeploy Include="Model3_SealIPE.edmx">
+    <EntityDeploy Include="Model0_SealSuite.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model3_SealIPE.Designer.vb</LastGenOutput>
-    </EntityDeploy>
-    <EntityDeploy Include="Model4_SealIPEMCS.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model4_SealIPEMCS.Designer.vb</LastGenOutput>
-    </EntityDeploy>
-    <None Include="ClassDiagram1.cd" />
-    <EntityDeploy Include="Model2_SealTest.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model2_SealTest.Designer.vb</LastGenOutput>
+      <LastGenOutput>Model0_SealSuite.Designer.vb</LastGenOutput>
     </EntityDeploy>
     <EntityDeploy Include="Model1_SealPart.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1_SealPart.Designer.vb</LastGenOutput>
     </EntityDeploy>
+    <EntityDeploy Include="Model3_SealTest.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model3_SealTest.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Model4_SealIPE.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model4_SealIPE.Designer.vb</LastGenOutput>
+    </EntityDeploy>
     <EntityDeploy Include="Model5_SealProcess.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model5_SealProcess.Designer.vb</LastGenOutput>
     </EntityDeploy>
-    <EntityDeploy Include="Model0_SealProcess.edmx">
+    <EntityDeploy Include="Model2_SealMCS.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model0_SealProcess.Designer.vb</LastGenOutput>
+      <LastGenOutput>Model2_SealMCS.Designer.vb</LastGenOutput>
     </EntityDeploy>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
@@ -819,17 +825,24 @@
     </None>
     <None Include="My Project\DataSources\SealIPEDBEntities.datasource" />
     <None Include="My Project\DataSources\SealIPEDBEntities1.datasource" />
+    <None Include="My Project\DataSources\SealIPEDBEntities2.datasource" />
     <None Include="My Project\DataSources\SealIPEMCSDBEntities.datasource" />
     <None Include="My Project\DataSources\SealIPEMCSDBEntities1.datasource" />
+    <None Include="My Project\DataSources\SealIPEMCSDBEntities2.datasource" />
     <None Include="My Project\DataSources\SealMCSDBEntities.datasource" />
+    <None Include="My Project\DataSources\SealMCSDBEntities1.datasource" />
     <None Include="My Project\DataSources\SealPartDBEntities.datasource" />
     <None Include="My Project\DataSources\SealPartDBEntities1.datasource" />
+    <None Include="My Project\DataSources\SealPartDBEntities2.datasource" />
     <None Include="My Project\DataSources\SealProcessDBEntities.datasource" />
     <None Include="My Project\DataSources\SealProcessDBEntities1.datasource" />
+    <None Include="My Project\DataSources\SealProcessDBEntities2.datasource" />
     <None Include="My Project\DataSources\SealSuiteDBEntities.datasource" />
     <None Include="My Project\DataSources\SealSuiteDBEntities1.datasource" />
+    <None Include="My Project\DataSources\SealSuiteDBEntities2.datasource" />
     <None Include="My Project\DataSources\SealTestDBEntities.datasource" />
     <None Include="My Project\DataSources\SealTestDBEntities1.datasource" />
+    <None Include="My Project\DataSources\SealTestDBEntities2.datasource" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>
@@ -861,6 +874,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Seal.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

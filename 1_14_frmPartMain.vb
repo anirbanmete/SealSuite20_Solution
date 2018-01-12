@@ -4,7 +4,7 @@
 '                      FORM MODULE   :  frmMain                                '
 '                        VERSION NO  :  1.4                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  12DEC17                                '
+'                     LAST MODIFIED  :  09JAN18                                '
 '                                                                              '
 '===============================================================================
 '
@@ -1023,7 +1023,9 @@ Public Class frmPartMain
                 SetDefaultData()
                 SaveData()
                 gUser.RetrieveUserRoles()
+                'Me.Hide()
                 Dim pProcess_frmMain As New Process_frmMain()
+                pProcess_frmMain.Size = New Size(1130, 700)     'AES 09JAN18
                 pProcess_frmMain.AutoScroll = True
                 pProcess_frmMain.ShowDialog()
 
