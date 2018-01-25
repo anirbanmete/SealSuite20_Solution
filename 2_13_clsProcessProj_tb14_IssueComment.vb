@@ -13,7 +13,7 @@ Public Class clsProcessProj_IssueComment
 
 #Region "MEMBER VARIABLES:"
 
-    Private mSN As New List(Of Integer)
+    Private mID As New List(Of Integer)
     Private mComment As New List(Of String)
     Private mByDept As New List(Of String)
     Private mByName As New List(Of String)
@@ -28,15 +28,15 @@ Public Class clsProcessProj_IssueComment
 
 #Region "PROPERTY ROUTINES:"
 
-    '....SN
-    Public Property SN() As List(Of Integer)
+    '....ID
+    Public Property ID() As List(Of Integer)
         '======================================
         Get
-            Return mSN
+            Return mID
         End Get
 
         Set(Obj As List(Of Integer))
-            mSN = Obj
+            mID = Obj
         End Set
     End Property
 
@@ -185,7 +185,7 @@ Public Class clsProcessProj_IssueComment
                                    Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
 
                 For i As Integer = 0 To pQryIssue.Count - 1
-                    mSN.Add(pQryIssue(i).fldID)
+                    mID.Add(pQryIssue(i).fldID)
                     mComment.Add(pQryIssue(i).fldComment)
                     mByDept.Add(pQryIssue(i).fldByDept)
                     mByName.Add(pQryIssue(i).fldByName)
@@ -224,7 +224,7 @@ Public Class clsProcessProj_IssueComment
 
         Dim pIssueComment As New List(Of tblIssueComnt)
 
-        For j As Integer = 0 To mSN.Count - 1
+        For j As Integer = 0 To mID.Count - 1
             Dim IssueComment As New tblIssueComnt
             pIssueComment.Add(IssueComment)
             With pIssueComment(j)

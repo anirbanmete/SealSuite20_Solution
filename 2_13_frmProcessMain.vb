@@ -2,9 +2,9 @@
 '                                                                              '
 '                          SOFTWARE  :  "SealProcess"                          '
 '                      FORM MODULE   :  Process_frmMain                        '
-'                        VERSION NO  :  1.2                                    '
+'                        VERSION NO  :  1.3                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  12JAN18                                '
+'                     LAST MODIFIED  :  25JAN18                                '
 '                                                                              '
 '===============================================================================
 Imports System.Globalization
@@ -34,6 +34,8 @@ Public Class Process_frmMain
     Private mRowIndex As Integer
     Private mUserName As New List(Of String)
     Private mUserID As New List(Of Integer)
+
+    Dim mDateTimePicker As DateTimePicker
 
 #End Region
 
@@ -196,6 +198,59 @@ Public Class Process_frmMain
         txtParkerPart.Focus()
         txtParkerPart.Select()
 
+    End Sub
+
+    Private Sub Process_frmMain_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+        '=======================================================================================
+        Dim pCI As New CultureInfo("en-US")
+        If (gIsIssueCommentActive) Then
+            gIsIssueCommentActive = False
+            With grdIssueComment
+                .AllowUserToAddRows = False
+                grdIssueComment.Rows.Clear()
+                For i As Integer = 0 To mProcess_Project.IssueCommnt.ID.Count - 1
+                    .Rows.Add()
+                    .Rows(i).Cells(0).Value = mProcess_Project.IssueCommnt.Comment(i)
+                    .Rows(i).Cells(1).Value = mProcess_Project.IssueCommnt.ByDept(i)
+                    .Rows(i).Cells(2).Value = mProcess_Project.IssueCommnt.ByName(i)
+                    .Rows(i).Cells(3).Value = mProcess_Project.IssueCommnt.ByDate(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    .Rows(i).Cells(4).Value = mProcess_Project.IssueCommnt.ToDept(i)
+                    .Rows(i).Cells(5).Value = IIf(mProcess_Project.IssueCommnt.Resolved(i), "Y", "N")
+                    .Rows(i).Cells(6).Value = mProcess_Project.IssueCommnt.Name(i)
+                    If (mProcess_Project.IssueCommnt.DateResolution(i) <> DateTime.MinValue) Then
+                        .Rows(i).Cells(7).Value = mProcess_Project.IssueCommnt.DateResolution(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    Else
+                        .Rows(i).Cells(7).Value = ""
+                    End If
+
+                    .Rows(i).Cells(8).Value = mProcess_Project.IssueCommnt.Resolution(i)
+                Next
+            End With
+            TabControl1.SelectedIndex = 14
+
+        ElseIf (gIsResolutionActive) Then
+            gIsResolutionActive = False
+            grdIssueComment.Rows.Clear()
+            With grdIssueComment
+                For i As Integer = 0 To mProcess_Project.IssueCommnt.ID.Count - 1
+                    .Rows.Add()
+                    .Rows(i).Cells(0).Value = mProcess_Project.IssueCommnt.Comment(i)
+                    .Rows(i).Cells(1).Value = mProcess_Project.IssueCommnt.ByDept(i)
+                    .Rows(i).Cells(2).Value = mProcess_Project.IssueCommnt.ByName(i)
+                    .Rows(i).Cells(3).Value = mProcess_Project.IssueCommnt.ByDate(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    .Rows(i).Cells(4).Value = mProcess_Project.IssueCommnt.ToDept(i)
+                    .Rows(i).Cells(5).Value = IIf(mProcess_Project.IssueCommnt.Resolved(i), "Y", "N")
+                    .Rows(i).Cells(6).Value = mProcess_Project.IssueCommnt.Name(i)
+                    If (mProcess_Project.IssueCommnt.DateResolution(i) <> DateTime.MinValue) Then
+                        .Rows(i).Cells(7).Value = mProcess_Project.IssueCommnt.DateResolution(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    Else
+                        .Rows(i).Cells(7).Value = ""
+                    End If
+
+                    .Rows(i).Cells(8).Value = mProcess_Project.IssueCommnt.Resolution(i)
+                Next
+            End With
+        End If
     End Sub
 
 #Region "HELPER ROUTINES:"
@@ -452,7 +507,7 @@ Public Class Process_frmMain
         Dim pCmbToDept_IssueComment As New DataGridViewComboBoxColumn
         pCmbToDept_IssueComment = grdIssueComment.Columns.Item(4)
         With pCmbToDept_IssueComment
-            Dim pQryRole_User = (From pRec In pSealSuiteEntities.tblRole
+            Dim pQryRole_User = (From pRec In pSealSuiteEntities.tblRole Where pRec.fldIsSuperRole = 0
                                  Select pRec).ToList()
             If (pQryRole_User.Count > 0) Then
                 For i As Integer = 0 To pQryRole_User.Count - 1
@@ -706,7 +761,7 @@ Public Class Process_frmMain
         ''mProcess_Project.Planning.RetrieveFromDB(mProcess_Project.ID)
         mProcess_Project.Shipping.RetrieveFromDB(mProcess_Project.ID)
 
-        ''mProcess_Project.IssueCommnt.RetrieveFromDB(mProcess_Project.ID)
+        mProcess_Project.IssueCommnt.RetrieveFromDB(mProcess_Project.ID)
         mProcess_Project.Approval.RetrieveFromDB(mProcess_Project.ID)
 
     End Sub
@@ -1977,7 +2032,7 @@ Public Class Process_frmMain
         '.... "IssueComment:"
         With mProcess_Project.IssueCommnt
             Dim pCI As New CultureInfo("en-US")
-            For i As Integer = 0 To .SN.Count - 1
+            For i As Integer = 0 To .ID.Count - 1
 
                 grdIssueComment.Rows.Add()
                 'grdIssueComment.Rows(i).Cells(0).Value = .SlNo(i)
@@ -2026,7 +2081,27 @@ Public Class Process_frmMain
         End With
 
 
+
+
     End Sub
+
+    Private Sub CompareControls()
+        '========================
+        For Each txtBox In Me.Controls.OfType(Of TextBox)()
+            If txtBox.Modified Then
+                'Show message
+            End If
+        Next
+
+        For Each cmbBox In Me.Controls.OfType(Of ComboBox)()
+            'If cmbBox.TextUpdate() Then
+            'Show message
+            'End If
+        Next
+
+    End Sub
+
+
 
 
 #Region "SUB-HELPER ROUTINES:"
@@ -2587,7 +2662,17 @@ Public Class Process_frmMain
         Else
             txtITAR_Export_EAR_Classification.Enabled = True
         End If
+
     End Sub
+
+    Private Sub cmbITAR_Export_SaleExportControlled_TextChanged(sender As Object, e As EventArgs) Handles cmbITAR_Export_SaleExportControlled.TextChanged
+
+        'If (mProcess_Project.ITAR_Export.SaleExportControlled <> cmbITAR_Export_SaleExportControlled.Text) Then
+        '    grdExport_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+        'End If
+
+    End Sub
+
 
     Private Sub cmbITAR_Export_ProductITAR_Reg_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) _
                                                                     Handles cmbITAR_Export_ProductITAR_Reg.SelectedIndexChanged
@@ -3296,10 +3381,9 @@ Public Class Process_frmMain
             RemoveHandler pComboBox.SelectionChangeCommitted, New EventHandler(AddressOf ComboBox_SelectionChangeCommitted)
 
             mRowIndex = grdApproval_Attendees.CurrentCell.RowIndex
-            'AddHandler pComboBox.SelectedIndexChanged, AddressOf grdApproval_Attendees_EditingControlShowing
             AddHandler pComboBox.SelectionChangeCommitted, New EventHandler(AddressOf ComboBox_SelectionChangeCommitted)
         End If
-        'RemoveHandler grdApproval_Attendees.EditingControlShowing, AddressOf grdApproval_Attendees_EditingControlShowing
+
     End Sub
 
     Private Sub grdManf_ToolNGage_EditingControlShowing(sender As System.Object, e As System.Windows.Forms.DataGridViewEditingControlShowingEventArgs) _
@@ -3318,6 +3402,36 @@ Public Class Process_frmMain
         End Try
 
     End Sub
+
+    Private Sub grdIssueComment_CellClick(sender As Object,
+                                          e As DataGridViewCellEventArgs) Handles grdIssueComment.CellClick
+        '===================================================================================================
+        Dim pRowIndex As Integer = grdIssueComment.CurrentRow.Index
+        Dim pColumnIndex As Integer = grdIssueComment.CurrentCell.ColumnIndex
+        Dim pColumnName As String = grdIssueComment.Columns(grdIssueComment.CurrentCell.ColumnIndex).Name
+
+        If pColumnName = "Column17" Then
+            Dim pProcess_frmIssueComnt_Resolution As New Process_frmIssueComnt_Resolution(mProcess_Project, pRowIndex)
+            pProcess_frmIssueComnt_Resolution.ShowDialog()
+        End If
+
+
+
+        If (e.ColumnIndex = 7) Then
+
+            mDateTimePicker = New DateTimePicker()
+            grdIssueComment.Controls.Add(mDateTimePicker)
+            mDateTimePicker.Format = DateTimePickerFormat.Short
+            Dim pRectangle As Rectangle = grdIssueComment.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, True)
+            mDateTimePicker.Size = New Size(pRectangle.Width, pRectangle.Height)
+            mDateTimePicker.Location = New Point(pRectangle.X, pRectangle.Y)
+            AddHandler mDateTimePicker.CloseUp, New EventHandler(AddressOf mDateTimePicker_CloseUp)
+            AddHandler mDateTimePicker.ValueChanged, New EventHandler(AddressOf mDateTimePicker_OnTextChange)
+
+        End If
+
+    End Sub
+
 
 #Region "HELPER ROUTINE"
 
@@ -3395,6 +3509,16 @@ Public Class Process_frmMain
 
         End Try
 
+    End Sub
+
+    Private Sub mDateTimePicker_CloseUp(ByVal sender As Object, ByVal e As EventArgs)
+        '=============================================================================
+        mDateTimePicker.Visible = False
+    End Sub
+
+    Private Sub mDateTimePicker_OnTextChange(ByVal sender As Object, ByVal e As EventArgs)
+        '==================================================================================
+        grdIssueComment.CurrentCell.Value = mDateTimePicker.Text.ToString()
     End Sub
 
 #End Region
@@ -3495,6 +3619,15 @@ Public Class Process_frmMain
         SaveData()
         SaveToDB()
         Me.Close()
+    End Sub
+
+    Private Sub cmdIssueComment_Click(sender As Object, e As EventArgs) Handles cmdIssueComment.Click
+        '=============================================================================================
+        SaveData()
+        'SaveToDB()
+        'Dim pSelTabName As String =  TabControl1.SelectedTab.Name
+        Dim pProcess_frmIssueComnt As New Process_frmIssueComnt(mProcess_Project)
+        pProcess_frmIssueComnt.ShowDialog()
     End Sub
 
     Private Sub cmdCreatePDS_Click(sender As System.Object, e As System.EventArgs) Handles cmdCreatePDS.Click
@@ -4094,7 +4227,6 @@ Public Class Process_frmMain
 
         '.... "Design:"
 
-
         With mProcess_Project.Design
             .CustDwgNo = txtDesign_CustDwgNo.Text
             .CustDwgRev = txtDesign_CustDwgRev.Text
@@ -4670,51 +4802,58 @@ Public Class Process_frmMain
 
         '.... "IssueCommnt:"
 
-        ''With mProcess_Project.IssueCommnt
-        ''    '....IssueCommnt
-        ''    .SlNo.Clear()
-        ''    .Comment.Clear()
-        ''    .ByDept.Clear()
-        ''    .ByName.Clear()
-        ''    .ByDate.Clear()
-        ''    .ToDept.Clear()
-        ''    .Resolved.Clear()
-        ''    .Name.Clear()
-        ''    .ResolvedDate.Clear()
-        ''    .Resolution.Clear()
+        With mProcess_Project.IssueCommnt
+            '....IssueCommnt
+            .ID.Clear()
+            .Comment.Clear()
+            .ByDept.Clear()
+            .ByName.Clear()
+            .ByDate.Clear()
+            .ToDept.Clear()
+            .Resolved.Clear()
+            .Name.Clear()
+            '.ResolvedDate.Clear()
+            .DateResolution.Clear()
+            .Resolution.Clear()
 
 
-        ''    For j As Integer = 0 To grdIssueComment.Rows.Count - 2
-        ''        .SlNo.Add(j + 1)
-        ''        '.SlNo.Add(grdIssueComment.Rows(j).Cells(0).Value)
-        ''        .Comment.Add(grdIssueComment.Rows(j).Cells(0).Value)
-        ''        .ByDept.Add(grdIssueComment.Rows(j).Cells(1).Value)
-        ''        .ByName.Add(grdIssueComment.Rows(j).Cells(2).Value)
-        ''        If (grdIssueComment.Rows(j).Cells(3).Value <> "" And Not IsNothing(grdIssueComment.Rows(j).Cells(3).Value)) Then
-        ''            .ByDate.Add(grdIssueComment.Rows(j).Cells(3).Value)
-        ''        Else
-        ''            .ByDate.Add(DateTime.MinValue)
-        ''        End If
+            For j As Integer = 0 To grdIssueComment.Rows.Count - 1
+                .ID.Add(j + 1)
+                '.SlNo.Add(grdIssueComment.Rows(j).Cells(0).Value)
+                .Comment.Add(grdIssueComment.Rows(j).Cells(0).Value)
+                .ByDept.Add(grdIssueComment.Rows(j).Cells(1).Value)
+                .ByName.Add(grdIssueComment.Rows(j).Cells(2).Value)
+                If (grdIssueComment.Rows(j).Cells(3).Value <> "" And Not IsNothing(grdIssueComment.Rows(j).Cells(3).Value)) Then
+                    .ByDate.Add(grdIssueComment.Rows(j).Cells(3).Value)
+                Else
+                    .ByDate.Add(DateTime.MinValue)
+                End If
 
-        ''        .ToDept.Add(grdIssueComment.Rows(j).Cells(4).Value)
-        ''        If (grdIssueComment.Rows(j).Cells(5).Value = "Y") Then
-        ''            .Resolved.Add(True)
-        ''        Else
-        ''            .Resolved.Add(False)
-        ''        End If
-        ''        '.Resolved.Add(grdIssueComment.Rows(j).Cells(6).Value)
-        ''        .Name.Add(grdIssueComment.Rows(j).Cells(6).Value)
+                .ToDept.Add(grdIssueComment.Rows(j).Cells(4).Value)
+                If (grdIssueComment.Rows(j).Cells(5).Value = "Y") Then
+                    .Resolved.Add(True)
+                Else
+                    .Resolved.Add(False)
+                End If
+                '.Resolved.Add(grdIssueComment.Rows(j).Cells(6).Value)
+                .Name.Add(grdIssueComment.Rows(j).Cells(6).Value)
 
-        ''        If (grdIssueComment.Rows(j).Cells(7).Value <> "" And Not IsNothing(grdIssueComment.Rows(j).Cells(7).Value)) Then
-        ''            .ResolvedDate.Add(grdIssueComment.Rows(j).Cells(7).Value)
-        ''        Else
-        ''            .ResolvedDate.Add(DateTime.MinValue)
-        ''        End If
+                If (grdIssueComment.Rows(j).Cells(7).Value <> "" And Not IsNothing(grdIssueComment.Rows(j).Cells(7).Value)) Then
+                    .DateResolution.Add(grdIssueComment.Rows(j).Cells(7).Value)
+                Else
+                    .DateResolution.Add(DateTime.MinValue)
+                End If
 
-        ''        .Resolution.Add(grdIssueComment.Rows(j).Cells(8).Value)
-        ''    Next
+                'If (grdIssueComment.Rows(j).Cells(7).Value <> "" And Not IsNothing(grdIssueComment.Rows(j).Cells(7).Value)) Then
+                '    .DaResolvedDate.Add(grdIssueComment.Rows(j).Cells(7).Value)
+                'Else
+                '    .ResolvedDate.Add(DateTime.MinValue)
+                'End If
 
-        ''End With
+                .Resolution.Add(grdIssueComment.Rows(j).Cells(8).Value)
+            Next
+
+        End With
 
 
         '.... "Approval:"
@@ -4763,9 +4902,117 @@ Public Class Process_frmMain
         mProcess_Project.Test.SaveToDB(mProcess_Project.ID)
         'mProcess_Project.Planning.SaveToDB(mProcess_Project.ID)
         mProcess_Project.Shipping.SaveToDB(mProcess_Project.ID)
-        ''mProcess_Project.IssueCommnt.SaveToDB(mProcess_Project.ID)
+        mProcess_Project.IssueCommnt.SaveToDB(mProcess_Project.ID)
         mProcess_Project.Approval.SaveToDB(mProcess_Project.ID)
     End Sub
+
+    Private Function CompareVal_PreOrder() As Boolean
+        '==============================================
+        'Dim pbl
+
+        '...."Pre-Order:"
+
+        With mProcess_Project.PreOrder
+            .Mgr_PreOrder = cmbMgrPreOrder.Text
+            .Mgr_Sales = txtMgrSales.Text
+
+            If (cmbExport_Reqd.Text = "Y") Then
+                .Export_Reqd = True
+            Else
+                .Export_Reqd = False
+            End If
+
+            .Export_Status = cmbExport_Status.Text
+
+            .Part_Family = cmbPartFamily.Text
+            .Part_Type = cmbPartType.Text
+
+            .PreOrder_Seg = cmbPreOrderSeg.Text
+            .PreOrder_Channel = cmbPreOrderChannel.Text
+            .Notes = txtPreOrderNotes.Text
+
+            .Loc_CostFile = cmbCostFileLoc.Text
+            .Loc_RFQPkg = cmbRFQPkgLoc.Text
+            .Notes_Price = txtPreOrderPriceNotes.Text
+
+            If (chkPreOrderUserSigned.Checked) Then
+                '.User_Name = txtPreOrderUserName.Text
+                .EditedBy.User_Name = txtPreOrderUserName.Text
+                .EditedBy.User_DateSigned = Convert.ToDateTime(txtPreOrderUserDate.Text)
+                .EditedBy.User_Signed = True
+
+            Else
+                .EditedBy.User_Name = ""
+                .EditedBy.User_DateSigned = DateTime.MinValue
+                .EditedBy.User_Signed = False
+            End If
+
+            '....Cust Contact Pre-Order
+            mProcess_Project.CustContact.ID_Cust.Clear()
+            mProcess_Project.CustContact.DeptName.Clear()
+            mProcess_Project.CustContact.Name.Clear()
+            mProcess_Project.CustContact.Phone.Clear()
+            mProcess_Project.CustContact.Email.Clear()
+
+            'grdOrdEntry_CustContact = grdCustContact
+
+            For j As Integer = 0 To grdCustContact.Rows.Count - 2
+                mProcess_Project.CustContact.ID_Cust.Add(j + 1)
+                mProcess_Project.CustContact.DeptName.Add(grdCustContact.Rows(j).Cells(0).Value)
+                mProcess_Project.CustContact.Name.Add(grdCustContact.Rows(j).Cells(1).Value)
+                mProcess_Project.CustContact.Phone.Add(grdCustContact.Rows(j).Cells(2).Value)
+                mProcess_Project.CustContact.Email.Add(grdCustContact.Rows(j).Cells(3).Value)
+            Next
+
+            '....Cust Contact Order-Entry
+            mProcess_Project.CustContact.ID_Cust.Clear()
+            mProcess_Project.CustContact.DeptName.Clear()
+            mProcess_Project.CustContact.Name.Clear()
+            mProcess_Project.CustContact.Phone.Clear()
+            mProcess_Project.CustContact.Email.Clear()
+            For j As Integer = 0 To grdOrdEntry_CustContact.Rows.Count - 2
+                mProcess_Project.CustContact.ID_Cust.Add(j + 1)
+                mProcess_Project.CustContact.DeptName.Add(grdOrdEntry_CustContact.Rows(j).Cells(0).Value)
+                mProcess_Project.CustContact.Name.Add(grdOrdEntry_CustContact.Rows(j).Cells(1).Value)
+                mProcess_Project.CustContact.Phone.Add(grdOrdEntry_CustContact.Rows(j).Cells(2).Value)
+                mProcess_Project.CustContact.Email.Add(grdOrdEntry_CustContact.Rows(j).Cells(3).Value)
+            Next
+
+            '....Quote
+            .Quote.QID.Clear()
+            .Quote.QDate.Clear()
+            .Quote.No.Clear()
+
+            For j As Integer = 0 To grdQuote.Rows.Count - 2
+                .Quote.QID.Add(j + 1)
+                'grdQuote.Rows(j).Cells(0).Value <> "" And 
+                If (Not IsNothing(grdQuote.Rows(j).Cells(0).Value)) Then
+                    .Quote.QDate.Add(grdQuote.Rows(j).Cells(0).Value)
+                Else
+                    .Quote.QDate.Add(DateTime.MinValue)
+                End If
+
+                .Quote.No.Add(grdQuote.Rows(j).Cells(1).Value)
+            Next
+
+            '....Sales Data
+            .SalesData.ID_Sales.Clear()
+            .SalesData.Year.Clear()
+            .SalesData.Qty.Clear()
+            .SalesData.Price.Clear()
+            .SalesData.Total.Clear()
+
+            For j As Integer = 0 To grdPreOrder_SalesData.Rows.Count - 2
+                .SalesData.ID_Sales.Add(j + 1)
+                .SalesData.Year.Add(grdPreOrder_SalesData.Rows(j).Cells(0).Value)
+                .SalesData.Qty.Add(grdPreOrder_SalesData.Rows(j).Cells(1).Value)
+                .SalesData.Price.Add(grdPreOrder_SalesData.Rows(j).Cells(2).Value)
+                .SalesData.Total.Add(grdPreOrder_SalesData.Rows(j).Cells(3).Value)
+            Next
+
+        End With
+
+    End Function
 
 #End Region
 
@@ -4793,6 +5040,8 @@ Public Class Process_frmMain
         '============================================================================================
         grpCoating.Focus()
     End Sub
+
+
 
 #End Region
 

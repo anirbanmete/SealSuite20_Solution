@@ -1022,7 +1022,9 @@ Public Class frmPartMain
             Case "cmdSealProcess"
                 SetDefaultData()
                 SaveData()
-                gUser.RetrieveUserRoles()
+                gUser.RetrieveUserTitle()
+
+                SetUserRole()       'AES 25JAN18
                 'Me.Hide()
                 Dim pProcess_frmMain As New Process_frmMain()
                 pProcess_frmMain.Size = New Size(1130, 700)     'AES 09JAN18
@@ -1077,7 +1079,7 @@ Public Class frmPartMain
 
                 Dim pSealIPEEntities As New SealIPEDBEntities()
                 Dim pQryAnalysis = (From pRec In pSealIPEEntities.tblAnalysis
-                                        Where pRec.fldProjectID = gIPE_Project.Project_ID Order By pRec.fldID Ascending Select pRec).ToList()
+                                    Where pRec.fldProjectID = gIPE_Project.Project_ID Order By pRec.fldID Ascending Select pRec).ToList()
 
                 Dim pCount As Integer = pQryAnalysis.Count()
                 For i As Integer = 0 To pCount - 1
@@ -1091,6 +1093,50 @@ Public Class frmPartMain
                 gIPE_frmAnalysisSet.ShowDialog()
 
         End Select
+
+    End Sub
+
+    Private Sub SetUserRole()
+        '=====================
+        Dim pSealSuiteEntities As New SealSuiteDBEntities()
+
+        Dim pRecCount As Integer = (From pRec In pSealSuiteEntities.tblUser
+                                    Where pRec.fldSystemLogin = gUser.SystemLogin Select pRec).Count()
+        Dim pUserID As Integer = 0
+        Dim pRoleID As Integer = 0
+        Dim pRole As String = ""
+        If (pRecCount > 0) Then
+
+            Dim pQry = (From pRec In pSealSuiteEntities.tblUser
+                        Where pRec.fldSystemLogin = gUser.SystemLogin Select pRec).First()
+
+            pUserID = pQry.fldID
+
+            Dim pQryProcess_UserRole_Count As Integer = (From pRec In pSealSuiteEntities.tblProcess_UserRole
+                                                         Where pRec.fldUserID = pUserID Select pRec).Count()
+            If (pQryProcess_UserRole_Count > 0) Then
+
+                Dim pQryProcess_UserRole = (From pRec In pSealSuiteEntities.tblProcess_UserRole
+                                            Where pRec.fldUserID = pUserID Select pRec).First()
+
+                pRoleID = pQryProcess_UserRole.fldRoleID
+
+                Dim pQry_Role_Count As Integer = (From pRec In pSealSuiteEntities.tblRole
+                                                  Where pRec.fldID = pRoleID Select pRec).Count()
+
+                If (pQry_Role_Count > 0) Then
+
+                    Dim pQry_Role = (From pRec In pSealSuiteEntities.tblRole
+                                     Where pRec.fldID = pRoleID Select pRec).First()
+
+                    pRole = pQry_Role.fldRole.ToString().Trim()
+                End If
+
+            End If
+
+        End If
+
+        gUser.Role = pRole
 
     End Sub
 
