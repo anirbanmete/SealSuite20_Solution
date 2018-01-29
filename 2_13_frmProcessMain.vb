@@ -4908,109 +4908,216 @@ Public Class Process_frmMain
 
     Private Function CompareVal_PreOrder() As Boolean
         '==============================================
-        'Dim pbl
-
-        '...."Pre-Order:"
+        Dim pblnValChanged As Boolean = False
 
         With mProcess_Project.PreOrder
-            .Mgr_PreOrder = cmbMgrPreOrder.Text
-            .Mgr_Sales = txtMgrSales.Text
+            If (.Mgr.Mkt <> cmbMgrPreOrder.Text) Then
+                pblnValChanged = True
+            End If
 
+            If (.Mgr.Sales <> txtMgrSales.Text) Then
+                pblnValChanged = True
+            End If
+
+            Dim pExpReq As Boolean
             If (cmbExport_Reqd.Text = "Y") Then
-                .Export_Reqd = True
+                pExpReq = True
             Else
-                .Export_Reqd = False
+                pExpReq = False
             End If
 
-            .Export_Status = cmbExport_Status.Text
-
-            .Part_Family = cmbPartFamily.Text
-            .Part_Type = cmbPartType.Text
-
-            .PreOrder_Seg = cmbPreOrderSeg.Text
-            .PreOrder_Channel = cmbPreOrderChannel.Text
-            .Notes = txtPreOrderNotes.Text
-
-            .Loc_CostFile = cmbCostFileLoc.Text
-            .Loc_RFQPkg = cmbRFQPkgLoc.Text
-            .Notes_Price = txtPreOrderPriceNotes.Text
-
-            If (chkPreOrderUserSigned.Checked) Then
-                '.User_Name = txtPreOrderUserName.Text
-                .EditedBy.User_Name = txtPreOrderUserName.Text
-                .EditedBy.User_DateSigned = Convert.ToDateTime(txtPreOrderUserDate.Text)
-                .EditedBy.User_Signed = True
-
-            Else
-                .EditedBy.User_Name = ""
-                .EditedBy.User_DateSigned = DateTime.MinValue
-                .EditedBy.User_Signed = False
+            If (.Export.Reqd <> pExpReq) Then
+                pblnValChanged = True
             End If
 
-            '....Cust Contact Pre-Order
-            mProcess_Project.CustContact.ID_Cust.Clear()
-            mProcess_Project.CustContact.DeptName.Clear()
-            mProcess_Project.CustContact.Name.Clear()
-            mProcess_Project.CustContact.Phone.Clear()
-            mProcess_Project.CustContact.Email.Clear()
+            If (.Export.Status <> cmbExport_Status.Text) Then
+                pblnValChanged = True
+            End If
 
-            'grdOrdEntry_CustContact = grdCustContact
+            If (.Part.Family <> cmbPartFamily.Text) Then
+                pblnValChanged = True
+            End If
 
-            For j As Integer = 0 To grdCustContact.Rows.Count - 2
-                mProcess_Project.CustContact.ID_Cust.Add(j + 1)
-                mProcess_Project.CustContact.DeptName.Add(grdCustContact.Rows(j).Cells(0).Value)
-                mProcess_Project.CustContact.Name.Add(grdCustContact.Rows(j).Cells(1).Value)
-                mProcess_Project.CustContact.Phone.Add(grdCustContact.Rows(j).Cells(2).Value)
-                mProcess_Project.CustContact.Email.Add(grdCustContact.Rows(j).Cells(3).Value)
-            Next
+            If (.Part.Type <> cmbPartType.Text) Then
+                pblnValChanged = True
+            End If
 
-            '....Cust Contact Order-Entry
-            mProcess_Project.CustContact.ID_Cust.Clear()
-            mProcess_Project.CustContact.DeptName.Clear()
-            mProcess_Project.CustContact.Name.Clear()
-            mProcess_Project.CustContact.Phone.Clear()
-            mProcess_Project.CustContact.Email.Clear()
-            For j As Integer = 0 To grdOrdEntry_CustContact.Rows.Count - 2
-                mProcess_Project.CustContact.ID_Cust.Add(j + 1)
-                mProcess_Project.CustContact.DeptName.Add(grdOrdEntry_CustContact.Rows(j).Cells(0).Value)
-                mProcess_Project.CustContact.Name.Add(grdOrdEntry_CustContact.Rows(j).Cells(1).Value)
-                mProcess_Project.CustContact.Phone.Add(grdOrdEntry_CustContact.Rows(j).Cells(2).Value)
-                mProcess_Project.CustContact.Email.Add(grdOrdEntry_CustContact.Rows(j).Cells(3).Value)
-            Next
+            If (.Mkt.Seg <> cmbPreOrderSeg.Text) Then
+                pblnValChanged = True
+            End If
 
-            '....Quote
-            .Quote.QID.Clear()
-            .Quote.QDate.Clear()
-            .Quote.No.Clear()
+            If (.Mkt.Channel <> cmbPreOrderChannel.Text) Then
+                pblnValChanged = True
+            End If
 
-            For j As Integer = 0 To grdQuote.Rows.Count - 2
-                .Quote.QID.Add(j + 1)
-                'grdQuote.Rows(j).Cells(0).Value <> "" And 
-                If (Not IsNothing(grdQuote.Rows(j).Cells(0).Value)) Then
-                    .Quote.QDate.Add(grdQuote.Rows(j).Cells(0).Value)
-                Else
-                    .Quote.QDate.Add(DateTime.MinValue)
-                End If
+            If (.Notes <> txtPreOrderNotes.Text) Then
+                pblnValChanged = True
+            End If
 
-                .Quote.No.Add(grdQuote.Rows(j).Cells(1).Value)
-            Next
+            If (.Loc.CostFile <> cmbCostFileLoc.Text) Then
+                pblnValChanged = True
+            End If
 
-            '....Sales Data
-            .SalesData.ID_Sales.Clear()
-            .SalesData.Year.Clear()
-            .SalesData.Qty.Clear()
-            .SalesData.Price.Clear()
-            .SalesData.Total.Clear()
+            If (.Loc.RFQPkg <> cmbRFQPkgLoc.Text) Then
+                pblnValChanged = True
+            End If
 
-            For j As Integer = 0 To grdPreOrder_SalesData.Rows.Count - 2
-                .SalesData.ID_Sales.Add(j + 1)
-                .SalesData.Year.Add(grdPreOrder_SalesData.Rows(j).Cells(0).Value)
-                .SalesData.Qty.Add(grdPreOrder_SalesData.Rows(j).Cells(1).Value)
-                .SalesData.Price.Add(grdPreOrder_SalesData.Rows(j).Cells(2).Value)
-                .SalesData.Total.Add(grdPreOrder_SalesData.Rows(j).Cells(3).Value)
-            Next
-
+            If (.Notes_Price <> txtPreOrderPriceNotes.Text) Then
+                pblnValChanged = True
+            End If
         End With
+
+        For i As Integer = 0 To mProcess_Project.CustContact.ID_Cust.Count - 1
+            If (mProcess_Project.CustContact.DeptName(i) <> grdCustContact.Rows(i).Cells(0).Value) Then
+                pblnValChanged = True
+            End If
+
+            If (mProcess_Project.CustContact.Name(i) <> grdCustContact.Rows(i).Cells(1).Value) Then
+                pblnValChanged = True
+            End If
+
+            If (mProcess_Project.CustContact.Phone(i) <> grdCustContact.Rows(i).Cells(2).Value) Then
+                pblnValChanged = True
+            End If
+
+            If (mProcess_Project.CustContact.Email(i) <> grdCustContact.Rows(i).Cells(3).Value) Then
+                pblnValChanged = True
+            End If
+        Next
+
+
+        For i As Integer = 0 To mProcess_Project.PreOrder.Quote.QID.Count - 1
+            If (mProcess_Project.PreOrder.Quote.QDate(i) <> grdQuote.Rows(i).Cells(0).Value) Then
+                pblnValChanged = True
+            End If
+
+            If (mProcess_Project.PreOrder.Quote.No(i) <> grdQuote.Rows(i).Cells(1).Value) Then
+                pblnValChanged = True
+            End If
+        Next
+
+        For i As Integer = 0 To mProcess_Project.PreOrder.SalesData.ID_Sales.Count - 1
+            If (mProcess_Project.PreOrder.SalesData.Year(i) <> grdPreOrder_SalesData.Rows(i).Cells(0).Value) Then
+                pblnValChanged = True
+            End If
+
+            If (mProcess_Project.PreOrder.SalesData.Qty(i) <> grdPreOrder_SalesData.Rows(i).Cells(1).Value) Then
+                pblnValChanged = True
+            End If
+
+            If (mProcess_Project.PreOrder.SalesData.Price(i) <> grdPreOrder_SalesData.Rows(i).Cells(2).Value) Then
+                pblnValChanged = True
+            End If
+
+            If (mProcess_Project.PreOrder.SalesData.Total(i) <> grdPreOrder_SalesData.Rows(i).Cells(3).Value) Then
+                pblnValChanged = True
+            End If
+        Next
+
+
+        '''...."Pre-Order:"
+
+        ''With mProcess_Project.PreOrder
+        ''    .Mgr_PreOrder = cmbMgrPreOrder.Text
+        ''    .Mgr_Sales = txtMgrSales.Text
+
+        ''    If (cmbExport_Reqd.Text = "Y") Then
+        ''        .Export_Reqd = True
+        ''    Else
+        ''        .Export_Reqd = False
+        ''    End If
+
+        ''    .Export_Status = cmbExport_Status.Text
+
+        ''    .Part_Family = cmbPartFamily.Text
+        ''    .Part_Type = cmbPartType.Text
+
+        ''    .PreOrder_Seg = cmbPreOrderSeg.Text
+        ''    .PreOrder_Channel = cmbPreOrderChannel.Text
+        ''    .Notes = txtPreOrderNotes.Text
+
+        ''    .Loc_CostFile = cmbCostFileLoc.Text
+        ''    .Loc_RFQPkg = cmbRFQPkgLoc.Text
+        ''    .Notes_Price = txtPreOrderPriceNotes.Text
+
+        ''    If (chkPreOrderUserSigned.Checked) Then
+        ''        '.User_Name = txtPreOrderUserName.Text
+        ''        .EditedBy.User_Name = txtPreOrderUserName.Text
+        ''        .EditedBy.User_DateSigned = Convert.ToDateTime(txtPreOrderUserDate.Text)
+        ''        .EditedBy.User_Signed = True
+
+        ''    Else
+        ''        .EditedBy.User_Name = ""
+        ''        .EditedBy.User_DateSigned = DateTime.MinValue
+        ''        .EditedBy.User_Signed = False
+        ''    End If
+
+        ''    '....Cust Contact Pre-Order
+        ''    mProcess_Project.CustContact.ID_Cust.Clear()
+        ''    mProcess_Project.CustContact.DeptName.Clear()
+        ''    mProcess_Project.CustContact.Name.Clear()
+        ''    mProcess_Project.CustContact.Phone.Clear()
+        ''    mProcess_Project.CustContact.Email.Clear()
+
+        ''    'grdOrdEntry_CustContact = grdCustContact
+
+        ''    For j As Integer = 0 To grdCustContact.Rows.Count - 2
+        ''        mProcess_Project.CustContact.ID_Cust.Add(j + 1)
+        ''        mProcess_Project.CustContact.DeptName.Add(grdCustContact.Rows(j).Cells(0).Value)
+        ''        mProcess_Project.CustContact.Name.Add(grdCustContact.Rows(j).Cells(1).Value)
+        ''        mProcess_Project.CustContact.Phone.Add(grdCustContact.Rows(j).Cells(2).Value)
+        ''        mProcess_Project.CustContact.Email.Add(grdCustContact.Rows(j).Cells(3).Value)
+        ''    Next
+
+        ''    '....Cust Contact Order-Entry
+        ''    mProcess_Project.CustContact.ID_Cust.Clear()
+        ''    mProcess_Project.CustContact.DeptName.Clear()
+        ''    mProcess_Project.CustContact.Name.Clear()
+        ''    mProcess_Project.CustContact.Phone.Clear()
+        ''    mProcess_Project.CustContact.Email.Clear()
+        ''    For j As Integer = 0 To grdOrdEntry_CustContact.Rows.Count - 2
+        ''        mProcess_Project.CustContact.ID_Cust.Add(j + 1)
+        ''        mProcess_Project.CustContact.DeptName.Add(grdOrdEntry_CustContact.Rows(j).Cells(0).Value)
+        ''        mProcess_Project.CustContact.Name.Add(grdOrdEntry_CustContact.Rows(j).Cells(1).Value)
+        ''        mProcess_Project.CustContact.Phone.Add(grdOrdEntry_CustContact.Rows(j).Cells(2).Value)
+        ''        mProcess_Project.CustContact.Email.Add(grdOrdEntry_CustContact.Rows(j).Cells(3).Value)
+        ''    Next
+
+        ''    '....Quote
+        ''    .Quote.QID.Clear()
+        ''    .Quote.QDate.Clear()
+        ''    .Quote.No.Clear()
+
+        ''    For j As Integer = 0 To grdQuote.Rows.Count - 2
+        ''        .Quote.QID.Add(j + 1)
+        ''        'grdQuote.Rows(j).Cells(0).Value <> "" And 
+        ''        If (Not IsNothing(grdQuote.Rows(j).Cells(0).Value)) Then
+        ''            .Quote.QDate.Add(grdQuote.Rows(j).Cells(0).Value)
+        ''        Else
+        ''            .Quote.QDate.Add(DateTime.MinValue)
+        ''        End If
+
+        ''        .Quote.No.Add(grdQuote.Rows(j).Cells(1).Value)
+        ''    Next
+
+        ''    '....Sales Data
+        ''    .SalesData.ID_Sales.Clear()
+        ''    .SalesData.Year.Clear()
+        ''    .SalesData.Qty.Clear()
+        ''    .SalesData.Price.Clear()
+        ''    .SalesData.Total.Clear()
+
+        ''    For j As Integer = 0 To grdPreOrder_SalesData.Rows.Count - 2
+        ''        .SalesData.ID_Sales.Add(j + 1)
+        ''        .SalesData.Year.Add(grdPreOrder_SalesData.Rows(j).Cells(0).Value)
+        ''        .SalesData.Qty.Add(grdPreOrder_SalesData.Rows(j).Cells(1).Value)
+        ''        .SalesData.Price.Add(grdPreOrder_SalesData.Rows(j).Cells(2).Value)
+        ''        .SalesData.Total.Add(grdPreOrder_SalesData.Rows(j).Cells(3).Value)
+        ''    Next
+
+        ''End With
+
+        Return pblnValChanged
 
     End Function
 
