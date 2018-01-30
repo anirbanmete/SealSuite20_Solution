@@ -37,6 +37,8 @@ Public Class Process_frmMain
 
     Dim mDateTimePicker As DateTimePicker
 
+    Dim mblngrdCustContact As Boolean = False
+
 #End Region
 
 #Region "FORM CONSTRUCTOR:"
@@ -257,6 +259,7 @@ Public Class Process_frmMain
 
     Private Sub InitializeControls()
         '===========================
+        cmdDel_Rec.Enabled = False
         txtParkerPart.ReadOnly = True
         txtPN_Rev.ReadOnly = True
         txtCustomer.ReadOnly = True
@@ -318,6 +321,23 @@ Public Class Process_frmMain
         '....Pre-Order
         PopulateMarketingMgr()
 
+        Dim pCmbColDept_PreOrd As New DataGridViewComboBoxColumn
+        pCmbColDept_PreOrd = grdCustContact.Columns.Item(0)
+        pCmbColDept_PreOrd.Items.Add("Engineering")
+        pCmbColDept_PreOrd.Items.Add("Purchasing")
+        pCmbColDept_PreOrd.Items.Add("Distributor")
+        pCmbColDept_PreOrd.Items.Add("Quality")
+        pCmbColDept_PreOrd.Items.Add("Service")
+
+        '....Ord Entry
+        Dim pCmbColDept_OrdEntry As New DataGridViewComboBoxColumn
+        pCmbColDept_OrdEntry = grdOrdEntry_CustContact.Columns.Item(0)
+        pCmbColDept_OrdEntry.Items.Add("Engineering")
+        pCmbColDept_OrdEntry.Items.Add("Purchasing")
+        pCmbColDept_OrdEntry.Items.Add("Distributor")
+        pCmbColDept_OrdEntry.Items.Add("Quality")
+        pCmbColDept_OrdEntry.Items.Add("Service")
+
         '....Application
         'cmbApp_InsertLoc.Text = "Face"
         mProcess_Project.App.Type = "Face"
@@ -342,6 +362,8 @@ Public Class Process_frmMain
             .Add("76")
             .Add("79")
         End With
+
+
 
         Dim pSealType As String = gPartProject.PNR.SealType.ToString()
 
@@ -873,8 +895,25 @@ Public Class Process_frmMain
 
             '....Cust Contact Pre-Order
             For j As Integer = 0 To mProcess_Project.CustContact.DeptName.Count - 1
+                Dim pCmbColDept_PreOrd As New DataGridViewComboBoxColumn
+                pCmbColDept_PreOrd = grdCustContact.Columns.Item(0)
+                Dim pVal As String = ""
+                If (Not IsNothing(mProcess_Project.CustContact.DeptName(j))) Then
+                    pVal = mProcess_Project.CustContact.DeptName(j)
+                End If
+                If (Not pCmbColDept_PreOrd.Items.Contains(pVal)) Then
+                    pCmbColDept_PreOrd.Items.Add(pVal)
+                End If
+            Next
+
+            For j As Integer = 0 To mProcess_Project.CustContact.DeptName.Count - 1
                 grdCustContact.Rows.Add()
-                grdCustContact.Rows(j).Cells(0).Value = mProcess_Project.CustContact.DeptName(j)
+                If (Not IsNothing(mProcess_Project.CustContact.DeptName(j))) Then
+                    grdCustContact.Rows(j).Cells(0).Value = mProcess_Project.CustContact.DeptName(j)
+                Else
+                    grdCustContact.Rows(j).Cells(0).Value = ""
+                End If
+
                 grdCustContact.Rows(j).Cells(1).Value = mProcess_Project.CustContact.Name(j)
 
                 grdCustContact.Rows(j).Cells(2).Value = mProcess_Project.CustContact.Phone(j)
@@ -883,8 +922,25 @@ Public Class Process_frmMain
 
             '....Cust Contact Order-Entry
             For j As Integer = 0 To mProcess_Project.CustContact.DeptName.Count - 1
+                Dim pCmbColDept_OrdEntry As New DataGridViewComboBoxColumn
+                pCmbColDept_OrdEntry = grdOrdEntry_CustContact.Columns.Item(0)
+                Dim pVal As String = ""
+                If (Not IsNothing(mProcess_Project.CustContact.DeptName(j))) Then
+                    pVal = mProcess_Project.CustContact.DeptName(j)
+                End If
+                If (Not pCmbColDept_OrdEntry.Items.Contains(pVal)) Then
+                    pCmbColDept_OrdEntry.Items.Add(pVal)
+                End If
+            Next
+
+            For j As Integer = 0 To mProcess_Project.CustContact.DeptName.Count - 1
                 grdOrdEntry_CustContact.Rows.Add()
-                grdOrdEntry_CustContact.Rows(j).Cells(0).Value = mProcess_Project.CustContact.DeptName(j)
+                'grdOrdEntry_CustContact.Rows(j).Cells(0).Value = mProcess_Project.CustContact.DeptName(j)
+                If (Not IsNothing(mProcess_Project.CustContact.DeptName(j))) Then
+                    grdOrdEntry_CustContact.Rows(j).Cells(0).Value = mProcess_Project.CustContact.DeptName(j)
+                Else
+                    grdOrdEntry_CustContact.Rows(j).Cells(0).Value = ""
+                End If
                 grdOrdEntry_CustContact.Rows(j).Cells(1).Value = mProcess_Project.CustContact.Name(j)
 
                 grdOrdEntry_CustContact.Rows(j).Cells(2).Value = mProcess_Project.CustContact.Phone(j)
@@ -2079,8 +2135,6 @@ Public Class Process_frmMain
             Next
 
         End With
-
-
 
 
     End Sub
@@ -3345,14 +3399,9 @@ Public Class Process_frmMain
         '=============================================================================================================================================
         If TypeOf e.Control Is System.Windows.Forms.ComboBox Then
             With DirectCast(e.Control, System.Windows.Forms.ComboBox)
-                'Set the dropdown style as you like
-                '.DropDownStyle = ComboBoxStyle.DropDown
                 Dim cb As ComboBox = TryCast(e.Control, ComboBox)
                 cb.DropDownStyle = ComboBoxStyle.DropDown
-                'cb.Items.Insert(cb.Items.Count - 1, cb.Text)
             End With
-        Else
-            'The type is either TextBoxColumn/ImageColumn etc..
         End If
     End Sub
 
@@ -3372,6 +3421,33 @@ Public Class Process_frmMain
     End Sub
 
 
+    Private Sub grdApp_Axial_Cavity_CellValidating(sender As Object, e As DataGridViewCellValidatingEventArgs) _
+                                                   Handles grdApp_Axial_Cavity.CellValidating
+        '=========================================================================================================
+        If (grdApp_Axial_Cavity.CurrentCellAddress.X = DataGridViewComboBoxColumn6.DisplayIndex) Then
+            If (Not DataGridViewComboBoxColumn6.Items.Contains(e.FormattedValue)) Then
+                DataGridViewComboBoxColumn6.Items.Add(e.FormattedValue)
+                grdApp_Axial_Cavity.Rows(e.RowIndex).Cells(0).Value = e.FormattedValue
+            End If
+        End If
+    End Sub
+
+    Private Sub grdApp_Axial_Cavity_EditingControlShowing(sender As Object,
+                                                          e As DataGridViewEditingControlShowingEventArgs) _
+                                                          Handles grdApp_Axial_Cavity.EditingControlShowing
+        '=====================================================================================================
+        If (grdApp_Axial_Cavity.CurrentCellAddress.X = DataGridViewComboBoxColumn6.DisplayIndex) Then
+            Dim pCmbBox As ComboBox = e.Control
+
+            If (Not IsNothing(pCmbBox)) Then
+                pCmbBox.DropDownStyle = ComboBoxStyle.DropDown
+            End If
+        End If
+    End Sub
+
+
+
+
     Private Sub grdApproval_Attendees_EditingControlShowing(sender As System.Object, e As System.Windows.Forms.DataGridViewEditingControlShowingEventArgs) _
                                                             Handles grdApproval_Attendees.EditingControlShowing
         '===================================================================================================================================================
@@ -3386,6 +3462,34 @@ Public Class Process_frmMain
 
     End Sub
 
+    Private Sub grdManf_ToolNGage_CellValidating(sender As Object,
+                                                 e As DataGridViewCellValidatingEventArgs) _
+                                                 Handles grdManf_ToolNGage.CellValidating
+        '======================================================================================
+
+        'If (grdManf_ToolNGage.CurrentCellAddress.X = DataGridViewTextBoxColumn12.DisplayIndex) Then
+        '    If (Not DataGridViewTextBoxColumn12.Items.Contains(e.FormattedValue)) Then
+        '        DataGridViewTextBoxColumn12.Items.Add(e.FormattedValue)
+        '        grdManf_ToolNGage.Rows(e.RowIndex).Cells(1).Value = e.FormattedValue
+        '    End If
+        'ElseIf (grdManf_ToolNGage.CurrentCellAddress.X = Column2.DisplayIndex) Then
+        '    If (Not Column2.Items.Contains(e.FormattedValue)) Then
+        '        Column2.Items.Add(e.FormattedValue)
+        '        grdManf_ToolNGage.Rows(e.RowIndex).Cells(2).Value = e.FormattedValue
+        '    End If
+        'ElseIf (grdManf_ToolNGage.CurrentCellAddress.X = Column7.DisplayIndex) Then
+        '    If (Not Column7.Items.Contains(e.FormattedValue)) Then
+        '        Column7.Items.Add(e.FormattedValue)
+        '        grdManf_ToolNGage.Rows(e.RowIndex).Cells(3).Value = e.FormattedValue
+        '    End If
+        'ElseIf (grdManf_ToolNGage.CurrentCellAddress.X = Column8.DisplayIndex) Then
+        '    If (Not Column8.Items.Contains(e.FormattedValue)) Then
+        '        Column8.Items.Add(e.FormattedValue)
+        '        grdManf_ToolNGage.Rows(e.RowIndex).Cells(5).Value = e.FormattedValue
+        '    End If
+        'End If
+
+    End Sub
     Private Sub grdManf_ToolNGage_EditingControlShowing(sender As System.Object, e As System.Windows.Forms.DataGridViewEditingControlShowingEventArgs) _
                                                         Handles grdManf_ToolNGage.EditingControlShowing
         '===============================================================================================================================================
@@ -3397,6 +3501,34 @@ Public Class Process_frmMain
 
                 AddHandler pComboBoxManf.SelectionChangeCommitted, New EventHandler(AddressOf ComboBoxManf_SelectionChangeCommitted)
             End If
+
+            'If (grdManf_ToolNGage.CurrentCellAddress.X = DataGridViewTextBoxColumn12.DisplayIndex) Then
+            '    Dim pCmbBox As ComboBox = e.Control
+
+            '    If (Not IsNothing(pCmbBox)) Then
+            '        pCmbBox.DropDownStyle = ComboBoxStyle.DropDown
+            '    End If
+            'ElseIf (grdManf_ToolNGage.CurrentCellAddress.X = Column2.DisplayIndex) Then
+            '    Dim pCmbBox As ComboBox = e.Control
+
+            '    If (Not IsNothing(pCmbBox)) Then
+            '        pCmbBox.DropDownStyle = ComboBoxStyle.DropDown
+            '    End If
+            'ElseIf (grdManf_ToolNGage.CurrentCellAddress.X = Column7.DisplayIndex) Then
+            '    Dim pCmbBox As ComboBox = e.Control
+
+            '    If (Not IsNothing(pCmbBox)) Then
+            '        pCmbBox.DropDownStyle = ComboBoxStyle.DropDown
+            '    End If
+            'ElseIf (grdManf_ToolNGage.CurrentCellAddress.X = Column8.DisplayIndex) Then
+            '    Dim pCmbBox As ComboBox = e.Control
+
+            '    If (Not IsNothing(pCmbBox)) Then
+            '        pCmbBox.DropDownStyle = ComboBoxStyle.DropDown
+            '    End If
+            'End If
+
+
         Catch ex As Exception
 
         End Try
@@ -3743,6 +3875,7 @@ Public Class Process_frmMain
                 mProcess_Project.CustContact.Email.Add(grdCustContact.Rows(j).Cells(3).Value)
             Next
 
+            CopyDataGridView(grdCustContact, grdOrdEntry_CustContact)
             '....Cust Contact Order-Entry
             mProcess_Project.CustContact.ID_Cust.Clear()
             mProcess_Project.CustContact.DeptName.Clear()
@@ -5147,6 +5280,208 @@ Public Class Process_frmMain
         '============================================================================================
         grpCoating.Focus()
     End Sub
+
+    Private Sub grdCustContact_EditingControlShowing(sender As Object,
+                                                     e As DataGridViewEditingControlShowingEventArgs) _
+                                                     Handles grdCustContact.EditingControlShowing
+        '===============================================================================================
+        If (grdCustContact.CurrentCellAddress.X = DataGridViewComboBoxColumn4.DisplayIndex) Then
+            Dim pCmbBox As ComboBox = e.Control
+
+            If (Not IsNothing(pCmbBox)) Then
+                pCmbBox.DropDownStyle = ComboBoxStyle.DropDown
+            End If
+        End If
+    End Sub
+
+    Private Sub grdCustContact_CellValidating(sender As Object,
+                                              e As DataGridViewCellValidatingEventArgs) _
+                                              Handles grdCustContact.CellValidating
+        '=================================================================================
+        If (grdCustContact.CurrentCellAddress.X = DataGridViewComboBoxColumn4.DisplayIndex) Then
+            If (Not DataGridViewComboBoxColumn4.Items.Contains(e.FormattedValue)) Then
+                DataGridViewComboBoxColumn4.Items.Add(e.FormattedValue)
+                grdCustContact.Rows(e.RowIndex).Cells(0).Value = e.FormattedValue
+            End If
+        End If
+    End Sub
+
+    Private Sub grdOrdEntry_CustContact_CellValidating(sender As Object,
+                                                       e As DataGridViewCellValidatingEventArgs) _
+                                                       Handles grdOrdEntry_CustContact.CellValidating
+        '==============================================================================================
+        If (grdOrdEntry_CustContact.CurrentCellAddress.X = DataGridViewComboBoxColumn9.DisplayIndex) Then
+            If (Not DataGridViewComboBoxColumn9.Items.Contains(e.FormattedValue)) Then
+                DataGridViewComboBoxColumn9.Items.Add(e.FormattedValue)
+                grdOrdEntry_CustContact.Rows(e.RowIndex).Cells(0).Value = e.FormattedValue
+            End If
+        End If
+    End Sub
+
+    Private Sub grdOrdEntry_CustContact_EditingControlShowing(sender As Object,
+                                                              e As DataGridViewEditingControlShowingEventArgs) _
+                                                              Handles grdOrdEntry_CustContact.EditingControlShowing
+        '===========================================================================================================
+        If (grdOrdEntry_CustContact.CurrentCellAddress.X = DataGridViewComboBoxColumn9.DisplayIndex) Then
+            Dim pCmbBox As ComboBox = e.Control
+
+            If (Not IsNothing(pCmbBox)) Then
+                pCmbBox.DropDownStyle = ComboBoxStyle.DropDown
+            End If
+        End If
+    End Sub
+
+    Private Sub grdCustContact_RowHeaderMouseClick(sender As Object,
+                                                   e As DataGridViewCellMouseEventArgs) _
+                                                   Handles grdCustContact.RowHeaderMouseClick
+        '=====================================================================================
+        cmdDel_Rec.Enabled = True
+        mblngrdCustContact = True
+    End Sub
+
+    Private Sub cmdDel_Rec_Click(sender As Object, e As EventArgs) Handles cmdDel_Rec.Click
+        '==================================================================================
+        If (mblngrdCustContact) Then
+            Delete_Record(grdCustContact, grdCustContact.CurrentRow.Index)
+            mblngrdCustContact = False
+            cmdDel_Rec.Enabled = False
+        End If
+    End Sub
+
+    Private Sub Delete_Record(ByVal GrdView_In As DataGridView, ByVal RowIndex_In As Integer)
+        '====================================================================================
+        If (RowIndex_In <> GrdView_In.Rows.Count - 1) Then
+            GrdView_In.Rows.RemoveAt(RowIndex_In)
+        End If
+
+    End Sub
+
+    Private Sub grdCost_SplOperation_CellValidating(sender As Object, e As DataGridViewCellValidatingEventArgs) _
+                                                    Handles grdCost_SplOperation.CellValidating
+        '=========================================================================================================
+        If (grdCost_SplOperation.CurrentCellAddress.X = DataGridViewTextBoxColumn71.DisplayIndex) Then
+            If (Not DataGridViewTextBoxColumn71.Items.Contains(e.FormattedValue)) Then
+                DataGridViewTextBoxColumn71.Items.Add(e.FormattedValue)
+                grdCost_SplOperation.Rows(e.RowIndex).Cells(0).Value = e.FormattedValue
+            End If
+        End If
+    End Sub
+
+    Private Sub grdCost_SplOperation_EditingControlShowing(sender As Object, e As DataGridViewEditingControlShowingEventArgs) _
+                                                           Handles grdCost_SplOperation.EditingControlShowing
+        '========================================================================================================================
+        If (grdCost_SplOperation.CurrentCellAddress.X = DataGridViewTextBoxColumn71.DisplayIndex) Then
+            Dim pCmbBox As ComboBox = e.Control
+
+            If (Not IsNothing(pCmbBox)) Then
+                pCmbBox.DropDownStyle = ComboBoxStyle.DropDown
+            End If
+        End If
+    End Sub
+
+    Private Sub grdApp_Face_Cavity_CellValidating(sender As Object, e As DataGridViewCellValidatingEventArgs) _
+                                                  Handles grdApp_Face_Cavity.CellValidating
+        '========================================================================================================
+        If (grdApp_Face_Cavity.CurrentCellAddress.X = DataGridViewComboBoxColumn5.DisplayIndex) Then
+            If (Not DataGridViewComboBoxColumn5.Items.Contains(e.FormattedValue)) Then
+                DataGridViewComboBoxColumn5.Items.Add(e.FormattedValue)
+                grdApp_Face_Cavity.Rows(e.RowIndex).Cells(0).Value = e.FormattedValue
+            End If
+        End If
+    End Sub
+
+    Private Sub grdApp_Face_Cavity_EditingControlShowing(sender As Object, e As DataGridViewEditingControlShowingEventArgs) _
+                                                         Handles grdApp_Face_Cavity.EditingControlShowing
+        '====================================================================================================================
+        If (grdApp_Face_Cavity.CurrentCellAddress.X = DataGridViewComboBoxColumn5.DisplayIndex) Then
+            Dim pCmbBox As ComboBox = e.Control
+
+            If (Not IsNothing(pCmbBox)) Then
+                pCmbBox.DropDownStyle = ComboBoxStyle.DropDown
+            End If
+        End If
+    End Sub
+
+
+
+    Private Sub grdDesign_Verification_CellValidating(sender As Object,
+                                                      e As DataGridViewCellValidatingEventArgs) _
+                                                      Handles grdDesign_Verification.CellValidating
+        '===========================================================================================
+        If (grdDesign_Verification.CurrentCellAddress.X = DataGridViewComboBoxColumn10.DisplayIndex) Then
+            If (Not DataGridViewComboBoxColumn10.Items.Contains(e.FormattedValue)) Then
+                DataGridViewComboBoxColumn10.Items.Add(e.FormattedValue)
+                grdDesign_Verification.Rows(e.RowIndex).Cells(0).Value = e.FormattedValue
+            End If
+        End If
+
+    End Sub
+
+    Private Sub grdDesign_Verification_EditingControlShowing(sender As Object,
+                                                             e As DataGridViewEditingControlShowingEventArgs) _
+                                                             Handles grdDesign_Verification.EditingControlShowing
+        '==========================================================================================================
+        If (grdDesign_Verification.CurrentCellAddress.X = DataGridViewComboBoxColumn10.DisplayIndex) Then
+            Dim pCmbBox As ComboBox = e.Control
+
+            If (Not IsNothing(pCmbBox)) Then
+                pCmbBox.DropDownStyle = ComboBoxStyle.DropDown
+            End If
+        End If
+    End Sub
+
+    Private Sub grdDesign_CustSpec_CellValidating(sender As Object,
+                                                  e As DataGridViewCellValidatingEventArgs) _
+                                                  Handles grdDesign_CustSpec.CellValidating
+        '=====================================================================================
+        If (grdDesign_CustSpec.CurrentCellAddress.X = DataGridViewTextBoxColumn4.DisplayIndex) Then
+            If (Not DataGridViewTextBoxColumn4.Items.Contains(e.FormattedValue)) Then
+                DataGridViewTextBoxColumn4.Items.Add(e.FormattedValue)
+                grdDesign_CustSpec.Rows(e.RowIndex).Cells(0).Value = e.FormattedValue
+            End If
+        End If
+    End Sub
+
+    Private Sub grdDesign_CustSpec_EditingControlShowing(sender As Object,
+                                                         e As DataGridViewEditingControlShowingEventArgs) _
+                                                         Handles grdDesign_CustSpec.EditingControlShowing
+        '==================================================================================================
+        If (grdDesign_CustSpec.CurrentCellAddress.X = DataGridViewTextBoxColumn4.DisplayIndex) Then
+            Dim pCmbBox As ComboBox = e.Control
+
+            If (Not IsNothing(pCmbBox)) Then
+                pCmbBox.DropDownStyle = ComboBoxStyle.DropDown
+            End If
+        End If
+    End Sub
+
+    Private Sub grdDesign_Seal_CellValidating(sender As Object,
+                                              e As DataGridViewCellValidatingEventArgs) _
+                                              Handles grdDesign_Seal.CellValidating
+        '================================================================================
+        If (grdDesign_Seal.CurrentCellAddress.X = DataGridViewTextBoxColumn18.DisplayIndex) Then
+            If (Not DataGridViewTextBoxColumn18.Items.Contains(e.FormattedValue)) Then
+                DataGridViewTextBoxColumn18.Items.Add(e.FormattedValue)
+                grdDesign_Seal.Rows(e.RowIndex).Cells(0).Value = e.FormattedValue
+            End If
+        End If
+    End Sub
+
+    Private Sub grdDesign_Seal_EditingControlShowing(sender As Object,
+                                                     e As DataGridViewEditingControlShowingEventArgs) _
+                                                     Handles grdDesign_Seal.EditingControlShowing
+        '===============================================================================================
+        If (grdDesign_Seal.CurrentCellAddress.X = DataGridViewTextBoxColumn18.DisplayIndex) Then
+            Dim pCmbBox As ComboBox = e.Control
+
+            If (Not IsNothing(pCmbBox)) Then
+                pCmbBox.DropDownStyle = ComboBoxStyle.DropDown
+            End If
+        End If
+    End Sub
+
+
+
 
 
 
