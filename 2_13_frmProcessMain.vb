@@ -37,7 +37,26 @@ Public Class Process_frmMain
 
     Dim mDateTimePicker As DateTimePicker
 
-    Dim mblngrdCustContact As Boolean = False
+    '....Variables for Deleting Records from GridView
+    Dim mblngrdCustContact_PreOrder As Boolean = False
+    Dim mblngrdQuote_PreOrder As Boolean = False
+    Dim mblngrdForecast_PreOrder As Boolean = False
+    Dim mblngrdCustContact_OrdEntry As Boolean = False
+    Dim mblngrdSplOperation_Cost As Boolean = False
+    Dim mblngrdCavityFace_App As Boolean = False
+    Dim mblngrdCavityAxial_App As Boolean = False
+    Dim mblngrdDesignVerfication_Design As Boolean = False
+    Dim mblngrdInput_Design As Boolean = False
+    Dim mblngrdCustSpec_Design As Boolean = False
+    Dim mblngrdSealDim_Design As Boolean = False
+    Dim mblngrdToolNGag_Manf As Boolean = False
+    Dim mblngrdMat_Purchasing As Boolean = False
+    Dim mbkngrdDWG_Purchasing As Boolean = False
+    Dim mblngrdSplOperation_Qlty As Boolean = False
+    Dim mblngrdNeeded_DWG As Boolean = False
+    Dim mblngrdBOM_DWG As Boolean = False
+    Dim mblngrdIssueComment As Boolean = False
+
 
 #End Region
 
@@ -793,7 +812,6 @@ Public Class Process_frmMain
         '====================
 
         '.... "General:"
-
         txtParkerPart.Text = gPartProject.PNR.PN
         txtPN_Rev.Text = gPartProject.PNR.PN_Rev
 
@@ -825,7 +843,6 @@ Public Class Process_frmMain
 
 
         '.... "PreOrder:"
-
         With mProcess_Project.PreOrder
             Dim pCI As New CultureInfo("en-US")
             cmbMgrPreOrder.Text = .Mgr.Mkt
@@ -1117,8 +1134,26 @@ Public Class Process_frmMain
 
             '....Spl Operation
             For j As Integer = 0 To .SplOperation.Desc.Count - 1
+                Dim pCmbColDesc_Cost As New DataGridViewComboBoxColumn
+                pCmbColDesc_Cost = grdCost_SplOperation.Columns.Item(0)
+                Dim pVal As String = ""
+                If (Not IsNothing(.SplOperation.Desc(j))) Then
+                    pVal = .SplOperation.Desc(j)
+                End If
+                If (Not pCmbColDesc_Cost.Items.Contains(pVal)) Then
+                    pCmbColDesc_Cost.Items.Add(pVal)
+                End If
+            Next
+
+            '....Spl Operation
+            For j As Integer = 0 To .SplOperation.Desc.Count - 1
                 grdCost_SplOperation.Rows.Add()
-                grdCost_SplOperation.Rows(j).Cells(0).Value = .SplOperation.Desc(j)
+                If (Not IsNothing(.SplOperation.Desc(j))) Then
+                    grdCost_SplOperation.Rows(j).Cells(0).Value = .SplOperation.Desc(j)
+                Else
+                    grdCost_SplOperation.Rows(j).Cells(0).Value = ""
+                End If
+                'grdCost_SplOperation.Rows(j).Cells(0).Value = .SplOperation.Desc(j)
                 grdCost_SplOperation.Rows(j).Cells(1).Value = .SplOperation.Spec(j)
                 grdCost_SplOperation.Rows(j).Cells(2).Value = .SplOperation.LeadTime(j)
                 grdCost_SplOperation.Rows(j).Cells(3).Value = .SplOperation.Cost(j).ToString("#.00")
@@ -1138,7 +1173,6 @@ Public Class Process_frmMain
 
 
         '.... "Application:"
-
         With mProcess_Project.App
             txtApp_Equip.Text = .Eqp
             txtApp_ExistingSeal.Text = .ExistingSeal
@@ -1865,8 +1899,27 @@ Public Class Process_frmMain
 
             '....Spl Operation
             For j As Integer = 0 To mProcess_Project.Cost.SplOperation.Desc.Count - 1
+                Dim pCmbColDesc_Cost As New DataGridViewComboBoxColumn
+                pCmbColDesc_Cost = grdQuality_SplOperation.Columns.Item(0)
+                Dim pVal As String = ""
+                If (Not IsNothing(mProcess_Project.Cost.SplOperation.Desc(j))) Then
+                    pVal = mProcess_Project.Cost.SplOperation.Desc(j)
+                End If
+                If (Not pCmbColDesc_Cost.Items.Contains(pVal)) Then
+                    pCmbColDesc_Cost.Items.Add(pVal)
+                End If
+            Next
+
+            '....Spl Operation
+            For j As Integer = 0 To mProcess_Project.Cost.SplOperation.Desc.Count - 1
                 grdQuality_SplOperation.Rows.Add()
-                grdQuality_SplOperation.Rows(j).Cells(0).Value = mProcess_Project.Cost.SplOperation.Desc(j)
+                If (Not IsNothing(mProcess_Project.Cost.SplOperation.Desc(j))) Then
+                    grdQuality_SplOperation.Rows(j).Cells(0).Value = mProcess_Project.Cost.SplOperation.Desc(j)
+                Else
+                    grdQuality_SplOperation.Rows(j).Cells(0).Value = ""
+                End If
+
+                'grdQuality_SplOperation.Rows(j).Cells(0).Value = mProcess_Project.Cost.SplOperation.Desc(j)
                 grdQuality_SplOperation.Rows(j).Cells(1).Value = mProcess_Project.Cost.SplOperation.Spec(j)
                 grdQuality_SplOperation.Rows(j).Cells(2).Value = mProcess_Project.Cost.SplOperation.LeadTime(j)
                 grdQuality_SplOperation.Rows(j).Cells(3).Value = mProcess_Project.Cost.SplOperation.Cost(j).ToString("#.00")
@@ -3794,6 +3847,10 @@ Public Class Process_frmMain
     Private Sub SaveData()
         '==================
 
+        If (TabControl1.SelectedIndex = 2) Then
+            CopyDataGridView(grdOrdEntry_CustContact, grdCustContact)
+        End If
+
         '.... "Header:"
 
         With mProcess_Project
@@ -4646,7 +4703,7 @@ Public Class Process_frmMain
             'If (grdCost_SplOperation.Rows.Count > 1) Then
             '    grdQuality_SplOperation = grdCost_SplOperation
             'End If
-
+            CopyDataGridView(grdCost_SplOperation, grdQuality_SplOperation)
             mProcess_Project.Cost.SplOperation.ID_SplOp.Clear()
             mProcess_Project.Cost.SplOperation.Desc.Clear()
             mProcess_Project.Cost.SplOperation.Spec.Clear()
@@ -5301,6 +5358,7 @@ Public Class Process_frmMain
         If (grdCustContact.CurrentCellAddress.X = DataGridViewComboBoxColumn4.DisplayIndex) Then
             If (Not DataGridViewComboBoxColumn4.Items.Contains(e.FormattedValue)) Then
                 DataGridViewComboBoxColumn4.Items.Add(e.FormattedValue)
+                DataGridViewComboBoxColumn9.Items.Add(e.FormattedValue)
                 grdCustContact.Rows(e.RowIndex).Cells(0).Value = e.FormattedValue
             End If
         End If
@@ -5313,6 +5371,7 @@ Public Class Process_frmMain
         If (grdOrdEntry_CustContact.CurrentCellAddress.X = DataGridViewComboBoxColumn9.DisplayIndex) Then
             If (Not DataGridViewComboBoxColumn9.Items.Contains(e.FormattedValue)) Then
                 DataGridViewComboBoxColumn9.Items.Add(e.FormattedValue)
+                DataGridViewComboBoxColumn4.Items.Add(e.FormattedValue)
                 grdOrdEntry_CustContact.Rows(e.RowIndex).Cells(0).Value = e.FormattedValue
             End If
         End If
@@ -5336,14 +5395,118 @@ Public Class Process_frmMain
                                                    Handles grdCustContact.RowHeaderMouseClick
         '=====================================================================================
         cmdDel_Rec.Enabled = True
-        mblngrdCustContact = True
+        mblngrdCustContact_PreOrder = True
+
+        mblngrdQuote_PreOrder = False
+        mblngrdForecast_PreOrder = False
+        mblngrdCustContact_OrdEntry = False
+        mblngrdSplOperation_Cost = False
+        mblngrdCavityFace_App = False
+        mblngrdCavityAxial_App = False
+        mblngrdDesignVerfication_Design = False
+        mblngrdInput_Design = False
+        mblngrdCustSpec_Design = False
+        mblngrdSealDim_Design = False
+        mblngrdToolNGag_Manf = False
+        mblngrdMat_Purchasing = False
+        mbkngrdDWG_Purchasing = False
+        mblngrdSplOperation_Qlty = False
+        mblngrdNeeded_DWG = False
+        mblngrdBOM_DWG = False
+        mblngrdIssueComment = False
     End Sub
 
     Private Sub cmdDel_Rec_Click(sender As Object, e As EventArgs) Handles cmdDel_Rec.Click
         '==================================================================================
-        If (mblngrdCustContact) Then
+        If (mblngrdCustContact_PreOrder) Then
             Delete_Record(grdCustContact, grdCustContact.CurrentRow.Index)
-            mblngrdCustContact = False
+            mblngrdCustContact_PreOrder = False
+            cmdDel_Rec.Enabled = False
+
+        ElseIf (mblngrdQuote_PreOrder) Then
+            Delete_Record(grdQuote, grdQuote.CurrentRow.Index)
+            mblngrdQuote_PreOrder = False
+            cmdDel_Rec.Enabled = False
+
+        ElseIf (mblngrdForecast_PreOrder) Then
+            Delete_Record(grdPreOrder_SalesData, grdPreOrder_SalesData.CurrentRow.Index)
+            mblngrdForecast_PreOrder = False
+            cmdDel_Rec.Enabled = False
+
+        ElseIf (mblngrdCustContact_OrdEntry) Then
+            Delete_Record(grdOrdEntry_CustContact, grdOrdEntry_CustContact.CurrentRow.Index)
+            mblngrdCustContact_OrdEntry = False
+            cmdDel_Rec.Enabled = False
+
+        ElseIf (mblngrdSplOperation_Cost) Then
+            Delete_Record(grdCost_SplOperation, grdCost_SplOperation.CurrentRow.Index)
+            mblngrdSplOperation_Cost = False
+            cmdDel_Rec.Enabled = False
+
+        ElseIf (mblngrdCavityFace_App) Then
+            Delete_Record(grdApp_Face_Cavity, grdApp_Face_Cavity.CurrentRow.Index)
+            mblngrdCavityFace_App = False
+            cmdDel_Rec.Enabled = False
+
+
+        ElseIf (mblngrdCavityAxial_App) Then
+            Delete_Record(grdApp_Axial_Cavity, grdApp_Axial_Cavity.CurrentRow.Index)
+            mblngrdCavityAxial_App = False
+            cmdDel_Rec.Enabled = False
+
+        ElseIf (mblngrdDesignVerfication_Design) Then
+            Delete_Record(grdDesign_Verification, grdDesign_Verification.CurrentRow.Index)
+            mblngrdDesignVerfication_Design = False
+            cmdDel_Rec.Enabled = False
+
+        ElseIf (mblngrdInput_Design) Then
+            Delete_Record(grdDesign_Input, grdDesign_Input.CurrentRow.Index)
+            mblngrdInput_Design = False
+            cmdDel_Rec.Enabled = False
+
+        ElseIf (mblngrdCustSpec_Design) Then
+            Delete_Record(grdDesign_CustSpec, grdDesign_CustSpec.CurrentRow.Index)
+            mblngrdCustSpec_Design = False
+            cmdDel_Rec.Enabled = False
+
+        ElseIf (mblngrdSealDim_Design) Then
+            Delete_Record(grdDesign_Seal, grdDesign_Seal.CurrentRow.Index)
+            mblngrdSealDim_Design = False
+            cmdDel_Rec.Enabled = False
+
+        ElseIf (mblngrdToolNGag_Manf) Then
+            Delete_Record(grdManf_ToolNGage, grdManf_ToolNGage.CurrentRow.Index)
+            mblngrdToolNGag_Manf = False
+            cmdDel_Rec.Enabled = False
+
+        ElseIf (mblngrdMat_Purchasing) Then
+            Delete_Record(grdPurchase_Mat, grdPurchase_Mat.CurrentRow.Index)
+            mblngrdMat_Purchasing = False
+            cmdDel_Rec.Enabled = False
+
+        ElseIf (mbkngrdDWG_Purchasing) Then
+            Delete_Record(grdPurchase_Drawing, grdPurchase_Drawing.CurrentRow.Index)
+            mbkngrdDWG_Purchasing = False
+            cmdDel_Rec.Enabled = False
+
+        ElseIf (mblngrdSplOperation_Qlty) Then
+            Delete_Record(grdQuality_SplOperation, grdQuality_SplOperation.CurrentRow.Index)
+            mblngrdSplOperation_Qlty = False
+            cmdDel_Rec.Enabled = False
+
+        ElseIf (mblngrdNeeded_DWG) Then
+            Delete_Record(grdDrawing_Needed, grdDrawing_Needed.CurrentRow.Index)
+            mblngrdNeeded_DWG = False
+            cmdDel_Rec.Enabled = False
+
+        ElseIf (mblngrdBOM_DWG) Then
+            Delete_Record(grdDrawing_BOM, grdDrawing_BOM.CurrentRow.Index)
+            mblngrdBOM_DWG = False
+            cmdDel_Rec.Enabled = False
+
+        ElseIf (mblngrdIssueComment) Then
+            Delete_Record(grdIssueComment, grdIssueComment.CurrentRow.Index)
+            mblngrdIssueComment = False
             cmdDel_Rec.Enabled = False
         End If
     End Sub
@@ -5480,9 +5643,492 @@ Public Class Process_frmMain
         End If
     End Sub
 
+    Private Sub grdQuality_SplOperation_CellValidating(sender As Object,
+                                                       e As DataGridViewCellValidatingEventArgs) _
+                                                       Handles grdQuality_SplOperation.CellValidating
+        '=============================================================================================
+        If (grdQuality_SplOperation.CurrentCellAddress.X = DataGridViewComboBoxColumn8.DisplayIndex) Then
+            If (Not DataGridViewComboBoxColumn8.Items.Contains(e.FormattedValue)) Then
+                DataGridViewComboBoxColumn8.Items.Add(e.FormattedValue)
+                grdQuality_SplOperation.Rows(e.RowIndex).Cells(0).Value = e.FormattedValue
+            End If
+        End If
+    End Sub
+
+    Private Sub grdQuality_SplOperation_EditingControlShowing(sender As Object,
+                                                              e As DataGridViewEditingControlShowingEventArgs) _
+                                                              Handles grdQuality_SplOperation.EditingControlShowing
+        '===========================================================================================================
+        If (grdQuality_SplOperation.CurrentCellAddress.X = DataGridViewComboBoxColumn8.DisplayIndex) Then
+            Dim pCmbBox As ComboBox = e.Control
+
+            If (Not IsNothing(pCmbBox)) Then
+                pCmbBox.DropDownStyle = ComboBoxStyle.DropDown
+            End If
+        End If
+    End Sub
+
+    Private Sub grdQuote_RowHeaderMouseClick(sender As Object,
+                                             e As DataGridViewCellMouseEventArgs) Handles grdQuote.RowHeaderMouseClick
+        '===============================================================================================================
+        cmdDel_Rec.Enabled = True
+        mblngrdQuote_PreOrder = True
+
+        mblngrdCustContact_PreOrder = False
+        mblngrdForecast_PreOrder = False
+        mblngrdCustContact_OrdEntry = False
+        mblngrdSplOperation_Cost = False
+        mblngrdCavityFace_App = False
+        mblngrdCavityAxial_App = False
+        mblngrdDesignVerfication_Design = False
+        mblngrdInput_Design = False
+        mblngrdCustSpec_Design = False
+        mblngrdSealDim_Design = False
+        mblngrdToolNGag_Manf = False
+        mblngrdMat_Purchasing = False
+        mbkngrdDWG_Purchasing = False
+        mblngrdSplOperation_Qlty = False
+        mblngrdNeeded_DWG = False
+        mblngrdBOM_DWG = False
+        mblngrdIssueComment = False
+    End Sub
+
+    Private Sub grdPreOrder_SalesData_RowHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) _
+                                                          Handles grdPreOrder_SalesData.RowHeaderMouseClick
+        '=========================================================================================================
+        cmdDel_Rec.Enabled = True
+        mblngrdForecast_PreOrder = True
+
+        mblngrdCustContact_PreOrder = False
+        mblngrdQuote_PreOrder = False
+        mblngrdCustContact_OrdEntry = False
+        mblngrdSplOperation_Cost = False
+        mblngrdCavityFace_App = False
+        mblngrdCavityAxial_App = False
+        mblngrdDesignVerfication_Design = False
+        mblngrdInput_Design = False
+        mblngrdCustSpec_Design = False
+        mblngrdSealDim_Design = False
+        mblngrdToolNGag_Manf = False
+        mblngrdMat_Purchasing = False
+        mbkngrdDWG_Purchasing = False
+        mblngrdSplOperation_Qlty = False
+        mblngrdNeeded_DWG = False
+        mblngrdBOM_DWG = False
+        mblngrdIssueComment = False
+    End Sub
+
+    Private Sub grdOrdEntry_CustContact_RowHeaderMouseClick(sender As Object,
+                                                            e As DataGridViewCellMouseEventArgs) _
+                                                            Handles grdOrdEntry_CustContact.RowHeaderMouseClick
+        '======================================================================================================
+        cmdDel_Rec.Enabled = True
+        mblngrdCustContact_OrdEntry = True
+
+        mblngrdCustContact_PreOrder = False
+        mblngrdQuote_PreOrder = False
+        mblngrdForecast_PreOrder = False
+        mblngrdSplOperation_Cost = False
+        mblngrdCavityFace_App = False
+        mblngrdCavityAxial_App = False
+        mblngrdDesignVerfication_Design = False
+        mblngrdInput_Design = False
+        mblngrdCustSpec_Design = False
+        mblngrdSealDim_Design = False
+        mblngrdToolNGag_Manf = False
+        mblngrdMat_Purchasing = False
+        mbkngrdDWG_Purchasing = False
+        mblngrdSplOperation_Qlty = False
+        mblngrdNeeded_DWG = False
+        mblngrdBOM_DWG = False
+        mblngrdIssueComment = False
+    End Sub
+
+    Private Sub grdCost_SplOperation_RowHeaderMouseClick(sender As Object,
+                                                         e As DataGridViewCellMouseEventArgs) _
+                                                         Handles grdCost_SplOperation.RowHeaderMouseClick
+        '===================================================================================================
+        cmdDel_Rec.Enabled = True
+        mblngrdSplOperation_Cost = True
+
+        mblngrdCustContact_PreOrder = False
+        mblngrdQuote_PreOrder = False
+        mblngrdForecast_PreOrder = False
+        mblngrdCustContact_OrdEntry = False
+        mblngrdCavityFace_App = False
+        mblngrdCavityAxial_App = False
+        mblngrdDesignVerfication_Design = False
+        mblngrdInput_Design = False
+        mblngrdCustSpec_Design = False
+        mblngrdSealDim_Design = False
+        mblngrdToolNGag_Manf = False
+        mblngrdMat_Purchasing = False
+        mbkngrdDWG_Purchasing = False
+        mblngrdSplOperation_Qlty = False
+        mblngrdNeeded_DWG = False
+        mblngrdBOM_DWG = False
+        mblngrdIssueComment = False
+    End Sub
+
+    Private Sub grdApp_Face_Cavity_RowHeaderMouseClick(sender As Object,
+                                                       e As DataGridViewCellMouseEventArgs) _
+                                                       Handles grdApp_Face_Cavity.RowHeaderMouseClick
+        '============================================================================================
+        cmdDel_Rec.Enabled = True
+        mblngrdCavityFace_App = True
 
 
+        mblngrdCustContact_PreOrder = False
+        mblngrdQuote_PreOrder = False
+        mblngrdForecast_PreOrder = False
+        mblngrdCustContact_OrdEntry = False
+        mblngrdSplOperation_Cost = False
+        mblngrdCavityAxial_App = False
+        mblngrdDesignVerfication_Design = False
+        mblngrdInput_Design = False
+        mblngrdCustSpec_Design = False
+        mblngrdSealDim_Design = False
+        mblngrdToolNGag_Manf = False
+        mblngrdMat_Purchasing = False
+        mbkngrdDWG_Purchasing = False
+        mblngrdSplOperation_Qlty = False
+        mblngrdNeeded_DWG = False
+        mblngrdBOM_DWG = False
+        mblngrdIssueComment = False
+    End Sub
 
+    Private Sub grdApp_Axial_Cavity_RowHeaderMouseClick(sender As Object,
+                                                        e As DataGridViewCellMouseEventArgs) _
+                                                        Handles grdApp_Axial_Cavity.RowHeaderMouseClick
+        '===============================================================================================
+        cmdDel_Rec.Enabled = True
+        mblngrdCavityAxial_App = True
+
+        mblngrdCustContact_PreOrder = False
+        mblngrdQuote_PreOrder = False
+        mblngrdForecast_PreOrder = False
+        mblngrdCustContact_OrdEntry = False
+        mblngrdSplOperation_Cost = False
+        mblngrdCavityFace_App = False
+        mblngrdDesignVerfication_Design = False
+        mblngrdInput_Design = False
+        mblngrdCustSpec_Design = False
+        mblngrdSealDim_Design = False
+        mblngrdToolNGag_Manf = False
+        mblngrdMat_Purchasing = False
+        mbkngrdDWG_Purchasing = False
+        mblngrdSplOperation_Qlty = False
+        mblngrdNeeded_DWG = False
+        mblngrdBOM_DWG = False
+        mblngrdIssueComment = False
+    End Sub
+
+    Private Sub grdDesign_Verification_RowHeaderMouseClick(sender As Object,
+                                                           e As DataGridViewCellMouseEventArgs) _
+                                                           Handles grdDesign_Verification.RowHeaderMouseClick
+        '=====================================================================================================
+        cmdDel_Rec.Enabled = True
+        mblngrdDesignVerfication_Design = True
+
+        mblngrdCustContact_PreOrder = False
+        mblngrdQuote_PreOrder = False
+        mblngrdForecast_PreOrder = False
+        mblngrdCustContact_OrdEntry = False
+        mblngrdSplOperation_Cost = False
+        mblngrdCavityFace_App = False
+        mblngrdCavityAxial_App = False
+        mblngrdInput_Design = False
+        mblngrdCustSpec_Design = False
+        mblngrdSealDim_Design = False
+        mblngrdToolNGag_Manf = False
+        mblngrdMat_Purchasing = False
+        mbkngrdDWG_Purchasing = False
+        mblngrdSplOperation_Qlty = False
+        mblngrdNeeded_DWG = False
+        mblngrdBOM_DWG = False
+        mblngrdIssueComment = False
+    End Sub
+
+    Private Sub grdDesign_Input_RowHeaderMouseClick(sender As Object,
+                                                    e As DataGridViewCellMouseEventArgs) _
+                                                    Handles grdDesign_Input.RowHeaderMouseClick
+        '=======================================================================================
+        cmdDel_Rec.Enabled = True
+        mblngrdInput_Design = True
+
+        mblngrdCustContact_PreOrder = False
+        mblngrdQuote_PreOrder = False
+        mblngrdForecast_PreOrder = False
+        mblngrdCustContact_OrdEntry = False
+        mblngrdSplOperation_Cost = False
+        mblngrdCavityFace_App = False
+        mblngrdCavityAxial_App = False
+        mblngrdDesignVerfication_Design = False
+        mblngrdCustSpec_Design = False
+        mblngrdSealDim_Design = False
+        mblngrdToolNGag_Manf = False
+        mblngrdMat_Purchasing = False
+        mbkngrdDWG_Purchasing = False
+        mblngrdSplOperation_Qlty = False
+        mblngrdNeeded_DWG = False
+        mblngrdBOM_DWG = False
+        mblngrdIssueComment = False
+    End Sub
+
+    Private Sub grdDesign_CustSpec_RowHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) _
+                                                       Handles grdDesign_CustSpec.RowHeaderMouseClick
+        '======================================================================================================
+        cmdDel_Rec.Enabled = True
+        mblngrdCustSpec_Design = True
+
+        mblngrdCustContact_PreOrder = False
+        mblngrdQuote_PreOrder = False
+        mblngrdForecast_PreOrder = False
+        mblngrdCustContact_OrdEntry = False
+        mblngrdSplOperation_Cost = False
+        mblngrdCavityFace_App = False
+        mblngrdCavityAxial_App = False
+        mblngrdDesignVerfication_Design = False
+        mblngrdInput_Design = False
+        mblngrdSealDim_Design = False
+        mblngrdToolNGag_Manf = False
+        mblngrdMat_Purchasing = False
+        mbkngrdDWG_Purchasing = False
+        mblngrdSplOperation_Qlty = False
+        mblngrdNeeded_DWG = False
+        mblngrdBOM_DWG = False
+        mblngrdIssueComment = False
+
+    End Sub
+
+    Private Sub grdDesign_Seal_RowHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) _
+                                                   Handles grdDesign_Seal.RowHeaderMouseClick
+        '===================================================================================================
+        cmdDel_Rec.Enabled = True
+        mblngrdSealDim_Design = True
+
+        mblngrdCustContact_PreOrder = False
+        mblngrdQuote_PreOrder = False
+        mblngrdForecast_PreOrder = False
+        mblngrdCustContact_OrdEntry = False
+        mblngrdSplOperation_Cost = False
+        mblngrdCavityFace_App = False
+        mblngrdCavityAxial_App = False
+        mblngrdDesignVerfication_Design = False
+        mblngrdInput_Design = False
+        mblngrdCustSpec_Design = False
+        mblngrdToolNGag_Manf = False
+        mblngrdMat_Purchasing = False
+        mbkngrdDWG_Purchasing = False
+        mblngrdSplOperation_Qlty = False
+        mblngrdNeeded_DWG = False
+        mblngrdBOM_DWG = False
+        mblngrdIssueComment = False
+
+    End Sub
+
+    Private Sub grdManf_ToolNGage_RowHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) _
+                                                      Handles grdManf_ToolNGage.RowHeaderMouseClick
+        '======================================================================================================
+        cmdDel_Rec.Enabled = True
+        mblngrdToolNGag_Manf = True
+
+        mblngrdCustContact_PreOrder = False
+        mblngrdQuote_PreOrder = False
+        mblngrdForecast_PreOrder = False
+        mblngrdCustContact_OrdEntry = False
+        mblngrdSplOperation_Cost = False
+        mblngrdCavityFace_App = False
+        mblngrdCavityAxial_App = False
+        mblngrdDesignVerfication_Design = False
+        mblngrdInput_Design = False
+        mblngrdCustSpec_Design = False
+        mblngrdSealDim_Design = False
+        mblngrdMat_Purchasing = False
+        mbkngrdDWG_Purchasing = False
+        mblngrdSplOperation_Qlty = False
+        mblngrdNeeded_DWG = False
+        mblngrdBOM_DWG = False
+        mblngrdIssueComment = False
+    End Sub
+
+    Private Sub grdPurchase_Mat_RowHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) _
+                                                    Handles grdPurchase_Mat.RowHeaderMouseClick
+        '===================================================================================================
+        cmdDel_Rec.Enabled = True
+        mblngrdMat_Purchasing = True
+
+        mblngrdCustContact_PreOrder = False
+        mblngrdQuote_PreOrder = False
+        mblngrdForecast_PreOrder = False
+        mblngrdCustContact_OrdEntry = False
+        mblngrdSplOperation_Cost = False
+        mblngrdCavityFace_App = False
+        mblngrdCavityAxial_App = False
+        mblngrdDesignVerfication_Design = False
+        mblngrdInput_Design = False
+        mblngrdCustSpec_Design = False
+        mblngrdSealDim_Design = False
+        mblngrdToolNGag_Manf = False
+        mbkngrdDWG_Purchasing = False
+        mblngrdSplOperation_Qlty = False
+        mblngrdNeeded_DWG = False
+        mblngrdBOM_DWG = False
+        mblngrdIssueComment = False
+    End Sub
+
+    Private Sub grdPurchase_Drawing_RowHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) _
+                                                        Handles grdPurchase_Drawing.RowHeaderMouseClick
+        '=======================================================================================================
+        cmdDel_Rec.Enabled = True
+        mbkngrdDWG_Purchasing = True
+
+        mblngrdCustContact_PreOrder = False
+        mblngrdQuote_PreOrder = False
+        mblngrdForecast_PreOrder = False
+        mblngrdCustContact_OrdEntry = False
+        mblngrdSplOperation_Cost = False
+        mblngrdCavityFace_App = False
+        mblngrdCavityAxial_App = False
+        mblngrdDesignVerfication_Design = False
+        mblngrdInput_Design = False
+        mblngrdCustSpec_Design = False
+        mblngrdSealDim_Design = False
+        mblngrdToolNGag_Manf = False
+        mblngrdMat_Purchasing = False
+        mblngrdSplOperation_Qlty = False
+        mblngrdNeeded_DWG = False
+        mblngrdBOM_DWG = False
+        mblngrdIssueComment = False
+    End Sub
+
+    Private Sub grdQuality_SplOperation_RowHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) _
+                                                            Handles grdQuality_SplOperation.RowHeaderMouseClick
+        '============================================================================================================
+        cmdDel_Rec.Enabled = True
+        mblngrdSplOperation_Qlty = True
+
+        mblngrdCustContact_PreOrder = False
+        mblngrdQuote_PreOrder = False
+        mblngrdForecast_PreOrder = False
+        mblngrdCustContact_OrdEntry = False
+        mblngrdSplOperation_Cost = False
+        mblngrdCavityFace_App = False
+        mblngrdCavityAxial_App = False
+        mblngrdDesignVerfication_Design = False
+        mblngrdInput_Design = False
+        mblngrdCustSpec_Design = False
+        mblngrdSealDim_Design = False
+        mblngrdToolNGag_Manf = False
+        mblngrdMat_Purchasing = False
+        mbkngrdDWG_Purchasing = False
+        mblngrdNeeded_DWG = False
+        mblngrdBOM_DWG = False
+        mblngrdIssueComment = False
+    End Sub
+
+    Private Sub grdDrawing_Needed_RowHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) _
+                                                      Handles grdDrawing_Needed.RowHeaderMouseClick
+        '=====================================================================================================
+        cmdDel_Rec.Enabled = True
+        mblngrdNeeded_DWG = True
+
+        mblngrdCustContact_PreOrder = False
+        mblngrdQuote_PreOrder = False
+        mblngrdForecast_PreOrder = False
+        mblngrdCustContact_OrdEntry = False
+        mblngrdSplOperation_Cost = False
+        mblngrdCavityFace_App = False
+        mblngrdCavityAxial_App = False
+        mblngrdDesignVerfication_Design = False
+        mblngrdInput_Design = False
+        mblngrdCustSpec_Design = False
+        mblngrdSealDim_Design = False
+        mblngrdToolNGag_Manf = False
+        mblngrdMat_Purchasing = False
+        mbkngrdDWG_Purchasing = False
+        mblngrdSplOperation_Qlty = False
+        mblngrdBOM_DWG = False
+        mblngrdIssueComment = False
+    End Sub
+
+    Private Sub grdDrawing_BOM_RowHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) _
+                                                   Handles grdDrawing_BOM.RowHeaderMouseClick
+        '===================================================================================================
+        cmdDel_Rec.Enabled = True
+        mblngrdBOM_DWG = True
+
+        mblngrdCustContact_PreOrder = False
+        mblngrdQuote_PreOrder = False
+        mblngrdForecast_PreOrder = False
+        mblngrdCustContact_OrdEntry = False
+        mblngrdSplOperation_Cost = False
+        mblngrdCavityFace_App = False
+        mblngrdCavityAxial_App = False
+        mblngrdDesignVerfication_Design = False
+        mblngrdInput_Design = False
+        mblngrdCustSpec_Design = False
+        mblngrdSealDim_Design = False
+        mblngrdToolNGag_Manf = False
+        mblngrdMat_Purchasing = False
+        mbkngrdDWG_Purchasing = False
+        mblngrdSplOperation_Qlty = False
+        mblngrdNeeded_DWG = False
+        mblngrdIssueComment = False
+    End Sub
+
+    Private Sub grdIssueComment_RowHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) _
+                                                    Handles grdIssueComment.RowHeaderMouseClick
+        '====================================================================================================
+        cmdDel_Rec.Enabled = True
+        mblngrdIssueComment = True
+
+        mblngrdCustContact_PreOrder = False
+        mblngrdQuote_PreOrder = False
+        mblngrdForecast_PreOrder = False
+        mblngrdCustContact_OrdEntry = False
+        mblngrdSplOperation_Cost = False
+        mblngrdCavityFace_App = False
+        mblngrdCavityAxial_App = False
+        mblngrdDesignVerfication_Design = False
+        mblngrdInput_Design = False
+        mblngrdCustSpec_Design = False
+        mblngrdSealDim_Design = False
+        mblngrdToolNGag_Manf = False
+        mblngrdMat_Purchasing = False
+        mbkngrdDWG_Purchasing = False
+        mblngrdSplOperation_Qlty = False
+        mblngrdNeeded_DWG = False
+        mblngrdBOM_DWG = False
+
+    End Sub
+
+    Private Sub grdCustContact_DataError(sender As Object, e As DataGridViewDataErrorEventArgs) Handles grdCustContact.DataError
+        '=======================================================================================================================
+        If (e.Exception.Message = "DataGridViewComboBoxCell value is not valid.") Then
+            Dim pVal As Object = grdCustContact.Rows(e.RowIndex).Cells(0).Value
+            If (Not DataGridViewComboBoxColumn4.Items.Contains(pVal)) Then
+                DataGridViewComboBoxColumn4.Items.Add(pVal)
+                e.ThrowException = False
+            Else
+                e.ThrowException = False
+            End If
+        End If
+
+    End Sub
+
+    Private Sub grdOrdEntry_CustContact_DataError(sender As Object, e As DataGridViewDataErrorEventArgs) Handles grdOrdEntry_CustContact.DataError
+        '========================================================================================================================================
+        If (e.Exception.Message = "DataGridViewComboBoxCell value is not valid.") Then
+            Dim pVal As Object = grdOrdEntry_CustContact.Rows(e.RowIndex).Cells(0).Value
+            If (Not DataGridViewComboBoxColumn9.Items.Contains(pVal)) Then
+                DataGridViewComboBoxColumn9.Items.Add(pVal)
+                e.ThrowException = False
+            Else
+                e.ThrowException = False
+            End If
+        End If
+    End Sub
 
 
 #End Region
