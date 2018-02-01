@@ -19,6 +19,7 @@ Module modMain_Process
 
     Public gProcessProject As New clsProcessProj(gPartProject)
     Public gProcessFile As New clsProcessFile
+    Public gIsProcessMainActive As Boolean = False
     Public gIsIssueCommentActive As Boolean = False
     Public gIsResolutionActive As Boolean = False
 

@@ -36,6 +36,7 @@ Public Class clsProcessProj
 
     '....Local Object.
     Private mPartProject As New clsPartProject
+    Private mUnit As New clsProcessProj_Unit
 
     Private mPreOrder As New clsProcessProj_PreOrder
     Private mITAR_Export As New clsProcessProj_ITAR_Export
@@ -78,6 +79,19 @@ Public Class clsProcessProj
         Set(ByVal intData As Integer)
             '-------------------------------
             mID = intData
+        End Set
+
+    End Property
+
+    '....Unit
+    Public Property Unit() As clsProcessProj_Unit
+        '========================================
+        Get
+            Return mUnit
+        End Get
+
+        Set(Obj As clsProcessProj_Unit)
+            mUnit = Obj
         End Set
 
     End Property

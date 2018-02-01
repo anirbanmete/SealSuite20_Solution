@@ -4,7 +4,7 @@
 '                      FORM MODULE   :  Process_frmMain                        '
 '                        VERSION NO  :  1.3                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  25JAN18                                '
+'                     LAST MODIFIED  :  01FEB18                                '
 '                                                                              '
 '===============================================================================
 Imports System.Globalization
@@ -218,6 +218,7 @@ Public Class Process_frmMain
         '....Move the vertical scrollbar at the Top
         txtParkerPart.Focus()
         txtParkerPart.Select()
+        gIsProcessMainActive = True
 
     End Sub
 
@@ -271,7 +272,12 @@ Public Class Process_frmMain
                     .Rows(i).Cells(8).Value = mProcess_Project.IssueCommnt.Resolution(i)
                 Next
             End With
+
+        ElseIf (gIsProcessMainActive = False) Then
+            mProcess_Project = gProcessProject.Clone()
+            SetLabel_Unit()
         End If
+
     End Sub
 
 #Region "HELPER ROUTINES:"
@@ -391,7 +397,9 @@ Public Class Process_frmMain
 
         If (pSealType = "E") Then
             pCmbColDesign_Seal.Items.Add("OD")
+            pCmbColDesign_Seal.Items.Add("OR")
             pCmbColDesign_Seal.Items.Add("ID")
+            pCmbColDesign_Seal.Items.Add("IR")
             pCmbColDesign_Seal.Items.Add("Roundness")
             pCmbColDesign_Seal.Items.Add("Flatness")
             pCmbColDesign_Seal.Items.Add("OoR")
@@ -406,7 +414,9 @@ Public Class Process_frmMain
 
         ElseIf (pSealType = "C" Or pSealType = "SC") Then
             pCmbColDesign_Seal.Items.Add("OD")
+            pCmbColDesign_Seal.Items.Add("OR")
             pCmbColDesign_Seal.Items.Add("ID")
+            pCmbColDesign_Seal.Items.Add("IR")
             pCmbColDesign_Seal.Items.Add("Roundness")
             pCmbColDesign_Seal.Items.Add("Flatness")
             pCmbColDesign_Seal.Items.Add("OoR")
@@ -787,6 +797,7 @@ Public Class Process_frmMain
     Private Sub RetrieveFromDB()
         '=======================
         mProcess_Project.RetrieveFromDB(mPNID, mRevID)
+        mProcess_Project.Unit.RetrieveFrom_DB(mProcess_Project.ID)
         mProcess_Project.CustContact.RetrieveFromDB(mProcess_Project.ID)
         mProcess_Project.PreOrder.RetrieveFromDB(mProcess_Project.ID)
         mProcess_Project.ITAR_Export.RetrieveFromDB(mProcess_Project.ID)
@@ -839,8 +850,6 @@ Public Class Process_frmMain
 
             txtModifiedBy.Text = .LastModifiedBy
         End With
-
-
 
         '.... "PreOrder:"
         With mProcess_Project.PreOrder
@@ -1127,7 +1136,6 @@ Public Class Process_frmMain
 
 
         '.... "Cost Estimating:"
-
         With mProcess_Project.Cost
             cmbCost_QuoteFile.Text = .QuoteFileLoc
             txtCost_Notes.Text = .Notes
@@ -1325,14 +1333,41 @@ Public Class Process_frmMain
 
             '....Face Seal
             If (.Type = "Face") Then
+                '....Cavity Dimension
+                For j As Integer = 0 To .Cavity.ID_Cavity.Count - 1
+                    Dim pCmbColCavityDim As New DataGridViewComboBoxColumn
+                    pCmbColCavityDim = grdApp_Face_Cavity.Columns.Item(0)
+                    Dim pVal As String = ""
+                    If (Not IsNothing(.Cavity.DimName(j))) Then
+                        pVal = .Cavity.DimName(j)
+                    End If
+                    If (Not pCmbColCavityDim.Items.Contains(pVal)) Then
+                        pCmbColCavityDim.Items.Add(pVal)
+                    End If
+                Next
+
+                '....Cavity Dimension
                 For j As Integer = 0 To .Cavity.ID_Cavity.Count - 1
                     grdApp_Face_Cavity.Rows.Add()
-                    grdApp_Face_Cavity.Rows(j).Cells(0).Value = .Cavity.DimName(j)
+                    If (Not IsNothing(.Cavity.DimName(j))) Then
+                        grdApp_Face_Cavity.Rows(j).Cells(0).Value = .Cavity.DimName(j)
+                    Else
+                        grdApp_Face_Cavity.Rows(j).Cells(0).Value = ""
+                    End If
                     grdApp_Face_Cavity.Rows(j).Cells(1).Value = .Cavity.Assy(j).Min.ToString("##0.000")
                     grdApp_Face_Cavity.Rows(j).Cells(2).Value = .Cavity.Assy(j).Max.ToString("##0.000")
                     grdApp_Face_Cavity.Rows(j).Cells(3).Value = .Cavity.Oper(j).Min.ToString("##0.000")
                     grdApp_Face_Cavity.Rows(j).Cells(4).Value = .Cavity.Oper(j).Max.ToString("##0.000")
                 Next
+
+                'For j As Integer = 0 To .Cavity.ID_Cavity.Count - 1
+                '    grdApp_Face_Cavity.Rows.Add()
+                '    grdApp_Face_Cavity.Rows(j).Cells(0).Value = .Cavity.DimName(j)
+                '    grdApp_Face_Cavity.Rows(j).Cells(1).Value = .Cavity.Assy(j).Min.ToString("##0.000")
+                '    grdApp_Face_Cavity.Rows(j).Cells(2).Value = .Cavity.Assy(j).Max.ToString("##0.000")
+                '    grdApp_Face_Cavity.Rows(j).Cells(3).Value = .Cavity.Oper(j).Min.ToString("##0.000")
+                '    grdApp_Face_Cavity.Rows(j).Cells(4).Value = .Cavity.Oper(j).Max.ToString("##0.000")
+                'Next
 
                 txtApp_Mat1_Face.Text = .CavityFlange.Mat1
                 txtApp_Mat2_Face.Text = .CavityFlange.Mat2
@@ -1374,15 +1409,42 @@ Public Class Process_frmMain
                 End If
 
             ElseIf (.Type = "Axial") Then
-                '....Axial Seal
+                '....Cavity Dimension
+                For j As Integer = 0 To .Cavity.ID_Cavity.Count - 1
+                    Dim pCmbColCavityDim As New DataGridViewComboBoxColumn
+                    pCmbColCavityDim = grdApp_Axial_Cavity.Columns.Item(0)
+                    Dim pVal As String = ""
+                    If (Not IsNothing(.Cavity.DimName(j))) Then
+                        pVal = .Cavity.DimName(j)
+                    End If
+                    If (Not pCmbColCavityDim.Items.Contains(pVal)) Then
+                        pCmbColCavityDim.Items.Add(pVal)
+                    End If
+                Next
+
+                '....Cavity Dimension
                 For j As Integer = 0 To .Cavity.ID_Cavity.Count - 1
                     grdApp_Axial_Cavity.Rows.Add()
-                    grdApp_Axial_Cavity.Rows(j).Cells(0).Value = .Cavity.DimName(j)
+                    If (Not IsNothing(.Cavity.DimName(j))) Then
+                        grdApp_Axial_Cavity.Rows(j).Cells(0).Value = .Cavity.DimName(j)
+                    Else
+                        grdApp_Axial_Cavity.Rows(j).Cells(0).Value = ""
+                    End If
                     grdApp_Axial_Cavity.Rows(j).Cells(1).Value = .Cavity.Assy(j).Min.ToString("##0.000")
                     grdApp_Axial_Cavity.Rows(j).Cells(2).Value = .Cavity.Assy(j).Max.ToString("##0.000")
                     grdApp_Axial_Cavity.Rows(j).Cells(3).Value = .Cavity.Oper(j).Min.ToString("##0.000")
                     grdApp_Axial_Cavity.Rows(j).Cells(4).Value = .Cavity.Oper(j).Max.ToString("##0.000")
                 Next
+
+                ''....Axial Seal
+                'For j As Integer = 0 To .Cavity.ID_Cavity.Count - 1
+                '    grdApp_Axial_Cavity.Rows.Add()
+                '    grdApp_Axial_Cavity.Rows(j).Cells(0).Value = .Cavity.DimName(j)
+                '    grdApp_Axial_Cavity.Rows(j).Cells(1).Value = .Cavity.Assy(j).Min.ToString("##0.000")
+                '    grdApp_Axial_Cavity.Rows(j).Cells(2).Value = .Cavity.Assy(j).Max.ToString("##0.000")
+                '    grdApp_Axial_Cavity.Rows(j).Cells(3).Value = .Cavity.Oper(j).Min.ToString("##0.000")
+                '    grdApp_Axial_Cavity.Rows(j).Cells(4).Value = .Cavity.Oper(j).Max.ToString("##0.000")
+                'Next
 
                 txtApp_Mat1_Axial.Text = .CavityFlange.Mat1
                 txtApp_Mat2_Axial.Text = .CavityFlange.Mat2
@@ -1539,9 +1601,26 @@ Public Class Process_frmMain
                 cmbDesign_BuildToPrint.Text = "N"
             End If
 
+            '....Verfication Desc
+            For j As Integer = 0 To .Verification.ID_Verification.Count - 1
+                Dim pCmbColDesc_Verify As New DataGridViewComboBoxColumn
+                pCmbColDesc_Verify = grdDesign_Verification.Columns.Item(0)
+                Dim pVal As String = ""
+                If (Not IsNothing(.Verification.Desc(j))) Then
+                    pVal = .Verification.Desc(j)
+                End If
+                If (Not pCmbColDesc_Verify.Items.Contains(pVal)) Then
+                    pCmbColDesc_Verify.Items.Add(pVal)
+                End If
+            Next
+
             For i As Integer = 0 To .Verification.ID_Verification.Count - 1
                 grdDesign_Verification.Rows.Add()
-                grdDesign_Verification.Rows(i).Cells(0).Value = .Verification.Desc(i)
+                If (Not IsNothing(.Verification.Desc(i))) Then
+                    grdDesign_Verification.Rows(i).Cells(0).Value = .Verification.Desc(i)
+                Else
+                    grdDesign_Verification.Rows(i).Cells(0).Value = ""
+                End If
                 grdDesign_Verification.Rows(i).Cells(1).Value = .Verification.Owner(i)
                 grdDesign_Verification.Rows(i).Cells(2).Value = .Verification.Result(i)
             Next
@@ -1666,22 +1745,78 @@ Public Class Process_frmMain
 
             End If
 
+            '....Input
+            For j As Integer = 0 To .Input.ID_Input.Count - 1
+                Dim pCmbColDesc_Input As New DataGridViewComboBoxColumn
+                pCmbColDesc_Input = grdDesign_Input.Columns.Item(0)
+                Dim pVal As String = ""
+                If (Not IsNothing(.Input.Desc(j))) Then
+                    pVal = .Input.Desc(j)
+                End If
+                If (Not pCmbColDesc_Input.Items.Contains(pVal)) Then
+                    pCmbColDesc_Input.Items.Add(pVal)
+                End If
+            Next
+
             For i As Integer = 0 To .Input.ID_Input.Count - 1
                 grdDesign_Input.Rows.Add()
-                grdDesign_Input.Rows(i).Cells(0).Value = .Input.Desc(i)
+                If (Not IsNothing(.Input.Desc(i))) Then
+                    grdDesign_Input.Rows(i).Cells(0).Value = .Input.Desc(i)
+                Else
+                    grdDesign_Input.Rows(i).Cells(0).Value = ""
+                End If
+                'grdDesign_Input.Rows(i).Cells(0).Value = .Input.Desc(i)
+            Next
+
+            '....Cust Spec
+            For j As Integer = 0 To .CustSpec.ID_Cust.Count - 1
+                Dim pCmbColDesc_CustSpec As New DataGridViewComboBoxColumn
+                pCmbColDesc_CustSpec = grdDesign_CustSpec.Columns.Item(0)
+                Dim pVal As String = ""
+                If (Not IsNothing(.CustSpec.Type(j))) Then
+                    pVal = .CustSpec.Type(j)
+                End If
+                If (Not pCmbColDesc_CustSpec.Items.Contains(pVal)) Then
+                    pCmbColDesc_CustSpec.Items.Add(pVal)
+                End If
             Next
 
             For i As Integer = 0 To .CustSpec.ID_Cust.Count - 1
                 grdDesign_CustSpec.Rows.Add()
-                grdDesign_CustSpec.Rows(i).Cells(0).Value = .CustSpec.Type(i)
+                If (Not IsNothing(.CustSpec.Type(i))) Then
+                    grdDesign_CustSpec.Rows(i).Cells(0).Value = .CustSpec.Type(i)
+                Else
+                    grdDesign_CustSpec.Rows(i).Cells(0).Value = ""
+                End If
+
                 grdDesign_CustSpec.Rows(i).Cells(1).Value = .CustSpec.Desc(i)
                 grdDesign_CustSpec.Rows(i).Cells(2).Value = .CustSpec.Interpret(i)
-                'grdDesign_CustSpec.Rows.Add()
+
+            Next
+
+            '....Seal Dimension
+            For j As Integer = 0 To .SealDim.ID_Seal.Count - 1
+                Dim pCmbColDesc_SealDim As New DataGridViewComboBoxColumn
+                pCmbColDesc_SealDim = grdDesign_Seal.Columns.Item(0)
+                Dim pVal As String = ""
+                If (Not IsNothing(.SealDim.Name(j))) Then
+                    pVal = .SealDim.Name(j)
+                End If
+                If (Not pCmbColDesc_SealDim.Items.Contains(pVal)) Then
+                    pCmbColDesc_SealDim.Items.Add(pVal)
+                End If
             Next
 
             For i As Integer = 0 To .SealDim.ID_Seal.Count - 1
                 grdDesign_Seal.Rows.Add()
-                grdDesign_Seal.Rows(i).Cells(0).Value = .SealDim.Name(i)
+
+                If (Not IsNothing(.SealDim.Name(i))) Then
+                    grdDesign_Seal.Rows(i).Cells(0).Value = .SealDim.Name(i)
+                Else
+                    grdDesign_Seal.Rows(i).Cells(0).Value = ""
+                End If
+
+                'grdDesign_Seal.Rows(i).Cells(0).Value = .SealDim.Name(i)
 
                 If (Math.Abs(.SealDim.Min(i)) > gcEPS) Then
                     grdDesign_Seal.Rows(i).Cells(1).Value = .SealDim.Min(i)
@@ -1717,11 +1852,29 @@ Public Class Process_frmMain
             txtManf_HT.Text = .HT
             cmbManf_PrecompressionGlue.Text = .PreComp_Glue
 
+            '....Desc
+            For j As Integer = 0 To .ToolNGage.ID_Tool.Count - 1
+                Dim pCmbColDesc_ToolGage As New DataGridViewComboBoxColumn
+                pCmbColDesc_ToolGage = grdManf_ToolNGage.Columns.Item(1)
+                Dim pVal As String = ""
+                If (Not IsNothing(.ToolNGage.Desc(j))) Then
+                    pVal = .ToolNGage.Desc(j)
+                End If
+                If (Not pCmbColDesc_ToolGage.Items.Contains(pVal)) Then
+                    pCmbColDesc_ToolGage.Items.Add(pVal)
+                End If
+            Next
+
             For i As Integer = 0 To .ToolNGage.ID_Tool.Count - 1
                 grdManf_ToolNGage.Rows.Add()
                 grdManf_ToolNGage.Rows(i).Cells(0).Value = .ToolNGage.PartNo(i)
+                If (Not IsNothing(.ToolNGage.Desc(i))) Then
+                    grdManf_ToolNGage.Rows(i).Cells(1).Value = .ToolNGage.Desc(i)
+                Else
+                    grdManf_ToolNGage.Rows(i).Cells(1).Value = ""
+                End If
 
-                grdManf_ToolNGage.Rows(i).Cells(1).Value = .ToolNGage.Desc(i)
+                'grdManf_ToolNGage.Rows(i).Cells(1).Value = .ToolNGage.Desc(i)
 
                 If ("Roll tooling" = .ToolNGage.Desc(i)) Then
 
@@ -1749,6 +1902,11 @@ Public Class Process_frmMain
                     dgvcc.Items.Add("Std")
                     dgvcc.Items.Add("3D gauge")
                     dgvcc.Items.Add("3D tooling")
+                    grdManf_ToolNGage.Item(2, i) = dgvcc
+
+                Else
+                    Dim dgvcc As New DataGridViewComboBoxCell
+                    dgvcc.Items.Clear()
                     grdManf_ToolNGage.Item(2, i) = dgvcc
 
                 End If
@@ -1961,6 +2119,14 @@ Public Class Process_frmMain
 
         '.... "Testing:"
         With mProcess_Project.Test
+
+            If (.IsNeeded()) Then
+                chkTest.Checked = True
+            Else
+                chkTest.Checked = True
+                chkTest.Checked = False
+            End If
+
             txtTest_Other.Text = .Other
 
             '...Leak
@@ -2189,9 +2355,33 @@ Public Class Process_frmMain
 
         End With
 
+        SetLabel_Unit()
 
     End Sub
 
+    Private Sub SetLabel_Unit()
+        '======================
+        '....Application
+        lblApp_MaxLeak_Unit.Text = mProcess_Project.Unit.LeakUnit_Cust
+        lblApp_T_Unit.Text = mProcess_Project.Unit.TUnit_Cust
+        lblApp_Press_Unit.Text = mProcess_Project.Unit.PUnit_Cust
+        grpApp_Load.Text = "Load (" & mProcess_Project.Unit.FUnit_Cust & "/" & mProcess_Project.Unit.LUnit_Cust & "):"
+        grpApp_Face_Cavity.Text = "Cavity Dimensions (" & mProcess_Project.Unit.LUnit_Cust & "):"
+        grpApp_Axial_Cavity.Text = "Cavity Dimensions (" & mProcess_Project.Unit.LUnit_Cust & "):"
+
+        '....Design
+        grpDesign_SealDim.Text = "Seal Dimensions (" & mProcess_Project.Unit.LUnit_Cust & "):"
+
+        '....Testing
+        lblTest_CompressTo_Unit_Leak.Text = mProcess_Project.Unit.LUnit_Cust
+        lblTest_CompressTo_Unit_Load.Text = mProcess_Project.Unit.LUnit_Cust
+        lblTest_CompressTo_Unit_SpringBack.Text = mProcess_Project.Unit.LUnit_Cust
+        lblTest_Press_Unit_Leak.Text = mProcess_Project.Unit.PUnit_Cust
+        lblTest_Req_Unit_Leak.Text = mProcess_Project.Unit.LeakUnit_Cust
+        lblTest_Req_Unit_Load.Text = mProcess_Project.Unit.FUnit_Cust & "/" & mProcess_Project.Unit.LUnit_Cust
+        lblTest_Req_Unit_SpringBack.Text = mProcess_Project.Unit.LUnit_Cust
+
+    End Sub
     Private Sub CompareControls()
         '========================
         For Each txtBox In Me.Controls.OfType(Of TextBox)()
@@ -3447,32 +3637,6 @@ Public Class Process_frmMain
 
 #Region "DATAGRIDVIEW RELATED ROUTINES:"
 
-    Private Sub DataGridView38_EditingControlShowing(sender As System.Object, e As System.Windows.Forms.DataGridViewEditingControlShowingEventArgs) _
-                                                     Handles grdDesign_Input.EditingControlShowing
-        '=============================================================================================================================================
-        If TypeOf e.Control Is System.Windows.Forms.ComboBox Then
-            With DirectCast(e.Control, System.Windows.Forms.ComboBox)
-                Dim cb As ComboBox = TryCast(e.Control, ComboBox)
-                cb.DropDownStyle = ComboBoxStyle.DropDown
-            End With
-        End If
-    End Sub
-
-
-    Private Sub DataGridView38_CellValidating(sender As System.Object, e As System.Windows.Forms.DataGridViewCellValidatingEventArgs) _
-                                             Handles grdDesign_Input.CellValidating
-        '===============================================================================================================================
-        Dim pColAdd As Boolean = True
-        If pColAdd Then
-            Dim comboBoxColumn As DataGridViewComboBoxColumn = grdDesign_Seal.Columns(0)
-            If (e.ColumnIndex = comboBoxColumn.DisplayIndex) Then
-                If (Not comboBoxColumn.Items.Contains(e.FormattedValue)) Then
-                    comboBoxColumn.Items.Add(e.FormattedValue)
-                End If
-            End If
-        End If
-    End Sub
-
 
     Private Sub grdApp_Axial_Cavity_CellValidating(sender As Object, e As DataGridViewCellValidatingEventArgs) _
                                                    Handles grdApp_Axial_Cavity.CellValidating
@@ -3520,27 +3684,27 @@ Public Class Process_frmMain
                                                  Handles grdManf_ToolNGage.CellValidating
         '======================================================================================
 
-        'If (grdManf_ToolNGage.CurrentCellAddress.X = DataGridViewTextBoxColumn12.DisplayIndex) Then
-        '    If (Not DataGridViewTextBoxColumn12.Items.Contains(e.FormattedValue)) Then
-        '        DataGridViewTextBoxColumn12.Items.Add(e.FormattedValue)
-        '        grdManf_ToolNGage.Rows(e.RowIndex).Cells(1).Value = e.FormattedValue
-        '    End If
-        'ElseIf (grdManf_ToolNGage.CurrentCellAddress.X = Column2.DisplayIndex) Then
-        '    If (Not Column2.Items.Contains(e.FormattedValue)) Then
-        '        Column2.Items.Add(e.FormattedValue)
-        '        grdManf_ToolNGage.Rows(e.RowIndex).Cells(2).Value = e.FormattedValue
-        '    End If
-        'ElseIf (grdManf_ToolNGage.CurrentCellAddress.X = Column7.DisplayIndex) Then
-        '    If (Not Column7.Items.Contains(e.FormattedValue)) Then
-        '        Column7.Items.Add(e.FormattedValue)
-        '        grdManf_ToolNGage.Rows(e.RowIndex).Cells(3).Value = e.FormattedValue
-        '    End If
-        'ElseIf (grdManf_ToolNGage.CurrentCellAddress.X = Column8.DisplayIndex) Then
-        '    If (Not Column8.Items.Contains(e.FormattedValue)) Then
-        '        Column8.Items.Add(e.FormattedValue)
-        '        grdManf_ToolNGage.Rows(e.RowIndex).Cells(5).Value = e.FormattedValue
-        '    End If
-        'End If
+        If (grdManf_ToolNGage.CurrentCellAddress.X = DataGridViewTextBoxColumn12.DisplayIndex) Then
+            If (Not DataGridViewTextBoxColumn12.Items.Contains(e.FormattedValue)) Then
+                DataGridViewTextBoxColumn12.Items.Add(e.FormattedValue)
+                grdManf_ToolNGage.Rows(e.RowIndex).Cells(1).Value = e.FormattedValue
+            End If
+            'ElseIf (grdManf_ToolNGage.CurrentCellAddress.X = Column2.DisplayIndex) Then
+            '    If (Not Column2.Items.Contains(e.FormattedValue)) Then
+            '        Column2.Items.Add(e.FormattedValue)
+            '        grdManf_ToolNGage.Rows(e.RowIndex).Cells(2).Value = e.FormattedValue
+            '    End If
+            'ElseIf (grdManf_ToolNGage.CurrentCellAddress.X = Column7.DisplayIndex) Then
+            '    If (Not Column7.Items.Contains(e.FormattedValue)) Then
+            '        Column7.Items.Add(e.FormattedValue)
+            '        grdManf_ToolNGage.Rows(e.RowIndex).Cells(3).Value = e.FormattedValue
+            '    End If
+            'ElseIf (grdManf_ToolNGage.CurrentCellAddress.X = Column8.DisplayIndex) Then
+            '    If (Not Column8.Items.Contains(e.FormattedValue)) Then
+            '        Column8.Items.Add(e.FormattedValue)
+            '        grdManf_ToolNGage.Rows(e.RowIndex).Cells(5).Value = e.FormattedValue
+            '    End If
+        End If
 
     End Sub
     Private Sub grdManf_ToolNGage_EditingControlShowing(sender As System.Object, e As System.Windows.Forms.DataGridViewEditingControlShowingEventArgs) _
@@ -3555,31 +3719,31 @@ Public Class Process_frmMain
                 AddHandler pComboBoxManf.SelectionChangeCommitted, New EventHandler(AddressOf ComboBoxManf_SelectionChangeCommitted)
             End If
 
-            'If (grdManf_ToolNGage.CurrentCellAddress.X = DataGridViewTextBoxColumn12.DisplayIndex) Then
-            '    Dim pCmbBox As ComboBox = e.Control
+            If (grdManf_ToolNGage.CurrentCellAddress.X = DataGridViewTextBoxColumn12.DisplayIndex) Then
+                Dim pCmbBox As ComboBox = e.Control
 
-            '    If (Not IsNothing(pCmbBox)) Then
-            '        pCmbBox.DropDownStyle = ComboBoxStyle.DropDown
-            '    End If
-            'ElseIf (grdManf_ToolNGage.CurrentCellAddress.X = Column2.DisplayIndex) Then
-            '    Dim pCmbBox As ComboBox = e.Control
+                If (Not IsNothing(pCmbBox)) Then
+                    pCmbBox.DropDownStyle = ComboBoxStyle.DropDown
+                End If
+                'ElseIf (grdManf_ToolNGage.CurrentCellAddress.X = Column2.DisplayIndex) Then
+                '    Dim pCmbBox As ComboBox = e.Control
 
-            '    If (Not IsNothing(pCmbBox)) Then
-            '        pCmbBox.DropDownStyle = ComboBoxStyle.DropDown
-            '    End If
-            'ElseIf (grdManf_ToolNGage.CurrentCellAddress.X = Column7.DisplayIndex) Then
-            '    Dim pCmbBox As ComboBox = e.Control
+                '    If (Not IsNothing(pCmbBox)) Then
+                '        pCmbBox.DropDownStyle = ComboBoxStyle.DropDown
+                '    End If
+                'ElseIf (grdManf_ToolNGage.CurrentCellAddress.X = Column7.DisplayIndex) Then
+                '    Dim pCmbBox As ComboBox = e.Control
 
-            '    If (Not IsNothing(pCmbBox)) Then
-            '        pCmbBox.DropDownStyle = ComboBoxStyle.DropDown
-            '    End If
-            'ElseIf (grdManf_ToolNGage.CurrentCellAddress.X = Column8.DisplayIndex) Then
-            '    Dim pCmbBox As ComboBox = e.Control
+                '    If (Not IsNothing(pCmbBox)) Then
+                '        pCmbBox.DropDownStyle = ComboBoxStyle.DropDown
+                '    End If
+                'ElseIf (grdManf_ToolNGage.CurrentCellAddress.X = Column8.DisplayIndex) Then
+                '    Dim pCmbBox As ComboBox = e.Control
 
-            '    If (Not IsNothing(pCmbBox)) Then
-            '        pCmbBox.DropDownStyle = ComboBoxStyle.DropDown
-            '    End If
-            'End If
+                '    If (Not IsNothing(pCmbBox)) Then
+                '        pCmbBox.DropDownStyle = ComboBoxStyle.DropDown
+                '    End If
+            End If
 
 
         Catch ex As Exception
@@ -3657,37 +3821,44 @@ Public Class Process_frmMain
         '====================================================================================================
         Try
 
-
             Dim combo As ComboBox = CType(sender, ComboBox)
 
-            If ("Roll tooling" = combo.SelectedItem.ToString()) Then
+            If (grdManf_ToolNGage.CurrentCellAddress.X = DataGridViewTextBoxColumn12.DisplayIndex) Then
 
-                Dim dgvcc As New DataGridViewComboBoxCell
+                If ("Roll tooling" = combo.SelectedItem.ToString()) Then
 
-                dgvcc.Items.Clear()
-                dgvcc.Items.Add("E-Seal form")
-                dgvcc.Items.Add("Pre-form")
-                dgvcc.Items.Add("C-Ring")
-                grdManf_ToolNGage.Item(2, grdManf_ToolNGage.CurrentRow.Index) = dgvcc
+                    Dim dgvcc As New DataGridViewComboBoxCell
 
-            ElseIf ("Die" = combo.SelectedItem.ToString()) Then
+                    dgvcc.Items.Clear()
+                    dgvcc.Items.Add("E-Seal form")
+                    dgvcc.Items.Add("Pre-form")
+                    dgvcc.Items.Add("C-Ring")
+                    grdManf_ToolNGage.Item(2, grdManf_ToolNGage.CurrentRow.Index) = dgvcc
 
-                Dim dgvcc As New DataGridViewComboBoxCell
-                dgvcc.Items.Clear()
-                dgvcc.Items.Add("Std")
-                dgvcc.Items.Add("Pre-form PF")
-                dgvcc.Items.Add("After-plate AP")
-                grdManf_ToolNGage.Item(2, grdManf_ToolNGage.CurrentRow.Index) = dgvcc
+                ElseIf ("Die" = combo.SelectedItem.ToString()) Then
 
-            ElseIf ("Window gauge" = combo.SelectedItem.ToString()) Then
+                    Dim dgvcc As New DataGridViewComboBoxCell
+                    dgvcc.Items.Clear()
+                    dgvcc.Items.Add("Std")
+                    dgvcc.Items.Add("Pre-form PF")
+                    dgvcc.Items.Add("After-plate AP")
+                    grdManf_ToolNGage.Item(2, grdManf_ToolNGage.CurrentRow.Index) = dgvcc
 
-                Dim dgvcc As New DataGridViewComboBoxCell
-                dgvcc.Items.Clear()
-                dgvcc.Items.Add("Std")
-                dgvcc.Items.Add("3D gauge")
-                dgvcc.Items.Add("3D tooling")
-                grdManf_ToolNGage.Item(2, grdManf_ToolNGage.CurrentRow.Index) = dgvcc
+                ElseIf ("Window gauge" = combo.SelectedItem.ToString()) Then
 
+                    Dim dgvcc As New DataGridViewComboBoxCell
+                    dgvcc.Items.Clear()
+                    dgvcc.Items.Add("Std")
+                    dgvcc.Items.Add("3D gauge")
+                    dgvcc.Items.Add("3D tooling")
+                    grdManf_ToolNGage.Item(2, grdManf_ToolNGage.CurrentRow.Index) = dgvcc
+
+                Else
+                    Dim dgvcc As New DataGridViewComboBoxCell
+                    dgvcc.Items.Clear()
+                    grdManf_ToolNGage.Item(2, grdManf_ToolNGage.CurrentRow.Index) = dgvcc
+
+                End If
             End If
 
         Catch ex As Exception
@@ -3714,6 +3885,7 @@ Public Class Process_frmMain
 
     Private Sub cmdSetUnits_Click(sender As System.Object, e As System.EventArgs) Handles cmdSetUnits.Click
         '==================================================================================================
+        SaveData()
         Dim pfrmProcess_Unit As New Process_frmUnit()
         pfrmProcess_Unit.ShowDialog()
     End Sub
@@ -3850,6 +4022,11 @@ Public Class Process_frmMain
         If (TabControl1.SelectedIndex = 2) Then
             CopyDataGridView(grdOrdEntry_CustContact, grdCustContact)
         End If
+
+        If (TabControl1.SelectedIndex = 8) Then
+            CopyDataGridView(grdQuality_SplOperation, grdCost_SplOperation)
+        End If
+
 
         '.... "Header:"
 
@@ -5089,7 +5266,7 @@ Public Class Process_frmMain
         mProcess_Project.Purchase.SaveToDB(mProcess_Project.ID)
         mProcess_Project.Qlty.SaveToDB(mProcess_Project.ID)
         mProcess_Project.Dwg.SaveToDB(mProcess_Project.ID)
-        mProcess_Project.Test.SaveToDB(mProcess_Project.ID)
+        mProcess_Project.Test.SaveToDB(mProcess_Project.ID, chkTest.Checked)
         'mProcess_Project.Planning.SaveToDB(mProcess_Project.ID)
         mProcess_Project.Shipping.SaveToDB(mProcess_Project.ID)
         mProcess_Project.IssueCommnt.SaveToDB(mProcess_Project.ID)
@@ -5525,6 +5702,7 @@ Public Class Process_frmMain
         If (grdCost_SplOperation.CurrentCellAddress.X = DataGridViewTextBoxColumn71.DisplayIndex) Then
             If (Not DataGridViewTextBoxColumn71.Items.Contains(e.FormattedValue)) Then
                 DataGridViewTextBoxColumn71.Items.Add(e.FormattedValue)
+                DataGridViewComboBoxColumn8.Items.Add(e.FormattedValue)
                 grdCost_SplOperation.Rows(e.RowIndex).Cells(0).Value = e.FormattedValue
             End If
         End If
@@ -5534,6 +5712,32 @@ Public Class Process_frmMain
                                                            Handles grdCost_SplOperation.EditingControlShowing
         '========================================================================================================================
         If (grdCost_SplOperation.CurrentCellAddress.X = DataGridViewTextBoxColumn71.DisplayIndex) Then
+            Dim pCmbBox As ComboBox = e.Control
+
+            If (Not IsNothing(pCmbBox)) Then
+                pCmbBox.DropDownStyle = ComboBoxStyle.DropDown
+            End If
+        End If
+    End Sub
+
+    Private Sub grdQuality_SplOperation_CellValidating(sender As Object,
+                                                       e As DataGridViewCellValidatingEventArgs) _
+                                                       Handles grdQuality_SplOperation.CellValidating
+        '=============================================================================================
+        If (grdQuality_SplOperation.CurrentCellAddress.X = DataGridViewComboBoxColumn8.DisplayIndex) Then
+            If (Not DataGridViewComboBoxColumn8.Items.Contains(e.FormattedValue)) Then
+                DataGridViewComboBoxColumn8.Items.Add(e.FormattedValue)
+                DataGridViewTextBoxColumn71.Items.Add(e.FormattedValue)
+                grdQuality_SplOperation.Rows(e.RowIndex).Cells(0).Value = e.FormattedValue
+            End If
+        End If
+    End Sub
+
+    Private Sub grdQuality_SplOperation_EditingControlShowing(sender As Object,
+                                                              e As DataGridViewEditingControlShowingEventArgs) _
+                                                              Handles grdQuality_SplOperation.EditingControlShowing
+        '===========================================================================================================
+        If (grdQuality_SplOperation.CurrentCellAddress.X = DataGridViewComboBoxColumn8.DisplayIndex) Then
             Dim pCmbBox As ComboBox = e.Control
 
             If (Not IsNothing(pCmbBox)) Then
@@ -5593,6 +5797,29 @@ Public Class Process_frmMain
         End If
     End Sub
 
+    Private Sub grdDesign_Input_CellValidating(sender As Object, e As DataGridViewCellValidatingEventArgs) _
+                                               Handles grdDesign_Input.CellValidating
+        '=====================================================================================================
+        If (grdDesign_Input.CurrentCellAddress.X = DataGridViewComboBoxColumn7.DisplayIndex) Then
+            If (Not DataGridViewComboBoxColumn7.Items.Contains(e.FormattedValue)) Then
+                DataGridViewComboBoxColumn7.Items.Add(e.FormattedValue)
+                grdDesign_Input.Rows(e.RowIndex).Cells(0).Value = e.FormattedValue
+            End If
+        End If
+    End Sub
+
+    Private Sub grdDesign_Input_EditingControlShowing(sender As Object, e As DataGridViewEditingControlShowingEventArgs) _
+                                                      Handles grdDesign_Input.EditingControlShowing
+        '=================================================================================================================
+        If (grdDesign_Input.CurrentCellAddress.X = DataGridViewComboBoxColumn7.DisplayIndex) Then
+            Dim pCmbBox As ComboBox = e.Control
+
+            If (Not IsNothing(pCmbBox)) Then
+                pCmbBox.DropDownStyle = ComboBoxStyle.DropDown
+            End If
+        End If
+    End Sub
+
     Private Sub grdDesign_CustSpec_CellValidating(sender As Object,
                                                   e As DataGridViewCellValidatingEventArgs) _
                                                   Handles grdDesign_CustSpec.CellValidating
@@ -5635,31 +5862,6 @@ Public Class Process_frmMain
                                                      Handles grdDesign_Seal.EditingControlShowing
         '===============================================================================================
         If (grdDesign_Seal.CurrentCellAddress.X = DataGridViewTextBoxColumn18.DisplayIndex) Then
-            Dim pCmbBox As ComboBox = e.Control
-
-            If (Not IsNothing(pCmbBox)) Then
-                pCmbBox.DropDownStyle = ComboBoxStyle.DropDown
-            End If
-        End If
-    End Sub
-
-    Private Sub grdQuality_SplOperation_CellValidating(sender As Object,
-                                                       e As DataGridViewCellValidatingEventArgs) _
-                                                       Handles grdQuality_SplOperation.CellValidating
-        '=============================================================================================
-        If (grdQuality_SplOperation.CurrentCellAddress.X = DataGridViewComboBoxColumn8.DisplayIndex) Then
-            If (Not DataGridViewComboBoxColumn8.Items.Contains(e.FormattedValue)) Then
-                DataGridViewComboBoxColumn8.Items.Add(e.FormattedValue)
-                grdQuality_SplOperation.Rows(e.RowIndex).Cells(0).Value = e.FormattedValue
-            End If
-        End If
-    End Sub
-
-    Private Sub grdQuality_SplOperation_EditingControlShowing(sender As Object,
-                                                              e As DataGridViewEditingControlShowingEventArgs) _
-                                                              Handles grdQuality_SplOperation.EditingControlShowing
-        '===========================================================================================================
-        If (grdQuality_SplOperation.CurrentCellAddress.X = DataGridViewComboBoxColumn8.DisplayIndex) Then
             Dim pCmbBox As ComboBox = e.Control
 
             If (Not IsNothing(pCmbBox)) Then
@@ -6129,6 +6331,92 @@ Public Class Process_frmMain
             End If
         End If
     End Sub
+
+    Private Sub chkTest_CheckedChanged(sender As Object, e As EventArgs) Handles chkTest.CheckedChanged
+        '==============================================================================================
+        If (chkTest.Checked = False) Then
+            '....Leak
+            txtTest_CompressPre_Leak.Text = ""
+            txtTest_CompressPost_Leak.Text = ""
+            cmbTest_MediaPre_Leak.SelectedIndex = -1
+            cmbTest_MediaPost_Leak.SelectedIndex = -1
+            txtTest_PressPre_Leak.Text = ""
+            txtTest_PressPost_Leak.Text = ""
+            txtTest_ReqPre_Leak.Text = ""
+            txtTest_ReqPost_Leak.Text = ""
+
+            cmbTest_QtyPre_Leak.Text = ""
+            cmbTest_QtyPre_Leak.SelectedIndex = -1
+
+            cmbTest_QtyPost_Leak.Text = ""
+            cmbTest_QtyPost_Leak.SelectedIndex = -1
+
+            cmbTest_FreqPre_Leak.Text = ""
+            cmbTest_FreqPre_Leak.SelectedIndex = -1
+
+            cmbTest_FreqPost_Leak.Text = ""
+            cmbTest_FreqPost_Leak.SelectedIndex = -1
+
+            '....Load
+            txtTest_CompressPre_Load.Text = ""
+            txtTest_CompressPost_Load.Text = ""
+            txtTest_ReqPre_Load.Text = ""
+            txtTest_ReqPost_Load.Text = ""
+
+            cmbTest_QtyPre_Load.Text = ""
+            cmbTest_QtyPre_Load.SelectedIndex = -1
+            cmbTest_QtyPost_Load.Text = ""
+            cmbTest_QtyPost_Load.SelectedIndex = -1
+            cmbTest_FreqPre_Load.Text = ""
+            cmbTest_FreqPre_Load.SelectedIndex = -1
+            cmbTest_FreqPost_Load.Text = ""
+            cmbTest_FreqPost_Load.SelectedIndex = -1
+
+            '....SpringBack
+            txtTest_CompressPre_SpringBack.Text = ""
+            txtTest_CompressPost_SpringBack.Text = ""
+            txtTest_ReqPre_SpringBack.Text = ""
+            txtTest_ReqPost_SpringBack.Text = ""
+
+            cmbTest_QtyPre_SpringBack.Text = ""
+            cmbTest_QtyPre_SpringBack.SelectedIndex = -1
+
+            cmbTest_QtyPost_SpringBack.Text = ""
+            cmbTest_QtyPost_SpringBack.SelectedIndex = -1
+
+            cmbTest_FreqPre_SpringBack.Text = ""
+            cmbTest_FreqPre_SpringBack.SelectedIndex = -1
+
+            cmbTest_FreqPost_SpringBack.Text = ""
+            cmbTest_FreqPost_SpringBack.SelectedIndex = -1
+
+            txtTest_Other.Text = ""
+            txtTest_Other.Enabled = False
+
+            EnableTab(tabLeak, False)
+            EnableTab(tabLoad, False)
+            EnableTab(tabSpringBack, False)
+        Else
+            EnableTab(tabLeak, True)
+            EnableTab(tabLoad, True)
+            EnableTab(tabSpringBack, True)
+            txtTest_Other.Enabled = True
+        End If
+
+    End Sub
+
+    Public Sub EnableTab(ByVal page As TabPage, ByVal enable As Boolean)
+        EnableControls(page.Controls, enable)
+    End Sub
+
+    Private Sub EnableControls(ByVal ctls As Control.ControlCollection, ByVal enable As Boolean)
+        For Each ctl As Control In ctls
+            ctl.Enabled = enable
+            EnableControls(ctl.Controls, enable)
+        Next
+    End Sub
+
+
 
 
 #End Region

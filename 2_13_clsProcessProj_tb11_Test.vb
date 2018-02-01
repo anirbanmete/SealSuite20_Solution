@@ -28,6 +28,7 @@ Public Class clsProcessProj_Test
     Private mLoad As New clsLoad
     Private mSpringBack As New clsSpringBack
 
+    Private mIsNeeded As Boolean = False
     Private mRisk As New clsProcessProj_Risk
     Private mEditedBy As New clsProcessProj_EditedBy
 
@@ -149,9 +150,10 @@ Public Class clsProcessProj_Test
                                Where pRec.fldProcessProjectID = ProjectID_In Select pRec).Count()
 
             If (pQryTestCount > 0) Then
+                mIsNeeded = True
 
                 Dim pQryTest = (From pRec In pSealProcessDBEntities.tblTest
-                                   Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
+                                Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
 
                 mOther = pQryTest.fldOther
                 mEditedBy.User_Name = pQryTest.fldUserName
@@ -173,50 +175,77 @@ Public Class clsProcessProj_Test
     End Sub
 
 
-    Public Sub SaveToDB(ByVal ProjectID_In As Integer)
+    Public Sub SaveToDB(ByVal ProjectID_In As Integer, ByVal Needed_In As Boolean)
         '==============================================
 
         Dim pSealProcessDBEntities As New SealProcessDBEntities()
 
-        '....Purchase table
-        Dim pOtherCount As Integer = (From Manf In pSealProcessDBEntities.tblTest
-                                            Where Manf.fldProcessProjectID = ProjectID_In Select Manf).Count()
+        '....Test table
+        Dim pTestCount As Integer = (From Test In pSealProcessDBEntities.tblTest
+                                     Where Test.fldProcessProjectID = ProjectID_In Select Test).Count()
 
-        If (pOtherCount > 0) Then
-            '....Record already exists
-            Dim pTest = (From Manf In pSealProcessDBEntities.tblTest
-                                           Where Manf.fldProcessProjectID = ProjectID_In Select Manf).First()
+        If (Needed_In) Then
 
-            pTest.fldOther = mOther
-            pTest.fldUserName = mEditedBy.User.Name
-            pTest.fldSigned = mEditedBy.User.Signed
-            pTest.fldDateSigned = mEditedBy.User.DateSigned
+            If (pTestCount > 0) Then
+                '....Record already exists
+                Dim pTest = (From Test In pSealProcessDBEntities.tblTest
+                             Where Test.fldProcessProjectID = ProjectID_In Select Test).First()
 
-            pSealProcessDBEntities.SaveChanges()
+                pTest.fldOther = mOther
+                pTest.fldUserName = mEditedBy.User.Name
+                pTest.fldSigned = mEditedBy.User.Signed
+                pTest.fldDateSigned = mEditedBy.User.DateSigned
 
+                pSealProcessDBEntities.SaveChanges()
+
+            Else
+                '....New Record
+                Dim pID As Integer = ProjectID_In
+
+                Dim pTest As New tblTest
+                pTest.fldProcessProjectID = pID
+
+                pTest.fldOther = mOther
+                pTest.fldUserName = mEditedBy.User.Name
+                pTest.fldSigned = mEditedBy.User.Signed
+                pTest.fldDateSigned = mEditedBy.User.DateSigned
+
+                pSealProcessDBEntities.AddTotblTest(pTest)
+                pSealProcessDBEntities.SaveChanges()
+            End If
+
+
+            mLeak.SaveToDB(ProjectID_In)
+            mLoad.SaveToDB(ProjectID_In)
+            mSpringBack.SaveToDB(ProjectID_In)
         Else
-            '....New Record
-            Dim pID As Integer = ProjectID_In
 
-            Dim pTest As New tblTest
-            pTest.fldProcessProjectID = pID
+            Dim pTestRec = (From Test In pSealProcessDBEntities.tblTest
+                            Where Test.fldProcessProjectID = ProjectID_In Select Test).ToList()
 
-            pTest.fldOther = mOther
-            pTest.fldUserName = mEditedBy.User.Name
-            pTest.fldSigned = mEditedBy.User.Signed
-            pTest.fldDateSigned = mEditedBy.User.DateSigned
+            If (pTestRec.Count > 0) Then
+                For j As Integer = 0 To pTestRec.Count() - 1
+                    pSealProcessDBEntities.DeleteObject(pTestRec(j))
+                    pSealProcessDBEntities.SaveChanges()
+                Next
+            End If
 
-            pSealProcessDBEntities.AddTotblTest(pTest)
-            pSealProcessDBEntities.SaveChanges()
         End If
 
-        mLeak.SaveToDB(ProjectID_In)
-        mLoad.SaveToDB(ProjectID_In)
-        mSpringBack.SaveToDB(ProjectID_In)
     End Sub
 
 #End Region
 
+    Public Function IsNeeded() As Boolean
+        '================================
+
+        If (mIsNeeded Or mLeak.IsNeeded Or mLoad.IsNeeded Or mSpringBack.IsNeeded) Then
+            Return True
+        Else
+            Return False
+        End If
+
+    End Function
 
 #Region "NESTED CLASS:"
 
@@ -240,6 +269,7 @@ Public Class clsProcessProj_Test
         Private mMax_Plated As Double
         Private mQty_Plated As Int64
         Private mFreq_Plated As String
+        Private mIsNeeded As Boolean = False
 
 #End Region
 
@@ -421,6 +451,15 @@ Public Class clsProcessProj_Test
 
         End Property
 
+        '....IsNeeded
+        Public ReadOnly Property IsNeeded() As Boolean
+            '===================================
+            Get
+                Return mIsNeeded
+            End Get
+
+        End Property
+
 #End Region
 
 #Region "DB RELATED ROUTINE:"
@@ -436,9 +475,10 @@ Public Class clsProcessProj_Test
                                    Where pRec.fldProcessProjectID = ProjectID_In Select pRec).Count()
 
                 If (pQryTestLeakCount > 0) Then
+                    mIsNeeded = True
 
                     Dim pQryTestLeak = (From pRec In pSealProcessDBEntities.tblTest_Leak
-                                       Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
+                                        Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
 
                     mCompress_Unplated = pQryTestLeak.fldCompress_Unplated
                     mMedium_Unplated = pQryTestLeak.fldMedium_Unplated
@@ -540,6 +580,7 @@ Public Class clsProcessProj_Test
         Private mMax_Plated As Double
         Private mQty_Plated As Int64
         Private mFreq_Plated As String
+        Private mIsNeeded As Boolean
 
 #End Region
 
@@ -663,6 +704,15 @@ Public Class clsProcessProj_Test
 
         End Property
 
+        '....IsNeeded
+        Public ReadOnly Property IsNeeded() As Boolean
+            '===================================
+            Get
+                Return mIsNeeded
+            End Get
+
+        End Property
+
 #End Region
 
 #Region "DB RELATED ROUTINE:"
@@ -678,7 +728,7 @@ Public Class clsProcessProj_Test
                                    Where pRec.fldProcessProjectID = ProjectID_In Select pRec).Count()
 
                 If (pQryTestLoadCount > 0) Then
-
+                    mIsNeeded = True
                     Dim pQryTestLoad = (From pRec In pSealProcessDBEntities.tblTest_Load
                                        Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
 
@@ -771,6 +821,8 @@ Public Class clsProcessProj_Test
         Private mQty_Plated As Int64
         Private mFreq_Plated As String
 
+        Private mIsNeeded As Boolean = False
+
 #End Region
 
 #Region "PROPERTY ROUTINES:"
@@ -893,6 +945,15 @@ Public Class clsProcessProj_Test
 
         End Property
 
+        '....IsNeeded
+        Public ReadOnly Property IsNeeded() As Boolean
+            '===================================
+            Get
+                Return mIsNeeded
+            End Get
+
+        End Property
+
 #End Region
 
 #Region "DB RELATED ROUTINE:"
@@ -909,8 +970,10 @@ Public Class clsProcessProj_Test
 
                 If (pQryTestSpringBackCount > 0) Then
 
+                    mIsNeeded = True
+
                     Dim pQryTestSpringBack = (From pRec In pSealProcessDBEntities.tblTest_SpringBack
-                                       Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
+                                              Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
 
                     mCompress_Unplated = pQryTestSpringBack.fldCompress_Unplated
                     mMax_Unplated = pQryTestSpringBack.fldMax_Unplated

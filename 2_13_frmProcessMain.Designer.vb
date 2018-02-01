@@ -370,7 +370,7 @@ Partial Class Process_frmMain
         Me.optApp_Parker_Gen = New System.Windows.Forms.RadioButton()
         Me.Label66 = New System.Windows.Forms.Label()
         Me.lblApp_MaxLeak_Unit = New System.Windows.Forms.Label()
-        Me.GroupBox39 = New System.Windows.Forms.GroupBox()
+        Me.grpApp_Load = New System.Windows.Forms.GroupBox()
         Me.grdApp_Load = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -444,7 +444,7 @@ Partial Class Process_frmMain
         Me.DataGridViewTextBoxColumn45 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn85 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label32 = New System.Windows.Forms.Label()
-        Me.GroupBox38 = New System.Windows.Forms.GroupBox()
+        Me.grpApp_Face_Cavity = New System.Windows.Forms.GroupBox()
         Me.grdApp_Face_Cavity = New System.Windows.Forms.DataGridView()
         Me.DataGridViewComboBoxColumn5 = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.DataGridViewTextBoxColumn77 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -474,7 +474,7 @@ Partial Class Process_frmMain
         Me.txtApp_Hardness1_Axial = New System.Windows.Forms.TextBox()
         Me.Label154 = New System.Windows.Forms.Label()
         Me.Label141 = New System.Windows.Forms.Label()
-        Me.GroupBox30 = New System.Windows.Forms.GroupBox()
+        Me.grpApp_Axial_Cavity = New System.Windows.Forms.GroupBox()
         Me.grdApp_Axial_Cavity = New System.Windows.Forms.DataGridView()
         Me.DataGridViewComboBoxColumn6 = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.DataGridViewTextBoxColumn81 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -622,7 +622,7 @@ Partial Class Process_frmMain
         Me.DataGridViewTextBoxColumn35 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn46 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn96 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.grpGroupBox14 = New System.Windows.Forms.GroupBox()
+        Me.grpDesign_SealDim = New System.Windows.Forms.GroupBox()
         Me.Label176 = New System.Windows.Forms.Label()
         Me.grdDesign_Seal = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewComboBoxColumn()
@@ -757,6 +757,7 @@ Partial Class Process_frmMain
         Me.cmbDwg_DesignLevel = New System.Windows.Forms.ComboBox()
         Me.cmdNotes = New System.Windows.Forms.Button()
         Me.tabTesting = New System.Windows.Forms.TabPage()
+        Me.chkTest = New System.Windows.Forms.CheckBox()
         Me.Label119 = New System.Windows.Forms.Label()
         Me.GroupBox32 = New System.Windows.Forms.GroupBox()
         Me.chkTest_UserSigned = New System.Windows.Forms.CheckBox()
@@ -771,11 +772,11 @@ Partial Class Process_frmMain
         Me.txtTest_Other = New System.Windows.Forms.TextBox()
         Me.Label152 = New System.Windows.Forms.Label()
         Me.tbTest = New System.Windows.Forms.TabControl()
-        Me.TabPage17 = New System.Windows.Forms.TabPage()
+        Me.tabLeak = New System.Windows.Forms.TabPage()
         Me.cmbTest_FreqPost_Leak = New System.Windows.Forms.ComboBox()
         Me.cmbTest_FreqPre_Leak = New System.Windows.Forms.ComboBox()
         Me.lblTest_Req_Unit_Leak = New System.Windows.Forms.Label()
-        Me.txtTest_Press_Unit_Leak = New System.Windows.Forms.Label()
+        Me.lblTest_Press_Unit_Leak = New System.Windows.Forms.Label()
         Me.lblTest_CompressTo_Unit_Leak = New System.Windows.Forms.Label()
         Me.cmbTest_QtyPost_Leak = New System.Windows.Forms.ComboBox()
         Me.cmbTest_QtyPre_Leak = New System.Windows.Forms.ComboBox()
@@ -795,7 +796,7 @@ Partial Class Process_frmMain
         Me.Label162 = New System.Windows.Forms.Label()
         Me.Label157 = New System.Windows.Forms.Label()
         Me.Label158 = New System.Windows.Forms.Label()
-        Me.TabPage18 = New System.Windows.Forms.TabPage()
+        Me.tabLoad = New System.Windows.Forms.TabPage()
         Me.lblTest_Req_Unit_Load = New System.Windows.Forms.Label()
         Me.lblTest_CompressTo_Unit_Load = New System.Windows.Forms.Label()
         Me.cmbTest_FreqPost_Load = New System.Windows.Forms.ComboBox()
@@ -812,7 +813,7 @@ Partial Class Process_frmMain
         Me.Label173 = New System.Windows.Forms.Label()
         Me.Label174 = New System.Windows.Forms.Label()
         Me.Label175 = New System.Windows.Forms.Label()
-        Me.TabPage19 = New System.Windows.Forms.TabPage()
+        Me.tabSpringBack = New System.Windows.Forms.TabPage()
         Me.cmbTest_FreqPost_SpringBack = New System.Windows.Forms.ComboBox()
         Me.cmbTest_FreqPre_SpringBack = New System.Windows.Forms.ComboBox()
         Me.Label80 = New System.Windows.Forms.Label()
@@ -913,7 +914,6 @@ Partial Class Process_frmMain
         Me.TabViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.openFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.chkTest = New System.Windows.Forms.CheckBox()
         Me.pnlPanel1.SuspendLayout()
         Me.GroupBox16.SuspendLayout()
         Me.GroupBox43.SuspendLayout()
@@ -968,7 +968,7 @@ Partial Class Process_frmMain
         Me.tbApp.SuspendLayout()
         Me.tbpGen.SuspendLayout()
         Me.GroupBox45.SuspendLayout()
-        Me.GroupBox39.SuspendLayout()
+        Me.grpApp_Load.SuspendLayout()
         CType(Me.grdApp_Load, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox26.SuspendLayout()
         CType(Me.grdApp_OpCond, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -978,11 +978,11 @@ Partial Class Process_frmMain
         Me.GroupBox54.SuspendLayout()
         Me.GroupBox40.SuspendLayout()
         CType(Me.grdApp_EditedBy_Face, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox38.SuspendLayout()
+        Me.grpApp_Face_Cavity.SuspendLayout()
         CType(Me.grdApp_Face_Cavity, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tbpAxial.SuspendLayout()
         Me.GroupBox55.SuspendLayout()
-        Me.GroupBox30.SuspendLayout()
+        Me.grpApp_Axial_Cavity.SuspendLayout()
         CType(Me.grdApp_Axial_Cavity, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox41.SuspendLayout()
         CType(Me.grdApp_EditedBy_Axial, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1003,7 +1003,7 @@ Partial Class Process_frmMain
         Me.TabPage2.SuspendLayout()
         Me.GroupBox10.SuspendLayout()
         CType(Me.grdDesign_EditedBy, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.grpGroupBox14.SuspendLayout()
+        Me.grpDesign_SealDim.SuspendLayout()
         CType(Me.grdDesign_Seal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox5.SuspendLayout()
         CType(Me.grdDesign_CustSpec, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1032,9 +1032,9 @@ Partial Class Process_frmMain
         Me.GroupBox32.SuspendLayout()
         CType(Me.grdTest_EditedBy, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tbTest.SuspendLayout()
-        Me.TabPage17.SuspendLayout()
-        Me.TabPage18.SuspendLayout()
-        Me.TabPage19.SuspendLayout()
+        Me.tabLeak.SuspendLayout()
+        Me.tabLoad.SuspendLayout()
+        Me.tabSpringBack.SuspendLayout()
         Me.tabPlanning.SuspendLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdPlanning_Ordered, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1157,7 +1157,6 @@ Partial Class Process_frmMain
         '
         Me.cmdSetUnits.AutoSize = True
         Me.cmdSetUnits.BackColor = System.Drawing.Color.Silver
-        Me.cmdSetUnits.Enabled = False
         Me.cmdSetUnits.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdSetUnits.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdSetUnits.Location = New System.Drawing.Point(1012, 131)
@@ -3891,9 +3890,9 @@ Partial Class Process_frmMain
         Me.tabApplication.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.tabApplication.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tabApplication.Controls.Add(Me.tbApp)
-        Me.tabApplication.Location = New System.Drawing.Point(4, 22)
+        Me.tabApplication.Location = New System.Drawing.Point(4, 40)
         Me.tabApplication.Name = "tabApplication"
-        Me.tabApplication.Size = New System.Drawing.Size(1039, 595)
+        Me.tabApplication.Size = New System.Drawing.Size(1039, 577)
         Me.tabApplication.TabIndex = 5
         Me.tabApplication.Text = "       Application      "
         '
@@ -3915,7 +3914,7 @@ Partial Class Process_frmMain
         Me.tbpGen.Controls.Add(Me.GroupBox45)
         Me.tbpGen.Controls.Add(Me.Label66)
         Me.tbpGen.Controls.Add(Me.lblApp_MaxLeak_Unit)
-        Me.tbpGen.Controls.Add(Me.GroupBox39)
+        Me.tbpGen.Controls.Add(Me.grpApp_Load)
         Me.tbpGen.Controls.Add(Me.txtApp_Fluid)
         Me.tbpGen.Controls.Add(Me.Label83)
         Me.tbpGen.Controls.Add(Me.Label73)
@@ -4001,16 +4000,16 @@ Partial Class Process_frmMain
         Me.lblApp_MaxLeak_Unit.TabIndex = 873
         Me.lblApp_MaxLeak_Unit.Text = "cc/s"
         '
-        'GroupBox39
+        'grpApp_Load
         '
-        Me.GroupBox39.Controls.Add(Me.grdApp_Load)
-        Me.GroupBox39.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox39.Location = New System.Drawing.Point(6, 379)
-        Me.GroupBox39.Name = "GroupBox39"
-        Me.GroupBox39.Size = New System.Drawing.Size(293, 122)
-        Me.GroupBox39.TabIndex = 872
-        Me.GroupBox39.TabStop = False
-        Me.GroupBox39.Text = "Load (lbf/in):"
+        Me.grpApp_Load.Controls.Add(Me.grdApp_Load)
+        Me.grpApp_Load.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grpApp_Load.Location = New System.Drawing.Point(6, 379)
+        Me.grpApp_Load.Name = "grpApp_Load"
+        Me.grpApp_Load.Size = New System.Drawing.Size(293, 122)
+        Me.grpApp_Load.TabIndex = 872
+        Me.grpApp_Load.TabStop = False
+        Me.grpApp_Load.Text = "Load (lbf/in):"
         '
         'grdApp_Load
         '
@@ -4488,7 +4487,7 @@ Partial Class Process_frmMain
         Me.tbpFace.Controls.Add(Me.Label89)
         Me.tbpFace.Controls.Add(Me.GroupBox40)
         Me.tbpFace.Controls.Add(Me.Label32)
-        Me.tbpFace.Controls.Add(Me.GroupBox38)
+        Me.tbpFace.Controls.Add(Me.grpApp_Face_Cavity)
         Me.tbpFace.Controls.Add(Me.cmbApp_Face_POrient)
         Me.tbpFace.Controls.Add(Me.Label229)
         Me.tbpFace.Controls.Add(Me.txtApp_Face_MaxFlangeSeparation)
@@ -4809,16 +4808,16 @@ Partial Class Process_frmMain
         Me.Label32.Text = "Max."
         Me.Label32.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'GroupBox38
+        'grpApp_Face_Cavity
         '
-        Me.GroupBox38.Controls.Add(Me.grdApp_Face_Cavity)
-        Me.GroupBox38.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox38.Location = New System.Drawing.Point(28, 19)
-        Me.GroupBox38.Name = "GroupBox38"
-        Me.GroupBox38.Size = New System.Drawing.Size(490, 218)
-        Me.GroupBox38.TabIndex = 873
-        Me.GroupBox38.TabStop = False
-        Me.GroupBox38.Text = "Cavity Dimensions (in):"
+        Me.grpApp_Face_Cavity.Controls.Add(Me.grdApp_Face_Cavity)
+        Me.grpApp_Face_Cavity.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grpApp_Face_Cavity.Location = New System.Drawing.Point(28, 19)
+        Me.grpApp_Face_Cavity.Name = "grpApp_Face_Cavity"
+        Me.grpApp_Face_Cavity.Size = New System.Drawing.Size(490, 218)
+        Me.grpApp_Face_Cavity.TabIndex = 873
+        Me.grpApp_Face_Cavity.TabStop = False
+        Me.grpApp_Face_Cavity.Text = "Cavity Dimensions (in):"
         '
         'grdApp_Face_Cavity
         '
@@ -4939,7 +4938,7 @@ Partial Class Process_frmMain
         Me.tbpAxial.Controls.Add(Me.txtApp_Hardness1_Axial)
         Me.tbpAxial.Controls.Add(Me.Label154)
         Me.tbpAxial.Controls.Add(Me.Label141)
-        Me.tbpAxial.Controls.Add(Me.GroupBox30)
+        Me.tbpAxial.Controls.Add(Me.grpApp_Axial_Cavity)
         Me.tbpAxial.Controls.Add(Me.txtApp_OscServiceLife_Axial)
         Me.tbpAxial.Controls.Add(Me.cmbApp_Static_Axial)
         Me.tbpAxial.Controls.Add(Me.Label1)
@@ -5167,16 +5166,16 @@ Partial Class Process_frmMain
         Me.Label141.Size = New System.Drawing.Size(970, 2)
         Me.Label141.TabIndex = 940
         '
-        'GroupBox30
+        'grpApp_Axial_Cavity
         '
-        Me.GroupBox30.Controls.Add(Me.grdApp_Axial_Cavity)
-        Me.GroupBox30.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox30.Location = New System.Drawing.Point(28, 19)
-        Me.GroupBox30.Name = "GroupBox30"
-        Me.GroupBox30.Size = New System.Drawing.Size(490, 218)
-        Me.GroupBox30.TabIndex = 939
-        Me.GroupBox30.TabStop = False
-        Me.GroupBox30.Text = "Cavity Dimensions (in):"
+        Me.grpApp_Axial_Cavity.Controls.Add(Me.grdApp_Axial_Cavity)
+        Me.grpApp_Axial_Cavity.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grpApp_Axial_Cavity.Location = New System.Drawing.Point(28, 19)
+        Me.grpApp_Axial_Cavity.Name = "grpApp_Axial_Cavity"
+        Me.grpApp_Axial_Cavity.Size = New System.Drawing.Size(490, 218)
+        Me.grpApp_Axial_Cavity.TabIndex = 939
+        Me.grpApp_Axial_Cavity.TabStop = False
+        Me.grpApp_Axial_Cavity.Text = "Cavity Dimensions (in):"
         '
         'grdApp_Axial_Cavity
         '
@@ -5591,9 +5590,9 @@ Partial Class Process_frmMain
         Me.tabDesign.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.tabDesign.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tabDesign.Controls.Add(Me.TabControl2)
-        Me.tabDesign.Location = New System.Drawing.Point(4, 22)
+        Me.tabDesign.Location = New System.Drawing.Point(4, 40)
         Me.tabDesign.Name = "tabDesign"
-        Me.tabDesign.Size = New System.Drawing.Size(1039, 595)
+        Me.tabDesign.Size = New System.Drawing.Size(1039, 577)
         Me.tabDesign.TabIndex = 6
         Me.tabDesign.Text = "          Design          "
         '
@@ -6703,7 +6702,7 @@ Partial Class Process_frmMain
         Me.TabPage2.Controls.Add(Me.Label98)
         Me.TabPage2.Controls.Add(Me.Label67)
         Me.TabPage2.Controls.Add(Me.GroupBox10)
-        Me.TabPage2.Controls.Add(Me.grpGroupBox14)
+        Me.TabPage2.Controls.Add(Me.grpDesign_SealDim)
         Me.TabPage2.Controls.Add(Me.txtDesign_LessonsLearned)
         Me.TabPage2.Controls.Add(Me.Label243)
         Me.TabPage2.Controls.Add(Me.GroupBox5)
@@ -6856,17 +6855,17 @@ Partial Class Process_frmMain
         Me.DataGridViewTextBoxColumn96.Name = "DataGridViewTextBoxColumn96"
         Me.DataGridViewTextBoxColumn96.Width = 500
         '
-        'grpGroupBox14
+        'grpDesign_SealDim
         '
-        Me.grpGroupBox14.Controls.Add(Me.Label176)
-        Me.grpGroupBox14.Controls.Add(Me.grdDesign_Seal)
-        Me.grpGroupBox14.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grpGroupBox14.Location = New System.Drawing.Point(15, 209)
-        Me.grpGroupBox14.Name = "grpGroupBox14"
-        Me.grpGroupBox14.Size = New System.Drawing.Size(415, 110)
-        Me.grpGroupBox14.TabIndex = 799
-        Me.grpGroupBox14.TabStop = False
-        Me.grpGroupBox14.Text = "Seal Dimensions (in):"
+        Me.grpDesign_SealDim.Controls.Add(Me.Label176)
+        Me.grpDesign_SealDim.Controls.Add(Me.grdDesign_Seal)
+        Me.grpDesign_SealDim.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grpDesign_SealDim.Location = New System.Drawing.Point(15, 209)
+        Me.grpDesign_SealDim.Name = "grpDesign_SealDim"
+        Me.grpDesign_SealDim.Size = New System.Drawing.Size(430, 110)
+        Me.grpDesign_SealDim.TabIndex = 799
+        Me.grpDesign_SealDim.TabStop = False
+        Me.grpDesign_SealDim.Text = "Seal Dimensions (in):"
         '
         'Label176
         '
@@ -6884,10 +6883,10 @@ Partial Class Process_frmMain
         Me.grdDesign_Seal.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle43
         Me.grdDesign_Seal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdDesign_Seal.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn18, Me.DataGridViewTextBoxColumn19, Me.Column1, Me.DataGridViewTextBoxColumn20})
-        Me.grdDesign_Seal.Location = New System.Drawing.Point(15, 19)
+        Me.grdDesign_Seal.Location = New System.Drawing.Point(14, 19)
         Me.grdDesign_Seal.Name = "grdDesign_Seal"
         Me.grdDesign_Seal.RowHeadersWidth = 20
-        Me.grdDesign_Seal.Size = New System.Drawing.Size(387, 84)
+        Me.grdDesign_Seal.Size = New System.Drawing.Size(406, 84)
         Me.grdDesign_Seal.TabIndex = 683
         '
         'DataGridViewTextBoxColumn18
@@ -7002,9 +7001,9 @@ Partial Class Process_frmMain
         Me.tabManufacturing.Controls.Add(Me.Label101)
         Me.tabManufacturing.Controls.Add(Me.txtManf_HT)
         Me.tabManufacturing.Controls.Add(Me.GroupBox6)
-        Me.tabManufacturing.Location = New System.Drawing.Point(4, 22)
+        Me.tabManufacturing.Location = New System.Drawing.Point(4, 40)
         Me.tabManufacturing.Name = "tabManufacturing"
-        Me.tabManufacturing.Size = New System.Drawing.Size(1039, 595)
+        Me.tabManufacturing.Size = New System.Drawing.Size(1039, 577)
         Me.tabManufacturing.TabIndex = 7
         Me.tabManufacturing.Text = "     Manufacturing     "
         '
@@ -7302,9 +7301,9 @@ Partial Class Process_frmMain
         Me.tabPurchasing.Controls.Add(Me.grdPurchase_ToolNGages)
         Me.tabPurchasing.Controls.Add(Me.GroupBox34)
         Me.tabPurchasing.Controls.Add(Me.grdPurchase_Mat)
-        Me.tabPurchasing.Location = New System.Drawing.Point(4, 22)
+        Me.tabPurchasing.Location = New System.Drawing.Point(4, 40)
         Me.tabPurchasing.Name = "tabPurchasing"
-        Me.tabPurchasing.Size = New System.Drawing.Size(1039, 595)
+        Me.tabPurchasing.Size = New System.Drawing.Size(1039, 577)
         Me.tabPurchasing.TabIndex = 8
         Me.tabPurchasing.Text = "     Purchasing       "
         '
@@ -8282,6 +8281,17 @@ Partial Class Process_frmMain
         Me.tabTesting.TabIndex = 9
         Me.tabTesting.Text = "        Testing          "
         '
+        'chkTest
+        '
+        Me.chkTest.AutoSize = True
+        Me.chkTest.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkTest.Location = New System.Drawing.Point(29, 7)
+        Me.chkTest.Name = "chkTest"
+        Me.chkTest.Size = New System.Drawing.Size(74, 17)
+        Me.chkTest.TabIndex = 880
+        Me.chkTest.Text = "Testing"
+        Me.chkTest.UseVisualStyleBackColor = True
+        '
         'Label119
         '
         Me.Label119.BackColor = System.Drawing.SystemColors.ControlDark
@@ -8416,48 +8426,48 @@ Partial Class Process_frmMain
         '
         'tbTest
         '
-        Me.tbTest.Controls.Add(Me.TabPage17)
-        Me.tbTest.Controls.Add(Me.TabPage18)
-        Me.tbTest.Controls.Add(Me.TabPage19)
+        Me.tbTest.Controls.Add(Me.tabLeak)
+        Me.tbTest.Controls.Add(Me.tabLoad)
+        Me.tbTest.Controls.Add(Me.tabSpringBack)
         Me.tbTest.Location = New System.Drawing.Point(49, 28)
         Me.tbTest.Name = "tbTest"
         Me.tbTest.SelectedIndex = 0
         Me.tbTest.Size = New System.Drawing.Size(355, 292)
         Me.tbTest.TabIndex = 0
         '
-        'TabPage17
+        'tabLeak
         '
-        Me.TabPage17.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.TabPage17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TabPage17.Controls.Add(Me.cmbTest_FreqPost_Leak)
-        Me.TabPage17.Controls.Add(Me.cmbTest_FreqPre_Leak)
-        Me.TabPage17.Controls.Add(Me.lblTest_Req_Unit_Leak)
-        Me.TabPage17.Controls.Add(Me.txtTest_Press_Unit_Leak)
-        Me.TabPage17.Controls.Add(Me.lblTest_CompressTo_Unit_Leak)
-        Me.TabPage17.Controls.Add(Me.cmbTest_QtyPost_Leak)
-        Me.TabPage17.Controls.Add(Me.cmbTest_QtyPre_Leak)
-        Me.TabPage17.Controls.Add(Me.txtTest_ReqPost_Leak)
-        Me.TabPage17.Controls.Add(Me.txtTest_PressPost_Leak)
-        Me.TabPage17.Controls.Add(Me.cmbTest_MediaPost_Leak)
-        Me.TabPage17.Controls.Add(Me.cmbTest_MediaPre_Leak)
-        Me.TabPage17.Controls.Add(Me.txtTest_CompressPost_Leak)
-        Me.TabPage17.Controls.Add(Me.txtTest_ReqPre_Leak)
-        Me.TabPage17.Controls.Add(Me.txtTest_PressPre_Leak)
-        Me.TabPage17.Controls.Add(Me.txtTest_CompressPre_Leak)
-        Me.TabPage17.Controls.Add(Me.Label164)
-        Me.TabPage17.Controls.Add(Me.Label163)
-        Me.TabPage17.Controls.Add(Me.Label159)
-        Me.TabPage17.Controls.Add(Me.Label160)
-        Me.TabPage17.Controls.Add(Me.Label161)
-        Me.TabPage17.Controls.Add(Me.Label162)
-        Me.TabPage17.Controls.Add(Me.Label157)
-        Me.TabPage17.Controls.Add(Me.Label158)
-        Me.TabPage17.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage17.Name = "TabPage17"
-        Me.TabPage17.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage17.Size = New System.Drawing.Size(347, 266)
-        Me.TabPage17.TabIndex = 0
-        Me.TabPage17.Text = "Leak"
+        Me.tabLeak.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.tabLeak.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.tabLeak.Controls.Add(Me.cmbTest_FreqPost_Leak)
+        Me.tabLeak.Controls.Add(Me.cmbTest_FreqPre_Leak)
+        Me.tabLeak.Controls.Add(Me.lblTest_Req_Unit_Leak)
+        Me.tabLeak.Controls.Add(Me.lblTest_Press_Unit_Leak)
+        Me.tabLeak.Controls.Add(Me.lblTest_CompressTo_Unit_Leak)
+        Me.tabLeak.Controls.Add(Me.cmbTest_QtyPost_Leak)
+        Me.tabLeak.Controls.Add(Me.cmbTest_QtyPre_Leak)
+        Me.tabLeak.Controls.Add(Me.txtTest_ReqPost_Leak)
+        Me.tabLeak.Controls.Add(Me.txtTest_PressPost_Leak)
+        Me.tabLeak.Controls.Add(Me.cmbTest_MediaPost_Leak)
+        Me.tabLeak.Controls.Add(Me.cmbTest_MediaPre_Leak)
+        Me.tabLeak.Controls.Add(Me.txtTest_CompressPost_Leak)
+        Me.tabLeak.Controls.Add(Me.txtTest_ReqPre_Leak)
+        Me.tabLeak.Controls.Add(Me.txtTest_PressPre_Leak)
+        Me.tabLeak.Controls.Add(Me.txtTest_CompressPre_Leak)
+        Me.tabLeak.Controls.Add(Me.Label164)
+        Me.tabLeak.Controls.Add(Me.Label163)
+        Me.tabLeak.Controls.Add(Me.Label159)
+        Me.tabLeak.Controls.Add(Me.Label160)
+        Me.tabLeak.Controls.Add(Me.Label161)
+        Me.tabLeak.Controls.Add(Me.Label162)
+        Me.tabLeak.Controls.Add(Me.Label157)
+        Me.tabLeak.Controls.Add(Me.Label158)
+        Me.tabLeak.Location = New System.Drawing.Point(4, 22)
+        Me.tabLeak.Name = "tabLeak"
+        Me.tabLeak.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabLeak.Size = New System.Drawing.Size(347, 266)
+        Me.tabLeak.TabIndex = 0
+        Me.tabLeak.Text = "Leak"
         '
         'cmbTest_FreqPost_Leak
         '
@@ -8492,17 +8502,17 @@ Partial Class Process_frmMain
         Me.lblTest_Req_Unit_Leak.Text = "cc/s"
         Me.lblTest_Req_Unit_Leak.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'txtTest_Press_Unit_Leak
+        'lblTest_Press_Unit_Leak
         '
-        Me.txtTest_Press_Unit_Leak.AutoSize = True
-        Me.txtTest_Press_Unit_Leak.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.txtTest_Press_Unit_Leak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTest_Press_Unit_Leak.Location = New System.Drawing.Point(277, 114)
-        Me.txtTest_Press_Unit_Leak.Name = "txtTest_Press_Unit_Leak"
-        Me.txtTest_Press_Unit_Leak.Size = New System.Drawing.Size(23, 13)
-        Me.txtTest_Press_Unit_Leak.TabIndex = 820
-        Me.txtTest_Press_Unit_Leak.Text = "psi"
-        Me.txtTest_Press_Unit_Leak.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblTest_Press_Unit_Leak.AutoSize = True
+        Me.lblTest_Press_Unit_Leak.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.lblTest_Press_Unit_Leak.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTest_Press_Unit_Leak.Location = New System.Drawing.Point(277, 114)
+        Me.lblTest_Press_Unit_Leak.Name = "lblTest_Press_Unit_Leak"
+        Me.lblTest_Press_Unit_Leak.Size = New System.Drawing.Size(23, 13)
+        Me.lblTest_Press_Unit_Leak.TabIndex = 820
+        Me.lblTest_Press_Unit_Leak.Text = "psi"
+        Me.lblTest_Press_Unit_Leak.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'lblTest_CompressTo_Unit_Leak
         '
@@ -8714,32 +8724,32 @@ Partial Class Process_frmMain
         Me.Label158.Text = "Unplated"
         Me.Label158.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'TabPage18
+        'tabLoad
         '
-        Me.TabPage18.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.TabPage18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TabPage18.Controls.Add(Me.lblTest_Req_Unit_Load)
-        Me.TabPage18.Controls.Add(Me.lblTest_CompressTo_Unit_Load)
-        Me.TabPage18.Controls.Add(Me.cmbTest_FreqPost_Load)
-        Me.TabPage18.Controls.Add(Me.cmbTest_FreqPre_Load)
-        Me.TabPage18.Controls.Add(Me.cmbTest_QtyPost_Load)
-        Me.TabPage18.Controls.Add(Me.cmbTest_QtyPre_Load)
-        Me.TabPage18.Controls.Add(Me.txtTest_ReqPost_Load)
-        Me.TabPage18.Controls.Add(Me.txtTest_CompressPost_Load)
-        Me.TabPage18.Controls.Add(Me.txtTest_ReqPre_Load)
-        Me.TabPage18.Controls.Add(Me.txtTest_CompressPre_Load)
-        Me.TabPage18.Controls.Add(Me.Label170)
-        Me.TabPage18.Controls.Add(Me.Label171)
-        Me.TabPage18.Controls.Add(Me.Label172)
-        Me.TabPage18.Controls.Add(Me.Label173)
-        Me.TabPage18.Controls.Add(Me.Label174)
-        Me.TabPage18.Controls.Add(Me.Label175)
-        Me.TabPage18.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage18.Name = "TabPage18"
-        Me.TabPage18.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage18.Size = New System.Drawing.Size(347, 266)
-        Me.TabPage18.TabIndex = 1
-        Me.TabPage18.Text = "Load"
+        Me.tabLoad.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.tabLoad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.tabLoad.Controls.Add(Me.lblTest_Req_Unit_Load)
+        Me.tabLoad.Controls.Add(Me.lblTest_CompressTo_Unit_Load)
+        Me.tabLoad.Controls.Add(Me.cmbTest_FreqPost_Load)
+        Me.tabLoad.Controls.Add(Me.cmbTest_FreqPre_Load)
+        Me.tabLoad.Controls.Add(Me.cmbTest_QtyPost_Load)
+        Me.tabLoad.Controls.Add(Me.cmbTest_QtyPre_Load)
+        Me.tabLoad.Controls.Add(Me.txtTest_ReqPost_Load)
+        Me.tabLoad.Controls.Add(Me.txtTest_CompressPost_Load)
+        Me.tabLoad.Controls.Add(Me.txtTest_ReqPre_Load)
+        Me.tabLoad.Controls.Add(Me.txtTest_CompressPre_Load)
+        Me.tabLoad.Controls.Add(Me.Label170)
+        Me.tabLoad.Controls.Add(Me.Label171)
+        Me.tabLoad.Controls.Add(Me.Label172)
+        Me.tabLoad.Controls.Add(Me.Label173)
+        Me.tabLoad.Controls.Add(Me.Label174)
+        Me.tabLoad.Controls.Add(Me.Label175)
+        Me.tabLoad.Location = New System.Drawing.Point(4, 22)
+        Me.tabLoad.Name = "tabLoad"
+        Me.tabLoad.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabLoad.Size = New System.Drawing.Size(347, 266)
+        Me.tabLoad.TabIndex = 1
+        Me.tabLoad.Text = "Load"
         '
         'lblTest_Req_Unit_Load
         '
@@ -8918,32 +8928,32 @@ Partial Class Process_frmMain
         Me.Label175.Text = "Unplated"
         Me.Label175.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'TabPage19
+        'tabSpringBack
         '
-        Me.TabPage19.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.TabPage19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TabPage19.Controls.Add(Me.cmbTest_FreqPost_SpringBack)
-        Me.TabPage19.Controls.Add(Me.cmbTest_FreqPre_SpringBack)
-        Me.TabPage19.Controls.Add(Me.Label80)
-        Me.TabPage19.Controls.Add(Me.lblTest_Req_Unit_SpringBack)
-        Me.TabPage19.Controls.Add(Me.lblTest_CompressTo_Unit_SpringBack)
-        Me.TabPage19.Controls.Add(Me.cmbTest_QtyPost_SpringBack)
-        Me.TabPage19.Controls.Add(Me.cmbTest_QtyPre_SpringBack)
-        Me.TabPage19.Controls.Add(Me.Label90)
-        Me.TabPage19.Controls.Add(Me.txtTest_ReqPost_SpringBack)
-        Me.TabPage19.Controls.Add(Me.txtTest_CompressPost_SpringBack)
-        Me.TabPage19.Controls.Add(Me.txtTest_ReqPre_SpringBack)
-        Me.TabPage19.Controls.Add(Me.txtTest_CompressPre_SpringBack)
-        Me.TabPage19.Controls.Add(Me.Label85)
-        Me.TabPage19.Controls.Add(Me.Label86)
-        Me.TabPage19.Controls.Add(Me.Label87)
-        Me.TabPage19.Controls.Add(Me.Label88)
-        Me.TabPage19.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage19.Name = "TabPage19"
-        Me.TabPage19.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage19.Size = New System.Drawing.Size(347, 266)
-        Me.TabPage19.TabIndex = 2
-        Me.TabPage19.Text = "Springback"
+        Me.tabSpringBack.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.tabSpringBack.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.tabSpringBack.Controls.Add(Me.cmbTest_FreqPost_SpringBack)
+        Me.tabSpringBack.Controls.Add(Me.cmbTest_FreqPre_SpringBack)
+        Me.tabSpringBack.Controls.Add(Me.Label80)
+        Me.tabSpringBack.Controls.Add(Me.lblTest_Req_Unit_SpringBack)
+        Me.tabSpringBack.Controls.Add(Me.lblTest_CompressTo_Unit_SpringBack)
+        Me.tabSpringBack.Controls.Add(Me.cmbTest_QtyPost_SpringBack)
+        Me.tabSpringBack.Controls.Add(Me.cmbTest_QtyPre_SpringBack)
+        Me.tabSpringBack.Controls.Add(Me.Label90)
+        Me.tabSpringBack.Controls.Add(Me.txtTest_ReqPost_SpringBack)
+        Me.tabSpringBack.Controls.Add(Me.txtTest_CompressPost_SpringBack)
+        Me.tabSpringBack.Controls.Add(Me.txtTest_ReqPre_SpringBack)
+        Me.tabSpringBack.Controls.Add(Me.txtTest_CompressPre_SpringBack)
+        Me.tabSpringBack.Controls.Add(Me.Label85)
+        Me.tabSpringBack.Controls.Add(Me.Label86)
+        Me.tabSpringBack.Controls.Add(Me.Label87)
+        Me.tabSpringBack.Controls.Add(Me.Label88)
+        Me.tabSpringBack.Location = New System.Drawing.Point(4, 22)
+        Me.tabSpringBack.Name = "tabSpringBack"
+        Me.tabSpringBack.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabSpringBack.Size = New System.Drawing.Size(347, 266)
+        Me.tabSpringBack.TabIndex = 2
+        Me.tabSpringBack.Text = "Springback"
         '
         'cmbTest_FreqPost_SpringBack
         '
@@ -9937,17 +9947,6 @@ Partial Class Process_frmMain
         '
         Me.openFileDialog1.FileName = "OpenFileDialog1"
         '
-        'chkTest
-        '
-        Me.chkTest.AutoSize = True
-        Me.chkTest.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkTest.Location = New System.Drawing.Point(29, 7)
-        Me.chkTest.Name = "chkTest"
-        Me.chkTest.Size = New System.Drawing.Size(74, 17)
-        Me.chkTest.TabIndex = 880
-        Me.chkTest.Text = "Testing"
-        Me.chkTest.UseVisualStyleBackColor = True
-        '
         'Process_frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 13.0!)
@@ -10045,7 +10044,7 @@ Partial Class Process_frmMain
         Me.tbpGen.PerformLayout()
         Me.GroupBox45.ResumeLayout(False)
         Me.GroupBox45.PerformLayout()
-        Me.GroupBox39.ResumeLayout(False)
+        Me.grpApp_Load.ResumeLayout(False)
         CType(Me.grdApp_Load, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox26.ResumeLayout(False)
         Me.GroupBox26.PerformLayout()
@@ -10061,13 +10060,13 @@ Partial Class Process_frmMain
         Me.GroupBox40.ResumeLayout(False)
         Me.GroupBox40.PerformLayout()
         CType(Me.grdApp_EditedBy_Face, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox38.ResumeLayout(False)
+        Me.grpApp_Face_Cavity.ResumeLayout(False)
         CType(Me.grdApp_Face_Cavity, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tbpAxial.ResumeLayout(False)
         Me.tbpAxial.PerformLayout()
         Me.GroupBox55.ResumeLayout(False)
         Me.GroupBox55.PerformLayout()
-        Me.GroupBox30.ResumeLayout(False)
+        Me.grpApp_Axial_Cavity.ResumeLayout(False)
         CType(Me.grdApp_Axial_Cavity, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox41.ResumeLayout(False)
         Me.GroupBox41.PerformLayout()
@@ -10100,7 +10099,7 @@ Partial Class Process_frmMain
         Me.GroupBox10.ResumeLayout(False)
         Me.GroupBox10.PerformLayout()
         CType(Me.grdDesign_EditedBy, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.grpGroupBox14.ResumeLayout(False)
+        Me.grpDesign_SealDim.ResumeLayout(False)
         CType(Me.grdDesign_Seal, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox5.ResumeLayout(False)
         CType(Me.grdDesign_CustSpec, System.ComponentModel.ISupportInitialize).EndInit()
@@ -10140,12 +10139,12 @@ Partial Class Process_frmMain
         Me.GroupBox32.PerformLayout()
         CType(Me.grdTest_EditedBy, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tbTest.ResumeLayout(False)
-        Me.TabPage17.ResumeLayout(False)
-        Me.TabPage17.PerformLayout()
-        Me.TabPage18.ResumeLayout(False)
-        Me.TabPage18.PerformLayout()
-        Me.TabPage19.ResumeLayout(False)
-        Me.TabPage19.PerformLayout()
+        Me.tabLeak.ResumeLayout(False)
+        Me.tabLeak.PerformLayout()
+        Me.tabLoad.ResumeLayout(False)
+        Me.tabLoad.PerformLayout()
+        Me.tabSpringBack.ResumeLayout(False)
+        Me.tabSpringBack.PerformLayout()
         Me.tabPlanning.ResumeLayout(False)
         Me.tabPlanning.PerformLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -10201,7 +10200,7 @@ Partial Class Process_frmMain
     Friend WithEvents Label114 As System.Windows.Forms.Label
     Private WithEvents txtManf_MatPartNo_Base As System.Windows.Forms.TextBox
     Friend WithEvents tbTest As System.Windows.Forms.TabControl
-    Friend WithEvents TabPage17 As System.Windows.Forms.TabPage
+    Friend WithEvents tabLeak As System.Windows.Forms.TabPage
     Private WithEvents txtTest_CompressPost_Leak As System.Windows.Forms.TextBox
     Private WithEvents txtTest_ReqPre_Leak As System.Windows.Forms.TextBox
     Private WithEvents txtTest_PressPre_Leak As System.Windows.Forms.TextBox
@@ -10214,8 +10213,8 @@ Partial Class Process_frmMain
     Friend WithEvents Label162 As System.Windows.Forms.Label
     Friend WithEvents Label157 As System.Windows.Forms.Label
     Friend WithEvents Label158 As System.Windows.Forms.Label
-    Friend WithEvents TabPage18 As System.Windows.Forms.TabPage
-    Friend WithEvents TabPage19 As System.Windows.Forms.TabPage
+    Friend WithEvents tabLoad As System.Windows.Forms.TabPage
+    Friend WithEvents tabSpringBack As System.Windows.Forms.TabPage
     Private WithEvents txtTest_ReqPost_Load As System.Windows.Forms.TextBox
     Private WithEvents txtTest_CompressPost_Load As System.Windows.Forms.TextBox
     Private WithEvents txtTest_ReqPre_Load As System.Windows.Forms.TextBox
@@ -10466,7 +10465,7 @@ Partial Class Process_frmMain
     Private WithEvents txtDesign_CustDwgRev As System.Windows.Forms.TextBox
     Friend WithEvents Label210 As System.Windows.Forms.Label
     Friend WithEvents GroupBox5 As System.Windows.Forms.GroupBox
-    Friend WithEvents grpGroupBox14 As System.Windows.Forms.GroupBox
+    Friend WithEvents grpDesign_SealDim As System.Windows.Forms.GroupBox
     Friend WithEvents grdDesign_Seal As System.Windows.Forms.DataGridView
     Private WithEvents txtDesign_LessonsLearned As System.Windows.Forms.TextBox
     Friend WithEvents Label243 As System.Windows.Forms.Label
@@ -10476,7 +10475,7 @@ Partial Class Process_frmMain
     Private WithEvents cmbTest_FreqPost_Leak As System.Windows.Forms.ComboBox
     Private WithEvents cmbTest_FreqPre_Leak As System.Windows.Forms.ComboBox
     Friend WithEvents lblTest_Req_Unit_Leak As System.Windows.Forms.Label
-    Friend WithEvents txtTest_Press_Unit_Leak As System.Windows.Forms.Label
+    Friend WithEvents lblTest_Press_Unit_Leak As System.Windows.Forms.Label
     Friend WithEvents lblTest_CompressTo_Unit_Leak As System.Windows.Forms.Label
     Friend WithEvents lblTest_Req_Unit_Load As System.Windows.Forms.Label
     Friend WithEvents lblTest_CompressTo_Unit_Load As System.Windows.Forms.Label
@@ -10620,7 +10619,7 @@ Partial Class Process_frmMain
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents GroupBox47 As System.Windows.Forms.GroupBox
     Private WithEvents txtCost_Notes As System.Windows.Forms.TextBox
-    Friend WithEvents GroupBox39 As System.Windows.Forms.GroupBox
+    Friend WithEvents grpApp_Load As System.Windows.Forms.GroupBox
     Friend WithEvents grdApp_Load As System.Windows.Forms.DataGridView
     Friend WithEvents tbpAxial As System.Windows.Forms.TabPage
     Friend WithEvents GroupBox40 As System.Windows.Forms.GroupBox
@@ -10633,7 +10632,7 @@ Partial Class Process_frmMain
     Friend WithEvents DataGridViewTextBoxColumn44 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn45 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn85 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents GroupBox38 As System.Windows.Forms.GroupBox
+    Friend WithEvents grpApp_Face_Cavity As System.Windows.Forms.GroupBox
     Friend WithEvents grdApp_Face_Cavity As System.Windows.Forms.DataGridView
     Private WithEvents txtApp_OscServiceLife_Axial As System.Windows.Forms.TextBox
     Private WithEvents cmbApp_Static_Axial As System.Windows.Forms.ComboBox
@@ -10722,7 +10721,7 @@ Partial Class Process_frmMain
     Private WithEvents cmdSetUnits As System.Windows.Forms.Button
     Friend WithEvents lblApp_T_Unit As System.Windows.Forms.Label
     Friend WithEvents lblApp_Press_Unit As System.Windows.Forms.Label
-    Friend WithEvents GroupBox30 As System.Windows.Forms.GroupBox
+    Friend WithEvents grpApp_Axial_Cavity As System.Windows.Forms.GroupBox
     Friend WithEvents grdApp_Axial_Cavity As System.Windows.Forms.DataGridView
     Private WithEvents txtDesign_MCS As System.Windows.Forms.TextBox
     Friend WithEvents Label40 As System.Windows.Forms.Label
