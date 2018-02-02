@@ -17,7 +17,7 @@ Module modMain
 
 #Region "GLOBAL CONSTANTS:"
 
-    Public gcEPS As Single = 0.00001
+    Public Const gcEPS As Single = 0.00001
     Public gDBConnectionState As Boolean = False
 
     '....Named Constants:

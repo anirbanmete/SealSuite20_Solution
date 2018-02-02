@@ -53,6 +53,7 @@ Public Class clsProcessProj
     Private mShipping As New clsProcessProj_Shipping
     Private mIssueComnt As New clsProcessProj_IssueComment
     Private mApproval As New clsProcessProj_Approval
+    Private mEditedBy As New clsProcessProj_EditedBy
 
     Private mCustContact As New clsCustContact
 
@@ -393,6 +394,19 @@ Public Class clsProcessProj
 
     End Property
 
+    '....EditedBy
+    Public Property EditedBy() As clsProcessProj_EditedBy
+        '================================================
+        Get
+            Return mEditedBy
+        End Get
+
+        Set(ByVal value As clsProcessProj_EditedBy)
+            mEditedBy = value
+        End Set
+
+    End Property
+
 #Region "CustContact"
 
     Public Property CustContact() As clsCustContact
@@ -704,6 +718,7 @@ Public Class clsProcessProj
         End Sub
 
 #End Region
+
 
     End Class
 

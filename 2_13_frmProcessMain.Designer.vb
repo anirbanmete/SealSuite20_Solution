@@ -2153,7 +2153,6 @@ Partial Class Process_frmMain
         Me.GroupBox17.Controls.Add(Me.txtPreOrderUserDate)
         Me.GroupBox17.Controls.Add(Me.dtpPreOrderUserDate)
         Me.GroupBox17.Controls.Add(Me.grdPreOrderEditedBy)
-        Me.GroupBox17.Enabled = False
         Me.GroupBox17.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox17.Location = New System.Drawing.Point(15, 401)
         Me.GroupBox17.Name = "GroupBox17"
@@ -2164,6 +2163,7 @@ Partial Class Process_frmMain
         '
         'chkPreOrderUserSigned
         '
+        Me.chkPreOrderUserSigned.Enabled = False
         Me.chkPreOrderUserSigned.ForeColor = System.Drawing.SystemColors.GrayText
         Me.chkPreOrderUserSigned.Location = New System.Drawing.Point(369, 109)
         Me.chkPreOrderUserSigned.Name = "chkPreOrderUserSigned"
@@ -2176,6 +2176,7 @@ Partial Class Process_frmMain
         '
         Me.cmdPreOrderUserSign.AutoSize = True
         Me.cmdPreOrderUserSign.BackColor = System.Drawing.Color.Silver
+        Me.cmdPreOrderUserSign.Enabled = False
         Me.cmdPreOrderUserSign.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdPreOrderUserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdPreOrderUserSign.Location = New System.Drawing.Point(390, 104)
@@ -2198,6 +2199,7 @@ Partial Class Process_frmMain
         'txtPreOrderUserDate
         '
         Me.txtPreOrderUserDate.BackColor = System.Drawing.Color.White
+        Me.txtPreOrderUserDate.Enabled = False
         Me.txtPreOrderUserDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPreOrderUserDate.ForeColor = System.Drawing.Color.Black
         Me.txtPreOrderUserDate.Location = New System.Drawing.Point(25, 105)
@@ -2208,6 +2210,7 @@ Partial Class Process_frmMain
         '
         'dtpPreOrderUserDate
         '
+        Me.dtpPreOrderUserDate.Enabled = False
         Me.dtpPreOrderUserDate.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.dtpPreOrderUserDate.Location = New System.Drawing.Point(104, 105)
         Me.dtpPreOrderUserDate.Name = "dtpPreOrderUserDate"
@@ -2556,7 +2559,6 @@ Partial Class Process_frmMain
         Me.GroupBox14.Controls.Add(Me.txtITAR_Export_UserDate)
         Me.GroupBox14.Controls.Add(Me.dtpITAR_Export_UserDate)
         Me.GroupBox14.Controls.Add(Me.grdExport_EditedBy)
-        Me.GroupBox14.Enabled = False
         Me.GroupBox14.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox14.Location = New System.Drawing.Point(15, 436)
         Me.GroupBox14.Name = "GroupBox14"
@@ -2567,6 +2569,7 @@ Partial Class Process_frmMain
         '
         'chkITAR_Export_UserSigned
         '
+        Me.chkITAR_Export_UserSigned.Enabled = False
         Me.chkITAR_Export_UserSigned.ForeColor = System.Drawing.SystemColors.GrayText
         Me.chkITAR_Export_UserSigned.Location = New System.Drawing.Point(369, 109)
         Me.chkITAR_Export_UserSigned.Name = "chkITAR_Export_UserSigned"
@@ -2579,6 +2582,7 @@ Partial Class Process_frmMain
         '
         Me.cmdITAR_Export_UserSign.AutoSize = True
         Me.cmdITAR_Export_UserSign.BackColor = System.Drawing.Color.Silver
+        Me.cmdITAR_Export_UserSign.Enabled = False
         Me.cmdITAR_Export_UserSign.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdITAR_Export_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdITAR_Export_UserSign.Location = New System.Drawing.Point(390, 104)
@@ -2601,6 +2605,7 @@ Partial Class Process_frmMain
         'txtITAR_Export_UserDate
         '
         Me.txtITAR_Export_UserDate.BackColor = System.Drawing.Color.White
+        Me.txtITAR_Export_UserDate.Enabled = False
         Me.txtITAR_Export_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtITAR_Export_UserDate.ForeColor = System.Drawing.Color.Black
         Me.txtITAR_Export_UserDate.Location = New System.Drawing.Point(25, 105)
@@ -2611,6 +2616,7 @@ Partial Class Process_frmMain
         '
         'dtpITAR_Export_UserDate
         '
+        Me.dtpITAR_Export_UserDate.Enabled = False
         Me.dtpITAR_Export_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.dtpITAR_Export_UserDate.Location = New System.Drawing.Point(104, 105)
         Me.dtpITAR_Export_UserDate.Name = "dtpITAR_Export_UserDate"
@@ -3296,7 +3302,6 @@ Partial Class Process_frmMain
         Me.GroupBox22.Controls.Add(Me.txtOrdEntry_UserDate)
         Me.GroupBox22.Controls.Add(Me.dtpOrdEntry_UserDate)
         Me.GroupBox22.Controls.Add(Me.grdOrdEntry_EditedBy)
-        Me.GroupBox22.Enabled = False
         Me.GroupBox22.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox22.Location = New System.Drawing.Point(15, 436)
         Me.GroupBox22.Name = "GroupBox22"
@@ -3307,6 +3312,7 @@ Partial Class Process_frmMain
         '
         'chkOrdEntry_UserSigned
         '
+        Me.chkOrdEntry_UserSigned.Enabled = False
         Me.chkOrdEntry_UserSigned.ForeColor = System.Drawing.SystemColors.GrayText
         Me.chkOrdEntry_UserSigned.Location = New System.Drawing.Point(369, 109)
         Me.chkOrdEntry_UserSigned.Name = "chkOrdEntry_UserSigned"
@@ -3319,6 +3325,7 @@ Partial Class Process_frmMain
         '
         Me.cmdOrdEntry_UserSign.AutoSize = True
         Me.cmdOrdEntry_UserSign.BackColor = System.Drawing.Color.Silver
+        Me.cmdOrdEntry_UserSign.Enabled = False
         Me.cmdOrdEntry_UserSign.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdOrdEntry_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdOrdEntry_UserSign.Location = New System.Drawing.Point(390, 104)
@@ -3341,6 +3348,7 @@ Partial Class Process_frmMain
         'txtOrdEntry_UserDate
         '
         Me.txtOrdEntry_UserDate.BackColor = System.Drawing.Color.White
+        Me.txtOrdEntry_UserDate.Enabled = False
         Me.txtOrdEntry_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtOrdEntry_UserDate.ForeColor = System.Drawing.Color.Black
         Me.txtOrdEntry_UserDate.Location = New System.Drawing.Point(25, 105)
@@ -3351,6 +3359,7 @@ Partial Class Process_frmMain
         '
         'dtpOrdEntry_UserDate
         '
+        Me.dtpOrdEntry_UserDate.Enabled = False
         Me.dtpOrdEntry_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.dtpOrdEntry_UserDate.Location = New System.Drawing.Point(104, 105)
         Me.dtpOrdEntry_UserDate.Name = "dtpOrdEntry_UserDate"
@@ -3672,7 +3681,6 @@ Partial Class Process_frmMain
         Me.GroupBox23.Controls.Add(Me.txtCost_UserDate)
         Me.GroupBox23.Controls.Add(Me.dtpCost_UserDate)
         Me.GroupBox23.Controls.Add(Me.grdCost_EditedBy)
-        Me.GroupBox23.Enabled = False
         Me.GroupBox23.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox23.Location = New System.Drawing.Point(15, 436)
         Me.GroupBox23.Name = "GroupBox23"
@@ -3683,6 +3691,7 @@ Partial Class Process_frmMain
         '
         'chkCost_UserSigned
         '
+        Me.chkCost_UserSigned.Enabled = False
         Me.chkCost_UserSigned.ForeColor = System.Drawing.SystemColors.GrayText
         Me.chkCost_UserSigned.Location = New System.Drawing.Point(369, 109)
         Me.chkCost_UserSigned.Name = "chkCost_UserSigned"
@@ -3695,6 +3704,7 @@ Partial Class Process_frmMain
         '
         Me.cmdCost_UserSign.AutoSize = True
         Me.cmdCost_UserSign.BackColor = System.Drawing.Color.Silver
+        Me.cmdCost_UserSign.Enabled = False
         Me.cmdCost_UserSign.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdCost_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdCost_UserSign.Location = New System.Drawing.Point(390, 104)
@@ -3717,6 +3727,7 @@ Partial Class Process_frmMain
         'txtCost_UserDate
         '
         Me.txtCost_UserDate.BackColor = System.Drawing.Color.White
+        Me.txtCost_UserDate.Enabled = False
         Me.txtCost_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCost_UserDate.ForeColor = System.Drawing.Color.Black
         Me.txtCost_UserDate.Location = New System.Drawing.Point(25, 105)
@@ -3727,6 +3738,7 @@ Partial Class Process_frmMain
         '
         'dtpCost_UserDate
         '
+        Me.dtpCost_UserDate.Enabled = False
         Me.dtpCost_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.dtpCost_UserDate.Location = New System.Drawing.Point(104, 105)
         Me.dtpCost_UserDate.Name = "dtpCost_UserDate"

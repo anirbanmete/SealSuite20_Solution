@@ -4,7 +4,7 @@
 '                      FORM MODULE   :  Process_frmMain                        '
 '                        VERSION NO  :  1.3                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  01FEB18                                '
+'                     LAST MODIFIED  :  02FEB18                                '
 '                                                                              '
 '===============================================================================
 Imports System.Globalization
@@ -30,7 +30,7 @@ Public Class Process_frmMain
     Private mCustomerID As Integer
     Private mLocationID As Integer
     Private mPlatformID As Integer
-   
+
     Private mRowIndex As Integer
     Private mUserName As New List(Of String)
     Private mUserID As New List(Of Integer)
@@ -821,7 +821,7 @@ Public Class Process_frmMain
 
     Private Sub DisplayData()
         '====================
-
+        Dim pCI As New CultureInfo("en-US")
         '.... "General:"
         txtParkerPart.Text = gPartProject.PNR.PN
         txtPN_Rev.Text = gPartProject.PNR.PN_Rev
@@ -835,7 +835,7 @@ Public Class Process_frmMain
 
             cmbRating.Text = .Rating
             cmbType.Text = .Type
-            Dim pCI As New CultureInfo("en-US")
+
             If (.DateOpen <> DateTime.MinValue) Then
                 txtStartDate.Text = .DateOpen.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
             Else
@@ -853,7 +853,7 @@ Public Class Process_frmMain
 
         '.... "PreOrder:"
         With mProcess_Project.PreOrder
-            Dim pCI As New CultureInfo("en-US")
+
             cmbMgrPreOrder.Text = .Mgr.Mkt
             txtMgrSales.Text = .Mgr.Sales
 
@@ -995,6 +995,19 @@ Public Class Process_frmMain
                 grdPreOrder_SalesData.Rows(j).Cells(3).Value = .SalesData.Total(j)
             Next
 
+            If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "PreOrder")) Then
+                If (mProcess_Project.EditedBy.Name <> "") Then
+                    If (mProcess_Project.EditedBy.DateEdited <> DateTime.MinValue) Then
+                        grdPreOrderEditedBy.Rows(0).Cells(0).Value = mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    Else
+                        grdPreOrderEditedBy.Rows(0).Cells(0).Value = ""
+                    End If
+
+                    grdPreOrderEditedBy.Rows(0).Cells(1).Value = mProcess_Project.EditedBy.Name
+                    grdPreOrderEditedBy.Rows(0).Cells(2).Value = mProcess_Project.EditedBy.Comment
+                End If
+            End If
+
         End With
 
 
@@ -1050,6 +1063,20 @@ Public Class Process_frmMain
                 txtITAR_Export_UserName.Text = .EditedBy.User.Name
                 txtITAR_Export_UserDate.Text = .EditedBy.User.DateSigned.ToShortDateString()
             End If
+
+            If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Export")) Then
+                If (mProcess_Project.EditedBy.Name <> "") Then
+                    If (mProcess_Project.EditedBy.DateEdited <> DateTime.MinValue) Then
+                        grdExport_EditedBy.Rows(0).Cells(0).Value = mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    Else
+                        grdExport_EditedBy.Rows(0).Cells(0).Value = ""
+                    End If
+
+                    grdExport_EditedBy.Rows(0).Cells(1).Value = mProcess_Project.EditedBy.Name
+                    grdExport_EditedBy.Rows(0).Cells(2).Value = mProcess_Project.EditedBy.Comment
+                End If
+            End If
+
         End With
 
 
@@ -1132,8 +1159,20 @@ Public Class Process_frmMain
                 txtOrdEntry_UserDate.Text = .EditedBy.User.DateSigned.ToShortDateString()
             End If
 
-        End With
+            If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "OrdEntry")) Then
+                If (mProcess_Project.EditedBy.Name <> "") Then
+                    If (mProcess_Project.EditedBy.DateEdited <> DateTime.MinValue) Then
+                        grdOrdEntry_EditedBy.Rows(0).Cells(0).Value = mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    Else
+                        grdOrdEntry_EditedBy.Rows(0).Cells(0).Value = ""
+                    End If
 
+                    grdOrdEntry_EditedBy.Rows(0).Cells(1).Value = mProcess_Project.EditedBy.Name
+                    grdOrdEntry_EditedBy.Rows(0).Cells(2).Value = mProcess_Project.EditedBy.Comment
+                End If
+            End If
+
+        End With
 
         '.... "Cost Estimating:"
         With mProcess_Project.Cost
@@ -1175,6 +1214,19 @@ Public Class Process_frmMain
                 chkCost_UserSigned.Checked = False
                 txtCost_UserName.Text = .EditedBy.User.Name
                 txtCost_UserDate.Text = .EditedBy.User.DateSigned.ToShortDateString()
+            End If
+
+            If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Cost")) Then
+                If (mProcess_Project.EditedBy.Name <> "") Then
+                    If (mProcess_Project.EditedBy.DateEdited <> DateTime.MinValue) Then
+                        grdCost_EditedBy.Rows(0).Cells(0).Value = mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    Else
+                        grdCost_EditedBy.Rows(0).Cells(0).Value = ""
+                    End If
+
+                    grdCost_EditedBy.Rows(0).Cells(1).Value = mProcess_Project.EditedBy.Name
+                    grdCost_EditedBy.Rows(0).Cells(2).Value = mProcess_Project.EditedBy.Comment
+                End If
             End If
 
         End With
@@ -2306,7 +2358,7 @@ Public Class Process_frmMain
 
         '.... "IssueComment:"
         With mProcess_Project.IssueCommnt
-            Dim pCI As New CultureInfo("en-US")
+
             For i As Integer = 0 To .ID.Count - 1
 
                 grdIssueComment.Rows.Add()
@@ -2345,7 +2397,7 @@ Public Class Process_frmMain
                 grdApproval_Attendees.Rows(j).Cells(3).Value = .Signed(j)
 
                 If (.Signed(j)) Then
-                    Dim pCI As New CultureInfo("en-US")
+
                     grdApproval_Attendees.Rows(j).Cells(4).Value = .DateSigned(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
                 Else
                     grdApproval_Attendees.Rows(j).Cells(4).Value = ""
@@ -2799,6 +2851,27 @@ Public Class Process_frmMain
     Private Sub TabControl1_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) _
                                                 Handles TabControl1.SelectedIndexChanged
         '============================================================================================
+        Dim pCI As New CultureInfo("en-US")
+
+        If (CompareVal_PreOrder()) Then
+            grdPreOrderEditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+            grdPreOrderEditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+        End If
+
+        If (CompareVal_Export()) Then
+            grdExport_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+            grdExport_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+        End If
+
+        If (CompareVal_OrdEntry()) Then
+            grdOrdEntry_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+            grdOrdEntry_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+        End If
+
+        If (CompareVal_CostEstimating()) Then
+            grdCost_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+            grdCost_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+        End If
 
         If (TabControl1.SelectedIndex = 0) Then
             CopyDataGridView(grdOrdEntry_CustContact, grdCustContact)
@@ -4027,9 +4100,61 @@ Public Class Process_frmMain
             CopyDataGridView(grdQuality_SplOperation, grdCost_SplOperation)
         End If
 
+        '....Edited By
+        If (CompareVal_PreOrder()) Then
+            With mProcess_Project.EditedBy
+                If (Not IsNothing(grdPreOrderEditedBy.Rows(0).Cells(0).Value)) Then
+                    .DateEdited = grdPreOrderEditedBy.Rows(0).Cells(0).Value
+                Else
+                    .DateEdited = DateTime.MinValue
+                End If
+                .Name = grdPreOrderEditedBy.Rows(0).Cells(1).Value
+                .Comment = grdPreOrderEditedBy.Rows(0).Cells(2).Value
+            End With
+            mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "PreOrder")
+        End If
+
+        If (CompareVal_Export()) Then
+            With mProcess_Project.EditedBy
+                If (Not IsNothing(grdExport_EditedBy.Rows(0).Cells(0).Value)) Then
+                    .DateEdited = grdExport_EditedBy.Rows(0).Cells(0).Value
+                Else
+                    .DateEdited = DateTime.MinValue
+                End If
+                .Name = grdExport_EditedBy.Rows(0).Cells(1).Value
+                .Comment = grdExport_EditedBy.Rows(0).Cells(2).Value
+            End With
+            mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Export")
+        End If
+
+        If (CompareVal_OrdEntry()) Then
+            With mProcess_Project.EditedBy
+                If (Not IsNothing(grdOrdEntry_EditedBy.Rows(0).Cells(0).Value)) Then
+                    .DateEdited = grdOrdEntry_EditedBy.Rows(0).Cells(0).Value
+                Else
+                    .DateEdited = DateTime.MinValue
+                End If
+                .Name = grdOrdEntry_EditedBy.Rows(0).Cells(1).Value
+                .Comment = grdOrdEntry_EditedBy.Rows(0).Cells(2).Value
+            End With
+            mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "OrdEntry")
+        End If
+
+        If (CompareVal_CostEstimating()) Then
+            With mProcess_Project.EditedBy
+                If (Not IsNothing(grdCost_EditedBy.Rows(0).Cells(0).Value)) Then
+                    .DateEdited = grdCost_EditedBy.Rows(0).Cells(0).Value
+                Else
+                    .DateEdited = DateTime.MinValue
+                End If
+                .Name = grdCost_EditedBy.Rows(0).Cells(1).Value
+                .Comment = grdCost_EditedBy.Rows(0).Cells(2).Value
+            End With
+            mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Cost")
+        End If
+
 
         '.... "Header:"
-
         With mProcess_Project
             .POPCoding = cmbPopCoding.Text
 
@@ -5248,6 +5373,8 @@ Public Class Process_frmMain
             Next
         End With
 
+
+
         gProcessProject = mProcess_Project.Clone()
 
     End Sub
@@ -5271,20 +5398,23 @@ Public Class Process_frmMain
         mProcess_Project.Shipping.SaveToDB(mProcess_Project.ID)
         mProcess_Project.IssueCommnt.SaveToDB(mProcess_Project.ID)
         mProcess_Project.Approval.SaveToDB(mProcess_Project.ID)
+
+
+
+
+
     End Sub
 
     Private Function CompareVal_PreOrder() As Boolean
         '==============================================
         Dim pblnValChanged As Boolean = False
+        Dim pCount As Integer = 0
+        Dim pCI As New CultureInfo("en-US")
 
         With mProcess_Project.PreOrder
-            If (.Mgr.Mkt <> cmbMgrPreOrder.Text) Then
-                pblnValChanged = True
-            End If
+            CompareVal(.Mgr.Mkt, cmbMgrPreOrder.Text, pCount)
 
-            If (.Mgr.Sales <> txtMgrSales.Text) Then
-                pblnValChanged = True
-            End If
+            CompareVal(.Mgr.Sales, txtMgrSales.Text, pCount)
 
             Dim pExpReq As Boolean
             If (cmbExport_Reqd.Text = "Y") Then
@@ -5293,199 +5423,376 @@ Public Class Process_frmMain
                 pExpReq = False
             End If
 
-            If (.Export.Reqd <> pExpReq) Then
-                pblnValChanged = True
-            End If
+            CompareVal(.Export.Reqd, pExpReq, pCount)
 
-            If (.Export.Status <> cmbExport_Status.Text) Then
-                pblnValChanged = True
-            End If
+            CompareVal(.Export.Status, cmbExport_Status.Text, pCount)
 
-            If (.Part.Family <> cmbPartFamily.Text) Then
-                pblnValChanged = True
-            End If
+            CompareVal(.Part.Family, cmbPartFamily.Text, pCount)
 
-            If (.Part.Type <> cmbPartType.Text) Then
-                pblnValChanged = True
-            End If
+            CompareVal(.Export.Status, cmbExport_Status.Text, pCount)
 
-            If (.Mkt.Seg <> cmbPreOrderSeg.Text) Then
-                pblnValChanged = True
-            End If
+            CompareVal(.Mkt.Seg, cmbPreOrderSeg.Text, pCount)
 
-            If (.Mkt.Channel <> cmbPreOrderChannel.Text) Then
-                pblnValChanged = True
-            End If
+            CompareVal(.Mkt.Channel, cmbPreOrderChannel.Text, pCount)
 
-            If (.Notes <> txtPreOrderNotes.Text) Then
-                pblnValChanged = True
-            End If
+            CompareVal(.Notes, txtPreOrderNotes.Text, pCount)
 
-            If (.Loc.CostFile <> cmbCostFileLoc.Text) Then
-                pblnValChanged = True
-            End If
+            CompareVal(.Loc.CostFile, cmbCostFileLoc.Text, pCount)
 
-            If (.Loc.RFQPkg <> cmbRFQPkgLoc.Text) Then
-                pblnValChanged = True
-            End If
+            CompareVal(.Loc.RFQPkg, cmbRFQPkgLoc.Text, pCount)
 
-            If (.Notes_Price <> txtPreOrderPriceNotes.Text) Then
-                pblnValChanged = True
-            End If
+            CompareVal(.Notes_Price, txtPreOrderPriceNotes.Text, pCount)
+
         End With
 
-        For i As Integer = 0 To mProcess_Project.CustContact.ID_Cust.Count - 1
-            If (mProcess_Project.CustContact.DeptName(i) <> grdCustContact.Rows(i).Cells(0).Value) Then
-                pblnValChanged = True
-            End If
+        If (grdCustContact.Rows.Count - 1 <> mProcess_Project.CustContact.ID_Cust.Count) Then
+            pCount = pCount + 1
+        Else
+            For i As Integer = 0 To mProcess_Project.CustContact.ID_Cust.Count - 1
+                CompareVal(mProcess_Project.CustContact.DeptName(i), grdCustContact.Rows(i).Cells(0).Value, pCount)
 
-            If (mProcess_Project.CustContact.Name(i) <> grdCustContact.Rows(i).Cells(1).Value) Then
-                pblnValChanged = True
-            End If
+                CompareVal(mProcess_Project.CustContact.Name(i), grdCustContact.Rows(i).Cells(1).Value, pCount)
 
-            If (mProcess_Project.CustContact.Phone(i) <> grdCustContact.Rows(i).Cells(2).Value) Then
-                pblnValChanged = True
-            End If
+                CompareVal(mProcess_Project.CustContact.Phone(i), grdCustContact.Rows(i).Cells(2).Value, pCount)
 
-            If (mProcess_Project.CustContact.Email(i) <> grdCustContact.Rows(i).Cells(3).Value) Then
-                pblnValChanged = True
-            End If
-        Next
+                CompareVal(mProcess_Project.CustContact.Email(i), grdCustContact.Rows(i).Cells(3).Value, pCount)
+
+            Next
+        End If
 
 
-        For i As Integer = 0 To mProcess_Project.PreOrder.Quote.QID.Count - 1
-            If (mProcess_Project.PreOrder.Quote.QDate(i) <> grdQuote.Rows(i).Cells(0).Value) Then
-                pblnValChanged = True
-            End If
+        If (grdQuote.Rows.Count - 1 <> mProcess_Project.PreOrder.Quote.QID.Count) Then
+            pCount = pCount + 1
+        Else
+            For i As Integer = 0 To mProcess_Project.PreOrder.Quote.QID.Count - 1
+                CompareVal(mProcess_Project.PreOrder.Quote.QDate(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdQuote.Rows(i).Cells(0).Value, pCount)
 
-            If (mProcess_Project.PreOrder.Quote.No(i) <> grdQuote.Rows(i).Cells(1).Value) Then
-                pblnValChanged = True
-            End If
-        Next
+                CompareVal(mProcess_Project.PreOrder.Quote.No(i), grdQuote.Rows(i).Cells(1).Value, pCount)
 
-        For i As Integer = 0 To mProcess_Project.PreOrder.SalesData.ID_Sales.Count - 1
-            If (mProcess_Project.PreOrder.SalesData.Year(i) <> grdPreOrder_SalesData.Rows(i).Cells(0).Value) Then
-                pblnValChanged = True
-            End If
-
-            If (mProcess_Project.PreOrder.SalesData.Qty(i) <> grdPreOrder_SalesData.Rows(i).Cells(1).Value) Then
-                pblnValChanged = True
-            End If
-
-            If (mProcess_Project.PreOrder.SalesData.Price(i) <> grdPreOrder_SalesData.Rows(i).Cells(2).Value) Then
-                pblnValChanged = True
-            End If
-
-            If (mProcess_Project.PreOrder.SalesData.Total(i) <> grdPreOrder_SalesData.Rows(i).Cells(3).Value) Then
-                pblnValChanged = True
-            End If
-        Next
+            Next
+        End If
 
 
-        '''...."Pre-Order:"
+        If (grdPreOrder_SalesData.Rows.Count - 1 <> mProcess_Project.PreOrder.SalesData.ID_Sales.Count) Then
+            pCount = pCount + 1
 
-        ''With mProcess_Project.PreOrder
-        ''    .Mgr_PreOrder = cmbMgrPreOrder.Text
-        ''    .Mgr_Sales = txtMgrSales.Text
+        Else
+            For i As Integer = 0 To mProcess_Project.PreOrder.SalesData.ID_Sales.Count - 1
+                CompareVal(mProcess_Project.PreOrder.SalesData.Year(i).ToString(), grdPreOrder_SalesData.Rows(i).Cells(0).Value, pCount)
 
-        ''    If (cmbExport_Reqd.Text = "Y") Then
-        ''        .Export_Reqd = True
-        ''    Else
-        ''        .Export_Reqd = False
-        ''    End If
+                CompareVal(mProcess_Project.PreOrder.SalesData.Qty(i).ToString(), grdPreOrder_SalesData.Rows(i).Cells(1).Value, pCount)
 
-        ''    .Export_Status = cmbExport_Status.Text
+                CompareVal(mProcess_Project.PreOrder.SalesData.Price(i), grdPreOrder_SalesData.Rows(i).Cells(2).Value, pCount)
 
-        ''    .Part_Family = cmbPartFamily.Text
-        ''    .Part_Type = cmbPartType.Text
+                CompareVal(mProcess_Project.PreOrder.SalesData.Total(i), grdPreOrder_SalesData.Rows(i).Cells(3).Value, pCount)
 
-        ''    .PreOrder_Seg = cmbPreOrderSeg.Text
-        ''    .PreOrder_Channel = cmbPreOrderChannel.Text
-        ''    .Notes = txtPreOrderNotes.Text
+            Next
+        End If
 
-        ''    .Loc_CostFile = cmbCostFileLoc.Text
-        ''    .Loc_RFQPkg = cmbRFQPkgLoc.Text
-        ''    .Notes_Price = txtPreOrderPriceNotes.Text
+        CompareVal(mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdPreOrderEditedBy.Rows(0).Cells(0).Value, pCount)
+        CompareVal(mProcess_Project.EditedBy.Name, grdPreOrderEditedBy.Rows(0).Cells(1).Value, pCount)
+        CompareVal(mProcess_Project.EditedBy.Comment, grdPreOrderEditedBy.Rows(0).Cells(2).Value, pCount)
 
-        ''    If (chkPreOrderUserSigned.Checked) Then
-        ''        '.User_Name = txtPreOrderUserName.Text
-        ''        .EditedBy.User_Name = txtPreOrderUserName.Text
-        ''        .EditedBy.User_DateSigned = Convert.ToDateTime(txtPreOrderUserDate.Text)
-        ''        .EditedBy.User_Signed = True
-
-        ''    Else
-        ''        .EditedBy.User_Name = ""
-        ''        .EditedBy.User_DateSigned = DateTime.MinValue
-        ''        .EditedBy.User_Signed = False
-        ''    End If
-
-        ''    '....Cust Contact Pre-Order
-        ''    mProcess_Project.CustContact.ID_Cust.Clear()
-        ''    mProcess_Project.CustContact.DeptName.Clear()
-        ''    mProcess_Project.CustContact.Name.Clear()
-        ''    mProcess_Project.CustContact.Phone.Clear()
-        ''    mProcess_Project.CustContact.Email.Clear()
-
-        ''    'grdOrdEntry_CustContact = grdCustContact
-
-        ''    For j As Integer = 0 To grdCustContact.Rows.Count - 2
-        ''        mProcess_Project.CustContact.ID_Cust.Add(j + 1)
-        ''        mProcess_Project.CustContact.DeptName.Add(grdCustContact.Rows(j).Cells(0).Value)
-        ''        mProcess_Project.CustContact.Name.Add(grdCustContact.Rows(j).Cells(1).Value)
-        ''        mProcess_Project.CustContact.Phone.Add(grdCustContact.Rows(j).Cells(2).Value)
-        ''        mProcess_Project.CustContact.Email.Add(grdCustContact.Rows(j).Cells(3).Value)
-        ''    Next
-
-        ''    '....Cust Contact Order-Entry
-        ''    mProcess_Project.CustContact.ID_Cust.Clear()
-        ''    mProcess_Project.CustContact.DeptName.Clear()
-        ''    mProcess_Project.CustContact.Name.Clear()
-        ''    mProcess_Project.CustContact.Phone.Clear()
-        ''    mProcess_Project.CustContact.Email.Clear()
-        ''    For j As Integer = 0 To grdOrdEntry_CustContact.Rows.Count - 2
-        ''        mProcess_Project.CustContact.ID_Cust.Add(j + 1)
-        ''        mProcess_Project.CustContact.DeptName.Add(grdOrdEntry_CustContact.Rows(j).Cells(0).Value)
-        ''        mProcess_Project.CustContact.Name.Add(grdOrdEntry_CustContact.Rows(j).Cells(1).Value)
-        ''        mProcess_Project.CustContact.Phone.Add(grdOrdEntry_CustContact.Rows(j).Cells(2).Value)
-        ''        mProcess_Project.CustContact.Email.Add(grdOrdEntry_CustContact.Rows(j).Cells(3).Value)
-        ''    Next
-
-        ''    '....Quote
-        ''    .Quote.QID.Clear()
-        ''    .Quote.QDate.Clear()
-        ''    .Quote.No.Clear()
-
-        ''    For j As Integer = 0 To grdQuote.Rows.Count - 2
-        ''        .Quote.QID.Add(j + 1)
-        ''        'grdQuote.Rows(j).Cells(0).Value <> "" And 
-        ''        If (Not IsNothing(grdQuote.Rows(j).Cells(0).Value)) Then
-        ''            .Quote.QDate.Add(grdQuote.Rows(j).Cells(0).Value)
-        ''        Else
-        ''            .Quote.QDate.Add(DateTime.MinValue)
-        ''        End If
-
-        ''        .Quote.No.Add(grdQuote.Rows(j).Cells(1).Value)
-        ''    Next
-
-        ''    '....Sales Data
-        ''    .SalesData.ID_Sales.Clear()
-        ''    .SalesData.Year.Clear()
-        ''    .SalesData.Qty.Clear()
-        ''    .SalesData.Price.Clear()
-        ''    .SalesData.Total.Clear()
-
-        ''    For j As Integer = 0 To grdPreOrder_SalesData.Rows.Count - 2
-        ''        .SalesData.ID_Sales.Add(j + 1)
-        ''        .SalesData.Year.Add(grdPreOrder_SalesData.Rows(j).Cells(0).Value)
-        ''        .SalesData.Qty.Add(grdPreOrder_SalesData.Rows(j).Cells(1).Value)
-        ''        .SalesData.Price.Add(grdPreOrder_SalesData.Rows(j).Cells(2).Value)
-        ''        .SalesData.Total.Add(grdPreOrder_SalesData.Rows(j).Cells(3).Value)
-        ''    Next
-
-        ''End With
+        If (pCount > 0) Then
+            pblnValChanged = True
+        End If
 
         Return pblnValChanged
 
+    End Function
+
+    Private Function CompareVal_Export() As Boolean
+        '===========================================
+        Dim pblnValChanged As Boolean = False
+        Dim pCount As Integer = 0
+        Dim pCI As New CultureInfo("en-US")
+
+        With mProcess_Project.ITAR_Export
+
+            Dim pblnFlag As Boolean
+            If (cmbITAR_Export_CustOnDenialList.Text = "Y") Then
+                pblnFlag = True
+            Else
+                pblnFlag = False
+            End If
+            CompareVal(.IsCustOnDenialList, pblnFlag, pCount)
+
+            If (cmbITAR_Export_CountryProhibited.Text = "Y") Then
+                pblnFlag = True
+            Else
+                pblnFlag = False
+            End If
+            CompareVal(.CountryProhibited, pblnFlag, pCount)
+
+            If (cmbITAR_Export_AntiBoycottLang.Text = "Y") Then
+                pblnFlag = True
+            Else
+                pblnFlag = False
+            End If
+            CompareVal(.HasAntiBoycottLang, pblnFlag, pCount)
+
+            If (cmbITAR_Export_ProductITAR_Reg.Text = "Y") Then
+                pblnFlag = True
+            Else
+                pblnFlag = False
+            End If
+            CompareVal(.IsUnder_ITAR_Reg, pblnFlag, pCount)
+
+            CompareVal(.ITAR_Class, txtITAR_Export_ITAR_Classification.Text, pCount)
+
+            If (cmbITAR_Export_SaleExportControlled.Text = "Y") Then
+                pblnFlag = True
+            Else
+                pblnFlag = False
+            End If
+            CompareVal(.SaleExportControlled, pblnFlag, pCount)
+
+            CompareVal(.EAR_Class, txtITAR_Export_EAR_Classification.Text, pCount)
+
+            CompareVal(.Status, cmbITAR_Export_Status.Text, pCount)
+
+            CompareVal(.HTS_Class, txtITAR_Export_HTS_Classification.Text, pCount)
+
+        End With
+
+        CompareVal(mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdExport_EditedBy.Rows(0).Cells(0).Value, pCount)
+        CompareVal(mProcess_Project.EditedBy.Name, grdExport_EditedBy.Rows(0).Cells(1).Value, pCount)
+        CompareVal(mProcess_Project.EditedBy.Comment, grdExport_EditedBy.Rows(0).Cells(2).Value, pCount)
+
+        If (pCount > 0) Then
+            pblnValChanged = True
+        End If
+
+        Return pblnValChanged
+
+    End Function
+
+    Private Function CompareVal_OrdEntry() As Boolean
+        '=============================================
+        Dim pblnValChanged As Boolean = False
+        Dim pCount As Integer = 0
+        Dim pCI As New CultureInfo("en-US")
+
+        With mProcess_Project.OrdEntry
+
+            CompareVal(.SalesOrderNo, txtOrdEntry_SalesOrderNo.Text, pCount)
+
+            CompareVal(.DateSales, txtOrdEntry_SalesDate.Text, pCount)
+
+            CompareVal(.LeadTimeQuoted, Convert.ToDouble(txtOrderEntry_QtdLeadTime.Text), pCount)
+
+            If (grdOrdEntry_CustContact.Rows.Count - 1 <> mProcess_Project.CustContact.ID_Cust.Count) Then
+                pCount = pCount + 1
+            Else
+
+                For i As Integer = 0 To mProcess_Project.CustContact.ID_Cust.Count - 1
+
+                    CompareVal(mProcess_Project.CustContact.DeptName(i), grdOrdEntry_CustContact.Rows(i).Cells(0).Value, pCount)
+                    CompareVal(mProcess_Project.CustContact.Name(i), grdOrdEntry_CustContact.Rows(i).Cells(1).Value, pCount)
+                    CompareVal(mProcess_Project.CustContact.Phone(i), grdOrdEntry_CustContact.Rows(i).Cells(2).Value, pCount)
+                    CompareVal(mProcess_Project.CustContact.Email(i), grdOrdEntry_CustContact.Rows(i).Cells(3).Value, pCount)
+
+                Next
+
+            End If
+
+            CompareVal(.PONo, txtOrdEntry_PONo.Text, pCount)
+
+            CompareVal(.DatePO.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), txtOrdEntry_PODate.Text, pCount)
+
+            CompareVal(.DatePO_EDI.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), txtOrdEntry_PODate_EDI.Text, pCount)
+
+            Dim pblnFlag As Boolean
+            If (cmbOrdEntry_SpecialReq.Text = "Y") Then
+                pblnFlag = True
+            Else
+                pblnFlag = False
+            End If
+            CompareVal(.HasSplReq, pblnFlag, pCount)
+
+            If (cmbOrdEntry_Tooling.Text = "Y") Then
+                pblnFlag = True
+            Else
+                pblnFlag = False
+            End If
+            CompareVal(.Tool_Reqd, pblnFlag, pCount)
+
+            If (cmbOrdEntry_SplPkgNLbl.Text = "Y") Then
+                pblnFlag = True
+            Else
+                pblnFlag = False
+            End If
+            CompareVal(.SplPkg_Lbl_Reqd, pblnFlag, pCount)
+
+            CompareVal(.OrdQty.ToString(), txtOrdEntry_OrderQty.Text, pCount)
+
+            CompareVal(.DateOrdShip.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), txtOrdEntry_OrderShipDate.Text, pCount)
+
+            If (cmbOrdEntry_Expedited.Text = "Y") Then
+                pblnFlag = True
+            Else
+                pblnFlag = False
+            End If
+            CompareVal(.Expedited, pblnFlag, pCount)
+
+            If (cmbOrdEntry_DFAR.Text = "Y") Then
+                pblnFlag = True
+            Else
+                pblnFlag = False
+            End If
+            CompareVal(.IsDFAR, pblnFlag, pCount)
+
+        End With
+
+        CompareVal(mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdOrdEntry_EditedBy.Rows(0).Cells(0).Value, pCount)
+        CompareVal(mProcess_Project.EditedBy.Name, grdOrdEntry_EditedBy.Rows(0).Cells(1).Value, pCount)
+        CompareVal(mProcess_Project.EditedBy.Comment, grdOrdEntry_EditedBy.Rows(0).Cells(2).Value, pCount)
+
+        If (pCount > 0) Then
+            pblnValChanged = True
+        End If
+
+        Return pblnValChanged
+    End Function
+
+    Private Function CompareVal_CostEstimating() As Boolean
+        '===================================================
+        Dim pblnValChanged As Boolean = False
+        Dim pCount As Integer = 0
+        Dim pCI As New CultureInfo("en-US")
+
+        With mProcess_Project.Cost
+
+            CompareVal(.QuoteFileLoc, cmbCostFileLoc.Text, pCount)
+
+            If (grdCost_SplOperation.Rows.Count - 1 <> .SplOperation.ID_SplOp.Count) Then
+                pCount = pCount + 1
+
+            Else
+                For i As Integer = 0 To .SplOperation.ID_SplOp.Count - 1
+
+                    CompareVal(.SplOperation.Desc(i), grdCost_SplOperation.Rows(i).Cells(0).Value, pCount)
+
+                    CompareVal(.SplOperation.Spec(i), grdCost_SplOperation.Rows(i).Cells(1).Value, pCount)
+
+                    CompareVal(.SplOperation.LeadTime(i), grdCost_SplOperation.Rows(i).Cells(2).Value, pCount)
+
+                    CompareVal(.SplOperation.Cost(i), grdCost_SplOperation.Rows(i).Cells(3).Value, pCount)
+
+                Next
+
+            End If
+
+            CompareVal(.Notes, txtCost_Notes.Text, pCount)
+
+        End With
+
+        CompareVal(mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdCost_EditedBy.Rows(0).Cells(0).Value, pCount)
+        CompareVal(mProcess_Project.EditedBy.Name, grdCost_EditedBy.Rows(0).Cells(1).Value, pCount)
+        CompareVal(mProcess_Project.EditedBy.Comment, grdCost_EditedBy.Rows(0).Cells(2).Value, pCount)
+
+        If (pCount > 0) Then
+            pblnValChanged = True
+        End If
+
+        Return pblnValChanged
+
+    End Function
+
+    Private Function CompareVal_App() As Boolean
+        '========================================
+        Dim pblnValChanged As Boolean = False
+        Dim pCount As Integer = 0
+
+        With mProcess_Project.App
+
+            '....tab Genearal
+            CompareVal(.Eqp, txtApp_Equip.Text, pCount)
+
+            CompareVal(.ExistingSeal, txtApp_ExistingSeal.Text, pCount)
+
+            CompareVal(.Type, cmbApp_InsertLoc.Text, pCount)
+
+            CompareVal(.Fluid, txtApp_Fluid.Text, pCount)
+
+            CompareVal(.MaxLeak, Convert.ToDouble(txtApp_MaxLeak.Text), pCount)
+
+            Dim pblnFlag As Boolean
+            If (cmbApp_PressCycle.Text = "Y") Then
+                pblnFlag = True
+            Else
+                pblnFlag = False
+            End If
+            CompareVal(.IsPressCyclic, pblnFlag, pCount)
+
+            CompareVal(.PressCycle_Freq, Convert.ToDouble(txtApp_PressCycleFreq.Text), pCount)
+
+            CompareVal(.PressCycle_Amp, Convert.ToDouble(txtApp_PressCycleAmp.Text), pCount)
+
+
+            If (cmbApp_Shaped.Text = "Y") Then
+                pblnFlag = True
+            Else
+                pblnFlag = False
+            End If
+            CompareVal(.Shaped, pblnFlag, pCount)
+
+            If (cmbApp_OutOfRound.Text = "Y") Then
+                pblnFlag = True
+            Else
+                pblnFlag = False
+            End If
+            CompareVal(.IsOoR, pblnFlag, pCount)
+
+
+            If (cmbApp_SplitRing.Text = "Y") Then
+                pblnFlag = True
+            Else
+                pblnFlag = False
+            End If
+            CompareVal(.IsSplitRing, pblnFlag, pCount)
+
+
+            If (cmbApp_PreComp.Text = "Y") Then
+                pblnFlag = True
+            Else
+                pblnFlag = False
+            End If
+            CompareVal(.IsPreComp, pblnFlag, pCount)
+
+            '....Operating Condition
+            CompareVal(.OpCond.T.Assy, grdApp_OpCond.Rows(0).Cells(1).Value, pCount)
+
+            CompareVal(.OpCond.T.Min, grdApp_OpCond.Rows(0).Cells(2).Value, pCount)
+
+            CompareVal(.OpCond.T.Max, grdApp_OpCond.Rows(0).Cells(3).Value, pCount)
+
+            CompareVal(.OpCond.T.Oper, grdApp_OpCond.Rows(0).Cells(4).Value, pCount)
+
+            CompareVal(.OpCond.Press.Assy, grdApp_OpCond.Rows(1).Cells(1).Value, pCount)
+
+            CompareVal(.OpCond.Press.Min, grdApp_OpCond.Rows(1).Cells(2).Value, pCount)
+
+            CompareVal(.OpCond.Press.Max, grdApp_OpCond.Rows(1).Cells(3).Value, pCount)
+
+            CompareVal(.OpCond.Press.Oper, grdApp_OpCond.Rows(1).Cells(4).Value, pCount)
+
+            '....Load
+            CompareVal(.Load.Assy.Min, grdApp_Load.Rows(0).Cells(1).Value, pCount)
+
+            CompareVal(.Load.Assy.Max, grdApp_Load.Rows(0).Cells(2).Value, pCount)
+
+            '....Load
+            CompareVal(.Load.Oper.Min, grdApp_Load.Rows(1).Cells(1).Value, pCount)
+
+            CompareVal(.Load.Oper.Max, grdApp_Load.Rows(1).Cells(2).Value, pCount)
+
+        End With
+
+        '....tab Face Seal
+
+
+        Return pblnValChanged
     End Function
 
 #End Region
@@ -6414,7 +6721,13 @@ Public Class Process_frmMain
             ctl.Enabled = enable
             EnableControls(ctl.Controls, enable)
         Next
+        'Dim pCount As Integer = 0
+        'Dim pval1 As String = ""
+        'Dim pval2 As String = ""
+        'CompareVar(pval1, pval2, pCount)
+
     End Sub
+
 
 
 
@@ -6439,6 +6752,54 @@ Public Class Process_frmMain
     '            Cursor.Current = Cursors.Default
     '        End If
     '    End With
+    'End Sub
+
+    Private Sub CompareVal(VarOrg_In As String, VarMod_In As String, ByRef Count As Integer)
+        '===================================================================================
+        If (IsNothing(VarOrg_In)) Then
+            VarOrg_In = ""
+        End If
+
+        If (IsNothing(VarMod_In)) Then
+            VarMod_In = ""
+        End If
+
+        If Trim(VarOrg_In) <> Trim(VarMod_In) Then Count += 1
+
+    End Sub
+
+    Private Sub CompareVal(VarOrg_In As Integer, VarMod_In As Integer, ByRef Count As Integer)
+
+        If VarOrg_In <> VarMod_In Then Count += 1
+    End Sub
+
+    Private Sub CompareVal(VarOrg_In As Double, VarMod_In As Double, ByRef Count As Integer)
+        If Math.Abs(VarOrg_In - VarMod_In) >= gcEPS Then Count += 1
+    End Sub
+
+    Private Sub CompareVal(VarOrg_In As Boolean, VarMod_In As Boolean, ByRef Count As Integer)
+        If VarOrg_In <> VarMod_In Then Count += 1
+    End Sub
+
+    'Private Sub CompareVar(VarOrg_In As Double, VarMod_In As Double, Count As Int16)
+    '    '=================================================================
+    '    If Math.Abs(VarOrg_In - VarMod_In) >= gcEPS Then Count += 1
+    'End Sub
+
+    'Private Sub CompareVar(VarOrg_In As Integer, VarMod_In As Integer, Count As Int16)
+    '    '=================================================================  
+    '    If VarOrg_In <> VarMod_In Then Count += 1
+    'End Sub
+
+    'Private Sub CompareVar(VarOrg_In As String, VarMod_In As String, Count As Int16)
+    '    '=================================================================  
+    '    If Trim(VarOrg_In) <> Trim(VarMod_In) Then Count += 1
+    'End Sub
+
+    'Private Overloads Sub CompareVar(ByVal VarOrg_In As Boolean,
+    '                      ByVal VarMod_In As Boolean, ByRef Count As Int16)
+    '    '==================================================================     
+    '    If VarOrg_In <> VarMod_In Then Count += 1
     'End Sub
 
 End Class
