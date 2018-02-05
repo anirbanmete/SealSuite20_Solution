@@ -735,6 +735,7 @@
           <Property Name="fldID" Type="numeric" Nullable="false" />
           <Property Name="fldItem" Type="nvarchar(max)" />
           <Property Name="fldEstQty" Type="numeric" />
+          <Property Name="fldQty_Unit" Type="nvarchar" MaxLength="20" />
           <Property Name="fldStatus" Type="nvarchar" MaxLength="20" />
           <Property Name="fldLeadTime" Type="real" />
         </EntityType>
@@ -2293,6 +2294,7 @@
           <Property Name="fldID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="fldItem" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="fldEstQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="fldQty_Unit" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="fldStatus" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="fldLeadTime" Type="Single" />
           <NavigationProperty Name="tblPurchase" Relationship="SealProcessDBModel.FK_tblPurchase_Mat_tblProcessProject" FromRole="tblPurchase_Mat" ToRole="tblPurchase" />
@@ -3578,6 +3580,7 @@
                 <ScalarProperty Name="fldID" ColumnName="fldID" />
                 <ScalarProperty Name="fldItem" ColumnName="fldItem" />
                 <ScalarProperty Name="fldEstQty" ColumnName="fldEstQty" />
+                <ScalarProperty Name="fldQty_Unit" ColumnName="fldQty_Unit" />
                 <ScalarProperty Name="fldStatus" ColumnName="fldStatus" />
                 <ScalarProperty Name="fldLeadTime" ColumnName="fldLeadTime" />
               </MappingFragment>
@@ -3748,8 +3751,8 @@
         <EntityTypeShape EntityType="SealProcessDBModel.tblApp_Load" Width="1.5" PointX="5.25" PointY="20.75" Height="2.172587890624996" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblApp_OpCond" Width="1.5" PointX="5.25" PointY="23.75" Height="2.9417936197916674" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblApproval" Width="1.5" PointX="3" PointY="27.375" Height="2.5571907552083317" IsExpanded="true" />
-        <EntityTypeShape EntityType="SealProcessDBModel.tblCost" Width="1.5" PointX="3" PointY="30.75" Height="2.5571907552083317" IsExpanded="true" />
-        <EntityTypeShape EntityType="SealProcessDBModel.tblCost_SplOperation" Width="1.5" PointX="5.25" PointY="30.75" Height="2.3648893229166639" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcessDBModel.tblCost" Width="1.5" PointX="3" PointY="30.75" Height="2.5571907552083282" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcessDBModel.tblCost_SplOperation" Width="1.5" PointX="5.25" PointY="30.875" Height="2.3648893229166674" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblDesign" Width="1.5" PointX="3" PointY="36.75" Height="5.2494108072916674" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblDesign_CustSpec" Width="1.5" PointX="5.25" PointY="34" Height="2.1725878906250102" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblDesign_Input" Width="1.5" PointX="5.25" PointY="37" Height="1.7879850260416674" IsExpanded="true" />
@@ -3758,15 +3761,15 @@
         <EntityTypeShape EntityType="SealProcessDBModel.tblDwg" Width="1.5" PointX="3" PointY="46.875" Height="2.5571907552083388" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblDwg_BOM" Width="1.5" PointX="5.25" PointY="45.5" Height="2.1725878906250102" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblDwg_Needed" Width="1.5" PointX="5.25" PointY="48.5" Height="2.3648893229166674" IsExpanded="true" />
-        <EntityTypeShape EntityType="SealProcessDBModel.tblEditedBy" Width="1.5" PointX="3" PointY="51.5" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcessDBModel.tblEditedBy" Width="1.5" PointX="3" PointY="51.625" Height="2.3648893229166674" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblFileHistory_RiskAnaQSet" Width="1.5" PointX="0.75" PointY="1" Height="1.7879850260416674" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblIssueComnt" Width="1.5" PointX="3" PointY="54.625" Height="3.326396484374996" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblITAR_Export" Width="1.5" PointX="3" PointY="58.75" Height="3.7109993489583246" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblKeyChar" Width="1.5" PointX="3" PointY="63.25" Height="2.7494921874999889" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblManf" Width="1.5" PointX="3" PointY="66.75" Height="2.9417936197916674" IsExpanded="true" />
-        <EntityTypeShape EntityType="SealProcessDBModel.tblManf_Tool_Gage" Width="1.5" PointX="5.25" PointY="66.75" Height="2.7494921874999818" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcessDBModel.tblManf_Tool_Gage" Width="1.5" PointX="5.25" PointY="66.875" Height="2.7494921874999818" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblOrdEntry" Width="1.5" PointX="3" PointY="70.375" Height="4.4802050781249818" IsExpanded="true" />
-        <EntityTypeShape EntityType="SealProcessDBModel.tblPlanning" Width="1.5" PointX="3" PointY="76.75" Height="2.5571907552083246" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcessDBModel.tblPlanning" Width="1.5" PointX="3" PointY="76.875" Height="2.5571907552083246" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblPlanning_MileOperation" Width="1.5" PointX="5.25" PointY="75.625" Height="1.9802864583333246" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblPlanning_SplOperation" Width="1.5" PointX="5.25" PointY="78.375" Height="2.1725878906249818" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblPreOrder" Width="1.5" PointX="3" PointY="83" Height="4.8648079427083246" IsExpanded="true" />
@@ -3775,19 +3778,19 @@
         <EntityTypeShape EntityType="SealProcessDBModel.tblPreOrder_SalesData" Width="1.5" PointX="5.25" PointY="87.125" Height="2.3648893229166674" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblProcess_Unit" Width="1.5" PointX="3" PointY="90.25" Height="3.3263964843749818" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblProcessFile" Width="1.5" PointX="0.75" PointY="3.75" Height="1.4033821614583246" IsExpanded="true" />
-        <EntityTypeShape EntityType="SealProcessDBModel.tblProcessProject" Width="1.5" PointX="0.75" PointY="61.125" Height="6.4032194010416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="SealProcessDBModel.tblPurchase" Width="1.5" PointX="3" PointY="95.75" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcessDBModel.tblProcessProject" Width="1.5" PointX="0.75" PointY="61.25" Height="6.4032194010416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcessDBModel.tblPurchase" Width="1.5" PointX="3" PointY="95.875" Height="2.3648893229166674" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblPurchase_Dwg" Width="1.5" PointX="5.25" PointY="94.375" Height="2.1725878906249818" IsExpanded="true" />
-        <EntityTypeShape EntityType="SealProcessDBModel.tblPurchase_Mat" Width="1.5" PointX="5.25" PointY="97.25" Height="2.3648893229166674" IsExpanded="true" />
-        <EntityTypeShape EntityType="SealProcessDBModel.tblQlty" Width="1.5" PointX="3" PointY="100.375" Height="3.7109993489583246" IsExpanded="true" />
-        <EntityTypeShape EntityType="SealProcessDBModel.tblRisk" Width="1.5" PointX="3" PointY="104.875" Height="2.5571907552083246" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcessDBModel.tblPurchase_Mat" Width="1.5" PointX="5.25" PointY="97.25" Height="2.5571907552083246" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcessDBModel.tblQlty" Width="1.5" PointX="3" PointY="100.5" Height="3.7109993489583246" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcessDBModel.tblRisk" Width="1.5" PointX="3" PointY="105" Height="2.5571907552083246" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblRiskAnaQSet" Width="1.5" PointX="3" PointY="0.875" Height="1.9802864583333246" IsExpanded="true" />
         <EntityTypeShape EntityType="SealProcessDBModel.tblRolePrivilege" Width="1.5" PointX="5.75" PointY="0.75" Height="4.2879036458333246" IsExpanded="true" />
-        <EntityTypeShape EntityType="SealProcessDBModel.tblShipping" Width="1.5" PointX="3" PointY="108.125" Height="2.1725878906250102" IsExpanded="true" />
-        <EntityTypeShape EntityType="SealProcessDBModel.tblTest" Width="1.5" PointX="3" PointY="115.25" Height="2.7494921874999818" IsExpanded="true" />
-        <EntityTypeShape EntityType="SealProcessDBModel.tblTest_Leak" Width="1.5" PointX="5.25" PointY="111" Height="3.710999348958353" IsExpanded="true" />
-        <EntityTypeShape EntityType="SealProcessDBModel.tblTest_Load" Width="1.5" PointX="5.25" PointY="115.5" Height="2.9417936197916674" IsExpanded="true" />
-        <EntityTypeShape EntityType="SealProcessDBModel.tblTest_SpringBack" Width="1.5" PointX="5.25" PointY="119.25" Height="2.9417936197916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcessDBModel.tblShipping" Width="1.5" PointX="3" PointY="108.375" Height="2.1725878906250102" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcessDBModel.tblTest" Width="1.5" PointX="3" PointY="115.375" Height="2.7494921874999818" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcessDBModel.tblTest_Leak" Width="1.5" PointX="5.25" PointY="111.25" Height="3.710999348958353" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcessDBModel.tblTest_Load" Width="1.5" PointX="5.25" PointY="115.75" Height="2.9417936197916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcessDBModel.tblTest_SpringBack" Width="1.5" PointX="5.25" PointY="119.375" Height="2.9417936197916674" IsExpanded="true" />
         <AssociationConnector Association="SealProcessDBModel.FK_tblApp_Cavity_tblApp1" ManuallyRouted="false">
           <ConnectorPoint PointX="3.75" PointY="13.875" />
           <ConnectorPoint PointX="3.75" PointY="12.528595377604166" />
@@ -3812,7 +3815,7 @@
           <ConnectorPoint PointX="5.25" PointY="25.220896809895834" />
         </AssociationConnector>
         <AssociationConnector Association="SealProcessDBModel.FK_tblApp_tblProcessProject" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.5" PointY="61.125" />
+          <ConnectorPoint PointX="1.5" PointY="61.25" />
           <ConnectorPoint PointX="1.5" PointY="16.595856119791666" />
           <ConnectorPoint PointX="3" PointY="16.595856119791666" />
         </AssociationConnector>
@@ -3826,16 +3829,16 @@
           <ConnectorPoint PointX="5.25" PointY="18.783356119791666" />
         </AssociationConnector>
         <AssociationConnector Association="SealProcessDBModel.FK_tblApproval_tblProcessProject" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.9062525" PointY="61.125" />
+          <ConnectorPoint PointX="1.9062525" PointY="61.25" />
           <ConnectorPoint PointX="1.9062525" PointY="28.653595377604166" />
           <ConnectorPoint PointX="3" PointY="28.653595377604166" />
         </AssociationConnector>
         <AssociationConnector Association="SealProcessDBModel.FK_tblCost_SplCharges_tblCost" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="31.932444661458334" />
-          <ConnectorPoint PointX="5.25" PointY="31.932444661458334" />
+          <ConnectorPoint PointX="4.5" PointY="32.057444661458334" />
+          <ConnectorPoint PointX="5.25" PointY="32.057444661458334" />
         </AssociationConnector>
         <AssociationConnector Association="SealProcessDBModel.FK_tblCost_tblProcessProject" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.0937475" PointY="61.125" />
+          <ConnectorPoint PointX="1.0937475" PointY="61.25" />
           <ConnectorPoint PointX="1.0937475" PointY="32.028595377604162" />
           <ConnectorPoint PointX="1.4166666666666667" PointY="32.028595377604162" />
           <ConnectorPoint PointX="1.5833333333333333" PointY="32.028595377604162" />
@@ -3857,7 +3860,7 @@
           <ConnectorPoint PointX="5.25" PointY="40.682444661458334" />
         </AssociationConnector>
         <AssociationConnector Association="SealProcessDBModel.FK_tblDesign_tblProcessProject" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.10937875" PointY="61.125" />
+          <ConnectorPoint PointX="2.10937875" PointY="61.25" />
           <ConnectorPoint PointX="2.10937875" PointY="39.374705403645834" />
           <ConnectorPoint PointX="3" PointY="39.374705403645834" />
         </AssociationConnector>
@@ -3875,7 +3878,7 @@
           <ConnectorPoint PointX="5.25" PointY="48.966095377604169" />
         </AssociationConnector>
         <AssociationConnector Association="SealProcessDBModel.FK_tblDwg_tblProcessProject" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.70312625" PointY="61.125" />
+          <ConnectorPoint PointX="1.70312625" PointY="61.25" />
           <ConnectorPoint PointX="1.70312625" PointY="48.153595377604169" />
           <ConnectorPoint PointX="1.8229191666666667" PointY="48.153595377604169" />
           <ConnectorPoint PointX="1.9895858333333332" PointY="48.153595377604169" />
@@ -3884,24 +3887,24 @@
           <ConnectorPoint PointX="3" PointY="48.153595377604169" />
         </AssociationConnector>
         <AssociationConnector Association="SealProcessDBModel.FK_tblEditedBy_tblProcessProject" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.29687375" PointY="61.125" />
-          <ConnectorPoint PointX="1.29687375" PointY="52.682444661458334" />
-          <ConnectorPoint PointX="1.4166666666666667" PointY="52.682444661458334" />
-          <ConnectorPoint PointX="1.5833333333333333" PointY="52.682444661458334" />
-          <ConnectorPoint PointX="1.6197929166666667" PointY="52.682444661458334" />
-          <ConnectorPoint PointX="1.7864595833333332" PointY="52.682444661458334" />
-          <ConnectorPoint PointX="1.8229191666666667" PointY="52.682444661458334" />
-          <ConnectorPoint PointX="1.9895858333333332" PointY="52.682444661458334" />
-          <ConnectorPoint PointX="2.0260454166666664" PointY="52.682444661458334" />
-          <ConnectorPoint PointX="2.1927120833333333" PointY="52.682444661458334" />
-          <ConnectorPoint PointX="3" PointY="52.682444661458334" />
+          <ConnectorPoint PointX="1.29687375" PointY="61.25" />
+          <ConnectorPoint PointX="1.29687375" PointY="52.807444661458334" />
+          <ConnectorPoint PointX="1.4166666666666667" PointY="52.807444661458334" />
+          <ConnectorPoint PointX="1.5833333333333333" PointY="52.807444661458334" />
+          <ConnectorPoint PointX="1.6197929166666667" PointY="52.807444661458334" />
+          <ConnectorPoint PointX="1.7864595833333332" PointY="52.807444661458334" />
+          <ConnectorPoint PointX="1.8229191666666667" PointY="52.807444661458334" />
+          <ConnectorPoint PointX="1.9895858333333332" PointY="52.807444661458334" />
+          <ConnectorPoint PointX="2.0260454166666664" PointY="52.807444661458334" />
+          <ConnectorPoint PointX="2.1927120833333333" PointY="52.807444661458334" />
+          <ConnectorPoint PointX="3" PointY="52.807444661458334" />
         </AssociationConnector>
         <AssociationConnector Association="SealProcessDBModel.FK_tblRiskAnaQSet_tblRiskAnaQSet_History" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="1.8939925130208337" />
           <ConnectorPoint PointX="3" PointY="1.8939925130208337" />
         </AssociationConnector>
         <AssociationConnector Association="SealProcessDBModel.FK_tblIssueComnt_tblProcessProject" ManuallyRouted="false">
-          <ConnectorPoint PointX="0.89062125" PointY="61.125" />
+          <ConnectorPoint PointX="0.89062125" PointY="61.25" />
           <ConnectorPoint PointX="0.89062125" PointY="56.2881982421875" />
           <ConnectorPoint PointX="1.0104141666666668" PointY="56.2881982421875" />
           <ConnectorPoint PointX="1.1770808333333334" PointY="56.2881982421875" />
@@ -3918,23 +3921,23 @@
           <ConnectorPoint PointX="3" PointY="56.2881982421875" />
         </AssociationConnector>
         <AssociationConnector Association="SealProcessDBModel.FK_tblITAR_Export_tblProcessProject" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="61.792999674479162" />
-          <ConnectorPoint PointX="3" PointY="61.792999674479162" />
+          <ConnectorPoint PointX="2.25" PointY="61.855499674479162" />
+          <ConnectorPoint PointX="3" PointY="61.855499674479162" />
         </AssociationConnector>
         <AssociationConnector Association="SealProcessDBModel.FK_tblDesign_KeyCharacteristics_tblProcessProject1" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="64.624746093749991" />
           <ConnectorPoint PointX="3" PointY="64.624746093749991" />
         </AssociationConnector>
         <AssociationConnector Association="SealProcessDBModel.FK_tblManf_tblProcessProject" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="67.139109700520834" />
-          <ConnectorPoint PointX="3" PointY="67.139109700520834" />
+          <ConnectorPoint PointX="2.25" PointY="67.201609700520834" />
+          <ConnectorPoint PointX="3" PointY="67.201609700520834" />
         </AssociationConnector>
         <AssociationConnector Association="SealProcessDBModel.FK_tblManf_ToolNGage_tblManf" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="68.124746093749991" />
-          <ConnectorPoint PointX="5.25" PointY="68.124746093749991" />
+          <ConnectorPoint PointX="4.5" PointY="68.249746093749991" />
+          <ConnectorPoint PointX="5.25" PointY="68.249746093749991" />
         </AssociationConnector>
         <AssociationConnector Association="SealProcessDBModel.FK_tblOrdEntry_tblProcessProject" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.5" PointY="67.528219401041667" />
+          <ConnectorPoint PointX="1.5" PointY="67.653219401041667" />
           <ConnectorPoint PointX="1.5" PointY="72.615102539062491" />
           <ConnectorPoint PointX="1.6197929166666667" PointY="72.615102539062491" />
           <ConnectorPoint PointX="1.7864595833333332" PointY="72.615102539062491" />
@@ -3943,19 +3946,19 @@
           <ConnectorPoint PointX="3" PointY="72.615102539062491" />
         </AssociationConnector>
         <AssociationConnector Association="SealProcessDBModel.FK_tblPlanning_MileOperation_tblPlanning" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="77.177643229166662" />
-          <ConnectorPoint PointX="5.25" PointY="77.177643229166662" />
+          <ConnectorPoint PointX="4.5" PointY="77.240143229166662" />
+          <ConnectorPoint PointX="5.25" PointY="77.240143229166662" />
         </AssociationConnector>
         <AssociationConnector Association="SealProcessDBModel.FK_tblPlanning_SplOperation_tblPlanning" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="78.841095377604162" />
-          <ConnectorPoint PointX="5.25" PointY="78.841095377604162" />
+          <ConnectorPoint PointX="4.5" PointY="78.903595377604162" />
+          <ConnectorPoint PointX="5.25" PointY="78.903595377604162" />
         </AssociationConnector>
         <AssociationConnector Association="SealProcessDBModel.FK_tblPlanning_tblProcessProject" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.9062525" PointY="67.528219401041667" />
-          <ConnectorPoint PointX="1.9062525" PointY="78.028595377604162" />
-          <ConnectorPoint PointX="1.9244822916666664" PointY="78.028595377604162" />
-          <ConnectorPoint PointX="2.2942752083333335" PointY="78.028595377604162" />
-          <ConnectorPoint PointX="3" PointY="78.028595377604162" />
+          <ConnectorPoint PointX="1.9062525" PointY="67.653219401041667" />
+          <ConnectorPoint PointX="1.9062525" PointY="78.153595377604162" />
+          <ConnectorPoint PointX="1.9244822916666664" PointY="78.153595377604162" />
+          <ConnectorPoint PointX="2.2942752083333335" PointY="78.153595377604162" />
+          <ConnectorPoint PointX="3" PointY="78.153595377604162" />
         </AssociationConnector>
         <AssociationConnector Association="SealProcessDBModel.FK_tblPreOrder_CustContact_tblPreOrder" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="83.307444661458334" />
@@ -3970,7 +3973,7 @@
           <ConnectorPoint PointX="5.25" PointY="87.494903971354162" />
         </AssociationConnector>
         <AssociationConnector Association="SealProcessDBModel.FK_tblPreOrder_tblProcessProject" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.0937475" PointY="67.528219401041667" />
+          <ConnectorPoint PointX="1.0937475" PointY="67.653219401041667" />
           <ConnectorPoint PointX="1.0937475" PointY="85.432403971354162" />
           <ConnectorPoint PointX="1.2135404166666668" PointY="85.432403971354162" />
           <ConnectorPoint PointX="1.3802070833333333" PointY="85.432403971354162" />
@@ -3981,70 +3984,70 @@
           <ConnectorPoint PointX="3" PointY="85.432403971354162" />
         </AssociationConnector>
         <AssociationConnector Association="SealProcessDBModel.FK_tblProcess_Unit_tblProcessProject" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.10937875" PointY="67.528219401041667" />
+          <ConnectorPoint PointX="2.10937875" PointY="67.653219401041667" />
           <ConnectorPoint PointX="2.10937875" PointY="91.913198242187491" />
           <ConnectorPoint PointX="2.1276085416666666" PointY="91.913198242187491" />
           <ConnectorPoint PointX="2.2942752083333335" PointY="91.913198242187491" />
           <ConnectorPoint PointX="3" PointY="91.913198242187491" />
         </AssociationConnector>
         <AssociationConnector Association="SealProcessDBModel.FK_tblPurchase_tblProcessProject" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.70312625" PointY="67.528219401041667" />
-          <ConnectorPoint PointX="1.70312625" PointY="96.932444661458334" />
-          <ConnectorPoint PointX="1.9244822916666664" PointY="96.932444661458334" />
-          <ConnectorPoint PointX="2.0911489583333331" PointY="96.932444661458334" />
-          <ConnectorPoint PointX="2.1276085416666666" PointY="96.932444661458334" />
-          <ConnectorPoint PointX="2.2942752083333335" PointY="96.932444661458334" />
-          <ConnectorPoint PointX="3" PointY="96.932444661458334" />
+          <ConnectorPoint PointX="1.70312625" PointY="67.653219401041667" />
+          <ConnectorPoint PointX="1.70312625" PointY="97.057444661458334" />
+          <ConnectorPoint PointX="1.9244822916666664" PointY="97.057444661458334" />
+          <ConnectorPoint PointX="2.0911489583333331" PointY="97.057444661458334" />
+          <ConnectorPoint PointX="2.1276085416666666" PointY="97.057444661458334" />
+          <ConnectorPoint PointX="2.2942752083333335" PointY="97.057444661458334" />
+          <ConnectorPoint PointX="3" PointY="97.057444661458334" />
         </AssociationConnector>
         <AssociationConnector Association="SealProcessDBModel.FK_tblQlty_tblProcessProject" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.29687375" PointY="67.528219401041667" />
-          <ConnectorPoint PointX="1.29687375" PointY="102.23049967447916" />
-          <ConnectorPoint PointX="1.9244822916666664" PointY="102.23049967447916" />
-          <ConnectorPoint PointX="2.0911489583333331" PointY="102.23049967447916" />
-          <ConnectorPoint PointX="2.1276085416666666" PointY="102.23049967447916" />
-          <ConnectorPoint PointX="2.2942752083333335" PointY="102.23049967447916" />
-          <ConnectorPoint PointX="3" PointY="102.23049967447916" />
+          <ConnectorPoint PointX="1.29687375" PointY="67.653219401041667" />
+          <ConnectorPoint PointX="1.29687375" PointY="102.35549967447916" />
+          <ConnectorPoint PointX="1.9244822916666664" PointY="102.35549967447916" />
+          <ConnectorPoint PointX="2.0911489583333331" PointY="102.35549967447916" />
+          <ConnectorPoint PointX="2.1276085416666666" PointY="102.35549967447916" />
+          <ConnectorPoint PointX="2.2942752083333335" PointY="102.35549967447916" />
+          <ConnectorPoint PointX="3" PointY="102.35549967447916" />
         </AssociationConnector>
         <AssociationConnector Association="SealProcessDBModel.FK_tblRisk_tblProcessProject" ManuallyRouted="false">
-          <ConnectorPoint PointX="0.89062125" PointY="67.528219401041667" />
-          <ConnectorPoint PointX="0.89062125" PointY="106.15359537760416" />
-          <ConnectorPoint PointX="1.9244822916666664" PointY="106.15359537760416" />
-          <ConnectorPoint PointX="2.0911489583333331" PointY="106.15359537760416" />
-          <ConnectorPoint PointX="2.1276085416666666" PointY="106.15359537760416" />
-          <ConnectorPoint PointX="2.2942752083333335" PointY="106.15359537760416" />
-          <ConnectorPoint PointX="3" PointY="106.15359537760416" />
+          <ConnectorPoint PointX="0.89062125" PointY="67.653219401041667" />
+          <ConnectorPoint PointX="0.89062125" PointY="106.27859537760416" />
+          <ConnectorPoint PointX="1.9244822916666664" PointY="106.27859537760416" />
+          <ConnectorPoint PointX="2.0911489583333331" PointY="106.27859537760416" />
+          <ConnectorPoint PointX="2.1276085416666666" PointY="106.27859537760416" />
+          <ConnectorPoint PointX="2.2942752083333335" PointY="106.27859537760416" />
+          <ConnectorPoint PointX="3" PointY="106.27859537760416" />
         </AssociationConnector>
         <AssociationConnector Association="SealProcessDBModel.FK_tblShipping_tblProcessProject" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.210941875" PointY="67.528219401041667" />
-          <ConnectorPoint PointX="2.210941875" PointY="109.21129394531251" />
-          <ConnectorPoint PointX="3" PointY="109.21129394531251" />
+          <ConnectorPoint PointX="2.210941875" PointY="67.653219401041667" />
+          <ConnectorPoint PointX="2.210941875" PointY="109.46129394531251" />
+          <ConnectorPoint PointX="3" PointY="109.46129394531251" />
         </AssociationConnector>
         <AssociationConnector Association="SealProcessDBModel.FK_tblTest_tblProcessProject" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.0078156249999997" PointY="67.528219401041667" />
-          <ConnectorPoint PointX="2.0078156249999997" PointY="116.62474609374999" />
-          <ConnectorPoint PointX="3" PointY="116.62474609374999" />
+          <ConnectorPoint PointX="2.0078156249999997" PointY="67.653219401041667" />
+          <ConnectorPoint PointX="2.0078156249999997" PointY="116.74974609374999" />
+          <ConnectorPoint PointX="3" PointY="116.74974609374999" />
         </AssociationConnector>
         <AssociationConnector Association="SealProcessDBModel.FK_tblPurchase_Drawing_tblProcessProject" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="96.148793945312491" />
-          <ConnectorPoint PointX="5.25" PointY="96.148793945312491" />
+          <ConnectorPoint PointX="4.5" PointY="96.211293945312491" />
+          <ConnectorPoint PointX="5.25" PointY="96.211293945312491" />
         </AssociationConnector>
         <AssociationConnector Association="SealProcessDBModel.FK_tblPurchase_Mat_tblProcessProject" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="97.682444661458334" />
-          <ConnectorPoint PointX="5.25" PointY="97.682444661458334" />
+          <ConnectorPoint PointX="4.5" PointY="97.744944661458334" />
+          <ConnectorPoint PointX="5.25" PointY="97.744944661458334" />
         </AssociationConnector>
         <AssociationConnector Association="SealProcessDBModel.FK_tblTest_Leak_tblTest" ManuallyRouted="false">
-          <ConnectorPoint PointX="3.75" PointY="115.25" />
-          <ConnectorPoint PointX="3.75" PointY="112.85549967447918" />
-          <ConnectorPoint PointX="5.25" PointY="112.85549967447918" />
+          <ConnectorPoint PointX="3.75" PointY="115.375" />
+          <ConnectorPoint PointX="3.75" PointY="113.10549967447918" />
+          <ConnectorPoint PointX="5.25" PointY="113.10549967447918" />
         </AssociationConnector>
         <AssociationConnector Association="SealProcessDBModel.FK_tblTest_Load_tblTest" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="116.74974609374999" />
-          <ConnectorPoint PointX="5.25" PointY="116.74974609374999" />
+          <ConnectorPoint PointX="4.5" PointY="116.93724609374999" />
+          <ConnectorPoint PointX="5.25" PointY="116.93724609374999" />
         </AssociationConnector>
         <AssociationConnector Association="SealProcessDBModel.FK_tblTest_SpringBack_tblTest" ManuallyRouted="false">
-          <ConnectorPoint PointX="3.75" PointY="117.99949218749998" />
-          <ConnectorPoint PointX="3.75" PointY="120.72089680989583" />
-          <ConnectorPoint PointX="5.25" PointY="120.72089680989583" />
+          <ConnectorPoint PointX="3.75" PointY="118.12449218749998" />
+          <ConnectorPoint PointX="3.75" PointY="120.84589680989583" />
+          <ConnectorPoint PointX="5.25" PointY="120.84589680989583" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

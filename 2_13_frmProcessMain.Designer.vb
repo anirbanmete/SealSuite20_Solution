@@ -27,15 +27,23 @@ Partial Class Process_frmMain
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -51,6 +59,8 @@ Partial Class Process_frmMain
         Dim DataGridViewCellStyle33 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle34 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle35 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle36 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle37 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle38 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle39 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle40 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -62,16 +72,22 @@ Partial Class Process_frmMain
         Dim DataGridViewCellStyle46 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle47 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle48 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle49 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle50 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle51 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle52 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle53 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle54 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle55 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle56 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle57 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle58 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle59 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle60 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle61 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle62 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle63 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle64 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle65 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle66 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle67 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -81,6 +97,8 @@ Partial Class Process_frmMain
         Dim DataGridViewCellStyle71 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle72 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle73 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle74 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle75 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle76 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle77 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle78 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -88,11 +106,17 @@ Partial Class Process_frmMain
         Dim DataGridViewCellStyle80 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle81 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle82 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle83 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle84 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle85 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle86 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle87 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle88 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle89 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle90 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle91 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle92 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle93 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle94 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle95 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle96 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -101,38 +125,14 @@ Partial Class Process_frmMain
         Dim DataGridViewCellStyle99 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle100 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle101 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle102 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle103 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle104 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle105 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle106 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle107 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle108 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle109 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle55 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle56 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle63 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle64 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle83 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle84 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle86 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle87 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle92 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle93 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle102 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle103 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle49 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle50 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle36 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle37 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle74 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle75 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lblBorder = New System.Windows.Forms.Label()
         Me.pnlPanel1 = New System.Windows.Forms.Panel()
         Me.GroupBox16 = New System.Windows.Forms.GroupBox()
@@ -234,6 +234,9 @@ Partial Class Process_frmMain
         Me.txtPreOrderUserDate = New System.Windows.Forms.TextBox()
         Me.dtpPreOrderUserDate = New System.Windows.Forms.DateTimePicker()
         Me.grdPreOrderEditedBy = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn24 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn25 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn53 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label27 = New System.Windows.Forms.Label()
         Me.grpPreOrder_RiskAna = New System.Windows.Forms.GroupBox()
         Me.grdPreOrderRiskAna = New System.Windows.Forms.DataGridView()
@@ -269,6 +272,9 @@ Partial Class Process_frmMain
         Me.txtITAR_Export_UserDate = New System.Windows.Forms.TextBox()
         Me.dtpITAR_Export_UserDate = New System.Windows.Forms.DateTimePicker()
         Me.grdExport_EditedBy = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn36 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn37 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn95 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cmbITAR_Export_SaleExportControlled = New System.Windows.Forms.ComboBox()
         Me.Label240 = New System.Windows.Forms.Label()
         Me.cmbITAR_Export_ProductITAR_Reg = New System.Windows.Forms.ComboBox()
@@ -332,6 +338,9 @@ Partial Class Process_frmMain
         Me.txtOrdEntry_UserDate = New System.Windows.Forms.TextBox()
         Me.dtpOrdEntry_UserDate = New System.Windows.Forms.DateTimePicker()
         Me.grdOrdEntry_EditedBy = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn26 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn27 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn58 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label128 = New System.Windows.Forms.Label()
         Me.GroupBox21 = New System.Windows.Forms.GroupBox()
         Me.txtOrdEntry_OrderQty = New System.Windows.Forms.TextBox()
@@ -363,6 +372,9 @@ Partial Class Process_frmMain
         Me.txtCost_UserDate = New System.Windows.Forms.TextBox()
         Me.dtpCost_UserDate = New System.Windows.Forms.DateTimePicker()
         Me.grdCost_EditedBy = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn28 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn29 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn73 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.GroupBox46 = New System.Windows.Forms.GroupBox()
         Me.grdCost_SplOperation = New System.Windows.Forms.DataGridView()
@@ -452,6 +464,9 @@ Partial Class Process_frmMain
         Me.txtApp_UserDate_Face = New System.Windows.Forms.TextBox()
         Me.dtpApp_UserDate_Face = New System.Windows.Forms.DateTimePicker()
         Me.grdApp_EditedBy_Face = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn44 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn45 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn85 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label32 = New System.Windows.Forms.Label()
         Me.grpApp_Face_Cavity = New System.Windows.Forms.GroupBox()
         Me.grdApp_Face_Cavity = New System.Windows.Forms.DataGridView()
@@ -520,6 +535,9 @@ Partial Class Process_frmMain
         Me.txtApp_UserDate_Axial = New System.Windows.Forms.TextBox()
         Me.dtpApp_UserDate_Axial = New System.Windows.Forms.DateTimePicker()
         Me.grdApp_EditedBy_Axial = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn86 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn87 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn88 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tabDesign = New System.Windows.Forms.TabPage()
         Me.TabControl2 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
@@ -625,6 +643,9 @@ Partial Class Process_frmMain
         Me.txtDesign_UserDate_Face = New System.Windows.Forms.TextBox()
         Me.dtpDesign_UserDate_Face = New System.Windows.Forms.DateTimePicker()
         Me.grdDesign_EditedBy = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn35 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn46 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn96 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.grpDesign_SealDim = New System.Windows.Forms.GroupBox()
         Me.Label176 = New System.Windows.Forms.Label()
         Me.grdDesign_Seal = New System.Windows.Forms.DataGridView()
@@ -648,6 +669,9 @@ Partial Class Process_frmMain
         Me.txtManf_UserDate_Face = New System.Windows.Forms.TextBox()
         Me.dtpManf_UserDate = New System.Windows.Forms.DateTimePicker()
         Me.grdManf_EditedBy = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn47 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn48 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn63 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label117 = New System.Windows.Forms.Label()
         Me.grdManf_ToolNGage = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -687,7 +711,15 @@ Partial Class Process_frmMain
         Me.txtPurchase_UserDate = New System.Windows.Forms.TextBox()
         Me.dtpPurchase_UserDate = New System.Windows.Forms.DateTimePicker()
         Me.grdPurchase_EditedBy = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn49 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn50 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn66 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.grdPurchase_Mat = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn64 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column34 = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.DataGridViewComboBoxColumn3 = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.DataGridViewTextBoxColumn65 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tabQuality = New System.Windows.Forms.TabPage()
         Me.GroupBox57 = New System.Windows.Forms.GroupBox()
         Me.grdQuality_SplOperation = New System.Windows.Forms.DataGridView()
@@ -703,6 +735,9 @@ Partial Class Process_frmMain
         Me.txtQuality_UserDate = New System.Windows.Forms.TextBox()
         Me.dtpQuality_UserDate = New System.Windows.Forms.DateTimePicker()
         Me.grdQuality_EditedBy = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn38 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn39 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn59 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cmbQuality_CustAcceptStd = New System.Windows.Forms.ComboBox()
         Me.cmbQuality_VisualInspection_Type = New System.Windows.Forms.ComboBox()
         Me.cmbQuality_VisualInspection = New System.Windows.Forms.ComboBox()
@@ -729,6 +764,9 @@ Partial Class Process_frmMain
         Me.txtDwg_UserDate = New System.Windows.Forms.TextBox()
         Me.dtpDwg_UserDate = New System.Windows.Forms.DateTimePicker()
         Me.grdDwg_EditedBy = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn51 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn52 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn67 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label150 = New System.Windows.Forms.Label()
         Me.Label149 = New System.Windows.Forms.Label()
         Me.grdDrawing_BOM = New System.Windows.Forms.DataGridView()
@@ -753,6 +791,9 @@ Partial Class Process_frmMain
         Me.txtTest_UserDate = New System.Windows.Forms.TextBox()
         Me.dtpTest_UserDate = New System.Windows.Forms.DateTimePicker()
         Me.grdTest_EditedBy = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn40 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn41 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn97 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.txtTest_Other = New System.Windows.Forms.TextBox()
         Me.Label152 = New System.Windows.Forms.Label()
         Me.tbTest = New System.Windows.Forms.TabControl()
@@ -863,6 +904,9 @@ Partial Class Process_frmMain
         Me.txtShipping_UserDate = New System.Windows.Forms.TextBox()
         Me.dtpShipping_UserDate = New System.Windows.Forms.DateTimePicker()
         Me.grdShipping_EditedBy = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn55 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn56 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn57 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tabKeyChar = New System.Windows.Forms.TabPage()
         Me.grpKeyChar = New System.Windows.Forms.GroupBox()
         Me.grdDesign_KeyChar = New System.Windows.Forms.DataGridView()
@@ -895,50 +939,6 @@ Partial Class Process_frmMain
         Me.TabViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.openFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.DataGridViewTextBoxColumn28 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn29 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn73 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn26 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn27 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn58 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn36 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn37 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn95 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn24 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn25 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn53 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn35 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn46 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn96 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn47 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn48 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn63 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn66 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn50 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn49 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn38 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn39 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn59 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn51 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn52 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn67 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn40 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn41 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn97 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn55 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn56 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn57 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn86 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn87 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn88 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn44 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn45 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn85 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn64 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column34 = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.DataGridViewComboBoxColumn3 = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.DataGridViewTextBoxColumn65 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.pnlPanel1.SuspendLayout()
         Me.GroupBox16.SuspendLayout()
         Me.GroupBox43.SuspendLayout()
@@ -2255,6 +2255,30 @@ Partial Class Process_frmMain
         Me.grdPreOrderEditedBy.Size = New System.Drawing.Size(823, 74)
         Me.grdPreOrderEditedBy.TabIndex = 741
         '
+        'DataGridViewTextBoxColumn24
+        '
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Gray
+        Me.DataGridViewTextBoxColumn24.DefaultCellStyle = DataGridViewCellStyle4
+        Me.DataGridViewTextBoxColumn24.HeaderText = "Date"
+        Me.DataGridViewTextBoxColumn24.Name = "DataGridViewTextBoxColumn24"
+        Me.DataGridViewTextBoxColumn24.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn25
+        '
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Gray
+        Me.DataGridViewTextBoxColumn25.DefaultCellStyle = DataGridViewCellStyle5
+        Me.DataGridViewTextBoxColumn25.HeaderText = "Name"
+        Me.DataGridViewTextBoxColumn25.Name = "DataGridViewTextBoxColumn25"
+        Me.DataGridViewTextBoxColumn25.ReadOnly = True
+        Me.DataGridViewTextBoxColumn25.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn25.Width = 200
+        '
+        'DataGridViewTextBoxColumn53
+        '
+        Me.DataGridViewTextBoxColumn53.HeaderText = "Comments"
+        Me.DataGridViewTextBoxColumn53.Name = "DataGridViewTextBoxColumn53"
+        Me.DataGridViewTextBoxColumn53.Width = 500
+        '
         'Label27
         '
         Me.Label27.BackColor = System.Drawing.SystemColors.ControlDark
@@ -2642,6 +2666,30 @@ Partial Class Process_frmMain
         Me.grdExport_EditedBy.RowHeadersVisible = False
         Me.grdExport_EditedBy.Size = New System.Drawing.Size(823, 74)
         Me.grdExport_EditedBy.TabIndex = 741
+        '
+        'DataGridViewTextBoxColumn36
+        '
+        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.Gray
+        Me.DataGridViewTextBoxColumn36.DefaultCellStyle = DataGridViewCellStyle12
+        Me.DataGridViewTextBoxColumn36.HeaderText = "Date"
+        Me.DataGridViewTextBoxColumn36.Name = "DataGridViewTextBoxColumn36"
+        Me.DataGridViewTextBoxColumn36.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn37
+        '
+        DataGridViewCellStyle13.ForeColor = System.Drawing.Color.Gray
+        Me.DataGridViewTextBoxColumn37.DefaultCellStyle = DataGridViewCellStyle13
+        Me.DataGridViewTextBoxColumn37.HeaderText = "Name"
+        Me.DataGridViewTextBoxColumn37.Name = "DataGridViewTextBoxColumn37"
+        Me.DataGridViewTextBoxColumn37.ReadOnly = True
+        Me.DataGridViewTextBoxColumn37.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn37.Width = 200
+        '
+        'DataGridViewTextBoxColumn95
+        '
+        Me.DataGridViewTextBoxColumn95.HeaderText = "Comments"
+        Me.DataGridViewTextBoxColumn95.Name = "DataGridViewTextBoxColumn95"
+        Me.DataGridViewTextBoxColumn95.Width = 500
         '
         'cmbITAR_Export_SaleExportControlled
         '
@@ -3368,6 +3416,30 @@ Partial Class Process_frmMain
         Me.grdOrdEntry_EditedBy.Size = New System.Drawing.Size(823, 74)
         Me.grdOrdEntry_EditedBy.TabIndex = 741
         '
+        'DataGridViewTextBoxColumn26
+        '
+        DataGridViewCellStyle16.ForeColor = System.Drawing.Color.Gray
+        Me.DataGridViewTextBoxColumn26.DefaultCellStyle = DataGridViewCellStyle16
+        Me.DataGridViewTextBoxColumn26.HeaderText = "Date"
+        Me.DataGridViewTextBoxColumn26.Name = "DataGridViewTextBoxColumn26"
+        Me.DataGridViewTextBoxColumn26.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn27
+        '
+        DataGridViewCellStyle17.ForeColor = System.Drawing.Color.Gray
+        Me.DataGridViewTextBoxColumn27.DefaultCellStyle = DataGridViewCellStyle17
+        Me.DataGridViewTextBoxColumn27.HeaderText = "Name"
+        Me.DataGridViewTextBoxColumn27.Name = "DataGridViewTextBoxColumn27"
+        Me.DataGridViewTextBoxColumn27.ReadOnly = True
+        Me.DataGridViewTextBoxColumn27.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn27.Width = 200
+        '
+        'DataGridViewTextBoxColumn58
+        '
+        Me.DataGridViewTextBoxColumn58.HeaderText = "Comments"
+        Me.DataGridViewTextBoxColumn58.Name = "DataGridViewTextBoxColumn58"
+        Me.DataGridViewTextBoxColumn58.Width = 500
+        '
         'Label128
         '
         Me.Label128.BackColor = System.Drawing.SystemColors.ControlDark
@@ -3728,6 +3800,30 @@ Partial Class Process_frmMain
         Me.grdCost_EditedBy.RowHeadersVisible = False
         Me.grdCost_EditedBy.Size = New System.Drawing.Size(823, 74)
         Me.grdCost_EditedBy.TabIndex = 741
+        '
+        'DataGridViewTextBoxColumn28
+        '
+        DataGridViewCellStyle19.ForeColor = System.Drawing.Color.Gray
+        Me.DataGridViewTextBoxColumn28.DefaultCellStyle = DataGridViewCellStyle19
+        Me.DataGridViewTextBoxColumn28.HeaderText = "Date"
+        Me.DataGridViewTextBoxColumn28.Name = "DataGridViewTextBoxColumn28"
+        Me.DataGridViewTextBoxColumn28.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn29
+        '
+        DataGridViewCellStyle20.ForeColor = System.Drawing.Color.Gray
+        Me.DataGridViewTextBoxColumn29.DefaultCellStyle = DataGridViewCellStyle20
+        Me.DataGridViewTextBoxColumn29.HeaderText = "Name"
+        Me.DataGridViewTextBoxColumn29.Name = "DataGridViewTextBoxColumn29"
+        Me.DataGridViewTextBoxColumn29.ReadOnly = True
+        Me.DataGridViewTextBoxColumn29.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn29.Width = 200
+        '
+        'DataGridViewTextBoxColumn73
+        '
+        Me.DataGridViewTextBoxColumn73.HeaderText = "Comments"
+        Me.DataGridViewTextBoxColumn73.Name = "DataGridViewTextBoxColumn73"
+        Me.DataGridViewTextBoxColumn73.Width = 500
         '
         'Label4
         '
@@ -4679,6 +4775,7 @@ Partial Class Process_frmMain
         '
         'chkApp_UserSigned_Face
         '
+        Me.chkApp_UserSigned_Face.Enabled = False
         Me.chkApp_UserSigned_Face.ForeColor = System.Drawing.SystemColors.GrayText
         Me.chkApp_UserSigned_Face.Location = New System.Drawing.Point(369, 109)
         Me.chkApp_UserSigned_Face.Name = "chkApp_UserSigned_Face"
@@ -4691,6 +4788,7 @@ Partial Class Process_frmMain
         '
         Me.cmdApp_UserSign_Face.AutoSize = True
         Me.cmdApp_UserSign_Face.BackColor = System.Drawing.Color.Silver
+        Me.cmdApp_UserSign_Face.Enabled = False
         Me.cmdApp_UserSign_Face.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdApp_UserSign_Face.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdApp_UserSign_Face.Location = New System.Drawing.Point(390, 104)
@@ -4713,6 +4811,7 @@ Partial Class Process_frmMain
         'txtApp_UserDate_Face
         '
         Me.txtApp_UserDate_Face.BackColor = System.Drawing.Color.White
+        Me.txtApp_UserDate_Face.Enabled = False
         Me.txtApp_UserDate_Face.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApp_UserDate_Face.ForeColor = System.Drawing.Color.Black
         Me.txtApp_UserDate_Face.Location = New System.Drawing.Point(25, 105)
@@ -4723,6 +4822,7 @@ Partial Class Process_frmMain
         '
         'dtpApp_UserDate_Face
         '
+        Me.dtpApp_UserDate_Face.Enabled = False
         Me.dtpApp_UserDate_Face.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.dtpApp_UserDate_Face.Location = New System.Drawing.Point(104, 105)
         Me.dtpApp_UserDate_Face.Name = "dtpApp_UserDate_Face"
@@ -4741,6 +4841,30 @@ Partial Class Process_frmMain
         Me.grdApp_EditedBy_Face.RowHeadersVisible = False
         Me.grdApp_EditedBy_Face.Size = New System.Drawing.Size(823, 74)
         Me.grdApp_EditedBy_Face.TabIndex = 741
+        '
+        'DataGridViewTextBoxColumn44
+        '
+        DataGridViewCellStyle36.ForeColor = System.Drawing.Color.Gray
+        Me.DataGridViewTextBoxColumn44.DefaultCellStyle = DataGridViewCellStyle36
+        Me.DataGridViewTextBoxColumn44.HeaderText = "Date"
+        Me.DataGridViewTextBoxColumn44.Name = "DataGridViewTextBoxColumn44"
+        Me.DataGridViewTextBoxColumn44.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn45
+        '
+        DataGridViewCellStyle37.ForeColor = System.Drawing.Color.Gray
+        Me.DataGridViewTextBoxColumn45.DefaultCellStyle = DataGridViewCellStyle37
+        Me.DataGridViewTextBoxColumn45.HeaderText = "Name"
+        Me.DataGridViewTextBoxColumn45.Name = "DataGridViewTextBoxColumn45"
+        Me.DataGridViewTextBoxColumn45.ReadOnly = True
+        Me.DataGridViewTextBoxColumn45.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn45.Width = 200
+        '
+        'DataGridViewTextBoxColumn85
+        '
+        Me.DataGridViewTextBoxColumn85.HeaderText = "Comments"
+        Me.DataGridViewTextBoxColumn85.Name = "DataGridViewTextBoxColumn85"
+        Me.DataGridViewTextBoxColumn85.Width = 500
         '
         'Label32
         '
@@ -5511,6 +5635,30 @@ Partial Class Process_frmMain
         Me.grdApp_EditedBy_Axial.RowHeadersVisible = False
         Me.grdApp_EditedBy_Axial.Size = New System.Drawing.Size(823, 74)
         Me.grdApp_EditedBy_Axial.TabIndex = 741
+        '
+        'DataGridViewTextBoxColumn86
+        '
+        DataGridViewCellStyle49.ForeColor = System.Drawing.Color.Gray
+        Me.DataGridViewTextBoxColumn86.DefaultCellStyle = DataGridViewCellStyle49
+        Me.DataGridViewTextBoxColumn86.HeaderText = "Date"
+        Me.DataGridViewTextBoxColumn86.Name = "DataGridViewTextBoxColumn86"
+        Me.DataGridViewTextBoxColumn86.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn87
+        '
+        DataGridViewCellStyle50.ForeColor = System.Drawing.Color.Gray
+        Me.DataGridViewTextBoxColumn87.DefaultCellStyle = DataGridViewCellStyle50
+        Me.DataGridViewTextBoxColumn87.HeaderText = "Name"
+        Me.DataGridViewTextBoxColumn87.Name = "DataGridViewTextBoxColumn87"
+        Me.DataGridViewTextBoxColumn87.ReadOnly = True
+        Me.DataGridViewTextBoxColumn87.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn87.Width = 200
+        '
+        'DataGridViewTextBoxColumn88
+        '
+        Me.DataGridViewTextBoxColumn88.HeaderText = "Comments"
+        Me.DataGridViewTextBoxColumn88.Name = "DataGridViewTextBoxColumn88"
+        Me.DataGridViewTextBoxColumn88.Width = 500
         '
         'tabDesign
         '
@@ -6700,6 +6848,7 @@ Partial Class Process_frmMain
         '
         'chkDesign_UserSigned_Face
         '
+        Me.chkDesign_UserSigned_Face.Enabled = False
         Me.chkDesign_UserSigned_Face.ForeColor = System.Drawing.SystemColors.GrayText
         Me.chkDesign_UserSigned_Face.Location = New System.Drawing.Point(369, 109)
         Me.chkDesign_UserSigned_Face.Name = "chkDesign_UserSigned_Face"
@@ -6712,6 +6861,7 @@ Partial Class Process_frmMain
         '
         Me.cmdDesign_UserSign_Face.AutoSize = True
         Me.cmdDesign_UserSign_Face.BackColor = System.Drawing.Color.Silver
+        Me.cmdDesign_UserSign_Face.Enabled = False
         Me.cmdDesign_UserSign_Face.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdDesign_UserSign_Face.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdDesign_UserSign_Face.Location = New System.Drawing.Point(390, 104)
@@ -6734,6 +6884,7 @@ Partial Class Process_frmMain
         'txtDesign_UserDate_Face
         '
         Me.txtDesign_UserDate_Face.BackColor = System.Drawing.Color.White
+        Me.txtDesign_UserDate_Face.Enabled = False
         Me.txtDesign_UserDate_Face.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDesign_UserDate_Face.ForeColor = System.Drawing.Color.Black
         Me.txtDesign_UserDate_Face.Location = New System.Drawing.Point(25, 105)
@@ -6744,6 +6895,7 @@ Partial Class Process_frmMain
         '
         'dtpDesign_UserDate_Face
         '
+        Me.dtpDesign_UserDate_Face.Enabled = False
         Me.dtpDesign_UserDate_Face.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.dtpDesign_UserDate_Face.Location = New System.Drawing.Point(104, 105)
         Me.dtpDesign_UserDate_Face.Name = "dtpDesign_UserDate_Face"
@@ -6762,6 +6914,30 @@ Partial Class Process_frmMain
         Me.grdDesign_EditedBy.RowHeadersVisible = False
         Me.grdDesign_EditedBy.Size = New System.Drawing.Size(823, 74)
         Me.grdDesign_EditedBy.TabIndex = 741
+        '
+        'DataGridViewTextBoxColumn35
+        '
+        DataGridViewCellStyle55.ForeColor = System.Drawing.Color.Gray
+        Me.DataGridViewTextBoxColumn35.DefaultCellStyle = DataGridViewCellStyle55
+        Me.DataGridViewTextBoxColumn35.HeaderText = "Date"
+        Me.DataGridViewTextBoxColumn35.Name = "DataGridViewTextBoxColumn35"
+        Me.DataGridViewTextBoxColumn35.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn46
+        '
+        DataGridViewCellStyle56.ForeColor = System.Drawing.Color.Gray
+        Me.DataGridViewTextBoxColumn46.DefaultCellStyle = DataGridViewCellStyle56
+        Me.DataGridViewTextBoxColumn46.HeaderText = "Name"
+        Me.DataGridViewTextBoxColumn46.Name = "DataGridViewTextBoxColumn46"
+        Me.DataGridViewTextBoxColumn46.ReadOnly = True
+        Me.DataGridViewTextBoxColumn46.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn46.Width = 200
+        '
+        'DataGridViewTextBoxColumn96
+        '
+        Me.DataGridViewTextBoxColumn96.HeaderText = "Comments"
+        Me.DataGridViewTextBoxColumn96.Name = "DataGridViewTextBoxColumn96"
+        Me.DataGridViewTextBoxColumn96.Width = 500
         '
         'grpDesign_SealDim
         '
@@ -6943,6 +7119,7 @@ Partial Class Process_frmMain
         '
         'chkManf_UserSigned
         '
+        Me.chkManf_UserSigned.Enabled = False
         Me.chkManf_UserSigned.ForeColor = System.Drawing.SystemColors.GrayText
         Me.chkManf_UserSigned.Location = New System.Drawing.Point(369, 109)
         Me.chkManf_UserSigned.Name = "chkManf_UserSigned"
@@ -6955,6 +7132,7 @@ Partial Class Process_frmMain
         '
         Me.cmdManf_UserSign.AutoSize = True
         Me.cmdManf_UserSign.BackColor = System.Drawing.Color.Silver
+        Me.cmdManf_UserSign.Enabled = False
         Me.cmdManf_UserSign.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdManf_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdManf_UserSign.Location = New System.Drawing.Point(390, 104)
@@ -6977,6 +7155,7 @@ Partial Class Process_frmMain
         'txtManf_UserDate_Face
         '
         Me.txtManf_UserDate_Face.BackColor = System.Drawing.Color.White
+        Me.txtManf_UserDate_Face.Enabled = False
         Me.txtManf_UserDate_Face.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtManf_UserDate_Face.ForeColor = System.Drawing.Color.Black
         Me.txtManf_UserDate_Face.Location = New System.Drawing.Point(25, 105)
@@ -6987,6 +7166,7 @@ Partial Class Process_frmMain
         '
         'dtpManf_UserDate
         '
+        Me.dtpManf_UserDate.Enabled = False
         Me.dtpManf_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.dtpManf_UserDate.Location = New System.Drawing.Point(104, 105)
         Me.dtpManf_UserDate.Name = "dtpManf_UserDate"
@@ -7005,6 +7185,30 @@ Partial Class Process_frmMain
         Me.grdManf_EditedBy.RowHeadersVisible = False
         Me.grdManf_EditedBy.Size = New System.Drawing.Size(823, 74)
         Me.grdManf_EditedBy.TabIndex = 741
+        '
+        'DataGridViewTextBoxColumn47
+        '
+        DataGridViewCellStyle63.ForeColor = System.Drawing.Color.Gray
+        Me.DataGridViewTextBoxColumn47.DefaultCellStyle = DataGridViewCellStyle63
+        Me.DataGridViewTextBoxColumn47.HeaderText = "Date"
+        Me.DataGridViewTextBoxColumn47.Name = "DataGridViewTextBoxColumn47"
+        Me.DataGridViewTextBoxColumn47.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn48
+        '
+        DataGridViewCellStyle64.ForeColor = System.Drawing.Color.Gray
+        Me.DataGridViewTextBoxColumn48.DefaultCellStyle = DataGridViewCellStyle64
+        Me.DataGridViewTextBoxColumn48.HeaderText = "Name"
+        Me.DataGridViewTextBoxColumn48.Name = "DataGridViewTextBoxColumn48"
+        Me.DataGridViewTextBoxColumn48.ReadOnly = True
+        Me.DataGridViewTextBoxColumn48.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn48.Width = 200
+        '
+        'DataGridViewTextBoxColumn63
+        '
+        Me.DataGridViewTextBoxColumn63.HeaderText = "Comments"
+        Me.DataGridViewTextBoxColumn63.Name = "DataGridViewTextBoxColumn63"
+        Me.DataGridViewTextBoxColumn63.Width = 500
         '
         'Label117
         '
@@ -7351,6 +7555,7 @@ Partial Class Process_frmMain
         '
         'chkPurchase_UserSigned
         '
+        Me.chkPurchase_UserSigned.Enabled = False
         Me.chkPurchase_UserSigned.ForeColor = System.Drawing.SystemColors.GrayText
         Me.chkPurchase_UserSigned.Location = New System.Drawing.Point(369, 109)
         Me.chkPurchase_UserSigned.Name = "chkPurchase_UserSigned"
@@ -7363,6 +7568,7 @@ Partial Class Process_frmMain
         '
         Me.cmdPurchase_UserSign.AutoSize = True
         Me.cmdPurchase_UserSign.BackColor = System.Drawing.Color.Silver
+        Me.cmdPurchase_UserSign.Enabled = False
         Me.cmdPurchase_UserSign.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdPurchase_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdPurchase_UserSign.Location = New System.Drawing.Point(390, 104)
@@ -7385,6 +7591,7 @@ Partial Class Process_frmMain
         'txtPurchase_UserDate
         '
         Me.txtPurchase_UserDate.BackColor = System.Drawing.Color.White
+        Me.txtPurchase_UserDate.Enabled = False
         Me.txtPurchase_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPurchase_UserDate.ForeColor = System.Drawing.Color.Black
         Me.txtPurchase_UserDate.Location = New System.Drawing.Point(25, 105)
@@ -7395,6 +7602,7 @@ Partial Class Process_frmMain
         '
         'dtpPurchase_UserDate
         '
+        Me.dtpPurchase_UserDate.Enabled = False
         Me.dtpPurchase_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.dtpPurchase_UserDate.Location = New System.Drawing.Point(104, 105)
         Me.dtpPurchase_UserDate.Name = "dtpPurchase_UserDate"
@@ -7413,6 +7621,24 @@ Partial Class Process_frmMain
         Me.grdPurchase_EditedBy.RowHeadersVisible = False
         Me.grdPurchase_EditedBy.Size = New System.Drawing.Size(823, 74)
         Me.grdPurchase_EditedBy.TabIndex = 741
+        '
+        'DataGridViewTextBoxColumn49
+        '
+        Me.DataGridViewTextBoxColumn49.HeaderText = "Date"
+        Me.DataGridViewTextBoxColumn49.Name = "DataGridViewTextBoxColumn49"
+        '
+        'DataGridViewTextBoxColumn50
+        '
+        Me.DataGridViewTextBoxColumn50.HeaderText = "Name"
+        Me.DataGridViewTextBoxColumn50.Name = "DataGridViewTextBoxColumn50"
+        Me.DataGridViewTextBoxColumn50.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn50.Width = 200
+        '
+        'DataGridViewTextBoxColumn66
+        '
+        Me.DataGridViewTextBoxColumn66.HeaderText = "Comments"
+        Me.DataGridViewTextBoxColumn66.Name = "DataGridViewTextBoxColumn66"
+        Me.DataGridViewTextBoxColumn66.Width = 500
         '
         'grdPurchase_Mat
         '
@@ -7433,6 +7659,42 @@ Partial Class Process_frmMain
         Me.grdPurchase_Mat.RowHeadersWidth = 20
         Me.grdPurchase_Mat.Size = New System.Drawing.Size(599, 104)
         Me.grdPurchase_Mat.TabIndex = 878
+        '
+        'DataGridViewTextBoxColumn64
+        '
+        Me.DataGridViewTextBoxColumn64.HeaderText = "Item"
+        Me.DataGridViewTextBoxColumn64.Name = "DataGridViewTextBoxColumn64"
+        Me.DataGridViewTextBoxColumn64.Width = 200
+        '
+        'Column5
+        '
+        DataGridViewCellStyle74.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column5.DefaultCellStyle = DataGridViewCellStyle74
+        Me.Column5.HeaderText = "Est. Qty"
+        Me.Column5.Name = "Column5"
+        '
+        'Column34
+        '
+        Me.Column34.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
+        Me.Column34.HeaderText = "Unit"
+        Me.Column34.Name = "Column34"
+        Me.Column34.Width = 80
+        '
+        'DataGridViewComboBoxColumn3
+        '
+        Me.DataGridViewComboBoxColumn3.HeaderText = "Status"
+        Me.DataGridViewComboBoxColumn3.Items.AddRange(New Object() {"Inventory", "Make", "Buy"})
+        Me.DataGridViewComboBoxColumn3.Name = "DataGridViewComboBoxColumn3"
+        Me.DataGridViewComboBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewComboBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
+        'DataGridViewTextBoxColumn65
+        '
+        DataGridViewCellStyle75.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn65.DefaultCellStyle = DataGridViewCellStyle75
+        Me.DataGridViewTextBoxColumn65.HeaderText = "Lead Time (wks)"
+        Me.DataGridViewTextBoxColumn65.Name = "DataGridViewTextBoxColumn65"
+        Me.DataGridViewTextBoxColumn65.Width = 90
         '
         'tabQuality
         '
@@ -7560,6 +7822,7 @@ Partial Class Process_frmMain
         '
         'chkQuality_UserSigned
         '
+        Me.chkQuality_UserSigned.Enabled = False
         Me.chkQuality_UserSigned.ForeColor = System.Drawing.SystemColors.GrayText
         Me.chkQuality_UserSigned.Location = New System.Drawing.Point(369, 109)
         Me.chkQuality_UserSigned.Name = "chkQuality_UserSigned"
@@ -7572,6 +7835,7 @@ Partial Class Process_frmMain
         '
         Me.cmdQuality_UserSign.AutoSize = True
         Me.cmdQuality_UserSign.BackColor = System.Drawing.Color.Silver
+        Me.cmdQuality_UserSign.Enabled = False
         Me.cmdQuality_UserSign.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdQuality_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdQuality_UserSign.Location = New System.Drawing.Point(390, 104)
@@ -7594,6 +7858,7 @@ Partial Class Process_frmMain
         'txtQuality_UserDate
         '
         Me.txtQuality_UserDate.BackColor = System.Drawing.Color.White
+        Me.txtQuality_UserDate.Enabled = False
         Me.txtQuality_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtQuality_UserDate.ForeColor = System.Drawing.Color.Black
         Me.txtQuality_UserDate.Location = New System.Drawing.Point(25, 105)
@@ -7604,6 +7869,7 @@ Partial Class Process_frmMain
         '
         'dtpQuality_UserDate
         '
+        Me.dtpQuality_UserDate.Enabled = False
         Me.dtpQuality_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.dtpQuality_UserDate.Location = New System.Drawing.Point(104, 105)
         Me.dtpQuality_UserDate.Name = "dtpQuality_UserDate"
@@ -7622,6 +7888,30 @@ Partial Class Process_frmMain
         Me.grdQuality_EditedBy.RowHeadersVisible = False
         Me.grdQuality_EditedBy.Size = New System.Drawing.Size(823, 74)
         Me.grdQuality_EditedBy.TabIndex = 741
+        '
+        'DataGridViewTextBoxColumn38
+        '
+        DataGridViewCellStyle83.ForeColor = System.Drawing.Color.Gray
+        Me.DataGridViewTextBoxColumn38.DefaultCellStyle = DataGridViewCellStyle83
+        Me.DataGridViewTextBoxColumn38.HeaderText = "Date"
+        Me.DataGridViewTextBoxColumn38.Name = "DataGridViewTextBoxColumn38"
+        Me.DataGridViewTextBoxColumn38.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn39
+        '
+        DataGridViewCellStyle84.ForeColor = System.Drawing.Color.Gray
+        Me.DataGridViewTextBoxColumn39.DefaultCellStyle = DataGridViewCellStyle84
+        Me.DataGridViewTextBoxColumn39.HeaderText = "Name"
+        Me.DataGridViewTextBoxColumn39.Name = "DataGridViewTextBoxColumn39"
+        Me.DataGridViewTextBoxColumn39.ReadOnly = True
+        Me.DataGridViewTextBoxColumn39.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn39.Width = 200
+        '
+        'DataGridViewTextBoxColumn59
+        '
+        Me.DataGridViewTextBoxColumn59.HeaderText = "Comments"
+        Me.DataGridViewTextBoxColumn59.Name = "DataGridViewTextBoxColumn59"
+        Me.DataGridViewTextBoxColumn59.Width = 500
         '
         'cmbQuality_CustAcceptStd
         '
@@ -7869,6 +8159,7 @@ Partial Class Process_frmMain
         '
         'chkDwg_UserSigned
         '
+        Me.chkDwg_UserSigned.Enabled = False
         Me.chkDwg_UserSigned.ForeColor = System.Drawing.SystemColors.GrayText
         Me.chkDwg_UserSigned.Location = New System.Drawing.Point(369, 109)
         Me.chkDwg_UserSigned.Name = "chkDwg_UserSigned"
@@ -7881,6 +8172,7 @@ Partial Class Process_frmMain
         '
         Me.cmdDwg_UserSign.AutoSize = True
         Me.cmdDwg_UserSign.BackColor = System.Drawing.Color.Silver
+        Me.cmdDwg_UserSign.Enabled = False
         Me.cmdDwg_UserSign.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdDwg_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdDwg_UserSign.Location = New System.Drawing.Point(390, 104)
@@ -7903,6 +8195,7 @@ Partial Class Process_frmMain
         'txtDwg_UserDate
         '
         Me.txtDwg_UserDate.BackColor = System.Drawing.Color.White
+        Me.txtDwg_UserDate.Enabled = False
         Me.txtDwg_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDwg_UserDate.ForeColor = System.Drawing.Color.Black
         Me.txtDwg_UserDate.Location = New System.Drawing.Point(25, 105)
@@ -7913,6 +8206,7 @@ Partial Class Process_frmMain
         '
         'dtpDwg_UserDate
         '
+        Me.dtpDwg_UserDate.Enabled = False
         Me.dtpDwg_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.dtpDwg_UserDate.Location = New System.Drawing.Point(104, 105)
         Me.dtpDwg_UserDate.Name = "dtpDwg_UserDate"
@@ -7931,6 +8225,30 @@ Partial Class Process_frmMain
         Me.grdDwg_EditedBy.RowHeadersVisible = False
         Me.grdDwg_EditedBy.Size = New System.Drawing.Size(823, 74)
         Me.grdDwg_EditedBy.TabIndex = 741
+        '
+        'DataGridViewTextBoxColumn51
+        '
+        DataGridViewCellStyle86.ForeColor = System.Drawing.Color.Gray
+        Me.DataGridViewTextBoxColumn51.DefaultCellStyle = DataGridViewCellStyle86
+        Me.DataGridViewTextBoxColumn51.HeaderText = "Date"
+        Me.DataGridViewTextBoxColumn51.Name = "DataGridViewTextBoxColumn51"
+        Me.DataGridViewTextBoxColumn51.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn52
+        '
+        DataGridViewCellStyle87.ForeColor = System.Drawing.Color.Gray
+        Me.DataGridViewTextBoxColumn52.DefaultCellStyle = DataGridViewCellStyle87
+        Me.DataGridViewTextBoxColumn52.HeaderText = "Name"
+        Me.DataGridViewTextBoxColumn52.Name = "DataGridViewTextBoxColumn52"
+        Me.DataGridViewTextBoxColumn52.ReadOnly = True
+        Me.DataGridViewTextBoxColumn52.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn52.Width = 200
+        '
+        'DataGridViewTextBoxColumn67
+        '
+        Me.DataGridViewTextBoxColumn67.HeaderText = "Comments"
+        Me.DataGridViewTextBoxColumn67.Name = "DataGridViewTextBoxColumn67"
+        Me.DataGridViewTextBoxColumn67.Width = 500
         '
         'Label150
         '
@@ -8123,6 +8441,7 @@ Partial Class Process_frmMain
         '
         'chkTest_UserSigned
         '
+        Me.chkTest_UserSigned.Enabled = False
         Me.chkTest_UserSigned.ForeColor = System.Drawing.SystemColors.GrayText
         Me.chkTest_UserSigned.Location = New System.Drawing.Point(369, 109)
         Me.chkTest_UserSigned.Name = "chkTest_UserSigned"
@@ -8135,6 +8454,7 @@ Partial Class Process_frmMain
         '
         Me.cmdTest_UserSign.AutoSize = True
         Me.cmdTest_UserSign.BackColor = System.Drawing.Color.Silver
+        Me.cmdTest_UserSign.Enabled = False
         Me.cmdTest_UserSign.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdTest_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdTest_UserSign.Location = New System.Drawing.Point(390, 104)
@@ -8157,6 +8477,7 @@ Partial Class Process_frmMain
         'txtTest_UserDate
         '
         Me.txtTest_UserDate.BackColor = System.Drawing.Color.White
+        Me.txtTest_UserDate.Enabled = False
         Me.txtTest_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTest_UserDate.ForeColor = System.Drawing.Color.Black
         Me.txtTest_UserDate.Location = New System.Drawing.Point(25, 105)
@@ -8167,6 +8488,7 @@ Partial Class Process_frmMain
         '
         'dtpTest_UserDate
         '
+        Me.dtpTest_UserDate.Enabled = False
         Me.dtpTest_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.dtpTest_UserDate.Location = New System.Drawing.Point(104, 105)
         Me.dtpTest_UserDate.Name = "dtpTest_UserDate"
@@ -8185,6 +8507,30 @@ Partial Class Process_frmMain
         Me.grdTest_EditedBy.RowHeadersVisible = False
         Me.grdTest_EditedBy.Size = New System.Drawing.Size(823, 74)
         Me.grdTest_EditedBy.TabIndex = 741
+        '
+        'DataGridViewTextBoxColumn40
+        '
+        DataGridViewCellStyle92.ForeColor = System.Drawing.Color.Gray
+        Me.DataGridViewTextBoxColumn40.DefaultCellStyle = DataGridViewCellStyle92
+        Me.DataGridViewTextBoxColumn40.HeaderText = "Date"
+        Me.DataGridViewTextBoxColumn40.Name = "DataGridViewTextBoxColumn40"
+        Me.DataGridViewTextBoxColumn40.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn41
+        '
+        DataGridViewCellStyle93.ForeColor = System.Drawing.Color.Gray
+        Me.DataGridViewTextBoxColumn41.DefaultCellStyle = DataGridViewCellStyle93
+        Me.DataGridViewTextBoxColumn41.HeaderText = "Name"
+        Me.DataGridViewTextBoxColumn41.Name = "DataGridViewTextBoxColumn41"
+        Me.DataGridViewTextBoxColumn41.ReadOnly = True
+        Me.DataGridViewTextBoxColumn41.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn41.Width = 200
+        '
+        'DataGridViewTextBoxColumn97
+        '
+        Me.DataGridViewTextBoxColumn97.HeaderText = "Comments"
+        Me.DataGridViewTextBoxColumn97.Name = "DataGridViewTextBoxColumn97"
+        Me.DataGridViewTextBoxColumn97.Width = 500
         '
         'txtTest_Other
         '
@@ -9370,6 +9716,7 @@ Partial Class Process_frmMain
         '
         'chkShipping_UserSigned
         '
+        Me.chkShipping_UserSigned.Enabled = False
         Me.chkShipping_UserSigned.ForeColor = System.Drawing.SystemColors.GrayText
         Me.chkShipping_UserSigned.Location = New System.Drawing.Point(369, 109)
         Me.chkShipping_UserSigned.Name = "chkShipping_UserSigned"
@@ -9382,6 +9729,7 @@ Partial Class Process_frmMain
         '
         Me.cmdShipping_UserSign_Face.AutoSize = True
         Me.cmdShipping_UserSign_Face.BackColor = System.Drawing.Color.Silver
+        Me.cmdShipping_UserSign_Face.Enabled = False
         Me.cmdShipping_UserSign_Face.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdShipping_UserSign_Face.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdShipping_UserSign_Face.Location = New System.Drawing.Point(390, 104)
@@ -9404,6 +9752,7 @@ Partial Class Process_frmMain
         'txtShipping_UserDate
         '
         Me.txtShipping_UserDate.BackColor = System.Drawing.Color.White
+        Me.txtShipping_UserDate.Enabled = False
         Me.txtShipping_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtShipping_UserDate.ForeColor = System.Drawing.Color.Black
         Me.txtShipping_UserDate.Location = New System.Drawing.Point(25, 105)
@@ -9414,6 +9763,7 @@ Partial Class Process_frmMain
         '
         'dtpShipping_UserDate
         '
+        Me.dtpShipping_UserDate.Enabled = False
         Me.dtpShipping_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.dtpShipping_UserDate.Location = New System.Drawing.Point(104, 105)
         Me.dtpShipping_UserDate.Name = "dtpShipping_UserDate"
@@ -9432,6 +9782,30 @@ Partial Class Process_frmMain
         Me.grdShipping_EditedBy.RowHeadersVisible = False
         Me.grdShipping_EditedBy.Size = New System.Drawing.Size(823, 74)
         Me.grdShipping_EditedBy.TabIndex = 741
+        '
+        'DataGridViewTextBoxColumn55
+        '
+        DataGridViewCellStyle102.ForeColor = System.Drawing.Color.Gray
+        Me.DataGridViewTextBoxColumn55.DefaultCellStyle = DataGridViewCellStyle102
+        Me.DataGridViewTextBoxColumn55.HeaderText = "Date"
+        Me.DataGridViewTextBoxColumn55.Name = "DataGridViewTextBoxColumn55"
+        Me.DataGridViewTextBoxColumn55.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn56
+        '
+        DataGridViewCellStyle103.ForeColor = System.Drawing.Color.Gray
+        Me.DataGridViewTextBoxColumn56.DefaultCellStyle = DataGridViewCellStyle103
+        Me.DataGridViewTextBoxColumn56.HeaderText = "Name"
+        Me.DataGridViewTextBoxColumn56.Name = "DataGridViewTextBoxColumn56"
+        Me.DataGridViewTextBoxColumn56.ReadOnly = True
+        Me.DataGridViewTextBoxColumn56.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn56.Width = 200
+        '
+        'DataGridViewTextBoxColumn57
+        '
+        Me.DataGridViewTextBoxColumn57.HeaderText = "Comments"
+        Me.DataGridViewTextBoxColumn57.Name = "DataGridViewTextBoxColumn57"
+        Me.DataGridViewTextBoxColumn57.Width = 500
         '
         'tabKeyChar
         '
@@ -9711,348 +10085,6 @@ Partial Class Process_frmMain
         'openFileDialog1
         '
         Me.openFileDialog1.FileName = "OpenFileDialog1"
-        '
-        'DataGridViewTextBoxColumn28
-        '
-        DataGridViewCellStyle19.ForeColor = System.Drawing.Color.Gray
-        Me.DataGridViewTextBoxColumn28.DefaultCellStyle = DataGridViewCellStyle19
-        Me.DataGridViewTextBoxColumn28.HeaderText = "Date"
-        Me.DataGridViewTextBoxColumn28.Name = "DataGridViewTextBoxColumn28"
-        Me.DataGridViewTextBoxColumn28.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn29
-        '
-        DataGridViewCellStyle20.ForeColor = System.Drawing.Color.Gray
-        Me.DataGridViewTextBoxColumn29.DefaultCellStyle = DataGridViewCellStyle20
-        Me.DataGridViewTextBoxColumn29.HeaderText = "Name"
-        Me.DataGridViewTextBoxColumn29.Name = "DataGridViewTextBoxColumn29"
-        Me.DataGridViewTextBoxColumn29.ReadOnly = True
-        Me.DataGridViewTextBoxColumn29.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn29.Width = 200
-        '
-        'DataGridViewTextBoxColumn73
-        '
-        Me.DataGridViewTextBoxColumn73.HeaderText = "Comments"
-        Me.DataGridViewTextBoxColumn73.Name = "DataGridViewTextBoxColumn73"
-        Me.DataGridViewTextBoxColumn73.Width = 500
-        '
-        'DataGridViewTextBoxColumn26
-        '
-        DataGridViewCellStyle16.ForeColor = System.Drawing.Color.Gray
-        Me.DataGridViewTextBoxColumn26.DefaultCellStyle = DataGridViewCellStyle16
-        Me.DataGridViewTextBoxColumn26.HeaderText = "Date"
-        Me.DataGridViewTextBoxColumn26.Name = "DataGridViewTextBoxColumn26"
-        Me.DataGridViewTextBoxColumn26.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn27
-        '
-        DataGridViewCellStyle17.ForeColor = System.Drawing.Color.Gray
-        Me.DataGridViewTextBoxColumn27.DefaultCellStyle = DataGridViewCellStyle17
-        Me.DataGridViewTextBoxColumn27.HeaderText = "Name"
-        Me.DataGridViewTextBoxColumn27.Name = "DataGridViewTextBoxColumn27"
-        Me.DataGridViewTextBoxColumn27.ReadOnly = True
-        Me.DataGridViewTextBoxColumn27.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn27.Width = 200
-        '
-        'DataGridViewTextBoxColumn58
-        '
-        Me.DataGridViewTextBoxColumn58.HeaderText = "Comments"
-        Me.DataGridViewTextBoxColumn58.Name = "DataGridViewTextBoxColumn58"
-        Me.DataGridViewTextBoxColumn58.Width = 500
-        '
-        'DataGridViewTextBoxColumn36
-        '
-        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.Gray
-        Me.DataGridViewTextBoxColumn36.DefaultCellStyle = DataGridViewCellStyle12
-        Me.DataGridViewTextBoxColumn36.HeaderText = "Date"
-        Me.DataGridViewTextBoxColumn36.Name = "DataGridViewTextBoxColumn36"
-        Me.DataGridViewTextBoxColumn36.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn37
-        '
-        DataGridViewCellStyle13.ForeColor = System.Drawing.Color.Gray
-        Me.DataGridViewTextBoxColumn37.DefaultCellStyle = DataGridViewCellStyle13
-        Me.DataGridViewTextBoxColumn37.HeaderText = "Name"
-        Me.DataGridViewTextBoxColumn37.Name = "DataGridViewTextBoxColumn37"
-        Me.DataGridViewTextBoxColumn37.ReadOnly = True
-        Me.DataGridViewTextBoxColumn37.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn37.Width = 200
-        '
-        'DataGridViewTextBoxColumn95
-        '
-        Me.DataGridViewTextBoxColumn95.HeaderText = "Comments"
-        Me.DataGridViewTextBoxColumn95.Name = "DataGridViewTextBoxColumn95"
-        Me.DataGridViewTextBoxColumn95.Width = 500
-        '
-        'DataGridViewTextBoxColumn24
-        '
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Gray
-        Me.DataGridViewTextBoxColumn24.DefaultCellStyle = DataGridViewCellStyle4
-        Me.DataGridViewTextBoxColumn24.HeaderText = "Date"
-        Me.DataGridViewTextBoxColumn24.Name = "DataGridViewTextBoxColumn24"
-        Me.DataGridViewTextBoxColumn24.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn25
-        '
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Gray
-        Me.DataGridViewTextBoxColumn25.DefaultCellStyle = DataGridViewCellStyle5
-        Me.DataGridViewTextBoxColumn25.HeaderText = "Name"
-        Me.DataGridViewTextBoxColumn25.Name = "DataGridViewTextBoxColumn25"
-        Me.DataGridViewTextBoxColumn25.ReadOnly = True
-        Me.DataGridViewTextBoxColumn25.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn25.Width = 200
-        '
-        'DataGridViewTextBoxColumn53
-        '
-        Me.DataGridViewTextBoxColumn53.HeaderText = "Comments"
-        Me.DataGridViewTextBoxColumn53.Name = "DataGridViewTextBoxColumn53"
-        Me.DataGridViewTextBoxColumn53.Width = 500
-        '
-        'DataGridViewTextBoxColumn35
-        '
-        DataGridViewCellStyle55.ForeColor = System.Drawing.Color.Gray
-        Me.DataGridViewTextBoxColumn35.DefaultCellStyle = DataGridViewCellStyle55
-        Me.DataGridViewTextBoxColumn35.HeaderText = "Date"
-        Me.DataGridViewTextBoxColumn35.Name = "DataGridViewTextBoxColumn35"
-        Me.DataGridViewTextBoxColumn35.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn46
-        '
-        DataGridViewCellStyle56.ForeColor = System.Drawing.Color.Gray
-        Me.DataGridViewTextBoxColumn46.DefaultCellStyle = DataGridViewCellStyle56
-        Me.DataGridViewTextBoxColumn46.HeaderText = "Name"
-        Me.DataGridViewTextBoxColumn46.Name = "DataGridViewTextBoxColumn46"
-        Me.DataGridViewTextBoxColumn46.ReadOnly = True
-        Me.DataGridViewTextBoxColumn46.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn46.Width = 200
-        '
-        'DataGridViewTextBoxColumn96
-        '
-        Me.DataGridViewTextBoxColumn96.HeaderText = "Comments"
-        Me.DataGridViewTextBoxColumn96.Name = "DataGridViewTextBoxColumn96"
-        Me.DataGridViewTextBoxColumn96.Width = 500
-        '
-        'DataGridViewTextBoxColumn47
-        '
-        DataGridViewCellStyle63.ForeColor = System.Drawing.Color.Gray
-        Me.DataGridViewTextBoxColumn47.DefaultCellStyle = DataGridViewCellStyle63
-        Me.DataGridViewTextBoxColumn47.HeaderText = "Date"
-        Me.DataGridViewTextBoxColumn47.Name = "DataGridViewTextBoxColumn47"
-        Me.DataGridViewTextBoxColumn47.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn48
-        '
-        DataGridViewCellStyle64.ForeColor = System.Drawing.Color.Gray
-        Me.DataGridViewTextBoxColumn48.DefaultCellStyle = DataGridViewCellStyle64
-        Me.DataGridViewTextBoxColumn48.HeaderText = "Name"
-        Me.DataGridViewTextBoxColumn48.Name = "DataGridViewTextBoxColumn48"
-        Me.DataGridViewTextBoxColumn48.ReadOnly = True
-        Me.DataGridViewTextBoxColumn48.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn48.Width = 200
-        '
-        'DataGridViewTextBoxColumn63
-        '
-        Me.DataGridViewTextBoxColumn63.HeaderText = "Comments"
-        Me.DataGridViewTextBoxColumn63.Name = "DataGridViewTextBoxColumn63"
-        Me.DataGridViewTextBoxColumn63.Width = 500
-        '
-        'DataGridViewTextBoxColumn66
-        '
-        Me.DataGridViewTextBoxColumn66.HeaderText = "Comments"
-        Me.DataGridViewTextBoxColumn66.Name = "DataGridViewTextBoxColumn66"
-        Me.DataGridViewTextBoxColumn66.Width = 500
-        '
-        'DataGridViewTextBoxColumn50
-        '
-        Me.DataGridViewTextBoxColumn50.HeaderText = "Name"
-        Me.DataGridViewTextBoxColumn50.Name = "DataGridViewTextBoxColumn50"
-        Me.DataGridViewTextBoxColumn50.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn50.Width = 200
-        '
-        'DataGridViewTextBoxColumn49
-        '
-        Me.DataGridViewTextBoxColumn49.HeaderText = "Date"
-        Me.DataGridViewTextBoxColumn49.Name = "DataGridViewTextBoxColumn49"
-        '
-        'DataGridViewTextBoxColumn38
-        '
-        DataGridViewCellStyle83.ForeColor = System.Drawing.Color.Gray
-        Me.DataGridViewTextBoxColumn38.DefaultCellStyle = DataGridViewCellStyle83
-        Me.DataGridViewTextBoxColumn38.HeaderText = "Date"
-        Me.DataGridViewTextBoxColumn38.Name = "DataGridViewTextBoxColumn38"
-        Me.DataGridViewTextBoxColumn38.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn39
-        '
-        DataGridViewCellStyle84.ForeColor = System.Drawing.Color.Gray
-        Me.DataGridViewTextBoxColumn39.DefaultCellStyle = DataGridViewCellStyle84
-        Me.DataGridViewTextBoxColumn39.HeaderText = "Name"
-        Me.DataGridViewTextBoxColumn39.Name = "DataGridViewTextBoxColumn39"
-        Me.DataGridViewTextBoxColumn39.ReadOnly = True
-        Me.DataGridViewTextBoxColumn39.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn39.Width = 200
-        '
-        'DataGridViewTextBoxColumn59
-        '
-        Me.DataGridViewTextBoxColumn59.HeaderText = "Comments"
-        Me.DataGridViewTextBoxColumn59.Name = "DataGridViewTextBoxColumn59"
-        Me.DataGridViewTextBoxColumn59.Width = 500
-        '
-        'DataGridViewTextBoxColumn51
-        '
-        DataGridViewCellStyle86.ForeColor = System.Drawing.Color.Gray
-        Me.DataGridViewTextBoxColumn51.DefaultCellStyle = DataGridViewCellStyle86
-        Me.DataGridViewTextBoxColumn51.HeaderText = "Date"
-        Me.DataGridViewTextBoxColumn51.Name = "DataGridViewTextBoxColumn51"
-        Me.DataGridViewTextBoxColumn51.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn52
-        '
-        DataGridViewCellStyle87.ForeColor = System.Drawing.Color.Gray
-        Me.DataGridViewTextBoxColumn52.DefaultCellStyle = DataGridViewCellStyle87
-        Me.DataGridViewTextBoxColumn52.HeaderText = "Name"
-        Me.DataGridViewTextBoxColumn52.Name = "DataGridViewTextBoxColumn52"
-        Me.DataGridViewTextBoxColumn52.ReadOnly = True
-        Me.DataGridViewTextBoxColumn52.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn52.Width = 200
-        '
-        'DataGridViewTextBoxColumn67
-        '
-        Me.DataGridViewTextBoxColumn67.HeaderText = "Comments"
-        Me.DataGridViewTextBoxColumn67.Name = "DataGridViewTextBoxColumn67"
-        Me.DataGridViewTextBoxColumn67.Width = 500
-        '
-        'DataGridViewTextBoxColumn40
-        '
-        DataGridViewCellStyle92.ForeColor = System.Drawing.Color.Gray
-        Me.DataGridViewTextBoxColumn40.DefaultCellStyle = DataGridViewCellStyle92
-        Me.DataGridViewTextBoxColumn40.HeaderText = "Date"
-        Me.DataGridViewTextBoxColumn40.Name = "DataGridViewTextBoxColumn40"
-        Me.DataGridViewTextBoxColumn40.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn41
-        '
-        DataGridViewCellStyle93.ForeColor = System.Drawing.Color.Gray
-        Me.DataGridViewTextBoxColumn41.DefaultCellStyle = DataGridViewCellStyle93
-        Me.DataGridViewTextBoxColumn41.HeaderText = "Name"
-        Me.DataGridViewTextBoxColumn41.Name = "DataGridViewTextBoxColumn41"
-        Me.DataGridViewTextBoxColumn41.ReadOnly = True
-        Me.DataGridViewTextBoxColumn41.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn41.Width = 200
-        '
-        'DataGridViewTextBoxColumn97
-        '
-        Me.DataGridViewTextBoxColumn97.HeaderText = "Comments"
-        Me.DataGridViewTextBoxColumn97.Name = "DataGridViewTextBoxColumn97"
-        Me.DataGridViewTextBoxColumn97.Width = 500
-        '
-        'DataGridViewTextBoxColumn55
-        '
-        DataGridViewCellStyle102.ForeColor = System.Drawing.Color.Gray
-        Me.DataGridViewTextBoxColumn55.DefaultCellStyle = DataGridViewCellStyle102
-        Me.DataGridViewTextBoxColumn55.HeaderText = "Date"
-        Me.DataGridViewTextBoxColumn55.Name = "DataGridViewTextBoxColumn55"
-        Me.DataGridViewTextBoxColumn55.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn56
-        '
-        DataGridViewCellStyle103.ForeColor = System.Drawing.Color.Gray
-        Me.DataGridViewTextBoxColumn56.DefaultCellStyle = DataGridViewCellStyle103
-        Me.DataGridViewTextBoxColumn56.HeaderText = "Name"
-        Me.DataGridViewTextBoxColumn56.Name = "DataGridViewTextBoxColumn56"
-        Me.DataGridViewTextBoxColumn56.ReadOnly = True
-        Me.DataGridViewTextBoxColumn56.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn56.Width = 200
-        '
-        'DataGridViewTextBoxColumn57
-        '
-        Me.DataGridViewTextBoxColumn57.HeaderText = "Comments"
-        Me.DataGridViewTextBoxColumn57.Name = "DataGridViewTextBoxColumn57"
-        Me.DataGridViewTextBoxColumn57.Width = 500
-        '
-        'DataGridViewTextBoxColumn86
-        '
-        DataGridViewCellStyle49.ForeColor = System.Drawing.Color.Gray
-        Me.DataGridViewTextBoxColumn86.DefaultCellStyle = DataGridViewCellStyle49
-        Me.DataGridViewTextBoxColumn86.HeaderText = "Date"
-        Me.DataGridViewTextBoxColumn86.Name = "DataGridViewTextBoxColumn86"
-        Me.DataGridViewTextBoxColumn86.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn87
-        '
-        DataGridViewCellStyle50.ForeColor = System.Drawing.Color.Gray
-        Me.DataGridViewTextBoxColumn87.DefaultCellStyle = DataGridViewCellStyle50
-        Me.DataGridViewTextBoxColumn87.HeaderText = "Name"
-        Me.DataGridViewTextBoxColumn87.Name = "DataGridViewTextBoxColumn87"
-        Me.DataGridViewTextBoxColumn87.ReadOnly = True
-        Me.DataGridViewTextBoxColumn87.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn87.Width = 200
-        '
-        'DataGridViewTextBoxColumn88
-        '
-        Me.DataGridViewTextBoxColumn88.HeaderText = "Comments"
-        Me.DataGridViewTextBoxColumn88.Name = "DataGridViewTextBoxColumn88"
-        Me.DataGridViewTextBoxColumn88.Width = 500
-        '
-        'DataGridViewTextBoxColumn44
-        '
-        DataGridViewCellStyle36.ForeColor = System.Drawing.Color.Gray
-        Me.DataGridViewTextBoxColumn44.DefaultCellStyle = DataGridViewCellStyle36
-        Me.DataGridViewTextBoxColumn44.HeaderText = "Date"
-        Me.DataGridViewTextBoxColumn44.Name = "DataGridViewTextBoxColumn44"
-        Me.DataGridViewTextBoxColumn44.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn45
-        '
-        DataGridViewCellStyle37.ForeColor = System.Drawing.Color.Gray
-        Me.DataGridViewTextBoxColumn45.DefaultCellStyle = DataGridViewCellStyle37
-        Me.DataGridViewTextBoxColumn45.HeaderText = "Name"
-        Me.DataGridViewTextBoxColumn45.Name = "DataGridViewTextBoxColumn45"
-        Me.DataGridViewTextBoxColumn45.ReadOnly = True
-        Me.DataGridViewTextBoxColumn45.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn45.Width = 200
-        '
-        'DataGridViewTextBoxColumn85
-        '
-        Me.DataGridViewTextBoxColumn85.HeaderText = "Comments"
-        Me.DataGridViewTextBoxColumn85.Name = "DataGridViewTextBoxColumn85"
-        Me.DataGridViewTextBoxColumn85.Width = 500
-        '
-        'DataGridViewTextBoxColumn64
-        '
-        Me.DataGridViewTextBoxColumn64.HeaderText = "Item"
-        Me.DataGridViewTextBoxColumn64.Name = "DataGridViewTextBoxColumn64"
-        Me.DataGridViewTextBoxColumn64.Width = 200
-        '
-        'Column5
-        '
-        DataGridViewCellStyle74.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column5.DefaultCellStyle = DataGridViewCellStyle74
-        Me.Column5.HeaderText = "Est. Qty"
-        Me.Column5.Name = "Column5"
-        '
-        'Column34
-        '
-        Me.Column34.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
-        Me.Column34.HeaderText = "Unit"
-        Me.Column34.Name = "Column34"
-        Me.Column34.Width = 80
-        '
-        'DataGridViewComboBoxColumn3
-        '
-        Me.DataGridViewComboBoxColumn3.HeaderText = "Status"
-        Me.DataGridViewComboBoxColumn3.Items.AddRange(New Object() {"Inventory", "Make", "Buy"})
-        Me.DataGridViewComboBoxColumn3.Name = "DataGridViewComboBoxColumn3"
-        Me.DataGridViewComboBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewComboBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        '
-        'DataGridViewTextBoxColumn65
-        '
-        DataGridViewCellStyle75.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.DataGridViewTextBoxColumn65.DefaultCellStyle = DataGridViewCellStyle75
-        Me.DataGridViewTextBoxColumn65.HeaderText = "Lead Time (wks)"
-        Me.DataGridViewTextBoxColumn65.Name = "DataGridViewTextBoxColumn65"
-        Me.DataGridViewTextBoxColumn65.Width = 90
         '
         'Process_frmMain
         '

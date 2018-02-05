@@ -478,6 +478,14 @@ Public Class Process_frmMain
             .Items.Add("Drawing")
         End With
 
+        '....Purchasing
+        Dim pCmbColPurchase_Unit As New DataGridViewComboBoxColumn
+        pCmbColPurchase_Unit = grdPurchase_Mat.Columns.Item(2)
+        With pCmbColPurchase_Unit
+            .Items.Add("lb")
+            .Items.Add("feet")
+        End With
+
         '........Coating
         If (pSealType = "E") Then
             grpCoating.Enabled = True
@@ -2053,6 +2061,18 @@ Public Class Process_frmMain
         '....Purchasing
         With mProcess_Project.Purchase
 
+            For j As Integer = 0 To .Mat.ID_Mat.Count - 1
+                Dim pCmbColPurchase_Unit As New DataGridViewComboBoxColumn
+                pCmbColPurchase_Unit = grdPurchase_Mat.Columns.Item(2)
+                Dim pVal As String = ""
+                If (Not IsNothing(mProcess_Project.Purchase.Mat.Qty_Unit(j))) Then
+                    pVal = mProcess_Project.Purchase.Mat.Qty_Unit(j)
+                End If
+                If (Not pCmbColPurchase_Unit.Items.Contains(pVal)) Then
+                    pCmbColPurchase_Unit.Items.Add(pVal)
+                End If
+            Next
+
             For i As Integer = 0 To .Mat.ID_Mat.Count - 1
                 grdPurchase_Mat.Rows.Add()
                 grdPurchase_Mat.Rows(i).Cells(0).Value = .Mat.Item(i)
@@ -2062,12 +2082,18 @@ Public Class Process_frmMain
                     grdPurchase_Mat.Rows(i).Cells(1).Value = ""
                 End If
 
-                grdPurchase_Mat.Rows(i).Cells(2).Value = .Mat.Status(i)
+                If (Not IsNothing(mProcess_Project.Purchase.Mat.Qty_Unit(i))) Then
+                    grdPurchase_Mat.Rows(i).Cells(2).Value = mProcess_Project.Purchase.Mat.Qty_Unit(i)
+                Else
+                    grdPurchase_Mat.Rows(i).Cells(2).Value = ""
+                End If
+
+                grdPurchase_Mat.Rows(i).Cells(3).Value = .Mat.Status(i)
 
                 If (Math.Abs(.Mat.LeadTime(i)) > gcEPS) Then
-                    grdPurchase_Mat.Rows(i).Cells(3).Value = .Mat.LeadTime(i)
+                    grdPurchase_Mat.Rows(i).Cells(4).Value = .Mat.LeadTime(i)
                 Else
-                    grdPurchase_Mat.Rows(i).Cells(3).Value = ""
+                    grdPurchase_Mat.Rows(i).Cells(4).Value = ""
                 End If
 
             Next
@@ -5122,6 +5148,7 @@ Public Class Process_frmMain
             .Mat.ID_Mat.Clear()
             .Mat.Item.Clear()
             .Mat.EstQty.Clear()
+            .Mat.Qty_Unit.Clear()
             .Mat.Status.Clear()
             .Mat.LeadTime.Clear()
 
@@ -5138,11 +5165,13 @@ Public Class Process_frmMain
                     .Mat.EstQty.Add(0)
                 End If
 
-                .Mat.Status.Add(grdPurchase_Mat.Rows(i).Cells(2).Value)
+                .Mat.Qty_Unit.Add(grdPurchase_Mat.Rows(i).Cells(2).Value)
 
-                If (Not IsNothing(grdPurchase_Mat.Rows(i).Cells(3).Value)) Then
-                    If (grdPurchase_Mat.Rows(i).Cells(3).Value.ToString() <> "") Then
-                        .Mat.LeadTime.Add(grdPurchase_Mat.Rows(i).Cells(3).Value)
+                .Mat.Status.Add(grdPurchase_Mat.Rows(i).Cells(3).Value)
+
+                If (Not IsNothing(grdPurchase_Mat.Rows(i).Cells(4).Value)) Then
+                    If (grdPurchase_Mat.Rows(i).Cells(4).Value.ToString() <> "") Then
+                        .Mat.LeadTime.Add(grdPurchase_Mat.Rows(i).Cells(4).Value)
                     Else
                         .Mat.LeadTime.Add(0)
                     End If
@@ -6662,6 +6691,29 @@ Public Class Process_frmMain
         End If
     End Sub
 
+    Private Sub grdPurchase_Mat_CellValidating(sender As Object, e As DataGridViewCellValidatingEventArgs) _
+                                               Handles grdPurchase_Mat.CellValidating
+        '====================================================================================================
+        If (grdPurchase_Mat.CurrentCellAddress.X = Column34.DisplayIndex) Then
+            If (Not Column34.Items.Contains(e.FormattedValue)) Then
+                Column34.Items.Add(e.FormattedValue)
+                grdPurchase_Mat.Rows(e.RowIndex).Cells(2).Value = e.FormattedValue
+            End If
+        End If
+    End Sub
+
+    Private Sub grdPurchase_Mat_EditingControlShowing(sender As Object, e As DataGridViewEditingControlShowingEventArgs) _
+                                                      Handles grdPurchase_Mat.EditingControlShowing
+        '==================================================================================================================
+        If (grdPurchase_Mat.CurrentCellAddress.X = Column34.DisplayIndex) Then
+            Dim pCmbBox As ComboBox = e.Control
+
+            If (Not IsNothing(pCmbBox)) Then
+                pCmbBox.DropDownStyle = ComboBoxStyle.DropDown
+            End If
+        End If
+    End Sub
+
     Private Sub grdCustContact_RowHeaderMouseClick(sender As Object,
                                                    e As DataGridViewCellMouseEventArgs) _
                                                    Handles grdCustContact.RowHeaderMouseClick
@@ -7515,6 +7567,8 @@ Public Class Process_frmMain
         'CompareVar(pval1, pval2, pCount)
 
     End Sub
+
+
 
 #End Region
 

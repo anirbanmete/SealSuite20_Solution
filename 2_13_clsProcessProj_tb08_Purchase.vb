@@ -2,9 +2,9 @@
 '                                                                              '
 '                          SOFTWARE  :  "SealProcess"                          '
 '                      CLASS MODULE  :  Process_clsPurchase                    '
-'                        VERSION NO  :  1.1                                    '
+'                        VERSION NO  :  1.3                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  05JAN18                                '
+'                     LAST MODIFIED  :  05FEB18                                '
 '                                                                              '
 '===============================================================================
 Imports System.Globalization
@@ -294,6 +294,7 @@ Public Class clsProcessProj_Purchase
                         mID_Mat.Add(pQryMat(i).fldID)
                         mItem.Add(pQryMat(i).fldItem)
                         mEstQty.Add(pQryMat(i).fldEstQty)
+                        mQty_Unit.Add(pQryMat(i).fldQty_Unit)
                         mStatus.Add(pQryMat(i).fldStatus)
                         mLeadTime.Add(pQryMat(i).fldLeadTime)
 
@@ -333,6 +334,7 @@ Public Class clsProcessProj_Purchase
                     .fldID = j + 1
                     .fldItem = mItem(j)
                     .fldEstQty = mEstQty(j)
+                    .fldQty_Unit = mQty_Unit(j)
                     .fldStatus = mStatus(j)
                     .fldLeadTime = mLeadTime(j)
 

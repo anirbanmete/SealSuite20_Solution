@@ -18,7 +18,7 @@ Imports System.Runtime.Serialization
 Imports System.Xml.Serialization
 
 
-<Assembly: EdmSchemaAttribute("006f8b57-d4e1-4059-9350-868019c1a5bf")>
+<Assembly: EdmSchemaAttribute("657158c7-2368-4242-ba71-71e8288b6fba")>
 #Region "EDM Relationship Metadata"
 <Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblApp_Cavity_tblApp1", "tblApp", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblApp), "tblApp_Cavity", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(tblApp_Cavity), True)>
 <Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblApp_CavityFlange_tblApp", "tblApp", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblApp), "tblApp_CavityFlange", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(tblApp_CavityFlange), True)>
@@ -11828,6 +11828,31 @@ Public Partial Class tblPurchase_Mat
     End Sub
 
     Private Partial Sub OnfldEstQtyChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property fldQty_Unit() As Global.System.String
+        Get
+            Return _fldQty_Unit
+        End Get
+        Set
+            OnfldQty_UnitChanging(value)
+            ReportPropertyChanging("fldQty_Unit")
+            _fldQty_Unit = StructuralObject.SetValidValue(value, true)
+            ReportPropertyChanged("fldQty_Unit")
+            OnfldQty_UnitChanged()
+        End Set
+    End Property
+
+    Private _fldQty_Unit As Global.System.String
+    Private Partial Sub OnfldQty_UnitChanging(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnfldQty_UnitChanged()
     End Sub
 
     ''' <summary>
