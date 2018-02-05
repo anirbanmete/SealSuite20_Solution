@@ -125,7 +125,6 @@ Public Class clsProcessProj_EditedBy
         Dim pIsRecExists As Boolean = False
 
         Try
-
             '....tblEditedBy
             Dim pQryEditedByCount As Integer = (From pRec In pSealProcessDBEntities.tblEditedBy
                                                 Where pRec.fldProcessProjectID = ProjectID_In And pRec.fldTabName = TabName_In Select pRec).Count()
@@ -139,6 +138,11 @@ Public Class clsProcessProj_EditedBy
                 mDateEdited = pQryEditedBy.fldDate
                 mName = pQryEditedBy.fldName
                 mComment = pQryEditedBy.fldComment
+
+            Else
+                mDateEdited = Nothing
+                mName = ""
+                mComment = ""
 
             End If
 

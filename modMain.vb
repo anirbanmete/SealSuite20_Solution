@@ -194,6 +194,22 @@ Module modMain
 
     End Function
 
+    Public Function ConvertToDbl(ByVal Str_In As String) As Double
+        '==========================================================
+        Dim pVal As Double = 0
+        Try
+
+            If Str_In <> "" Then
+                pVal = Convert.ToDouble(Str_In, CultureInfo.CurrentCulture)
+
+            End If
+        Catch ex As Exception
+
+        End Try
+
+        Return pVal
+
+    End Function
 
     Public Function ConvertToStr(ByVal Sng_In As Single, _
                                  ByVal Format_In As String) As String
@@ -220,6 +236,40 @@ Module modMain
         End If
         Return pStr
     End Function
+
+    Public Sub CompareVal(VarOrg_In As String, VarMod_In As String, ByRef Count As Integer)
+        '===================================================================================
+        Dim pCI As New CultureInfo("en-US")
+        Dim pMinDateVal As String = DateTime.MinValue.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+        If (IsNothing(VarOrg_In)) Then
+            VarOrg_In = ""
+
+        ElseIf (VarOrg_In = pMinDateVal) Then
+            VarOrg_In = ""
+        End If
+
+        If (IsNothing(VarMod_In)) Then
+            VarMod_In = ""
+        End If
+
+        If Trim(VarOrg_In) <> Trim(VarMod_In) Then Count += 1
+
+    End Sub
+
+    Public Sub CompareVal(VarOrg_In As Integer, VarMod_In As Integer, ByRef Count As Integer)
+        '====================================================================================
+        If VarOrg_In <> VarMod_In Then Count += 1
+    End Sub
+
+    Public Sub CompareVal(VarOrg_In As Double, VarMod_In As Double, ByRef Count As Integer)
+        '==================================================================================
+        If Math.Abs(VarOrg_In - VarMod_In) >= gcEPS Then Count += 1
+    End Sub
+
+    Public Sub CompareVal(VarOrg_In As Boolean, VarMod_In As Boolean, ByRef Count As Integer)
+        '====================================================================================
+        If VarOrg_In <> VarMod_In Then Count += 1
+    End Sub
 
 #End Region
 

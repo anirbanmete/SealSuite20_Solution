@@ -4,7 +4,7 @@
 '                      FORM MODULE   :  Process_frmMain                        '
 '                        VERSION NO  :  1.3                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  02FEB18                                '
+'                     LAST MODIFIED  :  05FEB18                                '
 '                                                                              '
 '===============================================================================
 Imports System.Globalization
@@ -1081,7 +1081,6 @@ Public Class Process_frmMain
 
 
         '.... "OrderEntrty:"
-
         With mProcess_Project.OrdEntry
             txtOrdEntry_SalesOrderNo.Text = .SalesOrderNo
 
@@ -1460,6 +1459,19 @@ Public Class Process_frmMain
                     txtApp_Face_MaxFlangeSeparation.Text = ""
                 End If
 
+                If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "App")) Then
+                    If (mProcess_Project.EditedBy.Name <> "") Then
+                        If (mProcess_Project.EditedBy.DateEdited <> DateTime.MinValue) Then
+                            grdApp_EditedBy_Face.Rows(0).Cells(0).Value = mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        Else
+                            grdApp_EditedBy_Face.Rows(0).Cells(0).Value = ""
+                        End If
+
+                        grdApp_EditedBy_Face.Rows(0).Cells(1).Value = mProcess_Project.EditedBy.Name
+                        grdApp_EditedBy_Face.Rows(0).Cells(2).Value = mProcess_Project.EditedBy.Comment
+                    End If
+                End If
+
             ElseIf (.Type = "Axial") Then
                 '....Cavity Dimension
                 For j As Integer = 0 To .Cavity.ID_Cavity.Count - 1
@@ -1617,13 +1629,25 @@ Public Class Process_frmMain
                     txtApp_OscServiceLife_Axial.Text = ""
                 End If
 
+                If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "App")) Then
+                    If (mProcess_Project.EditedBy.Name <> "") Then
+                        If (mProcess_Project.EditedBy.DateEdited <> DateTime.MinValue) Then
+                            grdApp_EditedBy_Axial.Rows(0).Cells(0).Value = mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        Else
+                            grdApp_EditedBy_Axial.Rows(0).Cells(0).Value = ""
+                        End If
+
+                        grdApp_EditedBy_Axial.Rows(0).Cells(1).Value = mProcess_Project.EditedBy.Name
+                        grdApp_EditedBy_Axial.Rows(0).Cells(2).Value = mProcess_Project.EditedBy.Comment
+                    End If
+                End If
+
             End If
 
         End With
 
 
         '...."Design:"
-
         With mProcess_Project.Design
 
             txtDesign_CustDwgNo.Text = .CustDwgNo
@@ -1892,11 +1916,23 @@ Public Class Process_frmMain
             txtDesign_LessonsLearned.Text = .LessonsLearned
             txtDesign_Notes.Text = .Notes
 
+            If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Design")) Then
+                If (mProcess_Project.EditedBy.Name <> "") Then
+                    If (mProcess_Project.EditedBy.DateEdited <> DateTime.MinValue) Then
+                        grdDesign_EditedBy.Rows(0).Cells(0).Value = mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    Else
+                        grdDesign_EditedBy.Rows(0).Cells(0).Value = ""
+                    End If
+
+                    grdDesign_EditedBy.Rows(0).Cells(1).Value = mProcess_Project.EditedBy.Name
+                    grdDesign_EditedBy.Rows(0).Cells(2).Value = mProcess_Project.EditedBy.Comment
+                End If
+            End If
+
         End With
 
 
         '.... "Manufacturing:"
-
         With mProcess_Project.Manf
 
             txtManf_MatPartNo_Base.Text = .BaseMat_PartNo
@@ -1998,6 +2034,19 @@ Public Class Process_frmMain
             grdPurchase_ToolNGages.AllowUserToAddRows = False
             grdPurchase_ToolNGages.Enabled = False
 
+            If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Manf")) Then
+                If (mProcess_Project.EditedBy.Name <> "") Then
+                    If (mProcess_Project.EditedBy.DateEdited <> DateTime.MinValue) Then
+                        grdManf_EditedBy.Rows(0).Cells(0).Value = mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    Else
+                        grdManf_EditedBy.Rows(0).Cells(0).Value = ""
+                    End If
+
+                    grdManf_EditedBy.Rows(0).Cells(1).Value = mProcess_Project.EditedBy.Name
+                    grdManf_EditedBy.Rows(0).Cells(2).Value = mProcess_Project.EditedBy.Comment
+                End If
+            End If
+
         End With
 
 
@@ -2023,28 +2072,6 @@ Public Class Process_frmMain
 
             Next
 
-            'For j As Integer = 0 To .ToolNGage.ID_Tool.Count - 2
-            '    grdPurchase_ToolNGages.Rows.Add()
-            'Next
-
-            'For i As Integer = 0 To .ToolNGage.ID_Tool.Count - 1
-            '    grdPurchase_ToolNGages.Rows.Add()
-            '    grdPurchase_ToolNGages.Rows(i).Cells(0).Value = .ToolNGage.PartNo(i)
-            '    grdPurchase_ToolNGages.Rows(i).Cells(1).Value = .ToolNGage.Desc(i)
-            '    grdPurchase_ToolNGages.Rows(i).Cells(2).Value = .ToolNGage.Type(i)
-
-            '    If (Math.Abs(.ToolNGage.LeadTime(i)) > gcEPS) Then
-            '        grdPurchase_ToolNGages.Rows(i).Cells(4).Value = .ToolNGage.LeadTime(i)
-            '    Else
-            '        grdPurchase_ToolNGages.Rows(i).Cells(4).Value = ""
-            '    End If
-
-            '    grdPurchase_ToolNGages.Rows(i).Cells(5).Value = .ToolNGage.DesignResponsibility(i)
-            'Next
-
-            'For j As Integer = 0 To .Dwg.ID_Dwg.Count - 2
-            '    grdPurchase_Drawing.Rows.Add()
-            'Next
 
             For i As Integer = 0 To .Dwg.ID_Dwg.Count - 1
                 grdPurchase_Drawing.Rows.Add()
@@ -2059,11 +2086,23 @@ Public Class Process_frmMain
 
             Next
 
+            If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Purchase")) Then
+                If (mProcess_Project.EditedBy.Name <> "") Then
+                    If (mProcess_Project.EditedBy.DateEdited <> DateTime.MinValue) Then
+                        grdPurchase_EditedBy.Rows(0).Cells(0).Value = mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    Else
+                        grdPurchase_EditedBy.Rows(0).Cells(0).Value = ""
+                    End If
+
+                    grdPurchase_EditedBy.Rows(0).Cells(1).Value = mProcess_Project.EditedBy.Name
+                    grdPurchase_EditedBy.Rows(0).Cells(2).Value = mProcess_Project.EditedBy.Comment
+                End If
+            End If
+
         End With
 
 
         '.... "Quality:"
-
         With mProcess_Project.Qlty
             If (.IsApvdSupplierOnly) Then
                 cmbQuality_ApprovedSupplier.Text = "Y"
@@ -2135,6 +2174,19 @@ Public Class Process_frmMain
                 grdQuality_SplOperation.Rows(j).Cells(3).Value = mProcess_Project.Cost.SplOperation.Cost(j).ToString("#.00")
             Next
 
+            If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Qlty")) Then
+                If (mProcess_Project.EditedBy.Name <> "") Then
+                    If (mProcess_Project.EditedBy.DateEdited <> DateTime.MinValue) Then
+                        grdQuality_EditedBy.Rows(0).Cells(0).Value = mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    Else
+                        grdQuality_EditedBy.Rows(0).Cells(0).Value = ""
+                    End If
+
+                    grdQuality_EditedBy.Rows(0).Cells(1).Value = mProcess_Project.EditedBy.Name
+                    grdQuality_EditedBy.Rows(0).Cells(2).Value = mProcess_Project.EditedBy.Comment
+                End If
+            End If
+
         End With
 
         '.... "Drawing:"
@@ -2165,6 +2217,19 @@ Public Class Process_frmMain
                     grdDrawing_BOM.Rows(j).Cells(2).Value = ""
                 End If
             Next
+
+            If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Dwg")) Then
+                If (mProcess_Project.EditedBy.Name <> "") Then
+                    If (mProcess_Project.EditedBy.DateEdited <> DateTime.MinValue) Then
+                        grdDwg_EditedBy.Rows(0).Cells(0).Value = mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    Else
+                        grdDwg_EditedBy.Rows(0).Cells(0).Value = ""
+                    End If
+
+                    grdDwg_EditedBy.Rows(0).Cells(1).Value = mProcess_Project.EditedBy.Name
+                    grdDwg_EditedBy.Rows(0).Cells(2).Value = mProcess_Project.EditedBy.Comment
+                End If
+            End If
 
         End With
 
@@ -2289,6 +2354,19 @@ Public Class Process_frmMain
             cmbTest_FreqPre_SpringBack.Text = .SpringBack.Freq_Unplated
             cmbTest_FreqPost_SpringBack.Text = .SpringBack.Freq_Plated
 
+            If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Test")) Then
+                If (mProcess_Project.EditedBy.Name <> "") Then
+                    If (mProcess_Project.EditedBy.DateEdited <> DateTime.MinValue) Then
+                        grdTest_EditedBy.Rows(0).Cells(0).Value = mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    Else
+                        grdTest_EditedBy.Rows(0).Cells(0).Value = ""
+                    End If
+
+                    grdTest_EditedBy.Rows(0).Cells(1).Value = mProcess_Project.EditedBy.Name
+                    grdTest_EditedBy.Rows(0).Cells(2).Value = mProcess_Project.EditedBy.Comment
+                End If
+            End If
+
         End With
 
 
@@ -2353,6 +2431,19 @@ Public Class Process_frmMain
             grdShipping_CustSpec.AllowUserToAddRows = False
             grpCustSpec_Shipping.Enabled = False
             txtShipping_Notes.Text = .Notes
+
+            If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Shipping")) Then
+                If (mProcess_Project.EditedBy.Name <> "") Then
+                    If (mProcess_Project.EditedBy.DateEdited <> DateTime.MinValue) Then
+                        grdShipping_EditedBy.Rows(0).Cells(0).Value = mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    Else
+                        grdShipping_EditedBy.Rows(0).Cells(0).Value = ""
+                    End If
+
+                    grdShipping_EditedBy.Rows(0).Cells(1).Value = mProcess_Project.EditedBy.Name
+                    grdShipping_EditedBy.Rows(0).Cells(2).Value = mProcess_Project.EditedBy.Comment
+                End If
+            End If
         End With
 
 
@@ -2871,6 +2962,52 @@ Public Class Process_frmMain
         If (CompareVal_CostEstimating()) Then
             grdCost_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
             grdCost_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+        End If
+
+        If (CompareVal_App()) Then
+            If (mProcess_Project.App.Type = "Face") Then
+                grdApp_EditedBy_Face.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                grdApp_EditedBy_Face.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+            Else
+                grdApp_EditedBy_Axial.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                grdApp_EditedBy_Axial.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+            End If
+        End If
+
+
+        If (CompareVal_Design()) Then
+            grdDesign_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+            grdDesign_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+        End If
+
+        If (CompareVal_Manf()) Then
+            grdManf_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+            grdManf_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+        End If
+
+        If (CompareVal_Purchase()) Then
+            grdPurchase_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+            grdPurchase_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+        End If
+
+        If (CompareVal_Qlty()) Then
+            grdQuality_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+            grdQuality_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+        End If
+
+        If (CompareVal_DWG()) Then
+            grdDwg_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+            grdDwg_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+        End If
+
+        If (CompareVal_Test()) Then
+            grdTest_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+            grdTest_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+        End If
+
+        If (CompareVal_Shipping()) Then
+            grdShipping_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+            grdShipping_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
         End If
 
         If (TabControl1.SelectedIndex = 0) Then
@@ -4091,6 +4228,7 @@ Public Class Process_frmMain
 
     Private Sub SaveData()
         '==================
+        Dim pCI As New CultureInfo("en-US")
 
         If (TabControl1.SelectedIndex = 2) Then
             CopyDataGridView(grdOrdEntry_CustContact, grdCustContact)
@@ -4103,11 +4241,11 @@ Public Class Process_frmMain
         '....Edited By
         If (CompareVal_PreOrder()) Then
             With mProcess_Project.EditedBy
-                If (Not IsNothing(grdPreOrderEditedBy.Rows(0).Cells(0).Value)) Then
-                    .DateEdited = grdPreOrderEditedBy.Rows(0).Cells(0).Value
-                Else
-                    .DateEdited = DateTime.MinValue
-                End If
+
+                grdPreOrderEditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                grdPreOrderEditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+
+                .DateEdited = grdPreOrderEditedBy.Rows(0).Cells(0).Value
                 .Name = grdPreOrderEditedBy.Rows(0).Cells(1).Value
                 .Comment = grdPreOrderEditedBy.Rows(0).Cells(2).Value
             End With
@@ -4116,11 +4254,10 @@ Public Class Process_frmMain
 
         If (CompareVal_Export()) Then
             With mProcess_Project.EditedBy
-                If (Not IsNothing(grdExport_EditedBy.Rows(0).Cells(0).Value)) Then
-                    .DateEdited = grdExport_EditedBy.Rows(0).Cells(0).Value
-                Else
-                    .DateEdited = DateTime.MinValue
-                End If
+                grdExport_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                grdExport_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+
+                .DateEdited = grdExport_EditedBy.Rows(0).Cells(0).Value
                 .Name = grdExport_EditedBy.Rows(0).Cells(1).Value
                 .Comment = grdExport_EditedBy.Rows(0).Cells(2).Value
             End With
@@ -4129,11 +4266,10 @@ Public Class Process_frmMain
 
         If (CompareVal_OrdEntry()) Then
             With mProcess_Project.EditedBy
-                If (Not IsNothing(grdOrdEntry_EditedBy.Rows(0).Cells(0).Value)) Then
-                    .DateEdited = grdOrdEntry_EditedBy.Rows(0).Cells(0).Value
-                Else
-                    .DateEdited = DateTime.MinValue
-                End If
+                grdOrdEntry_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                grdOrdEntry_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+
+                .DateEdited = grdOrdEntry_EditedBy.Rows(0).Cells(0).Value
                 .Name = grdOrdEntry_EditedBy.Rows(0).Cells(1).Value
                 .Comment = grdOrdEntry_EditedBy.Rows(0).Cells(2).Value
             End With
@@ -4142,15 +4278,118 @@ Public Class Process_frmMain
 
         If (CompareVal_CostEstimating()) Then
             With mProcess_Project.EditedBy
-                If (Not IsNothing(grdCost_EditedBy.Rows(0).Cells(0).Value)) Then
-                    .DateEdited = grdCost_EditedBy.Rows(0).Cells(0).Value
-                Else
-                    .DateEdited = DateTime.MinValue
-                End If
+                grdCost_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                grdCost_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+
+                .DateEdited = grdCost_EditedBy.Rows(0).Cells(0).Value
                 .Name = grdCost_EditedBy.Rows(0).Cells(1).Value
                 .Comment = grdCost_EditedBy.Rows(0).Cells(2).Value
             End With
             mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Cost")
+        End If
+
+        If (CompareVal_App()) Then
+            With mProcess_Project.EditedBy
+
+                grdApp_EditedBy_Face.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                grdApp_EditedBy_Face.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+
+                .DateEdited = grdApp_EditedBy_Face.Rows(0).Cells(0).Value
+                .Name = grdApp_EditedBy_Face.Rows(0).Cells(1).Value
+                .Comment = grdApp_EditedBy_Face.Rows(0).Cells(2).Value
+            End With
+            mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "App")
+        End If
+
+        If (CompareVal_Design()) Then
+            With mProcess_Project.EditedBy
+
+                grdDesign_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                grdDesign_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+
+                .DateEdited = grdDesign_EditedBy.Rows(0).Cells(0).Value
+                .Name = grdDesign_EditedBy.Rows(0).Cells(1).Value
+                .Comment = grdDesign_EditedBy.Rows(0).Cells(2).Value
+            End With
+            mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Design")
+        End If
+
+        If (CompareVal_Manf()) Then
+            With mProcess_Project.EditedBy
+
+                grdManf_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                grdManf_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+
+                .DateEdited = grdManf_EditedBy.Rows(0).Cells(0).Value
+                .Name = grdManf_EditedBy.Rows(0).Cells(1).Value
+                .Comment = grdManf_EditedBy.Rows(0).Cells(2).Value
+            End With
+            mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Manf")
+        End If
+
+        If (CompareVal_Purchase()) Then
+            With mProcess_Project.EditedBy
+
+                grdPurchase_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                grdPurchase_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+
+                .DateEdited = grdPurchase_EditedBy.Rows(0).Cells(0).Value
+                .Name = grdPurchase_EditedBy.Rows(0).Cells(1).Value
+                .Comment = grdPurchase_EditedBy.Rows(0).Cells(2).Value
+            End With
+            mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Purchase")
+        End If
+
+        If (CompareVal_Qlty()) Then
+            With mProcess_Project.EditedBy
+
+                grdQuality_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                grdQuality_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+
+                .DateEdited = grdQuality_EditedBy.Rows(0).Cells(0).Value
+                .Name = grdQuality_EditedBy.Rows(0).Cells(1).Value
+                .Comment = grdQuality_EditedBy.Rows(0).Cells(2).Value
+            End With
+            mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Qlty")
+        End If
+
+        If (CompareVal_DWG()) Then
+            With mProcess_Project.EditedBy
+
+                grdDwg_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                grdDwg_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+
+                .DateEdited = grdDwg_EditedBy.Rows(0).Cells(0).Value
+                .Name = grdDwg_EditedBy.Rows(0).Cells(1).Value
+                .Comment = grdDwg_EditedBy.Rows(0).Cells(2).Value
+            End With
+            mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Dwg")
+        End If
+
+        If (CompareVal_Test()) Then
+            With mProcess_Project.EditedBy
+
+                grdTest_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                grdTest_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+
+                .DateEdited = grdTest_EditedBy.Rows(0).Cells(0).Value
+                .Name = grdTest_EditedBy.Rows(0).Cells(1).Value
+                .Comment = grdTest_EditedBy.Rows(0).Cells(2).Value
+            End With
+            mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Test")
+        End If
+
+        If (CompareVal_Shipping()) Then
+            With mProcess_Project.EditedBy
+
+                grdShipping_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                grdShipping_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+
+                .DateEdited = grdShipping_EditedBy.Rows(0).Cells(0).Value
+                .Name = grdShipping_EditedBy.Rows(0).Cells(1).Value
+                .Comment = grdShipping_EditedBy.Rows(0).Cells(2).Value
+            End With
+            mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Shipping")
         End If
 
 
@@ -4181,7 +4420,6 @@ Public Class Process_frmMain
 
 
         '...."Pre-Order:"
-
         With mProcess_Project.PreOrder
             .Mgr_PreOrder = cmbMgrPreOrder.Text
             .Mgr_Sales = txtMgrSales.Text
@@ -4319,7 +4557,7 @@ Public Class Process_frmMain
             End If
 
             If (txtOrderEntry_QtdLeadTime.Text <> "") Then
-                .LeadTimeQuoted = Convert.ToDouble(txtOrderEntry_QtdLeadTime.Text)
+                .LeadTimeQuoted = ConvertToDbl(txtOrderEntry_QtdLeadTime.Text)
             End If
 
             .PONo = txtOrdEntry_PONo.Text
@@ -4450,7 +4688,7 @@ Public Class Process_frmMain
 
             .Fluid = txtApp_Fluid.Text
             If (txtApp_MaxLeak.Text <> "") Then
-                .MaxLeak = Convert.ToDouble(txtApp_MaxLeak.Text)
+                .MaxLeak = ConvertToDbl(txtApp_MaxLeak.Text)
             End If
 
 
@@ -4458,11 +4696,11 @@ Public Class Process_frmMain
 
             If (.IsPressCyclic) Then
                 If (txtApp_PressCycleFreq.Text <> "") Then
-                    .PressCycle_Freq = Convert.ToDouble(txtApp_PressCycleFreq.Text)
+                    .PressCycle_Freq = ConvertToDbl(txtApp_PressCycleFreq.Text)
                 End If
 
                 If (txtApp_PressCycleAmp.Text <> "") Then
-                    .PressCycle_Amp = Convert.ToDouble(txtApp_PressCycleAmp.Text)
+                    .PressCycle_Amp = ConvertToDbl(txtApp_PressCycleAmp.Text)
                 End If
             Else
                 .PressCycle_Freq = 0
@@ -4475,51 +4713,51 @@ Public Class Process_frmMain
             .IsPreComp = IIf(cmbApp_PreComp.Text = "Y", True, False)
 
             If (Not IsNothing(grdApp_OpCond.Rows(0).Cells(1).Value) And grdApp_OpCond.Rows(0).Cells(1).Value <> "") Then
-                .OpCond.T_Assy = Convert.ToDouble(grdApp_OpCond.Rows(0).Cells(1).Value)
+                .OpCond.T_Assy = ConvertToDbl(grdApp_OpCond.Rows(0).Cells(1).Value)
             End If
 
             If (Not IsNothing(grdApp_OpCond.Rows(0).Cells(2).Value) And grdApp_OpCond.Rows(0).Cells(2).Value <> "") Then
-                .OpCond.T_Min = Convert.ToDouble(grdApp_OpCond.Rows(0).Cells(2).Value)
+                .OpCond.T_Min = ConvertToDbl(grdApp_OpCond.Rows(0).Cells(2).Value)
             End If
 
             If (Not IsNothing(grdApp_OpCond.Rows(0).Cells(3).Value) And grdApp_OpCond.Rows(0).Cells(3).Value <> "") Then
-                .OpCond.T_Max = Convert.ToDouble(grdApp_OpCond.Rows(0).Cells(3).Value)
+                .OpCond.T_Max = ConvertToDbl(grdApp_OpCond.Rows(0).Cells(3).Value)
             End If
 
             If (Not IsNothing(grdApp_OpCond.Rows(0).Cells(4).Value) And grdApp_OpCond.Rows(0).Cells(4).Value <> "") Then
-                .OpCond.T_Oper = Convert.ToDouble(grdApp_OpCond.Rows(0).Cells(4).Value)
+                .OpCond.T_Oper = ConvertToDbl(grdApp_OpCond.Rows(0).Cells(4).Value)
             End If
 
             If (Not IsNothing(grdApp_OpCond.Rows(1).Cells(1).Value) And grdApp_OpCond.Rows(1).Cells(1).Value <> "") Then
-                .OpCond.Press_Assy = Convert.ToDouble(grdApp_OpCond.Rows(1).Cells(1).Value)
+                .OpCond.Press_Assy = ConvertToDbl(grdApp_OpCond.Rows(1).Cells(1).Value)
             End If
 
             If (Not IsNothing(grdApp_OpCond.Rows(1).Cells(2).Value) And grdApp_OpCond.Rows(1).Cells(2).Value <> "") Then
-                .OpCond.Press_Min = Convert.ToDouble(grdApp_OpCond.Rows(1).Cells(2).Value)
+                .OpCond.Press_Min = ConvertToDbl(grdApp_OpCond.Rows(1).Cells(2).Value)
             End If
 
             If (Not IsNothing(grdApp_OpCond.Rows(1).Cells(3).Value) And grdApp_OpCond.Rows(1).Cells(3).Value <> "") Then
-                .OpCond.Press_Max = Convert.ToDouble(grdApp_OpCond.Rows(1).Cells(3).Value)
+                .OpCond.Press_Max = ConvertToDbl(grdApp_OpCond.Rows(1).Cells(3).Value)
             End If
 
             If (Not IsNothing(grdApp_OpCond.Rows(1).Cells(4).Value) And grdApp_OpCond.Rows(1).Cells(4).Value <> "") Then
-                .OpCond.Press_Oper = Convert.ToDouble(grdApp_OpCond.Rows(1).Cells(4).Value)
+                .OpCond.Press_Oper = ConvertToDbl(grdApp_OpCond.Rows(1).Cells(4).Value)
             End If
 
             If (Not IsNothing(grdApp_Load.Rows(0).Cells(1).Value) And grdApp_Load.Rows(0).Cells(1).Value <> "") Then
-                .Load.Assy_Min = Convert.ToDouble(grdApp_Load.Rows(0).Cells(1).Value)
+                .Load.Assy_Min = ConvertToDbl(grdApp_Load.Rows(0).Cells(1).Value)
             End If
 
             If (Not IsNothing(grdApp_Load.Rows(0).Cells(2).Value) And grdApp_Load.Rows(0).Cells(2).Value <> "") Then
-                .Load.Assy_Max = Convert.ToDouble(grdApp_Load.Rows(0).Cells(2).Value)
+                .Load.Assy_Max = ConvertToDbl(grdApp_Load.Rows(0).Cells(2).Value)
             End If
 
             If (Not IsNothing(grdApp_Load.Rows(1).Cells(1).Value) And grdApp_Load.Rows(1).Cells(1).Value <> "") Then
-                .Load.Oper_Min = Convert.ToDouble(grdApp_Load.Rows(1).Cells(1).Value)
+                .Load.Oper_Min = ConvertToDbl(grdApp_Load.Rows(1).Cells(1).Value)
             End If
 
             If (Not IsNothing(grdApp_Load.Rows(0).Cells(2).Value) And grdApp_Load.Rows(0).Cells(2).Value <> "") Then
-                .Load.Oper_Max = Convert.ToDouble(grdApp_Load.Rows(1).Cells(2).Value)
+                .Load.Oper_Max = ConvertToDbl(grdApp_Load.Rows(1).Cells(2).Value)
             End If
 
             If (.Type = "Face") Then
@@ -4534,12 +4772,12 @@ Public Class Process_frmMain
 
                     Dim pAssyMin As Double = 0
                     If (Not IsNothing(grdApp_Face_Cavity.Rows(i).Cells(1).Value) And grdApp_Face_Cavity.Rows(i).Cells(1).Value <> "") Then
-                        pAssyMin = Convert.ToDouble(grdApp_Face_Cavity.Rows(i).Cells(1).Value)
+                        pAssyMin = ConvertToDbl(grdApp_Face_Cavity.Rows(i).Cells(1).Value)
                     End If
 
                     Dim pAssyMax As Double = 0
                     If (Not IsNothing(grdApp_Face_Cavity.Rows(i).Cells(2).Value) And grdApp_Face_Cavity.Rows(i).Cells(2).Value <> "") Then
-                        pAssyMax = Convert.ToDouble(grdApp_Face_Cavity.Rows(i).Cells(2).Value)
+                        pAssyMax = ConvertToDbl(grdApp_Face_Cavity.Rows(i).Cells(2).Value)
                     End If
 
                     Dim pAssy As clsProcessProj_App.clsCavity.sAssy
@@ -4549,12 +4787,12 @@ Public Class Process_frmMain
 
                     Dim pOperMin As Double = 0
                     If (Not IsNothing(grdApp_Face_Cavity.Rows(i).Cells(3).Value) And grdApp_Face_Cavity.Rows(i).Cells(3).Value <> "") Then
-                        pOperMin = Convert.ToDouble(grdApp_Face_Cavity.Rows(i).Cells(3).Value)
+                        pOperMin = ConvertToDbl(grdApp_Face_Cavity.Rows(i).Cells(3).Value)
                     End If
 
                     Dim pOperMax As Double = 0
                     If (Not IsNothing(grdApp_Face_Cavity.Rows(i).Cells(4).Value) And grdApp_Face_Cavity.Rows(i).Cells(4).Value <> "") Then
-                        pOperMax = Convert.ToDouble(grdApp_Face_Cavity.Rows(i).Cells(4).Value)
+                        pOperMax = ConvertToDbl(grdApp_Face_Cavity.Rows(i).Cells(4).Value)
                     End If
 
                     Dim pOper As clsProcessProj_App.clsCavity.sOper
@@ -4567,25 +4805,25 @@ Public Class Process_frmMain
                 .CavityFlange.Mat2 = txtApp_Mat2_Face.Text
 
                 If (txtApp_Hardness1_Face.Text <> "") Then
-                    .CavityFlange.Hard1 = Convert.ToDouble(txtApp_Hardness1_Face.Text)
+                    .CavityFlange.Hard1 = ConvertToDbl(txtApp_Hardness1_Face.Text)
                 Else
                     .CavityFlange.Hard1 = 0
                 End If
 
                 If (txtApp_Hardness2_Face.Text <> "") Then
-                    .CavityFlange.Hard2 = Convert.ToDouble(txtApp_Hardness2_Face.Text)
+                    .CavityFlange.Hard2 = ConvertToDbl(txtApp_Hardness2_Face.Text)
                 Else
                     .CavityFlange.Hard2 = 0
                 End If
 
                 If (txtApp_SF1_Face.Text <> "") Then
-                    .CavityFlange.SF1 = Convert.ToDouble(txtApp_SF1_Face.Text)
+                    .CavityFlange.SF1 = ConvertToDbl(txtApp_SF1_Face.Text)
                 Else
                     .CavityFlange.SF1 = 0
                 End If
 
                 If (txtApp_SF2_Face.Text <> "") Then
-                    .CavityFlange.SF2 = Convert.ToDouble(txtApp_SF2_Face.Text)
+                    .CavityFlange.SF2 = ConvertToDbl(txtApp_SF2_Face.Text)
                 Else
                     .CavityFlange.SF2 = 0
                 End If
@@ -4613,12 +4851,12 @@ Public Class Process_frmMain
 
                     Dim pAssyMin As Double = 0
                     If (Not IsNothing(grdApp_Axial_Cavity.Rows(i).Cells(1).Value) And grdApp_Axial_Cavity.Rows(i).Cells(1).Value <> "") Then
-                        pAssyMin = Convert.ToDouble(grdApp_Axial_Cavity.Rows(i).Cells(1).Value)
+                        pAssyMin = ConvertToDbl(grdApp_Axial_Cavity.Rows(i).Cells(1).Value)
                     End If
 
                     Dim pAssyMax As Double = 0
                     If (Not IsNothing(grdApp_Axial_Cavity.Rows(i).Cells(2).Value) And grdApp_Axial_Cavity.Rows(i).Cells(2).Value <> "") Then
-                        pAssyMax = Convert.ToDouble(grdApp_Axial_Cavity.Rows(i).Cells(2).Value)
+                        pAssyMax = ConvertToDbl(grdApp_Axial_Cavity.Rows(i).Cells(2).Value)
                     End If
 
                     Dim pAssy As clsProcessProj_App.clsCavity.sAssy
@@ -4628,12 +4866,12 @@ Public Class Process_frmMain
 
                     Dim pOperMin As Double = 0
                     If (Not IsNothing(grdApp_Axial_Cavity.Rows(i).Cells(3).Value) And grdApp_Axial_Cavity.Rows(i).Cells(3).Value <> "") Then
-                        pOperMin = Convert.ToDouble(grdApp_Axial_Cavity.Rows(i).Cells(3).Value)
+                        pOperMin = ConvertToDbl(grdApp_Axial_Cavity.Rows(i).Cells(3).Value)
                     End If
 
                     Dim pOperMax As Double = 0
                     If (Not IsNothing(grdApp_Axial_Cavity.Rows(i).Cells(4).Value) And grdApp_Axial_Cavity.Rows(i).Cells(4).Value <> "") Then
-                        pOperMax = Convert.ToDouble(grdApp_Axial_Cavity.Rows(i).Cells(4).Value)
+                        pOperMax = ConvertToDbl(grdApp_Axial_Cavity.Rows(i).Cells(4).Value)
                     End If
 
                     Dim pOper As clsProcessProj_App.clsCavity.sOper
@@ -4647,25 +4885,25 @@ Public Class Process_frmMain
                 .CavityFlange.Mat2 = txtApp_Mat2_Axial.Text
 
                 If (txtApp_Hardness1_Axial.Text <> "") Then
-                    .CavityFlange.Hard1 = Convert.ToDouble(txtApp_Hardness1_Axial.Text)
+                    .CavityFlange.Hard1 = ConvertToDbl(txtApp_Hardness1_Axial.Text)
                 Else
                     .CavityFlange.Hard1 = 0
                 End If
 
                 If (txtApp_Hardness2_Axial.Text <> "") Then
-                    .CavityFlange.Hard2 = Convert.ToDouble(txtApp_Hardness2_Axial.Text)
+                    .CavityFlange.Hard2 = ConvertToDbl(txtApp_Hardness2_Axial.Text)
                 Else
                     .CavityFlange.Hard2 = 0
                 End If
 
                 If (txtApp_SF1_Axial.Text <> "") Then
-                    .CavityFlange.SF1 = Convert.ToDouble(txtApp_SF1_Axial.Text)
+                    .CavityFlange.SF1 = ConvertToDbl(txtApp_SF1_Axial.Text)
                 Else
                     .CavityFlange.SF1 = 0
                 End If
 
                 If (txtApp_SF2_Axial.Text <> "") Then
-                    .CavityFlange.SF2 = Convert.ToDouble(txtApp_SF2_Axial.Text)
+                    .CavityFlange.SF2 = ConvertToDbl(txtApp_SF2_Axial.Text)
                 Else
                     .CavityFlange.SF2 = 0
                 End If
@@ -4689,10 +4927,10 @@ Public Class Process_frmMain
 
                 .Axial.IsRecip = IIf(cmbApp_Recip_Axial.Text = "Y", True, False)
                 If (.Axial.IsRecip) Then
-                    .Axial.Recip_Stroke = Convert.ToDouble(txtApp_RecipStrokeL_Axial.Text)
-                    .Axial.Recip_V = Convert.ToDouble(txtApp_RecipV_Axial.Text)
-                    .Axial.Recip_CycleRate = Convert.ToDouble(txtApp_RecipCycleRate_Axial.Text)
-                    .Axial.Recip_ServiceLife = Convert.ToDouble(txtApp_RecipServiceLife_Axial.Text)
+                    .Axial.Recip_Stroke = ConvertToDbl(txtApp_RecipStrokeL_Axial.Text)
+                    .Axial.Recip_V = ConvertToDbl(txtApp_RecipV_Axial.Text)
+                    .Axial.Recip_CycleRate = ConvertToDbl(txtApp_RecipCycleRate_Axial.Text)
+                    .Axial.Recip_ServiceLife = ConvertToDbl(txtApp_RecipServiceLife_Axial.Text)
                 Else
                     .Axial.Recip_Stroke = 0.0
                     .Axial.Recip_V = 0.0
@@ -4702,10 +4940,10 @@ Public Class Process_frmMain
 
                 .Axial.IsOscilatory = IIf(cmbApp_Osc_Axial.Text = "Y", True, False)
                 If (.Axial.IsOscilatory) Then
-                    .Axial.Oscilate_Rot = Convert.ToDouble(txtApp_OscRot_Axial.Text)
-                    .Axial.Oscilate_V = Convert.ToDouble(txtApp_OscV_Axial.Text)
-                    .Axial.Oscilate_CycleRate = Convert.ToDouble(txtApp_OscCycleRate_Axial.Text)
-                    .Axial.Oscilate_ServiceLife = Convert.ToDouble(txtApp_OscServiceLife_Axial.Text)
+                    .Axial.Oscilate_Rot = ConvertToDbl(txtApp_OscRot_Axial.Text)
+                    .Axial.Oscilate_V = ConvertToDbl(txtApp_OscV_Axial.Text)
+                    .Axial.Oscilate_CycleRate = ConvertToDbl(txtApp_OscCycleRate_Axial.Text)
+                    .Axial.Oscilate_ServiceLife = ConvertToDbl(txtApp_OscServiceLife_Axial.Text)
                 Else
                     .Axial.Oscilate_Rot = 0.0
                     .Axial.Oscilate_V = 0.0
@@ -5138,7 +5376,7 @@ Public Class Process_frmMain
             End If
 
             If (cmbTest_QtyPre_Leak.Text <> "") Then
-                .Leak.Qty_Unplated = Convert.ToDouble(cmbTest_QtyPre_Leak.Text)
+                .Leak.Qty_Unplated = ConvertToDbl(cmbTest_QtyPre_Leak.Text)
             Else
                 .Leak.Qty_Unplated = 0
             End If
@@ -5180,7 +5418,7 @@ Public Class Process_frmMain
             End If
 
             If (cmbTest_QtyPre_Load.Text <> "") Then
-                .Load.Qty_Unplated = Convert.ToDouble(cmbTest_QtyPre_Load.Text)
+                .Load.Qty_Unplated = ConvertToDbl(cmbTest_QtyPre_Load.Text)
             Else
                 .Load.Qty_Unplated = 0
             End If
@@ -5222,7 +5460,7 @@ Public Class Process_frmMain
             End If
 
             If (cmbTest_QtyPre_SpringBack.Text <> "") Then
-                .SpringBack.Qty_Unplated = Convert.ToDouble(cmbTest_QtyPre_SpringBack.Text)
+                .SpringBack.Qty_Unplated = ConvertToDbl(cmbTest_QtyPre_SpringBack.Text)
             Else
                 .SpringBack.Qty_Unplated = 0
             End If
@@ -5407,6 +5645,7 @@ Public Class Process_frmMain
 
     Private Function CompareVal_PreOrder() As Boolean
         '==============================================
+
         Dim pblnValChanged As Boolean = False
         Dim pCount As Integer = 0
         Dim pCI As New CultureInfo("en-US")
@@ -5489,6 +5728,8 @@ Public Class Process_frmMain
             Next
         End If
 
+        mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "PreOrder")
+
         CompareVal(mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdPreOrderEditedBy.Rows(0).Cells(0).Value, pCount)
         CompareVal(mProcess_Project.EditedBy.Name, grdPreOrderEditedBy.Rows(0).Cells(1).Value, pCount)
         CompareVal(mProcess_Project.EditedBy.Comment, grdPreOrderEditedBy.Rows(0).Cells(2).Value, pCount)
@@ -5555,6 +5796,7 @@ Public Class Process_frmMain
 
         End With
 
+        mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Export")
         CompareVal(mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdExport_EditedBy.Rows(0).Cells(0).Value, pCount)
         CompareVal(mProcess_Project.EditedBy.Name, grdExport_EditedBy.Rows(0).Cells(1).Value, pCount)
         CompareVal(mProcess_Project.EditedBy.Comment, grdExport_EditedBy.Rows(0).Cells(2).Value, pCount)
@@ -5579,7 +5821,7 @@ Public Class Process_frmMain
 
             CompareVal(.DateSales, txtOrdEntry_SalesDate.Text, pCount)
 
-            CompareVal(.LeadTimeQuoted, Convert.ToDouble(txtOrderEntry_QtdLeadTime.Text), pCount)
+            CompareVal(.LeadTimeQuoted, ConvertToDbl(txtOrderEntry_QtdLeadTime.Text), pCount)
 
             If (grdOrdEntry_CustContact.Rows.Count - 1 <> mProcess_Project.CustContact.ID_Cust.Count) Then
                 pCount = pCount + 1
@@ -5644,6 +5886,7 @@ Public Class Process_frmMain
 
         End With
 
+        mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "OrdEntry")
         CompareVal(mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdOrdEntry_EditedBy.Rows(0).Cells(0).Value, pCount)
         CompareVal(mProcess_Project.EditedBy.Name, grdOrdEntry_EditedBy.Rows(0).Cells(1).Value, pCount)
         CompareVal(mProcess_Project.EditedBy.Comment, grdOrdEntry_EditedBy.Rows(0).Cells(2).Value, pCount)
@@ -5687,6 +5930,7 @@ Public Class Process_frmMain
 
         End With
 
+        mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Cost")
         CompareVal(mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdCost_EditedBy.Rows(0).Cells(0).Value, pCount)
         CompareVal(mProcess_Project.EditedBy.Name, grdCost_EditedBy.Rows(0).Cells(1).Value, pCount)
         CompareVal(mProcess_Project.EditedBy.Comment, grdCost_EditedBy.Rows(0).Cells(2).Value, pCount)
@@ -5701,6 +5945,7 @@ Public Class Process_frmMain
 
     Private Function CompareVal_App() As Boolean
         '========================================
+        Dim pCI As New CultureInfo("en-US")
         Dim pblnValChanged As Boolean = False
         Dim pCount As Integer = 0
 
@@ -5715,7 +5960,7 @@ Public Class Process_frmMain
 
             CompareVal(.Fluid, txtApp_Fluid.Text, pCount)
 
-            CompareVal(.MaxLeak, Convert.ToDouble(txtApp_MaxLeak.Text), pCount)
+            CompareVal(.MaxLeak, ConvertToDbl(txtApp_MaxLeak.Text), pCount)
 
             Dim pblnFlag As Boolean
             If (cmbApp_PressCycle.Text = "Y") Then
@@ -5724,11 +5969,8 @@ Public Class Process_frmMain
                 pblnFlag = False
             End If
             CompareVal(.IsPressCyclic, pblnFlag, pCount)
-
-            CompareVal(.PressCycle_Freq, Convert.ToDouble(txtApp_PressCycleFreq.Text), pCount)
-
-            CompareVal(.PressCycle_Amp, Convert.ToDouble(txtApp_PressCycleAmp.Text), pCount)
-
+            CompareVal(.PressCycle_Freq, ConvertToDbl(txtApp_PressCycleFreq.Text), pCount)
+            CompareVal(.PressCycle_Amp, ConvertToDbl(txtApp_PressCycleAmp.Text), pCount)
 
             If (cmbApp_Shaped.Text = "Y") Then
                 pblnFlag = True
@@ -5789,10 +6031,556 @@ Public Class Process_frmMain
 
         End With
 
-        '....tab Face Seal
+        If (mProcess_Project.App.Type = "Face") Then
 
+            '....tab Face Seal
+            With mProcess_Project.App
+
+                If (grdApp_Face_Cavity.Rows.Count - 1 <> .Cavity.ID_Cavity.Count) Then
+                    pCount = pCount + 1
+
+                Else
+                    For i As Integer = 0 To .Cavity.ID_Cavity.Count - 1
+
+                        CompareVal(.Cavity.DimName(i), grdApp_Face_Cavity.Rows(i).Cells(0).Value, pCount)
+
+                        CompareVal(.Cavity.Assy(i).Min, grdApp_Face_Cavity.Rows(i).Cells(1).Value, pCount)
+                        CompareVal(.Cavity.Assy(i).Max, grdApp_Face_Cavity.Rows(i).Cells(2).Value, pCount)
+
+                        CompareVal(.Cavity.Oper(i).Min, grdApp_Face_Cavity.Rows(i).Cells(3).Value, pCount)
+                        CompareVal(.Cavity.Oper(i).Max, grdApp_Face_Cavity.Rows(i).Cells(4).Value, pCount)
+
+                    Next
+
+                End If
+
+                CompareVal(.CavityFlange.Mat1, txtApp_Mat1_Face.Text, pCount)
+                CompareVal(.CavityFlange.Mat2, txtApp_Mat2_Face.Text, pCount)
+
+                CompareVal(.CavityFlange.Hard1, ConvertToDbl(txtApp_Hardness1_Face.Text), pCount)
+                CompareVal(.CavityFlange.Hard2, ConvertToDbl(txtApp_Hardness2_Face.Text), pCount)
+
+                CompareVal(.CavityFlange.SF1, ConvertToDbl(txtApp_SF1_Face.Text), pCount)
+                CompareVal(.CavityFlange.SF2, ConvertToDbl(txtApp_SF2_Face.Text), pCount)
+
+                CompareVal(.CavityFlange.MeasureSF, cmbFace_SF_ProcessName.Text, pCount)
+                CompareVal(.CavityFlange.UnitSF, cmbFace_SF_Unit.Text, pCount)
+
+                CompareVal(.Face.POrient, cmbApp_Face_POrient.Text, pCount)
+                CompareVal(.Face.MaxFlangeSep, ConvertToDbl(txtApp_Face_MaxFlangeSeparation.Text), pCount)
+
+            End With
+
+            mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "App")
+            CompareVal(mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdApp_EditedBy_Face.Rows(0).Cells(0).Value, pCount)
+            CompareVal(mProcess_Project.EditedBy.Name, grdApp_EditedBy_Face.Rows(0).Cells(1).Value, pCount)
+            CompareVal(mProcess_Project.EditedBy.Comment, grdApp_EditedBy_Face.Rows(0).Cells(2).Value, pCount)
+
+        Else
+            '....tab Axial Seal
+            With mProcess_Project.App
+
+                If (grdApp_Axial_Cavity.Rows.Count - 1 <> .Cavity.ID_Cavity.Count) Then
+                    pCount = pCount + 1
+
+                Else
+                    For i As Integer = 0 To .Cavity.ID_Cavity.Count - 1
+
+                        CompareVal(.Cavity.DimName(i), grdApp_Axial_Cavity.Rows(i).Cells(0).Value, pCount)
+
+                        CompareVal(.Cavity.Assy(i).Min, grdApp_Axial_Cavity.Rows(i).Cells(1).Value, pCount)
+                        CompareVal(.Cavity.Assy(i).Max, grdApp_Axial_Cavity.Rows(i).Cells(2).Value, pCount)
+
+                        CompareVal(.Cavity.Oper(i).Min, grdApp_Axial_Cavity.Rows(i).Cells(3).Value, pCount)
+                        CompareVal(.Cavity.Oper(i).Max, grdApp_Axial_Cavity.Rows(i).Cells(4).Value, pCount)
+
+                    Next
+
+                End If
+
+                CompareVal(.CavityFlange.Mat1, txtApp_Mat1_Axial.Text, pCount)
+                CompareVal(.CavityFlange.Mat2, txtApp_Mat2_Axial.Text, pCount)
+
+                CompareVal(.CavityFlange.Hard1, ConvertToDbl(txtApp_Hardness1_Axial.Text), pCount)
+                CompareVal(.CavityFlange.Hard2, ConvertToDbl(txtApp_Hardness2_Axial.Text), pCount)
+
+                CompareVal(.CavityFlange.SF1, ConvertToDbl(txtApp_SF1_Axial.Text), pCount)
+                CompareVal(.CavityFlange.SF2, ConvertToDbl(txtApp_SF2_Axial.Text), pCount)
+
+                CompareVal(.CavityFlange.MeasureSF, cmbAxial_SF_ProcessName.Text, pCount)
+                CompareVal(.CavityFlange.UnitSF, cmbAxial_SF_Unit.Text, pCount)
+
+                Dim pblnFlag As Boolean
+                If (cmbApp_Static_Axial.Text = "Y") Then
+                    pblnFlag = True
+                Else
+                    pblnFlag = False
+                End If
+                CompareVal(.Axial.IsStatic, pblnFlag, pCount)
+
+                If (cmbApp_Rotate_Axial.Text = "Y") Then
+                    pblnFlag = True
+                Else
+                    pblnFlag = False
+                End If
+                CompareVal(.Axial.IsRotating, pblnFlag, pCount)
+                CompareVal(.Axial.RPM, ConvertToDbl(txtApp_RotateRPM_Axial.Text), pCount)
+
+                If (cmbApp_Recip_Axial.Text = "Y") Then
+                    pblnFlag = True
+                Else
+                    pblnFlag = False
+                End If
+                CompareVal(.Axial.IsRecip, pblnFlag, pCount)
+                CompareVal(.Axial.Recip_Stroke, ConvertToDbl(txtApp_RecipStrokeL_Axial.Text), pCount)
+                CompareVal(.Axial.Recip_V, ConvertToDbl(txtApp_RecipV_Axial.Text), pCount)
+                CompareVal(.Axial.Recip_CycleRate, ConvertToDbl(txtApp_RecipCycleRate_Axial.Text), pCount)
+                CompareVal(.Axial.Recip_ServiceLife, ConvertToDbl(txtApp_RecipServiceLife_Axial.Text), pCount)
+
+                If (cmbApp_Osc_Axial.Text = "Y") Then
+                    pblnFlag = True
+                Else
+                    pblnFlag = False
+                End If
+                CompareVal(.Axial.IsOscilatory, pblnFlag, pCount)
+                CompareVal(.Axial.Oscilate_Rot, ConvertToDbl(txtApp_OscRot_Axial.Text), pCount)
+                CompareVal(.Axial.Oscilate_V, ConvertToDbl(txtApp_OscV_Axial.Text), pCount)
+                CompareVal(.Axial.Oscilate_CycleRate, ConvertToDbl(txtApp_OscCycleRate_Axial.Text), pCount)
+                CompareVal(.Axial.Oscilate_ServiceLife, ConvertToDbl(txtApp_OscServiceLife_Axial.Text), pCount)
+
+            End With
+
+            mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "App")
+            CompareVal(mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdApp_EditedBy_Axial.Rows(0).Cells(0).Value, pCount)
+            CompareVal(mProcess_Project.EditedBy.Name, grdApp_EditedBy_Axial.Rows(0).Cells(1).Value, pCount)
+            CompareVal(mProcess_Project.EditedBy.Comment, grdApp_EditedBy_Axial.Rows(0).Cells(2).Value, pCount)
+
+        End If
+
+        If (pCount > 0) Then
+            pblnValChanged = True
+        End If
 
         Return pblnValChanged
+
+    End Function
+
+    Private Function CompareVal_Design() As Boolean
+        '========================================
+        Dim pCI As New CultureInfo("en-US")
+        Dim pblnValChanged As Boolean = False
+        Dim pCount As Integer = 0
+
+        With mProcess_Project.Design
+            CompareVal(.CustDwgNo, txtDesign_CustDwgNo.Text, pCount)
+            CompareVal(.CustDwgRev, txtDesign_CustDwgRev.Text, pCount)
+
+            Dim pblnFlag As Boolean
+            If (cmbDesign_Frozen.Text = "Y") Then
+                pblnFlag = True
+            Else
+                pblnFlag = False
+            End If
+            CompareVal(.Frozen.Design, pblnFlag, pCount)
+
+            If (cmbDesign_Process.Text = "Y") Then
+                pblnFlag = True
+            Else
+                pblnFlag = False
+            End If
+            CompareVal(.Frozen.Process, pblnFlag, pCount)
+
+            If (cmbDesign_Class1.Text = "Y") Then
+                pblnFlag = True
+            Else
+                pblnFlag = False
+            End If
+            CompareVal(.IsClass1, pblnFlag, pCount)
+
+            If (cmbDesign_BuildToPrint.Text = "Y") Then
+                pblnFlag = True
+            Else
+                pblnFlag = False
+            End If
+            CompareVal(.IsBuildToPrint, pblnFlag, pCount)
+
+            If (grdDesign_Verification.Rows.Count - 1 <> .Verification.ID_Verification.Count) Then
+                pCount = pCount + 1
+            Else
+                For i As Integer = 0 To .Verification.ID_Verification.Count - 1
+                    CompareVal(.Verification.Desc(i), grdDesign_Verification.Rows(i).Cells(0).Value, pCount)
+                    CompareVal(.Verification.Owner(i), grdDesign_Verification.Rows(i).Cells(1).Value, pCount)
+                    CompareVal(.Verification.Result(i), grdDesign_Verification.Rows(i).Cells(2).Value, pCount)
+                Next
+
+            End If
+
+            If (cmbDesign_Winnovation.Text = "Y") Then
+                pblnFlag = True
+            Else
+                pblnFlag = False
+            End If
+            CompareVal(.IsWinnovation, pblnFlag, pCount)
+            If (pblnFlag) Then
+                CompareVal(.WinnovationNo, txtDesign_WinnovationNo.Text, pCount)
+            End If
+
+
+            If (cmbDesign_OutsideVendor.Text = "Y") Then
+                pblnFlag = True
+            Else
+                pblnFlag = False
+            End If
+            CompareVal(.IsMat_OutsideVender, pblnFlag, pCount)
+
+            If (grdDesign_Input.Rows.Count - 1 <> .Input.ID_Input.Count) Then
+                pCount = pCount + 1
+            Else
+                For i As Integer = 0 To .Input.ID_Input.Count - 1
+                    CompareVal(.Input.Desc(i), grdDesign_Input.Rows(i).Cells(0).Value, pCount)
+                Next
+
+            End If
+
+            CompareVal(.FOD_Risks, txtDesign_FOD_Risks.Text, pCount)
+
+            '....Page 2
+            If (grdDesign_CustSpec.Rows.Count - 1 <> .CustSpec.ID_Cust.Count) Then
+                pCount = pCount + 1
+            Else
+                For i As Integer = 0 To .CustSpec.ID_Cust.Count - 1
+                    CompareVal(.CustSpec.Type(i), grdDesign_CustSpec.Rows(i).Cells(0).Value, pCount)
+                    CompareVal(.CustSpec.Desc(i), grdDesign_CustSpec.Rows(i).Cells(1).Value, pCount)
+                    CompareVal(.CustSpec.Interpret(i), grdDesign_CustSpec.Rows(i).Cells(2).Value, pCount)
+                Next
+            End If
+
+            CompareVal(.LessonsLearned, txtDesign_LessonsLearned.Text, pCount)
+
+            If (grdDesign_Seal.Rows.Count - 1 <> .SealDim.ID_Seal.Count) Then
+                pCount = pCount + 1
+            Else
+                For i As Integer = 0 To .SealDim.ID_Seal.Count - 1
+                    CompareVal(.SealDim.Name(i), grdDesign_Seal.Rows(i).Cells(0).Value, pCount)
+                    CompareVal(.SealDim.Min(i), ConvertToDbl(grdDesign_Seal.Rows(i).Cells(1).Value), pCount)
+                    CompareVal(.SealDim.Nom(i), ConvertToDbl(grdDesign_Seal.Rows(i).Cells(2).Value), pCount)
+                    CompareVal(.SealDim.Max(i), ConvertToDbl(grdDesign_Seal.Rows(i).Cells(3).Value), pCount)
+                Next
+            End If
+
+            CompareVal(.Notes, txtDesign_Notes.Text, pCount)
+
+            mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Design")
+            CompareVal(mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdDesign_EditedBy.Rows(0).Cells(0).Value, pCount)
+            CompareVal(mProcess_Project.EditedBy.Name, grdDesign_EditedBy.Rows(0).Cells(1).Value, pCount)
+            CompareVal(mProcess_Project.EditedBy.Comment, grdDesign_EditedBy.Rows(0).Cells(2).Value, pCount)
+
+        End With
+
+        If (pCount > 0) Then
+            pblnValChanged = True
+        End If
+
+        Return pblnValChanged
+
+    End Function
+
+    Private Function CompareVal_Manf() As Boolean
+        '========================================
+        Dim pCI As New CultureInfo("en-US")
+        Dim pblnValChanged As Boolean = False
+        Dim pCount As Integer = 0
+
+        With mProcess_Project.Manf
+            CompareVal(.BaseMat_PartNo, txtManf_MatPartNo_Base.Text, pCount)
+            CompareVal(.SpringMat_PartNo, txtManf_MatPartNo_Spring.Text, pCount)
+
+            CompareVal(.HT, txtManf_HT.Text, pCount)
+            CompareVal(.PreComp_Glue, cmbManf_PrecompressionGlue.Text, pCount)
+
+            If (grdManf_ToolNGage.Rows.Count - 1 <> .ToolNGage.ID_Tool.Count) Then
+                pCount = pCount + 1
+            Else
+                For i As Integer = 0 To .ToolNGage.ID_Tool.Count - 1
+                    CompareVal(.ToolNGage.PartNo(i), grdManf_ToolNGage.Rows(i).Cells(0).Value, pCount)
+                    CompareVal(.ToolNGage.Desc(i), grdManf_ToolNGage.Rows(i).Cells(1).Value, pCount)
+                    CompareVal(.ToolNGage.Type(i), grdManf_ToolNGage.Rows(i).Cells(2).Value, pCount)
+                    CompareVal(.ToolNGage.Status(i), grdManf_ToolNGage.Rows(i).Cells(3).Value, pCount)
+                    CompareVal(.ToolNGage.LeadTime(i), ConvertToDbl(grdManf_ToolNGage.Rows(i).Cells(4).Value), pCount)
+                    CompareVal(.ToolNGage.DesignResponsibility(i), grdManf_ToolNGage.Rows(i).Cells(5).Value, pCount)
+                Next
+
+            End If
+
+            mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Manf")
+            CompareVal(mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdManf_EditedBy.Rows(0).Cells(0).Value, pCount)
+            CompareVal(mProcess_Project.EditedBy.Name, grdManf_EditedBy.Rows(0).Cells(1).Value, pCount)
+            CompareVal(mProcess_Project.EditedBy.Comment, grdManf_EditedBy.Rows(0).Cells(2).Value, pCount)
+
+        End With
+
+        If (pCount > 0) Then
+            pblnValChanged = True
+        End If
+
+        Return pblnValChanged
+
+    End Function
+
+    Private Function CompareVal_Purchase() As Boolean
+        '=============================================
+        Dim pCI As New CultureInfo("en-US")
+        Dim pblnValChanged As Boolean = False
+        Dim pCount As Integer = 0
+
+        With mProcess_Project.Purchase
+
+            If (grdPurchase_Mat.Rows.Count - 1 <> .Mat.ID_Mat.Count) Then
+                pCount = pCount + 1
+            Else
+                For i As Integer = 0 To .Mat.ID_Mat.Count - 1
+                    CompareVal(.Mat.Item(i), grdPurchase_Mat.Rows(i).Cells(0).Value, pCount)
+                    CompareVal(.Mat.EstQty(i), grdPurchase_Mat.Rows(i).Cells(1).Value, pCount)
+                    CompareVal(.Mat.Status(i), grdPurchase_Mat.Rows(i).Cells(2).Value, pCount)
+                    CompareVal(.Mat.LeadTime(i), ConvertToDbl(grdPurchase_Mat.Rows(i).Cells(3).Value), pCount)
+                Next
+            End If
+
+            If (grdPurchase_Drawing.Rows.Count - 1 <> .Dwg.ID_Dwg.Count) Then
+                pCount = pCount + 1
+            Else
+                For i As Integer = 0 To .Dwg.ID_Dwg.Count - 1
+                    CompareVal(.Dwg.No(i), grdPurchase_Drawing.Rows(i).Cells(0).Value, pCount)
+                    CompareVal(.Dwg.Desc(i), grdPurchase_Drawing.Rows(i).Cells(1).Value, pCount)
+                    CompareVal(.Dwg.LeadTime(i), ConvertToDbl(grdPurchase_Drawing.Rows(i).Cells(2).Value), pCount)
+                Next
+            End If
+
+            mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Purchase")
+            CompareVal(mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdPurchase_EditedBy.Rows(0).Cells(0).Value, pCount)
+            CompareVal(mProcess_Project.EditedBy.Name, grdPurchase_EditedBy.Rows(0).Cells(1).Value, pCount)
+            CompareVal(mProcess_Project.EditedBy.Comment, grdPurchase_EditedBy.Rows(0).Cells(2).Value, pCount)
+
+        End With
+
+        If (pCount > 0) Then
+            pblnValChanged = True
+        End If
+
+        Return pblnValChanged
+
+    End Function
+
+    Private Function CompareVal_Qlty() As Boolean
+        '===========================================
+        Dim pCI As New CultureInfo("en-US")
+        Dim pblnValChanged As Boolean = False
+        Dim pCount As Integer = 0
+
+        With mProcess_Project.Qlty
+
+            Dim pblnFlag As Boolean
+            If (cmbQuality_ApprovedSupplier.Text = "Y") Then
+                pblnFlag = True
+            Else
+                pblnFlag = False
+            End If
+            CompareVal(.IsApvdSupplierOnly, pblnFlag, pCount)
+
+            If (cmbQuality_TNG.Text = "Y") Then
+                pblnFlag = True
+            Else
+                pblnFlag = False
+            End If
+            CompareVal(.Separate_Tool_Gage_Reqd, pblnFlag, pCount)
+
+            If (cmbQuality_CustComplaint.Text = "Y") Then
+                pblnFlag = True
+            Else
+                pblnFlag = False
+            End If
+            CompareVal(.HasCustComplaint, pblnFlag, pCount)
+
+            CompareVal(.Reason, txtQuality_Reason.Text, pCount)
+
+            If (cmbQuality_VisualInspection.Text = "Y") Then
+                pblnFlag = True
+            Else
+                pblnFlag = False
+            End If
+            CompareVal(.VisualInspection, pblnFlag, pCount)
+
+            CompareVal(.VisualInspection_Type, cmbQuality_VisualInspection_Type.Text, pCount)
+
+            If (cmbQuality_SPC.Text = "Y") Then
+                pblnFlag = True
+            Else
+                pblnFlag = False
+            End If
+            CompareVal(.SPC_Reqd, pblnFlag, pCount)
+
+            If (cmbQuality_GageRnR_Reqd.Text = "Y") Then
+                pblnFlag = True
+            Else
+                pblnFlag = False
+            End If
+            CompareVal(.GageRnR_Reqd, pblnFlag, pCount)
+
+
+            mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Qlty")
+            CompareVal(mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdQuality_EditedBy.Rows(0).Cells(0).Value, pCount)
+            CompareVal(mProcess_Project.EditedBy.Name, grdQuality_EditedBy.Rows(0).Cells(1).Value, pCount)
+            CompareVal(mProcess_Project.EditedBy.Comment, grdQuality_EditedBy.Rows(0).Cells(2).Value, pCount)
+
+        End With
+
+        If (pCount > 0) Then
+            pblnValChanged = True
+        End If
+
+        Return pblnValChanged
+
+    End Function
+
+    Private Function CompareVal_DWG() As Boolean
+        '=========================================
+        Dim pCI As New CultureInfo("en-US")
+        Dim pblnValChanged As Boolean = False
+        Dim pCount As Integer = 0
+
+        With mProcess_Project.Dwg
+
+            CompareVal(.DesignLevel, cmbDwg_DesignLevel.Text, pCount)
+
+            If (grdDrawing_Needed.Rows.Count - 1 <> .Needed.ID_Needed.Count) Then
+                pCount = pCount + 1
+            Else
+                For i As Integer = 0 To .Needed.ID_Needed.Count - 1
+                    CompareVal(.Needed.DwgNo(i), grdDrawing_Needed.Rows(i).Cells(0).Value, pCount)
+                    CompareVal(.Needed.Desc(i), grdDrawing_Needed.Rows(i).Cells(1).Value, pCount)
+                    CompareVal(.Needed.Status(i), grdDrawing_Needed.Rows(i).Cells(2).Value, pCount)
+                    CompareVal(.Needed.LeadTime(i), ConvertToDbl(grdDrawing_Needed.Rows(i).Cells(3).Value), pCount)
+                Next
+            End If
+
+            If (grdDrawing_BOM.Rows.Count - 1 <> .BOM.ID_BOM.Count) Then
+                pCount = pCount + 1
+            Else
+                For i As Integer = 0 To .BOM.ID_BOM.Count - 1
+                    CompareVal(.BOM.Parent_PartNo(i), grdDrawing_BOM.Rows(i).Cells(0).Value, pCount)
+                    CompareVal(.BOM.Child_PartNo(i), grdDrawing_BOM.Rows(i).Cells(1).Value, pCount)
+                    CompareVal(.BOM.Qty(i).ToString(), grdDrawing_BOM.Rows(i).Cells(2).Value, pCount)
+                Next
+            End If
+
+            mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "DWG")
+            CompareVal(mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdDwg_EditedBy.Rows(0).Cells(0).Value, pCount)
+            CompareVal(mProcess_Project.EditedBy.Name, grdDwg_EditedBy.Rows(0).Cells(1).Value, pCount)
+            CompareVal(mProcess_Project.EditedBy.Comment, grdDwg_EditedBy.Rows(0).Cells(2).Value, pCount)
+
+        End With
+
+        If (pCount > 0) Then
+            pblnValChanged = True
+        End If
+
+        Return pblnValChanged
+
+    End Function
+
+    Private Function CompareVal_Test() As Boolean
+        '=========================================
+        Dim pCI As New CultureInfo("en-US")
+        Dim pblnValChanged As Boolean = False
+        Dim pCount As Integer = 0
+
+        With mProcess_Project.Test
+
+            '....Leak
+            CompareVal(.Leak.Compress_Unplated, ConvertToDbl(txtTest_CompressPre_Leak.Text), pCount)
+            CompareVal(.Leak.Compress_Plated, ConvertToDbl(txtTest_CompressPost_Leak.Text), pCount)
+
+            CompareVal(.Leak.Medium_Unplated, cmbTest_MediaPre_Leak.Text, pCount)
+            CompareVal(.Leak.Medium_Plated, cmbTest_MediaPost_Leak.Text, pCount)
+
+            CompareVal(.Leak.Press_Unplated, ConvertToDbl(txtTest_PressPre_Leak.Text), pCount)
+            CompareVal(.Leak.Press_Plated, ConvertToDbl(txtTest_PressPost_Leak.Text), pCount)
+
+            CompareVal(.Leak.Max_Unplated, ConvertToDbl(txtTest_ReqPre_Leak.Text), pCount)
+            CompareVal(.Leak.Max_Plated, ConvertToDbl(txtTest_ReqPost_Leak.Text), pCount)
+
+            CompareVal(.Leak.Qty_Unplated.ToString(), cmbTest_QtyPre_Leak.Text, pCount)
+            CompareVal(.Leak.Qty_Plated.ToString(), cmbTest_QtyPost_Leak.Text, pCount)
+
+            CompareVal(.Leak.Freq_Unplated, cmbTest_FreqPre_Leak.Text, pCount)
+            CompareVal(.Leak.Freq_Plated, cmbTest_FreqPost_Leak.Text, pCount)
+
+            '....Load
+            CompareVal(.Load.Compress_Unplated, ConvertToDbl(txtTest_CompressPre_Load.Text), pCount)
+            CompareVal(.Load.Compress_Plated, ConvertToDbl(txtTest_CompressPost_Load.Text), pCount)
+
+            CompareVal(.Load.Max_Unplated, ConvertToDbl(txtTest_ReqPre_Load.Text), pCount)
+            CompareVal(.Load.Max_Plated, ConvertToDbl(txtTest_ReqPost_Load.Text), pCount)
+
+            CompareVal(.Load.Qty_Unplated.ToString(), cmbTest_QtyPre_Load.Text, pCount)
+            CompareVal(.Load.Qty_Plated.ToString(), cmbTest_QtyPost_Load.Text, pCount)
+
+            CompareVal(.Load.Freq_Unplated, cmbTest_FreqPre_Load.Text, pCount)
+            CompareVal(.Load.Freq_Plated, cmbTest_FreqPost_Load.Text, pCount)
+
+            '....SpringBack
+            CompareVal(.SpringBack.Compress_Unplated, ConvertToDbl(txtTest_CompressPre_SpringBack.Text), pCount)
+            CompareVal(.SpringBack.Compress_Plated, ConvertToDbl(txtTest_CompressPost_SpringBack.Text), pCount)
+
+            CompareVal(.SpringBack.Max_Unplated, ConvertToDbl(txtTest_ReqPre_SpringBack.Text), pCount)
+            CompareVal(.SpringBack.Max_Plated, ConvertToDbl(txtTest_ReqPost_SpringBack.Text), pCount)
+
+            CompareVal(.SpringBack.Qty_Unplated.ToString(), cmbTest_QtyPre_SpringBack.Text, pCount)
+            CompareVal(.SpringBack.Qty_Plated.ToString(), cmbTest_QtyPost_SpringBack.Text, pCount)
+
+            CompareVal(.SpringBack.Freq_Unplated, cmbTest_FreqPre_SpringBack.Text, pCount)
+            CompareVal(.SpringBack.Freq_Plated, cmbTest_FreqPost_SpringBack.Text, pCount)
+
+            CompareVal(.Other, txtTest_Other.Text, pCount)
+
+            mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Test")
+            CompareVal(mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdTest_EditedBy.Rows(0).Cells(0).Value, pCount)
+            CompareVal(mProcess_Project.EditedBy.Name, grdTest_EditedBy.Rows(0).Cells(1).Value, pCount)
+            CompareVal(mProcess_Project.EditedBy.Comment, grdTest_EditedBy.Rows(0).Cells(2).Value, pCount)
+
+        End With
+
+        If (pCount > 0) Then
+            pblnValChanged = True
+        End If
+
+        Return pblnValChanged
+
+    End Function
+
+    Private Function CompareVal_Shipping() As Boolean
+        '============================================
+        Dim pCI As New CultureInfo("en-US")
+        Dim pblnValChanged As Boolean = False
+        Dim pCount As Integer = 0
+
+        With mProcess_Project.Shipping
+
+            CompareVal(.Notes, txtShipping_Notes.Text, pCount)
+
+            mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Shipping")
+            CompareVal(mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdShipping_EditedBy.Rows(0).Cells(0).Value, pCount)
+            CompareVal(mProcess_Project.EditedBy.Name, grdShipping_EditedBy.Rows(0).Cells(1).Value, pCount)
+            CompareVal(mProcess_Project.EditedBy.Comment, grdShipping_EditedBy.Rows(0).Cells(2).Value, pCount)
+
+        End With
+
+        If (pCount > 0) Then
+            pblnValChanged = True
+        End If
+
+        Return pblnValChanged
+
     End Function
 
 #End Region
@@ -6728,10 +7516,6 @@ Public Class Process_frmMain
 
     End Sub
 
-
-
-
-
 #End Region
 
 
@@ -6754,51 +7538,30 @@ Public Class Process_frmMain
     '    End With
     'End Sub
 
-    Private Sub CompareVal(VarOrg_In As String, VarMod_In As String, ByRef Count As Integer)
-        '===================================================================================
-        If (IsNothing(VarOrg_In)) Then
-            VarOrg_In = ""
-        End If
+    'Private Sub CompareVal(VarOrg_In As String, VarMod_In As String, ByRef Count As Integer)
+    '    '===================================================================================
+    '    If (IsNothing(VarOrg_In)) Then
+    '        VarOrg_In = ""
+    '    End If
 
-        If (IsNothing(VarMod_In)) Then
-            VarMod_In = ""
-        End If
+    '    If (IsNothing(VarMod_In)) Then
+    '        VarMod_In = ""
+    '    End If
 
-        If Trim(VarOrg_In) <> Trim(VarMod_In) Then Count += 1
+    '    If Trim(VarOrg_In) <> Trim(VarMod_In) Then Count += 1
 
-    End Sub
-
-    Private Sub CompareVal(VarOrg_In As Integer, VarMod_In As Integer, ByRef Count As Integer)
-
-        If VarOrg_In <> VarMod_In Then Count += 1
-    End Sub
-
-    Private Sub CompareVal(VarOrg_In As Double, VarMod_In As Double, ByRef Count As Integer)
-        If Math.Abs(VarOrg_In - VarMod_In) >= gcEPS Then Count += 1
-    End Sub
-
-    Private Sub CompareVal(VarOrg_In As Boolean, VarMod_In As Boolean, ByRef Count As Integer)
-        If VarOrg_In <> VarMod_In Then Count += 1
-    End Sub
-
-    'Private Sub CompareVar(VarOrg_In As Double, VarMod_In As Double, Count As Int16)
-    '    '=================================================================
-    '    If Math.Abs(VarOrg_In - VarMod_In) >= gcEPS Then Count += 1
     'End Sub
 
-    'Private Sub CompareVar(VarOrg_In As Integer, VarMod_In As Integer, Count As Int16)
-    '    '=================================================================  
+    'Private Sub CompareVal(VarOrg_In As Integer, VarMod_In As Integer, ByRef Count As Integer)
+
     '    If VarOrg_In <> VarMod_In Then Count += 1
     'End Sub
 
-    'Private Sub CompareVar(VarOrg_In As String, VarMod_In As String, Count As Int16)
-    '    '=================================================================  
-    '    If Trim(VarOrg_In) <> Trim(VarMod_In) Then Count += 1
+    'Private Sub CompareVal(VarOrg_In As Double, VarMod_In As Double, ByRef Count As Integer)
+    '    If Math.Abs(VarOrg_In - VarMod_In) >= gcEPS Then Count += 1
     'End Sub
 
-    'Private Overloads Sub CompareVar(ByVal VarOrg_In As Boolean,
-    '                      ByVal VarMod_In As Boolean, ByRef Count As Int16)
-    '    '==================================================================     
+    'Private Sub CompareVal(VarOrg_In As Boolean, VarMod_In As Boolean, ByRef Count As Integer)
     '    If VarOrg_In <> VarMod_In Then Count += 1
     'End Sub
 

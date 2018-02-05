@@ -190,6 +190,7 @@ Public Class clsProcessProj_Purchase
         Private mID_Mat As New List(Of Integer)
         Private mItem As New List(Of String)
         Private mEstQty As New List(Of Double)
+        Private mQty_Unit As New List(Of String)
         Private mStatus As New List(Of String)
         Private mLeadTime As New List(Of Double)
 
@@ -230,6 +231,18 @@ Public Class clsProcessProj_Purchase
 
             Set(Obj As List(Of Double))
                 mEstQty = Obj
+            End Set
+        End Property
+
+        '....Qty_Unit
+        Public Property Qty_Unit() As List(Of String)
+            '========================================
+            Get
+                Return mQty_Unit
+            End Get
+
+            Set(Obj As List(Of String))
+                mQty_Unit = Obj
             End Set
         End Property
 
