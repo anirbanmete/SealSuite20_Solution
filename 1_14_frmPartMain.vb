@@ -128,11 +128,16 @@ Public Class frmPartMain
         'Add any initialization after the InitializeComponent() call
         '....European Convention
         ''PopulateCultureCmbBox(cmbCulturalFormat)
+        tsbAdd.Enabled = True
+        tsbEdit.Enabled = True
+        tsbSave.Enabled = False
+        tsbDelete.Enabled = True
 
         mblnAdd = False
         mblnEdit = False
         cmdHardware.Enabled = False
         cmdSealProcess.Enabled = False
+
 
         GetPartProjectInfo()
 
@@ -2458,6 +2463,12 @@ Public Class frmPartMain
         End If
 
         mblnAdd = True
+        mblnEdit = False
+
+        tsbAdd.Enabled = False
+        tsbEdit.Enabled = False
+        tsbSave.Enabled = True
+        tsbDelete.Enabled = False
 
     End Sub
 
@@ -2734,6 +2745,12 @@ Public Class frmPartMain
             End If
 
             mblnEdit = True
+            mblnAdd = False
+
+            tsbAdd.Enabled = False
+            tsbEdit.Enabled = False
+            tsbSave.Enabled = True
+            tsbDelete.Enabled = False
 
         End If
 
@@ -2750,6 +2767,11 @@ Public Class frmPartMain
             UpdateRecords(mCustomerID, mPlatformID, mLocationID,
                       mPNID, mRevID)
         End If
+
+        tsbAdd.Enabled = True
+        tsbEdit.Enabled = True
+        tsbSave.Enabled = False
+        tsbDelete.Enabled = True
 
     End Sub
 
@@ -2938,8 +2960,8 @@ Public Class frmPartMain
             gPartProject.CustInfo.PN_Cust = .CustInfo.PN_Cust
             gPartProject.CustInfo.PN_Cust_Rev = .CustInfo.PN_Cust_Rev
             gPartProject.Project_ID = .Project_ID
-            gPartUnit.System = mPartProject.PNR.DimUnit.ToString()
-            gPartProject.PNR.DimUnit = mPartProject.PNR.DimUnit
+            gUnit.System = mPartProject.PNR.UnitSystem.ToString()
+            gPartProject.PNR.UnitSystem = mPartProject.PNR.UnitSystem
 
             'gPartProject.CultureName = .CultureName
 
@@ -3036,7 +3058,7 @@ Public Class frmPartMain
             End If
 
             'End If
-            'gPartUnit.System = gPartUnit.System
+            'gUnit.System = gUnit.System
 
             ''mIPEProjectID = .Project_ID
             gIPE_Project.Project_ID = .Project_ID
@@ -7210,7 +7232,7 @@ Public Class frmPartMain
                         Else
                             cmbUnit.SelectedIndex = 0
                         End If
-                        mPartProject.PNR.DimUnit = CType([Enum].Parse(GetType(clsPartProject.clsPNR.eDimUnit), cmbUnit.Text), clsPartProject.clsPNR.eDimUnit)
+                        mPartProject.PNR.UnitSystem = CType([Enum].Parse(GetType(clsPartProject.clsPNR.eDimUnit), cmbUnit.Text), clsPartProject.clsPNR.eDimUnit)
 
                         ' ''....Cultural Format
                         ''If (Not IsDBNull(pQry5.fldCulturalFormat) And Not IsNothing(pQry5.fldCulturalFormat)) Then

@@ -110,7 +110,6 @@
   <ItemGroup>
     <Compile Include="1_14_clsPartFile.vb" />
     <Compile Include="1_14_clsPartProject.vb" />
-    <Compile Include="1_14_clsPartUnit.vb" />
     <Compile Include="1_14_frmPartMain.Designer.vb">
       <DependentUpon>1_14_frmPartMain.vb</DependentUpon>
     </Compile>
@@ -208,10 +207,10 @@
     <Compile Include="3_25_frmTestSignOff.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="0_20_frmSplash.designer.vb">
-      <DependentUpon>0_20_frmSplash.vb</DependentUpon>
+    <Compile Include="0_23_frmSplash.designer.vb">
+      <DependentUpon>0_23_frmSplash.vb</DependentUpon>
     </Compile>
-    <Compile Include="0_20_frmSplash.vb">
+    <Compile Include="0_23_frmSplash.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="3_25_frmTestUnit.designer.vb">
@@ -468,23 +467,24 @@
     <Compile Include="1_14_frmPartNonStdCS_CSeal.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="0_20_clsUser.vb" />
-    <Compile Include="0_20_clsFile.vb" />
-    <Compile Include="0_20_frmUserGroup.Designer.vb">
-      <DependentUpon>0_20_frmUserGroup.vb</DependentUpon>
+    <Compile Include="0_23_clsUser.vb" />
+    <Compile Include="0_23_clsFile.vb" />
+    <Compile Include="0_23_frmUserGroup.Designer.vb">
+      <DependentUpon>0_23_frmUserGroup.vb</DependentUpon>
     </Compile>
-    <Compile Include="0_20_frmUserGroup.vb">
+    <Compile Include="0_23_frmUserGroup.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="2_13_clsProcessFile.vb" />
-    <Compile Include="0_20_frmUserRole.Designer.vb">
-      <DependentUpon>0_20_frmUserRole.vb</DependentUpon>
+    <Compile Include="0_23_frmUserRole.Designer.vb">
+      <DependentUpon>0_23_frmUserRole.vb</DependentUpon>
     </Compile>
-    <Compile Include="0_20_frmUserRole.vb">
+    <Compile Include="0_23_frmUserRole.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="2_13_clsProcessProj_Risk.vb" />
     <Compile Include="2_13_clsProcessProj_Unit.vb" />
+    <Compile Include="0_23_clsUnit.vb" />
     <Compile Include="Model0_SealSuite.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -593,8 +593,8 @@
     <EmbeddedResource Include="2_13_frmProcessMain_tb10Dwg_Notes.resx">
       <DependentUpon>2_13_frmProcessMain_tb10Dwg_Notes.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="0_20_frmUserGroup.resx">
-      <DependentUpon>0_20_frmUserGroup.vb</DependentUpon>
+    <EmbeddedResource Include="0_23_frmUserGroup.resx">
+      <DependentUpon>0_23_frmUserGroup.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="3_25_frmTestAdminLogIn.resx">
       <DependentUpon>3_25_frmTestAdminLogIn.vb</DependentUpon>
@@ -635,8 +635,8 @@
     <EmbeddedResource Include="3_25_frmTestSignOff.resx">
       <DependentUpon>3_25_frmTestSignOff.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="0_20_frmSplash.resx">
-      <DependentUpon>0_20_frmSplash.vb</DependentUpon>
+    <EmbeddedResource Include="0_23_frmSplash.resx">
+      <DependentUpon>0_23_frmSplash.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="3_25_frmTestUnit.resx">
       <DependentUpon>3_25_frmTestUnit.vb</DependentUpon>
@@ -776,8 +776,8 @@
     <EmbeddedResource Include="1_14_frmPartNonStdCS_CSeal.resx">
       <DependentUpon>1_14_frmPartNonStdCS_CSeal.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="0_20_frmUserRole.resx">
-      <DependentUpon>0_20_frmUserRole.vb</DependentUpon>
+    <EmbeddedResource Include="0_23_frmUserRole.resx">
+      <DependentUpon>0_23_frmUserRole.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

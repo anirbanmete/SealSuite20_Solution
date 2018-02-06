@@ -506,7 +506,7 @@ Public Class Test_clsProject
 
     'End Sub
 
-    Public Sub RetrieveFrom_DB(ByVal Part_Unit_In As clsPartUnit)
+    Public Sub RetrieveFrom_DB(ByVal Unit_In As clsUnit)
         '==========================================================================
         Dim pSealTestEntities As New SealTestDBEntities()
 
@@ -1142,7 +1142,7 @@ Public Class Test_clsProject
     ''End Sub
 
 
-    Public Sub SaveTo_DB(ByVal Part_Unit_In As clsPartUnit, ByVal MO_Sel_In As Integer,
+    Public Sub SaveTo_DB(ByVal Unit_In As clsUnit, ByVal MO_Sel_In As Integer,
                          ByVal Report_Sel As Integer, ByVal PNID_In As Integer, ByVal RevID_In As Integer)          'SaveTo_DB
         '===============================================================================
         Dim pSealTestEntities As New SealTestDBEntities()
@@ -1171,7 +1171,7 @@ Public Class Test_clsProject
 
             Dim pQryProjectRec = (From pRec In pSealTestEntities.tblTestProject Where
                                   pRec.fldPNID = pPNID And pRec.fldRevID = pRevID
-                                   Select pRec).ToList()
+                                  Select pRec).ToList()
 
             If (pQryProjectRec.Count() > 0) Then
                 pTestProject = pQryProjectRec(0)
@@ -1180,7 +1180,7 @@ Public Class Test_clsProject
 
             Else
                 Dim pRec = (From Rec In pSealTestEntities.tblTestProject Order By Rec.fldID Descending
-                                  Select Rec).ToList()
+                            Select Rec).ToList()
                 If (pRec.Count() > 0) Then
                     pTestProjectID = pRec(0).fldID + 1
                 End If
@@ -1214,7 +1214,7 @@ Public Class Test_clsProject
             mTest_Spec.SaveTo_DB()
 
             '....tblTestMO
-            SaveTo_tblTestMO(Part_Unit_In, MO_Sel_In)
+            SaveTo_tblTestMO(Unit_In, MO_Sel_In)
 
             If (mTest_MO.Count > MO_Sel_In) Then
                 If (mTest_MO(MO_Sel_In).Test_Report.Count > Report_Sel) Then
@@ -1229,7 +1229,7 @@ Public Class Test_clsProject
     End Sub
 
 
-    Private Sub SaveTo_tblTestMO(ByVal Part_Unit_In As clsPartUnit, ByVal MO_Sel_In As Integer)             'SaveTo_tblTestMO
+    Private Sub SaveTo_tblTestMO(ByVal Unit_In As clsUnit, ByVal MO_Sel_In As Integer)             'SaveTo_tblTestMO
         '=============================================================================
         Dim pSealTestEntities As New SealTestDBEntities()
 
@@ -1241,7 +1241,7 @@ Public Class Test_clsProject
             pMO_ID = mTest_MO(MO_Sel_In).ID
 
             Dim pQry = (From pRec In pSealTestEntities.tblMO
-                         Where pRec.fldTestProjectID = mID And pRec.fldID = pMO_ID Select pRec).ToList()
+                        Where pRec.fldTestProjectID = mID And pRec.fldID = pMO_ID Select pRec).ToList()
 
             If (pQry.Count > 0) Then
                 pTestMO = pQry(0)
@@ -1434,7 +1434,7 @@ Public Class Test_clsProject
         End If
 
         '....Create the Input data file - "file.inp". 
-        gIPE_Unit.System = gPartUnit.System
+        gIPE_Unit.System = gUnit.System
         ANSYS_In.NelMax = 2000
         mAnalysis.WriteFile_ANSYS_Input(gIPE_Unit, ANSYS_In, pLoadStep, mPartProject.PNR.HW.DControl)
 

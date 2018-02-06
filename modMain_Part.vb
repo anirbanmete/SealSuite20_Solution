@@ -18,7 +18,6 @@ Module modMain_Part
 #Region "INPUT DATA SET:"
     Public gPartFile As New clsPartFile()
     Public gPartProject As New clsPartProject()
-    Public gPartUnit As New clsPartUnit()
 
 #End Region
 

@@ -28,6 +28,7 @@ Module modMain
 
     Public gUser As New clsUser
     Public gFile As New clsFile()
+    Public gUnit As New clsUnit()
 
     Public gPart_frmMain As New frmPartMain("PN")
 

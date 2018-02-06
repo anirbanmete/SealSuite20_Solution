@@ -144,14 +144,14 @@ Public Class Part_frmLegacyPN
 
         If (cmbSealPOrient.SelectedIndex = 0) Then          '....External
 
-            If (gPartUnit.System = "English") Then
+            If (gUnit.System = "English") Then
 
                 cmbCataloguedPN_Part1.Items.Add("ECE")
                 cmbCataloguedPN_Part1.Items.Add("ESE")
                 cmbCataloguedPN_Part1.Items.Add("EEE")
                 cmbCataloguedPN_Part1.Items.Add("EUE")
 
-            ElseIf (gPartUnit.System = "Metric") Then
+            ElseIf (gUnit.System = "Metric") Then
                 cmbCataloguedPN_Part1.Items.Add("MCE")
                 cmbCataloguedPN_Part1.Items.Add("MSE")
                 cmbCataloguedPN_Part1.Items.Add("MEE")
@@ -160,14 +160,14 @@ Public Class Part_frmLegacyPN
 
         ElseIf (cmbSealPOrient.SelectedIndex = 1) Then      '....Internal
 
-            If (gPartUnit.System = "English") Then
+            If (gUnit.System = "English") Then
 
                 cmbCataloguedPN_Part1.Items.Add("ECI")
                 cmbCataloguedPN_Part1.Items.Add("ESI")
                 cmbCataloguedPN_Part1.Items.Add("EEI")
                 cmbCataloguedPN_Part1.Items.Add("EUI")
 
-            ElseIf (gPartUnit.System = "Metric") Then
+            ElseIf (gUnit.System = "Metric") Then
                 cmbCataloguedPN_Part1.Items.Add("MCI")
                 cmbCataloguedPN_Part1.Items.Add("MSI")
                 cmbCataloguedPN_Part1.Items.Add("MEI")

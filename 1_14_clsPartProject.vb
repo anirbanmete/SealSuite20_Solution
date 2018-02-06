@@ -269,7 +269,7 @@ Public Class clsPartProject
         Private mRefNotesLegacy As sLegacy
 
         Private mAppType As eAppType
-        Private mDimUnit As eDimUnit
+        Private mUnitSystem As eDimUnit
 
         'Dim mSealTypeNo As String
         Dim mSealType As eType
@@ -668,15 +668,15 @@ Public Class clsPartProject
             End Set
         End Property
 
-        '....DimUnit
-        Public Property DimUnit() As eDimUnit
+        '....UnitSystem
+        Public Property UnitSystem() As eDimUnit
             '================================
             Get
-                Return mDimUnit
+                Return mUnitSystem
             End Get
 
             Set(strData As eDimUnit)
-                mDimUnit = strData
+                mUnitSystem = strData
             End Set
         End Property
 
@@ -867,7 +867,7 @@ Public Class clsPartProject
             Private mT As Single
 
             'Private mUnit As New clsPartUnit
-            Private mUnit As clsPartUnit
+            Private mUnit As clsUnit
             Private mDThetaE1 As Single
             Private mDThetaM1 As Single
 
@@ -950,7 +950,7 @@ Public Class clsPartProject
                         With pUSeal
                             Dim pSealEntities As New SealIPEMCSDBEntities()
                             Dim pRecord = (From pRec In pSealEntities.tblUSeal_Geom
-                                  Where pRec.fldCrossSecNo = mMCrossSecNo Select pRec).ToList()
+                                           Where pRec.fldCrossSecNo = mMCrossSecNo Select pRec).ToList()
                             If (pRecord.Count > 0) Then
                                 If (pRecord(0).fldGeomTemplate = True) Then
                                     .MCrossSecNo = mMCrossSecNo
@@ -961,7 +961,7 @@ Public Class clsPartProject
                                     mTStd = .TStd
                                 ElseIf (pRecord(0).fldGeomTemplate = False) Then
                                     Dim pQry = (From pRec In pSealEntities.tblUSeal_ManfData
-                                       Where pRec.fldCrossSecNo = mMCrossSecNo Select pRec).ToList()
+                                                Where pRec.fldCrossSecNo = mMCrossSecNo Select pRec).ToList()
                                     If (pQry.Count > 0) Then
 
                                         mHfree = pQry(0).fldHFree
@@ -1363,8 +1363,8 @@ Public Class clsPartProject
                 '===========================================
                 mPNR = New clsPartProject.clsPNR()
                 mPNR = PNR_IN.Clone()
-                mUnit = New clsPartUnit
-                mUnit.System = mPNR.DimUnit.ToString()
+                mUnit = New clsUnit
+                mUnit.System = mPNR.UnitSystem.ToString()
             End Sub
 
 

@@ -133,19 +133,23 @@ Public Class frmUserRole
                     Dim pUserID As Integer = pQry(i).fldID
                     grdUsers.Rows.Add()
                     Dim pName As String = ""
-                    If (pQry(i).fldLastName.Trim() <> "") Then
-                        pName = pQry(i).fldLastName
-                    End If
-
-                    If (pQry(i).fldFirstName.Trim() <> "") Then
-                        If (pName <> "") Then
-                            pName = pName + ", " + pQry(i).fldFirstName
-                        Else
-                            pName = pQry(i).fldFirstName
+                    If (Not IsNothing(pQry(i).fldLastName)) Then
+                        If (pQry(i).fldLastName.Trim() <> "") Then
+                            pName = pQry(i).fldLastName
                         End If
                     End If
 
-                    grdUsers.Rows(i).Cells(0).Value = pName
+                    If (Not IsNothing(pQry(i).fldFirstName)) Then
+                        If (pQry(i).fldFirstName.Trim() <> "") Then
+                            If (pName <> "") Then
+                                pName = pName + ", " + pQry(i).fldFirstName
+                            Else
+                                pName = pQry(i).fldFirstName
+                            End If
+                        End If
+                    End If
+
+                    grdUsers.Rows(i).Cells(0).Value = pName.Trim()
                     grdUsers.Rows(i).Cells(6).Value = pUserID
 
                     Dim pQryRole = (From pRec In pSealSuiteEntities.tblProcess_UserRole Where pRec.fldUserID = pUserID Select pRec).ToList()

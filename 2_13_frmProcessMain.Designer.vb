@@ -1895,6 +1895,7 @@ Partial Class Process_frmMain
         '
         'txtPartChild
         '
+        Me.txtPartChild.Enabled = False
         Me.txtPartChild.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPartChild.ForeColor = System.Drawing.Color.Black
         Me.txtPartChild.Location = New System.Drawing.Point(614, 32)
@@ -1949,6 +1950,7 @@ Partial Class Process_frmMain
         '
         'txtPartParent
         '
+        Me.txtPartParent.Enabled = False
         Me.txtPartParent.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPartParent.ForeColor = System.Drawing.Color.Black
         Me.txtPartParent.Location = New System.Drawing.Point(441, 32)
@@ -3849,7 +3851,7 @@ Partial Class Process_frmMain
         Me.GroupBox46.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox46.Location = New System.Drawing.Point(25, 123)
         Me.GroupBox46.Name = "GroupBox46"
-        Me.GroupBox46.Size = New System.Drawing.Size(572, 158)
+        Me.GroupBox46.Size = New System.Drawing.Size(594, 158)
         Me.GroupBox46.TabIndex = 874
         Me.GroupBox46.TabStop = False
         Me.GroupBox46.Text = "Special Operation:"
@@ -3871,7 +3873,7 @@ Partial Class Process_frmMain
         Me.grdCost_SplOperation.Location = New System.Drawing.Point(13, 27)
         Me.grdCost_SplOperation.Name = "grdCost_SplOperation"
         Me.grdCost_SplOperation.RowHeadersWidth = 20
-        Me.grdCost_SplOperation.Size = New System.Drawing.Size(546, 118)
+        Me.grdCost_SplOperation.Size = New System.Drawing.Size(565, 118)
         Me.grdCost_SplOperation.TabIndex = 741
         '
         'DataGridViewTextBoxColumn71
@@ -4408,6 +4410,7 @@ Partial Class Process_frmMain
         Me.GroupBox2.Controls.Add(Me.txtSegNo)
         Me.GroupBox2.Controls.Add(Me.lblSegNo)
         Me.GroupBox2.Controls.Add(Me.chkSeg)
+        Me.GroupBox2.Enabled = False
         Me.GroupBox2.Location = New System.Drawing.Point(433, 158)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(182, 44)
