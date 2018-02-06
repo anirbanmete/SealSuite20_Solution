@@ -35,7 +35,8 @@ Public Class Process_frmMain
     Private mUserName As New List(Of String)
     Private mUserID As New List(Of Integer)
 
-    Dim mDateTimePicker As DateTimePicker
+    Dim mDTP_IssueComment As DateTimePicker
+    Dim mDTP_Quote As DateTimePicker
 
     '....Variables for Deleting Records from GridView
     Dim mblngrdCustContact_PreOrder As Boolean = False
@@ -2970,6 +2971,11 @@ Public Class Process_frmMain
         '============================================================================================
         Dim pCI As New CultureInfo("en-US")
 
+        If (CompareVal_Header()) Then
+            txtDateMod.Text = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+            txtModifiedBy.Text = gUser.FirstName + " " + gUser.LastName
+        End If
+
         If (CompareVal_PreOrder()) Then
             grdPreOrderEditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
             grdPreOrderEditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
@@ -4000,19 +4006,15 @@ Public Class Process_frmMain
             pProcess_frmIssueComnt_Resolution.ShowDialog()
         End If
 
-
-
         If (e.ColumnIndex = 7) Then
-
-            mDateTimePicker = New DateTimePicker()
-            grdIssueComment.Controls.Add(mDateTimePicker)
-            mDateTimePicker.Format = DateTimePickerFormat.Short
+            mDTP_IssueComment = New DateTimePicker()
+            grdIssueComment.Controls.Add(mDTP_IssueComment)
+            mDTP_IssueComment.Format = DateTimePickerFormat.Short
             Dim pRectangle As Rectangle = grdIssueComment.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, True)
-            mDateTimePicker.Size = New Size(pRectangle.Width, pRectangle.Height)
-            mDateTimePicker.Location = New Point(pRectangle.X, pRectangle.Y)
-            AddHandler mDateTimePicker.CloseUp, New EventHandler(AddressOf mDateTimePicker_CloseUp)
-            AddHandler mDateTimePicker.ValueChanged, New EventHandler(AddressOf mDateTimePicker_OnTextChange)
-
+            mDTP_IssueComment.Size = New Size(pRectangle.Width, pRectangle.Height)
+            mDTP_IssueComment.Location = New Point(pRectangle.X, pRectangle.Y)
+            AddHandler mDTP_IssueComment.CloseUp, New EventHandler(AddressOf mDateTimePicker_CloseUp)
+            AddHandler mDTP_IssueComment.ValueChanged, New EventHandler(AddressOf mDateTimePicker_OnTextChange)
         End If
 
     End Sub
@@ -4105,12 +4107,12 @@ Public Class Process_frmMain
 
     Private Sub mDateTimePicker_CloseUp(ByVal sender As Object, ByVal e As EventArgs)
         '=============================================================================
-        mDateTimePicker.Visible = False
+        mDTP_IssueComment.Visible = False
     End Sub
 
     Private Sub mDateTimePicker_OnTextChange(ByVal sender As Object, ByVal e As EventArgs)
         '==================================================================================
-        grdIssueComment.CurrentCell.Value = mDateTimePicker.Text.ToString()
+        grdIssueComment.CurrentCell.Value = mDTP_IssueComment.Text.ToString()
     End Sub
 
 #End Region
@@ -4262,6 +4264,12 @@ Public Class Process_frmMain
 
         If (TabControl1.SelectedIndex = 8) Then
             CopyDataGridView(grdQuality_SplOperation, grdCost_SplOperation)
+        End If
+
+        '....Header
+        If (CompareVal_Header()) Then
+            txtDateMod.Text = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+            txtModifiedBy.Text = gUser.FirstName + " " + gUser.LastName
         End If
 
         '....Edited By
@@ -5666,11 +5674,29 @@ Public Class Process_frmMain
         mProcess_Project.IssueCommnt.SaveToDB(mProcess_Project.ID)
         mProcess_Project.Approval.SaveToDB(mProcess_Project.ID)
 
-
-
-
-
     End Sub
+
+    Private Function CompareVal_Header() As Boolean
+        '===========================================
+        Dim pblnValChanged As Boolean = False
+        Dim pCount As Integer = 0
+        Dim pCI As New CultureInfo("en-US")
+
+        With mProcess_Project
+            CompareVal(.POPCoding, cmbPopCoding.Text, pCount)
+            CompareVal(.Rating, cmbRating.Text, pCount)
+            CompareVal(.Type, cmbType.Text, pCount)
+            CompareVal(.DateOpen.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), txtStartDate.Text, pCount)
+
+        End With
+
+        If (pCount > 0) Then
+            pblnValChanged = True
+        End If
+
+        Return pblnValChanged
+
+    End Function
 
     Private Function CompareVal_PreOrder() As Boolean
         '==============================================
@@ -5692,23 +5718,14 @@ Public Class Process_frmMain
             End If
 
             CompareVal(.Export.Reqd, pExpReq, pCount)
-
             CompareVal(.Export.Status, cmbExport_Status.Text, pCount)
-
             CompareVal(.Part.Family, cmbPartFamily.Text, pCount)
-
             CompareVal(.Export.Status, cmbExport_Status.Text, pCount)
-
             CompareVal(.Mkt.Seg, cmbPreOrderSeg.Text, pCount)
-
             CompareVal(.Mkt.Channel, cmbPreOrderChannel.Text, pCount)
-
             CompareVal(.Notes, txtPreOrderNotes.Text, pCount)
-
             CompareVal(.Loc.CostFile, cmbCostFileLoc.Text, pCount)
-
             CompareVal(.Loc.RFQPkg, cmbRFQPkgLoc.Text, pCount)
-
             CompareVal(.Notes_Price, txtPreOrderPriceNotes.Text, pCount)
 
         End With
@@ -5718,13 +5735,9 @@ Public Class Process_frmMain
         Else
             For i As Integer = 0 To mProcess_Project.CustContact.ID_Cust.Count - 1
                 CompareVal(mProcess_Project.CustContact.DeptName(i), grdCustContact.Rows(i).Cells(0).Value, pCount)
-
                 CompareVal(mProcess_Project.CustContact.Name(i), grdCustContact.Rows(i).Cells(1).Value, pCount)
-
                 CompareVal(mProcess_Project.CustContact.Phone(i), grdCustContact.Rows(i).Cells(2).Value, pCount)
-
                 CompareVal(mProcess_Project.CustContact.Email(i), grdCustContact.Rows(i).Cells(3).Value, pCount)
-
             Next
         End If
 
@@ -5734,7 +5747,6 @@ Public Class Process_frmMain
         Else
             For i As Integer = 0 To mProcess_Project.PreOrder.Quote.QID.Count - 1
                 CompareVal(mProcess_Project.PreOrder.Quote.QDate(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdQuote.Rows(i).Cells(0).Value, pCount)
-
                 CompareVal(mProcess_Project.PreOrder.Quote.No(i), grdQuote.Rows(i).Cells(1).Value, pCount)
 
             Next
@@ -5747,11 +5759,8 @@ Public Class Process_frmMain
         Else
             For i As Integer = 0 To mProcess_Project.PreOrder.SalesData.ID_Sales.Count - 1
                 CompareVal(mProcess_Project.PreOrder.SalesData.Year(i).ToString(), grdPreOrder_SalesData.Rows(i).Cells(0).Value, pCount)
-
                 CompareVal(mProcess_Project.PreOrder.SalesData.Qty(i).ToString(), grdPreOrder_SalesData.Rows(i).Cells(1).Value, pCount)
-
                 CompareVal(mProcess_Project.PreOrder.SalesData.Price(i), grdPreOrder_SalesData.Rows(i).Cells(2).Value, pCount)
-
                 CompareVal(mProcess_Project.PreOrder.SalesData.Total(i), grdPreOrder_SalesData.Rows(i).Cells(3).Value, pCount)
 
             Next
@@ -7566,6 +7575,31 @@ Public Class Process_frmMain
         'Dim pval2 As String = ""
         'CompareVar(pval1, pval2, pCount)
 
+    End Sub
+
+    Private Sub grdQuote_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdQuote.CellClick
+        '======================================================================================================
+        If (e.ColumnIndex = 0) Then
+            mDTP_Quote = New DateTimePicker()
+            grdQuote.Controls.Add(mDTP_Quote)
+            mDTP_Quote.Format = DateTimePickerFormat.Short
+            Dim pRectangle As Rectangle = grdQuote.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, True)
+            mDTP_Quote.Size = New Size(pRectangle.Width, pRectangle.Height)
+            mDTP_Quote.Location = New Point(pRectangle.X, pRectangle.Y)
+            AddHandler mDTP_Quote.CloseUp, New EventHandler(AddressOf DTP_Quote_CloseUp)
+            AddHandler mDTP_Quote.ValueChanged, New EventHandler(AddressOf DTP_Quote_OnTextChange)
+        End If
+
+    End Sub
+
+    Private Sub DTP_Quote_CloseUp(ByVal sender As Object, ByVal e As EventArgs)
+        '=============================================================================
+        mDTP_Quote.Visible = False
+    End Sub
+
+    Private Sub DTP_Quote_OnTextChange(ByVal sender As Object, ByVal e As EventArgs)
+        '==================================================================================
+        grdQuote.CurrentCell.Value = mDTP_Quote.Text.ToString()
     End Sub
 
 

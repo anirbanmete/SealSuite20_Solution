@@ -1383,6 +1383,7 @@ Partial Class Process_frmMain
         Me.txtStartDate.ForeColor = System.Drawing.Color.Black
         Me.txtStartDate.Location = New System.Drawing.Point(11, 31)
         Me.txtStartDate.Name = "txtStartDate"
+        Me.txtStartDate.ReadOnly = True
         Me.txtStartDate.Size = New System.Drawing.Size(80, 21)
         Me.txtStartDate.TabIndex = 651
         Me.txtStartDate.Tag = "Tester"
@@ -1394,6 +1395,7 @@ Partial Class Process_frmMain
         Me.txtDateMod.ForeColor = System.Drawing.Color.Black
         Me.txtDateMod.Location = New System.Drawing.Point(120, 31)
         Me.txtDateMod.Name = "txtDateMod"
+        Me.txtDateMod.ReadOnly = True
         Me.txtDateMod.Size = New System.Drawing.Size(80, 21)
         Me.txtDateMod.TabIndex = 654
         Me.txtDateMod.Tag = "Tester"
@@ -1403,7 +1405,7 @@ Partial Class Process_frmMain
         Me.Label204.AutoSize = True
         Me.Label204.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.Label204.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label204.Location = New System.Drawing.Point(229, 15)
+        Me.Label204.Location = New System.Drawing.Point(235, 15)
         Me.Label204.Name = "Label204"
         Me.Label204.Size = New System.Drawing.Size(100, 13)
         Me.Label204.TabIndex = 657
@@ -1819,7 +1821,9 @@ Partial Class Process_frmMain
         '
         Me.DataGridViewTextBoxColumn16.HeaderText = "Date"
         Me.DataGridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn16"
-        Me.DataGridViewTextBoxColumn16.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn16.ReadOnly = True
+        Me.DataGridViewTextBoxColumn16.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewTextBoxColumn16.Width = 90
         '
         'DataGridViewTextBoxColumn6
         '
@@ -3086,6 +3090,7 @@ Partial Class Process_frmMain
         Me.txtOrdEntry_PODate.ForeColor = System.Drawing.Color.Black
         Me.txtOrdEntry_PODate.Location = New System.Drawing.Point(132, 47)
         Me.txtOrdEntry_PODate.Name = "txtOrdEntry_PODate"
+        Me.txtOrdEntry_PODate.ReadOnly = True
         Me.txtOrdEntry_PODate.Size = New System.Drawing.Size(80, 21)
         Me.txtOrdEntry_PODate.TabIndex = 687
         Me.txtOrdEntry_PODate.Tag = "Tester"
@@ -3097,6 +3102,7 @@ Partial Class Process_frmMain
         Me.txtOrdEntry_PODate_EDI.ForeColor = System.Drawing.Color.Black
         Me.txtOrdEntry_PODate_EDI.Location = New System.Drawing.Point(259, 47)
         Me.txtOrdEntry_PODate_EDI.Name = "txtOrdEntry_PODate_EDI"
+        Me.txtOrdEntry_PODate_EDI.ReadOnly = True
         Me.txtOrdEntry_PODate_EDI.Size = New System.Drawing.Size(80, 21)
         Me.txtOrdEntry_PODate_EDI.TabIndex = 690
         Me.txtOrdEntry_PODate_EDI.Tag = "Tester"
@@ -3510,6 +3516,7 @@ Partial Class Process_frmMain
         Me.txtOrdEntry_OrderShipDate.ForeColor = System.Drawing.Color.Black
         Me.txtOrdEntry_OrderShipDate.Location = New System.Drawing.Point(131, 44)
         Me.txtOrdEntry_OrderShipDate.Name = "txtOrdEntry_OrderShipDate"
+        Me.txtOrdEntry_OrderShipDate.ReadOnly = True
         Me.txtOrdEntry_OrderShipDate.Size = New System.Drawing.Size(80, 21)
         Me.txtOrdEntry_OrderShipDate.TabIndex = 668
         Me.txtOrdEntry_OrderShipDate.Tag = "Tester"
@@ -3654,6 +3661,7 @@ Partial Class Process_frmMain
         Me.txtOrdEntry_SalesDate.ForeColor = System.Drawing.Color.Black
         Me.txtOrdEntry_SalesDate.Location = New System.Drawing.Point(131, 41)
         Me.txtOrdEntry_SalesDate.Name = "txtOrdEntry_SalesDate"
+        Me.txtOrdEntry_SalesDate.ReadOnly = True
         Me.txtOrdEntry_SalesDate.Size = New System.Drawing.Size(80, 21)
         Me.txtOrdEntry_SalesDate.TabIndex = 660
         Me.txtOrdEntry_SalesDate.Tag = "Tester"
@@ -9957,7 +9965,9 @@ Partial Class Process_frmMain
         '
         Me.Column15.HeaderText = "Date"
         Me.Column15.Name = "Column15"
-        Me.Column15.Width = 80
+        Me.Column15.ReadOnly = True
+        Me.Column15.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Column15.Width = 90
         '
         'Column17
         '
@@ -10099,7 +10109,7 @@ Partial Class Process_frmMain
         Me.MainMenuStrip = Me.menuStrip1
         Me.Name = "Process_frmMain"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "SealProcess 1.2: Main Form                                                       " &
+        Me.Text = "SealProcess 1.3: Main Form                                                       " &
     "Metalic Seal: Engineering Process Management System"
         Me.pnlPanel1.ResumeLayout(False)
         Me.pnlPanel1.PerformLayout()
@@ -10520,8 +10530,6 @@ Partial Class Process_frmMain
     Friend WithEvents GroupBox36 As System.Windows.Forms.GroupBox
     Private WithEvents cmbRFQPkgLoc As System.Windows.Forms.ComboBox
     Private WithEvents cmbCostFileLoc As System.Windows.Forms.ComboBox
-    Friend WithEvents DataGridViewTextBoxColumn16 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn6 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents tbApp As System.Windows.Forms.TabControl
     Friend WithEvents tbpGen As System.Windows.Forms.TabPage
     Friend WithEvents tbpFace As System.Windows.Forms.TabPage
@@ -10955,15 +10963,6 @@ Partial Class Process_frmMain
     Friend WithEvents Column9 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column20 As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents Column21 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn100 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn99 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column10 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column12 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column14 As System.Windows.Forms.DataGridViewComboBoxColumn
-    Friend WithEvents Column16 As System.Windows.Forms.DataGridViewComboBoxColumn
-    Friend WithEvents Column13 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column15 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column17 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents TabViewToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Private WithEvents txtITAR_Export_HTS_Classification As System.Windows.Forms.TextBox
     Friend WithEvents Label60 As System.Windows.Forms.Label
@@ -11121,4 +11120,15 @@ Partial Class Process_frmMain
     Friend WithEvents Column34 As DataGridViewComboBoxColumn
     Friend WithEvents DataGridViewComboBoxColumn3 As DataGridViewComboBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn65 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn100 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn99 As DataGridViewTextBoxColumn
+    Friend WithEvents Column10 As DataGridViewTextBoxColumn
+    Friend WithEvents Column12 As DataGridViewTextBoxColumn
+    Friend WithEvents Column14 As DataGridViewComboBoxColumn
+    Friend WithEvents Column16 As DataGridViewComboBoxColumn
+    Friend WithEvents Column13 As DataGridViewTextBoxColumn
+    Friend WithEvents Column15 As DataGridViewTextBoxColumn
+    Friend WithEvents Column17 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn16 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
 End Class
