@@ -4,7 +4,7 @@
 '                      FORM MODULE   :  frmMain                                '
 '                        VERSION NO  :  1.4                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  09JAN18                                '
+'                     LAST MODIFIED  :  06FEB18                                '
 '                                                                              '
 '===============================================================================
 '
@@ -132,6 +132,7 @@ Public Class frmPartMain
         mblnAdd = False
         mblnEdit = False
         cmdHardware.Enabled = False
+        cmdSealProcess.Enabled = False
 
         GetPartProjectInfo()
 
@@ -6847,6 +6848,7 @@ Public Class frmPartMain
             If (trvProjects.SelectedNode.Level = 2) Then
 
                 cmdHardware.Enabled = True
+                cmdSealProcess.Enabled = True
 
                 Dim pPartEntities As New SealPartDBEntities()
 
@@ -7288,6 +7290,7 @@ Public Class frmPartMain
             ElseIf (trvProjects.SelectedNode.Level = 1) Then
 
                 cmdHardware.Enabled = False
+                cmdSealProcess.Enabled = False
                 Dim pPartEntities As New SealPartDBEntities()
                 Dim pPNType As String = e.Node.Parent.Text
                 Dim pPN As String = e.Node.Text
@@ -7559,6 +7562,7 @@ Public Class frmPartMain
             ElseIf (trvProjects.SelectedNode.Level = 0) Then
 
                 cmdHardware.Enabled = False
+                cmdSealProcess.Enabled = False
 
             End If
         End If

@@ -22,9 +22,9 @@ Public Class clsProcessProj_Unit
 
     Dim mcLUnit_List() As String = New String() {"in", "mm"}
     Dim mcFUnit_List() As String = New String() {"lbf", "N", "kgf"}
-    Dim mcPUnit_List() As String = New String() {"psi", "kPa", "atm", "bar"}
+    Dim mcPUnit_List() As String = New String() {"psi", "kPa", "bar", "atm"}
     Dim mcTUnit_List() As String = New String() {"ºF", "ºC"}
-    Dim mcLeakUnit_List() As String = New String() {"cc/s", "mL/min", "L/min", "scfm", "sccm", "mbar L/s"}
+    Dim mcLeakUnit_List() As String = New String() {"scfm", "cc/s", "mL/min", "L/min", "sccm", "mbar L/s"}
 
 #Region "Structures:"
     <Serializable()>
