@@ -18,7 +18,7 @@ Imports System.Runtime.Serialization
 Imports System.Xml.Serialization
 
 
-<Assembly: EdmSchemaAttribute("657158c7-2368-4242-ba71-71e8288b6fba")>
+<Assembly: EdmSchemaAttribute("3c3dc50d-6a36-4378-8259-10c71ffa65fb")>
 #Region "EDM Relationship Metadata"
 <Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblApp_Cavity_tblApp1", "tblApp", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblApp), "tblApp_Cavity", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(tblApp_Cavity), True)>
 <Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblApp_CavityFlange_tblApp", "tblApp", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblApp), "tblApp_CavityFlange", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(tblApp_CavityFlange), True)>
@@ -13222,11 +13222,9 @@ Public Partial Class tblShipping
     ''' Create a new tblShipping object.
     ''' </summary>
     ''' <param name="fldProcessProjectID">Initial value of the fldProcessProjectID property.</param>
-    ''' <param name="fldNotes">Initial value of the fldNotes property.</param>
-    Public Shared Function CreatetblShipping(fldProcessProjectID As Global.System.Decimal, fldNotes As Global.System.String) As tblShipping
+    Public Shared Function CreatetblShipping(fldProcessProjectID As Global.System.Decimal) As tblShipping
         Dim tblShipping as tblShipping = New tblShipping
         tblShipping.fldProcessProjectID = fldProcessProjectID
-        tblShipping.fldNotes = fldNotes
         Return tblShipping
     End Function
 
@@ -13264,7 +13262,7 @@ Public Partial Class tblShipping
     ''' <summary>
     ''' No Metadata Documentation available.
     ''' </summary>
-    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
     <DataMemberAttribute()>
     Public Property fldNotes() As Global.System.String
         Get
@@ -13273,7 +13271,7 @@ Public Partial Class tblShipping
         Set
             OnfldNotesChanging(value)
             ReportPropertyChanging("fldNotes")
-            _fldNotes = StructuralObject.SetValidValue(value, false)
+            _fldNotes = StructuralObject.SetValidValue(value, true)
             ReportPropertyChanged("fldNotes")
             OnfldNotesChanged()
         End Set

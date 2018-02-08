@@ -808,7 +808,7 @@
             <PropertyRef Name="fldProcessProjectID" />
           </Key>
           <Property Name="fldProcessProjectID" Type="numeric" Nullable="false" />
-          <Property Name="fldNotes" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="fldNotes" Type="nvarchar(max)" />
           <Property Name="fldUserName" Type="nvarchar(max)" />
           <Property Name="fldSigned" Type="bit" />
           <Property Name="fldDateSigned" Type="date" />
@@ -2371,7 +2371,7 @@
             <PropertyRef Name="fldProcessProjectID" />
           </Key>
           <Property Name="fldProcessProjectID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="fldNotes" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="fldNotes" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="fldUserName" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="fldSigned" Type="Boolean" />
           <Property Name="fldDateSigned" Type="DateTime" />

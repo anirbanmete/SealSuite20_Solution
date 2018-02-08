@@ -1005,16 +1005,12 @@ Public Class Process_frmMain
             Next
 
             If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "PreOrder")) Then
-                If (mProcess_Project.EditedBy.Name <> "") Then
-                    If (mProcess_Project.EditedBy.DateEdited <> DateTime.MinValue) Then
-                        grdPreOrderEditedBy.Rows(0).Cells(0).Value = mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    Else
-                        grdPreOrderEditedBy.Rows(0).Cells(0).Value = ""
-                    End If
-
-                    grdPreOrderEditedBy.Rows(0).Cells(1).Value = mProcess_Project.EditedBy.Name
-                    grdPreOrderEditedBy.Rows(0).Cells(2).Value = mProcess_Project.EditedBy.Comment
-                End If
+                For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                    grdPreOrderEditedBy.Rows.Add()
+                    grdPreOrderEditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    grdPreOrderEditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
+                    grdPreOrderEditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+                Next
             End If
 
         End With
@@ -1074,16 +1070,12 @@ Public Class Process_frmMain
             End If
 
             If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Export")) Then
-                If (mProcess_Project.EditedBy.Name <> "") Then
-                    If (mProcess_Project.EditedBy.DateEdited <> DateTime.MinValue) Then
-                        grdExport_EditedBy.Rows(0).Cells(0).Value = mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    Else
-                        grdExport_EditedBy.Rows(0).Cells(0).Value = ""
-                    End If
-
-                    grdExport_EditedBy.Rows(0).Cells(1).Value = mProcess_Project.EditedBy.Name
-                    grdExport_EditedBy.Rows(0).Cells(2).Value = mProcess_Project.EditedBy.Comment
-                End If
+                For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                    grdExport_EditedBy.Rows.Add()
+                    grdExport_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    grdExport_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
+                    grdExport_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+                Next
             End If
 
         End With
@@ -1168,16 +1160,12 @@ Public Class Process_frmMain
             End If
 
             If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "OrdEntry")) Then
-                If (mProcess_Project.EditedBy.Name <> "") Then
-                    If (mProcess_Project.EditedBy.DateEdited <> DateTime.MinValue) Then
-                        grdOrdEntry_EditedBy.Rows(0).Cells(0).Value = mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    Else
-                        grdOrdEntry_EditedBy.Rows(0).Cells(0).Value = ""
-                    End If
-
-                    grdOrdEntry_EditedBy.Rows(0).Cells(1).Value = mProcess_Project.EditedBy.Name
-                    grdOrdEntry_EditedBy.Rows(0).Cells(2).Value = mProcess_Project.EditedBy.Comment
-                End If
+                For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                    grdOrdEntry_EditedBy.Rows.Add()
+                    grdOrdEntry_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    grdOrdEntry_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
+                    grdOrdEntry_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+                Next
             End If
 
         End With
@@ -1225,18 +1213,13 @@ Public Class Process_frmMain
             End If
 
             If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Cost")) Then
-                If (mProcess_Project.EditedBy.Name <> "") Then
-                    If (mProcess_Project.EditedBy.DateEdited <> DateTime.MinValue) Then
-                        grdCost_EditedBy.Rows(0).Cells(0).Value = mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    Else
-                        grdCost_EditedBy.Rows(0).Cells(0).Value = ""
-                    End If
-
-                    grdCost_EditedBy.Rows(0).Cells(1).Value = mProcess_Project.EditedBy.Name
-                    grdCost_EditedBy.Rows(0).Cells(2).Value = mProcess_Project.EditedBy.Comment
-                End If
+                For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                    grdCost_EditedBy.Rows.Add()
+                    grdCost_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    grdCost_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
+                    grdCost_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+                Next
             End If
-
         End With
 
 
@@ -1469,16 +1452,12 @@ Public Class Process_frmMain
                 End If
 
                 If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "App")) Then
-                    If (mProcess_Project.EditedBy.Name <> "") Then
-                        If (mProcess_Project.EditedBy.DateEdited <> DateTime.MinValue) Then
-                            grdApp_EditedBy_Face.Rows(0).Cells(0).Value = mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                        Else
-                            grdApp_EditedBy_Face.Rows(0).Cells(0).Value = ""
-                        End If
-
-                        grdApp_EditedBy_Face.Rows(0).Cells(1).Value = mProcess_Project.EditedBy.Name
-                        grdApp_EditedBy_Face.Rows(0).Cells(2).Value = mProcess_Project.EditedBy.Comment
-                    End If
+                    For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                        grdApp_EditedBy_Face.Rows.Add()
+                        grdApp_EditedBy_Face.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        grdApp_EditedBy_Face.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
+                        grdApp_EditedBy_Face.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+                    Next
                 End If
 
             ElseIf (.Type = "Axial") Then
@@ -1639,16 +1618,12 @@ Public Class Process_frmMain
                 End If
 
                 If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "App")) Then
-                    If (mProcess_Project.EditedBy.Name <> "") Then
-                        If (mProcess_Project.EditedBy.DateEdited <> DateTime.MinValue) Then
-                            grdApp_EditedBy_Axial.Rows(0).Cells(0).Value = mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                        Else
-                            grdApp_EditedBy_Axial.Rows(0).Cells(0).Value = ""
-                        End If
-
-                        grdApp_EditedBy_Axial.Rows(0).Cells(1).Value = mProcess_Project.EditedBy.Name
-                        grdApp_EditedBy_Axial.Rows(0).Cells(2).Value = mProcess_Project.EditedBy.Comment
-                    End If
+                    For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                        grdApp_EditedBy_Axial.Rows.Add()
+                        grdApp_EditedBy_Axial.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        grdApp_EditedBy_Axial.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
+                        grdApp_EditedBy_Axial.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+                    Next
                 End If
 
             End If
@@ -1926,16 +1901,12 @@ Public Class Process_frmMain
             txtDesign_Notes.Text = .Notes
 
             If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Design")) Then
-                If (mProcess_Project.EditedBy.Name <> "") Then
-                    If (mProcess_Project.EditedBy.DateEdited <> DateTime.MinValue) Then
-                        grdDesign_EditedBy.Rows(0).Cells(0).Value = mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    Else
-                        grdDesign_EditedBy.Rows(0).Cells(0).Value = ""
-                    End If
-
-                    grdDesign_EditedBy.Rows(0).Cells(1).Value = mProcess_Project.EditedBy.Name
-                    grdDesign_EditedBy.Rows(0).Cells(2).Value = mProcess_Project.EditedBy.Comment
-                End If
+                For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                    grdDesign_EditedBy.Rows.Add()
+                    grdDesign_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    grdDesign_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
+                    grdDesign_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+                Next
             End If
 
         End With
@@ -2019,10 +1990,10 @@ Public Class Process_frmMain
                 End If
 
                 grdManf_ToolNGage.Rows(i).Cells(5).Value = .ToolNGage.DesignResponsibility(i)
+
             Next
 
 
-            '....Purchasing
             For i As Integer = 0 To .ToolNGage.ID_Tool.Count - 1
                 If (.ToolNGage.Status(i) = "Buy") Then
                     grdPurchase_ToolNGages.Rows.Add()
@@ -2044,16 +2015,12 @@ Public Class Process_frmMain
             grdPurchase_ToolNGages.Enabled = False
 
             If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Manf")) Then
-                If (mProcess_Project.EditedBy.Name <> "") Then
-                    If (mProcess_Project.EditedBy.DateEdited <> DateTime.MinValue) Then
-                        grdManf_EditedBy.Rows(0).Cells(0).Value = mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    Else
-                        grdManf_EditedBy.Rows(0).Cells(0).Value = ""
-                    End If
-
-                    grdManf_EditedBy.Rows(0).Cells(1).Value = mProcess_Project.EditedBy.Name
-                    grdManf_EditedBy.Rows(0).Cells(2).Value = mProcess_Project.EditedBy.Comment
-                End If
+                For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                    grdManf_EditedBy.Rows.Add()
+                    grdManf_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    grdManf_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
+                    grdManf_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+                Next
             End If
 
         End With
@@ -2114,16 +2081,12 @@ Public Class Process_frmMain
             Next
 
             If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Purchase")) Then
-                If (mProcess_Project.EditedBy.Name <> "") Then
-                    If (mProcess_Project.EditedBy.DateEdited <> DateTime.MinValue) Then
-                        grdPurchase_EditedBy.Rows(0).Cells(0).Value = mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    Else
-                        grdPurchase_EditedBy.Rows(0).Cells(0).Value = ""
-                    End If
-
-                    grdPurchase_EditedBy.Rows(0).Cells(1).Value = mProcess_Project.EditedBy.Name
-                    grdPurchase_EditedBy.Rows(0).Cells(2).Value = mProcess_Project.EditedBy.Comment
-                End If
+                For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                    grdPurchase_EditedBy.Rows.Add()
+                    grdPurchase_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    grdPurchase_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
+                    grdPurchase_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+                Next
             End If
 
         End With
@@ -2202,16 +2165,12 @@ Public Class Process_frmMain
             Next
 
             If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Qlty")) Then
-                If (mProcess_Project.EditedBy.Name <> "") Then
-                    If (mProcess_Project.EditedBy.DateEdited <> DateTime.MinValue) Then
-                        grdQuality_EditedBy.Rows(0).Cells(0).Value = mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    Else
-                        grdQuality_EditedBy.Rows(0).Cells(0).Value = ""
-                    End If
-
-                    grdQuality_EditedBy.Rows(0).Cells(1).Value = mProcess_Project.EditedBy.Name
-                    grdQuality_EditedBy.Rows(0).Cells(2).Value = mProcess_Project.EditedBy.Comment
-                End If
+                For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                    grdQuality_EditedBy.Rows.Add()
+                    grdQuality_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    grdQuality_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
+                    grdQuality_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+                Next
             End If
 
         End With
@@ -2245,17 +2204,26 @@ Public Class Process_frmMain
                 End If
             Next
 
-            If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Dwg")) Then
-                If (mProcess_Project.EditedBy.Name <> "") Then
-                    If (mProcess_Project.EditedBy.DateEdited <> DateTime.MinValue) Then
-                        grdDwg_EditedBy.Rows(0).Cells(0).Value = mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    Else
-                        grdDwg_EditedBy.Rows(0).Cells(0).Value = ""
-                    End If
+            'If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Dwg")) Then
+            '    If (mProcess_Project.EditedBy.Name <> "") Then
+            '        If (mProcess_Project.EditedBy.DateEdited <> DateTime.MinValue) Then
+            '            grdDwg_EditedBy.Rows(0).Cells(0).Value = mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+            '        Else
+            '            grdDwg_EditedBy.Rows(0).Cells(0).Value = ""
+            '        End If
 
-                    grdDwg_EditedBy.Rows(0).Cells(1).Value = mProcess_Project.EditedBy.Name
-                    grdDwg_EditedBy.Rows(0).Cells(2).Value = mProcess_Project.EditedBy.Comment
-                End If
+            '        grdDwg_EditedBy.Rows(0).Cells(1).Value = mProcess_Project.EditedBy.Name
+            '        grdDwg_EditedBy.Rows(0).Cells(2).Value = mProcess_Project.EditedBy.Comment
+            '    End If
+            'End If
+
+            If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Dwg")) Then
+                For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                    grdDwg_EditedBy.Rows.Add()
+                    grdDwg_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    grdDwg_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
+                    grdDwg_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+                Next
             End If
 
         End With
@@ -2381,17 +2349,26 @@ Public Class Process_frmMain
             cmbTest_FreqPre_SpringBack.Text = .SpringBack.Freq_Unplated
             cmbTest_FreqPost_SpringBack.Text = .SpringBack.Freq_Plated
 
-            If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Test")) Then
-                If (mProcess_Project.EditedBy.Name <> "") Then
-                    If (mProcess_Project.EditedBy.DateEdited <> DateTime.MinValue) Then
-                        grdTest_EditedBy.Rows(0).Cells(0).Value = mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    Else
-                        grdTest_EditedBy.Rows(0).Cells(0).Value = ""
-                    End If
+            'If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Test")) Then
+            '    If (mProcess_Project.EditedBy.Name <> "") Then
+            '        If (mProcess_Project.EditedBy.DateEdited <> DateTime.MinValue) Then
+            '            grdTest_EditedBy.Rows(0).Cells(0).Value = mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+            '        Else
+            '            grdTest_EditedBy.Rows(0).Cells(0).Value = ""
+            '        End If
 
-                    grdTest_EditedBy.Rows(0).Cells(1).Value = mProcess_Project.EditedBy.Name
-                    grdTest_EditedBy.Rows(0).Cells(2).Value = mProcess_Project.EditedBy.Comment
-                End If
+            '        grdTest_EditedBy.Rows(0).Cells(1).Value = mProcess_Project.EditedBy.Name
+            '        grdTest_EditedBy.Rows(0).Cells(2).Value = mProcess_Project.EditedBy.Comment
+            '    End If
+            'End If
+
+            If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Test")) Then
+                For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                    grdTest_EditedBy.Rows.Add()
+                    grdTest_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    grdTest_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
+                    grdTest_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+                Next
             End If
 
         End With
@@ -2460,17 +2437,14 @@ Public Class Process_frmMain
             txtShipping_Notes.Text = .Notes
 
             If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Shipping")) Then
-                If (mProcess_Project.EditedBy.Name <> "") Then
-                    If (mProcess_Project.EditedBy.DateEdited <> DateTime.MinValue) Then
-                        grdShipping_EditedBy.Rows(0).Cells(0).Value = mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    Else
-                        grdShipping_EditedBy.Rows(0).Cells(0).Value = ""
-                    End If
-
-                    grdShipping_EditedBy.Rows(0).Cells(1).Value = mProcess_Project.EditedBy.Name
-                    grdShipping_EditedBy.Rows(0).Cells(2).Value = mProcess_Project.EditedBy.Comment
-                End If
+                For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                    grdShipping_EditedBy.Rows.Add()
+                    grdShipping_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    grdShipping_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
+                    grdShipping_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+                Next
             End If
+
         End With
 
 
@@ -4258,7 +4232,6 @@ Public Class Process_frmMain
         '==================
         Try
 
-
             Dim pCI As New CultureInfo("en-US")
 
             If (TabControl1.SelectedIndex = 2) Then
@@ -4278,13 +4251,41 @@ Public Class Process_frmMain
             '....Edited By
             If (CompareVal_PreOrder()) Then
                 With mProcess_Project.EditedBy
+                    Dim pLastRowIndex As Integer = grdPreOrderEditedBy.Rows.Count - 1
 
-                    grdPreOrderEditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    grdPreOrderEditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+                    Dim pDate As Date = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat()
+                    Dim pName As String = gUser.FirstName + " " + gUser.LastName
 
-                    .DateEdited = grdPreOrderEditedBy.Rows(0).Cells(0).Value
-                    .Name = grdPreOrderEditedBy.Rows(0).Cells(1).Value
-                    .Comment = grdPreOrderEditedBy.Rows(0).Cells(2).Value
+                    If (.DateEdited.Count > 0) Then
+
+                        If (.DateEdited(.DateEdited.Count - 1) <> pDate Or .Name(.Name.Count - 1) <> pName) Then
+                            grdPreOrderEditedBy.Rows.Add()
+                            grdPreOrderEditedBy.Rows(grdPreOrderEditedBy.Rows.Count - 1).Cells(0).Value = pDate
+                            grdPreOrderEditedBy.Rows(grdPreOrderEditedBy.Rows.Count - 1).Cells(1).Value = pName
+
+                        End If
+                    Else
+                        grdPreOrderEditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        grdPreOrderEditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+
+                    End If
+
+                    mProcess_Project.EditedBy.ID_Edit.Clear()
+                    mProcess_Project.EditedBy.DateEdited.Clear()
+                    mProcess_Project.EditedBy.Name.Clear()
+                    mProcess_Project.EditedBy.Comment.Clear()
+
+                    For j As Integer = 0 To grdPreOrderEditedBy.Rows.Count - 1
+                        mProcess_Project.EditedBy.ID_Edit.Add(j + 1)
+                        mProcess_Project.EditedBy.DateEdited.Add(grdPreOrderEditedBy.Rows(j).Cells(0).Value)
+                        mProcess_Project.EditedBy.Name.Add(grdPreOrderEditedBy.Rows(j).Cells(1).Value)
+                        mProcess_Project.EditedBy.Comment.Add(grdPreOrderEditedBy.Rows(j).Cells(2).Value)
+
+                    Next
+
+                    '.DateEdited = grdPreOrderEditedBy.Rows(0).Cells(0).Value
+                    '.Name = grdPreOrderEditedBy.Rows(0).Cells(1).Value
+                    '.Comment = grdPreOrderEditedBy.Rows(0).Cells(2).Value
                 End With
                 mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "PreOrder")
             End If
@@ -5772,10 +5773,15 @@ Public Class Process_frmMain
         End If
 
         mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "PreOrder")
-
-        CompareVal(mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdPreOrderEditedBy.Rows(0).Cells(0).Value, pCount)
-        CompareVal(mProcess_Project.EditedBy.Name, grdPreOrderEditedBy.Rows(0).Cells(1).Value, pCount)
-        CompareVal(mProcess_Project.EditedBy.Comment, grdPreOrderEditedBy.Rows(0).Cells(2).Value, pCount)
+        If (grdPreOrder_SalesData.Rows.Count - 1 <> mProcess_Project.EditedBy.ID_Edit.Count) Then
+            pCount = pCount + 1
+        Else
+            For i As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdPreOrderEditedBy.Rows(i).Cells(0).Value, pCount)
+                CompareVal(mProcess_Project.EditedBy.Name(i), grdPreOrderEditedBy.Rows(i).Cells(1).Value, pCount)
+                CompareVal(mProcess_Project.EditedBy.Comment(i), grdPreOrderEditedBy.Rows(i).Cells(2).Value, pCount)
+            Next
+        End If
 
         If (pCount > 0) Then
             pblnValChanged = True
@@ -5840,9 +5846,15 @@ Public Class Process_frmMain
         End With
 
         mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Export")
-        CompareVal(mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdExport_EditedBy.Rows(0).Cells(0).Value, pCount)
-        CompareVal(mProcess_Project.EditedBy.Name, grdExport_EditedBy.Rows(0).Cells(1).Value, pCount)
-        CompareVal(mProcess_Project.EditedBy.Comment, grdExport_EditedBy.Rows(0).Cells(2).Value, pCount)
+        If (grdPreOrder_SalesData.Rows.Count - 1 <> mProcess_Project.EditedBy.ID_Edit.Count) Then
+            pCount = pCount + 1
+        Else
+            For i As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdExport_EditedBy.Rows(i).Cells(0).Value, pCount)
+                CompareVal(mProcess_Project.EditedBy.Name(i), grdExport_EditedBy.Rows(i).Cells(1).Value, pCount)
+                CompareVal(mProcess_Project.EditedBy.Comment(i), grdExport_EditedBy.Rows(i).Cells(2).Value, pCount)
+            Next
+        End If
 
         If (pCount > 0) Then
             pblnValChanged = True
@@ -5930,9 +5942,15 @@ Public Class Process_frmMain
         End With
 
         mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "OrdEntry")
-        CompareVal(mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdOrdEntry_EditedBy.Rows(0).Cells(0).Value, pCount)
-        CompareVal(mProcess_Project.EditedBy.Name, grdOrdEntry_EditedBy.Rows(0).Cells(1).Value, pCount)
-        CompareVal(mProcess_Project.EditedBy.Comment, grdOrdEntry_EditedBy.Rows(0).Cells(2).Value, pCount)
+        If (grdPreOrder_SalesData.Rows.Count - 1 <> mProcess_Project.EditedBy.ID_Edit.Count) Then
+            pCount = pCount + 1
+        Else
+            For i As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdOrdEntry_EditedBy.Rows(i).Cells(0).Value, pCount)
+                CompareVal(mProcess_Project.EditedBy.Name(i), grdOrdEntry_EditedBy.Rows(i).Cells(1).Value, pCount)
+                CompareVal(mProcess_Project.EditedBy.Comment(i), grdOrdEntry_EditedBy.Rows(i).Cells(2).Value, pCount)
+            Next
+        End If
 
         If (pCount > 0) Then
             pblnValChanged = True
@@ -5974,9 +5992,15 @@ Public Class Process_frmMain
         End With
 
         mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Cost")
-        CompareVal(mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdCost_EditedBy.Rows(0).Cells(0).Value, pCount)
-        CompareVal(mProcess_Project.EditedBy.Name, grdCost_EditedBy.Rows(0).Cells(1).Value, pCount)
-        CompareVal(mProcess_Project.EditedBy.Comment, grdCost_EditedBy.Rows(0).Cells(2).Value, pCount)
+        If (grdPreOrder_SalesData.Rows.Count - 1 <> mProcess_Project.EditedBy.ID_Edit.Count) Then
+            pCount = pCount + 1
+        Else
+            For i As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdCost_EditedBy.Rows(i).Cells(0).Value, pCount)
+                CompareVal(mProcess_Project.EditedBy.Name(i), grdCost_EditedBy.Rows(i).Cells(1).Value, pCount)
+                CompareVal(mProcess_Project.EditedBy.Comment(i), grdCost_EditedBy.Rows(i).Cells(2).Value, pCount)
+            Next
+        End If
 
         If (pCount > 0) Then
             pblnValChanged = True
@@ -6046,31 +6070,31 @@ Public Class Process_frmMain
             CompareVal(.IsPreComp, pblnFlag, pCount)
 
             '....Operating Condition
-            CompareVal(.OpCond.T.Assy, grdApp_OpCond.Rows(0).Cells(1).Value, pCount)
+            CompareVal(.OpCond.T.Assy, ConvertToDbl(grdApp_OpCond.Rows(0).Cells(1).Value), pCount)
 
-            CompareVal(.OpCond.T.Min, grdApp_OpCond.Rows(0).Cells(2).Value, pCount)
+            CompareVal(.OpCond.T.Min, ConvertToDbl(grdApp_OpCond.Rows(0).Cells(2).Value), pCount)
 
-            CompareVal(.OpCond.T.Max, grdApp_OpCond.Rows(0).Cells(3).Value, pCount)
+            CompareVal(.OpCond.T.Max, ConvertToDbl(grdApp_OpCond.Rows(0).Cells(3).Value), pCount)
 
-            CompareVal(.OpCond.T.Oper, grdApp_OpCond.Rows(0).Cells(4).Value, pCount)
+            CompareVal(.OpCond.T.Oper, ConvertToDbl(grdApp_OpCond.Rows(0).Cells(4).Value), pCount)
 
-            CompareVal(.OpCond.Press.Assy, grdApp_OpCond.Rows(1).Cells(1).Value, pCount)
+            CompareVal(.OpCond.Press.Assy, ConvertToDbl(grdApp_OpCond.Rows(1).Cells(1).Value), pCount)
 
-            CompareVal(.OpCond.Press.Min, grdApp_OpCond.Rows(1).Cells(2).Value, pCount)
+            CompareVal(.OpCond.Press.Min, ConvertToDbl(grdApp_OpCond.Rows(1).Cells(2).Value), pCount)
 
-            CompareVal(.OpCond.Press.Max, grdApp_OpCond.Rows(1).Cells(3).Value, pCount)
+            CompareVal(.OpCond.Press.Max, ConvertToDbl(grdApp_OpCond.Rows(1).Cells(3).Value), pCount)
 
-            CompareVal(.OpCond.Press.Oper, grdApp_OpCond.Rows(1).Cells(4).Value, pCount)
-
-            '....Load
-            CompareVal(.Load.Assy.Min, grdApp_Load.Rows(0).Cells(1).Value, pCount)
-
-            CompareVal(.Load.Assy.Max, grdApp_Load.Rows(0).Cells(2).Value, pCount)
+            CompareVal(.OpCond.Press.Oper, ConvertToDbl(grdApp_OpCond.Rows(1).Cells(4).Value), pCount)
 
             '....Load
-            CompareVal(.Load.Oper.Min, grdApp_Load.Rows(1).Cells(1).Value, pCount)
+            CompareVal(.Load.Assy.Min, ConvertToDbl(grdApp_Load.Rows(0).Cells(1).Value), pCount)
 
-            CompareVal(.Load.Oper.Max, grdApp_Load.Rows(1).Cells(2).Value, pCount)
+            CompareVal(.Load.Assy.Max, ConvertToDbl(grdApp_Load.Rows(0).Cells(2).Value), pCount)
+
+            '....Load
+            CompareVal(.Load.Oper.Min, ConvertToDbl(grdApp_Load.Rows(1).Cells(1).Value), pCount)
+
+            CompareVal(.Load.Oper.Max, ConvertToDbl(grdApp_Load.Rows(1).Cells(2).Value), pCount)
 
         End With
 
@@ -6115,9 +6139,15 @@ Public Class Process_frmMain
             End With
 
             mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "App")
-            CompareVal(mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdApp_EditedBy_Face.Rows(0).Cells(0).Value, pCount)
-            CompareVal(mProcess_Project.EditedBy.Name, grdApp_EditedBy_Face.Rows(0).Cells(1).Value, pCount)
-            CompareVal(mProcess_Project.EditedBy.Comment, grdApp_EditedBy_Face.Rows(0).Cells(2).Value, pCount)
+            If (grdPreOrder_SalesData.Rows.Count - 1 <> mProcess_Project.EditedBy.ID_Edit.Count) Then
+                pCount = pCount + 1
+            Else
+                For i As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                    CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdApp_EditedBy_Face.Rows(i).Cells(0).Value, pCount)
+                    CompareVal(mProcess_Project.EditedBy.Name(i), grdApp_EditedBy_Face.Rows(i).Cells(1).Value, pCount)
+                    CompareVal(mProcess_Project.EditedBy.Comment(i), grdApp_EditedBy_Face.Rows(i).Cells(2).Value, pCount)
+                Next
+            End If
 
         Else
             '....tab Axial Seal
@@ -6194,9 +6224,15 @@ Public Class Process_frmMain
             End With
 
             mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "App")
-            CompareVal(mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdApp_EditedBy_Axial.Rows(0).Cells(0).Value, pCount)
-            CompareVal(mProcess_Project.EditedBy.Name, grdApp_EditedBy_Axial.Rows(0).Cells(1).Value, pCount)
-            CompareVal(mProcess_Project.EditedBy.Comment, grdApp_EditedBy_Axial.Rows(0).Cells(2).Value, pCount)
+            If (grdPreOrder_SalesData.Rows.Count - 1 <> mProcess_Project.EditedBy.ID_Edit.Count) Then
+                pCount = pCount + 1
+            Else
+                For i As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                    CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdApp_EditedBy_Axial.Rows(i).Cells(0).Value, pCount)
+                    CompareVal(mProcess_Project.EditedBy.Name(i), grdApp_EditedBy_Axial.Rows(i).Cells(1).Value, pCount)
+                    CompareVal(mProcess_Project.EditedBy.Comment(i), grdApp_EditedBy_Axial.Rows(i).Cells(2).Value, pCount)
+                Next
+            End If
 
         End If
 
@@ -6314,9 +6350,15 @@ Public Class Process_frmMain
             CompareVal(.Notes, txtDesign_Notes.Text, pCount)
 
             mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Design")
-            CompareVal(mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdDesign_EditedBy.Rows(0).Cells(0).Value, pCount)
-            CompareVal(mProcess_Project.EditedBy.Name, grdDesign_EditedBy.Rows(0).Cells(1).Value, pCount)
-            CompareVal(mProcess_Project.EditedBy.Comment, grdDesign_EditedBy.Rows(0).Cells(2).Value, pCount)
+            If (grdPreOrder_SalesData.Rows.Count - 1 <> mProcess_Project.EditedBy.ID_Edit.Count) Then
+                pCount = pCount + 1
+            Else
+                For i As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                    CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdDesign_EditedBy.Rows(i).Cells(0).Value, pCount)
+                    CompareVal(mProcess_Project.EditedBy.Name(i), grdDesign_EditedBy.Rows(i).Cells(1).Value, pCount)
+                    CompareVal(mProcess_Project.EditedBy.Comment(i), grdDesign_EditedBy.Rows(i).Cells(2).Value, pCount)
+                Next
+            End If
 
         End With
 
@@ -6356,9 +6398,15 @@ Public Class Process_frmMain
             End If
 
             mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Manf")
-            CompareVal(mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdManf_EditedBy.Rows(0).Cells(0).Value, pCount)
-            CompareVal(mProcess_Project.EditedBy.Name, grdManf_EditedBy.Rows(0).Cells(1).Value, pCount)
-            CompareVal(mProcess_Project.EditedBy.Comment, grdManf_EditedBy.Rows(0).Cells(2).Value, pCount)
+            If (grdPreOrder_SalesData.Rows.Count - 1 <> mProcess_Project.EditedBy.ID_Edit.Count) Then
+                pCount = pCount + 1
+            Else
+                For i As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                    CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdManf_EditedBy.Rows(i).Cells(0).Value, pCount)
+                    CompareVal(mProcess_Project.EditedBy.Name(i), grdManf_EditedBy.Rows(i).Cells(1).Value, pCount)
+                    CompareVal(mProcess_Project.EditedBy.Comment(i), grdManf_EditedBy.Rows(i).Cells(2).Value, pCount)
+                Next
+            End If
 
         End With
 
@@ -6400,9 +6448,15 @@ Public Class Process_frmMain
             End If
 
             mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Purchase")
-            CompareVal(mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdPurchase_EditedBy.Rows(0).Cells(0).Value, pCount)
-            CompareVal(mProcess_Project.EditedBy.Name, grdPurchase_EditedBy.Rows(0).Cells(1).Value, pCount)
-            CompareVal(mProcess_Project.EditedBy.Comment, grdPurchase_EditedBy.Rows(0).Cells(2).Value, pCount)
+            If (grdPreOrder_SalesData.Rows.Count - 1 <> mProcess_Project.EditedBy.ID_Edit.Count) Then
+                pCount = pCount + 1
+            Else
+                For i As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                    CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdPurchase_EditedBy.Rows(i).Cells(0).Value, pCount)
+                    CompareVal(mProcess_Project.EditedBy.Name(i), grdPurchase_EditedBy.Rows(i).Cells(1).Value, pCount)
+                    CompareVal(mProcess_Project.EditedBy.Comment(i), grdPurchase_EditedBy.Rows(i).Cells(2).Value, pCount)
+                Next
+            End If
 
         End With
 
@@ -6471,9 +6525,15 @@ Public Class Process_frmMain
 
 
             mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Qlty")
-            CompareVal(mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdQuality_EditedBy.Rows(0).Cells(0).Value, pCount)
-            CompareVal(mProcess_Project.EditedBy.Name, grdQuality_EditedBy.Rows(0).Cells(1).Value, pCount)
-            CompareVal(mProcess_Project.EditedBy.Comment, grdQuality_EditedBy.Rows(0).Cells(2).Value, pCount)
+            If (grdPreOrder_SalesData.Rows.Count - 1 <> mProcess_Project.EditedBy.ID_Edit.Count) Then
+                pCount = pCount + 1
+            Else
+                For i As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                    CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdQuality_EditedBy.Rows(i).Cells(0).Value, pCount)
+                    CompareVal(mProcess_Project.EditedBy.Name(i), grdQuality_EditedBy.Rows(i).Cells(1).Value, pCount)
+                    CompareVal(mProcess_Project.EditedBy.Comment(i), grdQuality_EditedBy.Rows(i).Cells(2).Value, pCount)
+                Next
+            End If
 
         End With
 
@@ -6517,9 +6577,15 @@ Public Class Process_frmMain
             End If
 
             mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "DWG")
-            CompareVal(mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdDwg_EditedBy.Rows(0).Cells(0).Value, pCount)
-            CompareVal(mProcess_Project.EditedBy.Name, grdDwg_EditedBy.Rows(0).Cells(1).Value, pCount)
-            CompareVal(mProcess_Project.EditedBy.Comment, grdDwg_EditedBy.Rows(0).Cells(2).Value, pCount)
+            If (grdPreOrder_SalesData.Rows.Count - 1 <> mProcess_Project.EditedBy.ID_Edit.Count) Then
+                pCount = pCount + 1
+            Else
+                For i As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                    CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdDwg_EditedBy.Rows(i).Cells(0).Value, pCount)
+                    CompareVal(mProcess_Project.EditedBy.Name(i), grdDwg_EditedBy.Rows(i).Cells(1).Value, pCount)
+                    CompareVal(mProcess_Project.EditedBy.Comment(i), grdDwg_EditedBy.Rows(i).Cells(2).Value, pCount)
+                Next
+            End If
 
         End With
 
@@ -6587,9 +6653,15 @@ Public Class Process_frmMain
             CompareVal(.Other, txtTest_Other.Text, pCount)
 
             mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Test")
-            CompareVal(mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdTest_EditedBy.Rows(0).Cells(0).Value, pCount)
-            CompareVal(mProcess_Project.EditedBy.Name, grdTest_EditedBy.Rows(0).Cells(1).Value, pCount)
-            CompareVal(mProcess_Project.EditedBy.Comment, grdTest_EditedBy.Rows(0).Cells(2).Value, pCount)
+            If (grdPreOrder_SalesData.Rows.Count - 1 <> mProcess_Project.EditedBy.ID_Edit.Count) Then
+                pCount = pCount + 1
+            Else
+                For i As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                    CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdTest_EditedBy.Rows(i).Cells(0).Value, pCount)
+                    CompareVal(mProcess_Project.EditedBy.Name(i), grdTest_EditedBy.Rows(i).Cells(1).Value, pCount)
+                    CompareVal(mProcess_Project.EditedBy.Comment(i), grdTest_EditedBy.Rows(i).Cells(2).Value, pCount)
+                Next
+            End If
 
         End With
 
@@ -6612,9 +6684,15 @@ Public Class Process_frmMain
             CompareVal(.Notes, txtShipping_Notes.Text, pCount)
 
             mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Shipping")
-            CompareVal(mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdShipping_EditedBy.Rows(0).Cells(0).Value, pCount)
-            CompareVal(mProcess_Project.EditedBy.Name, grdShipping_EditedBy.Rows(0).Cells(1).Value, pCount)
-            CompareVal(mProcess_Project.EditedBy.Comment, grdShipping_EditedBy.Rows(0).Cells(2).Value, pCount)
+            If (grdPreOrder_SalesData.Rows.Count - 1 <> mProcess_Project.EditedBy.ID_Edit.Count) Then
+                pCount = pCount + 1
+            Else
+                For i As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                    CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdShipping_EditedBy.Rows(i).Cells(0).Value, pCount)
+                    CompareVal(mProcess_Project.EditedBy.Name(i), grdShipping_EditedBy.Rows(i).Cells(1).Value, pCount)
+                    CompareVal(mProcess_Project.EditedBy.Comment(i), grdShipping_EditedBy.Rows(i).Cells(2).Value, pCount)
+                Next
+            End If
 
         End With
 

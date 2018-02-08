@@ -442,10 +442,18 @@ Public Class clsProcessProj
                                Where pRec.fldPartProjectID = mPartProject.Project_ID Select pRec).First()
 
             mID = pQryProcessProject.fldID
-            mPOPCoding = pQryProcessProject.fldPOPCoding.Trim()
-            'mGovt = pQryProcessProject.fldGovt
-            mRating = pQryProcessProject.fldRating.Trim()
-            mType = pQryProcessProject.fldType.Trim()
+            If (Not IsNothing(pQryProcessProject.fldPOPCoding) And Not IsDBNull(pQryProcessProject.fldPOPCoding)) Then
+                mPOPCoding = pQryProcessProject.fldPOPCoding.Trim()
+            End If
+
+            If (Not IsNothing(pQryProcessProject.fldRating) And Not IsDBNull(pQryProcessProject.fldRating)) Then
+                mRating = pQryProcessProject.fldRating.Trim()
+            End If
+
+            If (Not IsNothing(pQryProcessProject.fldType) And Not IsDBNull(pQryProcessProject.fldType)) Then
+                mType = pQryProcessProject.fldType.Trim()
+            End If
+
 
             If (Not IsNothing(pQryProcessProject.fldDateOpen) And Not IsDBNull(pQryProcessProject.fldDateOpen)) Then
                 mDateOpen = pQryProcessProject.fldDateOpen
@@ -459,7 +467,11 @@ Public Class clsProcessProj
                 mDateClose = pQryProcessProject.fldDateClose
             End If
 
-            mLastModifiedBy = pQryProcessProject.fldLastModifiedBy.Trim()
+            If (Not IsNothing(pQryProcessProject.fldLastModifiedBy) And Not IsDBNull(pQryProcessProject.fldLastModifiedBy)) Then
+                mLastModifiedBy = pQryProcessProject.fldLastModifiedBy.Trim()
+            End If
+
+
 
         Else
             mID = 0

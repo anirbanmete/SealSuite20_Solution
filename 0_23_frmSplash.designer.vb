@@ -284,7 +284,7 @@ Partial Class frmSplash
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(133, 14)
         Me.Label1.TabIndex = 1
-        Me.Label1.Text = "February 07, 2018"
+        Me.Label1.Text = "February 09, 2018"
         '
         'imgLogo
         '

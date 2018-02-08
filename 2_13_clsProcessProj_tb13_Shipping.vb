@@ -116,39 +116,44 @@ Public Class clsProcessProj_Shipping
 
     Public Sub SaveToDB(ByVal ProjectID_In As Integer)
         '==============================================
+        Try
 
-        Dim pSealProcessDBEntities As New SealProcessDBEntities()
+            Dim pSealProcessDBEntities As New SealProcessDBEntities()
 
-        '....tblShipping
-        Dim pShippingCount As Integer = (From Cost In pSealProcessDBEntities.tblShipping
-                                            Where Cost.fldProcessProjectID = ProjectID_In Select Cost).Count()
+            '....tblShipping
+            Dim pShippingCount As Integer = (From Cost In pSealProcessDBEntities.tblShipping
+                                             Where Cost.fldProcessProjectID = ProjectID_In Select Cost).Count()
 
-        If (pShippingCount > 0) Then
-            '....Record already exists
-            Dim pShipping = (From Shipping In pSealProcessDBEntities.tblShipping
-                                           Where Shipping.fldProcessProjectID = ProjectID_In Select Shipping).First()
+            If (pShippingCount > 0) Then
+                '....Record already exists
+                Dim pShipping = (From Shipping In pSealProcessDBEntities.tblShipping
+                                 Where Shipping.fldProcessProjectID = ProjectID_In Select Shipping).First()
 
-            pShipping.fldNotes = mNotes
-            pShipping.fldUserName = mEditedBy.User.Name
-            pShipping.fldSigned = mEditedBy.User.Signed
-            pShipping.fldDateSigned = mEditedBy.User.DateSigned
+                pShipping.fldNotes = mNotes
+                pShipping.fldUserName = mEditedBy.User.Name
+                pShipping.fldSigned = mEditedBy.User.Signed
+                pShipping.fldDateSigned = mEditedBy.User.DateSigned
 
-            pSealProcessDBEntities.SaveChanges()
+                pSealProcessDBEntities.SaveChanges()
 
-        Else
-            '....New Record
-            Dim pID As Integer = ProjectID_In
+            Else
+                '....New Record
+                Dim pID As Integer = ProjectID_In
 
-            Dim pShipping As New tblShipping
-            pShipping.fldProcessProjectID = pID
-            pShipping.fldNotes = mNotes
-            pShipping.fldUserName = mEditedBy.User.Name
-            pShipping.fldSigned = mEditedBy.User.Signed
-            pShipping.fldDateSigned = mEditedBy.User.DateSigned
+                Dim pShipping As New tblShipping
+                pShipping.fldProcessProjectID = pID
+                pShipping.fldNotes = mNotes
+                pShipping.fldUserName = mEditedBy.User.Name
+                pShipping.fldSigned = mEditedBy.User.Signed
+                pShipping.fldDateSigned = mEditedBy.User.DateSigned
 
-            pSealProcessDBEntities.AddTotblShipping(pShipping)
-            pSealProcessDBEntities.SaveChanges()
-        End If
+                pSealProcessDBEntities.AddTotblShipping(pShipping)
+                pSealProcessDBEntities.SaveChanges()
+            End If
+
+        Catch ex As Exception
+
+        End Try
 
     End Sub
 
