@@ -139,6 +139,10 @@ Public Class clsProcessProj_EditedBy
 
         Try
             '....tblEditedBy
+            mID_Edit.Clear()
+            mDateEdited.Clear()
+            mName.Clear()
+            mComment.Clear()
             Dim pQryEditedByCount As Integer = (From pRec In pSealProcessDBEntities.tblEditedBy
                                                 Where pRec.fldProcessProjectID = ProjectID_In And pRec.fldTabName = TabName_In Select pRec).Count()
 

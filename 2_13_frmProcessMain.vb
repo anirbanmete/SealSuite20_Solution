@@ -484,7 +484,7 @@ Public Class Process_frmMain
         pCmbColPurchase_Unit = grdPurchase_Mat.Columns.Item(2)
         With pCmbColPurchase_Unit
             .Items.Add("lb")
-            .Items.Add("feet")
+            .Items.Add("ft")
         End With
 
         '........Coating
@@ -901,32 +901,32 @@ Public Class Process_frmMain
             cmbRFQPkgLoc.Text = .Loc.RFQPkg
             txtPreOrderPriceNotes.Text = .Notes_Price
 
-            If (.EditedBy.User.Signed) Then
-                chkPreOrderUserSigned.Checked = True
-                txtPreOrderUserName.Text = .EditedBy.User.Name
+            'If (.EditedBy.User.Signed) Then
+            '    chkPreOrderUserSigned.Checked = True
+            '    txtPreOrderUserName.Text = .EditedBy.User.Name
 
-                'Dim pCI As New CultureInfo("en-US")
-                If (.EditedBy.User.DateSigned <> DateTime.MinValue) Then
-                    txtPreOrderUserDate.Text = .EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                Else
-                    txtPreOrderUserDate.Text = ""
-                End If
+            '    'Dim pCI As New CultureInfo("en-US")
+            '    If (.EditedBy.User.DateSigned <> DateTime.MinValue) Then
+            '        txtPreOrderUserDate.Text = .EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+            '    Else
+            '        txtPreOrderUserDate.Text = ""
+            '    End If
 
-                'txtPreOrderUserDate.Text = .User.SignedDate.ToShortDateString()
+            '    'txtPreOrderUserDate.Text = .User.SignedDate.ToShortDateString()
 
 
-            Else
-                chkPreOrderUserSigned.Checked = False
-                txtPreOrderUserName.Text = .EditedBy.User.Name
-                'txtPreOrderUserDate.Text = .User.SignedDate.ToShortDateString()
+            'Else
+            '    chkPreOrderUserSigned.Checked = False
+            '    txtPreOrderUserName.Text = .EditedBy.User.Name
+            '    'txtPreOrderUserDate.Text = .User.SignedDate.ToShortDateString()
 
-                'Dim pCI As New CultureInfo("en-US")
-                If (.EditedBy.User.DateSigned <> DateTime.MinValue) Then
-                    txtPreOrderUserDate.Text = .EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                Else
-                    txtPreOrderUserDate.Text = ""
-                End If
-            End If
+            '    'Dim pCI As New CultureInfo("en-US")
+            '    If (.EditedBy.User.DateSigned <> DateTime.MinValue) Then
+            '        txtPreOrderUserDate.Text = .EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+            '    Else
+            '        txtPreOrderUserDate.Text = ""
+            '    End If
+            'End If
 
             '....Cust Contact Pre-Order
             For j As Integer = 0 To mProcess_Project.CustContact.DeptName.Count - 1
@@ -1010,14 +1010,17 @@ Public Class Process_frmMain
                     grdPreOrderEditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
                     grdPreOrderEditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
                     grdPreOrderEditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+
+                    txtPreOrderUserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    txtPreOrderUserName.Text = mProcess_Project.EditedBy.Name(j)
                 Next
+
             End If
 
         End With
 
 
         '.... "ITAR_Export:"
-
         With mProcess_Project.ITAR_Export
 
             If (.IsCustOnDenialList) Then
@@ -1058,16 +1061,16 @@ Public Class Process_frmMain
             cmbITAR_Export_Status.Text = .Status
             txtITAR_Export_HTS_Classification.Text = .HTS_Class
 
-            If (.EditedBy.User.Signed) Then
-                chkITAR_Export_UserSigned.Checked = True
-                txtITAR_Export_UserName.Text = .EditedBy.User.Name
-                txtITAR_Export_UserDate.Text = .EditedBy.User.DateSigned.ToShortDateString()
+            'If (.EditedBy.User.Signed) Then
+            '    chkITAR_Export_UserSigned.Checked = True
+            '    txtITAR_Export_UserName.Text = .EditedBy.User.Name
+            '    txtITAR_Export_UserDate.Text = .EditedBy.User.DateSigned.ToShortDateString()
 
-            Else
-                chkITAR_Export_UserSigned.Checked = False
-                txtITAR_Export_UserName.Text = .EditedBy.User.Name
-                txtITAR_Export_UserDate.Text = .EditedBy.User.DateSigned.ToShortDateString()
-            End If
+            'Else
+            '    chkITAR_Export_UserSigned.Checked = False
+            '    txtITAR_Export_UserName.Text = ""
+            '    txtITAR_Export_UserDate.Text = ""
+            'End If
 
             If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Export")) Then
                 For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
@@ -1075,6 +1078,9 @@ Public Class Process_frmMain
                     grdExport_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
                     grdExport_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
                     grdExport_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+
+                    txtITAR_Export_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    txtITAR_Export_UserName.Text = mProcess_Project.EditedBy.Name(j)
                 Next
             End If
 
@@ -1149,15 +1155,15 @@ Public Class Process_frmMain
                 cmbOrdEntry_DFAR.Text = "N"
             End If
 
-            If (.EditedBy.User.Signed) Then
-                chkOrdEntry_UserSigned.Checked = True
-                txtOrdEntry_UserName.Text = .EditedBy.User.Name
-                txtOrdEntry_UserDate.Text = .EditedBy.User.DateSigned.ToShortDateString()
-            Else
-                chkOrdEntry_UserSigned.Checked = False
-                txtOrdEntry_UserName.Text = .EditedBy.User.Name
-                txtOrdEntry_UserDate.Text = .EditedBy.User.DateSigned.ToShortDateString()
-            End If
+            'If (.EditedBy.User.Signed) Then
+            '    chkOrdEntry_UserSigned.Checked = True
+            '    txtOrdEntry_UserName.Text = .EditedBy.User.Name
+            '    txtOrdEntry_UserDate.Text = .EditedBy.User.DateSigned.ToShortDateString()
+            'Else
+            '    chkOrdEntry_UserSigned.Checked = False
+            '    txtOrdEntry_UserName.Text = ""
+            '    txtOrdEntry_UserDate.Text = ""
+            'End If
 
             If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "OrdEntry")) Then
                 For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
@@ -1165,6 +1171,9 @@ Public Class Process_frmMain
                     grdOrdEntry_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
                     grdOrdEntry_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
                     grdOrdEntry_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+
+                    txtOrdEntry_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    txtOrdEntry_UserName.Text = mProcess_Project.EditedBy.Name(j)
                 Next
             End If
 
@@ -1202,15 +1211,15 @@ Public Class Process_frmMain
                 grdCost_SplOperation.Rows(j).Cells(3).Value = .SplOperation.Cost(j).ToString("#.00")
             Next
 
-            If (.EditedBy.User.Signed) Then
-                chkCost_UserSigned.Checked = True
-                txtCost_UserName.Text = .EditedBy.User.Name
-                txtCost_UserDate.Text = .EditedBy.User.DateSigned.ToShortDateString()
-            Else
-                chkCost_UserSigned.Checked = False
-                txtCost_UserName.Text = .EditedBy.User.Name
-                txtCost_UserDate.Text = .EditedBy.User.DateSigned.ToShortDateString()
-            End If
+            'If (.EditedBy.User.Signed) Then
+            '    chkCost_UserSigned.Checked = True
+            '    txtCost_UserName.Text = .EditedBy.User.Name
+            '    txtCost_UserDate.Text = .EditedBy.User.DateSigned.ToShortDateString()
+            'Else
+            '    chkCost_UserSigned.Checked = False
+            '    txtCost_UserName.Text = .EditedBy.User.Name
+            '    txtCost_UserDate.Text = .EditedBy.User.DateSigned.ToShortDateString()
+            'End If
 
             If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Cost")) Then
                 For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
@@ -1218,6 +1227,9 @@ Public Class Process_frmMain
                     grdCost_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
                     grdCost_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
                     grdCost_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+
+                    txtCost_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    txtCost_UserName.Text = mProcess_Project.EditedBy.Name(j)
                 Next
             End If
         End With
@@ -1457,6 +1469,9 @@ Public Class Process_frmMain
                         grdApp_EditedBy_Face.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
                         grdApp_EditedBy_Face.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
                         grdApp_EditedBy_Face.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+
+                        txtApp_UserDate_Face.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        txtApp_UserName_Face.Text = mProcess_Project.EditedBy.Name(j)
                     Next
                 End If
 
@@ -1623,6 +1638,9 @@ Public Class Process_frmMain
                         grdApp_EditedBy_Axial.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
                         grdApp_EditedBy_Axial.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
                         grdApp_EditedBy_Axial.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+
+                        txtApp_UserDate_Axial.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        txtApp_UserName_Axial.Text = mProcess_Project.EditedBy.Name(j)
                     Next
                 End If
 
@@ -1879,21 +1897,21 @@ Public Class Process_frmMain
                 'grdDesign_Seal.Rows(i).Cells(0).Value = .SealDim.Name(i)
 
                 If (Math.Abs(.SealDim.Min(i)) > gcEPS) Then
-                    grdDesign_Seal.Rows(i).Cells(1).Value = .SealDim.Min(i)
+                    grdDesign_Seal.Rows(i).Cells(1).Value = .SealDim.Min(i).ToString("##0.000")
                 Else
                     grdDesign_Seal.Rows(i).Cells(1).Value = ""
                 End If
 
                 If (Math.Abs(.SealDim.Nom(i)) > gcEPS) Then
-                    grdDesign_Seal.Rows(i).Cells(2).Value = .SealDim.Nom(i)
+                    grdDesign_Seal.Rows(i).Cells(2).Value = .SealDim.Nom(i).ToString("##0.000")
                 Else
-                    grdDesign_Seal.Rows(i).Cells(2).Value = .SealDim.Nom(i)
+                    grdDesign_Seal.Rows(i).Cells(2).Value = .SealDim.Nom(i).ToString("##0.000")
                 End If
 
                 If (Math.Abs(.SealDim.Max(i)) > gcEPS) Then
-                    grdDesign_Seal.Rows(i).Cells(3).Value = .SealDim.Max(i)
+                    grdDesign_Seal.Rows(i).Cells(3).Value = .SealDim.Max(i).ToString("##0.000")
                 Else
-                    grdDesign_Seal.Rows(i).Cells(3).Value = .SealDim.Max(i)
+                    grdDesign_Seal.Rows(i).Cells(3).Value = .SealDim.Max(i).ToString("##0.000")
                 End If
 
             Next
@@ -1906,6 +1924,9 @@ Public Class Process_frmMain
                     grdDesign_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
                     grdDesign_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
                     grdDesign_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+
+                    txtDesign_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    txtDesign_UserName.Text = mProcess_Project.EditedBy.Name(j)
                 Next
             End If
 
@@ -2020,6 +2041,9 @@ Public Class Process_frmMain
                     grdManf_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
                     grdManf_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
                     grdManf_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+
+                    txtManf_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    txtManf_UserName.Text = mProcess_Project.EditedBy.Name(j)
                 Next
             End If
 
@@ -2086,6 +2110,9 @@ Public Class Process_frmMain
                     grdPurchase_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
                     grdPurchase_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
                     grdPurchase_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+
+                    txtPurchase_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    txtPurchase_UserName.Text = mProcess_Project.EditedBy.Name(j)
                 Next
             End If
 
@@ -2170,6 +2197,9 @@ Public Class Process_frmMain
                     grdQuality_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
                     grdQuality_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
                     grdQuality_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+
+                    txtQuality_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    txtQuality_UserName.Text = mProcess_Project.EditedBy.Name(j)
                 Next
             End If
 
@@ -2223,6 +2253,9 @@ Public Class Process_frmMain
                     grdDwg_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
                     grdDwg_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
                     grdDwg_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+
+                    txtDwg_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    txtDwg_UserName.Text = mProcess_Project.EditedBy.Name(j)
                 Next
             End If
 
@@ -2368,6 +2401,9 @@ Public Class Process_frmMain
                     grdTest_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
                     grdTest_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
                     grdTest_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+
+                    txtTest_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    txtTest_UserName.Text = mProcess_Project.EditedBy.Name(j)
                 Next
             End If
 
@@ -2442,6 +2478,9 @@ Public Class Process_frmMain
                     grdShipping_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
                     grdShipping_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
                     grdShipping_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+
+                    txtShipping_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    txtShipping_UserName.Text = mProcess_Project.EditedBy.Name(j)
                 Next
             End If
 
@@ -2950,71 +2989,71 @@ Public Class Process_frmMain
             txtModifiedBy.Text = gUser.FirstName + " " + gUser.LastName
         End If
 
-        If (CompareVal_PreOrder()) Then
-            grdPreOrderEditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-            grdPreOrderEditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-        End If
+        'If (CompareVal_PreOrder()) Then
+        '    grdPreOrderEditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+        '    grdPreOrderEditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+        'End If
 
-        If (CompareVal_Export()) Then
-            grdExport_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-            grdExport_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-        End If
+        'If (CompareVal_Export()) Then
+        '    grdExport_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+        '    grdExport_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+        'End If
 
-        If (CompareVal_OrdEntry()) Then
-            grdOrdEntry_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-            grdOrdEntry_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-        End If
+        'If (CompareVal_OrdEntry()) Then
+        '    grdOrdEntry_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+        '    grdOrdEntry_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+        'End If
 
-        If (CompareVal_CostEstimating()) Then
-            grdCost_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-            grdCost_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-        End If
+        'If (CompareVal_CostEstimating()) Then
+        '    grdCost_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+        '    grdCost_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+        'End If
 
-        If (CompareVal_App()) Then
-            If (mProcess_Project.App.Type = "Face") Then
-                grdApp_EditedBy_Face.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                grdApp_EditedBy_Face.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-            Else
-                grdApp_EditedBy_Axial.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                grdApp_EditedBy_Axial.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-            End If
-        End If
+        'If (CompareVal_App()) Then
+        '    If (mProcess_Project.App.Type = "Face") Then
+        '        grdApp_EditedBy_Face.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+        '        grdApp_EditedBy_Face.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+        '    Else
+        '        grdApp_EditedBy_Axial.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+        '        grdApp_EditedBy_Axial.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+        '    End If
+        'End If
 
 
-        If (CompareVal_Design()) Then
-            grdDesign_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-            grdDesign_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-        End If
+        'If (CompareVal_Design()) Then
+        '    grdDesign_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+        '    grdDesign_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+        'End If
 
-        If (CompareVal_Manf()) Then
-            grdManf_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-            grdManf_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-        End If
+        'If (CompareVal_Manf()) Then
+        '    grdManf_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+        '    grdManf_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+        'End If
 
-        If (CompareVal_Purchase()) Then
-            grdPurchase_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-            grdPurchase_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-        End If
+        'If (CompareVal_Purchase()) Then
+        '    grdPurchase_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+        '    grdPurchase_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+        'End If
 
-        If (CompareVal_Qlty()) Then
-            grdQuality_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-            grdQuality_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-        End If
+        'If (CompareVal_Qlty()) Then
+        '    grdQuality_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+        '    grdQuality_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+        'End If
 
-        If (CompareVal_DWG()) Then
-            grdDwg_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-            grdDwg_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-        End If
+        'If (CompareVal_DWG()) Then
+        '    grdDwg_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+        '    grdDwg_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+        'End If
 
-        If (CompareVal_Test()) Then
-            grdTest_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-            grdTest_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-        End If
+        'If (CompareVal_Test()) Then
+        '    grdTest_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+        '    grdTest_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+        'End If
 
-        If (CompareVal_Shipping()) Then
-            grdShipping_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-            grdShipping_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-        End If
+        'If (CompareVal_Shipping()) Then
+        '    grdShipping_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+        '    grdShipping_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+        'End If
 
         If (TabControl1.SelectedIndex = 0) Then
             CopyDataGridView(grdOrdEntry_CustContact, grdCustContact)
@@ -4234,203 +4273,6 @@ Public Class Process_frmMain
 
             Dim pCI As New CultureInfo("en-US")
 
-            If (TabControl1.SelectedIndex = 2) Then
-                CopyDataGridView(grdOrdEntry_CustContact, grdCustContact)
-            End If
-
-            If (TabControl1.SelectedIndex = 8) Then
-                CopyDataGridView(grdQuality_SplOperation, grdCost_SplOperation)
-            End If
-
-            '....Header
-            If (CompareVal_Header()) Then
-                txtDateMod.Text = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                txtModifiedBy.Text = gUser.FirstName + " " + gUser.LastName
-            End If
-
-            '....Edited By
-            If (CompareVal_PreOrder()) Then
-                With mProcess_Project.EditedBy
-                    Dim pLastRowIndex As Integer = grdPreOrderEditedBy.Rows.Count - 1
-
-                    Dim pDate As Date = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat()
-                    Dim pName As String = gUser.FirstName + " " + gUser.LastName
-
-                    If (.DateEdited.Count > 0) Then
-
-                        If (.DateEdited(.DateEdited.Count - 1) <> pDate Or .Name(.Name.Count - 1) <> pName) Then
-                            grdPreOrderEditedBy.Rows.Add()
-                            grdPreOrderEditedBy.Rows(grdPreOrderEditedBy.Rows.Count - 1).Cells(0).Value = pDate
-                            grdPreOrderEditedBy.Rows(grdPreOrderEditedBy.Rows.Count - 1).Cells(1).Value = pName
-
-                        End If
-                    Else
-                        grdPreOrderEditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                        grdPreOrderEditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-
-                    End If
-
-                    mProcess_Project.EditedBy.ID_Edit.Clear()
-                    mProcess_Project.EditedBy.DateEdited.Clear()
-                    mProcess_Project.EditedBy.Name.Clear()
-                    mProcess_Project.EditedBy.Comment.Clear()
-
-                    For j As Integer = 0 To grdPreOrderEditedBy.Rows.Count - 1
-                        mProcess_Project.EditedBy.ID_Edit.Add(j + 1)
-                        mProcess_Project.EditedBy.DateEdited.Add(grdPreOrderEditedBy.Rows(j).Cells(0).Value)
-                        mProcess_Project.EditedBy.Name.Add(grdPreOrderEditedBy.Rows(j).Cells(1).Value)
-                        mProcess_Project.EditedBy.Comment.Add(grdPreOrderEditedBy.Rows(j).Cells(2).Value)
-
-                    Next
-
-                    '.DateEdited = grdPreOrderEditedBy.Rows(0).Cells(0).Value
-                    '.Name = grdPreOrderEditedBy.Rows(0).Cells(1).Value
-                    '.Comment = grdPreOrderEditedBy.Rows(0).Cells(2).Value
-                End With
-                mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "PreOrder")
-            End If
-
-            If (CompareVal_Export()) Then
-                With mProcess_Project.EditedBy
-                    grdExport_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    grdExport_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-
-                    .DateEdited = grdExport_EditedBy.Rows(0).Cells(0).Value
-                    .Name = grdExport_EditedBy.Rows(0).Cells(1).Value
-                    .Comment = grdExport_EditedBy.Rows(0).Cells(2).Value
-                End With
-                mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Export")
-            End If
-
-            If (CompareVal_OrdEntry()) Then
-                With mProcess_Project.EditedBy
-                    grdOrdEntry_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    grdOrdEntry_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-
-                    .DateEdited = grdOrdEntry_EditedBy.Rows(0).Cells(0).Value
-                    .Name = grdOrdEntry_EditedBy.Rows(0).Cells(1).Value
-                    .Comment = grdOrdEntry_EditedBy.Rows(0).Cells(2).Value
-                End With
-                mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "OrdEntry")
-            End If
-
-            If (CompareVal_CostEstimating()) Then
-                With mProcess_Project.EditedBy
-                    grdCost_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    grdCost_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-
-                    .DateEdited = grdCost_EditedBy.Rows(0).Cells(0).Value
-                    .Name = grdCost_EditedBy.Rows(0).Cells(1).Value
-                    .Comment = grdCost_EditedBy.Rows(0).Cells(2).Value
-                End With
-                mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Cost")
-            End If
-
-            If (CompareVal_App()) Then
-                With mProcess_Project.EditedBy
-
-                    grdApp_EditedBy_Face.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    grdApp_EditedBy_Face.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-
-                    .DateEdited = grdApp_EditedBy_Face.Rows(0).Cells(0).Value
-                    .Name = grdApp_EditedBy_Face.Rows(0).Cells(1).Value
-                    .Comment = grdApp_EditedBy_Face.Rows(0).Cells(2).Value
-                End With
-                mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "App")
-            End If
-
-            If (CompareVal_Design()) Then
-                With mProcess_Project.EditedBy
-
-                    grdDesign_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    grdDesign_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-
-                    .DateEdited = grdDesign_EditedBy.Rows(0).Cells(0).Value
-                    .Name = grdDesign_EditedBy.Rows(0).Cells(1).Value
-                    .Comment = grdDesign_EditedBy.Rows(0).Cells(2).Value
-                End With
-                mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Design")
-            End If
-
-            If (CompareVal_Manf()) Then
-                With mProcess_Project.EditedBy
-
-                    grdManf_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    grdManf_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-
-                    .DateEdited = grdManf_EditedBy.Rows(0).Cells(0).Value
-                    .Name = grdManf_EditedBy.Rows(0).Cells(1).Value
-                    .Comment = grdManf_EditedBy.Rows(0).Cells(2).Value
-                End With
-                mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Manf")
-            End If
-
-            If (CompareVal_Purchase()) Then
-                With mProcess_Project.EditedBy
-
-                    grdPurchase_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    grdPurchase_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-
-                    .DateEdited = grdPurchase_EditedBy.Rows(0).Cells(0).Value
-                    .Name = grdPurchase_EditedBy.Rows(0).Cells(1).Value
-                    .Comment = grdPurchase_EditedBy.Rows(0).Cells(2).Value
-                End With
-                mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Purchase")
-            End If
-
-            If (CompareVal_Qlty()) Then
-                With mProcess_Project.EditedBy
-
-                    grdQuality_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    grdQuality_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-
-                    .DateEdited = grdQuality_EditedBy.Rows(0).Cells(0).Value
-                    .Name = grdQuality_EditedBy.Rows(0).Cells(1).Value
-                    .Comment = grdQuality_EditedBy.Rows(0).Cells(2).Value
-                End With
-                mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Qlty")
-            End If
-
-            If (CompareVal_DWG()) Then
-                With mProcess_Project.EditedBy
-
-                    grdDwg_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    grdDwg_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-
-                    .DateEdited = grdDwg_EditedBy.Rows(0).Cells(0).Value
-                    .Name = grdDwg_EditedBy.Rows(0).Cells(1).Value
-                    .Comment = grdDwg_EditedBy.Rows(0).Cells(2).Value
-                End With
-                mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Dwg")
-            End If
-
-            If (CompareVal_Test()) Then
-                With mProcess_Project.EditedBy
-
-                    grdTest_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    grdTest_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-
-                    .DateEdited = grdTest_EditedBy.Rows(0).Cells(0).Value
-                    .Name = grdTest_EditedBy.Rows(0).Cells(1).Value
-                    .Comment = grdTest_EditedBy.Rows(0).Cells(2).Value
-                End With
-                mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Test")
-            End If
-
-            If (CompareVal_Shipping()) Then
-                With mProcess_Project.EditedBy
-
-                    grdShipping_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    grdShipping_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-
-                    .DateEdited = grdShipping_EditedBy.Rows(0).Cells(0).Value
-                    .Name = grdShipping_EditedBy.Rows(0).Cells(1).Value
-                    .Comment = grdShipping_EditedBy.Rows(0).Cells(2).Value
-                End With
-                mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Shipping")
-            End If
-
-
             '.... "Header:"
             With mProcess_Project
                 .POPCoding = cmbPopCoding.Text
@@ -4455,6 +4297,587 @@ Public Class Process_frmMain
                 .LastModifiedBy = txtModifiedBy.Text
 
             End With
+            mProcess_Project.SaveToDB(mPNID, mRevID)
+
+            If (TabControl1.SelectedIndex = 2) Then
+                CopyDataGridView(grdOrdEntry_CustContact, grdCustContact)
+            End If
+
+            If (TabControl1.SelectedIndex = 8) Then
+                CopyDataGridView(grdQuality_SplOperation, grdCost_SplOperation)
+            End If
+
+            '....Header
+            If (CompareVal_Header()) Then
+                txtDateMod.Text = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                txtModifiedBy.Text = gUser.FirstName + " " + gUser.LastName
+            End If
+
+            '....Edited By
+            If (CompareVal_PreOrder()) Then
+                With mProcess_Project.EditedBy
+
+                    Dim pDate As Date = DateTime.Now()
+                    Dim pName As String = gUser.FirstName + " " + gUser.LastName
+                    If (.DateEdited.Count > 0) Then
+                        If (.DateEdited(.DateEdited.Count - 1).ToString("MM/dd/yyyy", pCI.DateTimeFormat()) <> pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat()) Or .Name(.Name.Count - 1) <> pName) Then
+                            grdPreOrderEditedBy.Rows.Add()
+                            grdPreOrderEditedBy.Rows(grdPreOrderEditedBy.Rows.Count - 1).Cells(0).Value = pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                            grdPreOrderEditedBy.Rows(grdPreOrderEditedBy.Rows.Count - 1).Cells(1).Value = pName
+                            txtPreOrderUserDate.Text = pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                            txtPreOrderUserName.Text = pName
+
+                        End If
+                    Else
+                        grdPreOrderEditedBy.Rows.Add()
+                        grdPreOrderEditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        grdPreOrderEditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+
+                        txtPreOrderUserDate.Text = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        txtPreOrderUserName.Text = gUser.FirstName + " " + gUser.LastName
+                    End If
+
+                    mProcess_Project.EditedBy.ID_Edit.Clear()
+                    mProcess_Project.EditedBy.DateEdited.Clear()
+                    mProcess_Project.EditedBy.Name.Clear()
+                    mProcess_Project.EditedBy.Comment.Clear()
+
+                    For j As Integer = 0 To grdPreOrderEditedBy.Rows.Count - 1
+                        mProcess_Project.EditedBy.ID_Edit.Add(j + 1)
+                        mProcess_Project.EditedBy.DateEdited.Add(grdPreOrderEditedBy.Rows(j).Cells(0).Value)
+                        mProcess_Project.EditedBy.Name.Add(grdPreOrderEditedBy.Rows(j).Cells(1).Value)
+                        mProcess_Project.EditedBy.Comment.Add(grdPreOrderEditedBy.Rows(j).Cells(2).Value)
+
+                    Next
+
+                End With
+                mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "PreOrder")
+            End If
+
+            If (CompareVal_Export()) Then
+
+                With mProcess_Project.EditedBy
+
+                    Dim pDate As Date = DateTime.Now()
+                    Dim pName As String = gUser.FirstName + " " + gUser.LastName
+                    If (.DateEdited.Count > 0) Then
+                        If (.DateEdited(.DateEdited.Count - 1).ToString("MM/dd/yyyy", pCI.DateTimeFormat()) <> pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat()) Or .Name(.Name.Count - 1) <> pName) Then
+                            grdExport_EditedBy.Rows.Add()
+                            grdExport_EditedBy.Rows(grdExport_EditedBy.Rows.Count - 1).Cells(0).Value = pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                            grdExport_EditedBy.Rows(grdExport_EditedBy.Rows.Count - 1).Cells(1).Value = pName
+                            txtITAR_Export_UserDate.Text = pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                            txtITAR_Export_UserName.Text = pName
+
+                        End If
+                    Else
+                        grdExport_EditedBy.Rows.Add()
+                        grdExport_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        grdExport_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+
+                        txtITAR_Export_UserDate.Text = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        txtITAR_Export_UserName.Text = gUser.FirstName + " " + gUser.LastName
+                    End If
+
+                    mProcess_Project.EditedBy.ID_Edit.Clear()
+                    mProcess_Project.EditedBy.DateEdited.Clear()
+                    mProcess_Project.EditedBy.Name.Clear()
+                    mProcess_Project.EditedBy.Comment.Clear()
+
+                    For j As Integer = 0 To grdExport_EditedBy.Rows.Count - 1
+                        mProcess_Project.EditedBy.ID_Edit.Add(j + 1)
+                        mProcess_Project.EditedBy.DateEdited.Add(grdExport_EditedBy.Rows(j).Cells(0).Value)
+                        mProcess_Project.EditedBy.Name.Add(grdExport_EditedBy.Rows(j).Cells(1).Value)
+                        mProcess_Project.EditedBy.Comment.Add(grdExport_EditedBy.Rows(j).Cells(2).Value)
+
+                    Next
+
+                End With
+
+                mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Export")
+
+            End If
+
+            If (CompareVal_OrdEntry()) Then
+
+                With mProcess_Project.EditedBy
+
+                    Dim pDate As Date = DateTime.Now()
+                    Dim pName As String = gUser.FirstName + " " + gUser.LastName
+                    If (.DateEdited.Count > 0) Then
+                        If (.DateEdited(.DateEdited.Count - 1).ToString("MM/dd/yyyy", pCI.DateTimeFormat()) <> pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat()) Or .Name(.Name.Count - 1) <> pName) Then
+                            grdOrdEntry_EditedBy.Rows.Add()
+                            grdOrdEntry_EditedBy.Rows(grdOrdEntry_EditedBy.Rows.Count - 1).Cells(0).Value = pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                            grdOrdEntry_EditedBy.Rows(grdOrdEntry_EditedBy.Rows.Count - 1).Cells(1).Value = pName
+                            txtOrdEntry_UserDate.Text = pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                            txtOrdEntry_UserName.Text = pName
+
+                        End If
+                    Else
+                        grdOrdEntry_EditedBy.Rows.Add()
+                        grdOrdEntry_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        grdOrdEntry_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+
+                        txtOrdEntry_UserDate.Text = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        txtOrdEntry_UserName.Text = gUser.FirstName + " " + gUser.LastName
+                    End If
+
+                    mProcess_Project.EditedBy.ID_Edit.Clear()
+                    mProcess_Project.EditedBy.DateEdited.Clear()
+                    mProcess_Project.EditedBy.Name.Clear()
+                    mProcess_Project.EditedBy.Comment.Clear()
+
+                    For j As Integer = 0 To grdOrdEntry_EditedBy.Rows.Count - 1
+                        mProcess_Project.EditedBy.ID_Edit.Add(j + 1)
+                        mProcess_Project.EditedBy.DateEdited.Add(grdOrdEntry_EditedBy.Rows(j).Cells(0).Value)
+                        mProcess_Project.EditedBy.Name.Add(grdOrdEntry_EditedBy.Rows(j).Cells(1).Value)
+                        mProcess_Project.EditedBy.Comment.Add(grdOrdEntry_EditedBy.Rows(j).Cells(2).Value)
+
+                    Next
+
+                End With
+
+                mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "OrdEntry")
+
+            End If
+
+            If (CompareVal_CostEstimating()) Then
+
+                With mProcess_Project.EditedBy
+
+                    Dim pDate As Date = DateTime.Now()
+                    Dim pName As String = gUser.FirstName + " " + gUser.LastName
+                    If (.DateEdited.Count > 0) Then
+                        If (.DateEdited(.DateEdited.Count - 1).ToString("MM/dd/yyyy", pCI.DateTimeFormat()) <> pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat()) Or .Name(.Name.Count - 1) <> pName) Then
+                            grdCost_EditedBy.Rows.Add()
+                            grdCost_EditedBy.Rows(grdCost_EditedBy.Rows.Count - 1).Cells(0).Value = pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                            grdCost_EditedBy.Rows(grdCost_EditedBy.Rows.Count - 1).Cells(1).Value = pName
+                            txtCost_UserDate.Text = pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                            txtCost_UserName.Text = pName
+
+                        End If
+                    Else
+                        grdCost_EditedBy.Rows.Add()
+                        grdCost_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        grdCost_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+
+                        txtCost_UserDate.Text = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        txtCost_UserName.Text = gUser.FirstName + " " + gUser.LastName
+                    End If
+
+                    mProcess_Project.EditedBy.ID_Edit.Clear()
+                    mProcess_Project.EditedBy.DateEdited.Clear()
+                    mProcess_Project.EditedBy.Name.Clear()
+                    mProcess_Project.EditedBy.Comment.Clear()
+
+                    For j As Integer = 0 To grdCost_EditedBy.Rows.Count - 1
+                        mProcess_Project.EditedBy.ID_Edit.Add(j + 1)
+                        mProcess_Project.EditedBy.DateEdited.Add(grdCost_EditedBy.Rows(j).Cells(0).Value)
+                        mProcess_Project.EditedBy.Name.Add(grdCost_EditedBy.Rows(j).Cells(1).Value)
+                        mProcess_Project.EditedBy.Comment.Add(grdCost_EditedBy.Rows(j).Cells(2).Value)
+
+                    Next
+
+                End With
+
+                mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Cost")
+
+            End If
+
+            If (CompareVal_App()) Then
+
+                If (cmbApp_InsertLoc.Text = "Face") Then
+                    With mProcess_Project.EditedBy
+                        Dim pDate As Date = DateTime.Now()
+                        Dim pName As String = gUser.FirstName + " " + gUser.LastName
+                        If (.DateEdited.Count > 0) Then
+                            If (.DateEdited(.DateEdited.Count - 1).ToString("MM/dd/yyyy", pCI.DateTimeFormat()) <> pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat()) Or .Name(.Name.Count - 1) <> pName) Then
+                                grdApp_EditedBy_Face.Rows.Add()
+                                grdApp_EditedBy_Face.Rows(grdApp_EditedBy_Face.Rows.Count - 1).Cells(0).Value = pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                                grdApp_EditedBy_Face.Rows(grdApp_EditedBy_Face.Rows.Count - 1).Cells(1).Value = pName
+                                txtApp_UserDate_Face.Text = pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                                txtApp_UserName_Face.Text = pName
+
+                            End If
+                        Else
+                            grdApp_EditedBy_Face.Rows.Add()
+                            grdApp_EditedBy_Face.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                            grdApp_EditedBy_Face.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+
+                            txtApp_UserDate_Face.Text = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                            txtApp_UserName_Face.Text = gUser.FirstName + " " + gUser.LastName
+                        End If
+
+                        mProcess_Project.EditedBy.ID_Edit.Clear()
+                        mProcess_Project.EditedBy.DateEdited.Clear()
+                        mProcess_Project.EditedBy.Name.Clear()
+                        mProcess_Project.EditedBy.Comment.Clear()
+
+                        For j As Integer = 0 To grdApp_EditedBy_Face.Rows.Count - 1
+                            mProcess_Project.EditedBy.ID_Edit.Add(j + 1)
+                            mProcess_Project.EditedBy.DateEdited.Add(grdApp_EditedBy_Face.Rows(j).Cells(0).Value)
+                            mProcess_Project.EditedBy.Name.Add(grdApp_EditedBy_Face.Rows(j).Cells(1).Value)
+                            mProcess_Project.EditedBy.Comment.Add(grdApp_EditedBy_Face.Rows(j).Cells(2).Value)
+                        Next
+                    End With
+                    mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "App")
+                Else
+                    With mProcess_Project.EditedBy
+                        Dim pDate As Date = DateTime.Now()
+                        Dim pName As String = gUser.FirstName + " " + gUser.LastName
+                        If (.DateEdited.Count > 0) Then
+                            If (.DateEdited(.DateEdited.Count - 1).ToString("MM/dd/yyyy", pCI.DateTimeFormat()) <> pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat()) Or .Name(.Name.Count - 1) <> pName) Then
+                                grdApp_EditedBy_Axial.Rows.Add()
+                                grdApp_EditedBy_Axial.Rows(grdApp_EditedBy_Axial.Rows.Count - 1).Cells(0).Value = pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                                grdApp_EditedBy_Axial.Rows(grdApp_EditedBy_Axial.Rows.Count - 1).Cells(1).Value = pName
+                                txtApp_UserDate_Axial.Text = pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                                txtApp_UserName_Axial.Text = pName
+
+                            End If
+                        Else
+                            grdApp_EditedBy_Axial.Rows.Add()
+                            grdApp_EditedBy_Axial.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                            grdApp_EditedBy_Axial.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+
+                            txtApp_UserDate_Axial.Text = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                            txtApp_UserName_Axial.Text = gUser.FirstName + " " + gUser.LastName
+                        End If
+
+                        mProcess_Project.EditedBy.ID_Edit.Clear()
+                        mProcess_Project.EditedBy.DateEdited.Clear()
+                        mProcess_Project.EditedBy.Name.Clear()
+                        mProcess_Project.EditedBy.Comment.Clear()
+
+                        For j As Integer = 0 To grdApp_EditedBy_Axial.Rows.Count - 1
+                            mProcess_Project.EditedBy.ID_Edit.Add(j + 1)
+                            mProcess_Project.EditedBy.DateEdited.Add(grdApp_EditedBy_Axial.Rows(j).Cells(0).Value)
+                            mProcess_Project.EditedBy.Name.Add(grdApp_EditedBy_Axial.Rows(j).Cells(1).Value)
+                            mProcess_Project.EditedBy.Comment.Add(grdApp_EditedBy_Axial.Rows(j).Cells(2).Value)
+                        Next
+                    End With
+                    mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "App")
+
+                End If
+
+            End If
+
+            If (CompareVal_Design()) Then
+
+                With mProcess_Project.EditedBy
+                    Dim pDate As Date = DateTime.Now()
+                    Dim pName As String = gUser.FirstName + " " + gUser.LastName
+                    If (.DateEdited.Count > 0) Then
+                        If (.DateEdited(.DateEdited.Count - 1).ToString("MM/dd/yyyy", pCI.DateTimeFormat()) <> pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat()) Or .Name(.Name.Count - 1) <> pName) Then
+                            grdDesign_EditedBy.Rows.Add()
+                            grdDesign_EditedBy.Rows(grdDesign_EditedBy.Rows.Count - 1).Cells(0).Value = pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                            grdDesign_EditedBy.Rows(grdDesign_EditedBy.Rows.Count - 1).Cells(1).Value = pName
+                            txtDesign_UserDate.Text = pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                            txtDesign_UserName.Text = pName
+
+                        End If
+                    Else
+                        grdDesign_EditedBy.Rows.Add()
+                        grdDesign_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        grdDesign_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+
+                        txtDesign_UserDate.Text = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        txtDesign_UserName.Text = gUser.FirstName + " " + gUser.LastName
+                    End If
+
+                    mProcess_Project.EditedBy.ID_Edit.Clear()
+                    mProcess_Project.EditedBy.DateEdited.Clear()
+                    mProcess_Project.EditedBy.Name.Clear()
+                    mProcess_Project.EditedBy.Comment.Clear()
+
+                    For j As Integer = 0 To grdDesign_EditedBy.Rows.Count - 1
+                        mProcess_Project.EditedBy.ID_Edit.Add(j + 1)
+                        mProcess_Project.EditedBy.DateEdited.Add(grdDesign_EditedBy.Rows(j).Cells(0).Value)
+                        mProcess_Project.EditedBy.Name.Add(grdDesign_EditedBy.Rows(j).Cells(1).Value)
+                        mProcess_Project.EditedBy.Comment.Add(grdDesign_EditedBy.Rows(j).Cells(2).Value)
+                    Next
+
+                End With
+
+                mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Design")
+            End If
+
+            If (CompareVal_Manf()) Then
+
+                With mProcess_Project.EditedBy
+
+                    Dim pDate As Date = DateTime.Now()
+                    Dim pName As String = gUser.FirstName + " " + gUser.LastName
+
+                    If (.DateEdited.Count > 0) Then
+                        If (.DateEdited(.DateEdited.Count - 1).ToString("MM/dd/yyyy", pCI.DateTimeFormat()) <> pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat()) Or .Name(.Name.Count - 1) <> pName) Then
+                            grdManf_EditedBy.Rows.Add()
+                            grdManf_EditedBy.Rows(grdManf_EditedBy.Rows.Count - 1).Cells(0).Value = pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                            grdManf_EditedBy.Rows(grdManf_EditedBy.Rows.Count - 1).Cells(1).Value = pName
+                            txtManf_UserDate.Text = pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                            txtManf_UserName.Text = pName
+
+                        End If
+                    Else
+                        grdManf_EditedBy.Rows.Add()
+                        grdManf_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        grdManf_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+
+                        txtManf_UserDate.Text = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        txtManf_UserName.Text = gUser.FirstName + " " + gUser.LastName
+                    End If
+
+                    mProcess_Project.EditedBy.ID_Edit.Clear()
+                    mProcess_Project.EditedBy.DateEdited.Clear()
+                    mProcess_Project.EditedBy.Name.Clear()
+                    mProcess_Project.EditedBy.Comment.Clear()
+
+                    For j As Integer = 0 To grdManf_EditedBy.Rows.Count - 1
+                        mProcess_Project.EditedBy.ID_Edit.Add(j + 1)
+                        mProcess_Project.EditedBy.DateEdited.Add(grdManf_EditedBy.Rows(j).Cells(0).Value)
+                        mProcess_Project.EditedBy.Name.Add(grdManf_EditedBy.Rows(j).Cells(1).Value)
+                        mProcess_Project.EditedBy.Comment.Add(grdManf_EditedBy.Rows(j).Cells(2).Value)
+                    Next
+
+                End With
+
+                mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Manf")
+            End If
+
+            If (CompareVal_Purchase()) Then
+
+                With mProcess_Project.EditedBy
+
+                    Dim pDate As Date = DateTime.Now()
+                    Dim pName As String = gUser.FirstName + " " + gUser.LastName
+
+                    If (.DateEdited.Count > 0) Then
+                        If (.DateEdited(.DateEdited.Count - 1).ToString("MM/dd/yyyy", pCI.DateTimeFormat()) <> pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat()) Or .Name(.Name.Count - 1) <> pName) Then
+                            grdPurchase_EditedBy.Rows.Add()
+                            grdPurchase_EditedBy.Rows(grdPurchase_EditedBy.Rows.Count - 1).Cells(0).Value = pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                            grdPurchase_EditedBy.Rows(grdPurchase_EditedBy.Rows.Count - 1).Cells(1).Value = pName
+                            txtPurchase_UserDate.Text = pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                            txtPurchase_UserName.Text = pName
+
+                        End If
+                    Else
+                        grdPurchase_EditedBy.Rows.Add()
+                        grdPurchase_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        grdPurchase_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+
+                        txtPurchase_UserDate.Text = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        txtPurchase_UserName.Text = gUser.FirstName + " " + gUser.LastName
+                    End If
+
+                    mProcess_Project.EditedBy.ID_Edit.Clear()
+                    mProcess_Project.EditedBy.DateEdited.Clear()
+                    mProcess_Project.EditedBy.Name.Clear()
+                    mProcess_Project.EditedBy.Comment.Clear()
+
+                    For j As Integer = 0 To grdPurchase_EditedBy.Rows.Count - 1
+                        mProcess_Project.EditedBy.ID_Edit.Add(j + 1)
+                        mProcess_Project.EditedBy.DateEdited.Add(grdPurchase_EditedBy.Rows(j).Cells(0).Value)
+                        mProcess_Project.EditedBy.Name.Add(grdPurchase_EditedBy.Rows(j).Cells(1).Value)
+                        mProcess_Project.EditedBy.Comment.Add(grdPurchase_EditedBy.Rows(j).Cells(2).Value)
+                    Next
+
+                End With
+
+                mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Purchase")
+            End If
+
+            If (CompareVal_Qlty()) Then
+
+                With mProcess_Project.EditedBy
+
+                    Dim pDate As Date = DateTime.Now()
+                    Dim pName As String = gUser.FirstName + " " + gUser.LastName
+
+                    If (.DateEdited.Count > 0) Then
+                        If (.DateEdited(.DateEdited.Count - 1).ToString("MM/dd/yyyy", pCI.DateTimeFormat()) <> pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat()) Or .Name(.Name.Count - 1) <> pName) Then
+                            grdQuality_EditedBy.Rows.Add()
+                            grdQuality_EditedBy.Rows(grdQuality_EditedBy.Rows.Count - 1).Cells(0).Value = pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                            grdQuality_EditedBy.Rows(grdQuality_EditedBy.Rows.Count - 1).Cells(1).Value = pName
+                            txtQuality_UserDate.Text = pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                            txtQuality_UserName.Text = pName
+
+                        End If
+                    Else
+                        grdQuality_EditedBy.Rows.Add()
+                        grdQuality_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        grdQuality_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+
+                        txtQuality_UserDate.Text = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        txtQuality_UserName.Text = gUser.FirstName + " " + gUser.LastName
+                    End If
+
+                    mProcess_Project.EditedBy.ID_Edit.Clear()
+                    mProcess_Project.EditedBy.DateEdited.Clear()
+                    mProcess_Project.EditedBy.Name.Clear()
+                    mProcess_Project.EditedBy.Comment.Clear()
+
+                    For j As Integer = 0 To grdQuality_EditedBy.Rows.Count - 1
+                        mProcess_Project.EditedBy.ID_Edit.Add(j + 1)
+                        mProcess_Project.EditedBy.DateEdited.Add(grdQuality_EditedBy.Rows(j).Cells(0).Value)
+                        mProcess_Project.EditedBy.Name.Add(grdQuality_EditedBy.Rows(j).Cells(1).Value)
+                        mProcess_Project.EditedBy.Comment.Add(grdQuality_EditedBy.Rows(j).Cells(2).Value)
+                    Next
+
+                End With
+
+                mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Qlty")
+            End If
+
+            If (CompareVal_DWG()) Then
+
+                With mProcess_Project.EditedBy
+
+                    Dim pDate As Date = DateTime.Now()
+                    Dim pName As String = gUser.FirstName + " " + gUser.LastName
+
+                    If (.DateEdited.Count > 0) Then
+                        If (.DateEdited(.DateEdited.Count - 1).ToString("MM/dd/yyyy", pCI.DateTimeFormat()) <> pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat()) Or .Name(.Name.Count - 1) <> pName) Then
+                            grdDwg_EditedBy.Rows.Add()
+                            grdDwg_EditedBy.Rows(grdDwg_EditedBy.Rows.Count - 1).Cells(0).Value = pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                            grdDwg_EditedBy.Rows(grdDwg_EditedBy.Rows.Count - 1).Cells(1).Value = pName
+                            txtDwg_UserDate.Text = pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                            txtDwg_UserName.Text = pName
+
+                        End If
+                    Else
+                        grdDwg_EditedBy.Rows.Add()
+                        grdDwg_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        grdDwg_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+
+                        txtDwg_UserDate.Text = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        txtDwg_UserName.Text = gUser.FirstName + " " + gUser.LastName
+                    End If
+
+                    mProcess_Project.EditedBy.ID_Edit.Clear()
+                    mProcess_Project.EditedBy.DateEdited.Clear()
+                    mProcess_Project.EditedBy.Name.Clear()
+                    mProcess_Project.EditedBy.Comment.Clear()
+
+                    For j As Integer = 0 To grdDwg_EditedBy.Rows.Count - 1
+                        mProcess_Project.EditedBy.ID_Edit.Add(j + 1)
+                        mProcess_Project.EditedBy.DateEdited.Add(grdDwg_EditedBy.Rows(j).Cells(0).Value)
+                        mProcess_Project.EditedBy.Name.Add(grdDwg_EditedBy.Rows(j).Cells(1).Value)
+                        mProcess_Project.EditedBy.Comment.Add(grdDwg_EditedBy.Rows(j).Cells(2).Value)
+                    Next
+
+                End With
+
+                mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Dwg")
+            End If
+
+            If (CompareVal_Test()) Then
+
+                With mProcess_Project.EditedBy
+
+                    Dim pDate As Date = DateTime.Now()
+                    Dim pName As String = gUser.FirstName + " " + gUser.LastName
+
+                    If (.DateEdited.Count > 0) Then
+                        If (.DateEdited(.DateEdited.Count - 1).ToString("MM/dd/yyyy", pCI.DateTimeFormat()) <> pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat()) Or .Name(.Name.Count - 1) <> pName) Then
+                            grdTest_EditedBy.Rows.Add()
+                            grdTest_EditedBy.Rows(grdTest_EditedBy.Rows.Count - 1).Cells(0).Value = pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                            grdTest_EditedBy.Rows(grdTest_EditedBy.Rows.Count - 1).Cells(1).Value = pName
+                            txtTest_UserDate.Text = pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                            txtTest_UserName.Text = pName
+
+                        End If
+                    Else
+                        grdTest_EditedBy.Rows.Add()
+                        grdTest_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        grdTest_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+
+                        txtTest_UserDate.Text = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        txtTest_UserName.Text = gUser.FirstName + " " + gUser.LastName
+                    End If
+
+                    mProcess_Project.EditedBy.ID_Edit.Clear()
+                    mProcess_Project.EditedBy.DateEdited.Clear()
+                    mProcess_Project.EditedBy.Name.Clear()
+                    mProcess_Project.EditedBy.Comment.Clear()
+
+                    For j As Integer = 0 To grdTest_EditedBy.Rows.Count - 1
+                        mProcess_Project.EditedBy.ID_Edit.Add(j + 1)
+                        mProcess_Project.EditedBy.DateEdited.Add(grdTest_EditedBy.Rows(j).Cells(0).Value)
+                        mProcess_Project.EditedBy.Name.Add(grdTest_EditedBy.Rows(j).Cells(1).Value)
+                        mProcess_Project.EditedBy.Comment.Add(grdTest_EditedBy.Rows(j).Cells(2).Value)
+                    Next
+
+                End With
+
+                mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Test")
+            End If
+
+            If (CompareVal_Shipping()) Then
+
+                With mProcess_Project.EditedBy
+
+                    Dim pDate As Date = DateTime.Now()
+                    Dim pName As String = gUser.FirstName + " " + gUser.LastName
+
+                    If (.DateEdited.Count > 0) Then
+                        If (.DateEdited(.DateEdited.Count - 1).ToString("MM/dd/yyyy", pCI.DateTimeFormat()) <> pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat()) Or .Name(.Name.Count - 1) <> pName) Then
+                            grdShipping_EditedBy.Rows.Add()
+                            grdShipping_EditedBy.Rows(grdShipping_EditedBy.Rows.Count - 1).Cells(0).Value = pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                            grdShipping_EditedBy.Rows(grdShipping_EditedBy.Rows.Count - 1).Cells(1).Value = pName
+                            txtShipping_UserDate.Text = pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                            txtShipping_UserName.Text = pName
+
+                        End If
+                    Else
+                        grdShipping_EditedBy.Rows.Add()
+                        grdShipping_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        grdShipping_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
+
+                        txtShipping_UserDate.Text = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        txtShipping_UserName.Text = gUser.FirstName + " " + gUser.LastName
+                    End If
+
+                    mProcess_Project.EditedBy.ID_Edit.Clear()
+                    mProcess_Project.EditedBy.DateEdited.Clear()
+                    mProcess_Project.EditedBy.Name.Clear()
+                    mProcess_Project.EditedBy.Comment.Clear()
+
+                    For j As Integer = 0 To grdShipping_EditedBy.Rows.Count - 1
+                        mProcess_Project.EditedBy.ID_Edit.Add(j + 1)
+                        mProcess_Project.EditedBy.DateEdited.Add(grdShipping_EditedBy.Rows(j).Cells(0).Value)
+                        mProcess_Project.EditedBy.Name.Add(grdShipping_EditedBy.Rows(j).Cells(1).Value)
+                        mProcess_Project.EditedBy.Comment.Add(grdShipping_EditedBy.Rows(j).Cells(2).Value)
+                    Next
+
+                End With
+
+                mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Shipping")
+            End If
+
+
+            ''.... "Header:"
+            'With mProcess_Project
+            '    .POPCoding = cmbPopCoding.Text
+
+            '    .Rating = cmbRating.Text
+            '    .Type = cmbType.Text
+
+            '    If (txtStartDate.Text <> "") Then
+            '        If (txtStartDate.Text <> DateTime.MinValue) Then
+            '            .DateOpen = Convert.ToDateTime(txtStartDate.Text)
+            '        End If
+
+            '    End If
+
+            '    If (txtDateMod.Text <> "") Then
+            '        If (txtDateMod.Text <> DateTime.MinValue) Then
+            '            .DateLastModified = Convert.ToDateTime(txtDateMod.Text)
+            '        End If
+            '    End If
+
+            '    '.CloseDate = = Convert.ToDateTime(txtc.Text)
+            '    .LastModifiedBy = txtModifiedBy.Text
+
+            'End With
+            'mProcess_Project.SaveToDB(mPNID, mRevID)
 
 
             '...."Pre-Order:"
@@ -4752,50 +5175,74 @@ Public Class Process_frmMain
 
                 If (Not IsNothing(grdApp_OpCond.Rows(0).Cells(1).Value) And grdApp_OpCond.Rows(0).Cells(1).Value <> "") Then
                     .OpCond.T_Assy = ConvertToDbl(grdApp_OpCond.Rows(0).Cells(1).Value)
+                Else
+                    .OpCond.T_Assy = 0.0
                 End If
 
                 If (Not IsNothing(grdApp_OpCond.Rows(0).Cells(2).Value) And grdApp_OpCond.Rows(0).Cells(2).Value <> "") Then
                     .OpCond.T_Min = ConvertToDbl(grdApp_OpCond.Rows(0).Cells(2).Value)
+                Else
+                    .OpCond.T_Min = 0.0
                 End If
 
                 If (Not IsNothing(grdApp_OpCond.Rows(0).Cells(3).Value) And grdApp_OpCond.Rows(0).Cells(3).Value <> "") Then
                     .OpCond.T_Max = ConvertToDbl(grdApp_OpCond.Rows(0).Cells(3).Value)
+                Else
+                    .OpCond.T_Max = 0.0
                 End If
 
                 If (Not IsNothing(grdApp_OpCond.Rows(0).Cells(4).Value) And grdApp_OpCond.Rows(0).Cells(4).Value <> "") Then
                     .OpCond.T_Oper = ConvertToDbl(grdApp_OpCond.Rows(0).Cells(4).Value)
+                Else
+                    .OpCond.T_Oper = 0.0
                 End If
 
                 If (Not IsNothing(grdApp_OpCond.Rows(1).Cells(1).Value) And grdApp_OpCond.Rows(1).Cells(1).Value <> "") Then
                     .OpCond.Press_Assy = ConvertToDbl(grdApp_OpCond.Rows(1).Cells(1).Value)
+                Else
+                    .OpCond.Press_Assy = 0.0
                 End If
 
                 If (Not IsNothing(grdApp_OpCond.Rows(1).Cells(2).Value) And grdApp_OpCond.Rows(1).Cells(2).Value <> "") Then
                     .OpCond.Press_Min = ConvertToDbl(grdApp_OpCond.Rows(1).Cells(2).Value)
+                Else
+                    .OpCond.Press_Min = 0.0
                 End If
 
                 If (Not IsNothing(grdApp_OpCond.Rows(1).Cells(3).Value) And grdApp_OpCond.Rows(1).Cells(3).Value <> "") Then
                     .OpCond.Press_Max = ConvertToDbl(grdApp_OpCond.Rows(1).Cells(3).Value)
+                Else
+                    .OpCond.Press_Max = 0.0
                 End If
 
                 If (Not IsNothing(grdApp_OpCond.Rows(1).Cells(4).Value) And grdApp_OpCond.Rows(1).Cells(4).Value <> "") Then
                     .OpCond.Press_Oper = ConvertToDbl(grdApp_OpCond.Rows(1).Cells(4).Value)
+                Else
+                    .OpCond.Press_Oper = 0.0
                 End If
 
                 If (Not IsNothing(grdApp_Load.Rows(0).Cells(1).Value) And grdApp_Load.Rows(0).Cells(1).Value <> "") Then
                     .Load.Assy_Min = ConvertToDbl(grdApp_Load.Rows(0).Cells(1).Value)
+                Else
+                    .Load.Assy_Min = 0.0
                 End If
 
                 If (Not IsNothing(grdApp_Load.Rows(0).Cells(2).Value) And grdApp_Load.Rows(0).Cells(2).Value <> "") Then
                     .Load.Assy_Max = ConvertToDbl(grdApp_Load.Rows(0).Cells(2).Value)
+                Else
+                    .Load.Assy_Max = 0.0
                 End If
 
                 If (Not IsNothing(grdApp_Load.Rows(1).Cells(1).Value) And grdApp_Load.Rows(1).Cells(1).Value <> "") Then
                     .Load.Oper_Min = ConvertToDbl(grdApp_Load.Rows(1).Cells(1).Value)
+                Else
+                    .Load.Oper_Min = 0.0
                 End If
 
                 If (Not IsNothing(grdApp_Load.Rows(0).Cells(2).Value) And grdApp_Load.Rows(0).Cells(2).Value <> "") Then
                     .Load.Oper_Max = ConvertToDbl(grdApp_Load.Rows(1).Cells(2).Value)
+                Else
+                    .Load.Oper_Max = 0.0
                 End If
 
                 If (.Type = "Face") Then
@@ -5662,7 +6109,7 @@ Public Class Process_frmMain
 
     Private Sub SaveToDB()
         '==================
-        mProcess_Project.SaveToDB(mPNID, mRevID)
+        'mProcess_Project.SaveToDB(mPNID, mRevID)
         mProcess_Project.CustContact.SaveToDB(mProcess_Project.ID)
         mProcess_Project.PreOrder.SaveToDB(mProcess_Project.ID)
         mProcess_Project.ITAR_Export.SaveToDB(mProcess_Project.ID)
@@ -7683,6 +8130,7 @@ Public Class Process_frmMain
 
     Private Sub grdQuote_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdQuote.CellClick
         '======================================================================================================
+        Dim pCI As New CultureInfo("en-US")
         If (e.ColumnIndex = 0) Then
             mDTP_Quote = New DateTimePicker()
             grdQuote.Controls.Add(mDTP_Quote)
@@ -7690,6 +8138,7 @@ Public Class Process_frmMain
             Dim pRectangle As Rectangle = grdQuote.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, True)
             mDTP_Quote.Size = New Size(pRectangle.Width, pRectangle.Height)
             mDTP_Quote.Location = New Point(pRectangle.X, pRectangle.Y)
+            grdQuote.CurrentCell.Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
             AddHandler mDTP_Quote.CloseUp, New EventHandler(AddressOf DTP_Quote_CloseUp)
             AddHandler mDTP_Quote.ValueChanged, New EventHandler(AddressOf DTP_Quote_OnTextChange)
         End If
@@ -7714,6 +8163,219 @@ Public Class Process_frmMain
             grdDesign_Input.Rows(grdDesign_Input.Rows.Count - 1).Cells(0).Value = ""
             grdDesign_Input.Rows(grdDesign_Input.CurrentRow.Index - 1).Cells(0).Value = pVal
         End If
+    End Sub
+
+    Private Sub grdPreOrderEditedBy_CellClick(sender As Object, e As DataGridViewCellEventArgs) _
+                                              Handles grdPreOrderEditedBy.CellClick
+        '========================================================================================
+        Dim pCI As New CultureInfo("en-US")
+        Dim pDate As String = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+        Dim pUserName As String = gUser.FirstName + " " + gUser.LastName
+
+        If (grdPreOrderEditedBy.Rows.Count > 0) Then
+            If (pDate = grdPreOrderEditedBy.Rows(grdPreOrderEditedBy.Rows.Count - 1).Cells(0).Value And
+                pUserName = grdPreOrderEditedBy.Rows(grdPreOrderEditedBy.Rows.Count - 1).Cells(1).Value) Then
+
+                grdPreOrderEditedBy.Rows(grdPreOrderEditedBy.Rows.Count - 1).Cells(2).ReadOnly = False
+            End If
+        End If
+    End Sub
+
+    Private Sub grdExport_EditedBy_CellClick(sender As Object, e As DataGridViewCellEventArgs) _
+                                             Handles grdExport_EditedBy.CellClick
+        '========================================================================================
+        Dim pCI As New CultureInfo("en-US")
+        Dim pDate As String = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+        Dim pUserName As String = gUser.FirstName + " " + gUser.LastName
+
+        If (grdExport_EditedBy.Rows.Count > 0) Then
+            If (pDate = grdExport_EditedBy.Rows(grdExport_EditedBy.Rows.Count - 1).Cells(0).Value And
+                pUserName = grdExport_EditedBy.Rows(grdExport_EditedBy.Rows.Count - 1).Cells(1).Value) Then
+
+                grdExport_EditedBy.Rows(grdExport_EditedBy.Rows.Count - 1).Cells(2).ReadOnly = False
+            End If
+        End If
+
+    End Sub
+
+    Private Sub grdOrdEntry_EditedBy_CellClick(sender As Object, e As DataGridViewCellEventArgs) _
+                                               Handles grdOrdEntry_EditedBy.CellClick
+        '==========================================================================================
+        Dim pCI As New CultureInfo("en-US")
+        Dim pDate As String = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+        Dim pUserName As String = gUser.FirstName + " " + gUser.LastName
+
+        If (grdOrdEntry_EditedBy.Rows.Count > 0) Then
+            If (pDate = grdOrdEntry_EditedBy.Rows(grdOrdEntry_EditedBy.Rows.Count - 1).Cells(0).Value And
+                pUserName = grdOrdEntry_EditedBy.Rows(grdOrdEntry_EditedBy.Rows.Count - 1).Cells(1).Value) Then
+
+                grdOrdEntry_EditedBy.Rows(grdOrdEntry_EditedBy.Rows.Count - 1).Cells(2).ReadOnly = False
+            End If
+        End If
+    End Sub
+
+    Private Sub grdCost_EditedBy_CellClick(sender As Object, e As DataGridViewCellEventArgs) _
+                                           Handles grdCost_EditedBy.CellClick
+        '======================================================================================
+        Dim pCI As New CultureInfo("en-US")
+        Dim pDate As String = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+        Dim pUserName As String = gUser.FirstName + " " + gUser.LastName
+
+        If (grdCost_EditedBy.Rows.Count > 0) Then
+            If (pDate = grdCost_EditedBy.Rows(grdCost_EditedBy.Rows.Count - 1).Cells(0).Value And
+                pUserName = grdCost_EditedBy.Rows(grdCost_EditedBy.Rows.Count - 1).Cells(1).Value) Then
+
+                grdCost_EditedBy.Rows(grdCost_EditedBy.Rows.Count - 1).Cells(2).ReadOnly = False
+            End If
+        End If
+    End Sub
+
+    Private Sub grdApp_EditedBy_Face_CellClick(sender As Object, e As DataGridViewCellEventArgs) _
+                                               Handles grdApp_EditedBy_Face.CellClick
+        '===========================================================================================
+        Dim pCI As New CultureInfo("en-US")
+        Dim pDate As String = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+        Dim pUserName As String = gUser.FirstName + " " + gUser.LastName
+
+        If (grdApp_EditedBy_Face.Rows.Count > 0) Then
+            If (pDate = grdApp_EditedBy_Face.Rows(grdApp_EditedBy_Face.Rows.Count - 1).Cells(0).Value And
+                pUserName = grdApp_EditedBy_Face.Rows(grdApp_EditedBy_Face.Rows.Count - 1).Cells(1).Value) Then
+
+                grdApp_EditedBy_Face.Rows(grdApp_EditedBy_Face.Rows.Count - 1).Cells(2).ReadOnly = False
+            End If
+        End If
+    End Sub
+
+    Private Sub grdApp_EditedBy_Axial_CellClick(sender As Object, e As DataGridViewCellEventArgs) _
+                                                Handles grdApp_EditedBy_Axial.CellClick
+        '===========================================================================================
+        Dim pCI As New CultureInfo("en-US")
+        Dim pDate As String = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+        Dim pUserName As String = gUser.FirstName + " " + gUser.LastName
+
+        If (grdApp_EditedBy_Axial.Rows.Count > 0) Then
+            If (pDate = grdApp_EditedBy_Axial.Rows(grdApp_EditedBy_Axial.Rows.Count - 1).Cells(0).Value And
+                pUserName = grdApp_EditedBy_Axial.Rows(grdApp_EditedBy_Axial.Rows.Count - 1).Cells(1).Value) Then
+
+                grdApp_EditedBy_Axial.Rows(grdApp_EditedBy_Axial.Rows.Count - 1).Cells(2).ReadOnly = False
+            End If
+        End If
+    End Sub
+
+    Private Sub grdDesign_EditedBy_CellClick(sender As Object, e As DataGridViewCellEventArgs) _
+                                             Handles grdDesign_EditedBy.CellClick
+        '========================================================================================
+        Dim pCI As New CultureInfo("en-US")
+        Dim pDate As String = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+        Dim pUserName As String = gUser.FirstName + " " + gUser.LastName
+
+        If (grdDesign_EditedBy.Rows.Count > 0) Then
+            If (pDate = grdDesign_EditedBy.Rows(grdDesign_EditedBy.Rows.Count - 1).Cells(0).Value And
+                pUserName = grdDesign_EditedBy.Rows(grdDesign_EditedBy.Rows.Count - 1).Cells(1).Value) Then
+
+                grdDesign_EditedBy.Rows(grdDesign_EditedBy.Rows.Count - 1).Cells(2).ReadOnly = False
+            End If
+        End If
+    End Sub
+
+    Private Sub grdManf_EditedBy_CellClick(sender As Object, e As DataGridViewCellEventArgs) _
+                                           Handles grdManf_EditedBy.CellClick
+        '======================================================================================
+        Dim pCI As New CultureInfo("en-US")
+        Dim pDate As String = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+        Dim pUserName As String = gUser.FirstName + " " + gUser.LastName
+
+        If (grdManf_EditedBy.Rows.Count > 0) Then
+            If (pDate = grdManf_EditedBy.Rows(grdManf_EditedBy.Rows.Count - 1).Cells(0).Value And
+                pUserName = grdManf_EditedBy.Rows(grdManf_EditedBy.Rows.Count - 1).Cells(1).Value) Then
+
+                grdManf_EditedBy.Rows(grdManf_EditedBy.Rows.Count - 1).Cells(2).ReadOnly = False
+            End If
+        End If
+
+    End Sub
+
+    Private Sub grdPurchase_EditedBy_CellClick(sender As Object, e As DataGridViewCellEventArgs) _
+                                               Handles grdPurchase_EditedBy.CellClick
+        '==========================================================================================
+        Dim pCI As New CultureInfo("en-US")
+        Dim pDate As String = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+        Dim pUserName As String = gUser.FirstName + " " + gUser.LastName
+
+        If (grdPurchase_EditedBy.Rows.Count > 0) Then
+            If (pDate = grdPurchase_EditedBy.Rows(grdPurchase_EditedBy.Rows.Count - 1).Cells(0).Value And
+                pUserName = grdPurchase_EditedBy.Rows(grdPurchase_EditedBy.Rows.Count - 1).Cells(1).Value) Then
+
+                grdPurchase_EditedBy.Rows(grdPurchase_EditedBy.Rows.Count - 1).Cells(2).ReadOnly = False
+            End If
+        End If
+
+    End Sub
+
+    Private Sub grdQuality_EditedBy_CellClick(sender As Object, e As DataGridViewCellEventArgs) _
+                                              Handles grdQuality_EditedBy.CellClick
+        '==========================================================================================
+        Dim pCI As New CultureInfo("en-US")
+        Dim pDate As String = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+        Dim pUserName As String = gUser.FirstName + " " + gUser.LastName
+
+        If (grdQuality_EditedBy.Rows.Count > 0) Then
+            If (pDate = grdQuality_EditedBy.Rows(grdQuality_EditedBy.Rows.Count - 1).Cells(0).Value And
+                pUserName = grdQuality_EditedBy.Rows(grdQuality_EditedBy.Rows.Count - 1).Cells(1).Value) Then
+
+                grdQuality_EditedBy.Rows(grdQuality_EditedBy.Rows.Count - 1).Cells(2).ReadOnly = False
+            End If
+        End If
+
+    End Sub
+
+    Private Sub grdDwg_EditedBy_CellClick(sender As Object, e As DataGridViewCellEventArgs) _
+                                          Handles grdDwg_EditedBy.CellClick
+        '======================================================================================
+        Dim pCI As New CultureInfo("en-US")
+        Dim pDate As String = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+        Dim pUserName As String = gUser.FirstName + " " + gUser.LastName
+
+        If (grdDwg_EditedBy.Rows.Count > 0) Then
+            If (pDate = grdDwg_EditedBy.Rows(grdDwg_EditedBy.Rows.Count - 1).Cells(0).Value And
+                pUserName = grdDwg_EditedBy.Rows(grdDwg_EditedBy.Rows.Count - 1).Cells(1).Value) Then
+
+                grdDwg_EditedBy.Rows(grdDwg_EditedBy.Rows.Count - 1).Cells(2).ReadOnly = False
+            End If
+        End If
+    End Sub
+
+    Private Sub grdTest_EditedBy_CellClick(sender As Object, e As DataGridViewCellEventArgs) _
+                                           Handles grdTest_EditedBy.CellClick
+        '=======================================================================================
+        Dim pCI As New CultureInfo("en-US")
+        Dim pDate As String = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+        Dim pUserName As String = gUser.FirstName + " " + gUser.LastName
+
+        If (grdTest_EditedBy.Rows.Count > 0) Then
+            If (pDate = grdTest_EditedBy.Rows(grdTest_EditedBy.Rows.Count - 1).Cells(0).Value And
+                pUserName = grdTest_EditedBy.Rows(grdTest_EditedBy.Rows.Count - 1).Cells(1).Value) Then
+
+                grdTest_EditedBy.Rows(grdTest_EditedBy.Rows.Count - 1).Cells(2).ReadOnly = False
+            End If
+        End If
+    End Sub
+
+    Private Sub grdShipping_EditedBy_CellClick(sender As Object, e As DataGridViewCellEventArgs) _
+                                               Handles grdShipping_EditedBy.CellClick
+        '===========================================================================================
+        Dim pCI As New CultureInfo("en-US")
+        Dim pDate As String = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+        Dim pUserName As String = gUser.FirstName + " " + gUser.LastName
+
+        If (grdShipping_EditedBy.Rows.Count > 0) Then
+            If (pDate = grdShipping_EditedBy.Rows(grdShipping_EditedBy.Rows.Count - 1).Cells(0).Value And
+                pUserName = grdShipping_EditedBy.Rows(grdShipping_EditedBy.Rows.Count - 1).Cells(1).Value) Then
+
+                grdShipping_EditedBy.Rows(grdShipping_EditedBy.Rows.Count - 1).Cells(2).ReadOnly = False
+            End If
+        End If
+
     End Sub
 
 

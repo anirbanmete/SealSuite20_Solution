@@ -95,10 +95,10 @@ Partial Class Process_frmMain
         Dim DataGridViewCellStyle69 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle70 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle71 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle72 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle73 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle74 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle75 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle76 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle77 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle78 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle79 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle80 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -133,8 +133,8 @@ Partial Class Process_frmMain
         Dim DataGridViewCellStyle109 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle110 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle111 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle72 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle73 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle76 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle77 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lblBorder = New System.Windows.Forms.Label()
         Me.pnlPanel1 = New System.Windows.Forms.Panel()
         Me.GroupBox16 = New System.Windows.Forms.GroupBox()
@@ -641,8 +641,8 @@ Partial Class Process_frmMain
         Me.GroupBox10 = New System.Windows.Forms.GroupBox()
         Me.chkDesign_UserSigned_Face = New System.Windows.Forms.CheckBox()
         Me.cmdDesign_UserSign_Face = New System.Windows.Forms.Button()
-        Me.txtDesign_UserName_Face = New System.Windows.Forms.TextBox()
-        Me.txtDesign_UserDate_Face = New System.Windows.Forms.TextBox()
+        Me.txtDesign_UserName = New System.Windows.Forms.TextBox()
+        Me.txtDesign_UserDate = New System.Windows.Forms.TextBox()
         Me.dtpDesign_UserDate_Face = New System.Windows.Forms.DateTimePicker()
         Me.grdDesign_EditedBy = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn35 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -668,7 +668,7 @@ Partial Class Process_frmMain
         Me.chkManf_UserSigned = New System.Windows.Forms.CheckBox()
         Me.cmdManf_UserSign = New System.Windows.Forms.Button()
         Me.txtManf_UserName = New System.Windows.Forms.TextBox()
-        Me.txtManf_UserDate_Face = New System.Windows.Forms.TextBox()
+        Me.txtManf_UserDate = New System.Windows.Forms.TextBox()
         Me.dtpManf_UserDate = New System.Windows.Forms.DateTimePicker()
         Me.grdManf_EditedBy = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn47 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -713,12 +713,10 @@ Partial Class Process_frmMain
         Me.txtPurchase_UserDate = New System.Windows.Forms.TextBox()
         Me.dtpPurchase_UserDate = New System.Windows.Forms.DateTimePicker()
         Me.grdPurchase_EditedBy = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn49 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn50 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn66 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.grdPurchase_Mat = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn64 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column34 = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.DataGridViewComboBoxColumn3 = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.DataGridViewTextBoxColumn65 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tabQuality = New System.Windows.Forms.TabPage()
         Me.GroupBox57 = New System.Windows.Forms.GroupBox()
         Me.grdQuality_SplOperation = New System.Windows.Forms.DataGridView()
@@ -914,7 +912,6 @@ Partial Class Process_frmMain
         Me.DataGridViewTextBoxColumn102 = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.Column25 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tabIssue = New System.Windows.Forms.TabPage()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.grdIssueComment = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn100 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn99 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -938,9 +935,11 @@ Partial Class Process_frmMain
         Me.TabViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.openFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.DataGridViewTextBoxColumn49 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn50 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn66 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn64 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column34 = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.DataGridViewComboBoxColumn3 = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.DataGridViewTextBoxColumn65 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.pnlPanel1.SuspendLayout()
         Me.GroupBox16.SuspendLayout()
         Me.GroupBox43.SuspendLayout()
@@ -1800,9 +1799,9 @@ Partial Class Process_frmMain
         '
         Me.grpQuote.Controls.Add(Me.grdQuote)
         Me.grpQuote.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grpQuote.Location = New System.Drawing.Point(452, 15)
+        Me.grpQuote.Location = New System.Drawing.Point(452, 11)
         Me.grpQuote.Name = "grpQuote"
-        Me.grpQuote.Size = New System.Drawing.Size(305, 102)
+        Me.grpQuote.Size = New System.Drawing.Size(305, 112)
         Me.grpQuote.TabIndex = 711
         Me.grpQuote.TabStop = False
         Me.grpQuote.Text = "Quote:"
@@ -1814,9 +1813,10 @@ Partial Class Process_frmMain
         Me.grdQuote.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdQuote.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn16, Me.DataGridViewTextBoxColumn6})
         Me.grdQuote.Location = New System.Drawing.Point(16, 20)
+        Me.grdQuote.MultiSelect = False
         Me.grdQuote.Name = "grdQuote"
         Me.grdQuote.RowHeadersWidth = 20
-        Me.grdQuote.Size = New System.Drawing.Size(274, 68)
+        Me.grdQuote.Size = New System.Drawing.Size(274, 82)
         Me.grdQuote.TabIndex = 740
         '
         'DataGridViewTextBoxColumn16
@@ -2070,6 +2070,7 @@ Partial Class Process_frmMain
         Me.grdCustContact.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdCustContact.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewComboBoxColumn4, Me.DataGridViewTextBoxColumn68, Me.DataGridViewTextBoxColumn69, Me.DataGridViewTextBoxColumn70})
         Me.grdCustContact.Location = New System.Drawing.Point(8, 26)
+        Me.grdCustContact.MultiSelect = False
         Me.grdCustContact.Name = "grdCustContact"
         Me.grdCustContact.RowHeadersWidth = 20
         Me.grdCustContact.Size = New System.Drawing.Size(615, 152)
@@ -2214,10 +2215,10 @@ Partial Class Process_frmMain
         Me.cmdPreOrderUserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdPreOrderUserSign.Location = New System.Drawing.Point(390, 104)
         Me.cmdPreOrderUserSign.Name = "cmdPreOrderUserSign"
-        Me.cmdPreOrderUserSign.Size = New System.Drawing.Size(58, 23)
+        Me.cmdPreOrderUserSign.Size = New System.Drawing.Size(63, 23)
         Me.cmdPreOrderUserSign.TabIndex = 746
         Me.cmdPreOrderUserSign.Tag = "Tester"
-        Me.cmdPreOrderUserSign.Text = "Sign"
+        Me.cmdPreOrderUserSign.Text = "Sign Off"
         Me.cmdPreOrderUserSign.UseVisualStyleBackColor = False
         '
         'txtPreOrderUserName
@@ -2253,6 +2254,7 @@ Partial Class Process_frmMain
         '
         'grdPreOrderEditedBy
         '
+        Me.grdPreOrderEditedBy.AllowUserToAddRows = False
         DataGridViewCellStyle3.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grdPreOrderEditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
         Me.grdPreOrderEditedBy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -2285,6 +2287,7 @@ Partial Class Process_frmMain
         '
         Me.DataGridViewTextBoxColumn53.HeaderText = "Comments"
         Me.DataGridViewTextBoxColumn53.Name = "DataGridViewTextBoxColumn53"
+        Me.DataGridViewTextBoxColumn53.ReadOnly = True
         Me.DataGridViewTextBoxColumn53.Width = 500
         '
         'Label27
@@ -2439,6 +2442,7 @@ Partial Class Process_frmMain
         Me.grdPreOrder_SalesData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdPreOrder_SalesData.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn8, Me.DataGridViewComboBoxColumn1, Me.DataGridViewTextBoxColumn9, Me.Column4})
         Me.grdPreOrder_SalesData.Location = New System.Drawing.Point(16, 20)
+        Me.grdPreOrder_SalesData.MultiSelect = False
         Me.grdPreOrder_SalesData.Name = "grdPreOrder_SalesData"
         Me.grdPreOrder_SalesData.RowHeadersWidth = 20
         Me.grdPreOrder_SalesData.Size = New System.Drawing.Size(346, 118)
@@ -2626,10 +2630,10 @@ Partial Class Process_frmMain
         Me.cmdITAR_Export_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdITAR_Export_UserSign.Location = New System.Drawing.Point(390, 104)
         Me.cmdITAR_Export_UserSign.Name = "cmdITAR_Export_UserSign"
-        Me.cmdITAR_Export_UserSign.Size = New System.Drawing.Size(58, 23)
+        Me.cmdITAR_Export_UserSign.Size = New System.Drawing.Size(63, 23)
         Me.cmdITAR_Export_UserSign.TabIndex = 746
         Me.cmdITAR_Export_UserSign.Tag = "Tester"
-        Me.cmdITAR_Export_UserSign.Text = "Sign"
+        Me.cmdITAR_Export_UserSign.Text = "Sign Off"
         Me.cmdITAR_Export_UserSign.UseVisualStyleBackColor = False
         '
         'txtITAR_Export_UserName
@@ -2665,6 +2669,7 @@ Partial Class Process_frmMain
         '
         'grdExport_EditedBy
         '
+        Me.grdExport_EditedBy.AllowUserToAddRows = False
         DataGridViewCellStyle11.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grdExport_EditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle11
         Me.grdExport_EditedBy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -2697,6 +2702,7 @@ Partial Class Process_frmMain
         '
         Me.DataGridViewTextBoxColumn95.HeaderText = "Comments"
         Me.DataGridViewTextBoxColumn95.Name = "DataGridViewTextBoxColumn95"
+        Me.DataGridViewTextBoxColumn95.ReadOnly = True
         Me.DataGridViewTextBoxColumn95.Width = 500
         '
         'cmbITAR_Export_SaleExportControlled
@@ -2890,9 +2896,9 @@ Partial Class Process_frmMain
         Me.Label68.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label68.Location = New System.Drawing.Point(199, 117)
         Me.Label68.Name = "Label68"
-        Me.Label68.Size = New System.Drawing.Size(39, 13)
+        Me.Label68.Size = New System.Drawing.Size(29, 13)
         Me.Label68.TabIndex = 883
-        Me.Label68.Text = "(wks)"
+        Me.Label68.Text = "wks"
         Me.Label68.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'txtOrderEntry_QtdLeadTime
@@ -2937,6 +2943,7 @@ Partial Class Process_frmMain
         Me.grdOrdEntry_CustContact.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdOrdEntry_CustContact.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewComboBoxColumn9, Me.DataGridViewTextBoxColumn105, Me.DataGridViewTextBoxColumn106, Me.DataGridViewTextBoxColumn107})
         Me.grdOrdEntry_CustContact.Location = New System.Drawing.Point(8, 19)
+        Me.grdOrdEntry_CustContact.MultiSelect = False
         Me.grdOrdEntry_CustContact.Name = "grdOrdEntry_CustContact"
         Me.grdOrdEntry_CustContact.RowHeadersWidth = 20
         Me.grdOrdEntry_CustContact.Size = New System.Drawing.Size(615, 152)
@@ -3377,10 +3384,10 @@ Partial Class Process_frmMain
         Me.cmdOrdEntry_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdOrdEntry_UserSign.Location = New System.Drawing.Point(390, 104)
         Me.cmdOrdEntry_UserSign.Name = "cmdOrdEntry_UserSign"
-        Me.cmdOrdEntry_UserSign.Size = New System.Drawing.Size(58, 23)
+        Me.cmdOrdEntry_UserSign.Size = New System.Drawing.Size(63, 23)
         Me.cmdOrdEntry_UserSign.TabIndex = 746
         Me.cmdOrdEntry_UserSign.Tag = "Tester"
-        Me.cmdOrdEntry_UserSign.Text = "Sign"
+        Me.cmdOrdEntry_UserSign.Text = "Sign Off"
         Me.cmdOrdEntry_UserSign.UseVisualStyleBackColor = False
         '
         'txtOrdEntry_UserName
@@ -3416,6 +3423,7 @@ Partial Class Process_frmMain
         '
         'grdOrdEntry_EditedBy
         '
+        Me.grdOrdEntry_EditedBy.AllowUserToAddRows = False
         DataGridViewCellStyle15.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grdOrdEntry_EditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle15
         Me.grdOrdEntry_EditedBy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -3448,6 +3456,7 @@ Partial Class Process_frmMain
         '
         Me.DataGridViewTextBoxColumn58.HeaderText = "Comments"
         Me.DataGridViewTextBoxColumn58.Name = "DataGridViewTextBoxColumn58"
+        Me.DataGridViewTextBoxColumn58.ReadOnly = True
         Me.DataGridViewTextBoxColumn58.Width = 500
         '
         'Label128
@@ -3764,10 +3773,10 @@ Partial Class Process_frmMain
         Me.cmdCost_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdCost_UserSign.Location = New System.Drawing.Point(390, 104)
         Me.cmdCost_UserSign.Name = "cmdCost_UserSign"
-        Me.cmdCost_UserSign.Size = New System.Drawing.Size(58, 23)
+        Me.cmdCost_UserSign.Size = New System.Drawing.Size(63, 23)
         Me.cmdCost_UserSign.TabIndex = 746
         Me.cmdCost_UserSign.Tag = "Tester"
-        Me.cmdCost_UserSign.Text = "Sign"
+        Me.cmdCost_UserSign.Text = "Sign Off"
         Me.cmdCost_UserSign.UseVisualStyleBackColor = False
         '
         'txtCost_UserName
@@ -3803,6 +3812,7 @@ Partial Class Process_frmMain
         '
         'grdCost_EditedBy
         '
+        Me.grdCost_EditedBy.AllowUserToAddRows = False
         DataGridViewCellStyle18.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grdCost_EditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle18
         Me.grdCost_EditedBy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -3835,6 +3845,7 @@ Partial Class Process_frmMain
         '
         Me.DataGridViewTextBoxColumn73.HeaderText = "Comments"
         Me.DataGridViewTextBoxColumn73.Name = "DataGridViewTextBoxColumn73"
+        Me.DataGridViewTextBoxColumn73.ReadOnly = True
         Me.DataGridViewTextBoxColumn73.Width = 500
         '
         'Label4
@@ -3873,6 +3884,7 @@ Partial Class Process_frmMain
         Me.grdCost_SplOperation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdCost_SplOperation.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn71, Me.Column18, Me.Column19, Me.DataGridViewTextBoxColumn72})
         Me.grdCost_SplOperation.Location = New System.Drawing.Point(13, 27)
+        Me.grdCost_SplOperation.MultiSelect = False
         Me.grdCost_SplOperation.Name = "grdCost_SplOperation"
         Me.grdCost_SplOperation.RowHeadersWidth = 20
         Me.grdCost_SplOperation.Size = New System.Drawing.Size(565, 118)
@@ -4806,10 +4818,10 @@ Partial Class Process_frmMain
         Me.cmdApp_UserSign_Face.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdApp_UserSign_Face.Location = New System.Drawing.Point(390, 104)
         Me.cmdApp_UserSign_Face.Name = "cmdApp_UserSign_Face"
-        Me.cmdApp_UserSign_Face.Size = New System.Drawing.Size(58, 23)
+        Me.cmdApp_UserSign_Face.Size = New System.Drawing.Size(63, 23)
         Me.cmdApp_UserSign_Face.TabIndex = 746
         Me.cmdApp_UserSign_Face.Tag = "Tester"
-        Me.cmdApp_UserSign_Face.Text = "Sign"
+        Me.cmdApp_UserSign_Face.Text = "Sign Off"
         Me.cmdApp_UserSign_Face.UseVisualStyleBackColor = False
         '
         'txtApp_UserName_Face
@@ -4845,6 +4857,7 @@ Partial Class Process_frmMain
         '
         'grdApp_EditedBy_Face
         '
+        Me.grdApp_EditedBy_Face.AllowUserToAddRows = False
         DataGridViewCellStyle35.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grdApp_EditedBy_Face.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle35
         Me.grdApp_EditedBy_Face.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -4877,6 +4890,7 @@ Partial Class Process_frmMain
         '
         Me.DataGridViewTextBoxColumn85.HeaderText = "Comments"
         Me.DataGridViewTextBoxColumn85.Name = "DataGridViewTextBoxColumn85"
+        Me.DataGridViewTextBoxColumn85.ReadOnly = True
         Me.DataGridViewTextBoxColumn85.Width = 500
         '
         'Label32
@@ -4909,6 +4923,7 @@ Partial Class Process_frmMain
         Me.grdApp_Face_Cavity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdApp_Face_Cavity.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewComboBoxColumn5, Me.DataGridViewTextBoxColumn77, Me.DataGridViewTextBoxColumn78, Me.DataGridViewTextBoxColumn79, Me.DataGridViewTextBoxColumn80})
         Me.grdApp_Face_Cavity.Location = New System.Drawing.Point(13, 19)
+        Me.grdApp_Face_Cavity.MultiSelect = False
         Me.grdApp_Face_Cavity.Name = "grdApp_Face_Cavity"
         Me.grdApp_Face_Cavity.RowHeadersWidth = 20
         Me.grdApp_Face_Cavity.Size = New System.Drawing.Size(466, 188)
@@ -5267,6 +5282,7 @@ Partial Class Process_frmMain
         Me.grdApp_Axial_Cavity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdApp_Axial_Cavity.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewComboBoxColumn6, Me.DataGridViewTextBoxColumn81, Me.DataGridViewTextBoxColumn82, Me.DataGridViewTextBoxColumn83, Me.DataGridViewTextBoxColumn84})
         Me.grdApp_Axial_Cavity.Location = New System.Drawing.Point(13, 19)
+        Me.grdApp_Axial_Cavity.MultiSelect = False
         Me.grdApp_Axial_Cavity.Name = "grdApp_Axial_Cavity"
         Me.grdApp_Axial_Cavity.RowHeadersWidth = 20
         Me.grdApp_Axial_Cavity.Size = New System.Drawing.Size(466, 188)
@@ -5586,6 +5602,7 @@ Partial Class Process_frmMain
         '
         'chkApp_UserSigned_Axial
         '
+        Me.chkApp_UserSigned_Axial.Enabled = False
         Me.chkApp_UserSigned_Axial.ForeColor = System.Drawing.SystemColors.GrayText
         Me.chkApp_UserSigned_Axial.Location = New System.Drawing.Point(369, 109)
         Me.chkApp_UserSigned_Axial.Name = "chkApp_UserSigned_Axial"
@@ -5598,14 +5615,15 @@ Partial Class Process_frmMain
         '
         Me.cmdApp_UserSign_Axial.AutoSize = True
         Me.cmdApp_UserSign_Axial.BackColor = System.Drawing.Color.Silver
+        Me.cmdApp_UserSign_Axial.Enabled = False
         Me.cmdApp_UserSign_Axial.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdApp_UserSign_Axial.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdApp_UserSign_Axial.Location = New System.Drawing.Point(390, 104)
         Me.cmdApp_UserSign_Axial.Name = "cmdApp_UserSign_Axial"
-        Me.cmdApp_UserSign_Axial.Size = New System.Drawing.Size(58, 23)
+        Me.cmdApp_UserSign_Axial.Size = New System.Drawing.Size(63, 23)
         Me.cmdApp_UserSign_Axial.TabIndex = 746
         Me.cmdApp_UserSign_Axial.Tag = "Tester"
-        Me.cmdApp_UserSign_Axial.Text = "Sign"
+        Me.cmdApp_UserSign_Axial.Text = "Sign Off"
         Me.cmdApp_UserSign_Axial.UseVisualStyleBackColor = False
         '
         'txtApp_UserName_Axial
@@ -5620,6 +5638,7 @@ Partial Class Process_frmMain
         'txtApp_UserDate_Axial
         '
         Me.txtApp_UserDate_Axial.BackColor = System.Drawing.Color.White
+        Me.txtApp_UserDate_Axial.Enabled = False
         Me.txtApp_UserDate_Axial.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtApp_UserDate_Axial.ForeColor = System.Drawing.Color.Black
         Me.txtApp_UserDate_Axial.Location = New System.Drawing.Point(25, 105)
@@ -5630,6 +5649,7 @@ Partial Class Process_frmMain
         '
         'dtpApp_UserDate_Axial
         '
+        Me.dtpApp_UserDate_Axial.Enabled = False
         Me.dtpApp_UserDate_Axial.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.dtpApp_UserDate_Axial.Location = New System.Drawing.Point(104, 105)
         Me.dtpApp_UserDate_Axial.Name = "dtpApp_UserDate_Axial"
@@ -5639,6 +5659,7 @@ Partial Class Process_frmMain
         '
         'grdApp_EditedBy_Axial
         '
+        Me.grdApp_EditedBy_Axial.AllowUserToAddRows = False
         DataGridViewCellStyle48.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grdApp_EditedBy_Axial.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle48
         Me.grdApp_EditedBy_Axial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -5671,6 +5692,7 @@ Partial Class Process_frmMain
         '
         Me.DataGridViewTextBoxColumn88.HeaderText = "Comments"
         Me.DataGridViewTextBoxColumn88.Name = "DataGridViewTextBoxColumn88"
+        Me.DataGridViewTextBoxColumn88.ReadOnly = True
         Me.DataGridViewTextBoxColumn88.Width = 500
         '
         'tabDesign
@@ -5747,6 +5769,7 @@ Partial Class Process_frmMain
         Me.grdDesign_Verification.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdDesign_Verification.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewComboBoxColumn10, Me.Column23, Me.Column24})
         Me.grdDesign_Verification.Location = New System.Drawing.Point(12, 110)
+        Me.grdDesign_Verification.MultiSelect = False
         Me.grdDesign_Verification.Name = "grdDesign_Verification"
         Me.grdDesign_Verification.RowHeadersWidth = 20
         Me.grdDesign_Verification.Size = New System.Drawing.Size(446, 119)
@@ -5930,10 +5953,9 @@ Partial Class Process_frmMain
         '
         Me.txtParkerPN_Part3_Notes_Dim.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtParkerPN_Part3_Notes_Dim.Location = New System.Drawing.Point(411, 47)
-        Me.txtParkerPN_Part3_Notes_Dim.Mask = "0000"
+        Me.txtParkerPN_Part3_Notes_Dim.Mask = "00000"
         Me.txtParkerPN_Part3_Notes_Dim.Name = "txtParkerPN_Part3_Notes_Dim"
-        Me.txtParkerPN_Part3_Notes_Dim.PromptChar = Global.Microsoft.VisualBasic.ChrW(120)
-        Me.txtParkerPN_Part3_Notes_Dim.Size = New System.Drawing.Size(40, 21)
+        Me.txtParkerPN_Part3_Notes_Dim.Size = New System.Drawing.Size(48, 21)
         Me.txtParkerPN_Part3_Notes_Dim.TabIndex = 790
         Me.txtParkerPN_Part3_Notes_Dim.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -6009,10 +6031,9 @@ Partial Class Process_frmMain
         '
         Me.txtParkerPN_Part3_NewRef_Dim.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtParkerPN_Part3_NewRef_Dim.Location = New System.Drawing.Point(167, 47)
-        Me.txtParkerPN_Part3_NewRef_Dim.Mask = "0000"
+        Me.txtParkerPN_Part3_NewRef_Dim.Mask = "00000"
         Me.txtParkerPN_Part3_NewRef_Dim.Name = "txtParkerPN_Part3_NewRef_Dim"
-        Me.txtParkerPN_Part3_NewRef_Dim.PromptChar = Global.Microsoft.VisualBasic.ChrW(120)
-        Me.txtParkerPN_Part3_NewRef_Dim.Size = New System.Drawing.Size(40, 21)
+        Me.txtParkerPN_Part3_NewRef_Dim.Size = New System.Drawing.Size(48, 21)
         Me.txtParkerPN_Part3_NewRef_Dim.TabIndex = 782
         Me.txtParkerPN_Part3_NewRef_Dim.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -6133,6 +6154,7 @@ Partial Class Process_frmMain
         Me.grdDesign_Input.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdDesign_Input.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewComboBoxColumn7})
         Me.grdDesign_Input.Location = New System.Drawing.Point(14, 377)
+        Me.grdDesign_Input.MultiSelect = False
         Me.grdDesign_Input.Name = "grdDesign_Input"
         Me.grdDesign_Input.RowHeadersWidth = 20
         Me.grdDesign_Input.Size = New System.Drawing.Size(304, 145)
@@ -6847,8 +6869,8 @@ Partial Class Process_frmMain
         '
         Me.GroupBox10.Controls.Add(Me.chkDesign_UserSigned_Face)
         Me.GroupBox10.Controls.Add(Me.cmdDesign_UserSign_Face)
-        Me.GroupBox10.Controls.Add(Me.txtDesign_UserName_Face)
-        Me.GroupBox10.Controls.Add(Me.txtDesign_UserDate_Face)
+        Me.GroupBox10.Controls.Add(Me.txtDesign_UserName)
+        Me.GroupBox10.Controls.Add(Me.txtDesign_UserDate)
         Me.GroupBox10.Controls.Add(Me.dtpDesign_UserDate_Face)
         Me.GroupBox10.Controls.Add(Me.grdDesign_EditedBy)
         Me.GroupBox10.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -6879,32 +6901,32 @@ Partial Class Process_frmMain
         Me.cmdDesign_UserSign_Face.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdDesign_UserSign_Face.Location = New System.Drawing.Point(390, 104)
         Me.cmdDesign_UserSign_Face.Name = "cmdDesign_UserSign_Face"
-        Me.cmdDesign_UserSign_Face.Size = New System.Drawing.Size(58, 23)
+        Me.cmdDesign_UserSign_Face.Size = New System.Drawing.Size(63, 23)
         Me.cmdDesign_UserSign_Face.TabIndex = 746
         Me.cmdDesign_UserSign_Face.Tag = "Tester"
-        Me.cmdDesign_UserSign_Face.Text = "Sign"
+        Me.cmdDesign_UserSign_Face.Text = "Sign Off"
         Me.cmdDesign_UserSign_Face.UseVisualStyleBackColor = False
         '
-        'txtDesign_UserName_Face
+        'txtDesign_UserName
         '
-        Me.txtDesign_UserName_Face.Enabled = False
-        Me.txtDesign_UserName_Face.Location = New System.Drawing.Point(130, 105)
-        Me.txtDesign_UserName_Face.Name = "txtDesign_UserName_Face"
-        Me.txtDesign_UserName_Face.Size = New System.Drawing.Size(196, 21)
-        Me.txtDesign_UserName_Face.TabIndex = 744
-        Me.txtDesign_UserName_Face.Tag = "Tester"
+        Me.txtDesign_UserName.Enabled = False
+        Me.txtDesign_UserName.Location = New System.Drawing.Point(130, 105)
+        Me.txtDesign_UserName.Name = "txtDesign_UserName"
+        Me.txtDesign_UserName.Size = New System.Drawing.Size(196, 21)
+        Me.txtDesign_UserName.TabIndex = 744
+        Me.txtDesign_UserName.Tag = "Tester"
         '
-        'txtDesign_UserDate_Face
+        'txtDesign_UserDate
         '
-        Me.txtDesign_UserDate_Face.BackColor = System.Drawing.Color.White
-        Me.txtDesign_UserDate_Face.Enabled = False
-        Me.txtDesign_UserDate_Face.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtDesign_UserDate_Face.ForeColor = System.Drawing.Color.Black
-        Me.txtDesign_UserDate_Face.Location = New System.Drawing.Point(25, 105)
-        Me.txtDesign_UserDate_Face.Name = "txtDesign_UserDate_Face"
-        Me.txtDesign_UserDate_Face.Size = New System.Drawing.Size(80, 21)
-        Me.txtDesign_UserDate_Face.TabIndex = 742
-        Me.txtDesign_UserDate_Face.Tag = "Tester"
+        Me.txtDesign_UserDate.BackColor = System.Drawing.Color.White
+        Me.txtDesign_UserDate.Enabled = False
+        Me.txtDesign_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDesign_UserDate.ForeColor = System.Drawing.Color.Black
+        Me.txtDesign_UserDate.Location = New System.Drawing.Point(25, 105)
+        Me.txtDesign_UserDate.Name = "txtDesign_UserDate"
+        Me.txtDesign_UserDate.Size = New System.Drawing.Size(80, 21)
+        Me.txtDesign_UserDate.TabIndex = 742
+        Me.txtDesign_UserDate.Tag = "Tester"
         '
         'dtpDesign_UserDate_Face
         '
@@ -6918,6 +6940,7 @@ Partial Class Process_frmMain
         '
         'grdDesign_EditedBy
         '
+        Me.grdDesign_EditedBy.AllowUserToAddRows = False
         DataGridViewCellStyle54.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grdDesign_EditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle54
         Me.grdDesign_EditedBy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -6950,6 +6973,7 @@ Partial Class Process_frmMain
         '
         Me.DataGridViewTextBoxColumn96.HeaderText = "Comments"
         Me.DataGridViewTextBoxColumn96.Name = "DataGridViewTextBoxColumn96"
+        Me.DataGridViewTextBoxColumn96.ReadOnly = True
         Me.DataGridViewTextBoxColumn96.Width = 500
         '
         'grpDesign_SealDim
@@ -6981,6 +7005,7 @@ Partial Class Process_frmMain
         Me.grdDesign_Seal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdDesign_Seal.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn18, Me.DataGridViewTextBoxColumn19, Me.Column1, Me.DataGridViewTextBoxColumn20})
         Me.grdDesign_Seal.Location = New System.Drawing.Point(14, 19)
+        Me.grdDesign_Seal.MultiSelect = False
         Me.grdDesign_Seal.Name = "grdDesign_Seal"
         Me.grdDesign_Seal.RowHeadersWidth = 20
         Me.grdDesign_Seal.Size = New System.Drawing.Size(406, 84)
@@ -7059,6 +7084,7 @@ Partial Class Process_frmMain
         Me.grdDesign_CustSpec.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdDesign_CustSpec.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn34})
         Me.grdDesign_CustSpec.Location = New System.Drawing.Point(12, 20)
+        Me.grdDesign_CustSpec.MultiSelect = False
         Me.grdDesign_CustSpec.Name = "grdDesign_CustSpec"
         Me.grdDesign_CustSpec.RowHeadersWidth = 20
         Me.grdDesign_CustSpec.Size = New System.Drawing.Size(526, 108)
@@ -7119,7 +7145,7 @@ Partial Class Process_frmMain
         Me.GroupBox33.Controls.Add(Me.chkManf_UserSigned)
         Me.GroupBox33.Controls.Add(Me.cmdManf_UserSign)
         Me.GroupBox33.Controls.Add(Me.txtManf_UserName)
-        Me.GroupBox33.Controls.Add(Me.txtManf_UserDate_Face)
+        Me.GroupBox33.Controls.Add(Me.txtManf_UserDate)
         Me.GroupBox33.Controls.Add(Me.dtpManf_UserDate)
         Me.GroupBox33.Controls.Add(Me.grdManf_EditedBy)
         Me.GroupBox33.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -7150,10 +7176,10 @@ Partial Class Process_frmMain
         Me.cmdManf_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdManf_UserSign.Location = New System.Drawing.Point(390, 104)
         Me.cmdManf_UserSign.Name = "cmdManf_UserSign"
-        Me.cmdManf_UserSign.Size = New System.Drawing.Size(58, 23)
+        Me.cmdManf_UserSign.Size = New System.Drawing.Size(63, 23)
         Me.cmdManf_UserSign.TabIndex = 746
         Me.cmdManf_UserSign.Tag = "Tester"
-        Me.cmdManf_UserSign.Text = "Sign"
+        Me.cmdManf_UserSign.Text = "Sign Off"
         Me.cmdManf_UserSign.UseVisualStyleBackColor = False
         '
         'txtManf_UserName
@@ -7165,17 +7191,17 @@ Partial Class Process_frmMain
         Me.txtManf_UserName.TabIndex = 744
         Me.txtManf_UserName.Tag = "Tester"
         '
-        'txtManf_UserDate_Face
+        'txtManf_UserDate
         '
-        Me.txtManf_UserDate_Face.BackColor = System.Drawing.Color.White
-        Me.txtManf_UserDate_Face.Enabled = False
-        Me.txtManf_UserDate_Face.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtManf_UserDate_Face.ForeColor = System.Drawing.Color.Black
-        Me.txtManf_UserDate_Face.Location = New System.Drawing.Point(25, 105)
-        Me.txtManf_UserDate_Face.Name = "txtManf_UserDate_Face"
-        Me.txtManf_UserDate_Face.Size = New System.Drawing.Size(80, 21)
-        Me.txtManf_UserDate_Face.TabIndex = 742
-        Me.txtManf_UserDate_Face.Tag = "Tester"
+        Me.txtManf_UserDate.BackColor = System.Drawing.Color.White
+        Me.txtManf_UserDate.Enabled = False
+        Me.txtManf_UserDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtManf_UserDate.ForeColor = System.Drawing.Color.Black
+        Me.txtManf_UserDate.Location = New System.Drawing.Point(25, 105)
+        Me.txtManf_UserDate.Name = "txtManf_UserDate"
+        Me.txtManf_UserDate.Size = New System.Drawing.Size(80, 21)
+        Me.txtManf_UserDate.TabIndex = 742
+        Me.txtManf_UserDate.Tag = "Tester"
         '
         'dtpManf_UserDate
         '
@@ -7189,6 +7215,7 @@ Partial Class Process_frmMain
         '
         'grdManf_EditedBy
         '
+        Me.grdManf_EditedBy.AllowUserToAddRows = False
         DataGridViewCellStyle62.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grdManf_EditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle62
         Me.grdManf_EditedBy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -7221,6 +7248,7 @@ Partial Class Process_frmMain
         '
         Me.DataGridViewTextBoxColumn63.HeaderText = "Comments"
         Me.DataGridViewTextBoxColumn63.Name = "DataGridViewTextBoxColumn63"
+        Me.DataGridViewTextBoxColumn63.ReadOnly = True
         Me.DataGridViewTextBoxColumn63.Width = 500
         '
         'Label117
@@ -7248,6 +7276,7 @@ Partial Class Process_frmMain
         Me.grdManf_ToolNGage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdManf_ToolNGage.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn12, Me.Column2, Me.Column7, Me.Column6, Me.Column8})
         Me.grdManf_ToolNGage.Location = New System.Drawing.Point(29, 154)
+        Me.grdManf_ToolNGage.MultiSelect = False
         Me.grdManf_ToolNGage.Name = "grdManf_ToolNGage"
         Me.grdManf_ToolNGage.RowHeadersWidth = 20
         Me.grdManf_ToolNGage.Size = New System.Drawing.Size(799, 140)
@@ -7460,6 +7489,7 @@ Partial Class Process_frmMain
         Me.grdPurchase_Drawing.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdPurchase_Drawing.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn92, Me.DataGridViewTextBoxColumn93, Me.DataGridViewTextBoxColumn94})
         Me.grdPurchase_Drawing.Location = New System.Drawing.Point(40, 311)
+        Me.grdPurchase_Drawing.MultiSelect = False
         Me.grdPurchase_Drawing.Name = "grdPurchase_Drawing"
         Me.grdPurchase_Drawing.RowHeadersWidth = 20
         Me.grdPurchase_Drawing.Size = New System.Drawing.Size(599, 104)
@@ -7586,10 +7616,10 @@ Partial Class Process_frmMain
         Me.cmdPurchase_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdPurchase_UserSign.Location = New System.Drawing.Point(390, 104)
         Me.cmdPurchase_UserSign.Name = "cmdPurchase_UserSign"
-        Me.cmdPurchase_UserSign.Size = New System.Drawing.Size(58, 23)
+        Me.cmdPurchase_UserSign.Size = New System.Drawing.Size(63, 23)
         Me.cmdPurchase_UserSign.TabIndex = 746
         Me.cmdPurchase_UserSign.Tag = "Tester"
-        Me.cmdPurchase_UserSign.Text = "Sign"
+        Me.cmdPurchase_UserSign.Text = "Sign Off"
         Me.cmdPurchase_UserSign.UseVisualStyleBackColor = False
         '
         'txtPurchase_UserName
@@ -7625,6 +7655,7 @@ Partial Class Process_frmMain
         '
         'grdPurchase_EditedBy
         '
+        Me.grdPurchase_EditedBy.AllowUserToAddRows = False
         DataGridViewCellStyle71.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grdPurchase_EditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle71
         Me.grdPurchase_EditedBy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -7634,6 +7665,31 @@ Partial Class Process_frmMain
         Me.grdPurchase_EditedBy.RowHeadersVisible = False
         Me.grdPurchase_EditedBy.Size = New System.Drawing.Size(823, 74)
         Me.grdPurchase_EditedBy.TabIndex = 741
+        '
+        'DataGridViewTextBoxColumn49
+        '
+        DataGridViewCellStyle72.ForeColor = System.Drawing.Color.Gray
+        Me.DataGridViewTextBoxColumn49.DefaultCellStyle = DataGridViewCellStyle72
+        Me.DataGridViewTextBoxColumn49.HeaderText = "Date"
+        Me.DataGridViewTextBoxColumn49.Name = "DataGridViewTextBoxColumn49"
+        Me.DataGridViewTextBoxColumn49.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn50
+        '
+        DataGridViewCellStyle73.ForeColor = System.Drawing.Color.Gray
+        Me.DataGridViewTextBoxColumn50.DefaultCellStyle = DataGridViewCellStyle73
+        Me.DataGridViewTextBoxColumn50.HeaderText = "Name"
+        Me.DataGridViewTextBoxColumn50.Name = "DataGridViewTextBoxColumn50"
+        Me.DataGridViewTextBoxColumn50.ReadOnly = True
+        Me.DataGridViewTextBoxColumn50.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn50.Width = 200
+        '
+        'DataGridViewTextBoxColumn66
+        '
+        Me.DataGridViewTextBoxColumn66.HeaderText = "Comments"
+        Me.DataGridViewTextBoxColumn66.Name = "DataGridViewTextBoxColumn66"
+        Me.DataGridViewTextBoxColumn66.ReadOnly = True
+        Me.DataGridViewTextBoxColumn66.Width = 500
         '
         'grdPurchase_Mat
         '
@@ -7650,46 +7706,11 @@ Partial Class Process_frmMain
         Me.grdPurchase_Mat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdPurchase_Mat.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn64, Me.Column5, Me.Column34, Me.DataGridViewComboBoxColumn3, Me.DataGridViewTextBoxColumn65})
         Me.grdPurchase_Mat.Location = New System.Drawing.Point(40, 45)
+        Me.grdPurchase_Mat.MultiSelect = False
         Me.grdPurchase_Mat.Name = "grdPurchase_Mat"
         Me.grdPurchase_Mat.RowHeadersWidth = 20
         Me.grdPurchase_Mat.Size = New System.Drawing.Size(599, 104)
         Me.grdPurchase_Mat.TabIndex = 878
-        '
-        'DataGridViewTextBoxColumn64
-        '
-        Me.DataGridViewTextBoxColumn64.HeaderText = "Item"
-        Me.DataGridViewTextBoxColumn64.Name = "DataGridViewTextBoxColumn64"
-        Me.DataGridViewTextBoxColumn64.Width = 200
-        '
-        'Column5
-        '
-        DataGridViewCellStyle76.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column5.DefaultCellStyle = DataGridViewCellStyle76
-        Me.Column5.HeaderText = "Est. Qty"
-        Me.Column5.Name = "Column5"
-        '
-        'Column34
-        '
-        Me.Column34.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
-        Me.Column34.HeaderText = "Unit"
-        Me.Column34.Name = "Column34"
-        Me.Column34.Width = 80
-        '
-        'DataGridViewComboBoxColumn3
-        '
-        Me.DataGridViewComboBoxColumn3.HeaderText = "Status"
-        Me.DataGridViewComboBoxColumn3.Items.AddRange(New Object() {"Inventory", "Make", "Buy"})
-        Me.DataGridViewComboBoxColumn3.Name = "DataGridViewComboBoxColumn3"
-        Me.DataGridViewComboBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewComboBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        '
-        'DataGridViewTextBoxColumn65
-        '
-        DataGridViewCellStyle77.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.DataGridViewTextBoxColumn65.DefaultCellStyle = DataGridViewCellStyle77
-        Me.DataGridViewTextBoxColumn65.HeaderText = "Lead Time (wks)"
-        Me.DataGridViewTextBoxColumn65.Name = "DataGridViewTextBoxColumn65"
-        Me.DataGridViewTextBoxColumn65.Width = 90
         '
         'tabQuality
         '
@@ -7747,6 +7768,7 @@ Partial Class Process_frmMain
         Me.grdQuality_SplOperation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdQuality_SplOperation.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewComboBoxColumn8, Me.DataGridViewTextBoxColumn74, Me.DataGridViewTextBoxColumn75, Me.DataGridViewTextBoxColumn76})
         Me.grdQuality_SplOperation.Location = New System.Drawing.Point(13, 19)
+        Me.grdQuality_SplOperation.MultiSelect = False
         Me.grdQuality_SplOperation.Name = "grdQuality_SplOperation"
         Me.grdQuality_SplOperation.RowHeadersWidth = 20
         Me.grdQuality_SplOperation.Size = New System.Drawing.Size(548, 118)
@@ -7835,10 +7857,10 @@ Partial Class Process_frmMain
         Me.cmdQuality_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdQuality_UserSign.Location = New System.Drawing.Point(390, 104)
         Me.cmdQuality_UserSign.Name = "cmdQuality_UserSign"
-        Me.cmdQuality_UserSign.Size = New System.Drawing.Size(58, 23)
+        Me.cmdQuality_UserSign.Size = New System.Drawing.Size(63, 23)
         Me.cmdQuality_UserSign.TabIndex = 746
         Me.cmdQuality_UserSign.Tag = "Tester"
-        Me.cmdQuality_UserSign.Text = "Sign"
+        Me.cmdQuality_UserSign.Text = "Sign Off"
         Me.cmdQuality_UserSign.UseVisualStyleBackColor = False
         '
         'txtQuality_UserName
@@ -7874,6 +7896,7 @@ Partial Class Process_frmMain
         '
         'grdQuality_EditedBy
         '
+        Me.grdQuality_EditedBy.AllowUserToAddRows = False
         DataGridViewCellStyle84.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grdQuality_EditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle84
         Me.grdQuality_EditedBy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -7906,6 +7929,7 @@ Partial Class Process_frmMain
         '
         Me.DataGridViewTextBoxColumn59.HeaderText = "Comments"
         Me.DataGridViewTextBoxColumn59.Name = "DataGridViewTextBoxColumn59"
+        Me.DataGridViewTextBoxColumn59.ReadOnly = True
         Me.DataGridViewTextBoxColumn59.Width = 500
         '
         'cmbQuality_CustAcceptStd
@@ -8172,10 +8196,10 @@ Partial Class Process_frmMain
         Me.cmdDwg_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdDwg_UserSign.Location = New System.Drawing.Point(390, 104)
         Me.cmdDwg_UserSign.Name = "cmdDwg_UserSign"
-        Me.cmdDwg_UserSign.Size = New System.Drawing.Size(58, 23)
+        Me.cmdDwg_UserSign.Size = New System.Drawing.Size(63, 23)
         Me.cmdDwg_UserSign.TabIndex = 746
         Me.cmdDwg_UserSign.Tag = "Tester"
-        Me.cmdDwg_UserSign.Text = "Sign"
+        Me.cmdDwg_UserSign.Text = "Sign Off"
         Me.cmdDwg_UserSign.UseVisualStyleBackColor = False
         '
         'txtDwg_UserName
@@ -8211,6 +8235,7 @@ Partial Class Process_frmMain
         '
         'grdDwg_EditedBy
         '
+        Me.grdDwg_EditedBy.AllowUserToAddRows = False
         DataGridViewCellStyle87.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grdDwg_EditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle87
         Me.grdDwg_EditedBy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -8243,6 +8268,7 @@ Partial Class Process_frmMain
         '
         Me.DataGridViewTextBoxColumn67.HeaderText = "Comments"
         Me.DataGridViewTextBoxColumn67.Name = "DataGridViewTextBoxColumn67"
+        Me.DataGridViewTextBoxColumn67.ReadOnly = True
         Me.DataGridViewTextBoxColumn67.Width = 500
         '
         'Label150
@@ -8274,6 +8300,7 @@ Partial Class Process_frmMain
         Me.grdDrawing_BOM.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdDrawing_BOM.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn22, Me.Column3, Me.DataGridViewTextBoxColumn23})
         Me.grdDrawing_BOM.Location = New System.Drawing.Point(25, 250)
+        Me.grdDrawing_BOM.MultiSelect = False
         Me.grdDrawing_BOM.Name = "grdDrawing_BOM"
         Me.grdDrawing_BOM.RowHeadersWidth = 20
         Me.grdDrawing_BOM.Size = New System.Drawing.Size(407, 163)
@@ -8311,6 +8338,7 @@ Partial Class Process_frmMain
         Me.grdDrawing_Needed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdDrawing_Needed.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn13, Me.DataGridViewTextBoxColumn14, Me.DataGridViewTextBoxColumn21, Me.Column11})
         Me.grdDrawing_Needed.Location = New System.Drawing.Point(25, 79)
+        Me.grdDrawing_Needed.MultiSelect = False
         Me.grdDrawing_Needed.Name = "grdDrawing_Needed"
         Me.grdDrawing_Needed.RowHeadersWidth = 20
         Me.grdDrawing_Needed.Size = New System.Drawing.Size(733, 129)
@@ -8454,10 +8482,10 @@ Partial Class Process_frmMain
         Me.cmdTest_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdTest_UserSign.Location = New System.Drawing.Point(390, 104)
         Me.cmdTest_UserSign.Name = "cmdTest_UserSign"
-        Me.cmdTest_UserSign.Size = New System.Drawing.Size(58, 23)
+        Me.cmdTest_UserSign.Size = New System.Drawing.Size(63, 23)
         Me.cmdTest_UserSign.TabIndex = 746
         Me.cmdTest_UserSign.Tag = "Tester"
-        Me.cmdTest_UserSign.Text = "Sign"
+        Me.cmdTest_UserSign.Text = "Sign Off"
         Me.cmdTest_UserSign.UseVisualStyleBackColor = False
         '
         'txtTest_UserName
@@ -8493,6 +8521,7 @@ Partial Class Process_frmMain
         '
         'grdTest_EditedBy
         '
+        Me.grdTest_EditedBy.AllowUserToAddRows = False
         DataGridViewCellStyle93.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grdTest_EditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle93
         Me.grdTest_EditedBy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -8525,6 +8554,7 @@ Partial Class Process_frmMain
         '
         Me.DataGridViewTextBoxColumn97.HeaderText = "Comments"
         Me.DataGridViewTextBoxColumn97.Name = "DataGridViewTextBoxColumn97"
+        Me.DataGridViewTextBoxColumn97.ReadOnly = True
         Me.DataGridViewTextBoxColumn97.Width = 500
         '
         'txtTest_Other
@@ -9504,10 +9534,10 @@ Partial Class Process_frmMain
         Me.cmdPlanning_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdPlanning_UserSign.Location = New System.Drawing.Point(390, 104)
         Me.cmdPlanning_UserSign.Name = "cmdPlanning_UserSign"
-        Me.cmdPlanning_UserSign.Size = New System.Drawing.Size(58, 23)
+        Me.cmdPlanning_UserSign.Size = New System.Drawing.Size(63, 23)
         Me.cmdPlanning_UserSign.TabIndex = 746
         Me.cmdPlanning_UserSign.Tag = "Tester"
-        Me.cmdPlanning_UserSign.Text = "Sign"
+        Me.cmdPlanning_UserSign.Text = "Sign Off"
         Me.cmdPlanning_UserSign.UseVisualStyleBackColor = False
         '
         'txtPlanning_UserName
@@ -9729,10 +9759,10 @@ Partial Class Process_frmMain
         Me.cmdShipping_UserSign_Face.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdShipping_UserSign_Face.Location = New System.Drawing.Point(390, 104)
         Me.cmdShipping_UserSign_Face.Name = "cmdShipping_UserSign_Face"
-        Me.cmdShipping_UserSign_Face.Size = New System.Drawing.Size(58, 23)
+        Me.cmdShipping_UserSign_Face.Size = New System.Drawing.Size(63, 23)
         Me.cmdShipping_UserSign_Face.TabIndex = 746
         Me.cmdShipping_UserSign_Face.Tag = "Tester"
-        Me.cmdShipping_UserSign_Face.Text = "Sign"
+        Me.cmdShipping_UserSign_Face.Text = "Sign Off"
         Me.cmdShipping_UserSign_Face.UseVisualStyleBackColor = False
         '
         'txtShipping_UserName
@@ -9768,6 +9798,7 @@ Partial Class Process_frmMain
         '
         'grdShipping_EditedBy
         '
+        Me.grdShipping_EditedBy.AllowUserToAddRows = False
         DataGridViewCellStyle103.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grdShipping_EditedBy.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle103
         Me.grdShipping_EditedBy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -9800,6 +9831,7 @@ Partial Class Process_frmMain
         '
         Me.DataGridViewTextBoxColumn57.HeaderText = "Comments"
         Me.DataGridViewTextBoxColumn57.Name = "DataGridViewTextBoxColumn57"
+        Me.DataGridViewTextBoxColumn57.ReadOnly = True
         Me.DataGridViewTextBoxColumn57.Width = 500
         '
         'tabKeyChar
@@ -9868,26 +9900,12 @@ Partial Class Process_frmMain
         '
         Me.tabIssue.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.tabIssue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.tabIssue.Controls.Add(Me.Button1)
         Me.tabIssue.Controls.Add(Me.grdIssueComment)
         Me.tabIssue.Location = New System.Drawing.Point(4, 40)
         Me.tabIssue.Name = "tabIssue"
         Me.tabIssue.Size = New System.Drawing.Size(1039, 577)
         Me.tabIssue.TabIndex = 13
         Me.tabIssue.Text = "    Issue/Comment    "
-        '
-        'Button1
-        '
-        Me.Button1.BackColor = System.Drawing.Color.Silver
-        Me.Button1.Enabled = False
-        Me.Button1.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.Location = New System.Drawing.Point(20, 525)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(103, 30)
-        Me.Button1.TabIndex = 744
-        Me.Button1.Text = "Export to Excel"
-        Me.Button1.UseVisualStyleBackColor = False
         '
         'grdIssueComment
         '
@@ -9897,6 +9915,7 @@ Partial Class Process_frmMain
         Me.grdIssueComment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdIssueComment.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn100, Me.DataGridViewTextBoxColumn99, Me.Column10, Me.Column12, Me.Column14, Me.Column16, Me.Column13, Me.Column15, Me.Column17})
         Me.grdIssueComment.Location = New System.Drawing.Point(20, 29)
+        Me.grdIssueComment.MultiSelect = False
         Me.grdIssueComment.Name = "grdIssueComment"
         Me.grdIssueComment.RowHeadersWidth = 25
         Me.grdIssueComment.Size = New System.Drawing.Size(1000, 478)
@@ -10083,29 +10102,41 @@ Partial Class Process_frmMain
         '
         Me.openFileDialog1.FileName = "OpenFileDialog1"
         '
-        'DataGridViewTextBoxColumn49
+        'DataGridViewTextBoxColumn64
         '
-        DataGridViewCellStyle72.ForeColor = System.Drawing.Color.Gray
-        Me.DataGridViewTextBoxColumn49.DefaultCellStyle = DataGridViewCellStyle72
-        Me.DataGridViewTextBoxColumn49.HeaderText = "Date"
-        Me.DataGridViewTextBoxColumn49.Name = "DataGridViewTextBoxColumn49"
-        Me.DataGridViewTextBoxColumn49.ReadOnly = True
+        Me.DataGridViewTextBoxColumn64.HeaderText = "Item"
+        Me.DataGridViewTextBoxColumn64.Name = "DataGridViewTextBoxColumn64"
+        Me.DataGridViewTextBoxColumn64.Width = 200
         '
-        'DataGridViewTextBoxColumn50
+        'Column5
         '
-        DataGridViewCellStyle73.ForeColor = System.Drawing.Color.Gray
-        Me.DataGridViewTextBoxColumn50.DefaultCellStyle = DataGridViewCellStyle73
-        Me.DataGridViewTextBoxColumn50.HeaderText = "Name"
-        Me.DataGridViewTextBoxColumn50.Name = "DataGridViewTextBoxColumn50"
-        Me.DataGridViewTextBoxColumn50.ReadOnly = True
-        Me.DataGridViewTextBoxColumn50.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn50.Width = 200
+        DataGridViewCellStyle76.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column5.DefaultCellStyle = DataGridViewCellStyle76
+        Me.Column5.HeaderText = "Est. Qty"
+        Me.Column5.Name = "Column5"
         '
-        'DataGridViewTextBoxColumn66
+        'Column34
         '
-        Me.DataGridViewTextBoxColumn66.HeaderText = "Comments"
-        Me.DataGridViewTextBoxColumn66.Name = "DataGridViewTextBoxColumn66"
-        Me.DataGridViewTextBoxColumn66.Width = 500
+        Me.Column34.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
+        Me.Column34.HeaderText = "Unit"
+        Me.Column34.Name = "Column34"
+        Me.Column34.Width = 60
+        '
+        'DataGridViewComboBoxColumn3
+        '
+        Me.DataGridViewComboBoxColumn3.HeaderText = "Status"
+        Me.DataGridViewComboBoxColumn3.Items.AddRange(New Object() {"Inventory", "Make", "Buy"})
+        Me.DataGridViewComboBoxColumn3.Name = "DataGridViewComboBoxColumn3"
+        Me.DataGridViewComboBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewComboBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
+        'DataGridViewTextBoxColumn65
+        '
+        DataGridViewCellStyle77.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn65.DefaultCellStyle = DataGridViewCellStyle77
+        Me.DataGridViewTextBoxColumn65.HeaderText = "Lead Time (wks)"
+        Me.DataGridViewTextBoxColumn65.Name = "DataGridViewTextBoxColumn65"
+        Me.DataGridViewTextBoxColumn65.Width = 90
         '
         'Process_frmMain
         '
@@ -10682,7 +10713,7 @@ Partial Class Process_frmMain
     Friend WithEvents chkManf_UserSigned As System.Windows.Forms.CheckBox
     Private WithEvents cmdManf_UserSign As System.Windows.Forms.Button
     Friend WithEvents txtManf_UserName As System.Windows.Forms.TextBox
-    Private WithEvents txtManf_UserDate_Face As System.Windows.Forms.TextBox
+    Private WithEvents txtManf_UserDate As System.Windows.Forms.TextBox
     Private WithEvents dtpManf_UserDate As System.Windows.Forms.DateTimePicker
     Friend WithEvents grdManf_EditedBy As System.Windows.Forms.DataGridView
     Friend WithEvents GroupBox25 As System.Windows.Forms.GroupBox
@@ -10824,8 +10855,8 @@ Partial Class Process_frmMain
     Friend WithEvents GroupBox10 As System.Windows.Forms.GroupBox
     Friend WithEvents chkDesign_UserSigned_Face As System.Windows.Forms.CheckBox
     Private WithEvents cmdDesign_UserSign_Face As System.Windows.Forms.Button
-    Friend WithEvents txtDesign_UserName_Face As System.Windows.Forms.TextBox
-    Private WithEvents txtDesign_UserDate_Face As System.Windows.Forms.TextBox
+    Friend WithEvents txtDesign_UserName As System.Windows.Forms.TextBox
+    Private WithEvents txtDesign_UserDate As System.Windows.Forms.TextBox
     Private WithEvents dtpDesign_UserDate_Face As System.Windows.Forms.DateTimePicker
     Friend WithEvents grdDesign_EditedBy As System.Windows.Forms.DataGridView
     Friend WithEvents GroupBox32 As System.Windows.Forms.GroupBox
@@ -11051,7 +11082,6 @@ Partial Class Process_frmMain
     Friend WithEvents DataGridViewTextBoxColumn14 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn21 As DataGridViewComboBoxColumn
     Friend WithEvents Column11 As DataGridViewTextBoxColumn
-    Private WithEvents Button1 As Button
     Friend WithEvents GroupBox16 As GroupBox
     Friend WithEvents DataGridViewComboBoxColumn4 As DataGridViewComboBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn68 As DataGridViewTextBoxColumn
@@ -11087,9 +11117,17 @@ Partial Class Process_frmMain
     Friend WithEvents DataGridViewTextBoxColumn75 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn76 As DataGridViewTextBoxColumn
     Friend WithEvents chkTest As CheckBox
-    Friend WithEvents DataGridViewTextBoxColumn28 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn29 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn73 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn100 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn99 As DataGridViewTextBoxColumn
+    Friend WithEvents Column10 As DataGridViewTextBoxColumn
+    Friend WithEvents Column12 As DataGridViewTextBoxColumn
+    Friend WithEvents Column14 As DataGridViewComboBoxColumn
+    Friend WithEvents Column16 As DataGridViewComboBoxColumn
+    Friend WithEvents Column13 As DataGridViewTextBoxColumn
+    Friend WithEvents Column15 As DataGridViewTextBoxColumn
+    Friend WithEvents Column17 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn16 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn24 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn25 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn53 As DataGridViewTextBoxColumn
@@ -11099,12 +11137,24 @@ Partial Class Process_frmMain
     Friend WithEvents DataGridViewTextBoxColumn26 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn27 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn58 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn28 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn29 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn73 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn44 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn45 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn85 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn86 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn87 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn88 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn35 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn46 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn96 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn47 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn48 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn63 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn49 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn50 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn66 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn38 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn39 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn59 As DataGridViewTextBoxColumn
@@ -11117,29 +11167,9 @@ Partial Class Process_frmMain
     Friend WithEvents DataGridViewTextBoxColumn55 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn56 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn57 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn44 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn45 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn85 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn86 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn87 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn88 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn64 As DataGridViewTextBoxColumn
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents Column34 As DataGridViewComboBoxColumn
     Friend WithEvents DataGridViewComboBoxColumn3 As DataGridViewComboBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn65 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn100 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn99 As DataGridViewTextBoxColumn
-    Friend WithEvents Column10 As DataGridViewTextBoxColumn
-    Friend WithEvents Column12 As DataGridViewTextBoxColumn
-    Friend WithEvents Column14 As DataGridViewComboBoxColumn
-    Friend WithEvents Column16 As DataGridViewComboBoxColumn
-    Friend WithEvents Column13 As DataGridViewTextBoxColumn
-    Friend WithEvents Column15 As DataGridViewTextBoxColumn
-    Friend WithEvents Column17 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn16 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn49 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn50 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn66 As DataGridViewTextBoxColumn
 End Class

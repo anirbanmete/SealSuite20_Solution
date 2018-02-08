@@ -75,6 +75,11 @@ Public Class clsProcessFile
     Private mAttendeesStartColName_Title As String
     Private mAttendeesStartColName_Date As String
 
+    Private mIssueCommentStartColName_Issue As String
+    Private mIssueCommentStartColName_By As String
+    Private mIssueCommentStartColName_Date As String
+    Private mIssueCommentStartColName_Resolution As String
+
 #End Region
 
 #Region "CONSTRUCTOR:"
@@ -219,9 +224,9 @@ Public Class clsProcessFile
                         End If
 
                     Case "Quote Date"
-                        If (ProcessProj_In.PreOrder.Quote.QID.Count > 0) Then
-                            mPDS_Val(i) = ProcessProj_In.PreOrder.Quote.QDate(0).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                        End If
+                        ''If (ProcessProj_In.PreOrder.Quote.QID.Count > 0) Then
+                        ''    mPDS_Val(i) = ProcessProj_In.PreOrder.Quote.QDate(0).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        ''End If
 
                     Case "Winnovation No"
                         If (ProcessProj_In.Design.IsWinnovation) Then
@@ -1512,6 +1517,7 @@ Public Class clsProcessFile
             Dim pExcelCellRange As EXCEL.Range = Nothing
 
             For i As Integer = 0 To mPDS_CellColName.Count - 1
+
                 If (mPDS_Val(i) <> "") Then
                     pExcelCellRange = pWkSheet.Range(mPDS_CellColName(i)) : pExcelCellRange.Value = mPDS_Val(i)
                 End If
@@ -1638,6 +1644,35 @@ Public Class clsProcessFile
                     pExcelCellRange = pWkSheet.Range(pColumn_Date & pIndex.ToString()) : pExcelCellRange.Value = ""
                 End If
 
+            Next
+
+            pWkSheet = pWkbOrg.Worksheets("Issues-Comments")
+            mIssueCommentStartColName_Issue = "A4"
+            mIssueCommentStartColName_By = "B4"
+            mIssueCommentStartColName_Date = "C4"
+            mIssueCommentStartColName_Resolution = "D4"
+
+            Dim pCI As New CultureInfo("en-US")
+
+            For i As Integer = 0 To ProcessProj_In.IssueCommnt.ID.Count - 1
+                Dim pColumn_Issue As String = mIssueCommentStartColName_Issue.Substring(0, 1)
+                Dim pColumn_By As String = mIssueCommentStartColName_By.Substring(0, 1)
+                Dim pColumn_Date As String = mIssueCommentStartColName_Date.Substring(0, 1)
+                Dim pColumn_Resolution As String = mIssueCommentStartColName_Resolution.Substring(0, 1)
+
+                Dim pIndex As Integer = ConvertToInt(mIssueCommentStartColName_Issue.Substring(1, mIssueCommentStartColName_Issue.Length - 1)) + i
+                pExcelCellRange = pWkSheet.Range(pColumn_Issue & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.IssueCommnt.Comment(i)
+
+                pExcelCellRange = pWkSheet.Range(pColumn_By & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.IssueCommnt.ByDept(i)
+
+
+                If (ProcessProj_In.IssueCommnt.ByDate(i) <> DateTime.MinValue) Then
+                    pExcelCellRange = pWkSheet.Range(pColumn_Date & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.IssueCommnt.ByDate(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                Else
+                    pExcelCellRange = pWkSheet.Range(pColumn_Date & pIndex.ToString()) : pExcelCellRange.Value = ""
+                End If
+
+                pExcelCellRange = pWkSheet.Range(pColumn_Resolution & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.IssueCommnt.Resolution(i)
             Next
 
         Catch ex As Exception

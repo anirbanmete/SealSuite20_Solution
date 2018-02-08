@@ -161,9 +161,11 @@ Public Class frmUserGroup
         '==========================================================================================
         mblnEdit = True
 
-        For i As Integer = 0 To grdUsers.Rows.Count - 1
-            grdUsers.Rows(i).ReadOnly = False
-        Next
+        'For i As Integer = 0 To grdUsers.Rows.Count - 1
+        '    grdUsers.Rows(i).ReadOnly = False
+        'Next
+
+        grdUsers.Rows(grdUsers.CurrentRow.Index).ReadOnly = False
 
         cmdSave.Enabled = True
         cmdAdd.Enabled = False
@@ -406,6 +408,7 @@ Public Class frmUserGroup
     Private Sub grdUsers_CellClick(sender As System.Object,
                                    e As System.Windows.Forms.DataGridViewCellEventArgs) Handles grdUsers.CellClick
         '=============================================================================================================
+        GetUserID()
         'If (Not IsNothing(grdUsers.Rows(grdUsers.CurrentRow.Index).Cells(2).Value)) Then
         '    Dim pSystemLogin As String = grdUsers.Rows(grdUsers.CurrentRow.Index).Cells(2).Value
 
@@ -444,8 +447,12 @@ Public Class frmUserGroup
     Private Sub grdUsers_RowHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) _
                                              Handles grdUsers.RowHeaderMouseClick
         '============================================================================================
-        Try
+        GetUserID()
+    End Sub
 
+    Private Sub GetUserID()
+        '==================
+        Try
 
             Dim pSealSuiteEntities As New SealSuiteDBEntities()
             Dim pCurRow As Integer = grdUsers.CurrentRow.Index
@@ -530,7 +537,6 @@ Public Class frmUserGroup
         Catch ex As Exception
 
         End Try
-
     End Sub
 
     Private Sub SaveToDB()

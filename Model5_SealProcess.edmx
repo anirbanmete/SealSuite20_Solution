@@ -1052,7 +1052,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tblDesign_SealDim_tblDesign">
-          <End Role="tblDesign" Type="SealProcessDBModel.Store.tblDesign" Multiplicity="1" />
+          <End Role="tblDesign" Type="SealProcessDBModel.Store.tblDesign" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="tblDesign_SealDim" Type="SealProcessDBModel.Store.tblDesign_SealDim" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblDesign">
@@ -2609,7 +2611,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tblDesign_SealDim_tblDesign">
-          <End Role="tblDesign" Type="SealProcessDBModel.tblDesign" Multiplicity="1" />
+          <End Role="tblDesign" Type="SealProcessDBModel.tblDesign" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="tblDesign_SealDim" Type="SealProcessDBModel.tblDesign_SealDim" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblDesign">
