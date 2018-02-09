@@ -23,9 +23,9 @@ Partial Class frmUserGroup
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmUserGroup))
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmUserGroup))
         Me.lblBorder = New System.Windows.Forms.Label()
         Me.pnlPanel1 = New System.Windows.Forms.Panel()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -40,6 +40,8 @@ Partial Class frmUserGroup
         Me.cmdDelete = New System.Windows.Forms.Button()
         Me.cmdSave = New System.Windows.Forms.Button()
         Me.grdUsers = New System.Windows.Forms.DataGridView()
+        Me.cmdClose = New System.Windows.Forms.Button()
+        Me.openFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -49,8 +51,6 @@ Partial Class frmUserGroup
         Me.Column4 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.Column6 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.cmdClose = New System.Windows.Forms.Button()
-        Me.openFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.pnlPanel1.SuspendLayout()
         CType(Me.grdUsers, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -241,6 +241,23 @@ Partial Class frmUserGroup
         Me.grdUsers.Size = New System.Drawing.Size(927, 186)
         Me.grdUsers.TabIndex = 637
         '
+        'cmdClose
+        '
+        Me.cmdClose.BackColor = System.Drawing.Color.Silver
+        Me.cmdClose.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdClose.Image = CType(resources.GetObject("cmdClose.Image"), System.Drawing.Image)
+        Me.cmdClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cmdClose.Location = New System.Drawing.Point(854, 301)
+        Me.cmdClose.Name = "cmdClose"
+        Me.cmdClose.Size = New System.Drawing.Size(80, 30)
+        Me.cmdClose.TabIndex = 636
+        Me.cmdClose.Text = "&Close"
+        Me.cmdClose.UseVisualStyleBackColor = False
+        '
+        'openFileDialog1
+        '
+        Me.openFileDialog1.FileName = "OpenFileDialog1"
+        '
         'Column1
         '
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
@@ -296,30 +313,15 @@ Partial Class frmUserGroup
         '
         Me.Column5.HeaderText = "SealTest"
         Me.Column5.Name = "Column5"
+        Me.Column5.ReadOnly = True
         Me.Column5.Width = 80
         '
         'Column6
         '
         Me.Column6.HeaderText = "SealIPE"
         Me.Column6.Name = "Column6"
+        Me.Column6.ReadOnly = True
         Me.Column6.Width = 80
-        '
-        'cmdClose
-        '
-        Me.cmdClose.BackColor = System.Drawing.Color.Silver
-        Me.cmdClose.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdClose.Image = CType(resources.GetObject("cmdClose.Image"), System.Drawing.Image)
-        Me.cmdClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdClose.Location = New System.Drawing.Point(854, 301)
-        Me.cmdClose.Name = "cmdClose"
-        Me.cmdClose.Size = New System.Drawing.Size(80, 30)
-        Me.cmdClose.TabIndex = 636
-        Me.cmdClose.Text = "&Close"
-        Me.cmdClose.UseVisualStyleBackColor = False
-        '
-        'openFileDialog1
-        '
-        Me.openFileDialog1.FileName = "OpenFileDialog1"
         '
         'frmUserGroup
         '
@@ -355,15 +357,15 @@ Partial Class frmUserGroup
     Friend WithEvents cmdDelete As System.Windows.Forms.Button
     Friend WithEvents cmdSave As System.Windows.Forms.Button
     Friend WithEvents grdUsers As System.Windows.Forms.DataGridView
-    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column9 As System.Windows.Forms.DataGridViewComboBoxColumn
-    Friend WithEvents Column7 As System.Windows.Forms.DataGridViewButtonColumn
-    Friend WithEvents Column8 As System.Windows.Forms.DataGridViewImageColumn
-    Friend WithEvents Column4 As System.Windows.Forms.DataGridViewCheckBoxColumn
-    Friend WithEvents Column5 As System.Windows.Forms.DataGridViewCheckBoxColumn
-    Friend WithEvents Column6 As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents cmdClose As System.Windows.Forms.Button
     Friend WithEvents openFileDialog1 As System.Windows.Forms.OpenFileDialog
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As DataGridViewTextBoxColumn
+    Friend WithEvents Column9 As DataGridViewComboBoxColumn
+    Friend WithEvents Column7 As DataGridViewButtonColumn
+    Friend WithEvents Column8 As DataGridViewImageColumn
+    Friend WithEvents Column4 As DataGridViewCheckBoxColumn
+    Friend WithEvents Column5 As DataGridViewCheckBoxColumn
+    Friend WithEvents Column6 As DataGridViewCheckBoxColumn
 End Class

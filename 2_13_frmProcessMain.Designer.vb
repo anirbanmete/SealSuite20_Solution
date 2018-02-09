@@ -99,6 +99,8 @@ Partial Class Process_frmMain
         Dim DataGridViewCellStyle73 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle74 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle75 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle76 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle77 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle78 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle79 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle80 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -133,8 +135,6 @@ Partial Class Process_frmMain
         Dim DataGridViewCellStyle109 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle110 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle111 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle76 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle77 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lblBorder = New System.Windows.Forms.Label()
         Me.pnlPanel1 = New System.Windows.Forms.Panel()
         Me.GroupBox16 = New System.Windows.Forms.GroupBox()
@@ -717,6 +717,11 @@ Partial Class Process_frmMain
         Me.DataGridViewTextBoxColumn50 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn66 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.grdPurchase_Mat = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn64 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column34 = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.DataGridViewComboBoxColumn3 = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.DataGridViewTextBoxColumn65 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tabQuality = New System.Windows.Forms.TabPage()
         Me.GroupBox57 = New System.Windows.Forms.GroupBox()
         Me.grdQuality_SplOperation = New System.Windows.Forms.DataGridView()
@@ -935,11 +940,7 @@ Partial Class Process_frmMain
         Me.TabViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.openFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.DataGridViewTextBoxColumn64 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column34 = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.DataGridViewComboBoxColumn3 = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.DataGridViewTextBoxColumn65 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.HelpProvider1 = New System.Windows.Forms.HelpProvider()
         Me.pnlPanel1.SuspendLayout()
         Me.GroupBox16.SuspendLayout()
         Me.GroupBox43.SuspendLayout()
@@ -2218,7 +2219,7 @@ Partial Class Process_frmMain
         Me.cmdPreOrderUserSign.Size = New System.Drawing.Size(63, 23)
         Me.cmdPreOrderUserSign.TabIndex = 746
         Me.cmdPreOrderUserSign.Tag = "Tester"
-        Me.cmdPreOrderUserSign.Text = "Sign Off"
+        Me.cmdPreOrderUserSign.Text = "Sign-off"
         Me.cmdPreOrderUserSign.UseVisualStyleBackColor = False
         '
         'txtPreOrderUserName
@@ -2633,7 +2634,7 @@ Partial Class Process_frmMain
         Me.cmdITAR_Export_UserSign.Size = New System.Drawing.Size(63, 23)
         Me.cmdITAR_Export_UserSign.TabIndex = 746
         Me.cmdITAR_Export_UserSign.Tag = "Tester"
-        Me.cmdITAR_Export_UserSign.Text = "Sign Off"
+        Me.cmdITAR_Export_UserSign.Text = "Sign-off"
         Me.cmdITAR_Export_UserSign.UseVisualStyleBackColor = False
         '
         'txtITAR_Export_UserName
@@ -3387,7 +3388,7 @@ Partial Class Process_frmMain
         Me.cmdOrdEntry_UserSign.Size = New System.Drawing.Size(63, 23)
         Me.cmdOrdEntry_UserSign.TabIndex = 746
         Me.cmdOrdEntry_UserSign.Tag = "Tester"
-        Me.cmdOrdEntry_UserSign.Text = "Sign Off"
+        Me.cmdOrdEntry_UserSign.Text = "Sign-off"
         Me.cmdOrdEntry_UserSign.UseVisualStyleBackColor = False
         '
         'txtOrdEntry_UserName
@@ -3776,7 +3777,7 @@ Partial Class Process_frmMain
         Me.cmdCost_UserSign.Size = New System.Drawing.Size(63, 23)
         Me.cmdCost_UserSign.TabIndex = 746
         Me.cmdCost_UserSign.Tag = "Tester"
-        Me.cmdCost_UserSign.Text = "Sign Off"
+        Me.cmdCost_UserSign.Text = "Sign-off"
         Me.cmdCost_UserSign.UseVisualStyleBackColor = False
         '
         'txtCost_UserName
@@ -4359,7 +4360,7 @@ Partial Class Process_frmMain
         Me.cmbApp_InsertLoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbApp_InsertLoc.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbApp_InsertLoc.FormattingEnabled = True
-        Me.cmbApp_InsertLoc.Items.AddRange(New Object() {"Face", "Axial"})
+        Me.cmbApp_InsertLoc.Items.AddRange(New Object() {"Face"})
         Me.cmbApp_InsertLoc.Location = New System.Drawing.Point(564, 30)
         Me.cmbApp_InsertLoc.Name = "cmbApp_InsertLoc"
         Me.cmbApp_InsertLoc.Size = New System.Drawing.Size(70, 21)
@@ -4821,7 +4822,7 @@ Partial Class Process_frmMain
         Me.cmdApp_UserSign_Face.Size = New System.Drawing.Size(63, 23)
         Me.cmdApp_UserSign_Face.TabIndex = 746
         Me.cmdApp_UserSign_Face.Tag = "Tester"
-        Me.cmdApp_UserSign_Face.Text = "Sign Off"
+        Me.cmdApp_UserSign_Face.Text = "Sign-off"
         Me.cmdApp_UserSign_Face.UseVisualStyleBackColor = False
         '
         'txtApp_UserName_Face
@@ -5623,7 +5624,7 @@ Partial Class Process_frmMain
         Me.cmdApp_UserSign_Axial.Size = New System.Drawing.Size(63, 23)
         Me.cmdApp_UserSign_Axial.TabIndex = 746
         Me.cmdApp_UserSign_Axial.Tag = "Tester"
-        Me.cmdApp_UserSign_Axial.Text = "Sign Off"
+        Me.cmdApp_UserSign_Axial.Text = "Sign-off"
         Me.cmdApp_UserSign_Axial.UseVisualStyleBackColor = False
         '
         'txtApp_UserName_Axial
@@ -6904,7 +6905,7 @@ Partial Class Process_frmMain
         Me.cmdDesign_UserSign_Face.Size = New System.Drawing.Size(63, 23)
         Me.cmdDesign_UserSign_Face.TabIndex = 746
         Me.cmdDesign_UserSign_Face.Tag = "Tester"
-        Me.cmdDesign_UserSign_Face.Text = "Sign Off"
+        Me.cmdDesign_UserSign_Face.Text = "Sign-off"
         Me.cmdDesign_UserSign_Face.UseVisualStyleBackColor = False
         '
         'txtDesign_UserName
@@ -7179,7 +7180,7 @@ Partial Class Process_frmMain
         Me.cmdManf_UserSign.Size = New System.Drawing.Size(63, 23)
         Me.cmdManf_UserSign.TabIndex = 746
         Me.cmdManf_UserSign.Tag = "Tester"
-        Me.cmdManf_UserSign.Text = "Sign Off"
+        Me.cmdManf_UserSign.Text = "Sign-off"
         Me.cmdManf_UserSign.UseVisualStyleBackColor = False
         '
         'txtManf_UserName
@@ -7619,7 +7620,7 @@ Partial Class Process_frmMain
         Me.cmdPurchase_UserSign.Size = New System.Drawing.Size(63, 23)
         Me.cmdPurchase_UserSign.TabIndex = 746
         Me.cmdPurchase_UserSign.Tag = "Tester"
-        Me.cmdPurchase_UserSign.Text = "Sign Off"
+        Me.cmdPurchase_UserSign.Text = "Sign-off"
         Me.cmdPurchase_UserSign.UseVisualStyleBackColor = False
         '
         'txtPurchase_UserName
@@ -7709,8 +7710,44 @@ Partial Class Process_frmMain
         Me.grdPurchase_Mat.MultiSelect = False
         Me.grdPurchase_Mat.Name = "grdPurchase_Mat"
         Me.grdPurchase_Mat.RowHeadersWidth = 20
-        Me.grdPurchase_Mat.Size = New System.Drawing.Size(599, 104)
+        Me.grdPurchase_Mat.Size = New System.Drawing.Size(560, 104)
         Me.grdPurchase_Mat.TabIndex = 878
+        '
+        'DataGridViewTextBoxColumn64
+        '
+        Me.DataGridViewTextBoxColumn64.HeaderText = "Item"
+        Me.DataGridViewTextBoxColumn64.Name = "DataGridViewTextBoxColumn64"
+        Me.DataGridViewTextBoxColumn64.Width = 200
+        '
+        'Column5
+        '
+        DataGridViewCellStyle76.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column5.DefaultCellStyle = DataGridViewCellStyle76
+        Me.Column5.HeaderText = "Est. Qty"
+        Me.Column5.Name = "Column5"
+        '
+        'Column34
+        '
+        Me.Column34.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
+        Me.Column34.HeaderText = "Unit"
+        Me.Column34.Name = "Column34"
+        Me.Column34.Width = 40
+        '
+        'DataGridViewComboBoxColumn3
+        '
+        Me.DataGridViewComboBoxColumn3.HeaderText = "Status"
+        Me.DataGridViewComboBoxColumn3.Items.AddRange(New Object() {"Inventory", "Make", "Buy"})
+        Me.DataGridViewComboBoxColumn3.Name = "DataGridViewComboBoxColumn3"
+        Me.DataGridViewComboBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewComboBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
+        'DataGridViewTextBoxColumn65
+        '
+        DataGridViewCellStyle77.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn65.DefaultCellStyle = DataGridViewCellStyle77
+        Me.DataGridViewTextBoxColumn65.HeaderText = "Lead Time (wks)"
+        Me.DataGridViewTextBoxColumn65.Name = "DataGridViewTextBoxColumn65"
+        Me.DataGridViewTextBoxColumn65.Width = 90
         '
         'tabQuality
         '
@@ -7782,6 +7819,7 @@ Partial Class Process_frmMain
         Me.DataGridViewComboBoxColumn8.HeaderText = "Description"
         Me.DataGridViewComboBoxColumn8.Items.AddRange(New Object() {"X-Ray", "FPI", "Outside Cleaning", "Semi-Quant. Spectro"})
         Me.DataGridViewComboBoxColumn8.Name = "DataGridViewComboBoxColumn8"
+        Me.DataGridViewComboBoxColumn8.ReadOnly = True
         Me.DataGridViewComboBoxColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridViewComboBoxColumn8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         Me.DataGridViewComboBoxColumn8.Width = 150
@@ -7860,7 +7898,7 @@ Partial Class Process_frmMain
         Me.cmdQuality_UserSign.Size = New System.Drawing.Size(63, 23)
         Me.cmdQuality_UserSign.TabIndex = 746
         Me.cmdQuality_UserSign.Tag = "Tester"
-        Me.cmdQuality_UserSign.Text = "Sign Off"
+        Me.cmdQuality_UserSign.Text = "Sign-off"
         Me.cmdQuality_UserSign.UseVisualStyleBackColor = False
         '
         'txtQuality_UserName
@@ -8199,7 +8237,7 @@ Partial Class Process_frmMain
         Me.cmdDwg_UserSign.Size = New System.Drawing.Size(63, 23)
         Me.cmdDwg_UserSign.TabIndex = 746
         Me.cmdDwg_UserSign.Tag = "Tester"
-        Me.cmdDwg_UserSign.Text = "Sign Off"
+        Me.cmdDwg_UserSign.Text = "Sign-off"
         Me.cmdDwg_UserSign.UseVisualStyleBackColor = False
         '
         'txtDwg_UserName
@@ -8485,7 +8523,7 @@ Partial Class Process_frmMain
         Me.cmdTest_UserSign.Size = New System.Drawing.Size(63, 23)
         Me.cmdTest_UserSign.TabIndex = 746
         Me.cmdTest_UserSign.Tag = "Tester"
-        Me.cmdTest_UserSign.Text = "Sign Off"
+        Me.cmdTest_UserSign.Text = "Sign-off"
         Me.cmdTest_UserSign.UseVisualStyleBackColor = False
         '
         'txtTest_UserName
@@ -9301,6 +9339,7 @@ Partial Class Process_frmMain
         Me.tabPlanning.Controls.Add(Me.GroupBox4)
         Me.tabPlanning.Controls.Add(Me.cmdResetSelectedAllNote)
         Me.tabPlanning.Controls.Add(Me.cmdSelectAllNote)
+        Me.tabPlanning.ForeColor = System.Drawing.Color.Gray
         Me.tabPlanning.Location = New System.Drawing.Point(4, 40)
         Me.tabPlanning.Name = "tabPlanning"
         Me.tabPlanning.Padding = New System.Windows.Forms.Padding(3)
@@ -9680,7 +9719,6 @@ Partial Class Process_frmMain
         'grpCustSpec_Shipping
         '
         Me.grpCustSpec_Shipping.Controls.Add(Me.grdShipping_CustSpec)
-        Me.grpCustSpec_Shipping.Enabled = False
         Me.grpCustSpec_Shipping.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grpCustSpec_Shipping.Location = New System.Drawing.Point(15, 21)
         Me.grpCustSpec_Shipping.Name = "grpCustSpec_Shipping"
@@ -9705,12 +9743,14 @@ Partial Class Process_frmMain
         '
         Me.DataGridViewTextBoxColumn60.HeaderText = "Description"
         Me.DataGridViewTextBoxColumn60.Name = "DataGridViewTextBoxColumn60"
+        Me.DataGridViewTextBoxColumn60.ReadOnly = True
         Me.DataGridViewTextBoxColumn60.Width = 200
         '
         'DataGridViewTextBoxColumn61
         '
         Me.DataGridViewTextBoxColumn61.HeaderText = "Interpretation"
         Me.DataGridViewTextBoxColumn61.Name = "DataGridViewTextBoxColumn61"
+        Me.DataGridViewTextBoxColumn61.ReadOnly = True
         Me.DataGridViewTextBoxColumn61.Width = 200
         '
         'Label139
@@ -9839,6 +9879,7 @@ Partial Class Process_frmMain
         Me.tabKeyChar.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.tabKeyChar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tabKeyChar.Controls.Add(Me.grpKeyChar)
+        Me.tabKeyChar.ForeColor = System.Drawing.Color.Gray
         Me.tabKeyChar.Location = New System.Drawing.Point(4, 40)
         Me.tabKeyChar.Name = "tabKeyChar"
         Me.tabKeyChar.Size = New System.Drawing.Size(1039, 577)
@@ -9987,17 +10028,20 @@ Partial Class Process_frmMain
         Me.tabApproval.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tabApproval.Controls.Add(Me.cmdApproval_Sign)
         Me.tabApproval.Controls.Add(Me.GroupBox63)
+        Me.tabApproval.ForeColor = System.Drawing.Color.Gray
         Me.tabApproval.Location = New System.Drawing.Point(4, 40)
         Me.tabApproval.Name = "tabApproval"
         Me.tabApproval.Padding = New System.Windows.Forms.Padding(3)
         Me.tabApproval.Size = New System.Drawing.Size(1039, 577)
         Me.tabApproval.TabIndex = 14
         Me.tabApproval.Text = "        Approval        "
+        Me.tabApproval.ToolTipText = "Will be functional in a future version"
         '
         'cmdApproval_Sign
         '
         Me.cmdApproval_Sign.AutoSize = True
         Me.cmdApproval_Sign.BackColor = System.Drawing.Color.Silver
+        Me.cmdApproval_Sign.Enabled = False
         Me.cmdApproval_Sign.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdApproval_Sign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdApproval_Sign.Location = New System.Drawing.Point(818, 59)
@@ -10011,6 +10055,7 @@ Partial Class Process_frmMain
         'GroupBox63
         '
         Me.GroupBox63.Controls.Add(Me.grdApproval_Attendees)
+        Me.GroupBox63.Enabled = False
         Me.GroupBox63.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox63.Location = New System.Drawing.Point(26, 25)
         Me.GroupBox63.Name = "GroupBox63"
@@ -10101,42 +10146,6 @@ Partial Class Process_frmMain
         'openFileDialog1
         '
         Me.openFileDialog1.FileName = "OpenFileDialog1"
-        '
-        'DataGridViewTextBoxColumn64
-        '
-        Me.DataGridViewTextBoxColumn64.HeaderText = "Item"
-        Me.DataGridViewTextBoxColumn64.Name = "DataGridViewTextBoxColumn64"
-        Me.DataGridViewTextBoxColumn64.Width = 200
-        '
-        'Column5
-        '
-        DataGridViewCellStyle76.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column5.DefaultCellStyle = DataGridViewCellStyle76
-        Me.Column5.HeaderText = "Est. Qty"
-        Me.Column5.Name = "Column5"
-        '
-        'Column34
-        '
-        Me.Column34.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
-        Me.Column34.HeaderText = "Unit"
-        Me.Column34.Name = "Column34"
-        Me.Column34.Width = 60
-        '
-        'DataGridViewComboBoxColumn3
-        '
-        Me.DataGridViewComboBoxColumn3.HeaderText = "Status"
-        Me.DataGridViewComboBoxColumn3.Items.AddRange(New Object() {"Inventory", "Make", "Buy"})
-        Me.DataGridViewComboBoxColumn3.Name = "DataGridViewComboBoxColumn3"
-        Me.DataGridViewComboBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewComboBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        '
-        'DataGridViewTextBoxColumn65
-        '
-        DataGridViewCellStyle77.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.DataGridViewTextBoxColumn65.DefaultCellStyle = DataGridViewCellStyle77
-        Me.DataGridViewTextBoxColumn65.HeaderText = "Lead Time (wks)"
-        Me.DataGridViewTextBoxColumn65.Name = "DataGridViewTextBoxColumn65"
-        Me.DataGridViewTextBoxColumn65.Width = 90
         '
         'Process_frmMain
         '
@@ -10986,8 +10995,6 @@ Partial Class Process_frmMain
     Private WithEvents txtShipping_Notes As System.Windows.Forms.TextBox
     Friend WithEvents grpCustSpec_Shipping As System.Windows.Forms.GroupBox
     Friend WithEvents grdShipping_CustSpec As System.Windows.Forms.DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn60 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn61 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents GroupBox60 As System.Windows.Forms.GroupBox
     Private WithEvents txtPlanning_Notes As System.Windows.Forms.TextBox
     Friend WithEvents Label156 As System.Windows.Forms.Label
@@ -11112,10 +11119,6 @@ Partial Class Process_frmMain
     Friend WithEvents Column7 As DataGridViewComboBoxColumn
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
     Friend WithEvents Column8 As DataGridViewComboBoxColumn
-    Friend WithEvents DataGridViewComboBoxColumn8 As DataGridViewComboBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn74 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn75 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn76 As DataGridViewTextBoxColumn
     Friend WithEvents chkTest As CheckBox
     Friend WithEvents DataGridViewTextBoxColumn100 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn99 As DataGridViewTextBoxColumn
@@ -11172,4 +11175,11 @@ Partial Class Process_frmMain
     Friend WithEvents Column34 As DataGridViewComboBoxColumn
     Friend WithEvents DataGridViewComboBoxColumn3 As DataGridViewComboBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn65 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewComboBoxColumn8 As DataGridViewComboBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn74 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn75 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn76 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn60 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn61 As DataGridViewTextBoxColumn
+    Friend WithEvents HelpProvider1 As HelpProvider
 End Class

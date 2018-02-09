@@ -46,6 +46,10 @@ Public Class clsProcessFile
     '------------------------
     Private Const mcDirTemplates As String = mcDirRoot & "Templates\"
 
+    'PDS Output File:
+    '----------------
+    Private Const mcDirOutput As String = mcDirRoot & "Output Files\"
+
     '....PDS Report  
     Private Const mcPDSReportFileName As String = mcDirTemplates & "EN7300007 - Product Definition Sheet_Rev W_Rev01.xltx"
 
@@ -104,7 +108,7 @@ Public Class clsProcessFile
         If (Mode_In = "Write") Then
             ReadPDSMapping()
             PopulatePDS_Val(ProcessProj_In, PartProj_In)
-            WritePDSFile(ProcessProj_In)
+            WritePDSFile(ProcessProj_In, PartProj_In)
 
         ElseIf (Mode_In = "Read") Then
             'ReadPDSMapping_PDS_DS()
@@ -1490,8 +1494,8 @@ Public Class clsProcessFile
     End Sub
 
 
-    Private Sub WritePDSFile(ByVal ProcessProj_In As clsProcessProj)
-        '===========================================================
+    Private Sub WritePDSFile(ByVal ProcessProj_In As clsProcessProj, ByVal PartProj_In As clsPartProject)
+        '================================================================================================
 
         CloseExcelFiles()
 
@@ -1506,8 +1510,8 @@ Public Class clsProcessFile
         Dim pSealTestDBEntities As New SealTestDBEntities
 
         Try
-            pWkbOrg = pApp.Workbooks.Open(mcPDSReportFileName, Missing.Value, False, Missing.Value, Missing.Value, Missing.Value, _
-                                          Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, _
+            pWkbOrg = pApp.Workbooks.Open(mcPDSReportFileName, Missing.Value, False, Missing.Value, Missing.Value, Missing.Value,
+                                          Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value,
                                           Missing.Value, Missing.Value, Missing.Value)
 
             Dim pWkSheet As EXCEL.Worksheet
@@ -1626,25 +1630,25 @@ Public Class clsProcessFile
             Next
 
             '....Attendees
-            For i As Integer = 0 To ProcessProj_In.Approval.Dept.Count - 1
-                Dim pColumn_Dept As String = mAttendeesStartColName_Dept.Substring(0, 1)
-                Dim pColumn_Name As String = mAttendeesStartColName_Name.Substring(0, 1)
-                Dim pColumn_Title As String = mAttendeesStartColName_Title.Substring(0, 1)
-                Dim pColumn_Date As String = mAttendeesStartColName_Date.Substring(0, 1)
+            ''For i As Integer = 0 To ProcessProj_In.Approval.Dept.Count - 1
+            ''    Dim pColumn_Dept As String = mAttendeesStartColName_Dept.Substring(0, 1)
+            ''    Dim pColumn_Name As String = mAttendeesStartColName_Name.Substring(0, 1)
+            ''    Dim pColumn_Title As String = mAttendeesStartColName_Title.Substring(0, 1)
+            ''    Dim pColumn_Date As String = mAttendeesStartColName_Date.Substring(0, 1)
 
-                Dim pIndex As Integer = ConvertToInt(mAttendeesStartColName_Dept.Substring(1, mAttendeesStartColName_Dept.Length - 1)) + i
-                pExcelCellRange = pWkSheet.Range(pColumn_Dept & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.Approval.Dept(i)
+            ''    Dim pIndex As Integer = ConvertToInt(mAttendeesStartColName_Dept.Substring(1, mAttendeesStartColName_Dept.Length - 1)) + i
+            ''    pExcelCellRange = pWkSheet.Range(pColumn_Dept & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.Approval.Dept(i)
 
-                pExcelCellRange = pWkSheet.Range(pColumn_Name & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.Approval.Name(i)
-                pExcelCellRange = pWkSheet.Range(pColumn_Title & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.Approval.Title(i)
+            ''    pExcelCellRange = pWkSheet.Range(pColumn_Name & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.Approval.Name(i)
+            ''    pExcelCellRange = pWkSheet.Range(pColumn_Title & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.Approval.Title(i)
 
-                If (ProcessProj_In.Approval.DateSigned(i) <> DateTime.MinValue) Then
-                    pExcelCellRange = pWkSheet.Range(pColumn_Date & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.Approval.DateSigned(i)
-                Else
-                    pExcelCellRange = pWkSheet.Range(pColumn_Date & pIndex.ToString()) : pExcelCellRange.Value = ""
-                End If
+            ''    If (ProcessProj_In.Approval.DateSigned(i) <> DateTime.MinValue) Then
+            ''        pExcelCellRange = pWkSheet.Range(pColumn_Date & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.Approval.DateSigned(i)
+            ''    Else
+            ''        pExcelCellRange = pWkSheet.Range(pColumn_Date & pIndex.ToString()) : pExcelCellRange.Value = ""
+            ''    End If
 
-            Next
+            ''Next
 
             pWkSheet = pWkbOrg.Worksheets("Issues-Comments")
             mIssueCommentStartColName_Issue = "A4"
@@ -1675,9 +1679,13 @@ Public Class clsProcessFile
                 pExcelCellRange = pWkSheet.Range(pColumn_Resolution & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.IssueCommnt.Resolution(i)
             Next
 
+            Dim pOutputFileName As String = PartProj_In.PNR.PN() & PartProj_In.PNR.PN_Rev() & " PDS_RevW"
+            pWkbOrg.SaveAs(mcDirOutput & pOutputFileName)
+
         Catch ex As Exception
 
         Finally
+
 
             pApp.Visible = True
 

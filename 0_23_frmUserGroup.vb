@@ -314,7 +314,7 @@ Public Class frmUserGroup
                 cmdAdd.Enabled = True
                 cmdEdit.Enabled = True
                 cmdDelete.Enabled = True
-
+                grdUsers.Rows(pCurRow).ReadOnly = True
             End If
 
         Catch ex As Exception

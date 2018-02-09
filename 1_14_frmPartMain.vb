@@ -2191,12 +2191,19 @@ Public Class frmPartMain
                     txtCustomerPN_Rev.ForeColor = Color.Black
 
                     If (chkLegacy.Checked) Then
+
+                        chkNew.Enabled = True
+                        chkNew.Checked = False
+                        chkLegacy.Enabled = True
                         cmdLegacy.Enabled = True
                         txtParkerPNLegacy_Rev.Enabled = True
                         cmbParkerPN_Part2.Enabled = False
                         txtParkerPN_Part3.Enabled = False
                         txtPN_PH_Rev.Enabled = False
                     Else
+                        chkNew.Enabled = True
+                        chkNew.Checked = True
+                        chkLegacy.Enabled = True
                         cmdLegacy.Enabled = False
                         txtParkerPNLegacy_Rev.Enabled = False
                         cmbParkerPN_Part2.Enabled = True
@@ -2219,10 +2226,10 @@ Public Class frmPartMain
                     txtPN_PH_Rev.BackColor = Color.White
                     txtPN_PH_Rev.ForeColor = Color.Black
 
-                    chkNew.Enabled = True
-                    chkLegacy.Enabled = True
-                    chkNew.Checked = True
-                    cmdLegacy.Enabled = True
+                    'chkNew.Enabled = True
+                    'chkLegacy.Enabled = True
+                    'chkNew.Checked = True
+                    'cmdLegacy.Enabled = True
 
                     txtParkerPN_Legacy.ReadOnly = False
                     txtParkerPN_Legacy.BackColor = Color.White
@@ -2968,7 +2975,7 @@ Public Class frmPartMain
             If (chkNew.Checked) Then
                 gPartProject.PNR.Current_Exists = True
                 gPartProject.PNR.Current_TypeNo = cmbParkerPN_Part2.Text
-                gPartProject.PNR.Current_Val = txtParkerPN_Part3.Text
+                gPartProject.PNR.Current_Val = txtParkerPN_Part3.Text.Trim()
                 gPartProject.PNR.Current_Rev = txtPN_PH_Rev.Text
             Else
                 gPartProject.PNR.Current_Exists = False
@@ -2991,7 +2998,7 @@ Public Class frmPartMain
             If (chkPNNew_Parent.Checked) Then
                 gPartProject.PNR.ParentCurrent_Exists = True
                 gPartProject.PNR.ParentCurrent_TypeNo = cmbParentCur_Part2.Text
-                gPartProject.PNR.ParentCurrent_Val = txtParentCur_Part3.Text
+                gPartProject.PNR.ParentCurrent_Val = txtParentCur_Part3.Text.Trim()
                 gPartProject.PNR.ParentCurrent_Rev = txtParentCur_Rev.Text
             Else
                 gPartProject.PNR.ParentCurrent_Exists = False
@@ -3014,7 +3021,7 @@ Public Class frmPartMain
             If (chkRefDimNew_Exists.Checked) Then
                 gPartProject.PNR.RefDimCurrent_Exists = True
                 gPartProject.PNR.RefDimCurrent_TypeNo = cmbRefPNNewDim_Part2.Text
-                gPartProject.PNR.RefDimCurrent_Val = txtRefPNNewDim_Part3.Text
+                gPartProject.PNR.RefDimCurrent_Val = txtRefPNNewDim_Part3.Text.Trim()
                 gPartProject.PNR.RefDimCurrent_Rev = txtRefPNNewDim_Rev.Text
             Else
                 gPartProject.PNR.RefDimCurrent_Exists = False
@@ -3037,7 +3044,7 @@ Public Class frmPartMain
             If (chkRefDimNotes_Exists.Checked) Then
                 gPartProject.PNR.RefNotesCurrent_Exists = True
                 gPartProject.PNR.RefNotesCurrent_TypeNo = cmbRefNotesNewPN_Part2.Text
-                gPartProject.PNR.RefNotesCurrent_Val = txtRefPNNotes_Part3.Text
+                gPartProject.PNR.RefNotesCurrent_Val = txtRefPNNotes_Part3.Text.Trim()
                 gPartProject.PNR.RefNotesCurrent_Rev = txtRefPNNewNotes_Rev.Text
             Else
                 gPartProject.PNR.RefNotesCurrent_Exists = False
@@ -4550,7 +4557,7 @@ Public Class frmPartMain
                 Dim pParkerPN As String = ""
 
                 If (txtParkerPN_Part3.Text <> "") Then
-                    pParkerPN = txtParkerPN_Part1.Text + "-" + cmbParkerPN_Part2.Text + txtParkerPN_Part3.Text
+                    pParkerPN = txtParkerPN_Part1.Text + "-" + cmbParkerPN_Part2.Text + txtParkerPN_Part3.Text.Trim()
                 Else
                     pParkerPN = txtParkerPN_Legacy.Text
                 End If
@@ -4600,7 +4607,7 @@ Public Class frmPartMain
                         pPN.fldParentCurrentExists = True
                         Dim pParentCurrent As String = ""
                         If (txtParentCur_Part3.Text <> "") Then
-                            pParentCurrent = txtParentCur_Part1.Text + "-" + cmbParentCur_Part2.Text + txtParentCur_Part3.Text 'txtPNNew_Parent.Text
+                            pParentCurrent = txtParentCur_Part1.Text + "-" + cmbParentCur_Part2.Text + txtParentCur_Part3.Text.Trim() 'txtPNNew_Parent.Text
                         End If
                         pPN.fldParentCurrent = pParentCurrent
                         pPN.fldParentCurrentRev = txtParentCur_Rev.Text
@@ -4628,7 +4635,7 @@ Public Class frmPartMain
 
                     '======================================
                     If (txtRefPNNewDim_Part3.Text <> "") Then
-                        Dim pRefPNNewDim As String = "NH-" & cmbRefPNNewDim_Part2.Text & txtRefPNNewDim_Part3.Text
+                        Dim pRefPNNewDim As String = "NH-" & cmbRefPNNewDim_Part2.Text & txtRefPNNewDim_Part3.Text.Trim()
                         pPN.fldRefDimCurrentExists = True
                         pPN.fldRefDimCurrent = pRefPNNewDim
                         pPN.fldRefDimCurrentRev = txtRefPNNewDim_Rev.Text
@@ -4649,7 +4656,7 @@ Public Class frmPartMain
                     End If
 
                     If (txtRefPNNotes_Part3.Text <> "") Then
-                        Dim pRefPNNewNotes As String = "NH-" & cmbRefNotesNewPN_Part2.Text & txtRefPNNotes_Part3.Text
+                        Dim pRefPNNewNotes As String = "NH-" & cmbRefNotesNewPN_Part2.Text & txtRefPNNotes_Part3.Text.Trim()
                         pPN.fldRefNotesCurrentExists = True
                         pPN.fldRefNotesCurrent = pRefPNNewNotes
                         pPN.fldRefNotesCurrentRev = txtRefPNNewNotes_Rev.Text
@@ -5095,7 +5102,7 @@ Public Class frmPartMain
                 Dim pParkerPN As String = ""
 
                 If (txtParkerPN_Part3.Text <> "") Then
-                    pParkerPN = txtParkerPN_Part1.Text + "-" + cmbParkerPN_Part2.Text + txtParkerPN_Part3.Text
+                    pParkerPN = txtParkerPN_Part1.Text + "-" + cmbParkerPN_Part2.Text + txtParkerPN_Part3.Text.Trim()
                 Else
                     pParkerPN = txtParkerPN_Legacy.Text
                 End If
@@ -5154,7 +5161,7 @@ Public Class frmPartMain
                         pPN.fldParentCurrentExists = True
                         Dim pParentCurrent As String = ""
                         If (txtParentCur_Part3.Text <> "") Then
-                            pParentCurrent = txtParentCur_Part1.Text + "-" + cmbParentCur_Part2.Text + txtParentCur_Part3.Text 'txtPNNew_Parent.Text
+                            pParentCurrent = txtParentCur_Part1.Text + "-" + cmbParentCur_Part2.Text + txtParentCur_Part3.Text.Trim() 'txtPNNew_Parent.Text
                         End If
                         pPN.fldParentCurrent = pParentCurrent
                         pPN.fldParentCurrentRev = txtParentCur_Rev.Text
@@ -5174,7 +5181,7 @@ Public Class frmPartMain
 
                     '======================================
                     If (txtRefPNNewDim_Part3.Text <> "") Then
-                        Dim pRefPNNewDim As String = "NH-" & cmbRefPNNewDim_Part2.Text & txtRefPNNewDim_Part3.Text
+                        Dim pRefPNNewDim As String = "NH-" & cmbRefPNNewDim_Part2.Text & txtRefPNNewDim_Part3.Text.Trim()
                         pPN.fldRefDimCurrentExists = True
                         pPN.fldRefDimCurrent = pRefPNNewDim
                         pPN.fldRefDimCurrentRev = txtRefPNNewDim_Rev.Text
@@ -5195,7 +5202,7 @@ Public Class frmPartMain
                     End If
 
                     If (txtRefPNNotes_Part3.Text <> "") Then
-                        Dim pRefPNNewNotes As String = "NH-" & cmbRefNotesNewPN_Part2.Text & txtRefPNNotes_Part3.Text
+                        Dim pRefPNNewNotes As String = "NH-" & cmbRefNotesNewPN_Part2.Text & txtRefPNNotes_Part3.Text.Trim()
                         pPN.fldRefNotesCurrentExists = True
                         pPN.fldRefNotesCurrent = pRefPNNewNotes
                         pPN.fldRefNotesCurrentRev = txtRefPNNewNotes_Rev.Text
@@ -5705,7 +5712,7 @@ Public Class frmPartMain
 
                     Dim pParkerPN As String = ""
                     If (txtParkerPN_Part3.Text <> "") Then
-                        pParkerPN = txtParkerPN_Part1.Text + "-" + cmbParkerPN_Part2.Text + txtParkerPN_Part3.Text
+                        pParkerPN = txtParkerPN_Part1.Text + "-" + cmbParkerPN_Part2.Text + txtParkerPN_Part3.Text.Trim()
                     End If
 
                     If (chkLegacy.Checked) Then
@@ -5740,7 +5747,7 @@ Public Class frmPartMain
                         'pPN.fldParentCurrent = txtPNNew_Parent.Text
                         Dim pParentCurrent As String = ""
                         If (txtParentCur_Part3.Text <> "") Then
-                            pParentCurrent = txtParentCur_Part1.Text + "-" + cmbParentCur_Part2.Text + txtParentCur_Part3.Text  'txtPNNew_Parent.Text
+                            pParentCurrent = txtParentCur_Part1.Text + "-" + cmbParentCur_Part2.Text + txtParentCur_Part3.Text.Trim()  'txtPNNew_Parent.Text
                         End If
                         pPN.fldParentCurrent = pParentCurrent
                         pPN.fldParentCurrentRev = txtParentCur_Rev.Text.Trim()
@@ -5762,7 +5769,7 @@ Public Class frmPartMain
 
                     '======================================
                     If (txtRefPNNewDim_Part3.Text <> "") Then
-                        Dim pRefPNNewDim As String = "NH-" & cmbRefPNNewDim_Part2.Text & txtRefPNNewDim_Part3.Text
+                        Dim pRefPNNewDim As String = "NH-" & cmbRefPNNewDim_Part2.Text & txtRefPNNewDim_Part3.Text.Trim()
                         pPN.fldRefDimCurrentExists = True
                         pPN.fldRefDimCurrent = pRefPNNewDim
                         pPN.fldRefDimCurrentRev = txtRefPNNewDim_Rev.Text
@@ -5783,7 +5790,7 @@ Public Class frmPartMain
                     End If
 
                     If (txtRefPNNotes_Part3.Text <> "") Then
-                        Dim pRefPNNewNotes As String = "NH-" & cmbRefNotesNewPN_Part2.Text & txtRefPNNotes_Part3.Text
+                        Dim pRefPNNewNotes As String = "NH-" & cmbRefNotesNewPN_Part2.Text & txtRefPNNotes_Part3.Text.Trim()
                         pPN.fldRefNotesCurrentExists = True
                         pPN.fldRefNotesCurrent = pRefPNNewNotes
                         pPN.fldRefNotesCurrentRev = txtRefPNNewNotes_Rev.Text
@@ -6307,7 +6314,7 @@ Public Class frmPartMain
 
                         If (pRevCount > 0) Then
                             Dim pRev = (From Rev In mPartEntities.tblRev
-                                                Where Rev.fldPNID = PNID_In And
+                                        Where Rev.fldPNID = PNID_In And
                                                 Rev.fldID = PNRevID_In).First()
                             mPartEntities.DeleteObject(pRev)
                             mPartEntities.SaveChanges()
@@ -6319,6 +6326,21 @@ Public Class frmPartMain
                             'mProject.Platform_ID = 0
                             'mProject.Location_ID = 0
                         End If
+
+                        '....SealProcess
+                        Dim pSealProcessEntities As New SealProcessDBEntities()
+                        Dim pPartProjectID As Integer = gPartProject.Project_ID
+
+                        Dim pProcessProjectCount As Integer = (From ProcessProject In pSealProcessEntities.tblProcessProject
+                                                               Where ProcessProject.fldPartProjectID = pPartProjectID).Count()
+
+                        If (pProcessProjectCount > 0) Then
+                            Dim pProcessProject = (From ProcessProject In pSealProcessEntities.tblProcessProject
+                                                   Where ProcessProject.fldPartProjectID = pPartProjectID).First()
+                            pSealProcessEntities.DeleteObject(pProcessProject)
+                            pSealProcessEntities.SaveChanges()
+                        End If
+
 
 
                         '....SealTestProject

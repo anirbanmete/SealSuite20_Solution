@@ -16,6 +16,8 @@ Public Class Process_frmUnit
         '===============================================================================================
         mProcessProject = gProcessProject.Clone()
 
+        mProcessProject.Unit.SetDefaultVal()
+
         mProcessProject.Unit.RetrieveFrom_DB(mProcessProject.ID)
 
         PopulateComboBox(cmbLUnitPH, mProcessProject.Unit.LUnit_List)

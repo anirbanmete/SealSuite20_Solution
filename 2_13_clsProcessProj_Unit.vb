@@ -260,6 +260,23 @@ Public Class clsProcessProj_Unit
 
 #End Region
 
+    Public Sub SetDefaultVal()
+        '======================
+        '....PH
+        mPH.LIndx = Array.IndexOf(mcLUnit_List, "in")
+        mPH.FIndx = Array.IndexOf(mcFUnit_List, "lbf")
+        mPH.PIndx = Array.IndexOf(mcPUnit_List, "psi")
+        mPH.TIndx = Array.IndexOf(mcTUnit_List, "ºF")
+        mPH.LeakIndx = Array.IndexOf(mcLeakUnit_List, "cc/s")
+
+        '....Cust
+        mCust.LIndx = Array.IndexOf(mcLUnit_List, "in")
+        mCust.FIndx = Array.IndexOf(mcFUnit_List, "lbf")
+        mCust.PIndx = Array.IndexOf(mcPUnit_List, "psi")
+        mCust.TIndx = Array.IndexOf(mcTUnit_List, "ºF")
+        mCust.LeakIndx = Array.IndexOf(mcLeakUnit_List, "cc/s")
+
+    End Sub
 
 #End Region
 

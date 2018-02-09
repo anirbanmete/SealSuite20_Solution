@@ -823,7 +823,7 @@ Public Class Process_frmMain
         mProcess_Project.Shipping.RetrieveFromDB(mProcess_Project.ID)
 
         mProcess_Project.IssueCommnt.RetrieveFromDB(mProcess_Project.ID)
-        mProcess_Project.Approval.RetrieveFromDB(mProcess_Project.ID)
+        ''mProcess_Project.Approval.RetrieveFromDB(mProcess_Project.ID)
 
     End Sub
 
@@ -2463,13 +2463,17 @@ Public Class Process_frmMain
         '.... "Shipping:"
         With mProcess_Project.Shipping
 
+            Dim pRowCount As Integer = 0
             For i As Integer = 0 To mProcess_Project.Design.CustSpec.ID_Cust.Count - 1
-                grdShipping_CustSpec.Rows.Add()
-                grdShipping_CustSpec.Rows(i).Cells(0).Value = mProcess_Project.Design.CustSpec.Desc(i)
-                grdShipping_CustSpec.Rows(i).Cells(1).Value = mProcess_Project.Design.CustSpec.Interpret(i)
+                If (mProcess_Project.Design.CustSpec.Type(i) = "Packaging") Then
+                    grdShipping_CustSpec.Rows.Add()
+                    grdShipping_CustSpec.Rows(pRowCount).Cells(0).Value = mProcess_Project.Design.CustSpec.Desc(i)
+                    grdShipping_CustSpec.Rows(pRowCount).Cells(1).Value = mProcess_Project.Design.CustSpec.Interpret(i)
+                    pRowCount = pRowCount + 1
+                End If
             Next
             grdShipping_CustSpec.AllowUserToAddRows = False
-            grpCustSpec_Shipping.Enabled = False
+            'grpCustSpec_Shipping.Enabled = False
             txtShipping_Notes.Text = .Notes
 
             If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Shipping")) Then
@@ -2989,72 +2993,6 @@ Public Class Process_frmMain
             txtModifiedBy.Text = gUser.FirstName + " " + gUser.LastName
         End If
 
-        'If (CompareVal_PreOrder()) Then
-        '    grdPreOrderEditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-        '    grdPreOrderEditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-        'End If
-
-        'If (CompareVal_Export()) Then
-        '    grdExport_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-        '    grdExport_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-        'End If
-
-        'If (CompareVal_OrdEntry()) Then
-        '    grdOrdEntry_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-        '    grdOrdEntry_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-        'End If
-
-        'If (CompareVal_CostEstimating()) Then
-        '    grdCost_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-        '    grdCost_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-        'End If
-
-        'If (CompareVal_App()) Then
-        '    If (mProcess_Project.App.Type = "Face") Then
-        '        grdApp_EditedBy_Face.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-        '        grdApp_EditedBy_Face.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-        '    Else
-        '        grdApp_EditedBy_Axial.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-        '        grdApp_EditedBy_Axial.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-        '    End If
-        'End If
-
-
-        'If (CompareVal_Design()) Then
-        '    grdDesign_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-        '    grdDesign_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-        'End If
-
-        'If (CompareVal_Manf()) Then
-        '    grdManf_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-        '    grdManf_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-        'End If
-
-        'If (CompareVal_Purchase()) Then
-        '    grdPurchase_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-        '    grdPurchase_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-        'End If
-
-        'If (CompareVal_Qlty()) Then
-        '    grdQuality_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-        '    grdQuality_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-        'End If
-
-        'If (CompareVal_DWG()) Then
-        '    grdDwg_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-        '    grdDwg_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-        'End If
-
-        'If (CompareVal_Test()) Then
-        '    grdTest_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-        '    grdTest_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-        'End If
-
-        'If (CompareVal_Shipping()) Then
-        '    grdShipping_EditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-        '    grdShipping_EditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
-        'End If
-
         If (TabControl1.SelectedIndex = 0) Then
             CopyDataGridView(grdOrdEntry_CustContact, grdCustContact)
 
@@ -3106,6 +3044,22 @@ Public Class Process_frmMain
                     grdPurchase_ToolNGages.Rows(i).Cells(4).Value = mProcess_Project.Manf.ToolNGage.DesignResponsibility(i)
                 End If
             Next
+
+        ElseIf (TabControl1.SelectedIndex = 12) Then
+
+            '....Shipping
+            grdShipping_CustSpec.Rows.Clear()
+            Dim pRowCount As Integer = 0
+            For i As Integer = 0 To mProcess_Project.Design.CustSpec.ID_Cust.Count - 1
+                If (mProcess_Project.Design.CustSpec.Type(i) = "Packaging") Then
+                    grdShipping_CustSpec.Rows.Add()
+                    grdShipping_CustSpec.Rows(pRowCount).Cells(0).Value = mProcess_Project.Design.CustSpec.Desc(i)
+                    grdShipping_CustSpec.Rows(pRowCount).Cells(1).Value = mProcess_Project.Design.CustSpec.Interpret(i)
+                    pRowCount = pRowCount + 1
+                End If
+            Next
+            grdShipping_CustSpec.AllowUserToAddRows = False
+            'grpCustSpec_Shipping.Enabled = False
         End If
 
         txtParkerPart.Focus()
@@ -4273,6 +4227,12 @@ Public Class Process_frmMain
 
             Dim pCI As New CultureInfo("en-US")
 
+            '....Header
+            If (CompareVal_Header()) Then
+                txtDateMod.Text = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                txtModifiedBy.Text = gUser.FirstName + " " + gUser.LastName
+            End If
+
             '.... "Header:"
             With mProcess_Project
                 .POPCoding = cmbPopCoding.Text
@@ -4307,11 +4267,11 @@ Public Class Process_frmMain
                 CopyDataGridView(grdQuality_SplOperation, grdCost_SplOperation)
             End If
 
-            '....Header
-            If (CompareVal_Header()) Then
-                txtDateMod.Text = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                txtModifiedBy.Text = gUser.FirstName + " " + gUser.LastName
-            End If
+            ''....Header
+            'If (CompareVal_Header()) Then
+            '    txtDateMod.Text = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+            '    txtModifiedBy.Text = gUser.FirstName + " " + gUser.LastName
+            'End If
 
             '....Edited By
             If (CompareVal_PreOrder()) Then
@@ -5684,7 +5644,6 @@ Public Class Process_frmMain
             End With
 
             '.... "Qlty:"
-
             With mProcess_Project.Qlty
                 If (cmbQuality_ApprovedSupplier.Text = "Y") Then
                     .IsApvdSupplierOnly = True
@@ -6076,28 +6035,28 @@ Public Class Process_frmMain
 
             '.... "Approval:"
 
-            With mProcess_Project.Approval
-                .ID_Approval.Clear()
-                .Dept.Clear()
-                .Name.Clear()
-                .Title.Clear()
-                .Signed.Clear()
-                .DateSigned.Clear()
+            ''With mProcess_Project.Approval
+            ''    .ID_Approval.Clear()
+            ''    .Dept.Clear()
+            ''    .Name.Clear()
+            ''    .Title.Clear()
+            ''    .Signed.Clear()
+            ''    .DateSigned.Clear()
 
-                For j As Integer = 0 To grdApproval_Attendees.Rows.Count - 1
-                    .ID_Approval.Add(j + 1)
-                    .Dept.Add(grdApproval_Attendees.Rows(j).Cells(0).Value)
-                    .Name.Add(grdApproval_Attendees.Rows(j).Cells(1).Value)
-                    .Title.Add(grdApproval_Attendees.Rows(j).Cells(2).Value)
-                    .Signed.Add(grdApproval_Attendees.Rows(j).Cells(3).Value)
-                    If (grdApproval_Attendees.Rows(j).Cells(4).Value <> "" And Not IsNothing(grdApproval_Attendees.Rows(j).Cells(4).Value)) Then
-                        .DateSigned.Add(grdApproval_Attendees.Rows(j).Cells(4).Value)
-                    Else
-                        .DateSigned.Add(DateTime.MinValue)
-                    End If
+            ''    For j As Integer = 0 To grdApproval_Attendees.Rows.Count - 1
+            ''        .ID_Approval.Add(j + 1)
+            ''        .Dept.Add(grdApproval_Attendees.Rows(j).Cells(0).Value)
+            ''        .Name.Add(grdApproval_Attendees.Rows(j).Cells(1).Value)
+            ''        .Title.Add(grdApproval_Attendees.Rows(j).Cells(2).Value)
+            ''        .Signed.Add(grdApproval_Attendees.Rows(j).Cells(3).Value)
+            ''        If (grdApproval_Attendees.Rows(j).Cells(4).Value <> "" And Not IsNothing(grdApproval_Attendees.Rows(j).Cells(4).Value)) Then
+            ''            .DateSigned.Add(grdApproval_Attendees.Rows(j).Cells(4).Value)
+            ''        Else
+            ''            .DateSigned.Add(DateTime.MinValue)
+            ''        End If
 
-                Next
-            End With
+            ''    Next
+            ''End With
 
             gProcessProject = mProcess_Project.Clone()
 
@@ -6125,7 +6084,7 @@ Public Class Process_frmMain
         'mProcess_Project.Planning.SaveToDB(mProcess_Project.ID)
         mProcess_Project.Shipping.SaveToDB(mProcess_Project.ID)
         mProcess_Project.IssueCommnt.SaveToDB(mProcess_Project.ID)
-        mProcess_Project.Approval.SaveToDB(mProcess_Project.ID)
+        ''mProcess_Project.Approval.SaveToDB(mProcess_Project.ID)
 
     End Sub
 
