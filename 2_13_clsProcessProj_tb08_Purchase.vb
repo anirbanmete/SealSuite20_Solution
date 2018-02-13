@@ -2,9 +2,9 @@
 '                                                                              '
 '                          SOFTWARE  :  "SealProcess"                          '
 '                      CLASS MODULE  :  Process_clsPurchase                    '
-'                        VERSION NO  :  1.1                                    '
+'                        VERSION NO  :  1.3                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  05JAN18                                '
+'                     LAST MODIFIED  :  05FEB18                                '
 '                                                                              '
 '===============================================================================
 Imports System.Globalization
@@ -190,6 +190,7 @@ Public Class clsProcessProj_Purchase
         Private mID_Mat As New List(Of Integer)
         Private mItem As New List(Of String)
         Private mEstQty As New List(Of Double)
+        Private mQty_Unit As New List(Of String)
         Private mStatus As New List(Of String)
         Private mLeadTime As New List(Of Double)
 
@@ -230,6 +231,18 @@ Public Class clsProcessProj_Purchase
 
             Set(Obj As List(Of Double))
                 mEstQty = Obj
+            End Set
+        End Property
+
+        '....Qty_Unit
+        Public Property Qty_Unit() As List(Of String)
+            '========================================
+            Get
+                Return mQty_Unit
+            End Get
+
+            Set(Obj As List(Of String))
+                mQty_Unit = Obj
             End Set
         End Property
 
@@ -281,6 +294,7 @@ Public Class clsProcessProj_Purchase
                         mID_Mat.Add(pQryMat(i).fldID)
                         mItem.Add(pQryMat(i).fldItem)
                         mEstQty.Add(pQryMat(i).fldEstQty)
+                        mQty_Unit.Add(pQryMat(i).fldQty_Unit)
                         mStatus.Add(pQryMat(i).fldStatus)
                         mLeadTime.Add(pQryMat(i).fldLeadTime)
 
@@ -320,6 +334,7 @@ Public Class clsProcessProj_Purchase
                     .fldID = j + 1
                     .fldItem = mItem(j)
                     .fldEstQty = mEstQty(j)
+                    .fldQty_Unit = mQty_Unit(j)
                     .fldStatus = mStatus(j)
                     .fldLeadTime = mLeadTime(j)
 

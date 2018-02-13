@@ -1,8 +1,8 @@
 ﻿'===============================================================================
 '                                                                              '
-'                          SOFTWARE  :  "SealProcess"                          '
-'                      CLASS MODULE  :  clsSuiteFile                           '
-'                        VERSION NO  :  2.0                                    '
+'                          SOFTWARE  :  "SealSuite"                          '
+'                      CLASS MODULE  :  clsFile                                '
+'                        VERSION NO  :  2.3                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
 '                     LAST MODIFIED  :  13DEC17                                '
 '                                                                              '

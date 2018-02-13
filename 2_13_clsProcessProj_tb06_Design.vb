@@ -712,7 +712,7 @@ Public Class clsProcessProj_Design
 #End Region
 
 #Region "Class clsCustSpec"
-
+    <Serializable()>
     Public Class clsCustSpec
 
 #Region "MEMBER VARIABLES:"
@@ -785,12 +785,12 @@ Public Class clsProcessProj_Design
             Try
                 '....tblDesignSpec
                 Dim pQryDesignSpecCount As Integer = (From pRec In pSealProcessDBEntities.tblDesign_CustSpec
-                                   Where pRec.fldProcessProjectID = ProjectID_In Select pRec).Count()
+                                                      Where pRec.fldProcessProjectID = ProjectID_In Select pRec).Count()
 
                 If (pQryDesignSpecCount > 0) Then
 
                     Dim pQrySpec = (From pRec In pSealProcessDBEntities.tblDesign_CustSpec
-                                       Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
+                                    Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
 
                     For i As Integer = 0 To pQrySpec.Count - 1
                         ID_Cust.Add(pQrySpec(i).fldID)
@@ -816,7 +816,7 @@ Public Class clsProcessProj_Design
             'Dim pCost_SplOperation As New tblCost_SplOperation
 
             Dim pQrySpec = (From Spec In pSealProcessDBEntities.tblDesign_CustSpec
-                                                Where Spec.fldProcessProjectID = ProjectID_In Select Spec).ToList()
+                            Where Spec.fldProcessProjectID = ProjectID_In Select Spec).ToList()
 
             If (pQrySpec.Count > 0) Then
                 For j As Integer = 0 To pQrySpec.Count() - 1
@@ -852,7 +852,7 @@ Public Class clsProcessProj_Design
 #End Region
 
 #Region "Class clsSealDim"
-
+    <Serializable()>
     Public Class clsSealDim
 
 #Region "MEMBER VARIABLES:"
@@ -937,12 +937,12 @@ Public Class clsProcessProj_Design
             Try
                 '....tblDesignSeal
                 Dim pQryDesignSealCount As Integer = (From pRec In pSealProcessDBEntities.tblDesign_SealDim
-                                   Where pRec.fldProcessProjectID = ProjectID_In Select pRec).Count()
+                                                      Where pRec.fldProcessProjectID = ProjectID_In Select pRec).Count()
 
                 If (pQryDesignSealCount > 0) Then
 
                     Dim pQrySeal = (From pRec In pSealProcessDBEntities.tblDesign_SealDim
-                                       Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
+                                    Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
 
                     For i As Integer = 0 To pQrySeal.Count - 1
                         ID_Seal.Add(pQrySeal(i).fldID)
@@ -969,7 +969,7 @@ Public Class clsProcessProj_Design
             'Dim pCost_SplOperation As New tblCost_SplOperation
 
             Dim pQrySeal = (From Seal In pSealProcessDBEntities.tblDesign_SealDim
-                                                Where Seal.fldProcessProjectID = ProjectID_In Select Seal).ToList()
+                            Where Seal.fldProcessProjectID = ProjectID_In Select Seal).ToList()
 
             If (pQrySeal.Count > 0) Then
                 For j As Integer = 0 To pQrySeal.Count() - 1

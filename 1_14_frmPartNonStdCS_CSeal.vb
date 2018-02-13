@@ -71,7 +71,7 @@ Public Class Part_frmNonStdCS_CSeal
         ''                                           '........Picture Box - (in)
 
         'Dim psngMargin As Single
-        'psngMargin = gPartUnit.EngLToUserL(mcUniformMargin) '....In user unit (in or mm)
+        'psngMargin = gUnit.EngLToUserL(mcUniformMargin) '....In user unit (in or mm)
 
         ''....Margins around the graphics in the picture box.
         'mMargin(1) = psngMargin                     '....Left
@@ -169,7 +169,7 @@ Public Class Part_frmNonStdCS_CSeal
         pIncrement_Calc = (mCSeal.DHfreeAdjMax + mCSeal.DHfreeAdjMin) / pcNStep
 
         Dim pIncrement_Calc_UserL As Single
-        pIncrement_Calc_UserL = gPartUnit.L_ConToUser(pIncrement_Calc)
+        pIncrement_Calc_UserL = gUnit.L_ConToUser(pIncrement_Calc)
 
 
         'Determine a convinient increment value close to the above initial value.
@@ -213,7 +213,7 @@ Public Class Part_frmNonStdCS_CSeal
         '........Maximum Value:
         '
         Dim pDHfreeAdjMax_UserL As Single
-        pDHfreeAdjMax_UserL = gPartUnit.L_ConToUser(mCSeal.DHfreeAdjMax)
+        pDHfreeAdjMax_UserL = gUnit.L_ConToUser(mCSeal.DHfreeAdjMax)
 
         i = 0       '....Initialize
         Do While (i * pIncrement_UpDown < pDHfreeAdjMax_UserL)
@@ -226,7 +226,7 @@ Public Class Part_frmNonStdCS_CSeal
         '........Minimum Value:
         '
         Dim pDHfreeAdjMin_UserL As Single
-        pDHfreeAdjMin_UserL = gPartUnit.L_ConToUser(mCSeal.DHfreeAdjMin)
+        pDHfreeAdjMin_UserL = gUnit.L_ConToUser(mCSeal.DHfreeAdjMin)
 
         i = 0       '....Initialize
         Do While (i * pIncrement_UpDown < pDHfreeAdjMin_UserL)
@@ -248,7 +248,7 @@ Public Class Part_frmNonStdCS_CSeal
 
             '....Make an attempt to assign the current object's value.
             Dim pDHfree_UserL As Single
-            pDHfree_UserL = gPartUnit.L_ConToUser(mCSeal.DHfree)
+            pDHfree_UserL = gUnit.L_ConToUser(mCSeal.DHfree)
             Assign_UpDownButtonValue(updDHfree, pDHfree_UserL)
 
 
@@ -371,20 +371,20 @@ Public Class Part_frmNonStdCS_CSeal
 
             txtCrossSecNo.Text = .MCrossSecNo
             txtPOrient.Text = .POrient
-            txtDControl.Text = gPartUnit.WriteInUserL(.DControl)
+            txtDControl.Text = gUnit.WriteInUserL(.DControl)
 
-            lblWidStd.Text = gPartUnit.WriteInUserL(.WidStd)
-            lblWid.Text = gPartUnit.WriteInUserL(.Wid)
+            lblWidStd.Text = gUnit.WriteInUserL(.WidStd)
+            lblWid.Text = gUnit.WriteInUserL(.Wid)
 
             '....Standard parameter values:
-            txtHFreeStd.Text = gPartUnit.WriteInUserL(.HfreeStd)
+            txtHFreeStd.Text = gUnit.WriteInUserL(.HfreeStd)
             txtThetaOpeningStd.Text = Format(.ThetaOpeningStd, "##0.0")
-            txtTStd.Text = gPartUnit.WriteInUserL(.TStd, "LFormat")
+            txtTStd.Text = gUnit.WriteInUserL(.TStd, "LFormat")
 
             '....Adjusted parameter values:
-            'txtHfree.Text = gPartUnit.WriteInUserL(.Hfree)
+            'txtHfree.Text = gUnit.WriteInUserL(.Hfree)
             'txtThetaOpening.Text = Format(.ThetaOpening, "##0.0")
-            'txtT.Text = gPartUnit.WriteInUserL(.T, "LFormat")
+            'txtT.Text = gUnit.WriteInUserL(.T, "LFormat")
 
             '....Set Fore color & Back color.       'AM 18JAN10
             txtCrossSecNo.BackColor = Color.Gainsboro
@@ -409,9 +409,9 @@ Public Class Part_frmNonStdCS_CSeal
             'If (.Adjusted) Then
 
             If (Math.Abs(.DHfree) > gcEPS) Then
-                txtHfree.Text = gPartUnit.WriteInUserL(.Hfree + .DHfree)
+                txtHfree.Text = gUnit.WriteInUserL(.Hfree + .DHfree)
             Else
-                txtHfree.Text = gPartUnit.WriteInUserL(.Hfree)
+                txtHfree.Text = gUnit.WriteInUserL(.Hfree)
             End If
 
             If (Math.Abs(.DThetaOpening) > gcEPS) Then
@@ -422,7 +422,7 @@ Public Class Part_frmNonStdCS_CSeal
             End If
 
             If (Math.Abs(.T) > gcEPS) Then
-                txtT.Text = gPartUnit.WriteInUserL(.T, "LFormat")
+                txtT.Text = gUnit.WriteInUserL(.T, "LFormat")
             Else
                 txtT.Text = .TStd
             End If
@@ -451,12 +451,12 @@ Public Class Part_frmNonStdCS_CSeal
         If mblnUpdDHfree_Entered = True Then
 
             Dim pDHfree As Single
-            pDHfree = gPartUnit.L_UserToCon(CType(updDHfree.Value, Single))
+            pDHfree = gUnit.L_UserToCon(CType(updDHfree.Value, Single))
 
             Dim pHfree As Single
             pHfree = mCSeal.HfreeStd + pDHfree
 
-            txtHfree.Text = gPartUnit.WriteInUserL(pHfree)
+            txtHfree.Text = gUnit.WriteInUserL(pHfree)
         End If
     End Sub
 
@@ -502,7 +502,7 @@ Public Class Part_frmNonStdCS_CSeal
                     pRin = (0.5 * .Hfree - .ArrayTStd(pIndexT))
 
                     If pRin > gcEPS Then
-                        txtT.Text = gPartUnit.WriteInUserL(.ArrayTStd(pIndexT), "LFormat")
+                        txtT.Text = gUnit.WriteInUserL(.ArrayTStd(pIndexT), "LFormat")
 
                     Else
                         Dim pstrMsg As String
@@ -546,16 +546,16 @@ Public Class Part_frmNonStdCS_CSeal
         '
         Dim pDHfree As Single
         '....Convert the text box value from User Unit ===> Consistent Unit.
-        pDHfree = gPartUnit.L_UserToCon(txtHfree.Text) - mCSeal.HfreeStd
+        pDHfree = gUnit.L_UserToCon(txtHfree.Text) - mCSeal.HfreeStd
 
         Dim pDHfree_UserL As Single
-        pDHfree_UserL = gPartUnit.L_ConToUser(pDHfree)
+        pDHfree_UserL = gUnit.L_ConToUser(pDHfree)
 
         Dim pERROR_ROUND_OFF_UserL As Single
-        If gPartUnit.System = "English" Then
+        If gUnit.System = "English" Then
             pERROR_ROUND_OFF_UserL = 0.0005
 
-        ElseIf gPartUnit.System = "Metric" Then
+        ElseIf gUnit.System = "Metric" Then
             pERROR_ROUND_OFF_UserL = 0.006          '....0.005 ==> 0.006. PB 22MAR07
         End If                                      '....Corrects Error # 25 DR V50.
 
@@ -575,7 +575,7 @@ Public Class Part_frmNonStdCS_CSeal
                                                                       MessageBoxIcon.Error)
 
                 pDHfree_UserL = CType(updDHfree.Minimum, Single)
-                pDHfree = gPartUnit.L_UserToCon(pDHfree_UserL)
+                pDHfree = gUnit.L_UserToCon(pDHfree_UserL)
                 pblnDHfree_Modified = True
 
                 '....Resolves DR - V41: error 2. 13NOV06.
@@ -586,7 +586,7 @@ Public Class Part_frmNonStdCS_CSeal
                 MessageBox.Show(pstrMsg, "DHfree Maximum Value Error", MessageBoxButtons.OK, _
                                                                     MessageBoxIcon.Error)
                 pDHfree_UserL = CType(updDHfree.Maximum, Single)
-                pDHfree = gPartUnit.L_UserToCon(pDHfree_UserL)
+                pDHfree = gUnit.L_UserToCon(pDHfree_UserL)
                 pblnDHfree_Modified = True
 
             End If
@@ -603,9 +603,9 @@ Public Class Part_frmNonStdCS_CSeal
             .DHfree = pDHfree
 
             If (pblnDHfree_Modified = True) Then _
-                txtHfree.Text = gPartUnit.WriteInUserL(.Hfree)
+                txtHfree.Text = gUnit.WriteInUserL(.Hfree)
 
-            txtDControl.Text = gPartUnit.WriteInUserL(.DControl)    '....Update display.
+            txtDControl.Text = gUnit.WriteInUserL(.DControl)    '....Update display.
         End With
 
         'AES 27JUL17
@@ -614,7 +614,7 @@ Public Class Part_frmNonStdCS_CSeal
 
         '....Check the "T" value if it is within the allowable max. & min. manufacturing limits, 
         '........which are dependent on Hfree.  
-        Dim pT As Single = gPartUnit.L_UserToCon(txtT.Text)
+        Dim pT As Single = gUnit.L_UserToCon(txtT.Text)
         CheckTValue(pT)
 
         '....Redraw Seal Geometries.
@@ -715,8 +715,8 @@ Public Class Part_frmNonStdCS_CSeal
         '....Preset hard limits on Thickness: Minimum = 0.002 in & Maximum = 0.080 in.
         '
         '........In user unit: (in or mm)
-        Dim pcThickMin_HardLim As Single = gPartUnit.L_ConToUser(0.002 * gPartUnit.CFacConL)
-        Dim pcThickMax_HardLim As Single = gPartUnit.L_ConToUser(0.08 * gPartUnit.CFacConL)
+        Dim pcThickMin_HardLim As Single = gUnit.L_ConToUser(0.002 * gUnit.CFacConL)
+        Dim pcThickMax_HardLim As Single = gUnit.L_ConToUser(0.08 * gUnit.CFacConL)
 
 
         Dim pThick_Entered As Single = ConvertToSng(txtT.Text)
@@ -727,7 +727,7 @@ Public Class Part_frmNonStdCS_CSeal
             MessageBox.Show(pstrMsg, "Thickness Error", MessageBoxButtons.OK, _
                                                         MessageBoxIcon.Error)
             '....Reset the text box display.
-            txtT.Text = Format(pcThickMax_HardLim, gPartUnit.LFormat)
+            txtT.Text = Format(pcThickMax_HardLim, gUnit.LFormat)
 
 
         ElseIf pThick_Entered < pcThickMin_HardLim Then
@@ -735,12 +735,12 @@ Public Class Part_frmNonStdCS_CSeal
             MessageBox.Show(pstrMsg, "Thick Error", MessageBoxButtons.OK, _
                                                     MessageBoxIcon.Error)
             '....Reset the text box display.
-            txtT.Text = Format(pcThickMin_HardLim, gPartUnit.LFormat)
+            txtT.Text = Format(pcThickMin_HardLim, gUnit.LFormat)
 
         End If
 
 
-        Dim pT As Single = gPartUnit.L_UserToCon(txtT.Text)
+        Dim pT As Single = gUnit.L_UserToCon(txtT.Text)
         CheckTValue(pT)
 
         'Re-draw Seal Geometries.
@@ -771,7 +771,7 @@ Public Class Part_frmNonStdCS_CSeal
             MessageBox.Show(pstrMsg, "Thickness Error", MessageBoxButtons.OK, _
                                                         MessageBoxIcon.Error)
 
-            txtT.Text = gPartUnit.WriteInUserL(mCSeal.T, "LFormat")
+            txtT.Text = gUnit.WriteInUserL(mCSeal.T, "LFormat")
 
         End If
 
@@ -837,9 +837,9 @@ Public Class Part_frmNonStdCS_CSeal
         '=================    
         '....Local form data ===> Global Seal Object Data.
         With mPartProject.PNR.HW
-            .DHfree = gPartUnit.L_UserToCon(txtHfree.Text) - mCSeal.HfreeStd
+            .DHfree = gUnit.L_UserToCon(txtHfree.Text) - mCSeal.HfreeStd
             .DThetaOpening = Val(txtThetaOpening.Text) - mCSeal.ThetaOpeningStd
-            .T = gPartUnit.L_UserToCon(txtT.Text)
+            .T = gUnit.L_UserToCon(txtT.Text)
         End With
 
     End Sub
@@ -888,19 +888,19 @@ Public Class Part_frmNonStdCS_CSeal
         Dim pDpY As Single
 
         '....Set the PageUnit property.
-        If gPartUnit.System = "English" Then
+        If gUnit.System = "English" Then
             pGr.PageUnit = GraphicsUnit.Inch
 
             '....# of Pixels/in
             pDpX = pGr.DpiX
             pDpY = pGr.DpiY
 
-        ElseIf gPartUnit.System = "Metric" Then
+        ElseIf gUnit.System = "Metric" Then
             pGr.PageUnit = GraphicsUnit.Millimeter
 
             '....# of Pixels/mm
-            pDpX = pGr.DpiX / gPartUnit.EngLToUserL(1.0)
-            pDpY = pGr.DpiY / gPartUnit.EngLToUserL(1.0)
+            pDpX = pGr.DpiX / gUnit.EngLToUserL(1.0)
+            pDpY = pGr.DpiY / gUnit.EngLToUserL(1.0)
         End If
 
 
@@ -918,7 +918,7 @@ Public Class Part_frmNonStdCS_CSeal
         '---------------
         If mCSeal Is Nothing = False Then
 
-            lblStandard.Text = "Standard  =  " & gPartUnit.WriteInUserL((mCSeal.HfreeStd))
+            lblStandard.Text = "Standard  =  " & gUnit.WriteInUserL((mCSeal.HfreeStd))
 
             Dim psngDelHfreePCent As Single
             psngDelHfreePCent = (mCSeal.Hfree - mCSeal.HfreeStd) * 100 / mCSeal.HfreeStd
@@ -939,15 +939,15 @@ Public Class Part_frmNonStdCS_CSeal
             '                                   PB 22MAR07. Corrects Error # 25 DR V50.
 
             Dim pERROR_ROUNDING_Max As Single
-            If gPartUnit.System = "English" Then
+            If gUnit.System = "English" Then
                 pERROR_ROUNDING_Max = pERROR_ROUNDING_Max_Eng
 
-            ElseIf gPartUnit.System = "Metric" Then
+            ElseIf gUnit.System = "Metric" Then
                 pERROR_ROUNDING_Max = pERROR_ROUNDING_Max_Met
             End If
 
             Dim pERROR_DelHfreePCent_Max As Single
-            Dim pHfreeStd_UserL As Single = gPartUnit.L_ConToUser(mCSeal.HfreeStd)
+            Dim pHfreeStd_UserL As Single = gUnit.L_ConToUser(mCSeal.HfreeStd)
             pERROR_DelHfreePCent_Max = pERROR_ROUNDING_Max * 100 / pHfreeStd_UserL
 
 
@@ -957,11 +957,11 @@ Public Class Part_frmNonStdCS_CSeal
             ElseIf Abs(psngDelHfreePCent) > pERROR_DelHfreePCent_Max Then  ' 0.1# Then
                 lblCSealAdjusted.Visible = True
                 lblCSealAdjusted.Text = "Adjusted   =  " & _
-                                    gPartUnit.WriteInUserL(mCSeal.Hfree) & _
+                                    gUnit.WriteInUserL(mCSeal.Hfree) & _
                                     "  ( " & Format(psngDelHfreePCent, "##0.0") & " %)"
             End If
 
-            lblWid.Text = gPartUnit.WriteInUserL(mCSeal.Wid)
+            lblWid.Text = gUnit.WriteInUserL(mCSeal.Wid)
 
         End If
 

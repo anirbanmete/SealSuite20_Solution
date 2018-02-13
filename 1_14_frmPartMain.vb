@@ -4,7 +4,7 @@
 '                      FORM MODULE   :  frmMain                                '
 '                        VERSION NO  :  1.4                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  09JAN18                                '
+'                     LAST MODIFIED  :  06FEB18                                '
 '                                                                              '
 '===============================================================================
 '
@@ -128,10 +128,16 @@ Public Class frmPartMain
         'Add any initialization after the InitializeComponent() call
         '....European Convention
         ''PopulateCultureCmbBox(cmbCulturalFormat)
+        tsbAdd.Enabled = True
+        tsbEdit.Enabled = True
+        tsbSave.Enabled = False
+        tsbDelete.Enabled = True
 
         mblnAdd = False
         mblnEdit = False
         cmdHardware.Enabled = False
+        cmdSealProcess.Enabled = False
+
 
         GetPartProjectInfo()
 
@@ -1022,7 +1028,9 @@ Public Class frmPartMain
             Case "cmdSealProcess"
                 SetDefaultData()
                 SaveData()
-                gUser.RetrieveUserRoles()
+                gUser.RetrieveUserTitle()
+
+                SetUserRole()       'AES 25JAN18
                 'Me.Hide()
                 Dim pProcess_frmMain As New Process_frmMain()
                 pProcess_frmMain.Size = New Size(1130, 700)     'AES 09JAN18
@@ -1077,7 +1085,7 @@ Public Class frmPartMain
 
                 Dim pSealIPEEntities As New SealIPEDBEntities()
                 Dim pQryAnalysis = (From pRec In pSealIPEEntities.tblAnalysis
-                                        Where pRec.fldProjectID = gIPE_Project.Project_ID Order By pRec.fldID Ascending Select pRec).ToList()
+                                    Where pRec.fldProjectID = gIPE_Project.Project_ID Order By pRec.fldID Ascending Select pRec).ToList()
 
                 Dim pCount As Integer = pQryAnalysis.Count()
                 For i As Integer = 0 To pCount - 1
@@ -1091,6 +1099,50 @@ Public Class frmPartMain
                 gIPE_frmAnalysisSet.ShowDialog()
 
         End Select
+
+    End Sub
+
+    Private Sub SetUserRole()
+        '=====================
+        Dim pSealSuiteEntities As New SealSuiteDBEntities()
+
+        Dim pRecCount As Integer = (From pRec In pSealSuiteEntities.tblUser
+                                    Where pRec.fldSystemLogin = gUser.SystemLogin Select pRec).Count()
+        Dim pUserID As Integer = 0
+        Dim pRoleID As Integer = 0
+        Dim pRole As String = ""
+        If (pRecCount > 0) Then
+
+            Dim pQry = (From pRec In pSealSuiteEntities.tblUser
+                        Where pRec.fldSystemLogin = gUser.SystemLogin Select pRec).First()
+
+            pUserID = pQry.fldID
+
+            Dim pQryProcess_UserRole_Count As Integer = (From pRec In pSealSuiteEntities.tblProcess_UserRole
+                                                         Where pRec.fldUserID = pUserID Select pRec).Count()
+            If (pQryProcess_UserRole_Count > 0) Then
+
+                Dim pQryProcess_UserRole = (From pRec In pSealSuiteEntities.tblProcess_UserRole
+                                            Where pRec.fldUserID = pUserID Select pRec).First()
+
+                pRoleID = pQryProcess_UserRole.fldRoleID
+
+                Dim pQry_Role_Count As Integer = (From pRec In pSealSuiteEntities.tblRole
+                                                  Where pRec.fldID = pRoleID Select pRec).Count()
+
+                If (pQry_Role_Count > 0) Then
+
+                    Dim pQry_Role = (From pRec In pSealSuiteEntities.tblRole
+                                     Where pRec.fldID = pRoleID Select pRec).First()
+
+                    pRole = pQry_Role.fldRole.ToString().Trim()
+                End If
+
+            End If
+
+        End If
+
+        gUser.Role = pRole
 
     End Sub
 
@@ -2139,12 +2191,19 @@ Public Class frmPartMain
                     txtCustomerPN_Rev.ForeColor = Color.Black
 
                     If (chkLegacy.Checked) Then
+
+                        chkNew.Enabled = True
+                        chkNew.Checked = False
+                        chkLegacy.Enabled = True
                         cmdLegacy.Enabled = True
                         txtParkerPNLegacy_Rev.Enabled = True
                         cmbParkerPN_Part2.Enabled = False
                         txtParkerPN_Part3.Enabled = False
                         txtPN_PH_Rev.Enabled = False
                     Else
+                        chkNew.Enabled = True
+                        chkNew.Checked = True
+                        chkLegacy.Enabled = True
                         cmdLegacy.Enabled = False
                         txtParkerPNLegacy_Rev.Enabled = False
                         cmbParkerPN_Part2.Enabled = True
@@ -2167,10 +2226,10 @@ Public Class frmPartMain
                     txtPN_PH_Rev.BackColor = Color.White
                     txtPN_PH_Rev.ForeColor = Color.Black
 
-                    chkNew.Enabled = True
-                    chkLegacy.Enabled = True
-                    chkNew.Checked = True
-                    cmdLegacy.Enabled = True
+                    'chkNew.Enabled = True
+                    'chkLegacy.Enabled = True
+                    'chkNew.Checked = True
+                    'cmdLegacy.Enabled = True
 
                     txtParkerPN_Legacy.ReadOnly = False
                     txtParkerPN_Legacy.BackColor = Color.White
@@ -2411,6 +2470,12 @@ Public Class frmPartMain
         End If
 
         mblnAdd = True
+        mblnEdit = False
+
+        tsbAdd.Enabled = False
+        tsbEdit.Enabled = False
+        tsbSave.Enabled = True
+        tsbDelete.Enabled = False
 
     End Sub
 
@@ -2687,6 +2752,12 @@ Public Class frmPartMain
             End If
 
             mblnEdit = True
+            mblnAdd = False
+
+            tsbAdd.Enabled = False
+            tsbEdit.Enabled = False
+            tsbSave.Enabled = True
+            tsbDelete.Enabled = False
 
         End If
 
@@ -2703,6 +2774,11 @@ Public Class frmPartMain
             UpdateRecords(mCustomerID, mPlatformID, mLocationID,
                       mPNID, mRevID)
         End If
+
+        tsbAdd.Enabled = True
+        tsbEdit.Enabled = True
+        tsbSave.Enabled = False
+        tsbDelete.Enabled = True
 
     End Sub
 
@@ -2891,15 +2967,15 @@ Public Class frmPartMain
             gPartProject.CustInfo.PN_Cust = .CustInfo.PN_Cust
             gPartProject.CustInfo.PN_Cust_Rev = .CustInfo.PN_Cust_Rev
             gPartProject.Project_ID = .Project_ID
-            gPartUnit.System = mPartProject.PNR.DimUnit.ToString()
-            gPartProject.PNR.DimUnit = mPartProject.PNR.DimUnit
+            gUnit.System = mPartProject.PNR.UnitSystem.ToString()
+            gPartProject.PNR.UnitSystem = mPartProject.PNR.UnitSystem
 
             'gPartProject.CultureName = .CultureName
 
             If (chkNew.Checked) Then
                 gPartProject.PNR.Current_Exists = True
                 gPartProject.PNR.Current_TypeNo = cmbParkerPN_Part2.Text
-                gPartProject.PNR.Current_Val = txtParkerPN_Part3.Text
+                gPartProject.PNR.Current_Val = txtParkerPN_Part3.Text.Trim()
                 gPartProject.PNR.Current_Rev = txtPN_PH_Rev.Text
             Else
                 gPartProject.PNR.Current_Exists = False
@@ -2922,7 +2998,7 @@ Public Class frmPartMain
             If (chkPNNew_Parent.Checked) Then
                 gPartProject.PNR.ParentCurrent_Exists = True
                 gPartProject.PNR.ParentCurrent_TypeNo = cmbParentCur_Part2.Text
-                gPartProject.PNR.ParentCurrent_Val = txtParentCur_Part3.Text
+                gPartProject.PNR.ParentCurrent_Val = txtParentCur_Part3.Text.Trim()
                 gPartProject.PNR.ParentCurrent_Rev = txtParentCur_Rev.Text
             Else
                 gPartProject.PNR.ParentCurrent_Exists = False
@@ -2945,7 +3021,7 @@ Public Class frmPartMain
             If (chkRefDimNew_Exists.Checked) Then
                 gPartProject.PNR.RefDimCurrent_Exists = True
                 gPartProject.PNR.RefDimCurrent_TypeNo = cmbRefPNNewDim_Part2.Text
-                gPartProject.PNR.RefDimCurrent_Val = txtRefPNNewDim_Part3.Text
+                gPartProject.PNR.RefDimCurrent_Val = txtRefPNNewDim_Part3.Text.Trim()
                 gPartProject.PNR.RefDimCurrent_Rev = txtRefPNNewDim_Rev.Text
             Else
                 gPartProject.PNR.RefDimCurrent_Exists = False
@@ -2968,7 +3044,7 @@ Public Class frmPartMain
             If (chkRefDimNotes_Exists.Checked) Then
                 gPartProject.PNR.RefNotesCurrent_Exists = True
                 gPartProject.PNR.RefNotesCurrent_TypeNo = cmbRefNotesNewPN_Part2.Text
-                gPartProject.PNR.RefNotesCurrent_Val = txtRefPNNotes_Part3.Text
+                gPartProject.PNR.RefNotesCurrent_Val = txtRefPNNotes_Part3.Text.Trim()
                 gPartProject.PNR.RefNotesCurrent_Rev = txtRefPNNewNotes_Rev.Text
             Else
                 gPartProject.PNR.RefNotesCurrent_Exists = False
@@ -2989,7 +3065,7 @@ Public Class frmPartMain
             End If
 
             'End If
-            'gPartUnit.System = gPartUnit.System
+            'gUnit.System = gUnit.System
 
             ''mIPEProjectID = .Project_ID
             gIPE_Project.Project_ID = .Project_ID
@@ -4481,7 +4557,7 @@ Public Class frmPartMain
                 Dim pParkerPN As String = ""
 
                 If (txtParkerPN_Part3.Text <> "") Then
-                    pParkerPN = txtParkerPN_Part1.Text + "-" + cmbParkerPN_Part2.Text + txtParkerPN_Part3.Text
+                    pParkerPN = txtParkerPN_Part1.Text + "-" + cmbParkerPN_Part2.Text + txtParkerPN_Part3.Text.Trim()
                 Else
                     pParkerPN = txtParkerPN_Legacy.Text
                 End If
@@ -4531,7 +4607,7 @@ Public Class frmPartMain
                         pPN.fldParentCurrentExists = True
                         Dim pParentCurrent As String = ""
                         If (txtParentCur_Part3.Text <> "") Then
-                            pParentCurrent = txtParentCur_Part1.Text + "-" + cmbParentCur_Part2.Text + txtParentCur_Part3.Text 'txtPNNew_Parent.Text
+                            pParentCurrent = txtParentCur_Part1.Text + "-" + cmbParentCur_Part2.Text + txtParentCur_Part3.Text.Trim() 'txtPNNew_Parent.Text
                         End If
                         pPN.fldParentCurrent = pParentCurrent
                         pPN.fldParentCurrentRev = txtParentCur_Rev.Text
@@ -4559,7 +4635,7 @@ Public Class frmPartMain
 
                     '======================================
                     If (txtRefPNNewDim_Part3.Text <> "") Then
-                        Dim pRefPNNewDim As String = "NH-" & cmbRefPNNewDim_Part2.Text & txtRefPNNewDim_Part3.Text
+                        Dim pRefPNNewDim As String = "NH-" & cmbRefPNNewDim_Part2.Text & txtRefPNNewDim_Part3.Text.Trim()
                         pPN.fldRefDimCurrentExists = True
                         pPN.fldRefDimCurrent = pRefPNNewDim
                         pPN.fldRefDimCurrentRev = txtRefPNNewDim_Rev.Text
@@ -4580,7 +4656,7 @@ Public Class frmPartMain
                     End If
 
                     If (txtRefPNNotes_Part3.Text <> "") Then
-                        Dim pRefPNNewNotes As String = "NH-" & cmbRefNotesNewPN_Part2.Text & txtRefPNNotes_Part3.Text
+                        Dim pRefPNNewNotes As String = "NH-" & cmbRefNotesNewPN_Part2.Text & txtRefPNNotes_Part3.Text.Trim()
                         pPN.fldRefNotesCurrentExists = True
                         pPN.fldRefNotesCurrent = pRefPNNewNotes
                         pPN.fldRefNotesCurrentRev = txtRefPNNewNotes_Rev.Text
@@ -5026,7 +5102,7 @@ Public Class frmPartMain
                 Dim pParkerPN As String = ""
 
                 If (txtParkerPN_Part3.Text <> "") Then
-                    pParkerPN = txtParkerPN_Part1.Text + "-" + cmbParkerPN_Part2.Text + txtParkerPN_Part3.Text
+                    pParkerPN = txtParkerPN_Part1.Text + "-" + cmbParkerPN_Part2.Text + txtParkerPN_Part3.Text.Trim()
                 Else
                     pParkerPN = txtParkerPN_Legacy.Text
                 End If
@@ -5085,7 +5161,7 @@ Public Class frmPartMain
                         pPN.fldParentCurrentExists = True
                         Dim pParentCurrent As String = ""
                         If (txtParentCur_Part3.Text <> "") Then
-                            pParentCurrent = txtParentCur_Part1.Text + "-" + cmbParentCur_Part2.Text + txtParentCur_Part3.Text 'txtPNNew_Parent.Text
+                            pParentCurrent = txtParentCur_Part1.Text + "-" + cmbParentCur_Part2.Text + txtParentCur_Part3.Text.Trim() 'txtPNNew_Parent.Text
                         End If
                         pPN.fldParentCurrent = pParentCurrent
                         pPN.fldParentCurrentRev = txtParentCur_Rev.Text
@@ -5105,7 +5181,7 @@ Public Class frmPartMain
 
                     '======================================
                     If (txtRefPNNewDim_Part3.Text <> "") Then
-                        Dim pRefPNNewDim As String = "NH-" & cmbRefPNNewDim_Part2.Text & txtRefPNNewDim_Part3.Text
+                        Dim pRefPNNewDim As String = "NH-" & cmbRefPNNewDim_Part2.Text & txtRefPNNewDim_Part3.Text.Trim()
                         pPN.fldRefDimCurrentExists = True
                         pPN.fldRefDimCurrent = pRefPNNewDim
                         pPN.fldRefDimCurrentRev = txtRefPNNewDim_Rev.Text
@@ -5126,7 +5202,7 @@ Public Class frmPartMain
                     End If
 
                     If (txtRefPNNotes_Part3.Text <> "") Then
-                        Dim pRefPNNewNotes As String = "NH-" & cmbRefNotesNewPN_Part2.Text & txtRefPNNotes_Part3.Text
+                        Dim pRefPNNewNotes As String = "NH-" & cmbRefNotesNewPN_Part2.Text & txtRefPNNotes_Part3.Text.Trim()
                         pPN.fldRefNotesCurrentExists = True
                         pPN.fldRefNotesCurrent = pRefPNNewNotes
                         pPN.fldRefNotesCurrentRev = txtRefPNNewNotes_Rev.Text
@@ -5636,7 +5712,7 @@ Public Class frmPartMain
 
                     Dim pParkerPN As String = ""
                     If (txtParkerPN_Part3.Text <> "") Then
-                        pParkerPN = txtParkerPN_Part1.Text + "-" + cmbParkerPN_Part2.Text + txtParkerPN_Part3.Text
+                        pParkerPN = txtParkerPN_Part1.Text + "-" + cmbParkerPN_Part2.Text + txtParkerPN_Part3.Text.Trim()
                     End If
 
                     If (chkLegacy.Checked) Then
@@ -5671,7 +5747,7 @@ Public Class frmPartMain
                         'pPN.fldParentCurrent = txtPNNew_Parent.Text
                         Dim pParentCurrent As String = ""
                         If (txtParentCur_Part3.Text <> "") Then
-                            pParentCurrent = txtParentCur_Part1.Text + "-" + cmbParentCur_Part2.Text + txtParentCur_Part3.Text  'txtPNNew_Parent.Text
+                            pParentCurrent = txtParentCur_Part1.Text + "-" + cmbParentCur_Part2.Text + txtParentCur_Part3.Text.Trim()  'txtPNNew_Parent.Text
                         End If
                         pPN.fldParentCurrent = pParentCurrent
                         pPN.fldParentCurrentRev = txtParentCur_Rev.Text.Trim()
@@ -5693,7 +5769,7 @@ Public Class frmPartMain
 
                     '======================================
                     If (txtRefPNNewDim_Part3.Text <> "") Then
-                        Dim pRefPNNewDim As String = "NH-" & cmbRefPNNewDim_Part2.Text & txtRefPNNewDim_Part3.Text
+                        Dim pRefPNNewDim As String = "NH-" & cmbRefPNNewDim_Part2.Text & txtRefPNNewDim_Part3.Text.Trim()
                         pPN.fldRefDimCurrentExists = True
                         pPN.fldRefDimCurrent = pRefPNNewDim
                         pPN.fldRefDimCurrentRev = txtRefPNNewDim_Rev.Text
@@ -5714,7 +5790,7 @@ Public Class frmPartMain
                     End If
 
                     If (txtRefPNNotes_Part3.Text <> "") Then
-                        Dim pRefPNNewNotes As String = "NH-" & cmbRefNotesNewPN_Part2.Text & txtRefPNNotes_Part3.Text
+                        Dim pRefPNNewNotes As String = "NH-" & cmbRefNotesNewPN_Part2.Text & txtRefPNNotes_Part3.Text.Trim()
                         pPN.fldRefNotesCurrentExists = True
                         pPN.fldRefNotesCurrent = pRefPNNewNotes
                         pPN.fldRefNotesCurrentRev = txtRefPNNewNotes_Rev.Text
@@ -6238,7 +6314,7 @@ Public Class frmPartMain
 
                         If (pRevCount > 0) Then
                             Dim pRev = (From Rev In mPartEntities.tblRev
-                                                Where Rev.fldPNID = PNID_In And
+                                        Where Rev.fldPNID = PNID_In And
                                                 Rev.fldID = PNRevID_In).First()
                             mPartEntities.DeleteObject(pRev)
                             mPartEntities.SaveChanges()
@@ -6250,6 +6326,21 @@ Public Class frmPartMain
                             'mProject.Platform_ID = 0
                             'mProject.Location_ID = 0
                         End If
+
+                        '....SealProcess
+                        Dim pSealProcessEntities As New SealProcessDBEntities()
+                        Dim pPartProjectID As Integer = gPartProject.Project_ID
+
+                        Dim pProcessProjectCount As Integer = (From ProcessProject In pSealProcessEntities.tblProcessProject
+                                                               Where ProcessProject.fldPartProjectID = pPartProjectID).Count()
+
+                        If (pProcessProjectCount > 0) Then
+                            Dim pProcessProject = (From ProcessProject In pSealProcessEntities.tblProcessProject
+                                                   Where ProcessProject.fldPartProjectID = pPartProjectID).First()
+                            pSealProcessEntities.DeleteObject(pProcessProject)
+                            pSealProcessEntities.SaveChanges()
+                        End If
+
 
 
                         '....SealTestProject
@@ -6801,6 +6892,7 @@ Public Class frmPartMain
             If (trvProjects.SelectedNode.Level = 2) Then
 
                 cmdHardware.Enabled = True
+                cmdSealProcess.Enabled = True
 
                 Dim pPartEntities As New SealPartDBEntities()
 
@@ -7162,7 +7254,7 @@ Public Class frmPartMain
                         Else
                             cmbUnit.SelectedIndex = 0
                         End If
-                        mPartProject.PNR.DimUnit = CType([Enum].Parse(GetType(clsPartProject.clsPNR.eDimUnit), cmbUnit.Text), clsPartProject.clsPNR.eDimUnit)
+                        mPartProject.PNR.UnitSystem = CType([Enum].Parse(GetType(clsPartProject.clsPNR.eDimUnit), cmbUnit.Text), clsPartProject.clsPNR.eDimUnit)
 
                         ' ''....Cultural Format
                         ''If (Not IsDBNull(pQry5.fldCulturalFormat) And Not IsNothing(pQry5.fldCulturalFormat)) Then
@@ -7242,6 +7334,7 @@ Public Class frmPartMain
             ElseIf (trvProjects.SelectedNode.Level = 1) Then
 
                 cmdHardware.Enabled = False
+                cmdSealProcess.Enabled = False
                 Dim pPartEntities As New SealPartDBEntities()
                 Dim pPNType As String = e.Node.Parent.Text
                 Dim pPN As String = e.Node.Text
@@ -7513,6 +7606,7 @@ Public Class frmPartMain
             ElseIf (trvProjects.SelectedNode.Level = 0) Then
 
                 cmdHardware.Enabled = False
+                cmdSealProcess.Enabled = False
 
             End If
         End If

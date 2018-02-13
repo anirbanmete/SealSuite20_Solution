@@ -2,9 +2,9 @@
 '                                                                              '
 '                          SOFTWARE  :  "SealSuite"                            '
 '                      FORM MODULE   :  frmUserGroup                           '
-'                        VERSION NO  :  2.0                                    '
+'                        VERSION NO  :  2.3                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  20DEC17                                '
+'                     LAST MODIFIED  :  06FEBC18                                '
 '                                                                              '
 '===============================================================================
 '
@@ -23,6 +23,7 @@ Public Class frmUserGroup
 #Region "MEMBER VARIABLES:"
 
     Private mblnAdd, mblnEdit As Boolean
+    Private mUserID As Integer = 0
 
 #End Region
 
@@ -56,6 +57,11 @@ Public Class frmUserGroup
             Next
 
         End If
+
+        cmdSave.Enabled = False
+        cmdAdd.Enabled = True
+        cmdEdit.Enabled = True
+        cmdDelete.Enabled = True
 
     End Sub
 
@@ -137,7 +143,7 @@ Public Class frmUserGroup
 
     Private Sub cmdAdd_Click(sender As System.Object, e As System.EventArgs) Handles cmdAdd.Click
         '========================================================================================
-        mblnEdit = True
+        mblnAdd = True
         grdUsers.AllowUserToAddRows = False
         grdUsers.Rows.Add()
         Dim pCurRow As Integer = grdUsers.Rows.Count - 1
@@ -145,6 +151,9 @@ Public Class frmUserGroup
         grdUsers.Rows(pCurRow).ReadOnly = False
         grdUsers.Rows(pCurRow).Selected = True
         cmdSave.Enabled = True
+        cmdAdd.Enabled = False
+        cmdEdit.Enabled = False
+        cmdDelete.Enabled = False
 
     End Sub
 
@@ -152,12 +161,16 @@ Public Class frmUserGroup
         '==========================================================================================
         mblnEdit = True
 
-        For i As Integer = 0 To grdUsers.Rows.Count - 1
-            grdUsers.Rows(i).ReadOnly = False
-        Next
+        'For i As Integer = 0 To grdUsers.Rows.Count - 1
+        '    grdUsers.Rows(i).ReadOnly = False
+        'Next
+
+        grdUsers.Rows(grdUsers.CurrentRow.Index).ReadOnly = False
 
         cmdSave.Enabled = True
-
+        cmdAdd.Enabled = False
+        cmdEdit.Enabled = False
+        cmdDelete.Enabled = False
     End Sub
 
     Private Sub cmdSave_Click(sender As System.Object, e As System.EventArgs) Handles cmdSave.Click
@@ -189,10 +202,17 @@ Public Class frmUserGroup
                     pUser.fldTitleID = pQry(0).fldID
                 End If
 
-                Dim pImg As Image = grdUsers.Rows(pCurRow).Cells(5).Value
-                Dim pArray As Byte() = ImgToByteArray(pImg)
-                pUser.fldSignature = pArray
+                'If (Not IsNothing(grdUsers.Rows(pCurRow).Cells(5).Value)) Then
+                '    Dim pImg As Image = grdUsers.Rows(pCurRow).Cells(5).Value
+                '    Dim pArray As Byte() = ImgToByteArray(pImg)
+                '    pUser.fldSignature = pArray
+                'End If
 
+                Dim pImg As Image = grdUsers.Rows(pCurRow).Cells(5).Value
+                If Not IsNothing(pImg) Then
+                    Dim pArray As Byte() = ImgToByteArray(pImg)
+                    pUser.fldSignature = pArray
+                End If
 
                 pUser.fldProcess = grdUsers.Rows(pCurRow).Cells(6).Value
                 pUser.fldTest = grdUsers.Rows(pCurRow).Cells(7).Value
@@ -204,57 +224,97 @@ Public Class frmUserGroup
 
                 mblnAdd = False
                 cmdSave.Enabled = False
+                cmdAdd.Enabled = True
+                cmdEdit.Enabled = True
+                cmdDelete.Enabled = True
                 grdUsers.Rows(pCurRow).ReadOnly = True
 
             ElseIf (mblnEdit) Then
-                Dim pQry = (From pRec In pSealSuiteEntities.tblUser Select pRec).ToList()
-                For i As Integer = 0 To pQry.Count - 1
-                    pSealSuiteEntities.DeleteObject(pQry(i))
-                    pSealSuiteEntities.SaveChanges()
-                Next
 
-                For i As Integer = 0 To grdUsers.Rows.Count - 1
-                    Dim pUser As New tblUser
+                Dim pCurRow As Integer = grdUsers.CurrentRow.Index
+                If (mUserID > 0) Then
+                    Dim pQryUser = (From pRec In pSealSuiteEntities.tblUser Where pRec.fldID = mUserID Select pRec).First()
 
-                    Dim pQryID = (From pRec In pSealSuiteEntities.tblUser Select pRec Order By pRec.fldID Descending).ToList()
-
-                    If (pQryID.Count > 0) Then
-                        pUser.fldID = pQryID(0).fldID + 1
-                    Else
-                        pUser.fldID = 1
-                    End If
-
-                    pUser.fldLastName = grdUsers.Rows(i).Cells(0).Value
-                    pUser.fldFirstName = grdUsers.Rows(i).Cells(1).Value
-                    pUser.fldSystemLogin = grdUsers.Rows(i).Cells(2).Value
+                    pQryUser.fldID = mUserID
+                    pQryUser.fldLastName = grdUsers.Rows(pCurRow).Cells(0).Value
+                    pQryUser.fldFirstName = grdUsers.Rows(pCurRow).Cells(1).Value
+                    pQryUser.fldSystemLogin = grdUsers.Rows(pCurRow).Cells(2).Value
 
                     Dim pTitle As String = ""
-                    pTitle = grdUsers.Rows(i).Cells(3).Value.ToString.Trim()
+                    pTitle = grdUsers.Rows(pCurRow).Cells(3).Value.ToString.Trim()
                     Dim pQry1 = (From pRec In pSealSuiteEntities.tblTitle Where pRec.fldTitle = pTitle Select pRec).ToList()
 
                     If (pQry1.Count > 0) Then
-                        pUser.fldTitleID = pQry1(0).fldID
+                        pQryUser.fldTitleID = pQry1(0).fldID
                     End If
 
-                    Dim pImg As Image = grdUsers.Rows(i).Cells(5).Value
+                    Dim pImg As Image = grdUsers.Rows(pCurRow).Cells(5).Value
                     If Not IsNothing(pImg) Then
                         Dim pArray As Byte() = ImgToByteArray(pImg)
-                        pUser.fldSignature = pArray
+                        pQryUser.fldSignature = pArray
                     End If
 
-                    pUser.fldProcess = grdUsers.Rows(i).Cells(6).Value
-                    pUser.fldTest = grdUsers.Rows(i).Cells(7).Value
-                    pUser.fldIPE = grdUsers.Rows(i).Cells(8).Value
+                    pQryUser.fldProcess = grdUsers.Rows(pCurRow).Cells(6).Value
+                    pQryUser.fldTest = grdUsers.Rows(pCurRow).Cells(7).Value
+                    pQryUser.fldIPE = grdUsers.Rows(pCurRow).Cells(8).Value
 
-
-                    pSealSuiteEntities.AddTotblUser(pUser)
                     pSealSuiteEntities.SaveChanges()
-                    grdUsers.Rows(i).ReadOnly = True
-                Next
+                End If
+
+                ''Dim pQryUser = (From pRec In pSealSuiteEntities.tblUser Where pRec.fldFirstName =  Select pRec).ToList()
+
+
+                'Dim pQry = (From pRec In pSealSuiteEntities.tblUser Select pRec).ToList()
+                'For i As Integer = 0 To pQry.Count - 1
+                '    pSealSuiteEntities.DeleteObject(pQry(i))
+                '    pSealSuiteEntities.SaveChanges()
+                'Next
+
+                'For i As Integer = 0 To grdUsers.Rows.Count - 1
+                '    Dim pUser As New tblUser
+
+                '    Dim pQryID = (From pRec In pSealSuiteEntities.tblUser Select pRec Order By pRec.fldID Descending).ToList()
+
+                '    If (pQryID.Count > 0) Then
+                '        pUser.fldID = pQryID(0).fldID + 1
+                '    Else
+                '        pUser.fldID = 1
+                '    End If
+
+                '    pUser.fldLastName = grdUsers.Rows(i).Cells(0).Value
+                '    pUser.fldFirstName = grdUsers.Rows(i).Cells(1).Value
+                '    pUser.fldSystemLogin = grdUsers.Rows(i).Cells(2).Value
+
+                '    Dim pTitle As String = ""
+                '    pTitle = grdUsers.Rows(i).Cells(3).Value.ToString.Trim()
+                '    Dim pQry1 = (From pRec In pSealSuiteEntities.tblTitle Where pRec.fldTitle = pTitle Select pRec).ToList()
+
+                '    If (pQry1.Count > 0) Then
+                '        pUser.fldTitleID = pQry1(0).fldID
+                '    End If
+
+                '    Dim pImg As Image = grdUsers.Rows(i).Cells(5).Value
+                '    If Not IsNothing(pImg) Then
+                '        Dim pArray As Byte() = ImgToByteArray(pImg)
+                '        pUser.fldSignature = pArray
+                '    End If
+
+                '    pUser.fldProcess = grdUsers.Rows(i).Cells(6).Value
+                '    pUser.fldTest = grdUsers.Rows(i).Cells(7).Value
+                '    pUser.fldIPE = grdUsers.Rows(i).Cells(8).Value
+
+
+                '    pSealSuiteEntities.AddTotblUser(pUser)
+                '    pSealSuiteEntities.SaveChanges()
+                '    grdUsers.Rows(i).ReadOnly = True
+                'Next
 
                 mblnEdit = False
                 cmdSave.Enabled = False
-
+                cmdAdd.Enabled = True
+                cmdEdit.Enabled = True
+                cmdDelete.Enabled = True
+                grdUsers.Rows(pCurRow).ReadOnly = True
             End If
 
         Catch ex As Exception
@@ -265,15 +325,20 @@ Public Class frmUserGroup
 
     Private Sub cmdDelete_Click(sender As System.Object, e As System.EventArgs) Handles cmdDelete.Click
         '==============================================================================================
+        Dim pintAnswer As Integer
+
         Dim pSealSuiteEntities As New SealSuiteDBEntities()
         Dim pSystemLogInName As String = grdUsers.Rows(grdUsers.CurrentRow.Index).Cells(2).Value
         If (pSystemLogInName <> "") Then
-            Dim pQry = (From pRec In pSealSuiteEntities.tblUser Where pRec.fldSystemLogin = pSystemLogInName Select pRec).First()
+            pintAnswer = MessageBox.Show("Are you sure you want to permanently delete this record?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
 
-            pSealSuiteEntities.DeleteObject(pQry)
-            pSealSuiteEntities.SaveChanges()
+            If pintAnswer = Windows.Forms.DialogResult.Yes Then
+                Dim pQry = (From pRec In pSealSuiteEntities.tblUser Where pRec.fldSystemLogin = pSystemLogInName Select pRec).First()
+                pSealSuiteEntities.DeleteObject(pQry)
+                pSealSuiteEntities.SaveChanges()
+                PopulateDataGrid()
+            End If
 
-            PopulateDataGrid()
         End If
 
     End Sub
@@ -343,21 +408,22 @@ Public Class frmUserGroup
     Private Sub grdUsers_CellClick(sender As System.Object,
                                    e As System.Windows.Forms.DataGridViewCellEventArgs) Handles grdUsers.CellClick
         '=============================================================================================================
-        If (Not IsNothing(grdUsers.Rows(grdUsers.CurrentRow.Index).Cells(2).Value)) Then
-            Dim pSystemLogin As String = grdUsers.Rows(grdUsers.CurrentRow.Index).Cells(2).Value
+        GetUserID()
+        'If (Not IsNothing(grdUsers.Rows(grdUsers.CurrentRow.Index).Cells(2).Value)) Then
+        '    Dim pSystemLogin As String = grdUsers.Rows(grdUsers.CurrentRow.Index).Cells(2).Value
 
-            'If (gTest_User.Role = Test_clsUser.eRole.SuperAdmin) Then
-            cmdDelete.Enabled = True
+        '    'If (gTest_User.Role = Test_clsUser.eRole.SuperAdmin) Then
+        '    cmdDelete.Enabled = True
 
-            'ElseIf (gTest_User.Role = Test_clsUser.eRole.Admin) Then
-            '    If (pSystemLogin.ToUpper() = gTest_User.SystemLogin.ToUpper()) Then
-            '        cmdDelete.Enabled = False
-            '    Else
-            '        cmdDelete.Enabled = True
-            '    End If
+        '    'ElseIf (gTest_User.Role = Test_clsUser.eRole.Admin) Then
+        '    '    If (pSystemLogin.ToUpper() = gTest_User.SystemLogin.ToUpper()) Then
+        '    '        cmdDelete.Enabled = False
+        '    '    Else
+        '    '        cmdDelete.Enabled = True
+        '    '    End If
 
-            'End If
-        End If
+        '    'End If
+        'End If
     End Sub
 
 #End Region
@@ -378,6 +444,101 @@ Public Class frmUserGroup
 
     End Sub
 
+    Private Sub grdUsers_RowHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) _
+                                             Handles grdUsers.RowHeaderMouseClick
+        '============================================================================================
+        GetUserID()
+    End Sub
+
+    Private Sub GetUserID()
+        '==================
+        Try
+
+            Dim pSealSuiteEntities As New SealSuiteDBEntities()
+            Dim pCurRow As Integer = grdUsers.CurrentRow.Index
+
+            Dim pLastName As String = ""
+            If (Not IsNothing(grdUsers.Rows(pCurRow).Cells(0).Value)) Then
+                pLastName = grdUsers.Rows(pCurRow).Cells(0).Value
+            Else
+                pLastName = ""
+            End If
+
+            Dim pFirstName As String = ""
+            If (Not IsNothing(grdUsers.Rows(pCurRow).Cells(1).Value)) Then
+                pFirstName = grdUsers.Rows(pCurRow).Cells(1).Value
+            Else
+                pFirstName = ""
+            End If
+
+            Dim pSystemLogin As String = ""
+            If (Not IsNothing(grdUsers.Rows(pCurRow).Cells(2).Value)) Then
+                pSystemLogin = grdUsers.Rows(pCurRow).Cells(2).Value
+            Else
+                pSystemLogin = ""
+            End If
+
+            If (pLastName <> "" And pFirstName <> "" And pSystemLogin <> "") Then
+                Dim pQry = (From pRec In pSealSuiteEntities.tblUser Where pRec.fldLastName = pLastName And pRec.fldFirstName = pFirstName.Trim() And pRec.fldSystemLogin = pSystemLogin.Trim() Select pRec).ToList()
+
+                If (pQry.Count > 0) Then
+                    mUserID = pQry(0).fldID
+                End If
+
+            ElseIf (pLastName = "" And pFirstName <> "" And pSystemLogin <> "") Then
+                Dim pQry = (From pRec In pSealSuiteEntities.tblUser Where pRec.fldFirstName = pFirstName.Trim() And pRec.fldSystemLogin = pSystemLogin.Trim() Select pRec).ToList()
+
+                If (pQry.Count > 0) Then
+                    mUserID = pQry(0).fldID
+                End If
+
+            ElseIf (pLastName = "" And pFirstName = "" And pSystemLogin <> "") Then
+                Dim pQry = (From pRec In pSealSuiteEntities.tblUser Where pRec.fldSystemLogin = pSystemLogin.Trim() Select pRec).ToList()
+
+                If (pQry.Count > 0) Then
+                    mUserID = pQry(0).fldID
+                End If
+
+            ElseIf (pLastName <> "" And pFirstName <> "" And pSystemLogin = "") Then
+                Dim pQry = (From pRec In pSealSuiteEntities.tblUser Where pRec.fldLastName = pLastName And pRec.fldFirstName = pFirstName.Trim() Select pRec).ToList()
+
+                If (pQry.Count > 0) Then
+                    mUserID = pQry(0).fldID
+                End If
+
+            ElseIf (pLastName = "" And pFirstName <> "" And pSystemLogin = "") Then
+                Dim pQry = (From pRec In pSealSuiteEntities.tblUser Where pRec.fldFirstName = pFirstName.Trim() Select pRec).ToList()
+
+                If (pQry.Count > 0) Then
+                    mUserID = pQry(0).fldID
+                End If
+
+            ElseIf (pLastName <> "" And pFirstName = "" And pSystemLogin <> "") Then
+                Dim pQry = (From pRec In pSealSuiteEntities.tblUser Where pRec.fldLastName = pLastName And pRec.fldSystemLogin = pSystemLogin.Trim() Select pRec).ToList()
+
+                If (pQry.Count > 0) Then
+                    mUserID = pQry(0).fldID
+                End If
+
+            ElseIf (pLastName <> "" And pFirstName = "" And pSystemLogin = "") Then
+                Dim pQry = (From pRec In pSealSuiteEntities.tblUser Where pRec.fldLastName = pLastName Select pRec).ToList()
+
+                If (pQry.Count > 0) Then
+                    mUserID = pQry(0).fldID
+                End If
+            End If
+
+            'Dim pQry = (From pRec In pSealSuiteEntities.tblUser Where pRec.fldLastName = pLastName And pRec.fldFirstName = pFirstName.Trim() And pRec.fldSystemLogin = pSystemLogin.Trim() Select pRec).ToList()
+
+            'If (pQry.Count > 0) Then
+            '    mUserID = pQry(0).fldID
+            'End If
+
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
     Private Sub SaveToDB()
         '=================
         Dim pSealSuiteEntities As New SealSuiteDBEntities()
@@ -385,7 +546,7 @@ Public Class frmUserGroup
         Dim pRecExists As Boolean = False
         '....tblProgramDataFile
         Dim pQry = (From pRec In pSealSuiteEntities.tblProgramDataFile
-                         Where pRec.fldID = 1 Select pRec).ToList()
+                    Where pRec.fldID = 1 Select pRec).ToList()
 
         Dim pProgramDataFile As New tblProgramDataFile
 
@@ -412,5 +573,5 @@ Public Class frmUserGroup
 
 #End Region
 
-    
+
 End Class

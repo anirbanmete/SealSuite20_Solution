@@ -18,7 +18,7 @@ Imports System.Runtime.Serialization
 Imports System.Xml.Serialization
 
 
-<Assembly: EdmSchemaAttribute("b6465a91-ad01-43bb-b156-9f1934b07335")>
+<Assembly: EdmSchemaAttribute("ca3eb47f-5d3f-4d82-b9dd-b71ee3177ea0")>
 #Region "EDM Relationship Metadata"
 <Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblApp_Cavity_tblApp1", "tblApp", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblApp), "tblApp_Cavity", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(tblApp_Cavity), True)>
 <Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblApp_CavityFlange_tblApp", "tblApp", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblApp), "tblApp_CavityFlange", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(tblApp_CavityFlange), True)>
@@ -53,6 +53,7 @@ Imports System.Xml.Serialization
 <Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblPreOrder_Quote_tblPreOrder", "tblPreOrder", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblPreOrder), "tblPreOrder_Quote", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(tblPreOrder_Quote), True)>
 <Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblPreOrder_SalesData_tblPreOrder", "tblPreOrder", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblPreOrder), "tblPreOrder_SalesData", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(tblPreOrder_SalesData), True)>
 <Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblPreOrder_tblProcessProject", "tblProcessProject", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblProcessProject), "tblPreOrder", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(tblPreOrder), True)>
+<Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblProcess_Unit_tblProcessProject", "tblProcessProject", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblProcessProject), "tblProcess_Unit", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(tblProcess_Unit), True)>
 <Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblPurchase_tblProcessProject", "tblProcessProject", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblProcessProject), "tblPurchase", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(tblPurchase), True)>
 <Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblQlty_tblProcessProject", "tblProcessProject", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblProcessProject), "tblQlty", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(tblQlty), True)>
 <Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblRisk_tblProcessProject", "tblProcessProject", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblProcessProject), "tblRisk", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(tblRisk), True)>
@@ -579,6 +580,20 @@ Public Partial Class SealProcessDBEntities
     ''' <summary>
     ''' No Metadata Documentation available.
     ''' </summary>
+    Public ReadOnly Property tblProcess_Unit() As ObjectSet(Of tblProcess_Unit)
+        Get
+            If (_tblProcess_Unit Is Nothing) Then
+                _tblProcess_Unit = MyBase.CreateObjectSet(Of tblProcess_Unit)("tblProcess_Unit")
+            End If
+            Return _tblProcess_Unit
+        End Get
+    End Property
+
+    Private _tblProcess_Unit As ObjectSet(Of tblProcess_Unit)
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
     Public ReadOnly Property tblProcessFile() As ObjectSet(Of tblProcessFile)
         Get
             If (_tblProcessFile Is Nothing) Then
@@ -1005,6 +1020,13 @@ Public Partial Class SealProcessDBEntities
     ''' </summary>
     Public Sub AddTotblPreOrder_SalesData(ByVal tblPreOrder_SalesData As tblPreOrder_SalesData)
         MyBase.AddObject("tblPreOrder_SalesData", tblPreOrder_SalesData)
+    End Sub
+
+    ''' <summary>
+    ''' Deprecated Method for adding a new object to the tblProcess_Unit EntitySet. Consider using the .Add method of the associated ObjectSet(Of T) property instead.
+    ''' </summary>
+    Public Sub AddTotblProcess_Unit(ByVal tblProcess_Unit As tblProcess_Unit)
+        MyBase.AddObject("tblProcess_Unit", tblProcess_Unit)
     End Sub
 
     ''' <summary>
@@ -10083,6 +10105,346 @@ End Class
 ''' <summary>
 ''' No Metadata Documentation available.
 ''' </summary>
+<EdmEntityTypeAttribute(NamespaceName:="SealProcessDBModel", Name:="tblProcess_Unit")>
+<Serializable()>
+<DataContractAttribute(IsReference:=True)>
+Public Partial Class tblProcess_Unit
+    Inherits EntityObject
+    #Region "Factory Method"
+
+    ''' <summary>
+    ''' Create a new tblProcess_Unit object.
+    ''' </summary>
+    ''' <param name="fldProcessProjectID">Initial value of the fldProcessProjectID property.</param>
+    Public Shared Function CreatetblProcess_Unit(fldProcessProjectID As Global.System.Decimal) As tblProcess_Unit
+        Dim tblProcess_Unit as tblProcess_Unit = New tblProcess_Unit
+        tblProcess_Unit.fldProcessProjectID = fldProcessProjectID
+        Return tblProcess_Unit
+    End Function
+
+    #End Region
+
+    #Region "Primitive Properties"
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=true, IsNullable:=false)>
+    <DataMemberAttribute()>
+    Public Property fldProcessProjectID() As Global.System.Decimal
+        Get
+            Return _fldProcessProjectID
+        End Get
+        Set
+            If (_fldProcessProjectID <> Value) Then
+                OnfldProcessProjectIDChanging(value)
+                ReportPropertyChanging("fldProcessProjectID")
+                _fldProcessProjectID = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("fldProcessProjectID")
+                OnfldProcessProjectIDChanged()
+            End If
+        End Set
+    End Property
+
+    Private _fldProcessProjectID As Global.System.Decimal
+    Private Partial Sub OnfldProcessProjectIDChanging(value As Global.System.Decimal)
+    End Sub
+
+    Private Partial Sub OnfldProcessProjectIDChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property fldLUnitPH() As Global.System.String
+        Get
+            Return _fldLUnitPH
+        End Get
+        Set
+            OnfldLUnitPHChanging(value)
+            ReportPropertyChanging("fldLUnitPH")
+            _fldLUnitPH = StructuralObject.SetValidValue(value, true)
+            ReportPropertyChanged("fldLUnitPH")
+            OnfldLUnitPHChanged()
+        End Set
+    End Property
+
+    Private _fldLUnitPH As Global.System.String
+    Private Partial Sub OnfldLUnitPHChanging(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnfldLUnitPHChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property fldFUnitPH() As Global.System.String
+        Get
+            Return _fldFUnitPH
+        End Get
+        Set
+            OnfldFUnitPHChanging(value)
+            ReportPropertyChanging("fldFUnitPH")
+            _fldFUnitPH = StructuralObject.SetValidValue(value, true)
+            ReportPropertyChanged("fldFUnitPH")
+            OnfldFUnitPHChanged()
+        End Set
+    End Property
+
+    Private _fldFUnitPH As Global.System.String
+    Private Partial Sub OnfldFUnitPHChanging(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnfldFUnitPHChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property fldPUnitPH() As Global.System.String
+        Get
+            Return _fldPUnitPH
+        End Get
+        Set
+            OnfldPUnitPHChanging(value)
+            ReportPropertyChanging("fldPUnitPH")
+            _fldPUnitPH = StructuralObject.SetValidValue(value, true)
+            ReportPropertyChanged("fldPUnitPH")
+            OnfldPUnitPHChanged()
+        End Set
+    End Property
+
+    Private _fldPUnitPH As Global.System.String
+    Private Partial Sub OnfldPUnitPHChanging(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnfldPUnitPHChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property fldTUnitPH() As Global.System.String
+        Get
+            Return _fldTUnitPH
+        End Get
+        Set
+            OnfldTUnitPHChanging(value)
+            ReportPropertyChanging("fldTUnitPH")
+            _fldTUnitPH = StructuralObject.SetValidValue(value, true)
+            ReportPropertyChanged("fldTUnitPH")
+            OnfldTUnitPHChanged()
+        End Set
+    End Property
+
+    Private _fldTUnitPH As Global.System.String
+    Private Partial Sub OnfldTUnitPHChanging(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnfldTUnitPHChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property fldLeakUnitPH() As Global.System.String
+        Get
+            Return _fldLeakUnitPH
+        End Get
+        Set
+            OnfldLeakUnitPHChanging(value)
+            ReportPropertyChanging("fldLeakUnitPH")
+            _fldLeakUnitPH = StructuralObject.SetValidValue(value, true)
+            ReportPropertyChanged("fldLeakUnitPH")
+            OnfldLeakUnitPHChanged()
+        End Set
+    End Property
+
+    Private _fldLeakUnitPH As Global.System.String
+    Private Partial Sub OnfldLeakUnitPHChanging(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnfldLeakUnitPHChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property fldLUnitCust() As Global.System.String
+        Get
+            Return _fldLUnitCust
+        End Get
+        Set
+            OnfldLUnitCustChanging(value)
+            ReportPropertyChanging("fldLUnitCust")
+            _fldLUnitCust = StructuralObject.SetValidValue(value, true)
+            ReportPropertyChanged("fldLUnitCust")
+            OnfldLUnitCustChanged()
+        End Set
+    End Property
+
+    Private _fldLUnitCust As Global.System.String
+    Private Partial Sub OnfldLUnitCustChanging(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnfldLUnitCustChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property fldFUnitCust() As Global.System.String
+        Get
+            Return _fldFUnitCust
+        End Get
+        Set
+            OnfldFUnitCustChanging(value)
+            ReportPropertyChanging("fldFUnitCust")
+            _fldFUnitCust = StructuralObject.SetValidValue(value, true)
+            ReportPropertyChanged("fldFUnitCust")
+            OnfldFUnitCustChanged()
+        End Set
+    End Property
+
+    Private _fldFUnitCust As Global.System.String
+    Private Partial Sub OnfldFUnitCustChanging(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnfldFUnitCustChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property fldPUnitCust() As Global.System.String
+        Get
+            Return _fldPUnitCust
+        End Get
+        Set
+            OnfldPUnitCustChanging(value)
+            ReportPropertyChanging("fldPUnitCust")
+            _fldPUnitCust = StructuralObject.SetValidValue(value, true)
+            ReportPropertyChanged("fldPUnitCust")
+            OnfldPUnitCustChanged()
+        End Set
+    End Property
+
+    Private _fldPUnitCust As Global.System.String
+    Private Partial Sub OnfldPUnitCustChanging(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnfldPUnitCustChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property fldTUnitCust() As Global.System.String
+        Get
+            Return _fldTUnitCust
+        End Get
+        Set
+            OnfldTUnitCustChanging(value)
+            ReportPropertyChanging("fldTUnitCust")
+            _fldTUnitCust = StructuralObject.SetValidValue(value, true)
+            ReportPropertyChanged("fldTUnitCust")
+            OnfldTUnitCustChanged()
+        End Set
+    End Property
+
+    Private _fldTUnitCust As Global.System.String
+    Private Partial Sub OnfldTUnitCustChanging(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnfldTUnitCustChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property fldLeakUnitCust() As Global.System.String
+        Get
+            Return _fldLeakUnitCust
+        End Get
+        Set
+            OnfldLeakUnitCustChanging(value)
+            ReportPropertyChanging("fldLeakUnitCust")
+            _fldLeakUnitCust = StructuralObject.SetValidValue(value, true)
+            ReportPropertyChanged("fldLeakUnitCust")
+            OnfldLeakUnitCustChanged()
+        End Set
+    End Property
+
+    Private _fldLeakUnitCust As Global.System.String
+    Private Partial Sub OnfldLeakUnitCustChanging(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnfldLeakUnitCustChanged()
+    End Sub
+
+    #End Region
+
+    #Region "Navigation Properties"
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <XmlIgnoreAttribute()>
+    <SoapIgnoreAttribute()>
+    <DataMemberAttribute()>
+    <EdmRelationshipNavigationPropertyAttribute("SealProcessDBModel", "FK_tblProcess_Unit_tblProcessProject", "tblProcessProject")>
+    Public Property tblProcessProject() As tblProcessProject
+        Get
+            Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of tblProcessProject)("SealProcessDBModel.FK_tblProcess_Unit_tblProcessProject", "tblProcessProject").Value
+        End Get
+        Set
+            CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of tblProcessProject)("SealProcessDBModel.FK_tblProcess_Unit_tblProcessProject", "tblProcessProject").Value = value
+        End Set
+    End Property
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <BrowsableAttribute(False)>
+    <DataMemberAttribute()>
+    Public Property tblProcessProjectReference() As EntityReference(Of tblProcessProject)
+        Get
+            Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of tblProcessProject)("SealProcessDBModel.FK_tblProcess_Unit_tblProcessProject", "tblProcessProject")
+        End Get
+        Set
+            If (Not value Is Nothing)
+                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of tblProcessProject)("SealProcessDBModel.FK_tblProcess_Unit_tblProcessProject", "tblProcessProject", value)
+            End If
+        End Set
+    End Property
+
+    #End Region
+
+End Class
+
+''' <summary>
+''' No Metadata Documentation available.
+''' </summary>
 <EdmEntityTypeAttribute(NamespaceName:="SealProcessDBModel", Name:="tblProcessFile")>
 <Serializable()>
 <DataContractAttribute(IsReference:=True)>
@@ -10772,6 +11134,37 @@ Public Partial Class tblProcessProject
     <XmlIgnoreAttribute()>
     <SoapIgnoreAttribute()>
     <DataMemberAttribute()>
+    <EdmRelationshipNavigationPropertyAttribute("SealProcessDBModel", "FK_tblProcess_Unit_tblProcessProject", "tblProcess_Unit")>
+    Public Property tblProcess_Unit() As tblProcess_Unit
+        Get
+            Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of tblProcess_Unit)("SealProcessDBModel.FK_tblProcess_Unit_tblProcessProject", "tblProcess_Unit").Value
+        End Get
+        Set
+            CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of tblProcess_Unit)("SealProcessDBModel.FK_tblProcess_Unit_tblProcessProject", "tblProcess_Unit").Value = value
+        End Set
+    End Property
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <BrowsableAttribute(False)>
+    <DataMemberAttribute()>
+    Public Property tblProcess_UnitReference() As EntityReference(Of tblProcess_Unit)
+        Get
+            Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of tblProcess_Unit)("SealProcessDBModel.FK_tblProcess_Unit_tblProcessProject", "tblProcess_Unit")
+        End Get
+        Set
+            If (Not value Is Nothing)
+                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of tblProcess_Unit)("SealProcessDBModel.FK_tblProcess_Unit_tblProcessProject", "tblProcess_Unit", value)
+            End If
+        End Set
+    End Property
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <XmlIgnoreAttribute()>
+    <SoapIgnoreAttribute()>
+    <DataMemberAttribute()>
     <EdmRelationshipNavigationPropertyAttribute("SealProcessDBModel", "FK_tblPurchase_tblProcessProject", "tblPurchase")>
     Public Property tblPurchase() As tblPurchase
         Get
@@ -11435,6 +11828,31 @@ Public Partial Class tblPurchase_Mat
     End Sub
 
     Private Partial Sub OnfldEstQtyChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property fldQty_Unit() As Global.System.String
+        Get
+            Return _fldQty_Unit
+        End Get
+        Set
+            OnfldQty_UnitChanging(value)
+            ReportPropertyChanging("fldQty_Unit")
+            _fldQty_Unit = StructuralObject.SetValidValue(value, true)
+            ReportPropertyChanged("fldQty_Unit")
+            OnfldQty_UnitChanged()
+        End Set
+    End Property
+
+    Private _fldQty_Unit As Global.System.String
+    Private Partial Sub OnfldQty_UnitChanging(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnfldQty_UnitChanged()
     End Sub
 
     ''' <summary>
@@ -12804,11 +13222,9 @@ Public Partial Class tblShipping
     ''' Create a new tblShipping object.
     ''' </summary>
     ''' <param name="fldProcessProjectID">Initial value of the fldProcessProjectID property.</param>
-    ''' <param name="fldNotes">Initial value of the fldNotes property.</param>
-    Public Shared Function CreatetblShipping(fldProcessProjectID As Global.System.Decimal, fldNotes As Global.System.String) As tblShipping
+    Public Shared Function CreatetblShipping(fldProcessProjectID As Global.System.Decimal) As tblShipping
         Dim tblShipping as tblShipping = New tblShipping
         tblShipping.fldProcessProjectID = fldProcessProjectID
-        tblShipping.fldNotes = fldNotes
         Return tblShipping
     End Function
 
@@ -12846,7 +13262,7 @@ Public Partial Class tblShipping
     ''' <summary>
     ''' No Metadata Documentation available.
     ''' </summary>
-    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
     <DataMemberAttribute()>
     Public Property fldNotes() As Global.System.String
         Get
@@ -12855,7 +13271,7 @@ Public Partial Class tblShipping
         Set
             OnfldNotesChanging(value)
             ReportPropertyChanging("fldNotes")
-            _fldNotes = StructuralObject.SetValidValue(value, false)
+            _fldNotes = StructuralObject.SetValidValue(value, true)
             ReportPropertyChanged("fldNotes")
             OnfldNotesChanged()
         End Set

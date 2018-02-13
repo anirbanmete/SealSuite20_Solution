@@ -33,7 +33,7 @@ Public Class Test_frmMain
 
     '....Local Object. 
     Private mTestProject As Test_clsProject
-    Private mPart_Unit As clsPartUnit
+    Private mUnit As clsUnit
 
     Private mPN As String
     Private mPNRev As String
@@ -129,9 +129,9 @@ Public Class Test_frmMain
             mnuUpdEquipList.Enabled = False
         End If
 
-        mControl = {chkSignOff, cmdSealIPEData, cmdSetUnits, cmdMO_New, cmdMO_Delete, cmdReport_New, cmdReport_Delete, _
-                    updSealQty, chkLeakage, chkLoad, chkPressure, txtDate_Tester, dtpTester, chkTester_Signed, _
-                    txtDate_Engg, dtpEngg, chkEngg_Signed, txtDate_Quality, dtpQuality, _
+        mControl = {chkSignOff, cmdSealIPEData, cmdSetUnits, cmdMO_New, cmdMO_Delete, cmdReport_New, cmdReport_Delete,
+                    updSealQty, chkLeakage, chkLoad, chkPressure, txtDate_Tester, dtpTester, chkTester_Signed,
+                    txtDate_Engg, dtpEngg, chkEngg_Signed, txtDate_Quality, dtpQuality,
                     chkQuality_Signed, cmdNotes, cmdReports, txtMO, txtReport, cmdMO_Save, cmdReport_Save, cmdTester_Sign, cmdEnggMgr_Sign, cmdQualityMgr_Sign}
 
 
@@ -187,7 +187,7 @@ Public Class Test_frmMain
         '=============================================================================================================
         Dim pPartEntities As New SealPartDBEntities()
         Dim pQryProject = (From it In pPartEntities.tblProject
-                               Where it.fldID = ProjectID_In Select it).ToList()
+                           Where it.fldID = ProjectID_In Select it).ToList()
 
         If (pQryProject.Count() > 0) Then
             mPNID = pQryProject(0).fldPNID
@@ -218,21 +218,21 @@ Public Class Test_frmMain
 
             '....Customer
             Dim pQryCust = (From it In pPartEntities.tblCustomer
-                                   Where it.fldID = mCustomerID Select it).ToList()
+                            Where it.fldID = mCustomerID Select it).ToList()
             If (pQryCust.Count() > 0) Then
                 mTestProject.PartProject.CustInfo.CustName = pQryCust(0).fldName
                 Dim pUnit As String = pQryCust(0).fldDimUnit.Trim()
                 If (pUnit = "Metric") Then
-                    mTestProject.PartProject.PNR.DimUnit = clsPartProject.clsPNR.eDimUnit.Metric
+                    mTestProject.PartProject.PNR.UnitSystem = clsPartProject.clsPNR.eDimUnit.Metric
                 Else
-                    mTestProject.PartProject.PNR.DimUnit = clsPartProject.clsPNR.eDimUnit.English
+                    mTestProject.PartProject.PNR.UnitSystem = clsPartProject.clsPNR.eDimUnit.English
                 End If
 
             End If
 
             '....Platform
             Dim pQryPlat = (From it In pPartEntities.tblPlatform
-                              Where it.fldCustID = mCustomerID And it.fldID = mPlatformID Select it).ToList()
+                            Where it.fldCustID = mCustomerID And it.fldID = mPlatformID Select it).ToList()
 
             If (pQryPlat.Count() > 0) Then
                 mTestProject.PartProject.CustInfo.PlatName = pQryPlat(0).fldName
@@ -240,7 +240,7 @@ Public Class Test_frmMain
 
             '....Location
             Dim pQryLoc = (From it In pPartEntities.tblLocation
-                              Where it.fldCustID = mCustomerID And it.fldPlatformID = mPlatformID And it.fldID = mLocationID Select it).ToList()
+                           Where it.fldCustID = mCustomerID And it.fldPlatformID = mPlatformID And it.fldID = mLocationID Select it).ToList()
 
             If (pQryLoc.Count() > 0) Then
                 mTestProject.PartProject.CustInfo.LocName = pQryLoc(0).fldLoc
@@ -248,7 +248,7 @@ Public Class Test_frmMain
 
             '....PN
             Dim pQryPN = (From it In pPartEntities.tblPN
-                               Where it.fldID = mPNID Select it).ToList()
+                          Where it.fldID = mPNID Select it).ToList()
             If (pQryPN.Count() > 0) Then
                 mTestProject.PartProject.PNR.Current_Exists = pQryPN(0).fldCurrentExists
 
@@ -292,9 +292,9 @@ Public Class Test_frmMain
                 If (Not IsDBNull(pQryPN(0).fldDimUnit) And Not IsNothing(pQryPN(0).fldDimUnit)) Then
                     Dim pUnit As String = pQryPN(0).fldDimUnit.Trim()
                     If (pUnit = "Metric") Then
-                        mTestProject.PartProject.PNR.DimUnit = clsPartProject.clsPNR.eDimUnit.Metric
+                        mTestProject.PartProject.PNR.UnitSystem = clsPartProject.clsPNR.eDimUnit.Metric
                     Else
-                        mTestProject.PartProject.PNR.DimUnit = clsPartProject.clsPNR.eDimUnit.English
+                        mTestProject.PartProject.PNR.UnitSystem = clsPartProject.clsPNR.eDimUnit.English
                     End If
                 End If
 
@@ -302,7 +302,7 @@ Public Class Test_frmMain
 
             '....Rev
             Dim pQryRev = (From it In pPartEntities.tblRev
-                               Where it.fldPNID = mPNID And it.fldID = mRevID Select it).ToList()
+                           Where it.fldPNID = mPNID And it.fldID = mRevID Select it).ToList()
             If (pQryRev.Count() > 0) Then
                 If (Not IsDBNull(pQryRev(0).fldCurrent) And Not IsNothing(pQryRev(0).fldCurrent)) Then
                     mTestProject.PartProject.PNR.Current_Rev = pQryRev(0).fldCurrent
@@ -322,13 +322,13 @@ Public Class Test_frmMain
 
             '....HW_Face table
             Dim pHWFace_Rec_Count As Integer = (From HWFace In pPartEntities.tblHW_Face
-                                            Where HWFace.fldPNID = mPNID And
+                                                Where HWFace.fldPNID = mPNID And
                                             HWFace.fldRevID = mRevID Select HWFace).Count()
 
             If (pHWFace_Rec_Count > 0) Then
 
                 Dim pHWFace_Rec = (From HWFace In pPartEntities.tblHW_Face
-                                            Where HWFace.fldPNID = mPNID And
+                                   Where HWFace.fldPNID = mPNID And
                                             HWFace.fldRevID = mRevID Select HWFace).First()
 
                 Dim pType As String = pHWFace_Rec.fldType.ToString().Trim()
@@ -421,12 +421,12 @@ Public Class Test_frmMain
                         If (.Adjusted) Then
                             '....HW_AdjCSeal table
                             Dim pHW_AdjCSeal_Rec_Count As Integer = (From HWFace_AdjCSeal In pPartEntities.tblHW_AdjCSeal
-                                                                Where HWFace_AdjCSeal.fldPNID = mPNID And
+                                                                     Where HWFace_AdjCSeal.fldPNID = mPNID And
                                                                 HWFace_AdjCSeal.fldRevID = mRevID Select HWFace_AdjCSeal).Count()
                             If (pHW_AdjCSeal_Rec_Count > 0) Then
 
                                 Dim pHWFace_AdjCSeal_Rec = (From HWFace_AdjCSeal In pPartEntities.tblHW_AdjCSeal
-                                                                Where HWFace_AdjCSeal.fldPNID = mPNID And
+                                                            Where HWFace_AdjCSeal.fldPNID = mPNID And
                                                                 HWFace_AdjCSeal.fldRevID = mRevID Select HWFace_AdjCSeal).First()
 
                                 With mTestProject.PartProject.PNR.HW
@@ -458,12 +458,12 @@ Public Class Test_frmMain
                         If (.Adjusted) Then
                             '....HW_AdjESeal table
                             Dim pHW_AdjESeal_Rec_Count As Integer = (From HWFace_AdjESeal In pPartEntities.tblHW_AdjESeal
-                                                                Where HWFace_AdjESeal.fldPNID = mPNID And
+                                                                     Where HWFace_AdjESeal.fldPNID = mPNID And
                                                                 HWFace_AdjESeal.fldRevID = mRevID Select HWFace_AdjESeal).Count()
                             If (pHW_AdjESeal_Rec_Count > 0) Then
 
                                 Dim pHWFace_AdjESeal_Rec = (From HWFace_AdjESeal In pPartEntities.tblHW_AdjESeal
-                                                                Where HWFace_AdjESeal.fldPNID = mPNID And
+                                                            Where HWFace_AdjESeal.fldPNID = mPNID And
                                                                 HWFace_AdjESeal.fldRevID = mRevID Select HWFace_AdjESeal).First()
 
                                 With mTestProject.PartProject.PNR.HW
@@ -489,7 +489,7 @@ Public Class Test_frmMain
                     If (mTestProject.PartProject.PNR.SealType = clsPartProject.clsPNR.eType.U) Then
                         Dim pSealEntities As New SealIPEMCSDBEntities()
                         Dim pRecord = (From pRec In pSealEntities.tblUSeal_Geom
-                                        Where pRec.fldCrossSecNo = .MCrossSecNo Select pRec).ToList()
+                                       Where pRec.fldCrossSecNo = .MCrossSecNo Select pRec).ToList()
                         If (pRecord.Count > 0) Then
                             If (pRecord(0).fldGeomTemplate = False) Then
                                 mTestProject.SealIPE_FEA = False
@@ -533,7 +533,7 @@ Public Class Test_frmMain
     Private Sub InitializeLocalObject()
         '===============================
         '....Instantiate Local Objects. 
-        mPart_Unit = New clsPartUnit()
+        mUnit = New clsUnit()
 
     End Sub
 
@@ -939,7 +939,7 @@ Public Class Test_frmMain
 
             mTestProject.ID = pTestProjectID
             '....Retrieve Test Project Data
-            mTestProject.RetrieveFrom_DB(gPartUnit)
+            mTestProject.RetrieveFrom_DB(gUnit)
         End If
 
         Dim pPNID As Integer = mTestProject.GetPNID(mPN)
@@ -1091,7 +1091,7 @@ Public Class Test_frmMain
             'mTestProject.RetrieveFromHW()
 
             '....Retrieve Test Project Data
-            mTestProject.RetrieveFrom_DB(gPartUnit)
+            mTestProject.RetrieveFrom_DB(gUnit)
 
         Else
             CreateNewTestProject()
@@ -1322,15 +1322,15 @@ Public Class Test_frmMain
         pThickMinMet = pQryPlatingThick.fldPlatingThickMinMet
         pThickMaxMet = pQryPlatingThick.fldPlatingThickMaxMet
 
-        If gPartUnit.System = "English" Then
+        If gUnit.System = "English" Then
 
-            txtPlatingThick_Min.Text = gPartUnit.WriteInUserL(pThickMin, "TFormat")
-            txtPlatingThick_Max.Text = gPartUnit.WriteInUserL(pThickMax, "TFormat")
+            txtPlatingThick_Min.Text = gUnit.WriteInUserL(pThickMin, "TFormat")
+            txtPlatingThick_Max.Text = gUnit.WriteInUserL(pThickMax, "TFormat")
 
-        ElseIf gPartUnit.System = "Metric" Then
+        ElseIf gUnit.System = "Metric" Then
 
-            txtPlatingThick_Min.Text = gPartUnit.WriteInUserL(pThickMinMet, "TFormat")
-            txtPlatingThick_Max.Text = gPartUnit.WriteInUserL(pThickMaxMet, "TFormat")
+            txtPlatingThick_Min.Text = gUnit.WriteInUserL(pThickMinMet, "TFormat")
+            txtPlatingThick_Max.Text = gUnit.WriteInUserL(pThickMaxMet, "TFormat")
 
         End If
 
@@ -1516,7 +1516,7 @@ Public Class Test_frmMain
 
         ''    mTestProject.Import_SealIPEDesign(mProject)
         ''    DisplayData()
-        ''    mTestProject.SaveTo_DB_DesignData(gPartUnit)
+        ''    mTestProject.SaveTo_DB_DesignData(gUnit)
         ''End If
 
     End Sub
@@ -1694,7 +1694,7 @@ Public Class Test_frmMain
             End If
         End If
 
-        mTestProject.SaveTo_DB(gPartUnit, mMO_Sel, mReport_Sel, mPNID, mRevID)
+        mTestProject.SaveTo_DB(gUnit, mMO_Sel, mReport_Sel, mPNID, mRevID)
 
         gTest_Project = mTestProject.Clone()
 
@@ -1731,7 +1731,7 @@ Public Class Test_frmMain
         Try
 
             Dim pQry = (From pRec In mSealTestEntities.tblMO Where pRec.fldTestProjectID = mTestProject.ProjectID
-                              Order By pRec.fldID Descending Select pRec).ToList()      'AES 30JUN17
+                        Order By pRec.fldID Descending Select pRec).ToList()      'AES 30JUN17
 
             'Dim pNew_MO As Int64 = 1
             Dim pMO_ID As Integer = 1
@@ -2150,7 +2150,7 @@ Public Class Test_frmMain
         ''Dim pPNID As Integer = pPart_Project.GetPNID(cmbParkerPN.Text)
         ''Dim pRevID As Integer = pPart_Project.GetRevID(pPNID, cmbParkerPN_Rev.Text)
 
-        ''mTestProject.Analysis = New IPE_clsAnalysis(mTestProject.Part_HW.Type, gPartUnit.System)
+        ''mTestProject.Analysis = New IPE_clsAnalysis(mTestProject.Part_HW.Type, gUnit.System)
         ''gTest_File.ReadIniFile(gIPE_ANSYS, gIPE_Unit)
     End Sub
 
@@ -2212,7 +2212,7 @@ Public Class Test_frmMain
         Dim pSignedOff As Boolean = False
         Dim pSealEntities As New SealTestDBEntities
         Dim pQry = (From pRec In pSealEntities.tblTestProject
-                            Where pRec.fldPNID = PNID_In And pRec.fldRevID = RevID_In Select pRec).ToList()
+                    Where pRec.fldPNID = PNID_In And pRec.fldRevID = RevID_In Select pRec).ToList()
 
         If (pQry.Count > 0) Then
             pSignedOff = pQry(0).fldSignedOff
@@ -2243,7 +2243,7 @@ Public Class Test_frmMain
 
             Dim pMO_ID As Integer = mTestProject.Test_MO(mMO_Sel).ID
             Dim pQry = (From pRec In mSealTestEntities.tblReport Where pRec.fldTestProjectID = mTestProject.ProjectID And pRec.fldTestMOID = pMO_ID
-                           Order By pRec.fldID Descending Select pRec).ToList()     'AES 30JUN17
+                        Order By pRec.fldID Descending Select pRec).ToList()     'AES 30JUN17
 
             'Dim pNew_Rpt As Integer = 1
             Dim pRpt_ID As Integer = 1
@@ -2711,12 +2711,12 @@ Public Class Test_frmMain
 
                 gTest_File.Restore_SessionData(gTest_Project, pFilePath)
 
-                ''gIPE_Project.Save_ToDB(gPartUnit, gIPE_ANSYS)
+                ''gIPE_Project.Save_ToDB(gUnit, gIPE_ANSYS)
 
                 Dim pProjectID As Integer = gTest_Project.ProjectID
                 gTest_Project.ProjectID = pProjectID
-                gTest_Project.SaveTo_DB(gPartUnit, mMO_Sel, mReport_Sel, mPNID, mRevID)
-                ''gTest_Project.SaveTo_DB_DesignData(gPartUnit)
+                gTest_Project.SaveTo_DB(gUnit, mMO_Sel, mReport_Sel, mPNID, mRevID)
+                ''gTest_Project.SaveTo_DB_DesignData(gUnit)
 
                 If (gTest_Project.Test_MO.Count > gTest_frmMain.MO_Sel) Then
                     If (gTest_Project.Test_MO(gTest_frmMain.MO_Sel).Test_Report.Count > gTest_frmMain.Report_Sel) Then
@@ -2742,7 +2742,7 @@ Public Class Test_frmMain
         '===========================================================================================================
         Cursor = Cursors.WaitCursor
         SaveData()
-        modMain_Test.gTest_Test.StatusReport(cmbParkerPN, gPartUnit)
+        modMain_Test.gTest_Test.StatusReport(cmbParkerPN, gUnit)
         Cursor = Cursors.Default
     End Sub
 

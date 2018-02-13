@@ -82,7 +82,7 @@ Public Class Part_frmHW
 
         GetPartProjectInfo()
 
-        mPartProject.PNR.HW.UnitSystem = gPartProject.PNR.DimUnit.ToString()
+        mPartProject.PNR.HW.UnitSystem = gPartProject.PNR.UnitSystem.ToString()
 
         gIsHWActive = True
         cmbPOrient.SelectedIndex = 0
@@ -340,11 +340,11 @@ Public Class Part_frmHW
 
                         If (pQry.Count() > 0) Then
                             If (mPartProject.PNR.HW.UnitSystem = "English") Then
-                                txtPlatingThickMin.Text = gPartUnit.WriteInUserL(pQry(0).fldPlatingThickMinEng, "TFormat")
-                                txtPlatingThickMax.Text = gPartUnit.WriteInUserL(pQry(0).fldPlatingThickMaxEng, "TFormat")
+                                txtPlatingThickMin.Text = gUnit.WriteInUserL(pQry(0).fldPlatingThickMinEng, "TFormat")
+                                txtPlatingThickMax.Text = gUnit.WriteInUserL(pQry(0).fldPlatingThickMaxEng, "TFormat")
                             Else
-                                txtPlatingThickMin.Text = gPartUnit.WriteInUserL(pQry(0).fldPlatingThickMinMet, "TFormat")
-                                txtPlatingThickMax.Text = gPartUnit.WriteInUserL(pQry(0).fldPlatingThickMaxMet, "TFormat")
+                                txtPlatingThickMin.Text = gUnit.WriteInUserL(pQry(0).fldPlatingThickMinMet, "TFormat")
+                                txtPlatingThickMax.Text = gUnit.WriteInUserL(pQry(0).fldPlatingThickMaxMet, "TFormat")
                             End If
                         End If
                     Else
@@ -355,109 +355,109 @@ Public Class Part_frmHW
                             txtPlatingThickMin.Text = mPartProject.PNR.HW.Plating.ThickMin.ToString("###0.000")
                             txtPlatingThickMax.Text = mPartProject.PNR.HW.Plating.ThickMax.ToString("###0.000")
                         End If
-                        'txtPlatingThickMin.Text = gPartUnit.WriteInUserL(mPartProject.PNR.HW.Plating.ThickMin, "TFormat")
-                        'txtPlatingThickMax.Text = gPartUnit.WriteInUserL(mPartProject.PNR.HW.Plating.ThickMax, "TFormat")
+                        'txtPlatingThickMin.Text = gUnit.WriteInUserL(mPartProject.PNR.HW.Plating.ThickMin, "TFormat")
+                        'txtPlatingThickMax.Text = gUnit.WriteInUserL(mPartProject.PNR.HW.Plating.ThickMax, "TFormat")
                     End If
                 Else
                     txtPlatingThickMin.Text = ""
                     txtPlatingThickMax.Text = ""
                 End If
 
-                    cmdNonStdCS.Visible = False
-                    lblStandard.Text = "Y"
-                    lblStandard.BackColor = Color.White
+                cmdNonStdCS.Visible = False
+                lblStandard.Text = "Y"
+                lblStandard.BackColor = Color.White
 
-                End If
+            End If
 
-                If (mPartProject.PNR.HW.Hfree > gcEPS) Then
-                    txtHFree.Text = gPartUnit.WriteInUserL(mPartProject.PNR.HW.Hfree)
-                End If
+            If (mPartProject.PNR.HW.Hfree > gcEPS) Then
+                txtHFree.Text = gUnit.WriteInUserL(mPartProject.PNR.HW.Hfree)
+            End If
 
-                If (pCrossSec <> "") Then
-                    txtHFreeTolPlus.Text = gPartUnit.WriteInUserL(pHFreeTol1)
-                    txtHFreeTolMinus.Text = gPartUnit.WriteInUserL(pHFreeTol2)
-                Else
-                    txtHFreeTolPlus.Text = gPartUnit.WriteInUserL(mPartProject.PNR.HW.HFreeTol(1))
-                    txtHFreeTolMinus.Text = gPartUnit.WriteInUserL(mPartProject.PNR.HW.HFreeTol(2))
-
-                End If
-
+            If (pCrossSec <> "") Then
+                txtHFreeTolPlus.Text = gUnit.WriteInUserL(pHFreeTol1)
+                txtHFreeTolMinus.Text = gUnit.WriteInUserL(pHFreeTol2)
             Else
+                txtHFreeTolPlus.Text = gUnit.WriteInUserL(mPartProject.PNR.HW.HFreeTol(1))
+                txtHFreeTolMinus.Text = gUnit.WriteInUserL(mPartProject.PNR.HW.HFreeTol(2))
 
-                If (mPartProject.PNR.HW.POrient <> "") Then
-                    With mPartProject.PNR.HW
-                        Dim pCrossSec As String = .MCrossSecNo
-                        Dim pHFreeTol1 As Single = .HFreeTol(1)
-                        Dim pHFreeTol2 As Single = .HFreeTol(2)
+            End If
 
-                        cmbPOrient.Text = .POrient
-                        cmbType.Text = mPartProject.PNR.SealType.ToString()
+        Else
 
-                        .MCrossSecNo = pCrossSec
-                        'cmbPOrient.Text = .POrient
-                        cmbCrossSec.Text = .MCrossSecNo
-                        chkSeg.Checked = .IsSegmented
-                        If (.IsSegmented) Then
-                            txtSegNo.Text = .CountSegment
+            If (mPartProject.PNR.HW.POrient <> "") Then
+                With mPartProject.PNR.HW
+                    Dim pCrossSec As String = .MCrossSecNo
+                    Dim pHFreeTol1 As Single = .HFreeTol(1)
+                    Dim pHFreeTol2 As Single = .HFreeTol(2)
+
+                    cmbPOrient.Text = .POrient
+                    cmbType.Text = mPartProject.PNR.SealType.ToString()
+
+                    .MCrossSecNo = pCrossSec
+                    'cmbPOrient.Text = .POrient
+                    cmbCrossSec.Text = .MCrossSecNo
+                    chkSeg.Checked = .IsSegmented
+                    If (.IsSegmented) Then
+                        txtSegNo.Text = .CountSegment
+                    Else
+                        txtSegNo.Text = ""
+                    End If
+
+                    cmbMatName.Text = .MatName
+                    cmbHT.Text = .HT
+                    cmbTemperCode.Text = .Temper
+                    If (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.E) Then
+                        If (.Coating = "None") Then
+                            chkCoating.Checked = False
+                            cmbCoating.Text = ""
                         Else
-                            txtSegNo.Text = ""
+                            chkCoating.Checked = True
+                            cmbCoating.Text = .Coating
                         End If
 
-                        cmbMatName.Text = .MatName
-                        cmbHT.Text = .HT
-                        cmbTemperCode.Text = .Temper
-                        If (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.E) Then
-                            If (.Coating = "None") Then
-                                chkCoating.Checked = False
-                                cmbCoating.Text = ""
-                            Else
-                                chkCoating.Checked = True
-                                cmbCoating.Text = .Coating
-                            End If
-
-                            If (.SFinish = "0") Then
-                                cmbSFinish.Text = ""
-                            Else
-                                cmbSFinish.Text = .SFinish
-                            End If
-
+                        If (.SFinish = "0") Then
+                            cmbSFinish.Text = ""
+                        Else
+                            cmbSFinish.Text = .SFinish
                         End If
 
-                        'AES 11OCT17
-                        ''If (.Type = "C-Seal" Or .Type = "SC-Seal") Then
-                        ''    If (.Plating.Code <> "") Then
-                        ''        chkPlating.Checked = True
-                        ''        cmbPlatingCode.Text = .Plating.Code
-                        ''        cmbPlatingThickCode.Text = .Plating.ThickCode
-                        ''    End If
+                    End If
 
-                        ''    'AES 31JUL17
-                        ''    mHW.DHfree = pDHFree
-                        ''    mHW.DThetaOpening = pDThetaOpening
-                        ''    If (pT > gcEPS) Then
-                        ''        mHW.T = pT
-                        ''    End If
+                    'AES 11OCT17
+                    ''If (.Type = "C-Seal" Or .Type = "SC-Seal") Then
+                    ''    If (.Plating.Code <> "") Then
+                    ''        chkPlating.Checked = True
+                    ''        cmbPlatingCode.Text = .Plating.Code
+                    ''        cmbPlatingThickCode.Text = .Plating.ThickCode
+                    ''    End If
+
+                    ''    'AES 31JUL17
+                    ''    mHW.DHfree = pDHFree
+                    ''    mHW.DThetaOpening = pDThetaOpening
+                    ''    If (pT > gcEPS) Then
+                    ''        mHW.T = pT
+                    ''    End If
 
 
-                        ''    If (mHW.Adjusted) Then
-                        ''        lblStandard.Text = "N"
-                        ''        lblStandard.BackColor = Color.Yellow
-                        ''    Else
-                        ''        lblStandard.Text = "Y"
-                        ''        lblStandard.BackColor = Color.White
-                        ''    End If
+                    ''    If (mHW.Adjusted) Then
+                    ''        lblStandard.Text = "N"
+                    ''        lblStandard.BackColor = Color.Yellow
+                    ''    Else
+                    ''        lblStandard.Text = "Y"
+                    ''        lblStandard.BackColor = Color.White
+                    ''    End If
 
-                        ''End If
+                    ''End If
 
-                        'AES 11OCT17
+                    'AES 11OCT17
                     If (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.C Or mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.SC) Then
                         If (.Plating.Exists) Then
                             chkPlating.Checked = True
                             cmbPlatingCode.Text = .Plating.Code
                             cmbPlatingThickCode.Text = .Plating.ThickCode
                             If (.Plating.ThickCode = "X") Then
-                                'txtPlatingThickMin.Text = mPartProject.PNR.HW.Plating.ThickMin.ToString(gPartUnit.TFormat) ' gPartUnit.WriteInUserL(mPartProject.PNR.HW.Plating.ThickMin, "TFormat") 'gUnit.WriteInUserL(mHW.Plating.ThickMin)
-                                'txtPlatingThickMax.Text = mPartProject.PNR.HW.Plating.ThickMax.ToString(gPartUnit.TFormat) 'gPartUnit.WriteInUserL(mPartProject.PNR.HW.Plating.ThickMax, "TFormat")
+                                'txtPlatingThickMin.Text = mPartProject.PNR.HW.Plating.ThickMin.ToString(gUnit.TFormat) ' gUnit.WriteInUserL(mPartProject.PNR.HW.Plating.ThickMin, "TFormat") 'gUnit.WriteInUserL(mHW.Plating.ThickMin)
+                                'txtPlatingThickMax.Text = mPartProject.PNR.HW.Plating.ThickMax.ToString(gUnit.TFormat) 'gUnit.WriteInUserL(mPartProject.PNR.HW.Plating.ThickMax, "TFormat")
                                 If (mPartProject.PNR.HW.UnitSystem = "English") Then
                                     txtPlatingThickMin.Text = mPartProject.PNR.HW.Plating.ThickMin.ToString("##0.0000")
                                     txtPlatingThickMax.Text = mPartProject.PNR.HW.Plating.ThickMax.ToString("##0.0000")
@@ -466,8 +466,8 @@ Public Class Part_frmHW
                                     txtPlatingThickMax.Text = mPartProject.PNR.HW.Plating.ThickMax.ToString("###0.000")
                                 End If
                             Else
-                                'txtPlatingThickMin.Text = gPartUnit.WriteInUserL(mPartProject.PNR.HW.Plating.ThickMin, "TFormat") ' gPartUnit.WriteInUserL(mPartProject.PNR.HW.Plating.ThickMin, "TFormat") 'gUnit.WriteInUserL(mHW.Plating.ThickMin)
-                                'txtPlatingThickMax.Text = gPartUnit.WriteInUserL(mPartProject.PNR.HW.Plating.ThickMax, "TFormat")
+                                'txtPlatingThickMin.Text = gUnit.WriteInUserL(mPartProject.PNR.HW.Plating.ThickMin, "TFormat") ' gUnit.WriteInUserL(mPartProject.PNR.HW.Plating.ThickMin, "TFormat") 'gUnit.WriteInUserL(mHW.Plating.ThickMin)
+                                'txtPlatingThickMax.Text = gUnit.WriteInUserL(mPartProject.PNR.HW.Plating.ThickMax, "TFormat")
                                 Dim pMCSEntities As New SealIPEMCSDBEntities()
 
                                 Dim pQry = (From pRec In pMCSEntities.tblPlatingThick Where pRec.fldPlatingThickCode = .Plating.ThickCode
@@ -475,11 +475,11 @@ Public Class Part_frmHW
 
                                 If (pQry.Count() > 0) Then
                                     If (mPartProject.PNR.HW.UnitSystem = "English") Then
-                                        txtPlatingThickMin.Text = gPartUnit.WriteInUserL(pQry(0).fldPlatingThickMinEng, "TFormat")
-                                        txtPlatingThickMax.Text = gPartUnit.WriteInUserL(pQry(0).fldPlatingThickMaxEng, "TFormat")
+                                        txtPlatingThickMin.Text = gUnit.WriteInUserL(pQry(0).fldPlatingThickMinEng, "TFormat")
+                                        txtPlatingThickMax.Text = gUnit.WriteInUserL(pQry(0).fldPlatingThickMaxEng, "TFormat")
                                     Else
-                                        txtPlatingThickMin.Text = gPartUnit.WriteInUserL(pQry(0).fldPlatingThickMinMet, "TFormat")
-                                        txtPlatingThickMax.Text = gPartUnit.WriteInUserL(pQry(0).fldPlatingThickMaxMet, "TFormat")
+                                        txtPlatingThickMin.Text = gUnit.WriteInUserL(pQry(0).fldPlatingThickMinMet, "TFormat")
+                                        txtPlatingThickMax.Text = gUnit.WriteInUserL(pQry(0).fldPlatingThickMaxMet, "TFormat")
                                     End If
                                 End If
                             End If
@@ -528,21 +528,21 @@ Public Class Part_frmHW
 
                     End If
 
-                        If (.Hfree > gcEPS) Then
-                            txtHFree.Text = gPartUnit.WriteInUserL(.Hfree)
-                        End If
-                        txtHFreeTolPlus.Text = gPartUnit.WriteInUserL(pHFreeTol1)
-                        txtHFreeTolMinus.Text = gPartUnit.WriteInUserL(pHFreeTol2)
-                        txtDControl.Text = gPartUnit.WriteInUserL(.DControl)
-                        'txtH11Tol.Text = gPartUnit.WriteInUserL(.H11Tol)
+                    If (.Hfree > gcEPS) Then
+                        txtHFree.Text = gUnit.WriteInUserL(.Hfree)
+                    End If
+                    txtHFreeTolPlus.Text = gUnit.WriteInUserL(pHFreeTol1)
+                    txtHFreeTolMinus.Text = gUnit.WriteInUserL(pHFreeTol2)
+                    txtDControl.Text = gUnit.WriteInUserL(.DControl)
+                    'txtH11Tol.Text = gUnit.WriteInUserL(.H11Tol)
 
-                        txtThick.Text = gPartUnit.WriteInUserL(.TStd)
+                    txtThick.Text = gUnit.WriteInUserL(.TStd)
 
-                    End With
-
-                End If
+                End With
 
             End If
+
+        End If
 
     End Sub
 
@@ -566,7 +566,7 @@ Public Class Part_frmHW
 
             Case "S"
                 Dim pQry = (From pRec In pMCSEntities.tblCSeal_Geom
-                        Where pRec.fldCCS = CCSCode_In And pRec.fldSpringEnergized = True Select pRec).First()
+                            Where pRec.fldCCS = CCSCode_In And pRec.fldSpringEnergized = True Select pRec).First()
                 pMCS = pQry.fldCrossSecNo.ToString()
 
             Case "U"
@@ -740,7 +740,7 @@ Public Class Part_frmHW
         '===========================
         Dim pPartEntities As New SealPartDBEntities
         Dim pQryProject = (From it In pPartEntities.tblProject
-                               Where it.fldID = gPartProject.Project_ID Select it).ToList()
+                           Where it.fldID = gPartProject.Project_ID Select it).ToList()
 
         If (pQryProject.Count() > 0) Then
             mPNID = pQryProject(0).fldPNID
@@ -760,7 +760,7 @@ Public Class Part_frmHW
 
                 Case "E"
                     Dim pQry = (From pRec In pMCSEntities.tblESeal_Geom
-                                      Order By pRec.fldCrossSecNo Ascending Select pRec).ToList()
+                                Order By pRec.fldCrossSecNo Ascending Select pRec).ToList()
                     If (pQry.Count() > 0) Then
                         For i As Integer = 0 To pQry.Count() - 1
                             Dim pMCS As String = pQry(i).fldCrossSecNo.ToString().Trim()
@@ -775,7 +775,7 @@ Public Class Part_frmHW
                 Case "C"
 
                     Dim pQry = (From pRec In pMCSEntities.tblCSeal_Geom
-                                     Order By pRec.fldCrossSecNo Ascending Select pRec).ToList()
+                                Order By pRec.fldCrossSecNo Ascending Select pRec).ToList()
                     If (pQry.Count() > 0) Then
                         For i As Integer = 0 To pQry.Count() - 1
                             Dim pMCS As String = pQry(i).fldCrossSecNo.ToString().Trim()
@@ -790,7 +790,7 @@ Public Class Part_frmHW
                 Case "SC"
 
                     Dim pQry = (From pRec In pMCSEntities.tblCSeal_Geom
-                            Where pRec.fldSpringEnergized = True Order By pRec.fldCrossSecNo Ascending Select pRec).ToList()
+                                Where pRec.fldSpringEnergized = True Order By pRec.fldCrossSecNo Ascending Select pRec).ToList()
                     If (pQry.Count() > 0) Then
                         For i As Integer = 0 To pQry.Count() - 1
                             Dim pMCS As String = pQry(i).fldCrossSecNo.ToString().Trim()
@@ -806,7 +806,7 @@ Public Class Part_frmHW
 
                     If (gPartProject.PNR.Legacy.Type = clsPartProject.clsPNR.eLegacyType.Catalogued) Then
                         Dim pQry = (From pRec In pMCSEntities.tblUSeal_Geom Where pRec.fldGeomTemplate = False
-                                      Order By pRec.fldCrossSecNo Ascending Select pRec).ToList()
+                                    Order By pRec.fldCrossSecNo Ascending Select pRec).ToList()
                         If (pQry.Count() > 0) Then
                             For i As Integer = 0 To pQry.Count() - 1
                                 Dim pMCS As String = pQry(i).fldCrossSecNo.ToString().Trim()
@@ -819,7 +819,7 @@ Public Class Part_frmHW
                         End If
                     Else
                         Dim pQry = (From pRec In pMCSEntities.tblUSeal_Geom Where pRec.fldGeomTemplate = True
-                                      Order By pRec.fldCrossSecNo Ascending Select pRec).ToList()
+                                    Order By pRec.fldCrossSecNo Ascending Select pRec).ToList()
                         If (pQry.Count() > 0) Then
                             For i As Integer = 0 To pQry.Count() - 1
                                 Dim pMCS As String = pQry(i).fldCrossSecNo.ToString().Trim()
@@ -997,15 +997,15 @@ Public Class Part_frmHW
         Else
 
             Dim pCount As Integer = (From it In pMCSEntities.tblMaterial
-                                   Where it.fldName = MatName_In Select it).Count()
+                                     Where it.fldName = MatName_In Select it).Count()
             Dim pMatCode As String = ""
             If (pCount > 0) Then
                 Dim pQry_Mat = (From it In pMCSEntities.tblMaterial
-                                    Where it.fldName = MatName_In Select it).First()
+                                Where it.fldName = MatName_In Select it).First()
                 pMatCode = pQry_Mat.fldCode
 
                 Dim pQry = (From pRec In pMCSEntities.tblMatTemper
-                       Where pRec.fldMatCode = pMatCode Order By pRec.fldTemperCode Ascending Select pRec).ToList()
+                            Where pRec.fldMatCode = pMatCode Order By pRec.fldTemperCode Ascending Select pRec).ToList()
                 If (pQry.Count() > 0) Then
                     For i As Integer = 0 To pQry.Count() - 1
                         Dim pCode As String = pQry(i).fldTemperCode.ToString().Trim()
@@ -1088,7 +1088,7 @@ Public Class Part_frmHW
         '....This routine populates the Surface Finish combo box. (Database Driven).
         Dim pSealMCSEntity As New SealIPEMCSDBEntities()
         Dim pRecordLeak = (From it In pSealMCSEntity.tblESeal_Leak_T800
-                                    Select it.fldSFinish Distinct).ToList()
+                           Select it.fldSFinish Distinct).ToList()
 
         cmbSFinish.Items.Clear()
         Dim pRecord As New tblESeal_Leak_T800
@@ -1282,19 +1282,19 @@ Public Class Part_frmHW
             cmbHT.SelectedIndex = -1
         Else
             Dim pCount As Integer = (From it In pSealMCSEntity.tblMaterial
-                                    Where it.fldName = MatName_In Select it).Count()
+                                     Where it.fldName = MatName_In Select it).Count()
             Dim pMatCode As String = ""
             If (pCount > 0) Then
                 Dim pQry_Mat = (From it In pSealMCSEntity.tblMaterial
-                                    Where it.fldName = MatName_In Select it).First()
+                                Where it.fldName = MatName_In Select it).First()
                 pMatCode = pQry_Mat.fldCode
 
                 Dim pCount_HT As Integer = (From it In pSealMCSEntity.tblHT
-                                                Where it.fldMatCode = pMatCode Select it).Count()
+                                            Where it.fldMatCode = pMatCode Select it).Count()
                 Dim pCode As String = ""
                 If (pCount_HT > 0) Then
                     Dim pQry_HT = (From it In pSealMCSEntity.tblHT
-                                    Where it.fldMatCode = pMatCode Select it).First()
+                                   Where it.fldMatCode = pMatCode Select it).First()
                     cmbHT.Items.Add(pQry_HT.fldCode)
                     cmbHT.SelectedIndex = 0
                 End If
@@ -1430,11 +1430,11 @@ Public Class Part_frmHW
 
         With mPartProject.PNR.HW
             If (.Hfree > gcEPS) Then
-                txtHFree.Text = gPartUnit.WriteInUserL(.Hfree)
+                txtHFree.Text = gUnit.WriteInUserL(.Hfree)
             End If
-            txtHFreeTolMinus.Text = gPartUnit.WriteInUserL(.HFreeTol(1))
-            txtHFreeTolPlus.Text = gPartUnit.WriteInUserL(.HFreeTol(2))
-            txtThick.Text = gPartUnit.WriteInUserL(.TStd)
+            txtHFreeTolMinus.Text = gUnit.WriteInUserL(.HFreeTol(1))
+            txtHFreeTolPlus.Text = gUnit.WriteInUserL(.HFreeTol(2))
+            txtThick.Text = gUnit.WriteInUserL(.TStd)
 
             'AES 31JUL17
             If (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.C Or mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.SC) Then
@@ -1473,15 +1473,15 @@ Public Class Part_frmHW
             pDControl = Convert.ToDouble(txtDControl.Text)
             If (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.E) Then
                 Dim pESeal As New IPE_clsESeal("E-Seal", mPartProject.PNR.HW.UnitSystem, mPartProject.PNR.HW.POrient)
-                txtH11Tol.Text = gPartUnit.WriteInUserL(pESeal.H11Tol_Calc(pDControl))
+                txtH11Tol.Text = gUnit.WriteInUserL(pESeal.H11Tol_Calc(pDControl))
 
             ElseIf (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.C Or mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.SC) Then
                 Dim pCSeal As New IPE_clsCSeal("C-Seal", mPartProject.PNR.HW.UnitSystem, mPartProject.PNR.HW.POrient)
-                txtH11Tol.Text = gPartUnit.WriteInUserL(pCSeal.H11Tol_Calc(pDControl))
+                txtH11Tol.Text = gUnit.WriteInUserL(pCSeal.H11Tol_Calc(pDControl))
 
             ElseIf (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.U) Then
                 Dim pUSeal As New IPE_clsUSeal("U-Seal", mPartProject.PNR.HW.UnitSystem, mPartProject.PNR.HW.POrient)
-                txtH11Tol.Text = gPartUnit.WriteInUserL(pUSeal.H11Tol_Calc(pDControl))
+                txtH11Tol.Text = gUnit.WriteInUserL(pUSeal.H11Tol_Calc(pDControl))
 
             End If
 
@@ -1493,7 +1493,7 @@ Public Class Part_frmHW
     Private Function SetForeColor_Pink(ByVal OrgVal_In As Double, ByVal CurrVal_In As Double) As Color
         '==============================================================================================               
         Dim pColor As Color = Color.Black
-        pColor = IIf(Abs(CurrVal_In - OrgVal_In) < gcEPS, _
+        pColor = IIf(Abs(CurrVal_In - OrgVal_In) < gcEPS,
                                          Color.Magenta, Color.Black)
 
         Return pColor
@@ -1504,7 +1504,7 @@ Public Class Part_frmHW
     Private Function SetForeColor_Blue(ByVal OrgVal_In As Double, ByVal CurrVal_In As Double) As Color
         '==============================================================================================               
         Dim pColor As Color = Color.Black
-        pColor = IIf(Abs(CurrVal_In - OrgVal_In) < gcEPS, _
+        pColor = IIf(Abs(CurrVal_In - OrgVal_In) < gcEPS,
                                          Color.Blue, Color.Black)
 
         Return pColor
@@ -1686,7 +1686,7 @@ Public Class Part_frmHW
         If (pHWFace_Rec_Count > 0) Then
             '....Record already exists
             Dim pHWFace_Rec = (From HWFace In pPartEntities.tblHW_Face
-                                            Where HWFace.fldPNID = mPNID And
+                               Where HWFace.fldPNID = mPNID And
                                             HWFace.fldRevID = mRevID Select HWFace).First()
             pHWFace_Rec.fldType = mPartProject.PNR.SealType.ToString()
             pHWFace_Rec.fldMCS = mPartProject.PNR.HW.MCrossSecNo
@@ -1841,12 +1841,12 @@ Public Class Part_frmHW
 
         '....HW_AdjCSeal table
         Dim pHW_AdjCSeal_Rec_Count As Integer = (From HWFace_AdjCSeal In pPartEntities.tblHW_AdjCSeal
-                                            Where HWFace_AdjCSeal.fldPNID = mPNID And
+                                                 Where HWFace_AdjCSeal.fldPNID = mPNID And
                                             HWFace_AdjCSeal.fldRevID = mRevID Select HWFace_AdjCSeal).Count()
         If (pHW_AdjCSeal_Rec_Count > 0) Then
             '....Record already exists
             Dim pHWFace_AdjCSeal_Rec = (From HWFace_AdjCSeal In pPartEntities.tblHW_AdjCSeal
-                                            Where HWFace_AdjCSeal.fldPNID = mPNID And
+                                        Where HWFace_AdjCSeal.fldPNID = mPNID And
                                             HWFace_AdjCSeal.fldRevID = mRevID Select HWFace_AdjCSeal).First()
 
             pHWFace_AdjCSeal_Rec.fldDHFree = mPartProject.PNR.HW.DHfree
@@ -1878,12 +1878,12 @@ Public Class Part_frmHW
 
         '....HW_AdjESeal table
         Dim pHW_AdjESeal_Rec_Count As Integer = (From HWFace_AdjESeal In pPartEntities.tblHW_AdjESeal
-                                            Where HWFace_AdjESeal.fldPNID = mPNID And
+                                                 Where HWFace_AdjESeal.fldPNID = mPNID And
                                             HWFace_AdjESeal.fldRevID = mRevID Select HWFace_AdjESeal).Count()
         If (pHW_AdjESeal_Rec_Count > 0) Then
             '....Record already exists
             Dim pHWFace_AdjESeal_Rec = (From HWFace_AdjESeal In pPartEntities.tblHW_AdjESeal
-                                            Where HWFace_AdjESeal.fldPNID = mPNID And
+                                        Where HWFace_AdjESeal.fldPNID = mPNID And
                                             HWFace_AdjESeal.fldRevID = mRevID Select HWFace_AdjESeal).First()
 
             pHWFace_AdjESeal_Rec.fldDThetaE1 = mPartProject.PNR.HW.DThetaE1
@@ -1920,7 +1920,7 @@ Public Class Part_frmHW
             If (pHWFace_Rec_Count > 0) Then
 
                 Dim pHWFace_Rec = (From HWFace In pPartEntities.tblHW_Face
-                                            Where HWFace.fldPNID = mPNID And
+                                   Where HWFace.fldPNID = mPNID And
                                             HWFace.fldRevID = mRevID Select HWFace).First()
 
                 Dim pType As String = pHWFace_Rec.fldType.ToString().Trim()
@@ -1942,7 +1942,7 @@ Public Class Part_frmHW
                         If (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.C Or mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.SC) Then
                             '....HW_AdjCSeal table
                             Dim pHW_AdjCSeal_Rec_Count As Integer = (From HWFace_AdjCSeal In pPartEntities.tblHW_AdjCSeal
-                                                            Where HWFace_AdjCSeal.fldPNID = mPNID And
+                                                                     Where HWFace_AdjCSeal.fldPNID = mPNID And
                                                             HWFace_AdjCSeal.fldRevID = mRevID Select HWFace_AdjCSeal).Count()
                             If (pHW_AdjCSeal_Rec_Count > 0) Then
 
@@ -2019,7 +2019,7 @@ Public Class Part_frmHW
 
                             '....HW_AdjESeal table
                             Dim pHW_AdjESeal_Rec_Count As Integer = (From HWFace_AdjESeal In pPartEntities.tblHW_AdjESeal
-                                                            Where HWFace_AdjESeal.fldPNID = mPNID And
+                                                                     Where HWFace_AdjESeal.fldPNID = mPNID And
                                                             HWFace_AdjESeal.fldRevID = mRevID Select HWFace_AdjESeal).Count()
                             If (pHW_AdjESeal_Rec_Count > 0) Then
 
@@ -2167,12 +2167,12 @@ Public Class Part_frmHW
             If (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.C Or mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.SC) Then
                 '....HW_AdjCSeal table
                 Dim pHW_AdjCSeal_Rec_Count As Integer = (From HWFace_AdjCSeal In pPartEntities.tblHW_AdjCSeal
-                                                Where HWFace_AdjCSeal.fldPNID = mPNID And
+                                                         Where HWFace_AdjCSeal.fldPNID = mPNID And
                                                 HWFace_AdjCSeal.fldRevID = mRevID Select HWFace_AdjCSeal).Count()
                 If (pHW_AdjCSeal_Rec_Count > 0) Then
 
                     Dim pHWFace_AdjCSeal_Rec = (From HWFace_AdjCSeal In pPartEntities.tblHW_AdjCSeal
-                                                    Where HWFace_AdjCSeal.fldPNID = mPNID And
+                                                Where HWFace_AdjCSeal.fldPNID = mPNID And
                                                     HWFace_AdjCSeal.fldRevID = mRevID Select HWFace_AdjCSeal).First()
 
                     With mPartProject.PNR.HW
@@ -2201,12 +2201,12 @@ Public Class Part_frmHW
 
                 '....HW_AdjESeal table
                 Dim pHW_AdjESeal_Rec_Count As Integer = (From HWFace_AdjESeal In pPartEntities.tblHW_AdjESeal
-                                                 Where HWFace_AdjESeal.fldPNID = mPNID And
+                                                         Where HWFace_AdjESeal.fldPNID = mPNID And
                                                  HWFace_AdjESeal.fldRevID = mRevID Select HWFace_AdjESeal).Count()
                 If (pHW_AdjESeal_Rec_Count > 0) Then
 
                     Dim pHWFace_AdjESeal_Rec = (From HWFace_AdjESeal In pPartEntities.tblHW_AdjESeal
-                                                    Where HWFace_AdjESeal.fldPNID = mPNID And
+                                                Where HWFace_AdjESeal.fldPNID = mPNID And
                                                     HWFace_AdjESeal.fldRevID = mRevID Select HWFace_AdjESeal).First()
 
                     With mPartProject.PNR.HW
@@ -2285,15 +2285,15 @@ Public Class Part_frmHW
             txtPlatingThickMin.Enabled = False
             txtPlatingThickMax.Enabled = False
             Dim pQry = (From pRec In pMCSEntities.tblPlatingThick Where pRec.fldPlatingThickCode = pThickCode
-                   Select pRec).ToList()
+                        Select pRec).ToList()
 
             If (pQry.Count() > 0) Then
                 If (mPartProject.PNR.HW.UnitSystem = "English") Then
-                    txtPlatingThickMin.Text = gPartUnit.WriteInUserL(pQry(0).fldPlatingThickMinEng, "TFormat")
-                    txtPlatingThickMax.Text = gPartUnit.WriteInUserL(pQry(0).fldPlatingThickMaxEng, "TFormat")
+                    txtPlatingThickMin.Text = gUnit.WriteInUserL(pQry(0).fldPlatingThickMinEng, "TFormat")
+                    txtPlatingThickMax.Text = gUnit.WriteInUserL(pQry(0).fldPlatingThickMaxEng, "TFormat")
                 Else
-                    txtPlatingThickMin.Text = gPartUnit.WriteInUserL(pQry(0).fldPlatingThickMinMet, "TFormat")
-                    txtPlatingThickMax.Text = gPartUnit.WriteInUserL(pQry(0).fldPlatingThickMaxMet, "TFormat")
+                    txtPlatingThickMin.Text = gUnit.WriteInUserL(pQry(0).fldPlatingThickMinMet, "TFormat")
+                    txtPlatingThickMax.Text = gUnit.WriteInUserL(pQry(0).fldPlatingThickMaxMet, "TFormat")
                 End If
             End If
         Else

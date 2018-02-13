@@ -36,6 +36,7 @@ Public Class clsProcessProj
 
     '....Local Object.
     Private mPartProject As New clsPartProject
+    Private mUnit As New clsProcessProj_Unit
 
     Private mPreOrder As New clsProcessProj_PreOrder
     Private mITAR_Export As New clsProcessProj_ITAR_Export
@@ -52,6 +53,7 @@ Public Class clsProcessProj
     Private mShipping As New clsProcessProj_Shipping
     Private mIssueComnt As New clsProcessProj_IssueComment
     Private mApproval As New clsProcessProj_Approval
+    Private mEditedBy As New clsProcessProj_EditedBy
 
     Private mCustContact As New clsCustContact
 
@@ -78,6 +80,19 @@ Public Class clsProcessProj
         Set(ByVal intData As Integer)
             '-------------------------------
             mID = intData
+        End Set
+
+    End Property
+
+    '....Unit
+    Public Property Unit() As clsProcessProj_Unit
+        '========================================
+        Get
+            Return mUnit
+        End Get
+
+        Set(Obj As clsProcessProj_Unit)
+            mUnit = Obj
         End Set
 
     End Property
@@ -379,6 +394,19 @@ Public Class clsProcessProj
 
     End Property
 
+    '....EditedBy
+    Public Property EditedBy() As clsProcessProj_EditedBy
+        '================================================
+        Get
+            Return mEditedBy
+        End Get
+
+        Set(ByVal value As clsProcessProj_EditedBy)
+            mEditedBy = value
+        End Set
+
+    End Property
+
 #Region "CustContact"
 
     Public Property CustContact() As clsCustContact
@@ -414,10 +442,18 @@ Public Class clsProcessProj
                                Where pRec.fldPartProjectID = mPartProject.Project_ID Select pRec).First()
 
             mID = pQryProcessProject.fldID
-            mPOPCoding = pQryProcessProject.fldPOPCoding.Trim()
-            'mGovt = pQryProcessProject.fldGovt
-            mRating = pQryProcessProject.fldRating.Trim()
-            mType = pQryProcessProject.fldType.Trim()
+            If (Not IsNothing(pQryProcessProject.fldPOPCoding) And Not IsDBNull(pQryProcessProject.fldPOPCoding)) Then
+                mPOPCoding = pQryProcessProject.fldPOPCoding.Trim()
+            End If
+
+            If (Not IsNothing(pQryProcessProject.fldRating) And Not IsDBNull(pQryProcessProject.fldRating)) Then
+                mRating = pQryProcessProject.fldRating.Trim()
+            End If
+
+            If (Not IsNothing(pQryProcessProject.fldType) And Not IsDBNull(pQryProcessProject.fldType)) Then
+                mType = pQryProcessProject.fldType.Trim()
+            End If
+
 
             If (Not IsNothing(pQryProcessProject.fldDateOpen) And Not IsDBNull(pQryProcessProject.fldDateOpen)) Then
                 mDateOpen = pQryProcessProject.fldDateOpen
@@ -431,7 +467,11 @@ Public Class clsProcessProj
                 mDateClose = pQryProcessProject.fldDateClose
             End If
 
-            mLastModifiedBy = pQryProcessProject.fldLastModifiedBy.Trim()
+            If (Not IsNothing(pQryProcessProject.fldLastModifiedBy) And Not IsDBNull(pQryProcessProject.fldLastModifiedBy)) Then
+                mLastModifiedBy = pQryProcessProject.fldLastModifiedBy.Trim()
+            End If
+
+
 
         Else
             mID = 0
@@ -690,6 +730,7 @@ Public Class clsProcessProj
         End Sub
 
 #End Region
+
 
     End Class
 

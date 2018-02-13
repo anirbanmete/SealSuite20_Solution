@@ -2192,7 +2192,7 @@ Public Class Test_clsReport
                                         .Rows.Item(iRow).Cells.Item(3).Range.InsertAfter(TestProject_In.Test_Unit.WriteInUserL_Cust(pTemp))
 
                                         Dim pVal1 As Single = pQryLeakData(i).fldFHFinal
-                                        Dim pFHFinal As Double = gPartUnit.L_UserToCon(pVal1)
+                                        Dim pFHFinal As Double = gUnit.L_UserToCon(pVal1)
                                         Dim pCavity As Double = pVal
                                         Dim pSpringBack As Double = (pFHFinal - pVal) * TestProject_In.Test_Unit.ConvF("L")
                                         .Rows.Item(iRow).Cells.Item(4).Range.InsertAfter(TestProject_In.Test_Unit.WriteInUserL_Cust(pSpringBack))

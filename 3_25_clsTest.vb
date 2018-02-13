@@ -92,7 +92,7 @@ Public Class Test_clsTest
 
 #Region "MAIN ROUTINES:"
 
-    Public Sub StatusReport(ByVal cmbParkerPN_In As ComboBox, ByVal Part_Unit_In As clsPartUnit)
+    Public Sub StatusReport(ByVal cmbParkerPN_In As ComboBox, ByVal Part_Unit_In As clsUnit)
         '=======================================================================================
 
         ''CloseExcelFiles()

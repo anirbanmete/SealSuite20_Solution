@@ -218,9 +218,9 @@ Public Class Part_frmNonStdCS_ESeal
             txtESealTemplateNo.Text = .TemplateNo
 
             txtPOrient.Text = .POrient
-            txtDControl.Text = gPartUnit.WriteInUserL(.DControl)
+            txtDControl.Text = gUnit.WriteInUserL(.DControl)
             txtESealNConv.Text = .NConv
-            txtT.Text = gPartUnit.WriteInUserL(.T)
+            txtT.Text = gUnit.WriteInUserL(.T)
 
             'AES 11OCT17
             ' ''....Adjusted parameter values:
@@ -353,7 +353,7 @@ Public Class Part_frmNonStdCS_ESeal
 
         With mESeal
             .DThetaE1 = ConvertToSng(txtESealDThetaE1.Text)
-            txtDControl.Text = gPartUnit.WriteInUserL(.DControl)    '....Update display.
+            txtDControl.Text = gUnit.WriteInUserL(.DControl)    '....Update display.
         End With
 
         '....Redraw Seal Geometries. 
@@ -402,7 +402,7 @@ Public Class Part_frmNonStdCS_ESeal
         '....Assign the DThetaM1 value to the local seal object property,
         With mESeal
             .DThetaM1 = ConvertToSng(txtESealDThetaM1.Text)
-            txtDControl.Text = gPartUnit.WriteInUserL(.DControl)    '....Update display.
+            txtDControl.Text = gUnit.WriteInUserL(.DControl)    '....Update display.
         End With
 
 
@@ -520,19 +520,19 @@ Public Class Part_frmNonStdCS_ESeal
         Dim pDpY As Single
 
         '....Set the PageUnit property.
-        If gPartUnit.System = "English" Then
+        If gUnit.System = "English" Then
             pGr.PageUnit = GraphicsUnit.Inch
 
             '....# of Pixels/in
             pDpX = pGr.DpiX
             pDpY = pGr.DpiY
 
-        ElseIf gPartUnit.System = "Metric" Then
+        ElseIf gUnit.System = "Metric" Then
             pGr.PageUnit = GraphicsUnit.Millimeter
 
             '....# of Pixels/mm
-            pDpX = pGr.DpiX / gPartUnit.EngLToUserL(1.0)
-            pDpY = pGr.DpiY / gPartUnit.EngLToUserL(1.0)
+            pDpX = pGr.DpiX / gUnit.EngLToUserL(1.0)
+            pDpY = pGr.DpiY / gUnit.EngLToUserL(1.0)
         End If
 
 
@@ -548,7 +548,7 @@ Public Class Part_frmNonStdCS_ESeal
         'Caption Labels:        
         '---------------
         If mESeal Is Nothing = False Then
-            lblStandard.Text = "Standard  =  " & gPartUnit.WriteInUserL((mESeal.HfreeStd))
+            lblStandard.Text = "Standard  =  " & gUnit.WriteInUserL((mESeal.HfreeStd))
 
             Dim psngDelHfreePCent As Single
             psngDelHfreePCent = (mESeal.Hfree - mESeal.HfreeStd) * 100 / mESeal.HfreeStd
@@ -559,7 +559,7 @@ Public Class Part_frmNonStdCS_ESeal
             ElseIf Abs(psngDelHfreePCent) > 0.0# Then
                 lblESealAdjusted.Visible = True
                 lblESealAdjusted.Text = "Adjusted   =  " & _
-                                    gPartUnit.WriteInUserL((mESeal.Hfree)) & _
+                                    gUnit.WriteInUserL((mESeal.Hfree)) & _
                                     "  ( " & Format(psngDelHfreePCent, "##0.0") & " %)"
 
             End If

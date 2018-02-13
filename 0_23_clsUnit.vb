@@ -1,11 +1,11 @@
 ﻿
 '===============================================================================
 '                                                                              '
-'                          SOFTWARE  :  "SealPart"                              '
+'                          SOFTWARE  :  "SealSuite"                            '
 '                      CLASS MODULE  :  clsUnit                                '
-'                        VERSION NO  :  1.0                                    '
+'                        VERSION NO  :  2.3                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  27APR17                                '
+'                     LAST MODIFIED  :  06FEB18                                '
 '                                                                              '
 '===============================================================================
 
@@ -17,8 +17,8 @@ Imports System.IO.FileSystemWatcher
 Imports System.Runtime.Serialization
 Imports System.Runtime.Serialization.Formatters.Binary
 
-<Serializable()> _
-Public Class clsPartUnit
+<Serializable()>
+Public Class clsUnit
     Implements ICloneable
 
 #Region "NAMED CONSTANT:"
@@ -34,7 +34,7 @@ Public Class clsPartUnit
 
 #Region "STRUCTURE:"
 
-    <Serializable()> _
+    <Serializable()>
     Public Structure sCon
         Public L As Single
         Public P As Single
@@ -44,14 +44,14 @@ Public Class clsPartUnit
     End Structure
 
 
-    <Serializable()> _
+    <Serializable()>
     Public Structure SUser
         Public L As Single
         Public Stress As Single
     End Structure
 
 
-    <Serializable()> _
+    <Serializable()>
     Public Structure sCFac
         Public Con As sCon
         Public User As SUser
@@ -427,7 +427,7 @@ Public Class clsPartUnit
 
 
     '....Overloaded Verison 2:          
-    Public Function WriteInUserL(ByVal sngData_In As Single, _
+    Public Function WriteInUserL(ByVal sngData_In As Single,
                                  ByVal strFormat_In As String) As String
         '===============================================================
         'This function is used in desplaying length dataset members on the the forms.
@@ -608,7 +608,7 @@ Public Class clsPartUnit
         '....Inherited from the ICloneable interface, supports deep cloning
 
         Dim pMemBuffer As New MemoryStream()
-        Dim pBinSerializer As New BinaryFormatter(Nothing, _
+        Dim pBinSerializer As New BinaryFormatter(Nothing,
                               New StreamingContext(StreamingContextStates.Clone))
 
 

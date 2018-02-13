@@ -93,7 +93,6 @@ Partial Class Process_frmUnit
         'cmbTUnitCust
         '
         Me.cmbTUnitCust.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbTUnitCust.Enabled = False
         Me.cmbTUnitCust.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbTUnitCust.FormattingEnabled = True
         Me.cmbTUnitCust.Items.AddRange(New Object() {"ºC", "ºF"})
@@ -105,7 +104,6 @@ Partial Class Process_frmUnit
         'cmbTUnitPH
         '
         Me.cmbTUnitPH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbTUnitPH.Enabled = False
         Me.cmbTUnitPH.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbTUnitPH.FormattingEnabled = True
         Me.cmbTUnitPH.Items.AddRange(New Object() {"ºC", "ºF"})
@@ -132,7 +130,6 @@ Partial Class Process_frmUnit
         'cmbPUnitCust
         '
         Me.cmbPUnitCust.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbPUnitCust.Enabled = False
         Me.cmbPUnitCust.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbPUnitCust.FormattingEnabled = True
         Me.cmbPUnitCust.Items.AddRange(New Object() {"kPa"})
@@ -144,7 +141,6 @@ Partial Class Process_frmUnit
         'cmbFUnitCust
         '
         Me.cmbFUnitCust.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbFUnitCust.Enabled = False
         Me.cmbFUnitCust.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbFUnitCust.FormattingEnabled = True
         Me.cmbFUnitCust.Items.AddRange(New Object() {"N"})
@@ -156,7 +152,6 @@ Partial Class Process_frmUnit
         'cmbPUnitPH
         '
         Me.cmbPUnitPH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbPUnitPH.Enabled = False
         Me.cmbPUnitPH.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbPUnitPH.FormattingEnabled = True
         Me.cmbPUnitPH.Items.AddRange(New Object() {"psi"})
@@ -168,7 +163,6 @@ Partial Class Process_frmUnit
         'cmbFUnitPH
         '
         Me.cmbFUnitPH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbFUnitPH.Enabled = False
         Me.cmbFUnitPH.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbFUnitPH.FormattingEnabled = True
         Me.cmbFUnitPH.Items.AddRange(New Object() {"lbf"})
@@ -180,7 +174,6 @@ Partial Class Process_frmUnit
         'cmbLUnitCust
         '
         Me.cmbLUnitCust.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbLUnitCust.Enabled = False
         Me.cmbLUnitCust.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbLUnitCust.FormattingEnabled = True
         Me.cmbLUnitCust.Items.AddRange(New Object() {"mm"})
@@ -192,7 +185,6 @@ Partial Class Process_frmUnit
         'cmbLUnitPH
         '
         Me.cmbLUnitPH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbLUnitPH.Enabled = False
         Me.cmbLUnitPH.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbLUnitPH.FormattingEnabled = True
         Me.cmbLUnitPH.Items.AddRange(New Object() {"in"})
@@ -227,7 +219,6 @@ Partial Class Process_frmUnit
         'cmbLeakUnitCust
         '
         Me.cmbLeakUnitCust.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbLeakUnitCust.Enabled = False
         Me.cmbLeakUnitCust.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbLeakUnitCust.FormattingEnabled = True
         Me.cmbLeakUnitCust.Items.AddRange(New Object() {"cc/S"})
@@ -239,7 +230,6 @@ Partial Class Process_frmUnit
         'cmbLeakUnitPH
         '
         Me.cmbLeakUnitPH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbLeakUnitPH.Enabled = False
         Me.cmbLeakUnitPH.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbLeakUnitPH.FormattingEnabled = True
         Me.cmbLeakUnitPH.Items.AddRange(New Object() {"mL/m"})

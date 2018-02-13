@@ -188,11 +188,11 @@ Partial Class frmSplash
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Verdana", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Font = New System.Drawing.Font("Verdana", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Label10.Location = New System.Drawing.Point(330, 155)
+        Me.Label10.Location = New System.Drawing.Point(341, 155)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(232, 38)
+        Me.Label10.Size = New System.Drawing.Size(210, 38)
         Me.Label10.TabIndex = 21
         Me.Label10.Text = "Metalic Seal" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         Me.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -235,13 +235,13 @@ Partial Class frmSplash
         'lblVarNo
         '
         Me.lblVarNo.AutoSize = True
-        Me.lblVarNo.Font = New System.Drawing.Font("Verdana", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblVarNo.Font = New System.Drawing.Font("Verdana", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblVarNo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.lblVarNo.Location = New System.Drawing.Point(349, 297)
+        Me.lblVarNo.Location = New System.Drawing.Point(340, 311)
         Me.lblVarNo.Name = "lblVarNo"
-        Me.lblVarNo.Size = New System.Drawing.Size(195, 32)
+        Me.lblVarNo.Size = New System.Drawing.Size(213, 32)
         Me.lblVarNo.TabIndex = 6
-        Me.lblVarNo.Text = "SealSuite 2.2"
+        Me.lblVarNo.Text = "SealSuite 2.3"
         Me.lblVarNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'cmdExit
@@ -282,9 +282,9 @@ Partial Class frmSplash
         Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.Label1.Location = New System.Drawing.Point(652, 80)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(126, 14)
+        Me.Label1.Size = New System.Drawing.Size(133, 14)
         Me.Label1.TabIndex = 1
-        Me.Label1.Text = "January 12, 2018"
+        Me.Label1.Text = "February 09, 2018"
         '
         'imgLogo
         '

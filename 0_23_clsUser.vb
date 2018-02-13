@@ -20,6 +20,7 @@ Public Class clsUser
     Private mFirstName As String
     Private mLastName As String
     Private mTitle As String
+    Private mRole As String
     Private mProgramDataFile As String
 
 #End Region
@@ -72,26 +73,48 @@ Public Class clsUser
 
     End Property
 
+    Public Property Role() As String
+        '=============================
+        Get
+            Return mRole
+        End Get
+
+        Set(value As String)
+            mRole = value
+        End Set
+
+    End Property
+
 #End Region
 
-    Public Sub RetrieveUserRoles()
+    Public Sub RetrieveUserTitle()
         '=========================
         mSystemLogin = Environment.UserName
         Dim pSealSuiteEntities As New SealSuiteDBEntities()
 
         Dim pRecCount As Integer = (From pRec In pSealSuiteEntities.tblUser
-                                      Where pRec.fldSystemLogin = mSystemLogin Select pRec).Count()
+                                    Where pRec.fldSystemLogin = mSystemLogin Select pRec).Count()
 
         Dim pTitleID As Integer = 0
         If (pRecCount > 0) Then
             Dim pQry = (From pRec In pSealSuiteEntities.tblUser
-                                       Where pRec.fldSystemLogin = mSystemLogin Select pRec).First()
-            mFirstName = pQry.fldFirstName.Trim()
-            mLastName = pQry.fldLastName.Trim()
+                        Where pRec.fldSystemLogin = mSystemLogin Select pRec).First()
+
+            If (Not IsNothing(pQry.fldFirstName)) Then
+                mFirstName = pQry.fldFirstName.Trim()
+            End If
+
+            If (Not IsNothing(pQry.fldLastName)) Then
+                mLastName = pQry.fldLastName.Trim()
+            End If
+
+
+            'mFirstName = pQry.fldFirstName.Trim()
+            'mLastName = pQry.fldLastName.Trim()
             pTitleID = pQry.fldTitleID
 
             Dim pQryRole = (From pRec In pSealSuiteEntities.tblTitle
-                                       Where pRec.fldID = pTitleID Select pRec).ToList()
+                            Where pRec.fldID = pTitleID Select pRec).ToList()
             If (pQryRole.Count > 0) Then
                 mTitle = pQryRole(0).fldTitle.Trim()
             End If

@@ -46,6 +46,10 @@ Public Class clsProcessFile
     '------------------------
     Private Const mcDirTemplates As String = mcDirRoot & "Templates\"
 
+    'PDS Output File:
+    '----------------
+    Private Const mcDirOutput As String = mcDirRoot & "Output Files\"
+
     '....PDS Report  
     Private Const mcPDSReportFileName As String = mcDirTemplates & "EN7300007 - Product Definition Sheet_Rev W_Rev01.xltx"
 
@@ -75,6 +79,11 @@ Public Class clsProcessFile
     Private mAttendeesStartColName_Title As String
     Private mAttendeesStartColName_Date As String
 
+    Private mIssueCommentStartColName_Issue As String
+    Private mIssueCommentStartColName_By As String
+    Private mIssueCommentStartColName_Date As String
+    Private mIssueCommentStartColName_Resolution As String
+
 #End Region
 
 #Region "CONSTRUCTOR:"
@@ -99,7 +108,7 @@ Public Class clsProcessFile
         If (Mode_In = "Write") Then
             ReadPDSMapping()
             PopulatePDS_Val(ProcessProj_In, PartProj_In)
-            WritePDSFile(ProcessProj_In)
+            WritePDSFile(ProcessProj_In, PartProj_In)
 
         ElseIf (Mode_In = "Read") Then
             'ReadPDSMapping_PDS_DS()
@@ -219,9 +228,9 @@ Public Class clsProcessFile
                         End If
 
                     Case "Quote Date"
-                        If (ProcessProj_In.PreOrder.Quote.QID.Count > 0) Then
-                            mPDS_Val(i) = ProcessProj_In.PreOrder.Quote.QDate(0).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                        End If
+                        ''If (ProcessProj_In.PreOrder.Quote.QID.Count > 0) Then
+                        ''    mPDS_Val(i) = ProcessProj_In.PreOrder.Quote.QDate(0).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        ''End If
 
                     Case "Winnovation No"
                         If (ProcessProj_In.Design.IsWinnovation) Then
@@ -1485,8 +1494,8 @@ Public Class clsProcessFile
     End Sub
 
 
-    Private Sub WritePDSFile(ByVal ProcessProj_In As clsProcessProj)
-        '===========================================================
+    Private Sub WritePDSFile(ByVal ProcessProj_In As clsProcessProj, ByVal PartProj_In As clsPartProject)
+        '================================================================================================
 
         CloseExcelFiles()
 
@@ -1501,8 +1510,8 @@ Public Class clsProcessFile
         Dim pSealTestDBEntities As New SealTestDBEntities
 
         Try
-            pWkbOrg = pApp.Workbooks.Open(mcPDSReportFileName, Missing.Value, False, Missing.Value, Missing.Value, Missing.Value, _
-                                          Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, _
+            pWkbOrg = pApp.Workbooks.Open(mcPDSReportFileName, Missing.Value, False, Missing.Value, Missing.Value, Missing.Value,
+                                          Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value,
                                           Missing.Value, Missing.Value, Missing.Value)
 
             Dim pWkSheet As EXCEL.Worksheet
@@ -1512,6 +1521,7 @@ Public Class clsProcessFile
             Dim pExcelCellRange As EXCEL.Range = Nothing
 
             For i As Integer = 0 To mPDS_CellColName.Count - 1
+
                 If (mPDS_Val(i) <> "") Then
                     pExcelCellRange = pWkSheet.Range(mPDS_CellColName(i)) : pExcelCellRange.Value = mPDS_Val(i)
                 End If
@@ -1620,29 +1630,62 @@ Public Class clsProcessFile
             Next
 
             '....Attendees
-            For i As Integer = 0 To ProcessProj_In.Approval.Dept.Count - 1
-                Dim pColumn_Dept As String = mAttendeesStartColName_Dept.Substring(0, 1)
-                Dim pColumn_Name As String = mAttendeesStartColName_Name.Substring(0, 1)
-                Dim pColumn_Title As String = mAttendeesStartColName_Title.Substring(0, 1)
-                Dim pColumn_Date As String = mAttendeesStartColName_Date.Substring(0, 1)
+            ''For i As Integer = 0 To ProcessProj_In.Approval.Dept.Count - 1
+            ''    Dim pColumn_Dept As String = mAttendeesStartColName_Dept.Substring(0, 1)
+            ''    Dim pColumn_Name As String = mAttendeesStartColName_Name.Substring(0, 1)
+            ''    Dim pColumn_Title As String = mAttendeesStartColName_Title.Substring(0, 1)
+            ''    Dim pColumn_Date As String = mAttendeesStartColName_Date.Substring(0, 1)
 
-                Dim pIndex As Integer = ConvertToInt(mAttendeesStartColName_Dept.Substring(1, mAttendeesStartColName_Dept.Length - 1)) + i
-                pExcelCellRange = pWkSheet.Range(pColumn_Dept & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.Approval.Dept(i)
+            ''    Dim pIndex As Integer = ConvertToInt(mAttendeesStartColName_Dept.Substring(1, mAttendeesStartColName_Dept.Length - 1)) + i
+            ''    pExcelCellRange = pWkSheet.Range(pColumn_Dept & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.Approval.Dept(i)
 
-                pExcelCellRange = pWkSheet.Range(pColumn_Name & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.Approval.Name(i)
-                pExcelCellRange = pWkSheet.Range(pColumn_Title & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.Approval.Title(i)
+            ''    pExcelCellRange = pWkSheet.Range(pColumn_Name & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.Approval.Name(i)
+            ''    pExcelCellRange = pWkSheet.Range(pColumn_Title & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.Approval.Title(i)
 
-                If (ProcessProj_In.Approval.DateSigned(i) <> DateTime.MinValue) Then
-                    pExcelCellRange = pWkSheet.Range(pColumn_Date & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.Approval.DateSigned(i)
+            ''    If (ProcessProj_In.Approval.DateSigned(i) <> DateTime.MinValue) Then
+            ''        pExcelCellRange = pWkSheet.Range(pColumn_Date & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.Approval.DateSigned(i)
+            ''    Else
+            ''        pExcelCellRange = pWkSheet.Range(pColumn_Date & pIndex.ToString()) : pExcelCellRange.Value = ""
+            ''    End If
+
+            ''Next
+
+            pWkSheet = pWkbOrg.Worksheets("Issues-Comments")
+            mIssueCommentStartColName_Issue = "A4"
+            mIssueCommentStartColName_By = "B4"
+            mIssueCommentStartColName_Date = "C4"
+            mIssueCommentStartColName_Resolution = "D4"
+
+            Dim pCI As New CultureInfo("en-US")
+
+            For i As Integer = 0 To ProcessProj_In.IssueCommnt.ID.Count - 1
+                Dim pColumn_Issue As String = mIssueCommentStartColName_Issue.Substring(0, 1)
+                Dim pColumn_By As String = mIssueCommentStartColName_By.Substring(0, 1)
+                Dim pColumn_Date As String = mIssueCommentStartColName_Date.Substring(0, 1)
+                Dim pColumn_Resolution As String = mIssueCommentStartColName_Resolution.Substring(0, 1)
+
+                Dim pIndex As Integer = ConvertToInt(mIssueCommentStartColName_Issue.Substring(1, mIssueCommentStartColName_Issue.Length - 1)) + i
+                pExcelCellRange = pWkSheet.Range(pColumn_Issue & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.IssueCommnt.Comment(i)
+
+                pExcelCellRange = pWkSheet.Range(pColumn_By & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.IssueCommnt.ByDept(i)
+
+
+                If (ProcessProj_In.IssueCommnt.ByDate(i) <> DateTime.MinValue) Then
+                    pExcelCellRange = pWkSheet.Range(pColumn_Date & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.IssueCommnt.ByDate(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
                 Else
                     pExcelCellRange = pWkSheet.Range(pColumn_Date & pIndex.ToString()) : pExcelCellRange.Value = ""
                 End If
 
+                pExcelCellRange = pWkSheet.Range(pColumn_Resolution & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.IssueCommnt.Resolution(i)
             Next
+
+            Dim pOutputFileName As String = PartProj_In.PNR.PN() & PartProj_In.PNR.PN_Rev() & " PDS_RevW"
+            pWkbOrg.SaveAs(mcDirOutput & pOutputFileName)
 
         Catch ex As Exception
 
         Finally
+
 
             pApp.Visible = True
 
