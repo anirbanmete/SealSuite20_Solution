@@ -544,9 +544,9 @@ Namespace My
     Friend Module MySettingsProperty
         
         <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
-        Friend ReadOnly Property Settings() As Global.SealSuite23.My.MySettings
+        Friend ReadOnly Property Settings() As Global.SealSuite24.My.MySettings
             Get
-                Return Global.SealSuite23.My.MySettings.Default
+                Return Global.SealSuite24.My.MySettings.Default
             End Get
         End Property
     End Module

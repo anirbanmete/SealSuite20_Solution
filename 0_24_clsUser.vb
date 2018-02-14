@@ -2,9 +2,9 @@
 '                                                                              '
 '                          SOFTWARE  :  "SealProcess"                          '
 '                      CLASS MODULE  :  clsSuiteUser                           '
-'                        VERSION NO  :  2.0                                    '
+'                        VERSION NO  :  2.4                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  03JAN18                                '
+'                     LAST MODIFIED  :  14FEB18                                '
 '                                                                              '
 '===============================================================================
 Imports System.Linq
@@ -21,6 +21,7 @@ Public Class clsUser
     Private mLastName As String
     Private mTitle As String
     Private mRole As String
+    Private mViewer As Boolean
     Private mProgramDataFile As String
 
 #End Region
@@ -108,7 +109,6 @@ Public Class clsUser
                 mLastName = pQry.fldLastName.Trim()
             End If
 
-
             'mFirstName = pQry.fldFirstName.Trim()
             'mLastName = pQry.fldLastName.Trim()
             pTitleID = pQry.fldTitleID
@@ -122,6 +122,75 @@ Public Class clsUser
         End If
 
     End Sub
+
+    Public Function RetrieveProcessUserRoles() As List(Of String)
+
+        '=================================================
+        mViewer = False
+        Dim pUserRole As New List(Of String)
+
+        mSystemLogin = Environment.UserName
+        Dim pSealSuiteEntities As New SealSuiteDBEntities()
+
+        Dim pRecCount As Integer = (From pRec In pSealSuiteEntities.tblUser
+                                    Where pRec.fldSystemLogin = mSystemLogin Select pRec).Count()
+
+        Dim pUserID As Integer = 0
+        If (pRecCount > 0) Then
+            Dim pQry = (From pRec In pSealSuiteEntities.tblUser
+                        Where pRec.fldSystemLogin = mSystemLogin Select pRec).First()
+
+            pUserID = pQry.fldID
+
+        End If
+
+        If (pUserID > 0) Then
+
+            Dim pUserRoleRecCount As Integer = (From pRec In pSealSuiteEntities.tblProcess_UserRole
+                                                Where pRec.fldUserID = pUserID Select pRec).Count()
+
+            If (pUserRoleRecCount > 0) Then
+                Dim pQry = (From pRec In pSealSuiteEntities.tblProcess_UserRole
+                            Where pRec.fldUserID = pUserID Select pRec).ToList()
+
+                If (pQry.Count > 0) Then
+                    For i As Integer = 0 To pQry.Count - 1
+                        Dim pRoleID As Integer = pQry(i).fldRoleID
+
+                        Dim pUserRoleRec = (From pRec In pSealSuiteEntities.tblRole
+                                            Where pRec.fldID = pRoleID Select pRec).ToList()
+                        If (pUserRoleRec.Count > 0) Then
+                            pUserRole.Add(pUserRoleRec(0).fldRole.Trim())
+                        End If
+                    Next
+
+                End If
+
+            End If
+        End If
+
+        If (pUserRole.Count = 0) Then
+            mViewer = True
+        End If
+
+        Return pUserRole
+
+    End Function
+
+    Public Function GetRoleID(ByVal Role_In As String) As Integer
+        '========================================================
+        Dim pRoleID As Integer = 0
+        Dim pSealSuiteEntities As New SealSuiteDBEntities()
+
+        Dim pUserRoleRec = (From pRec In pSealSuiteEntities.tblRole
+                            Where pRec.fldRole = Role_In Select pRec).ToList()
+        If (pUserRoleRec.Count > 0) Then
+            pRoleID = pUserRoleRec(0).fldID
+        End If
+
+        Return pRoleID
+
+    End Function
 
 #Region "DB RELATED ROUTINES:"
 
@@ -143,6 +212,9 @@ Public Class clsUser
 
         Dim pSealSuiteDBEntities As New SealSuiteDBEntities()
         Dim pSealProcessDBEntities As New SealProcessDBEntities()
+
+        Dim pRole1(), pRole2(), pRole3(), pRole4(), pRole5(), pRole6(), pRole7(), pRole8(), pRole9(), pRole10(), pRole11(), pRole12() As String
+        Dim pRole13(), pRole14(), pRole15(), pRole16(), pRole17(), pRole18(), pRole19(), pRole20(), pRole21(), pRole22(), pRole23() As String
 
         Try
             pWkbOrg = pApp.Workbooks.Open(FileName_In, Missing.Value, False, Missing.Value, Missing.Value, Missing.Value, _
@@ -298,6 +370,7 @@ Public Class clsUser
             pExitLoop = False
             Dim pRoleID As New List(Of Integer)
 
+
             Dim chkHeader As Microsoft.Office.Interop.Excel.CheckBox = Nothing
             Dim chkPreOrder As Microsoft.Office.Interop.Excel.CheckBox = Nothing
             Dim chkExport As Microsoft.Office.Interop.Excel.CheckBox = Nothing
@@ -314,51 +387,82 @@ Public Class clsUser
             Dim chkShipping As Microsoft.Office.Interop.Excel.CheckBox = Nothing
             Dim chkKeyChar As Microsoft.Office.Interop.Excel.CheckBox = Nothing
 
-            Dim pCustServiceName() As String = {"Check Box 686", "Check Box 695", "Check Box 704", "Check Box 713", "Check Box 722", "Check Box 731", "Check Box 740", _
-                                                "Check Box 749", "Check Box 864", "Check Box 758", "Check Box 767", "Check Box 776", "Check Box 785", "Check Box 876", "Check Box 794"}
+            pRole1 = {"Check Box 686", "Check Box 695", "Check Box 704", "Check Box 713", "Check Box 722", "Check Box 731", "Check Box 740",
+                      "Check Box 749", "Check Box 864", "Check Box 758", "Check Box 767", "Check Box 776", "Check Box 785", "Check Box 876", "Check Box 794"}
 
-            Dim pProgramManagerName() As String = {"Check Box 679", "Check Box 687", "Check Box 696", "Check Box 705", "Check Box 714", "Check Box 723", "Check Box 732", _
+            pRole2 = {"Check Box 679", "Check Box 687", "Check Box 696", "Check Box 705", "Check Box 714", "Check Box 723", "Check Box 732",
                                                    "Check Box 741", "Check Box 856", "Check Box 750", "Check Box 759", "Check Box 768", "Check Box 777", "Check Box 868", "Check Box 786"}
 
-            Dim pEngineeringName() As String = {"Check Box 680", "Check Box 688", "Check Box 697", "Check Box 706", "Check Box 715", "Check Box 725", "Check Box 733", _
+            pRole3 = {"Check Box 680", "Check Box 688", "Check Box 697", "Check Box 706", "Check Box 715", "Check Box 725", "Check Box 733",
                                                 "Check Box 742", "Check Box 857", "Check Box 751", "Check Box 760", "Check Box 769", "Check Box 778", "Check Box 869", "Check Box 787"}
 
-            Dim pMfgName() As String = {"Check Box 681", "Check Box 689", "Check Box 698", "Check Box 707", "Check Box 716", "Check Box 725", "Check Box 734", _
+            pRole4 = {"Check Box 681", "Check Box 689", "Check Box 698", "Check Box 707", "Check Box 716", "Check Box 725", "Check Box 734",
                                         "Check Box 743", "Check Box 858", "Check Box 752", "Check Box 761", "Check Box 770", "Check Box 779", "Check Box 870", "Check Box 788"}
 
-            Dim pQltyName() As String = {"Check Box 682", "Check Box 690", "Check Box 699", "Check Box 708", "Check Box 717", "Check Box 726", "Check Box 735", _
+            pRole5 = {"Check Box 682", "Check Box 690", "Check Box 699", "Check Box 708", "Check Box 717", "Check Box 726", "Check Box 735",
                                          "Check Box 744", "Check Box 859", "Check Box 753", "Check Box 762", "Check Box 771", "Check Box 780", "Check Box 871", "Check Box 789"}
 
-            Dim pDrawingName() As String = {"Check Box 888", "Check Box 889", "Check Box 890", "Check Box 891", "Check Box 892", "Check Box 893", "Check Box 894", _
+            pRole6 = {"Check Box 888", "Check Box 889", "Check Box 890", "Check Box 891", "Check Box 892", "Check Box 893", "Check Box 894",
                                       "Check Box 895", "Check Box 908", "Check Box 896", "Check Box 899", "Check Box 902", "Check Box 905", "Check Box 911", "Check Box 907"}
 
-            Dim pPlanName() As String = {"Check Box 683", "Check Box 691", "Check Box 700", "Check Box 709", "Check Box 718", "Check Box 727", "Check Box 736", _
+            pRole7 = {"Check Box 683", "Check Box 691", "Check Box 700", "Check Box 709", "Check Box 718", "Check Box 727", "Check Box 736",
                                          "Check Box 745", "Check Box 860", "Check Box 754", "Check Box 763", "Check Box 772", "Check Box 781", "Check Box 872", "Check Box 790"}
 
-            Dim pPurchasingName() As String = {"Check Box 684", "Check Box 692", "Check Box 701", "Check Box 710", "Check Box 719", "Check Box 728", "Check Box 737", _
+            pRole8 = {"Check Box 684", "Check Box 692", "Check Box 701", "Check Box 710", "Check Box 719", "Check Box 728", "Check Box 737",
                                                "Check Box 746", "Check Box 861", "Check Box 755", "Check Box 764", "Check Box 773", "Check Box 782", "Check Box 873", "Check Box 791"}
 
-            Dim pShippingName() As String = {"Check Box 685", "Check Box 693", "Check Box 702", "Check Box 711", "Check Box 720", "Check Box 729", "Check Box 738", _
+            pRole9 = {"Check Box 685", "Check Box 693", "Check Box 702", "Check Box 711", "Check Box 720", "Check Box 729", "Check Box 738",
                                              "Check Box 747", "Check Box 862", "Check Box 756", "Check Box 765", "Check Box 774", "Check Box 783", "Check Box 874", "Check Box 792"}
 
-            Dim pTestName() As String = {"Check Box 795", "Check Box 694", "Check Box 703", "Check Box 712", "Check Box 721", "Check Box 730", "Check Box 739", _
+            pRole10 = {"Check Box 795", "Check Box 694", "Check Box 703", "Check Box 712", "Check Box 721", "Check Box 730", "Check Box 739",
                                          "Check Box 748", "Check Box 863", "Check Box 757", "Check Box 766", "Check Box 775", "Check Box 784", "Check Box 875", "Check Box 793"}
 
-            Dim pChairPersonName() As String = {"Check Box 797", "Check Box 800", "Check Box 803", "Check Box 806", "Check Box 809", "Check Box 812", "Check Box 815", _
+            pRole11 = {"Check Box 797", "Check Box 800", "Check Box 803", "Check Box 806", "Check Box 809", "Check Box 812", "Check Box 815",
                                                "Check Box 818", "Check Box 865", "Check Box 821", "Check Box 824", "Check Box 833", "Check Box 842", "Check Box 879", "Check Box 844"}
 
-            Dim pCoordinatorName() As String = {"Check Box 798", "Check Box 801", "Check Box 804", "Check Box 807", "Check Box 810", "Check Box 813", "Check Box 816", _
+            pRole12 = {"Check Box 798", "Check Box 801", "Check Box 804", "Check Box 807", "Check Box 810", "Check Box 813", "Check Box 816",
                                                "Check Box 819", "Check Box 865", "Check Box 822", "Check Box 828", "Check Box 836", "Check Box 847", "Check Box 882", "Check Box 849"}
 
-            Dim pAdminName() As String = {"Check Box 799", "Check Box 802", "Check Box 805", "Check Box 808", "Check Box 811", "Check Box 814", "Check Box 817", _
+            pRole13 = {"Check Box 799", "Check Box 802", "Check Box 805", "Check Box 808", "Check Box 811", "Check Box 814", "Check Box 817",
                                       "Check Box 820", "Check Box 867", "Check Box 758", "Check Box 823", "Check Box 830", "Check Box 852", "Check Box 885", "Check Box 854"}
+
+            pRole14 = {"Check Box 915", "Check Box 916", "Check Box 917", "Check Box 918", "Check Box 919", "Check Box 920", "Check Box 921",
+                                      "Check Box 922", "Check Box 928", "Check Box 923", "Check Box 924", "Check Box 925", "Check Box 926", "Check Box 929", "Check Box 927"}
+
+            pRole15 = {"Check Box 931", "Check Box 932", "Check Box 933", "Check Box 934", "Check Box 935", "Check Box 936", "Check Box 937",
+                                      "Check Box 938", "Check Box 944", "Check Box 939", "Check Box 940", "Check Box 941", "Check Box 942", "Check Box 945", "Check Box 943"}
+
+            pRole16 = {"Check Box 947", "Check Box 948", "Check Box 949", "Check Box 950", "Check Box 951", "Check Box 952", "Check Box 953", "Check Box 954", "Check Box 960",
+                        "Check Box 955", "Check Box 956", "Check Box 957", "Check Box 958", "Check Box 961", "Check Box 959"}
+
+            pRole17 = {"Check Box 963", "Check Box 964", "Check Box 965", "Check Box 966", "Check Box 967", "Check Box 968", "Check Box 969", "Check Box 970", "Check Box 976",
+                        "Check Box 971", "Check Box 972", "Check Box 973", "Check Box 974", "Check Box 977", "Check Box 975"}
+
+            pRole18 = {"Check Box 979", "Check Box 980", "Check Box 981", "Check Box 982", "Check Box 983", "Check Box 984", "Check Box 985", "Check Box 986", "Check Box 992",
+                        "Check Box 987", "Check Box 988", "Check Box 989", "Check Box 990", "Check Box 993", "Check Box 991"}
+
+            pRole19 = {"Check Box 995", "Check Box 996", "Check Box 997", "Check Box 998", "Check Box 999", "Check Box 1000", "Check Box 1001", "Check Box 1002", "Check Box 1008",
+                        "Check Box 1003", "Check Box 1004", "Check Box 1005", "Check Box 1006", "Check Box 1009", "Check Box 1007"}
+
+            pRole20 = {"Check Box 1011", "Check Box 1012", "Check Box 1013", "Check Box 1014", "Check Box 1015", "Check Box 1016", "Check Box 1017", "Check Box 1018", "Check Box 1024",
+                        "Check Box 1019", "Check Box 1020", "Check Box 1021", "Check Box 1022", "Check Box 1025", "Check Box 1023"}
+
+            pRole21 = {"Check Box 1027", "Check Box 1028", "Check Box 1029", "Check Box 1030", "Check Box 1031", "Check Box 1032", "Check Box 1033", "Check Box 1034", "Check Box 1040",
+                        "Check Box 1035", "Check Box 1036", "Check Box 1037", "Check Box 1038", "Check Box 1041", "Check Box 1039"}
+
+            pRole22 = {"Check Box 1043", "Check Box 1044", "Check Box 1045", "Check Box 1046", "Check Box 1047", "Check Box 1048", "Check Box 1049", "Check Box 1050", "Check Box 1056",
+                        "Check Box 1051", "Check Box 1052", "Check Box 1053", "Check Box 1054", "Check Box 1057", "Check Box 1055"}
+
+            pRole23 = {"Check Box 1059", "Check Box 1060", "Check Box 1061", "Check Box 1062", "Check Box 1063", "Check Box 1064", "Check Box 1065", "Check Box 1066", "Check Box 1072",
+                        "Check Box 1067", "Check Box 1068", "Check Box 1069", "Check Box 1070", "Check Box 1073", "Check Box 1071"}
 
             Dim pCheckRole() As Microsoft.Office.Interop.Excel.CheckBox = {chkHeader, chkPreOrder, chkExport, chkOrdEntry, chkCost, chkApp, _
                                                                            chkDesign, chkManf, chkPurchase, chkQlty, chkDwg, chkTest, _
                                                                            chkPlanning, chkShipping, chkKeyChar}
 
             Dim pRecDeleted As Boolean = False
-            While (Not pExitLoop)
+            'While (Not pExitLoop)
+            For j As Integer = 0 To 22
 
                 Dim pVal As String = pWkSheet.Cells(10 + pIndx, pRolePrivelege_Start).value
 
@@ -381,80 +485,134 @@ Public Class clsUser
                 Select Case pIndx
 
                     Case 0
-                        For i As Integer = 0 To pCustServiceName.Count - 1
-                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pCustServiceName(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
+                        For i As Integer = 0 To pRole1.Count - 1
+                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pRole1(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
 
                         Next
 
                     Case 1
-                        For i As Integer = 0 To pCustServiceName.Count - 1
-                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pProgramManagerName(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
+                        For i As Integer = 0 To pRole2.Count - 1
+                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pRole2(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
 
                         Next
 
                     Case 2
-                        For i As Integer = 0 To pCustServiceName.Count - 1
-                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pEngineeringName(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
+                        For i As Integer = 0 To pRole3.Count - 1
+                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pRole3(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
 
                         Next
 
                     Case 3
-                        For i As Integer = 0 To pCustServiceName.Count - 1
-                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pMfgName(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
+                        For i As Integer = 0 To pRole4.Count - 1
+                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pRole4(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
 
                         Next
 
                     Case 4
-                        For i As Integer = 0 To pCustServiceName.Count - 1
-                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pQltyName(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
+                        For i As Integer = 0 To pRole5.Count - 1
+                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pRole5(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
 
                         Next
 
                     Case 5
-                        For i As Integer = 0 To pCustServiceName.Count - 1
-                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pDrawingName(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
+                        For i As Integer = 0 To pRole6.Count - 1
+                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pRole6(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
 
                         Next
 
                     Case 6
-                        For i As Integer = 0 To pCustServiceName.Count - 1
-                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pPlanName(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
+                        For i As Integer = 0 To pRole7.Count - 1
+                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pRole7(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
 
                         Next
 
                     Case 7
-                        For i As Integer = 0 To pCustServiceName.Count - 1
-                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pPurchasingName(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
+                        For i As Integer = 0 To pRole8.Count - 1
+                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pRole8(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
 
                         Next
 
                     Case 8
-                        For i As Integer = 0 To pCustServiceName.Count - 1
-                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pShippingName(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
+                        For i As Integer = 0 To pRole9.Count - 1
+                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pRole9(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
 
                         Next
 
                     Case 9
-                        For i As Integer = 0 To pCustServiceName.Count - 1
-                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pTestName(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
+                        For i As Integer = 0 To pRole10.Count - 1
+                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pRole10(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
 
                         Next
 
                     Case 10
-                        For i As Integer = 0 To pCustServiceName.Count - 1
-                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pChairPersonName(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
+                        For i As Integer = 0 To pRole11.Count - 1
+                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pRole11(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
 
                         Next
 
                     Case 11
-                        For i As Integer = 0 To pCustServiceName.Count - 1
-                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pCoordinatorName(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
+                        For i As Integer = 0 To pRole12.Count - 1
+                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pRole12(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
 
                         Next
 
                     Case 12
-                        For i As Integer = 0 To pCustServiceName.Count - 1
-                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pAdminName(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
+                        For i As Integer = 0 To pRole13.Count - 1
+                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pRole13(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
+
+                        Next
+
+                    Case 13
+                        For i As Integer = 0 To pRole14.Count - 1
+                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pRole14(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
+
+                        Next
+
+                    Case 14
+                        For i As Integer = 0 To pRole15.Count - 1
+                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pRole15(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
+
+                        Next
+
+                    Case 15
+                        For i As Integer = 0 To pRole16.Count - 1
+                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pRole16(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
+
+                        Next
+
+                    Case 16
+                        For i As Integer = 0 To pRole17.Count - 1
+                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pRole17(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
+
+                        Next
+
+                    Case 17
+                        For i As Integer = 0 To pRole18.Count - 1
+                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pRole18(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
+
+                        Next
+
+                    Case 18
+                        For i As Integer = 0 To pRole19.Count - 1
+                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pRole19(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
+
+                        Next
+
+                    Case 20
+                        For i As Integer = 0 To pRole21.Count - 1
+                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pRole21(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
+
+                        Next
+
+                    Case 21
+                        For i As Integer = 0 To pRole22.Count - 1
+                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pRole22(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
+
+                        Next
+
+                    Case 22
+                        For i As Integer = 0 To pRole23.Count - 1
+                            pCheckRole(i) = CType(pWkSheet.Shapes.Item(pRole23(i)).OLEFormat.Object, Microsoft.Office.Interop.Excel.CheckBox)
 
                         Next
 
@@ -522,62 +680,61 @@ Public Class clsUser
                 End If
 
 
-                pExitLoop = String.IsNullOrEmpty(pVal)
+                'pExitLoop = String.IsNullOrEmpty(pVal)
 
-                If (Not pExitLoop) Then
+                'If (Not pExitLoop) Then
 
-                    If (Not pRecDeleted) Then
-                        Dim pRolePrivelegeRec = (From Rec In pSealProcessDBEntities.tblRolePrivilege
-                                           Select Rec).ToList()
+                If (Not pRecDeleted) Then
+                    Dim pRolePrivelegeRec = (From Rec In pSealProcessDBEntities.tblRolePrivilege
+                                             Select Rec).ToList()
 
-                        For i As Integer = 0 To pRolePrivelegeRec.Count() - 1
-                            pSealProcessDBEntities.DeleteObject(pRolePrivelegeRec(i))
-                            pSealProcessDBEntities.SaveChanges()
-                        Next
+                    For i As Integer = 0 To pRolePrivelegeRec.Count() - 1
+                        pSealProcessDBEntities.DeleteObject(pRolePrivelegeRec(i))
+                        pSealProcessDBEntities.SaveChanges()
+                    Next
 
-                        pRecDeleted = True
+                    pRecDeleted = True
 
-                    End If
-
-                    Dim pUserRoleID As Integer = 0
-                    If (pVal <> "") Then
-                        Dim pRoleRec = (From Rec In pSealSuiteDBEntities.tblRole Where Rec.fldRole = pVal Select Rec).ToList()
-
-                        If (pRoleRec.Count > 0) Then
-                            pUserRoleID = pRoleRec(0).fldID
-                        End If
-                    End If
-
-
-
-                    Dim pRolePrivelegeList As New tblRolePrivilege
-
-                    Dim pUserSuperRoleList As New tblRolePrivilege
-                    pRolePrivelegeList.fldID = pIndx + 1
-                    pRolePrivelegeList.fldRoleID = pUserRoleID
-                    pRolePrivelegeList.fldHeader = pHeader
-                    pRolePrivelegeList.fldPreOrder = pPreOrder
-                    pRolePrivelegeList.fldExport = pExport
-                    pRolePrivelegeList.fldOrdEntry = pOrdEntry
-                    pRolePrivelegeList.fldCost = pCost
-                    pRolePrivelegeList.fldApp = pApplication
-                    pRolePrivelegeList.fldDesign = pDesign
-                    pRolePrivelegeList.fldManf = pManf
-                    pRolePrivelegeList.fldPurchase = pPurchase
-                    pRolePrivelegeList.fldQlty = pQlty
-                    pRolePrivelegeList.fldDwg = pDwg
-                    pRolePrivelegeList.fldTest = pTest
-                    pRolePrivelegeList.fldPlanning = pPlan
-                    pRolePrivelegeList.fldShipping = pShipping
-                    pRolePrivelegeList.fldKeyChar = pKeyChar
-
-                    pSealProcessDBEntities.AddTotblRolePrivilege(pRolePrivelegeList)
-                    pSealProcessDBEntities.SaveChanges()
-
-                    pIndx = pIndx + 1
                 End If
 
-            End While
+                Dim pUserRoleID As Integer = 0
+                If (pVal <> "") Then
+                    Dim pRoleRec = (From Rec In pSealSuiteDBEntities.tblRole Where Rec.fldRole = pVal Select Rec).ToList()
+
+                    If (pRoleRec.Count > 0) Then
+                        pUserRoleID = pRoleRec(0).fldID
+
+                        Dim pRolePrivelegeList As New tblRolePrivilege
+
+                        Dim pUserSuperRoleList As New tblRolePrivilege
+                        pRolePrivelegeList.fldID = pIndx + 1
+                        pRolePrivelegeList.fldRoleID = pUserRoleID
+                        pRolePrivelegeList.fldHeader = pHeader
+                        pRolePrivelegeList.fldPreOrder = pPreOrder
+                        pRolePrivelegeList.fldExport = pExport
+                        pRolePrivelegeList.fldOrdEntry = pOrdEntry
+                        pRolePrivelegeList.fldCost = pCost
+                        pRolePrivelegeList.fldApp = pApplication
+                        pRolePrivelegeList.fldDesign = pDesign
+                        pRolePrivelegeList.fldManf = pManf
+                        pRolePrivelegeList.fldPurchase = pPurchase
+                        pRolePrivelegeList.fldQlty = pQlty
+                        pRolePrivelegeList.fldDwg = pDwg
+                        pRolePrivelegeList.fldTest = pTest
+                        pRolePrivelegeList.fldPlanning = pPlan
+                        pRolePrivelegeList.fldShipping = pShipping
+                        pRolePrivelegeList.fldKeyChar = pKeyChar
+
+                        pSealProcessDBEntities.AddTotblRolePrivilege(pRolePrivelegeList)
+                        pSealProcessDBEntities.SaveChanges()
+
+                    End If
+                End If
+                pIndx = pIndx + 1
+                'End If
+
+                'End While
+            Next
 
             ' ''....Table - tblSealUser
             ''Dim pLastName_Start As Integer = 1

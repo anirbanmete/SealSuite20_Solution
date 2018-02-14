@@ -2,9 +2,9 @@
 '                                                                              '
 '                          SOFTWARE  :  "SealProcess"                          '
 '                      FORM MODULE   :  Process_frmMain                        '
-'                        VERSION NO  :  1.3                                    '
+'                        VERSION NO  :  1.4                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  05FEB18                                '
+'                     LAST MODIFIED  :  14FEB18                                '
 '                                                                              '
 '===============================================================================
 Imports System.Globalization
@@ -37,6 +37,9 @@ Public Class Process_frmMain
 
     Dim mDTP_IssueComment As DateTimePicker
     Dim mDTP_Quote As DateTimePicker
+
+    '....tab Variables
+    Dim mHeader, mPreOrder, mExport, mOrdEntry, mCost, mApp, mDesign, mManf, mPurchase, mQlty, mDwg, mTest, mPlanning, mShipping, mKeyChar As Boolean
 
     '....Variables for Deleting Records from GridView
     Dim mblngrdCustContact_PreOrder As Boolean = False
@@ -175,7 +178,7 @@ Public Class Process_frmMain
 
     Private Sub Process_ProductInfo_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         '===================================================================================================
-
+        SetTabPrivilege()
         InitializeControls()
 
         GetPartProjectInfo()
@@ -282,6 +285,35 @@ Public Class Process_frmMain
     End Sub
 
 #Region "HELPER ROUTINES:"
+
+    Private Sub SetTabPrivilege()
+        '=======================
+        Dim pRoleID As Integer = gUser.GetRoleID(gUser.Role)
+
+        Dim pSealProcessEntities As New SealProcessDBEntities()
+
+        Dim pUserRolePrivilege = (From pRec In pSealProcessEntities.tblRolePrivilege
+                                  Where pRec.fldRoleID = pRoleID Select pRec).ToList()
+
+        If (pUserRolePrivilege.Count > 0) Then
+            mHeader = pUserRolePrivilege(0).fldHeader
+            mPreOrder = pUserRolePrivilege(0).fldPreOrder
+            mExport = pUserRolePrivilege(0).fldExport
+            mOrdEntry = pUserRolePrivilege(0).fldOrdEntry
+            mCost = pUserRolePrivilege(0).fldCost
+            mApp = pUserRolePrivilege(0).fldApp
+            mDesign = pUserRolePrivilege(0).fldDesign
+            mManf = pUserRolePrivilege(0).fldManf
+            mPurchase = pUserRolePrivilege(0).fldPurchase
+            mQlty = pUserRolePrivilege(0).fldQlty
+            mDwg = pUserRolePrivilege(0).fldDwg
+            mTest = pUserRolePrivilege(0).fldTest
+            mPlanning = pUserRolePrivilege(0).fldPlanning
+            mShipping = pUserRolePrivilege(0).fldShipping
+            mKeyChar = pUserRolePrivilege(0).fldKeyChar
+        End If
+
+    End Sub
 
     Private Sub InitializeControls()
         '===========================
@@ -631,6 +663,22 @@ Public Class Process_frmMain
         End If
 
         grdApproval_Attendees.AllowUserToAddRows = False
+
+        '--------------
+        EnableTab(tabPreOrder, mPreOrder)
+        EnableTab(tabExport, mExport)
+        EnableTab(tabOrder, mOrdEntry)
+        EnableTab(tabCosting, mCost)
+        EnableTab(tabApplication, mApp)
+        EnableTab(tabDesign, mDesign)
+        EnableTab(tabManufacturing, mManf)
+        EnableTab(tabPurchasing, mPurchase)
+        EnableTab(tabQuality, mQlty)
+        EnableTab(tabDrawing, mDwg)
+        EnableTab(tabTesting, mTest)
+        EnableTab(tabPlanning, mPlanning)
+        EnableTab(tabShipping, mShipping)
+        EnableTab(tabKeyChar, mKeyChar)
 
     End Sub
 
@@ -2584,8 +2632,6 @@ Public Class Process_frmMain
         Next
 
     End Sub
-
-
 
 
 #Region "SUB-HELPER ROUTINES:"
@@ -8072,19 +8118,16 @@ Public Class Process_frmMain
     End Sub
 
     Public Sub EnableTab(ByVal page As TabPage, ByVal enable As Boolean)
+        '===============================================================
         EnableControls(page.Controls, enable)
     End Sub
 
     Private Sub EnableControls(ByVal ctls As Control.ControlCollection, ByVal enable As Boolean)
+        '=======================================================================================
         For Each ctl As Control In ctls
             ctl.Enabled = enable
             EnableControls(ctl.Controls, enable)
         Next
-        'Dim pCount As Integer = 0
-        'Dim pval1 As String = ""
-        'Dim pval2 As String = ""
-        'CompareVar(pval1, pval2, pCount)
-
     End Sub
 
     Private Sub grdQuote_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdQuote.CellClick

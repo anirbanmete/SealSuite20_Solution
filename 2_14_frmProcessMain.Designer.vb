@@ -186,7 +186,7 @@ Partial Class Process_frmMain
         Me.cmdCancel = New System.Windows.Forms.Button()
         Me.cmdOK = New System.Windows.Forms.Button()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.tabMarketingInfo = New System.Windows.Forms.TabPage()
+        Me.tabPreOrder = New System.Windows.Forms.TabPage()
         Me.TabControl3 = New System.Windows.Forms.TabControl()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.Label64 = New System.Windows.Forms.Label()
@@ -949,7 +949,7 @@ Partial Class Process_frmMain
         Me.grpParker.SuspendLayout()
         Me.GroupBox7.SuspendLayout()
         Me.TabControl1.SuspendLayout()
-        Me.tabMarketingInfo.SuspendLayout()
+        Me.tabPreOrder.SuspendLayout()
         Me.TabControl3.SuspendLayout()
         Me.TabPage3.SuspendLayout()
         Me.GroupBox44.SuspendLayout()
@@ -1674,7 +1674,7 @@ Partial Class Process_frmMain
         '
         'TabControl1
         '
-        Me.TabControl1.Controls.Add(Me.tabMarketingInfo)
+        Me.TabControl1.Controls.Add(Me.tabPreOrder)
         Me.TabControl1.Controls.Add(Me.tabExport)
         Me.TabControl1.Controls.Add(Me.tabOrder)
         Me.TabControl1.Controls.Add(Me.tabCosting)
@@ -1699,16 +1699,16 @@ Partial Class Process_frmMain
         Me.TabControl1.Size = New System.Drawing.Size(1047, 621)
         Me.TabControl1.TabIndex = 0
         '
-        'tabMarketingInfo
+        'tabPreOrder
         '
-        Me.tabMarketingInfo.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.tabMarketingInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.tabMarketingInfo.Controls.Add(Me.TabControl3)
-        Me.tabMarketingInfo.Location = New System.Drawing.Point(4, 40)
-        Me.tabMarketingInfo.Name = "tabMarketingInfo"
-        Me.tabMarketingInfo.Size = New System.Drawing.Size(1039, 577)
-        Me.tabMarketingInfo.TabIndex = 3
-        Me.tabMarketingInfo.Text = "        Pre-Order        "
+        Me.tabPreOrder.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.tabPreOrder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.tabPreOrder.Controls.Add(Me.TabControl3)
+        Me.tabPreOrder.Location = New System.Drawing.Point(4, 40)
+        Me.tabPreOrder.Name = "tabPreOrder"
+        Me.tabPreOrder.Size = New System.Drawing.Size(1039, 577)
+        Me.tabPreOrder.TabIndex = 3
+        Me.tabPreOrder.Text = "        Pre-Order        "
         '
         'TabControl3
         '
@@ -10175,7 +10175,7 @@ Partial Class Process_frmMain
         Me.GroupBox7.ResumeLayout(False)
         Me.GroupBox7.PerformLayout()
         Me.TabControl1.ResumeLayout(False)
-        Me.tabMarketingInfo.ResumeLayout(False)
+        Me.tabPreOrder.ResumeLayout(False)
         Me.TabControl3.ResumeLayout(False)
         Me.TabPage3.ResumeLayout(False)
         Me.GroupBox44.ResumeLayout(False)
@@ -10383,7 +10383,7 @@ Partial Class Process_frmMain
     Friend WithEvents label41 As System.Windows.Forms.Label
     Private WithEvents txtParkerPart As System.Windows.Forms.TextBox
     Friend WithEvents tabExport As System.Windows.Forms.TabPage
-    Friend WithEvents tabMarketingInfo As System.Windows.Forms.TabPage
+    Friend WithEvents tabPreOrder As System.Windows.Forms.TabPage
     Friend WithEvents tabOrder As System.Windows.Forms.TabPage
     Friend WithEvents tabApplication As System.Windows.Forms.TabPage
     Friend WithEvents tabDesign As System.Windows.Forms.TabPage

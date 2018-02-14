@@ -18,7 +18,7 @@ Imports System.Runtime.Serialization
 Imports System.Xml.Serialization
 
 
-<Assembly: EdmSchemaAttribute("ca3eb47f-5d3f-4d82-b9dd-b71ee3177ea0")>
+<Assembly: EdmSchemaAttribute("3f4881cd-5a94-4a91-9a94-3d24d247af06")>
 #Region "EDM Relationship Metadata"
 <Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblApp_Cavity_tblApp1", "tblApp", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblApp), "tblApp_Cavity", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(tblApp_Cavity), True)>
 <Assembly: EdmRelationshipAttribute("SealProcessDBModel", "FK_tblApp_CavityFlange_tblApp", "tblApp", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblApp), "tblApp_CavityFlange", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(tblApp_CavityFlange), True)>

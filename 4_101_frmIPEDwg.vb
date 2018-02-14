@@ -142,7 +142,7 @@ Public Class IPE_frmDwg
         Me.PictureBox.BackColor = System.Drawing.Color.White
         Me.PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.PictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.PictureBox.Image = Global.SealSuite23.My.Resources.Resources.WaterMark
+        Me.PictureBox.Image = Global.SealSuite24.My.Resources.Resources.WaterMark
         Me.PictureBox.Location = New System.Drawing.Point(4, 6)
         Me.PictureBox.Name = "PictureBox"
         Me.PictureBox.Size = New System.Drawing.Size(840, 610)
