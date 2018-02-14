@@ -109,8 +109,6 @@ Public Class clsUser
                 mLastName = pQry.fldLastName.Trim()
             End If
 
-            'mFirstName = pQry.fldFirstName.Trim()
-            'mLastName = pQry.fldLastName.Trim()
             pTitleID = pQry.fldTitleID
 
             Dim pQryRole = (From pRec In pSealSuiteEntities.tblTitle

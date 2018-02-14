@@ -1033,16 +1033,19 @@ Public Class frmPartMain
                 Dim pUserRole As New List(Of String)
                 pUserRole = gUser.RetrieveProcessUserRoles()
 
-                If (pUserRole.Count > 0) Then
-                    Dim pfrmProcessRoleSelection As New Process_frmRoleSelection()
-                    pfrmProcessRoleSelection.ShowDialog()
-                Else
-                    gUser.Role = ""
-                    Dim pProcess_frmMain As New Process_frmMain()
-                    pProcess_frmMain.Size = New Size(1130, 700)
-                    pProcess_frmMain.AutoScroll = True
-                    pProcess_frmMain.ShowDialog()
-                End If
+                Dim pfrmProcessRoleSelection As New Process_frmRoleSelection()
+                pfrmProcessRoleSelection.ShowDialog()
+
+                'If (pUserRole.Count > 0) Then
+                '    Dim pfrmProcessRoleSelection As New Process_frmRoleSelection()
+                '    pfrmProcessRoleSelection.ShowDialog()
+                'Else
+                '    gUser.Role = ""
+                '    Dim pProcess_frmMain As New Process_frmMain()
+                '    pProcess_frmMain.Size = New Size(1130, 700)
+                '    pProcess_frmMain.AutoScroll = True
+                '    pProcess_frmMain.ShowDialog()
+                'End If
 
             Case "cmdSealTest"
                 SetDefaultData()

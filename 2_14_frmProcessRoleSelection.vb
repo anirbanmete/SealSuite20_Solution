@@ -29,7 +29,7 @@ Public Class Process_frmRoleSelection
         For i As Integer = 0 To pUserRole.Count - 1
             cmbRole.Items.Add(pUserRole(i))
         Next
-
+        cmbRole.Items.Add("Viewer")
         cmbRole.SelectedIndex = 0
     End Sub
 
