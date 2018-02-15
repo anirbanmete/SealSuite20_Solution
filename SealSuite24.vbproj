@@ -485,6 +485,12 @@
     <Compile Include="2_14_clsProcessProj_Risk.vb" />
     <Compile Include="2_14_clsProcessProj_Unit.vb" />
     <Compile Include="0_24_clsUnit.vb" />
+    <Compile Include="0_24_frmAdminLogin.Designer.vb">
+      <DependentUpon>0_24_frmAdminLogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="0_24_frmAdminLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Model0_SealSuite.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -784,6 +790,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="0_24_frmUserRole.resx">
       <DependentUpon>0_24_frmUserRole.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="0_24_frmAdminLogin.resx">
+      <DependentUpon>0_24_frmAdminLogin.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

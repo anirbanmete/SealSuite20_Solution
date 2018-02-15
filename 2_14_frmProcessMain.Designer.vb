@@ -23,7 +23,6 @@ Partial Class Process_frmMain
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Process_frmMain))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -135,6 +134,7 @@ Partial Class Process_frmMain
         Dim DataGridViewCellStyle109 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle110 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle111 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Process_frmMain))
         Me.lblBorder = New System.Windows.Forms.Label()
         Me.pnlPanel1 = New System.Windows.Forms.Panel()
         Me.GroupBox16 = New System.Windows.Forms.GroupBox()
@@ -143,21 +143,20 @@ Partial Class Process_frmMain
         Me.cmdIssueComment = New System.Windows.Forms.Button()
         Me.txtStatus = New System.Windows.Forms.TextBox()
         Me.cmdSetUnits = New System.Windows.Forms.Button()
-        Me.cmdCreatePDS = New System.Windows.Forms.Button()
-        Me.GroupBox43 = New System.Windows.Forms.GroupBox()
+        Me.grpProject = New System.Windows.Forms.GroupBox()
         Me.cmdClose = New System.Windows.Forms.Button()
         Me.cmdDelete = New System.Windows.Forms.Button()
         Me.cmdFilter = New System.Windows.Forms.Button()
         Me.cmdCopyFrom = New System.Windows.Forms.Button()
         Me.cmdOpenAgain = New System.Windows.Forms.Button()
         Me.cmbRating = New System.Windows.Forms.ComboBox()
-        Me.GroupBox37 = New System.Windows.Forms.GroupBox()
+        Me.grpExport = New System.Windows.Forms.GroupBox()
         Me.txtExportStatus = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label199 = New System.Windows.Forms.Label()
         Me.txtExportControlled = New System.Windows.Forms.TextBox()
-        Me.Label81 = New System.Windows.Forms.Label()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.lblStatus = New System.Windows.Forms.Label()
+        Me.grpDate = New System.Windows.Forms.GroupBox()
         Me.Label202 = New System.Windows.Forms.Label()
         Me.txtStartDate = New System.Windows.Forms.TextBox()
         Me.txtDateMod = New System.Windows.Forms.TextBox()
@@ -171,7 +170,7 @@ Partial Class Process_frmMain
         Me.txtParkerPart = New System.Windows.Forms.TextBox()
         Me.txtPN_Rev = New System.Windows.Forms.TextBox()
         Me.Label197 = New System.Windows.Forms.Label()
-        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
+        Me.grpCust = New System.Windows.Forms.GroupBox()
         Me.txtCustomerPN_Rev = New System.Windows.Forms.TextBox()
         Me.Label28 = New System.Windows.Forms.Label()
         Me.txtCustomer = New System.Windows.Forms.TextBox()
@@ -181,14 +180,12 @@ Partial Class Process_frmMain
         Me.cmbPopCoding = New System.Windows.Forms.ComboBox()
         Me.Label198 = New System.Windows.Forms.Label()
         Me.cmbType = New System.Windows.Forms.ComboBox()
-        Me.Label201 = New System.Windows.Forms.Label()
-        Me.Label219 = New System.Windows.Forms.Label()
-        Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.cmdOK = New System.Windows.Forms.Button()
+        Me.lblType = New System.Windows.Forms.Label()
+        Me.lblRating = New System.Windows.Forms.Label()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.tabPreOrder = New System.Windows.Forms.TabPage()
         Me.TabControl3 = New System.Windows.Forms.TabControl()
-        Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.tabPreOrder_P1 = New System.Windows.Forms.TabPage()
         Me.Label64 = New System.Windows.Forms.Label()
         Me.GroupBox44 = New System.Windows.Forms.GroupBox()
         Me.txtPreOrderNotes = New System.Windows.Forms.TextBox()
@@ -228,7 +225,7 @@ Partial Class Process_frmMain
         Me.Label18 = New System.Windows.Forms.Label()
         Me.cmbExport_Reqd = New System.Windows.Forms.ComboBox()
         Me.cmbExport_Status = New System.Windows.Forms.ComboBox()
-        Me.TabPage6 = New System.Windows.Forms.TabPage()
+        Me.tabPreOrder_P2 = New System.Windows.Forms.TabPage()
         Me.GroupBox17 = New System.Windows.Forms.GroupBox()
         Me.chkPreOrderUserSigned = New System.Windows.Forms.CheckBox()
         Me.cmdPreOrderUserSign = New System.Windows.Forms.Button()
@@ -542,7 +539,7 @@ Partial Class Process_frmMain
         Me.DataGridViewTextBoxColumn88 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tabDesign = New System.Windows.Forms.TabPage()
         Me.TabControl2 = New System.Windows.Forms.TabControl()
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.tbpDesign_P1 = New System.Windows.Forms.TabPage()
         Me.grdDesign_Verification = New System.Windows.Forms.DataGridView()
         Me.DataGridViewComboBoxColumn10 = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.Column23 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -633,7 +630,7 @@ Partial Class Process_frmMain
         Me.txtDesign_CustDwgNo = New System.Windows.Forms.TextBox()
         Me.txtDesign_CustDwgRev = New System.Windows.Forms.TextBox()
         Me.Label210 = New System.Windows.Forms.Label()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.tbpDesign_P2 = New System.Windows.Forms.TabPage()
         Me.Label177 = New System.Windows.Forms.Label()
         Me.txtDesign_Notes = New System.Windows.Forms.TextBox()
         Me.Label98 = New System.Windows.Forms.Label()
@@ -782,7 +779,6 @@ Partial Class Process_frmMain
         Me.Column11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label148 = New System.Windows.Forms.Label()
         Me.cmbDwg_DesignLevel = New System.Windows.Forms.ComboBox()
-        Me.cmdNotes = New System.Windows.Forms.Button()
         Me.tabTesting = New System.Windows.Forms.TabPage()
         Me.chkTest = New System.Windows.Forms.CheckBox()
         Me.Label119 = New System.Windows.Forms.Label()
@@ -888,8 +884,6 @@ Partial Class Process_frmMain
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn33 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn54 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cmdResetSelectedAllNote = New System.Windows.Forms.Button()
-        Me.cmdSelectAllNote = New System.Windows.Forms.Button()
         Me.tabShipping = New System.Windows.Forms.TabPage()
         Me.Label72 = New System.Windows.Forms.Label()
         Me.GroupBox59 = New System.Windows.Forms.GroupBox()
@@ -941,17 +935,23 @@ Partial Class Process_frmMain
         Me.openFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.HelpProvider1 = New System.Windows.Forms.HelpProvider()
+        Me.cmdCreatePDS = New System.Windows.Forms.Button()
+        Me.cmdCancel = New System.Windows.Forms.Button()
+        Me.cmdOK = New System.Windows.Forms.Button()
+        Me.cmdNotes = New System.Windows.Forms.Button()
+        Me.cmdResetSelectedAllNote = New System.Windows.Forms.Button()
+        Me.cmdSelectAllNote = New System.Windows.Forms.Button()
         Me.pnlPanel1.SuspendLayout()
         Me.GroupBox16.SuspendLayout()
-        Me.GroupBox43.SuspendLayout()
-        Me.GroupBox37.SuspendLayout()
-        Me.GroupBox1.SuspendLayout()
+        Me.grpProject.SuspendLayout()
+        Me.grpExport.SuspendLayout()
+        Me.grpDate.SuspendLayout()
         Me.grpParker.SuspendLayout()
-        Me.GroupBox7.SuspendLayout()
+        Me.grpCust.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.tabPreOrder.SuspendLayout()
         Me.TabControl3.SuspendLayout()
-        Me.TabPage3.SuspendLayout()
+        Me.tabPreOrder_P1.SuspendLayout()
         Me.GroupBox44.SuspendLayout()
         Me.GroupBox9.SuspendLayout()
         Me.grpQuote.SuspendLayout()
@@ -961,7 +961,7 @@ Partial Class Process_frmMain
         Me.GroupBox8.SuspendLayout()
         CType(Me.grdCustContact, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpGroupBox2.SuspendLayout()
-        Me.TabPage6.SuspendLayout()
+        Me.tabPreOrder_P2.SuspendLayout()
         Me.GroupBox17.SuspendLayout()
         CType(Me.grdPreOrderEditedBy, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpPreOrder_RiskAna.SuspendLayout()
@@ -1015,7 +1015,7 @@ Partial Class Process_frmMain
         CType(Me.grdApp_EditedBy_Axial, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabDesign.SuspendLayout()
         Me.TabControl2.SuspendLayout()
-        Me.TabPage1.SuspendLayout()
+        Me.tbpDesign_P1.SuspendLayout()
         CType(Me.grdDesign_Verification, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox56.SuspendLayout()
         Me.grpRefPN.SuspendLayout()
@@ -1027,7 +1027,7 @@ Partial Class Process_frmMain
         Me.GroupBox35.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox12.SuspendLayout()
-        Me.TabPage2.SuspendLayout()
+        Me.tbpDesign_P2.SuspendLayout()
         Me.GroupBox10.SuspendLayout()
         CType(Me.grdDesign_EditedBy, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpDesign_SealDim.SuspendLayout()
@@ -1102,16 +1102,16 @@ Partial Class Process_frmMain
         Me.pnlPanel1.Controls.Add(Me.txtStatus)
         Me.pnlPanel1.Controls.Add(Me.cmdSetUnits)
         Me.pnlPanel1.Controls.Add(Me.cmdCreatePDS)
-        Me.pnlPanel1.Controls.Add(Me.GroupBox43)
+        Me.pnlPanel1.Controls.Add(Me.grpProject)
         Me.pnlPanel1.Controls.Add(Me.cmbRating)
-        Me.pnlPanel1.Controls.Add(Me.GroupBox37)
-        Me.pnlPanel1.Controls.Add(Me.Label81)
-        Me.pnlPanel1.Controls.Add(Me.GroupBox1)
+        Me.pnlPanel1.Controls.Add(Me.grpExport)
+        Me.pnlPanel1.Controls.Add(Me.lblStatus)
+        Me.pnlPanel1.Controls.Add(Me.grpDate)
         Me.pnlPanel1.Controls.Add(Me.grpParker)
-        Me.pnlPanel1.Controls.Add(Me.GroupBox7)
+        Me.pnlPanel1.Controls.Add(Me.grpCust)
         Me.pnlPanel1.Controls.Add(Me.cmbType)
-        Me.pnlPanel1.Controls.Add(Me.Label201)
-        Me.pnlPanel1.Controls.Add(Me.Label219)
+        Me.pnlPanel1.Controls.Add(Me.lblType)
+        Me.pnlPanel1.Controls.Add(Me.lblRating)
         Me.pnlPanel1.Controls.Add(Me.cmdCancel)
         Me.pnlPanel1.Controls.Add(Me.cmdOK)
         Me.pnlPanel1.Controls.Add(Me.TabControl1)
@@ -1194,33 +1194,20 @@ Partial Class Process_frmMain
         Me.cmdSetUnits.Text = "Set Units"
         Me.cmdSetUnits.UseVisualStyleBackColor = False
         '
-        'cmdCreatePDS
+        'grpProject
         '
-        Me.cmdCreatePDS.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.cmdCreatePDS.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdCreatePDS.Image = CType(resources.GetObject("cmdCreatePDS.Image"), System.Drawing.Image)
-        Me.cmdCreatePDS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdCreatePDS.Location = New System.Drawing.Point(727, 824)
-        Me.cmdCreatePDS.Name = "cmdCreatePDS"
-        Me.cmdCreatePDS.Size = New System.Drawing.Size(116, 30)
-        Me.cmdCreatePDS.TabIndex = 682
-        Me.cmdCreatePDS.Text = "Create &PDS"
-        Me.cmdCreatePDS.UseVisualStyleBackColor = False
-        '
-        'GroupBox43
-        '
-        Me.GroupBox43.Controls.Add(Me.cmdClose)
-        Me.GroupBox43.Controls.Add(Me.cmdDelete)
-        Me.GroupBox43.Controls.Add(Me.cmdFilter)
-        Me.GroupBox43.Controls.Add(Me.cmdCopyFrom)
-        Me.GroupBox43.Controls.Add(Me.cmdOpenAgain)
-        Me.GroupBox43.Enabled = False
-        Me.GroupBox43.Location = New System.Drawing.Point(224, 107)
-        Me.GroupBox43.Name = "GroupBox43"
-        Me.GroupBox43.Size = New System.Drawing.Size(299, 66)
-        Me.GroupBox43.TabIndex = 681
-        Me.GroupBox43.TabStop = False
-        Me.GroupBox43.Text = "Project:"
+        Me.grpProject.Controls.Add(Me.cmdClose)
+        Me.grpProject.Controls.Add(Me.cmdDelete)
+        Me.grpProject.Controls.Add(Me.cmdFilter)
+        Me.grpProject.Controls.Add(Me.cmdCopyFrom)
+        Me.grpProject.Controls.Add(Me.cmdOpenAgain)
+        Me.grpProject.Enabled = False
+        Me.grpProject.Location = New System.Drawing.Point(224, 107)
+        Me.grpProject.Name = "grpProject"
+        Me.grpProject.Size = New System.Drawing.Size(299, 66)
+        Me.grpProject.TabIndex = 681
+        Me.grpProject.TabStop = False
+        Me.grpProject.Text = "Project:"
         '
         'cmdClose
         '
@@ -1277,19 +1264,19 @@ Partial Class Process_frmMain
         Me.cmbRating.Size = New System.Drawing.Size(60, 21)
         Me.cmbRating.TabIndex = 680
         '
-        'GroupBox37
+        'grpExport
         '
-        Me.GroupBox37.Controls.Add(Me.txtExportStatus)
-        Me.GroupBox37.Controls.Add(Me.Label12)
-        Me.GroupBox37.Controls.Add(Me.Label199)
-        Me.GroupBox37.Controls.Add(Me.txtExportControlled)
-        Me.GroupBox37.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox37.Location = New System.Drawing.Point(770, 33)
-        Me.GroupBox37.Name = "GroupBox37"
-        Me.GroupBox37.Size = New System.Drawing.Size(192, 65)
-        Me.GroupBox37.TabIndex = 665
-        Me.GroupBox37.TabStop = False
-        Me.GroupBox37.Text = "Export:"
+        Me.grpExport.Controls.Add(Me.txtExportStatus)
+        Me.grpExport.Controls.Add(Me.Label12)
+        Me.grpExport.Controls.Add(Me.Label199)
+        Me.grpExport.Controls.Add(Me.txtExportControlled)
+        Me.grpExport.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grpExport.Location = New System.Drawing.Point(770, 33)
+        Me.grpExport.Name = "grpExport"
+        Me.grpExport.Size = New System.Drawing.Size(192, 65)
+        Me.grpExport.TabIndex = 665
+        Me.grpExport.TabStop = False
+        Me.grpExport.Text = "Export:"
         '
         'txtExportStatus
         '
@@ -1336,35 +1323,35 @@ Partial Class Process_frmMain
         Me.txtExportControlled.TabIndex = 662
         Me.txtExportControlled.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'Label81
+        'lblStatus
         '
-        Me.Label81.AutoSize = True
-        Me.Label81.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.Label81.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label81.Location = New System.Drawing.Point(145, 122)
-        Me.Label81.Name = "Label81"
-        Me.Label81.Size = New System.Drawing.Size(43, 13)
-        Me.Label81.TabIndex = 662
-        Me.Label81.Text = "Status"
-        Me.Label81.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lblStatus.AutoSize = True
+        Me.lblStatus.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.lblStatus.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblStatus.Location = New System.Drawing.Point(145, 122)
+        Me.lblStatus.Name = "lblStatus"
+        Me.lblStatus.Size = New System.Drawing.Size(43, 13)
+        Me.lblStatus.TabIndex = 662
+        Me.lblStatus.Text = "Status"
+        Me.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'GroupBox1
+        'grpDate
         '
-        Me.GroupBox1.Controls.Add(Me.Label202)
-        Me.GroupBox1.Controls.Add(Me.txtStartDate)
-        Me.GroupBox1.Controls.Add(Me.txtDateMod)
-        Me.GroupBox1.Controls.Add(Me.Label204)
-        Me.GroupBox1.Controls.Add(Me.dtpDateMod)
-        Me.GroupBox1.Controls.Add(Me.dtpStartDate)
-        Me.GroupBox1.Controls.Add(Me.Label203)
-        Me.GroupBox1.Controls.Add(Me.txtModifiedBy)
-        Me.GroupBox1.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(545, 107)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(417, 66)
-        Me.GroupBox1.TabIndex = 660
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Date:"
+        Me.grpDate.Controls.Add(Me.Label202)
+        Me.grpDate.Controls.Add(Me.txtStartDate)
+        Me.grpDate.Controls.Add(Me.txtDateMod)
+        Me.grpDate.Controls.Add(Me.Label204)
+        Me.grpDate.Controls.Add(Me.dtpDateMod)
+        Me.grpDate.Controls.Add(Me.dtpStartDate)
+        Me.grpDate.Controls.Add(Me.Label203)
+        Me.grpDate.Controls.Add(Me.txtModifiedBy)
+        Me.grpDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grpDate.Location = New System.Drawing.Point(545, 107)
+        Me.grpDate.Name = "grpDate"
+        Me.grpDate.Size = New System.Drawing.Size(417, 66)
+        Me.grpDate.TabIndex = 660
+        Me.grpDate.TabStop = False
+        Me.grpDate.Text = "Date:"
         '
         'Label202
         '
@@ -1508,23 +1495,23 @@ Partial Class Process_frmMain
         Me.Label197.Text = "Rev"
         Me.Label197.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'GroupBox7
+        'grpCust
         '
-        Me.GroupBox7.Controls.Add(Me.txtCustomerPN_Rev)
-        Me.GroupBox7.Controls.Add(Me.Label28)
-        Me.GroupBox7.Controls.Add(Me.txtCustomer)
-        Me.GroupBox7.Controls.Add(Me.Label195)
-        Me.GroupBox7.Controls.Add(Me.Label196)
-        Me.GroupBox7.Controls.Add(Me.txtCustomerPN)
-        Me.GroupBox7.Controls.Add(Me.cmbPopCoding)
-        Me.GroupBox7.Controls.Add(Me.Label198)
-        Me.GroupBox7.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox7.Location = New System.Drawing.Point(302, 33)
-        Me.GroupBox7.Name = "GroupBox7"
-        Me.GroupBox7.Size = New System.Drawing.Size(458, 65)
-        Me.GroupBox7.TabIndex = 658
-        Me.GroupBox7.TabStop = False
-        Me.GroupBox7.Text = "Customer:"
+        Me.grpCust.Controls.Add(Me.txtCustomerPN_Rev)
+        Me.grpCust.Controls.Add(Me.Label28)
+        Me.grpCust.Controls.Add(Me.txtCustomer)
+        Me.grpCust.Controls.Add(Me.Label195)
+        Me.grpCust.Controls.Add(Me.Label196)
+        Me.grpCust.Controls.Add(Me.txtCustomerPN)
+        Me.grpCust.Controls.Add(Me.cmbPopCoding)
+        Me.grpCust.Controls.Add(Me.Label198)
+        Me.grpCust.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grpCust.Location = New System.Drawing.Point(302, 33)
+        Me.grpCust.Name = "grpCust"
+        Me.grpCust.Size = New System.Drawing.Size(458, 65)
+        Me.grpCust.TabIndex = 658
+        Me.grpCust.TabStop = False
+        Me.grpCust.Text = "Customer:"
         '
         'txtCustomerPN_Rev
         '
@@ -1622,55 +1609,29 @@ Partial Class Process_frmMain
         Me.cmbType.Size = New System.Drawing.Size(85, 21)
         Me.cmbType.TabIndex = 649
         '
-        'Label201
+        'lblType
         '
-        Me.Label201.AutoSize = True
-        Me.Label201.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.Label201.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label201.Location = New System.Drawing.Point(46, 122)
-        Me.Label201.Name = "Label201"
-        Me.Label201.Size = New System.Drawing.Size(35, 13)
-        Me.Label201.TabIndex = 648
-        Me.Label201.Text = "Type"
-        Me.Label201.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lblType.AutoSize = True
+        Me.lblType.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.lblType.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblType.Location = New System.Drawing.Point(46, 122)
+        Me.lblType.Name = "lblType"
+        Me.lblType.Size = New System.Drawing.Size(35, 13)
+        Me.lblType.TabIndex = 648
+        Me.lblType.Text = "Type"
+        Me.lblType.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'Label219
+        'lblRating
         '
-        Me.Label219.AutoSize = True
-        Me.Label219.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.Label219.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label219.Location = New System.Drawing.Point(1010, 49)
-        Me.Label219.Name = "Label219"
-        Me.Label219.Size = New System.Drawing.Size(43, 13)
-        Me.Label219.TabIndex = 676
-        Me.Label219.Text = "Rating"
-        Me.Label219.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'cmdCancel
-        '
-        Me.cmdCancel.BackColor = System.Drawing.Color.Silver
-        Me.cmdCancel.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdCancel.Image = CType(resources.GetObject("cmdCancel.Image"), System.Drawing.Image)
-        Me.cmdCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdCancel.Location = New System.Drawing.Point(1008, 824)
-        Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.Size = New System.Drawing.Size(80, 30)
-        Me.cmdCancel.TabIndex = 66
-        Me.cmdCancel.Text = " &Cancel"
-        Me.cmdCancel.UseVisualStyleBackColor = False
-        '
-        'cmdOK
-        '
-        Me.cmdOK.BackColor = System.Drawing.Color.Silver
-        Me.cmdOK.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdOK.Image = CType(resources.GetObject("cmdOK.Image"), System.Drawing.Image)
-        Me.cmdOK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdOK.Location = New System.Drawing.Point(913, 824)
-        Me.cmdOK.Name = "cmdOK"
-        Me.cmdOK.Size = New System.Drawing.Size(80, 30)
-        Me.cmdOK.TabIndex = 65
-        Me.cmdOK.Text = "&OK"
-        Me.cmdOK.UseVisualStyleBackColor = False
+        Me.lblRating.AutoSize = True
+        Me.lblRating.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.lblRating.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblRating.Location = New System.Drawing.Point(1010, 49)
+        Me.lblRating.Name = "lblRating"
+        Me.lblRating.Size = New System.Drawing.Size(43, 13)
+        Me.lblRating.TabIndex = 676
+        Me.lblRating.Text = "Rating"
+        Me.lblRating.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'TabControl1
         '
@@ -1690,6 +1651,7 @@ Partial Class Process_frmMain
         Me.TabControl1.Controls.Add(Me.tabKeyChar)
         Me.TabControl1.Controls.Add(Me.tabIssue)
         Me.TabControl1.Controls.Add(Me.tabApproval)
+        Me.TabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed
         Me.TabControl1.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TabControl1.Location = New System.Drawing.Point(41, 183)
         Me.TabControl1.Multiline = True
@@ -1704,6 +1666,7 @@ Partial Class Process_frmMain
         Me.tabPreOrder.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.tabPreOrder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tabPreOrder.Controls.Add(Me.TabControl3)
+        Me.tabPreOrder.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tabPreOrder.Location = New System.Drawing.Point(4, 40)
         Me.tabPreOrder.Name = "tabPreOrder"
         Me.tabPreOrder.Size = New System.Drawing.Size(1039, 577)
@@ -1712,33 +1675,33 @@ Partial Class Process_frmMain
         '
         'TabControl3
         '
-        Me.TabControl3.Controls.Add(Me.TabPage3)
-        Me.TabControl3.Controls.Add(Me.TabPage6)
+        Me.TabControl3.Controls.Add(Me.tabPreOrder_P1)
+        Me.TabControl3.Controls.Add(Me.tabPreOrder_P2)
         Me.TabControl3.Location = New System.Drawing.Point(10, 7)
         Me.TabControl3.Name = "TabControl3"
         Me.TabControl3.SelectedIndex = 0
         Me.TabControl3.Size = New System.Drawing.Size(951, 565)
         Me.TabControl3.TabIndex = 0
         '
-        'TabPage3
+        'tabPreOrder_P1
         '
-        Me.TabPage3.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.TabPage3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TabPage3.Controls.Add(Me.Label64)
-        Me.TabPage3.Controls.Add(Me.GroupBox44)
-        Me.TabPage3.Controls.Add(Me.GroupBox9)
-        Me.TabPage3.Controls.Add(Me.Label21)
-        Me.TabPage3.Controls.Add(Me.GroupBox13)
-        Me.TabPage3.Controls.Add(Me.lblSplitter1)
-        Me.TabPage3.Controls.Add(Me.grpGroupBox10)
-        Me.TabPage3.Controls.Add(Me.GroupBox8)
-        Me.TabPage3.Controls.Add(Me.grpGroupBox2)
-        Me.TabPage3.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage3.Size = New System.Drawing.Size(943, 539)
-        Me.TabPage3.TabIndex = 0
-        Me.TabPage3.Text = "Page 1"
+        Me.tabPreOrder_P1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.tabPreOrder_P1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.tabPreOrder_P1.Controls.Add(Me.Label64)
+        Me.tabPreOrder_P1.Controls.Add(Me.GroupBox44)
+        Me.tabPreOrder_P1.Controls.Add(Me.GroupBox9)
+        Me.tabPreOrder_P1.Controls.Add(Me.Label21)
+        Me.tabPreOrder_P1.Controls.Add(Me.GroupBox13)
+        Me.tabPreOrder_P1.Controls.Add(Me.lblSplitter1)
+        Me.tabPreOrder_P1.Controls.Add(Me.grpGroupBox10)
+        Me.tabPreOrder_P1.Controls.Add(Me.GroupBox8)
+        Me.tabPreOrder_P1.Controls.Add(Me.grpGroupBox2)
+        Me.tabPreOrder_P1.Location = New System.Drawing.Point(4, 22)
+        Me.tabPreOrder_P1.Name = "tabPreOrder_P1"
+        Me.tabPreOrder_P1.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabPreOrder_P1.Size = New System.Drawing.Size(943, 539)
+        Me.tabPreOrder_P1.TabIndex = 0
+        Me.tabPreOrder_P1.Text = "Page 1"
         '
         'Label64
         '
@@ -2164,21 +2127,21 @@ Partial Class Process_frmMain
         Me.cmbExport_Status.Size = New System.Drawing.Size(84, 21)
         Me.cmbExport_Status.TabIndex = 640
         '
-        'TabPage6
+        'tabPreOrder_P2
         '
-        Me.TabPage6.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.TabPage6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TabPage6.Controls.Add(Me.GroupBox17)
-        Me.TabPage6.Controls.Add(Me.Label27)
-        Me.TabPage6.Controls.Add(Me.grpPreOrder_RiskAna)
-        Me.TabPage6.Controls.Add(Me.Label26)
-        Me.TabPage6.Controls.Add(Me.GroupBox15)
-        Me.TabPage6.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage6.Name = "TabPage6"
-        Me.TabPage6.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage6.Size = New System.Drawing.Size(943, 539)
-        Me.TabPage6.TabIndex = 1
-        Me.TabPage6.Text = "Page 2"
+        Me.tabPreOrder_P2.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.tabPreOrder_P2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.tabPreOrder_P2.Controls.Add(Me.GroupBox17)
+        Me.tabPreOrder_P2.Controls.Add(Me.Label27)
+        Me.tabPreOrder_P2.Controls.Add(Me.grpPreOrder_RiskAna)
+        Me.tabPreOrder_P2.Controls.Add(Me.Label26)
+        Me.tabPreOrder_P2.Controls.Add(Me.GroupBox15)
+        Me.tabPreOrder_P2.Location = New System.Drawing.Point(4, 22)
+        Me.tabPreOrder_P2.Name = "tabPreOrder_P2"
+        Me.tabPreOrder_P2.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabPreOrder_P2.Size = New System.Drawing.Size(943, 539)
+        Me.tabPreOrder_P2.TabIndex = 1
+        Me.tabPreOrder_P2.Text = "Page 2"
         '
         'GroupBox17
         '
@@ -5709,59 +5672,59 @@ Partial Class Process_frmMain
         '
         'TabControl2
         '
-        Me.TabControl2.Controls.Add(Me.TabPage1)
-        Me.TabControl2.Controls.Add(Me.TabPage2)
+        Me.TabControl2.Controls.Add(Me.tbpDesign_P1)
+        Me.TabControl2.Controls.Add(Me.tbpDesign_P2)
         Me.TabControl2.Location = New System.Drawing.Point(14, 7)
         Me.TabControl2.Name = "TabControl2"
         Me.TabControl2.SelectedIndex = 0
         Me.TabControl2.Size = New System.Drawing.Size(1020, 565)
         Me.TabControl2.TabIndex = 2
         '
-        'TabPage1
+        'tbpDesign_P1
         '
-        Me.TabPage1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.TabPage1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TabPage1.Controls.Add(Me.grdDesign_Verification)
-        Me.TabPage1.Controls.Add(Me.Label61)
-        Me.TabPage1.Controls.Add(Me.GroupBox56)
-        Me.TabPage1.Controls.Add(Me.grpRefPN)
-        Me.TabPage1.Controls.Add(Me.txtDesign_MCS)
-        Me.TabPage1.Controls.Add(Me.Label40)
-        Me.TabPage1.Controls.Add(Me.grdDesign_Input)
-        Me.TabPage1.Controls.Add(Me.DataGridView33)
-        Me.TabPage1.Controls.Add(Me.Label132)
-        Me.TabPage1.Controls.Add(Me.Label59)
-        Me.TabPage1.Controls.Add(Me.grpPlating)
-        Me.TabPage1.Controls.Add(Me.cmbDesign_OutsideVendor)
-        Me.TabPage1.Controls.Add(Me.grpCoating)
-        Me.TabPage1.Controls.Add(Me.GroupBox48)
-        Me.TabPage1.Controls.Add(Me.ComboBox76)
-        Me.TabPage1.Controls.Add(Me.Label124)
-        Me.TabPage1.Controls.Add(Me.GroupBox35)
-        Me.TabPage1.Controls.Add(Me.Label123)
-        Me.TabPage1.Controls.Add(Me.Label79)
-        Me.TabPage1.Controls.Add(Me.Label54)
-        Me.TabPage1.Controls.Add(Me.txtDesign_FOD_Risks)
-        Me.TabPage1.Controls.Add(Me.Label121)
-        Me.TabPage1.Controls.Add(Me.TextBox55)
-        Me.TabPage1.Controls.Add(Me.Label242)
-        Me.TabPage1.Controls.Add(Me.Label110)
-        Me.TabPage1.Controls.Add(Me.cmbDesign_TemperType)
-        Me.TabPage1.Controls.Add(Me.Label109)
-        Me.TabPage1.Controls.Add(Me.ComboBox78)
-        Me.TabPage1.Controls.Add(Me.Label236)
-        Me.TabPage1.Controls.Add(Me.cmbDesign_BuildToPrint)
-        Me.TabPage1.Controls.Add(Me.Label74)
-        Me.TabPage1.Controls.Add(Me.Label77)
-        Me.TabPage1.Controls.Add(Me.GroupBox3)
-        Me.TabPage1.Controls.Add(Me.cmbDesign_Class1)
-        Me.TabPage1.Controls.Add(Me.GroupBox12)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(1012, 539)
-        Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "Page 1"
+        Me.tbpDesign_P1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.tbpDesign_P1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.tbpDesign_P1.Controls.Add(Me.grdDesign_Verification)
+        Me.tbpDesign_P1.Controls.Add(Me.Label61)
+        Me.tbpDesign_P1.Controls.Add(Me.GroupBox56)
+        Me.tbpDesign_P1.Controls.Add(Me.grpRefPN)
+        Me.tbpDesign_P1.Controls.Add(Me.txtDesign_MCS)
+        Me.tbpDesign_P1.Controls.Add(Me.Label40)
+        Me.tbpDesign_P1.Controls.Add(Me.grdDesign_Input)
+        Me.tbpDesign_P1.Controls.Add(Me.DataGridView33)
+        Me.tbpDesign_P1.Controls.Add(Me.Label132)
+        Me.tbpDesign_P1.Controls.Add(Me.Label59)
+        Me.tbpDesign_P1.Controls.Add(Me.grpPlating)
+        Me.tbpDesign_P1.Controls.Add(Me.cmbDesign_OutsideVendor)
+        Me.tbpDesign_P1.Controls.Add(Me.grpCoating)
+        Me.tbpDesign_P1.Controls.Add(Me.GroupBox48)
+        Me.tbpDesign_P1.Controls.Add(Me.ComboBox76)
+        Me.tbpDesign_P1.Controls.Add(Me.Label124)
+        Me.tbpDesign_P1.Controls.Add(Me.GroupBox35)
+        Me.tbpDesign_P1.Controls.Add(Me.Label123)
+        Me.tbpDesign_P1.Controls.Add(Me.Label79)
+        Me.tbpDesign_P1.Controls.Add(Me.Label54)
+        Me.tbpDesign_P1.Controls.Add(Me.txtDesign_FOD_Risks)
+        Me.tbpDesign_P1.Controls.Add(Me.Label121)
+        Me.tbpDesign_P1.Controls.Add(Me.TextBox55)
+        Me.tbpDesign_P1.Controls.Add(Me.Label242)
+        Me.tbpDesign_P1.Controls.Add(Me.Label110)
+        Me.tbpDesign_P1.Controls.Add(Me.cmbDesign_TemperType)
+        Me.tbpDesign_P1.Controls.Add(Me.Label109)
+        Me.tbpDesign_P1.Controls.Add(Me.ComboBox78)
+        Me.tbpDesign_P1.Controls.Add(Me.Label236)
+        Me.tbpDesign_P1.Controls.Add(Me.cmbDesign_BuildToPrint)
+        Me.tbpDesign_P1.Controls.Add(Me.Label74)
+        Me.tbpDesign_P1.Controls.Add(Me.Label77)
+        Me.tbpDesign_P1.Controls.Add(Me.GroupBox3)
+        Me.tbpDesign_P1.Controls.Add(Me.cmbDesign_Class1)
+        Me.tbpDesign_P1.Controls.Add(Me.GroupBox12)
+        Me.tbpDesign_P1.Location = New System.Drawing.Point(4, 22)
+        Me.tbpDesign_P1.Name = "tbpDesign_P1"
+        Me.tbpDesign_P1.Padding = New System.Windows.Forms.Padding(3)
+        Me.tbpDesign_P1.Size = New System.Drawing.Size(1012, 539)
+        Me.tbpDesign_P1.TabIndex = 0
+        Me.tbpDesign_P1.Text = "Page 1"
         '
         'grdDesign_Verification
         '
@@ -6804,25 +6767,25 @@ Partial Class Process_frmMain
         Me.Label210.Text = "Rev"
         Me.Label210.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'TabPage2
+        'tbpDesign_P2
         '
-        Me.TabPage2.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.TabPage2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TabPage2.Controls.Add(Me.Label177)
-        Me.TabPage2.Controls.Add(Me.txtDesign_Notes)
-        Me.TabPage2.Controls.Add(Me.Label98)
-        Me.TabPage2.Controls.Add(Me.Label67)
-        Me.TabPage2.Controls.Add(Me.GroupBox10)
-        Me.TabPage2.Controls.Add(Me.grpDesign_SealDim)
-        Me.TabPage2.Controls.Add(Me.txtDesign_LessonsLearned)
-        Me.TabPage2.Controls.Add(Me.Label243)
-        Me.TabPage2.Controls.Add(Me.GroupBox5)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(1012, 539)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "Page 2"
+        Me.tbpDesign_P2.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.tbpDesign_P2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.tbpDesign_P2.Controls.Add(Me.Label177)
+        Me.tbpDesign_P2.Controls.Add(Me.txtDesign_Notes)
+        Me.tbpDesign_P2.Controls.Add(Me.Label98)
+        Me.tbpDesign_P2.Controls.Add(Me.Label67)
+        Me.tbpDesign_P2.Controls.Add(Me.GroupBox10)
+        Me.tbpDesign_P2.Controls.Add(Me.grpDesign_SealDim)
+        Me.tbpDesign_P2.Controls.Add(Me.txtDesign_LessonsLearned)
+        Me.tbpDesign_P2.Controls.Add(Me.Label243)
+        Me.tbpDesign_P2.Controls.Add(Me.GroupBox5)
+        Me.tbpDesign_P2.Location = New System.Drawing.Point(4, 22)
+        Me.tbpDesign_P2.Name = "tbpDesign_P2"
+        Me.tbpDesign_P2.Padding = New System.Windows.Forms.Padding(3)
+        Me.tbpDesign_P2.Size = New System.Drawing.Size(1012, 539)
+        Me.tbpDesign_P2.TabIndex = 1
+        Me.tbpDesign_P2.Text = "Page 2"
         '
         'Label177
         '
@@ -8433,20 +8396,6 @@ Partial Class Process_frmMain
         Me.cmbDwg_DesignLevel.Size = New System.Drawing.Size(40, 21)
         Me.cmbDwg_DesignLevel.TabIndex = 683
         '
-        'cmdNotes
-        '
-        Me.cmdNotes.BackColor = System.Drawing.Color.Silver
-        Me.cmdNotes.Enabled = False
-        Me.cmdNotes.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdNotes.Image = CType(resources.GetObject("cmdNotes.Image"), System.Drawing.Image)
-        Me.cmdNotes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdNotes.Location = New System.Drawing.Point(807, 81)
-        Me.cmdNotes.Name = "cmdNotes"
-        Me.cmdNotes.Size = New System.Drawing.Size(140, 41)
-        Me.cmdNotes.TabIndex = 688
-        Me.cmdNotes.Text = "&Notes"
-        Me.cmdNotes.UseVisualStyleBackColor = False
-        '
         'tabTesting
         '
         Me.tabTesting.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
@@ -9638,38 +9587,6 @@ Partial Class Process_frmMain
         Me.DataGridViewTextBoxColumn54.Name = "DataGridViewTextBoxColumn54"
         Me.DataGridViewTextBoxColumn54.Width = 500
         '
-        'cmdResetSelectedAllNote
-        '
-        Me.cmdResetSelectedAllNote.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.cmdResetSelectedAllNote.BackColor = System.Drawing.Color.SteelBlue
-        Me.cmdResetSelectedAllNote.BackgroundImage = CType(resources.GetObject("cmdResetSelectedAllNote.BackgroundImage"), System.Drawing.Image)
-        Me.cmdResetSelectedAllNote.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.cmdResetSelectedAllNote.Enabled = False
-        Me.cmdResetSelectedAllNote.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.cmdResetSelectedAllNote.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdResetSelectedAllNote.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdResetSelectedAllNote.Location = New System.Drawing.Point(295, 179)
-        Me.cmdResetSelectedAllNote.Name = "cmdResetSelectedAllNote"
-        Me.cmdResetSelectedAllNote.Size = New System.Drawing.Size(32, 24)
-        Me.cmdResetSelectedAllNote.TabIndex = 892
-        Me.cmdResetSelectedAllNote.UseVisualStyleBackColor = False
-        '
-        'cmdSelectAllNote
-        '
-        Me.cmdSelectAllNote.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.cmdSelectAllNote.BackColor = System.Drawing.Color.SteelBlue
-        Me.cmdSelectAllNote.BackgroundImage = CType(resources.GetObject("cmdSelectAllNote.BackgroundImage"), System.Drawing.Image)
-        Me.cmdSelectAllNote.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.cmdSelectAllNote.Enabled = False
-        Me.cmdSelectAllNote.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.cmdSelectAllNote.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdSelectAllNote.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdSelectAllNote.Location = New System.Drawing.Point(295, 149)
-        Me.cmdSelectAllNote.Name = "cmdSelectAllNote"
-        Me.cmdSelectAllNote.Size = New System.Drawing.Size(32, 24)
-        Me.cmdSelectAllNote.TabIndex = 890
-        Me.cmdSelectAllNote.UseVisualStyleBackColor = False
-        '
         'tabShipping
         '
         Me.tabShipping.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
@@ -10147,6 +10064,91 @@ Partial Class Process_frmMain
         '
         Me.openFileDialog1.FileName = "OpenFileDialog1"
         '
+        'cmdCreatePDS
+        '
+        Me.cmdCreatePDS.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.cmdCreatePDS.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdCreatePDS.Image = CType(resources.GetObject("cmdCreatePDS.Image"), System.Drawing.Image)
+        Me.cmdCreatePDS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cmdCreatePDS.Location = New System.Drawing.Point(727, 824)
+        Me.cmdCreatePDS.Name = "cmdCreatePDS"
+        Me.cmdCreatePDS.Size = New System.Drawing.Size(116, 30)
+        Me.cmdCreatePDS.TabIndex = 682
+        Me.cmdCreatePDS.Text = "Create &PDS"
+        Me.cmdCreatePDS.UseVisualStyleBackColor = False
+        '
+        'cmdCancel
+        '
+        Me.cmdCancel.BackColor = System.Drawing.Color.Silver
+        Me.cmdCancel.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdCancel.Image = CType(resources.GetObject("cmdCancel.Image"), System.Drawing.Image)
+        Me.cmdCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cmdCancel.Location = New System.Drawing.Point(1008, 824)
+        Me.cmdCancel.Name = "cmdCancel"
+        Me.cmdCancel.Size = New System.Drawing.Size(80, 30)
+        Me.cmdCancel.TabIndex = 66
+        Me.cmdCancel.Text = " &Cancel"
+        Me.cmdCancel.UseVisualStyleBackColor = False
+        '
+        'cmdOK
+        '
+        Me.cmdOK.BackColor = System.Drawing.Color.Silver
+        Me.cmdOK.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdOK.Image = CType(resources.GetObject("cmdOK.Image"), System.Drawing.Image)
+        Me.cmdOK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cmdOK.Location = New System.Drawing.Point(913, 824)
+        Me.cmdOK.Name = "cmdOK"
+        Me.cmdOK.Size = New System.Drawing.Size(80, 30)
+        Me.cmdOK.TabIndex = 65
+        Me.cmdOK.Text = "&OK"
+        Me.cmdOK.UseVisualStyleBackColor = False
+        '
+        'cmdNotes
+        '
+        Me.cmdNotes.BackColor = System.Drawing.Color.Silver
+        Me.cmdNotes.Enabled = False
+        Me.cmdNotes.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdNotes.Image = CType(resources.GetObject("cmdNotes.Image"), System.Drawing.Image)
+        Me.cmdNotes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cmdNotes.Location = New System.Drawing.Point(807, 81)
+        Me.cmdNotes.Name = "cmdNotes"
+        Me.cmdNotes.Size = New System.Drawing.Size(140, 41)
+        Me.cmdNotes.TabIndex = 688
+        Me.cmdNotes.Text = "&Notes"
+        Me.cmdNotes.UseVisualStyleBackColor = False
+        '
+        'cmdResetSelectedAllNote
+        '
+        Me.cmdResetSelectedAllNote.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.cmdResetSelectedAllNote.BackColor = System.Drawing.Color.SteelBlue
+        Me.cmdResetSelectedAllNote.BackgroundImage = CType(resources.GetObject("cmdResetSelectedAllNote.BackgroundImage"), System.Drawing.Image)
+        Me.cmdResetSelectedAllNote.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.cmdResetSelectedAllNote.Enabled = False
+        Me.cmdResetSelectedAllNote.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.cmdResetSelectedAllNote.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdResetSelectedAllNote.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cmdResetSelectedAllNote.Location = New System.Drawing.Point(295, 179)
+        Me.cmdResetSelectedAllNote.Name = "cmdResetSelectedAllNote"
+        Me.cmdResetSelectedAllNote.Size = New System.Drawing.Size(32, 24)
+        Me.cmdResetSelectedAllNote.TabIndex = 892
+        Me.cmdResetSelectedAllNote.UseVisualStyleBackColor = False
+        '
+        'cmdSelectAllNote
+        '
+        Me.cmdSelectAllNote.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.cmdSelectAllNote.BackColor = System.Drawing.Color.SteelBlue
+        Me.cmdSelectAllNote.BackgroundImage = CType(resources.GetObject("cmdSelectAllNote.BackgroundImage"), System.Drawing.Image)
+        Me.cmdSelectAllNote.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.cmdSelectAllNote.Enabled = False
+        Me.cmdSelectAllNote.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.cmdSelectAllNote.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdSelectAllNote.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cmdSelectAllNote.Location = New System.Drawing.Point(295, 149)
+        Me.cmdSelectAllNote.Name = "cmdSelectAllNote"
+        Me.cmdSelectAllNote.Size = New System.Drawing.Size(32, 24)
+        Me.cmdSelectAllNote.TabIndex = 890
+        Me.cmdSelectAllNote.UseVisualStyleBackColor = False
+        '
         'Process_frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 13.0!)
@@ -10165,19 +10167,19 @@ Partial Class Process_frmMain
         Me.pnlPanel1.ResumeLayout(False)
         Me.pnlPanel1.PerformLayout()
         Me.GroupBox16.ResumeLayout(False)
-        Me.GroupBox43.ResumeLayout(False)
-        Me.GroupBox37.ResumeLayout(False)
-        Me.GroupBox37.PerformLayout()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
+        Me.grpProject.ResumeLayout(False)
+        Me.grpExport.ResumeLayout(False)
+        Me.grpExport.PerformLayout()
+        Me.grpDate.ResumeLayout(False)
+        Me.grpDate.PerformLayout()
         Me.grpParker.ResumeLayout(False)
         Me.grpParker.PerformLayout()
-        Me.GroupBox7.ResumeLayout(False)
-        Me.GroupBox7.PerformLayout()
+        Me.grpCust.ResumeLayout(False)
+        Me.grpCust.PerformLayout()
         Me.TabControl1.ResumeLayout(False)
         Me.tabPreOrder.ResumeLayout(False)
         Me.TabControl3.ResumeLayout(False)
-        Me.TabPage3.ResumeLayout(False)
+        Me.tabPreOrder_P1.ResumeLayout(False)
         Me.GroupBox44.ResumeLayout(False)
         Me.GroupBox44.PerformLayout()
         Me.GroupBox9.ResumeLayout(False)
@@ -10192,7 +10194,7 @@ Partial Class Process_frmMain
         CType(Me.grdCustContact, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpGroupBox2.ResumeLayout(False)
         Me.grpGroupBox2.PerformLayout()
-        Me.TabPage6.ResumeLayout(False)
+        Me.tabPreOrder_P2.ResumeLayout(False)
         Me.GroupBox17.ResumeLayout(False)
         Me.GroupBox17.PerformLayout()
         CType(Me.grdPreOrderEditedBy, System.ComponentModel.ISupportInitialize).EndInit()
@@ -10273,8 +10275,8 @@ Partial Class Process_frmMain
         CType(Me.grdApp_EditedBy_Axial, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabDesign.ResumeLayout(False)
         Me.TabControl2.ResumeLayout(False)
-        Me.TabPage1.ResumeLayout(False)
-        Me.TabPage1.PerformLayout()
+        Me.tbpDesign_P1.ResumeLayout(False)
+        Me.tbpDesign_P1.PerformLayout()
         CType(Me.grdDesign_Verification, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox56.ResumeLayout(False)
         Me.GroupBox56.PerformLayout()
@@ -10294,8 +10296,8 @@ Partial Class Process_frmMain
         Me.GroupBox3.PerformLayout()
         Me.GroupBox12.ResumeLayout(False)
         Me.GroupBox12.PerformLayout()
-        Me.TabPage2.ResumeLayout(False)
-        Me.TabPage2.PerformLayout()
+        Me.tbpDesign_P2.ResumeLayout(False)
+        Me.tbpDesign_P2.PerformLayout()
         Me.GroupBox10.ResumeLayout(False)
         Me.GroupBox10.PerformLayout()
         CType(Me.grdDesign_EditedBy, System.ComponentModel.ISupportInitialize).EndInit()
@@ -10425,7 +10427,7 @@ Partial Class Process_frmMain
     Friend WithEvents Label173 As System.Windows.Forms.Label
     Friend WithEvents Label174 As System.Windows.Forms.Label
     Friend WithEvents Label175 As System.Windows.Forms.Label
-    Friend WithEvents GroupBox7 As System.Windows.Forms.GroupBox
+    Friend WithEvents grpCust As System.Windows.Forms.GroupBox
     Private WithEvents txtCustomer As System.Windows.Forms.TextBox
     Friend WithEvents Label195 As System.Windows.Forms.Label
     Friend WithEvents Label196 As System.Windows.Forms.Label
@@ -10435,10 +10437,10 @@ Partial Class Process_frmMain
     Friend WithEvents Label197 As System.Windows.Forms.Label
     Friend WithEvents Label198 As System.Windows.Forms.Label
     Private WithEvents cmbType As System.Windows.Forms.ComboBox
-    Friend WithEvents Label201 As System.Windows.Forms.Label
+    Friend WithEvents lblType As System.Windows.Forms.Label
     Friend WithEvents Label220 As System.Windows.Forms.Label
     Private WithEvents cmbOrdEntry_DFAR As System.Windows.Forms.ComboBox
-    Friend WithEvents Label219 As System.Windows.Forms.Label
+    Friend WithEvents lblRating As System.Windows.Forms.Label
     Friend WithEvents Label218 As System.Windows.Forms.Label
     Private WithEvents cmbOrdEntry_Expedited As System.Windows.Forms.ComboBox
     Private WithEvents dtpOrdEntry_OrderShipDate As System.Windows.Forms.DateTimePicker
@@ -10454,7 +10456,7 @@ Partial Class Process_frmMain
     Friend WithEvents grpParker As System.Windows.Forms.GroupBox
     Private WithEvents txtCustomerPN_Rev As System.Windows.Forms.TextBox
     Friend WithEvents Label28 As System.Windows.Forms.Label
-    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
+    Friend WithEvents grpDate As System.Windows.Forms.GroupBox
     Friend WithEvents Label202 As System.Windows.Forms.Label
     Private WithEvents txtStartDate As System.Windows.Forms.TextBox
     Private WithEvents txtDateMod As System.Windows.Forms.TextBox
@@ -10534,7 +10536,7 @@ Partial Class Process_frmMain
     Private WithEvents cmbTest_QtyPre_SpringBack As System.Windows.Forms.ComboBox
     Friend WithEvents Label90 As System.Windows.Forms.Label
     Friend WithEvents TabControl3 As System.Windows.Forms.TabControl
-    Friend WithEvents TabPage3 As System.Windows.Forms.TabPage
+    Friend WithEvents tabPreOrder_P1 As System.Windows.Forms.TabPage
     Friend WithEvents GroupBox9 As System.Windows.Forms.GroupBox
     Friend WithEvents grpQuote As System.Windows.Forms.GroupBox
     Friend WithEvents grdQuote As System.Windows.Forms.DataGridView
@@ -10562,7 +10564,7 @@ Partial Class Process_frmMain
     Friend WithEvents Label18 As System.Windows.Forms.Label
     Private WithEvents cmbExport_Reqd As System.Windows.Forms.ComboBox
     Private WithEvents cmbExport_Status As System.Windows.Forms.ComboBox
-    Friend WithEvents TabPage6 As System.Windows.Forms.TabPage
+    Friend WithEvents tabPreOrder_P2 As System.Windows.Forms.TabPage
     Friend WithEvents Label27 As System.Windows.Forms.Label
     Friend WithEvents grpPreOrder_RiskAna As System.Windows.Forms.GroupBox
     Friend WithEvents grdPreOrderRiskAna As System.Windows.Forms.DataGridView
@@ -10622,8 +10624,8 @@ Partial Class Process_frmMain
     Private WithEvents txtApp_Fluid As System.Windows.Forms.TextBox
     Friend WithEvents Label32 As System.Windows.Forms.Label
     Friend WithEvents TabControl2 As System.Windows.Forms.TabControl
-    Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
-    Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
+    Friend WithEvents tbpDesign_P1 As System.Windows.Forms.TabPage
+    Friend WithEvents tbpDesign_P2 As System.Windows.Forms.TabPage
     Friend WithEvents Label59 As System.Windows.Forms.Label
     Friend WithEvents grpPlating As System.Windows.Forms.GroupBox
     Friend WithEvents cmbPlatingCode As System.Windows.Forms.ComboBox
@@ -10685,7 +10687,7 @@ Partial Class Process_frmMain
     Private WithEvents cmbTest_FreqPre_SpringBack As System.Windows.Forms.ComboBox
     Friend WithEvents Label80 As System.Windows.Forms.Label
     Public WithEvents cmbQuality_CustAcceptStd As System.Windows.Forms.ComboBox
-    Friend WithEvents Label81 As System.Windows.Forms.Label
+    Friend WithEvents lblStatus As System.Windows.Forms.Label
     Friend WithEvents GroupBox17 As System.Windows.Forms.GroupBox
     Private WithEvents txtPreOrderUserDate As System.Windows.Forms.TextBox
     Private WithEvents dtpPreOrderUserDate As System.Windows.Forms.DateTimePicker
@@ -10749,11 +10751,11 @@ Partial Class Process_frmMain
     Friend WithEvents grdDwg_EditedBy As System.Windows.Forms.DataGridView
     Private WithEvents txtMgrSales As System.Windows.Forms.TextBox
     Friend WithEvents grdCustContact As System.Windows.Forms.DataGridView
-    Friend WithEvents GroupBox37 As System.Windows.Forms.GroupBox
+    Friend WithEvents grpExport As System.Windows.Forms.GroupBox
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents Label199 As System.Windows.Forms.Label
     Private WithEvents txtExportControlled As System.Windows.Forms.TextBox
-    Friend WithEvents GroupBox43 As System.Windows.Forms.GroupBox
+    Friend WithEvents grpProject As System.Windows.Forms.GroupBox
     Friend WithEvents cmdClose As System.Windows.Forms.Button
     Friend WithEvents cmdCopyFrom As System.Windows.Forms.Button
     Friend WithEvents cmdDelete As System.Windows.Forms.Button

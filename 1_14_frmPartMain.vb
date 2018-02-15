@@ -8770,9 +8770,17 @@ Public Class frmPartMain
     Private Sub UserGroupToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) _
                                                 Handles UserGroupToolStripMenuItem.Click
         '==========================================================================================
+        Dim pUserRole As New List(Of String)
+        pUserRole = gUser.RetrieveProcessUserRoles()
 
-        Dim pfrmUserGroup As New frmUserGroup()
-        pfrmUserGroup.ShowDialog()
+        If (pUserRole.Contains("Admin")) Then
+            Dim pfrmUserGroup As New frmUserGroup()
+            pfrmUserGroup.ShowDialog()
+        Else
+            Dim pfrmAdminLogin As New frmAdminLogin()
+            pfrmAdminLogin.ShowDialog()
+        End If
+
 
     End Sub
 End Class

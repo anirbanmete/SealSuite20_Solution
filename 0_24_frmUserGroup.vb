@@ -135,6 +135,7 @@ Public Class frmUserGroup
                 SaveToDB()
                 InitializeControls()
                 Cursor.Current = Cursors.Default
+                grdUsers.Rows.Clear()
             End If
 
         End With

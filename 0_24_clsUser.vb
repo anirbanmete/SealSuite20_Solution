@@ -215,8 +215,8 @@ Public Class clsUser
         Dim pRole13(), pRole14(), pRole15(), pRole16(), pRole17(), pRole18(), pRole19(), pRole20(), pRole21(), pRole22(), pRole23() As String
 
         Try
-            pWkbOrg = pApp.Workbooks.Open(FileName_In, Missing.Value, False, Missing.Value, Missing.Value, Missing.Value, _
-            Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, _
+            pWkbOrg = pApp.Workbooks.Open(FileName_In, Missing.Value, False, Missing.Value, Missing.Value, Missing.Value,
+            Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value,
             Missing.Value, Missing.Value, Missing.Value)
 
             Dim pWkSheet As EXCEL.Worksheet
@@ -247,7 +247,7 @@ Public Class clsUser
             If (pTitle.Count > 0) Then
 
                 Dim pTitleRec = (From Rec In pSealSuiteDBEntities.tblTitle
-                                     Select Rec).ToList()
+                                 Select Rec).ToList()
 
                 For i1 As Integer = 0 To pTitleRec.Count() - 1
                     pSealSuiteDBEntities.DeleteObject(pTitleRec(i1))
@@ -294,7 +294,7 @@ Public Class clsUser
             If (pRole.Count > 0) Then
 
                 Dim pRoleRec = (From Rec In pSealSuiteDBEntities.tblRole
-                                     Select Rec).ToList()
+                                Select Rec).ToList()
 
                 For i1 As Integer = 0 To pRoleRec.Count() - 1
                     pSealSuiteDBEntities.DeleteObject(pRoleRec(i1))
@@ -454,8 +454,8 @@ Public Class clsUser
             pRole23 = {"Check Box 1059", "Check Box 1060", "Check Box 1061", "Check Box 1062", "Check Box 1063", "Check Box 1064", "Check Box 1065", "Check Box 1066", "Check Box 1072",
                         "Check Box 1067", "Check Box 1068", "Check Box 1069", "Check Box 1070", "Check Box 1073", "Check Box 1071"}
 
-            Dim pCheckRole() As Microsoft.Office.Interop.Excel.CheckBox = {chkHeader, chkPreOrder, chkExport, chkOrdEntry, chkCost, chkApp, _
-                                                                           chkDesign, chkManf, chkPurchase, chkQlty, chkDwg, chkTest, _
+            Dim pCheckRole() As Microsoft.Office.Interop.Excel.CheckBox = {chkHeader, chkPreOrder, chkExport, chkOrdEntry, chkCost, chkApp,
+                                                                           chkDesign, chkManf, chkPurchase, chkQlty, chkDwg, chkTest,
                                                                            chkPlanning, chkShipping, chkKeyChar}
 
             Dim pRecDeleted As Boolean = False
@@ -878,6 +878,7 @@ Public Class clsUser
             MessageBox.Show(pMsg, "User Data File!", MessageBoxButtons.OK)
 
         Catch ex As Exception
+            MessageBox.Show(ex.ToString())
 
         End Try
 

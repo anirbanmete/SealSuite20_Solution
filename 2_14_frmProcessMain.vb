@@ -40,6 +40,7 @@ Public Class Process_frmMain
 
     '....tab Variables
     Dim mHeader, mPreOrder, mExport, mOrdEntry, mCost, mApp, mDesign, mManf, mPurchase, mQlty, mDwg, mTest, mPlanning, mShipping, mKeyChar As Boolean
+    Dim mTabIndex As New List(Of Integer)
 
     '....Variables for Deleting Records from GridView
     Dim mblngrdCustContact_PreOrder As Boolean = False
@@ -311,6 +312,49 @@ Public Class Process_frmMain
             mPlanning = pUserRolePrivilege(0).fldPlanning
             mShipping = pUserRolePrivilege(0).fldShipping
             mKeyChar = pUserRolePrivilege(0).fldKeyChar
+        End If
+
+        If (mPreOrder) Then
+            mTabIndex.Add(0)
+        End If
+        If (mExport) Then
+            mTabIndex.Add(1)
+        End If
+        If (mOrdEntry) Then
+            mTabIndex.Add(2)
+        End If
+        If (mCost) Then
+            mTabIndex.Add(3)
+        End If
+        If (mApp) Then
+            mTabIndex.Add(4)
+        End If
+        If (mDesign) Then
+            mTabIndex.Add(5)
+        End If
+        If (mManf) Then
+            mTabIndex.Add(6)
+        End If
+        If (mPurchase) Then
+            mTabIndex.Add(7)
+        End If
+        If (mQlty) Then
+            mTabIndex.Add(8)
+        End If
+        If (mDwg) Then
+            mTabIndex.Add(9)
+        End If
+        If (mTest) Then
+            mTabIndex.Add(10)
+        End If
+        If (mPlanning) Then
+            mTabIndex.Add(11)
+        End If
+        If (mShipping) Then
+            mTabIndex.Add(12)
+        End If
+        If (mKeyChar) Then
+            mTabIndex.Add(13)
         End If
 
     End Sub
@@ -665,20 +709,44 @@ Public Class Process_frmMain
         grdApproval_Attendees.AllowUserToAddRows = False
 
         '--------------
-        EnableTab(tabPreOrder, mPreOrder)
+        grpParker.Enabled = mHeader
+        grpCust.Enabled = mHeader
+        cmbRating.Enabled = mHeader
+        lblRating.Enabled = mHeader
+        cmbType.Enabled = mHeader
+        lblType.Enabled = mHeader
+        lblStatus.Enabled = mHeader
+        'grpProject.Enabled = mHeader
+        grpDate.Enabled = mHeader
+        cmdSetUnits.Enabled = mHeader
+
+
+        EnableTab(tabPreOrder_P1, mPreOrder)
+        EnableTab(tabPreOrder_P2, mPreOrder)
         EnableTab(tabExport, mExport)
         EnableTab(tabOrder, mOrdEntry)
         EnableTab(tabCosting, mCost)
-        EnableTab(tabApplication, mApp)
-        EnableTab(tabDesign, mDesign)
+        EnableTab(tbpGen, mApp)
+        EnableTab(tbpFace, mApp)
+        EnableTab(tbpAxial, mApp)
+        EnableTab(tbpDesign_P1, mDesign)
+        EnableTab(tbpDesign_P2, mDesign)
         EnableTab(tabManufacturing, mManf)
         EnableTab(tabPurchasing, mPurchase)
         EnableTab(tabQuality, mQlty)
         EnableTab(tabDrawing, mDwg)
-        EnableTab(tabTesting, mTest)
-        EnableTab(tabPlanning, mPlanning)
+        EnableTab(tabLeak, mTest)
+        EnableTab(tabLoad, mTest)
+        EnableTab(tabSpringBack, mTest)
+        EnableTab(tabPlanning, False)
         EnableTab(tabShipping, mShipping)
-        EnableTab(tabKeyChar, mKeyChar)
+        EnableTab(tabKeyChar, False)
+        EnableTab(tabApproval, False)
+        If (gUser.Role = "Viewer") Then
+            EnableTab(tabIssue, False)
+        Else
+            EnableTab(tabIssue, True)
+        End If
 
     End Sub
 
@@ -3115,36 +3183,40 @@ Public Class Process_frmMain
 
     Private Sub TabControl1_DrawItem(sender As System.Object, e As System.Windows.Forms.DrawItemEventArgs) Handles TabControl1.DrawItem
         '==============================================================================================================================
-        'Dim tabContas As TabControl = DirectCast(sender, TabControl)
-        'Dim sTexto As String = tabContas.TabPages(e.Index).Text
-        'Dim g As Graphics = e.Graphics
-        'Dim fonte As Font = tabContas.Font
-        'Dim format = New System.Drawing.StringFormat
-        ''CHANGES HERE...
-        'format.Alignment = StringAlignment.Center
-        'format.LineAlignment = StringAlignment.Center
-        'Dim pincel As New SolidBrush(Color.Black)
+        Dim pTabControl As TabControl = DirectCast(sender, TabControl)
+        Dim pText As String = pTabControl.TabPages(e.Index).Text
+        Dim pGrph As Graphics = e.Graphics
+        Dim pFont As Font = pTabControl.Font
+        Dim pFormat = New System.Drawing.StringFormat
+        'CHANGES HERE...
+        pFormat.Alignment = StringAlignment.Center
+        pFormat.LineAlignment = StringAlignment.Center
+        Dim pPencil As New SolidBrush(Color.Black)
         ''RENEMED VARIEBLE HERE...
-        'Dim retangulo As RectangleF = RectangleF.op_Implicit(tabContas.GetTabRect(e.Index))
-        'If tabContas.SelectedIndex = e.Index Then
-        '    fonte = New Font(fonte, FontStyle.Bold)
-        '    pincel = New SolidBrush(Color.White)
-        '    'CHANGED BACKGROUN COLOR HERE...
-        '    g.FillRectangle(Brushes.Green, retangulo)
-        'End If
-        'g.DrawString(sTexto, fonte, pincel, retangulo, format)
+        Dim pRect As RectangleF = RectangleF.op_Implicit(pTabControl.GetTabRect(e.Index))
 
-        'Dim pProcessApp As New Process_clsApp()
-        'pProcessApp.OpCond.T = New List(Of Process_clsApp.clsOpCond.sT)
+        'ControlPaint.DrawBorder(e.Graphics, TabControl1.TabPages(e.Index).ClientRectangle, Color.Black, ButtonBorderStyle.Solid)
 
-        'Dim pT As New Process_clsApp.clsOpCond.sT
-        'pT()
-        ''      mTest_Report = New List(Of Test_clsReport)
+        If mTabIndex.Contains(e.Index) Then
+            pFont = New Font(pFont, FontStyle.Bold)
 
-        'For i As Integer = 0 To pQry.Count - 1
+            'ControlPaint.DrawBorder(e.Graphics, pTabControl.TabPages(e.Index).ClientRectangle, Color.Black, ButtonBorderStyle.Solid)
 
-        '    Dim pReport As New Test_clsReport
-        '    pReport.ID = pQry(i).fldID
+            'pPencil = New SolidBrush(Color.White)
+            ''CHANGED BACKGROUN COLOR HERE...
+            'pGrph.FillRectangle(Brushes.Green, pRect)
+        End If
+
+        If (gUser.Role <> "Viewer") Then
+            If e.Index = 14 Then
+                pFont = New Font(pFont, FontStyle.Bold)
+            End If
+        End If
+
+        'pPencil = New SolidBrush(Color.White)
+        'CHANGED BACKGROUN COLOR HERE...
+        pGrph.FillRectangle(Brushes.LightSteelBlue, pRect)
+        pGrph.DrawString(pText, pFont, pPencil, pRect, pFormat)
 
     End Sub
 
