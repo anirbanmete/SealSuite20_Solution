@@ -23,6 +23,7 @@ Partial Class Process_frmMain
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Process_frmMain))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -134,7 +135,6 @@ Partial Class Process_frmMain
         Dim DataGridViewCellStyle109 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle110 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle111 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Process_frmMain))
         Me.lblBorder = New System.Windows.Forms.Label()
         Me.pnlPanel1 = New System.Windows.Forms.Panel()
         Me.GroupBox16 = New System.Windows.Forms.GroupBox()
@@ -143,6 +143,7 @@ Partial Class Process_frmMain
         Me.cmdIssueComment = New System.Windows.Forms.Button()
         Me.txtStatus = New System.Windows.Forms.TextBox()
         Me.cmdSetUnits = New System.Windows.Forms.Button()
+        Me.cmdCreatePDS = New System.Windows.Forms.Button()
         Me.grpProject = New System.Windows.Forms.GroupBox()
         Me.cmdClose = New System.Windows.Forms.Button()
         Me.cmdDelete = New System.Windows.Forms.Button()
@@ -182,6 +183,8 @@ Partial Class Process_frmMain
         Me.cmbType = New System.Windows.Forms.ComboBox()
         Me.lblType = New System.Windows.Forms.Label()
         Me.lblRating = New System.Windows.Forms.Label()
+        Me.cmdCancel = New System.Windows.Forms.Button()
+        Me.cmdOK = New System.Windows.Forms.Button()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.tabPreOrder = New System.Windows.Forms.TabPage()
         Me.TabControl3 = New System.Windows.Forms.TabControl()
@@ -779,6 +782,7 @@ Partial Class Process_frmMain
         Me.Column11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label148 = New System.Windows.Forms.Label()
         Me.cmbDwg_DesignLevel = New System.Windows.Forms.ComboBox()
+        Me.cmdNotes = New System.Windows.Forms.Button()
         Me.tabTesting = New System.Windows.Forms.TabPage()
         Me.chkTest = New System.Windows.Forms.CheckBox()
         Me.Label119 = New System.Windows.Forms.Label()
@@ -884,6 +888,8 @@ Partial Class Process_frmMain
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn33 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn54 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cmdResetSelectedAllNote = New System.Windows.Forms.Button()
+        Me.cmdSelectAllNote = New System.Windows.Forms.Button()
         Me.tabShipping = New System.Windows.Forms.TabPage()
         Me.Label72 = New System.Windows.Forms.Label()
         Me.GroupBox59 = New System.Windows.Forms.GroupBox()
@@ -935,12 +941,13 @@ Partial Class Process_frmMain
         Me.openFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.HelpProvider1 = New System.Windows.Forms.HelpProvider()
-        Me.cmdCreatePDS = New System.Windows.Forms.Button()
-        Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.cmdOK = New System.Windows.Forms.Button()
-        Me.cmdNotes = New System.Windows.Forms.Button()
-        Me.cmdResetSelectedAllNote = New System.Windows.Forms.Button()
-        Me.cmdSelectAllNote = New System.Windows.Forms.Button()
+        Me.SBar1 = New System.Windows.Forms.StatusStrip()
+        Me.SBpanel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.SBPanel3 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.SBPanel4 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.cmdRiskAna = New System.Windows.Forms.Button()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.cmdRiskAna_Report = New System.Windows.Forms.Button()
         Me.pnlPanel1.SuspendLayout()
         Me.GroupBox16.SuspendLayout()
         Me.grpProject.SuspendLayout()
@@ -1083,6 +1090,8 @@ Partial Class Process_frmMain
         Me.GroupBox63.SuspendLayout()
         CType(Me.grdApproval_Attendees, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.menuStrip1.SuspendLayout()
+        Me.SBar1.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'lblBorder
@@ -1090,7 +1099,7 @@ Partial Class Process_frmMain
         Me.lblBorder.BackColor = System.Drawing.Color.Black
         Me.lblBorder.Location = New System.Drawing.Point(2, 2)
         Me.lblBorder.Name = "lblBorder"
-        Me.lblBorder.Size = New System.Drawing.Size(1110, 872)
+        Me.lblBorder.Size = New System.Drawing.Size(1110, 902)
         Me.lblBorder.TabIndex = 4
         '
         'pnlPanel1
@@ -1098,10 +1107,13 @@ Partial Class Process_frmMain
         Me.pnlPanel1.AutoScroll = True
         Me.pnlPanel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.pnlPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pnlPanel1.Controls.Add(Me.GroupBox1)
+        Me.pnlPanel1.Controls.Add(Me.cmdSealPart)
+        Me.pnlPanel1.Controls.Add(Me.SBar1)
+        Me.pnlPanel1.Controls.Add(Me.cmdDel_Rec)
         Me.pnlPanel1.Controls.Add(Me.GroupBox16)
         Me.pnlPanel1.Controls.Add(Me.txtStatus)
         Me.pnlPanel1.Controls.Add(Me.cmdSetUnits)
-        Me.pnlPanel1.Controls.Add(Me.cmdCreatePDS)
         Me.pnlPanel1.Controls.Add(Me.grpProject)
         Me.pnlPanel1.Controls.Add(Me.cmbRating)
         Me.pnlPanel1.Controls.Add(Me.grpExport)
@@ -1118,17 +1130,16 @@ Partial Class Process_frmMain
         Me.pnlPanel1.Controls.Add(Me.menuStrip1)
         Me.pnlPanel1.Location = New System.Drawing.Point(3, 3)
         Me.pnlPanel1.Name = "pnlPanel1"
-        Me.pnlPanel1.Size = New System.Drawing.Size(1108, 870)
+        Me.pnlPanel1.Size = New System.Drawing.Size(1108, 900)
         Me.pnlPanel1.TabIndex = 5
         '
         'GroupBox16
         '
-        Me.GroupBox16.Controls.Add(Me.cmdSealPart)
-        Me.GroupBox16.Controls.Add(Me.cmdDel_Rec)
+        Me.GroupBox16.Controls.Add(Me.cmdRiskAna)
         Me.GroupBox16.Controls.Add(Me.cmdIssueComment)
-        Me.GroupBox16.Location = New System.Drawing.Point(39, 805)
+        Me.GroupBox16.Location = New System.Drawing.Point(144, 810)
         Me.GroupBox16.Name = "GroupBox16"
-        Me.GroupBox16.Size = New System.Drawing.Size(428, 55)
+        Me.GroupBox16.Size = New System.Drawing.Size(259, 55)
         Me.GroupBox16.TabIndex = 689
         Me.GroupBox16.TabStop = False
         '
@@ -1137,7 +1148,7 @@ Partial Class Process_frmMain
         Me.cmdSealPart.BackColor = System.Drawing.Color.Silver
         Me.cmdSealPart.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdSealPart.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdSealPart.Location = New System.Drawing.Point(17, 19)
+        Me.cmdSealPart.Location = New System.Drawing.Point(41, 830)
         Me.cmdSealPart.Name = "cmdSealPart"
         Me.cmdSealPart.Size = New System.Drawing.Size(90, 30)
         Me.cmdSealPart.TabIndex = 687
@@ -1149,7 +1160,7 @@ Partial Class Process_frmMain
         Me.cmdDel_Rec.BackColor = System.Drawing.Color.Silver
         Me.cmdDel_Rec.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdDel_Rec.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdDel_Rec.Location = New System.Drawing.Point(307, 20)
+        Me.cmdDel_Rec.Location = New System.Drawing.Point(431, 829)
         Me.cmdDel_Rec.Name = "cmdDel_Rec"
         Me.cmdDel_Rec.Size = New System.Drawing.Size(103, 30)
         Me.cmdDel_Rec.TabIndex = 743
@@ -1161,9 +1172,9 @@ Partial Class Process_frmMain
         Me.cmdIssueComment.BackColor = System.Drawing.Color.Silver
         Me.cmdIssueComment.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdIssueComment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdIssueComment.Location = New System.Drawing.Point(139, 20)
+        Me.cmdIssueComment.Location = New System.Drawing.Point(135, 19)
         Me.cmdIssueComment.Name = "cmdIssueComment"
-        Me.cmdIssueComment.Size = New System.Drawing.Size(136, 30)
+        Me.cmdIssueComment.Size = New System.Drawing.Size(110, 30)
         Me.cmdIssueComment.TabIndex = 686
         Me.cmdIssueComment.Text = "Issue/Comment"
         Me.cmdIssueComment.UseVisualStyleBackColor = False
@@ -1193,6 +1204,19 @@ Partial Class Process_frmMain
         Me.cmdSetUnits.Tag = "AOnly"
         Me.cmdSetUnits.Text = "Set Units"
         Me.cmdSetUnits.UseVisualStyleBackColor = False
+        '
+        'cmdCreatePDS
+        '
+        Me.cmdCreatePDS.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.cmdCreatePDS.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdCreatePDS.Image = CType(resources.GetObject("cmdCreatePDS.Image"), System.Drawing.Image)
+        Me.cmdCreatePDS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cmdCreatePDS.Location = New System.Drawing.Point(10, 19)
+        Me.cmdCreatePDS.Name = "cmdCreatePDS"
+        Me.cmdCreatePDS.Size = New System.Drawing.Size(116, 30)
+        Me.cmdCreatePDS.TabIndex = 682
+        Me.cmdCreatePDS.Text = "Create &PDS"
+        Me.cmdCreatePDS.UseVisualStyleBackColor = False
         '
         'grpProject
         '
@@ -1632,6 +1656,32 @@ Partial Class Process_frmMain
         Me.lblRating.TabIndex = 676
         Me.lblRating.Text = "Rating"
         Me.lblRating.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'cmdCancel
+        '
+        Me.cmdCancel.BackColor = System.Drawing.Color.Silver
+        Me.cmdCancel.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdCancel.Image = CType(resources.GetObject("cmdCancel.Image"), System.Drawing.Image)
+        Me.cmdCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cmdCancel.Location = New System.Drawing.Point(1008, 829)
+        Me.cmdCancel.Name = "cmdCancel"
+        Me.cmdCancel.Size = New System.Drawing.Size(80, 30)
+        Me.cmdCancel.TabIndex = 66
+        Me.cmdCancel.Text = " &Cancel"
+        Me.cmdCancel.UseVisualStyleBackColor = False
+        '
+        'cmdOK
+        '
+        Me.cmdOK.BackColor = System.Drawing.Color.Silver
+        Me.cmdOK.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdOK.Image = CType(resources.GetObject("cmdOK.Image"), System.Drawing.Image)
+        Me.cmdOK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cmdOK.Location = New System.Drawing.Point(909, 829)
+        Me.cmdOK.Name = "cmdOK"
+        Me.cmdOK.Size = New System.Drawing.Size(80, 30)
+        Me.cmdOK.TabIndex = 65
+        Me.cmdOK.Text = "&OK"
+        Me.cmdOK.UseVisualStyleBackColor = False
         '
         'TabControl1
         '
@@ -8396,6 +8446,20 @@ Partial Class Process_frmMain
         Me.cmbDwg_DesignLevel.Size = New System.Drawing.Size(40, 21)
         Me.cmbDwg_DesignLevel.TabIndex = 683
         '
+        'cmdNotes
+        '
+        Me.cmdNotes.BackColor = System.Drawing.Color.Silver
+        Me.cmdNotes.Enabled = False
+        Me.cmdNotes.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdNotes.Image = CType(resources.GetObject("cmdNotes.Image"), System.Drawing.Image)
+        Me.cmdNotes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cmdNotes.Location = New System.Drawing.Point(807, 81)
+        Me.cmdNotes.Name = "cmdNotes"
+        Me.cmdNotes.Size = New System.Drawing.Size(140, 41)
+        Me.cmdNotes.TabIndex = 688
+        Me.cmdNotes.Text = "&Notes"
+        Me.cmdNotes.UseVisualStyleBackColor = False
+        '
         'tabTesting
         '
         Me.tabTesting.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
@@ -9587,6 +9651,38 @@ Partial Class Process_frmMain
         Me.DataGridViewTextBoxColumn54.Name = "DataGridViewTextBoxColumn54"
         Me.DataGridViewTextBoxColumn54.Width = 500
         '
+        'cmdResetSelectedAllNote
+        '
+        Me.cmdResetSelectedAllNote.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.cmdResetSelectedAllNote.BackColor = System.Drawing.Color.SteelBlue
+        Me.cmdResetSelectedAllNote.BackgroundImage = CType(resources.GetObject("cmdResetSelectedAllNote.BackgroundImage"), System.Drawing.Image)
+        Me.cmdResetSelectedAllNote.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.cmdResetSelectedAllNote.Enabled = False
+        Me.cmdResetSelectedAllNote.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.cmdResetSelectedAllNote.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdResetSelectedAllNote.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cmdResetSelectedAllNote.Location = New System.Drawing.Point(295, 179)
+        Me.cmdResetSelectedAllNote.Name = "cmdResetSelectedAllNote"
+        Me.cmdResetSelectedAllNote.Size = New System.Drawing.Size(32, 24)
+        Me.cmdResetSelectedAllNote.TabIndex = 892
+        Me.cmdResetSelectedAllNote.UseVisualStyleBackColor = False
+        '
+        'cmdSelectAllNote
+        '
+        Me.cmdSelectAllNote.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.cmdSelectAllNote.BackColor = System.Drawing.Color.SteelBlue
+        Me.cmdSelectAllNote.BackgroundImage = CType(resources.GetObject("cmdSelectAllNote.BackgroundImage"), System.Drawing.Image)
+        Me.cmdSelectAllNote.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.cmdSelectAllNote.Enabled = False
+        Me.cmdSelectAllNote.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.cmdSelectAllNote.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdSelectAllNote.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cmdSelectAllNote.Location = New System.Drawing.Point(295, 149)
+        Me.cmdSelectAllNote.Name = "cmdSelectAllNote"
+        Me.cmdSelectAllNote.Size = New System.Drawing.Size(32, 24)
+        Me.cmdSelectAllNote.TabIndex = 890
+        Me.cmdSelectAllNote.UseVisualStyleBackColor = False
+        '
         'tabShipping
         '
         Me.tabShipping.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
@@ -10064,96 +10160,97 @@ Partial Class Process_frmMain
         '
         Me.openFileDialog1.FileName = "OpenFileDialog1"
         '
-        'cmdCreatePDS
+        'SBar1
         '
-        Me.cmdCreatePDS.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.cmdCreatePDS.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdCreatePDS.Image = CType(resources.GetObject("cmdCreatePDS.Image"), System.Drawing.Image)
-        Me.cmdCreatePDS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdCreatePDS.Location = New System.Drawing.Point(727, 824)
-        Me.cmdCreatePDS.Name = "cmdCreatePDS"
-        Me.cmdCreatePDS.Size = New System.Drawing.Size(116, 30)
-        Me.cmdCreatePDS.TabIndex = 682
-        Me.cmdCreatePDS.Text = "Create &PDS"
-        Me.cmdCreatePDS.UseVisualStyleBackColor = False
+        Me.SBar1.AutoSize = False
+        Me.SBar1.BackColor = System.Drawing.Color.AliceBlue
+        Me.SBar1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.SBar1.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SBar1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible
+        Me.SBar1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SBpanel1, Me.SBPanel3, Me.SBPanel4})
+        Me.SBar1.Location = New System.Drawing.Point(0, 876)
+        Me.SBar1.Name = "SBar1"
+        Me.SBar1.Size = New System.Drawing.Size(1106, 22)
+        Me.SBar1.TabIndex = 690
         '
-        'cmdCancel
+        'SBpanel1
         '
-        Me.cmdCancel.BackColor = System.Drawing.Color.Silver
-        Me.cmdCancel.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdCancel.Image = CType(resources.GetObject("cmdCancel.Image"), System.Drawing.Image)
-        Me.cmdCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdCancel.Location = New System.Drawing.Point(1008, 824)
-        Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.Size = New System.Drawing.Size(80, 30)
-        Me.cmdCancel.TabIndex = 66
-        Me.cmdCancel.Text = " &Cancel"
-        Me.cmdCancel.UseVisualStyleBackColor = False
+        Me.SBpanel1.AutoSize = False
+        Me.SBpanel1.BackColor = System.Drawing.Color.AliceBlue
+        Me.SBpanel1.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
+            Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
+            Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
+        Me.SBpanel1.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner
+        Me.SBpanel1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.SBpanel1.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SBpanel1.Name = "SBpanel1"
+        Me.SBpanel1.Size = New System.Drawing.Size(365, 17)
         '
-        'cmdOK
+        'SBPanel3
         '
-        Me.cmdOK.BackColor = System.Drawing.Color.Silver
-        Me.cmdOK.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdOK.Image = CType(resources.GetObject("cmdOK.Image"), System.Drawing.Image)
-        Me.cmdOK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdOK.Location = New System.Drawing.Point(913, 824)
-        Me.cmdOK.Name = "cmdOK"
-        Me.cmdOK.Size = New System.Drawing.Size(80, 30)
-        Me.cmdOK.TabIndex = 65
-        Me.cmdOK.Text = "&OK"
-        Me.cmdOK.UseVisualStyleBackColor = False
+        Me.SBPanel3.AutoSize = False
+        Me.SBPanel3.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
+            Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
+            Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
+        Me.SBPanel3.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner
+        Me.SBPanel3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.SBPanel3.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SBPanel3.Name = "SBPanel3"
+        Me.SBPanel3.Size = New System.Drawing.Size(365, 17)
         '
-        'cmdNotes
+        'SBPanel4
         '
-        Me.cmdNotes.BackColor = System.Drawing.Color.Silver
-        Me.cmdNotes.Enabled = False
-        Me.cmdNotes.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdNotes.Image = CType(resources.GetObject("cmdNotes.Image"), System.Drawing.Image)
-        Me.cmdNotes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdNotes.Location = New System.Drawing.Point(807, 81)
-        Me.cmdNotes.Name = "cmdNotes"
-        Me.cmdNotes.Size = New System.Drawing.Size(140, 41)
-        Me.cmdNotes.TabIndex = 688
-        Me.cmdNotes.Text = "&Notes"
-        Me.cmdNotes.UseVisualStyleBackColor = False
+        Me.SBPanel4.AutoSize = False
+        Me.SBPanel4.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
+            Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
+            Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
+        Me.SBPanel4.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner
+        Me.SBPanel4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.SBPanel4.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SBPanel4.Name = "SBPanel4"
+        Me.SBPanel4.Size = New System.Drawing.Size(355, 17)
         '
-        'cmdResetSelectedAllNote
+        'cmdRiskAna
         '
-        Me.cmdResetSelectedAllNote.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.cmdResetSelectedAllNote.BackColor = System.Drawing.Color.SteelBlue
-        Me.cmdResetSelectedAllNote.BackgroundImage = CType(resources.GetObject("cmdResetSelectedAllNote.BackgroundImage"), System.Drawing.Image)
-        Me.cmdResetSelectedAllNote.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.cmdResetSelectedAllNote.Enabled = False
-        Me.cmdResetSelectedAllNote.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.cmdResetSelectedAllNote.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdResetSelectedAllNote.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdResetSelectedAllNote.Location = New System.Drawing.Point(295, 179)
-        Me.cmdResetSelectedAllNote.Name = "cmdResetSelectedAllNote"
-        Me.cmdResetSelectedAllNote.Size = New System.Drawing.Size(32, 24)
-        Me.cmdResetSelectedAllNote.TabIndex = 892
-        Me.cmdResetSelectedAllNote.UseVisualStyleBackColor = False
+        Me.cmdRiskAna.BackColor = System.Drawing.Color.Silver
+        Me.cmdRiskAna.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdRiskAna.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cmdRiskAna.Location = New System.Drawing.Point(13, 19)
+        Me.cmdRiskAna.Name = "cmdRiskAna"
+        Me.cmdRiskAna.Size = New System.Drawing.Size(110, 30)
+        Me.cmdRiskAna.TabIndex = 744
+        Me.cmdRiskAna.Text = "Risk Analysis"
+        Me.cmdRiskAna.UseVisualStyleBackColor = False
         '
-        'cmdSelectAllNote
+        'GroupBox1
         '
-        Me.cmdSelectAllNote.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.cmdSelectAllNote.BackColor = System.Drawing.Color.SteelBlue
-        Me.cmdSelectAllNote.BackgroundImage = CType(resources.GetObject("cmdSelectAllNote.BackgroundImage"), System.Drawing.Image)
-        Me.cmdSelectAllNote.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.cmdSelectAllNote.Enabled = False
-        Me.cmdSelectAllNote.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.cmdSelectAllNote.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdSelectAllNote.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdSelectAllNote.Location = New System.Drawing.Point(295, 149)
-        Me.cmdSelectAllNote.Name = "cmdSelectAllNote"
-        Me.cmdSelectAllNote.Size = New System.Drawing.Size(32, 24)
-        Me.cmdSelectAllNote.TabIndex = 890
-        Me.cmdSelectAllNote.UseVisualStyleBackColor = False
+        Me.GroupBox1.Controls.Add(Me.cmdRiskAna_Report)
+        Me.GroupBox1.Controls.Add(Me.cmdCreatePDS)
+        Me.GroupBox1.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.Location = New System.Drawing.Point(571, 810)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(259, 55)
+        Me.GroupBox1.TabIndex = 744
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Report:"
+        '
+        'cmdRiskAna_Report
+        '
+        Me.cmdRiskAna_Report.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.cmdRiskAna_Report.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdRiskAna_Report.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cmdRiskAna_Report.Location = New System.Drawing.Point(140, 20)
+        Me.cmdRiskAna_Report.Name = "cmdRiskAna_Report"
+        Me.cmdRiskAna_Report.Size = New System.Drawing.Size(110, 30)
+        Me.cmdRiskAna_Report.TabIndex = 745
+        Me.cmdRiskAna_Report.Text = "Risk Analysis"
+        Me.cmdRiskAna_Report.UseVisualStyleBackColor = False
         '
         'Process_frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1114, 874)
+        Me.ClientSize = New System.Drawing.Size(1114, 908)
         Me.ControlBox = False
         Me.Controls.Add(Me.pnlPanel1)
         Me.Controls.Add(Me.lblBorder)
@@ -10375,6 +10472,9 @@ Partial Class Process_frmMain
         CType(Me.grdApproval_Attendees, System.ComponentModel.ISupportInitialize).EndInit()
         Me.menuStrip1.ResumeLayout(False)
         Me.menuStrip1.PerformLayout()
+        Me.SBar1.ResumeLayout(False)
+        Me.SBar1.PerformLayout()
+        Me.GroupBox1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -11184,4 +11284,11 @@ Partial Class Process_frmMain
     Friend WithEvents DataGridViewTextBoxColumn60 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn61 As DataGridViewTextBoxColumn
     Friend WithEvents HelpProvider1 As HelpProvider
+    Friend WithEvents SBar1 As StatusStrip
+    Friend WithEvents SBpanel1 As ToolStripStatusLabel
+    Friend WithEvents SBPanel3 As ToolStripStatusLabel
+    Friend WithEvents SBPanel4 As ToolStripStatusLabel
+    Private WithEvents cmdRiskAna As Button
+    Friend WithEvents GroupBox1 As GroupBox
+    Private WithEvents cmdRiskAna_Report As Button
 End Class

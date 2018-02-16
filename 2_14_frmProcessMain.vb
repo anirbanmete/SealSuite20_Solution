@@ -361,6 +361,20 @@ Public Class Process_frmMain
 
     Private Sub InitializeControls()
         '===========================
+        '....Status Bar Panels:
+
+        Dim pWidth As Int32 = (SBar1.Width) / 3
+
+        SBpanel1.Width = pWidth
+        SBPanel3.Width = pWidth
+
+        SBpanel1.Text = gUser.FirstName + " " + gUser.LastName
+        SBPanel3.Text = gUser.Role
+        Dim pCI As New CultureInfo("en-US")
+        SBPanel4.Text = Today.DayOfWeek.ToString() & ", " &
+                        Today.ToString(" MMMM dd, yyyy", pCI.DateTimeFormat()) 'US Format only
+        '--------------------------------------------------------------------------------------
+
         cmdDel_Rec.Enabled = False
         txtParkerPart.ReadOnly = True
         txtPN_Rev.ReadOnly = True
