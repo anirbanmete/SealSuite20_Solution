@@ -4,7 +4,7 @@
 '                      FORM MODULE   :  Process_frmMain                        '
 '                        VERSION NO  :  1.4                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  14FEB18                                '
+'                     LAST MODIFIED  :  19FEB18                                '
 '                                                                              '
 '===============================================================================
 Imports System.Globalization
@@ -3106,6 +3106,31 @@ Public Class Process_frmMain
 #End Region
 
 #End Region
+
+#End Region
+
+#Region "MENU EVENT ROUTINES:"
+
+    Private Sub mnuRiskQ_Click(sender As Object, e As EventArgs) Handles mnuRiskQ.Click
+        '===============================================================================
+        With openFileDialog1
+
+            .Filter = "Risk Analysis DataFile (*.xls)|*.xls"
+            .FilterIndex = 1
+            .InitialDirectory = gFile.DirProgramDataFile_Process
+            .FileName = ""
+            .Title = "Open"
+
+            If .ShowDialog = Windows.Forms.DialogResult.OK Then
+                Dim pRiskAnaFileName As String = .FileName
+                Cursor.Current = Cursors.WaitCursor
+                mProcess_Project.RiskAna.LoadRiskQ(pRiskAnaFileName)
+                Cursor.Current = Cursors.Default
+
+            End If
+
+        End With
+    End Sub
 
 #End Region
 

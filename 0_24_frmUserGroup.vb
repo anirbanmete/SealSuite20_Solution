@@ -540,6 +540,10 @@ Public Class frmUserGroup
         End Try
     End Sub
 
+    Private Sub cmdIPE_Click(sender As Object, e As EventArgs) Handles cmdIPE.Click
+
+    End Sub
+
     Private Sub SaveToDB()
         '=================
         Dim pSealSuiteEntities As New SealSuiteDBEntities()

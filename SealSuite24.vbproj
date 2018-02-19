@@ -594,6 +594,12 @@
     <Compile Include="2_14_frmProcessRoleSelection.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="2_14_frmRiskAnalysis.Designer.vb">
+      <DependentUpon>2_14_frmRiskAnalysis.vb</DependentUpon>
+    </Compile>
+    <Compile Include="2_14_frmRiskAnalysis.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="1_14_frmPartMain.resx">
@@ -607,6 +613,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="0_24_frmUserGroup.resx">
       <DependentUpon>0_24_frmUserGroup.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="2_14_frmRiskAnalysis.resx">
+      <DependentUpon>2_14_frmRiskAnalysis.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="3_25_frmTestAdminLogIn.resx">
       <DependentUpon>3_25_frmTestAdminLogIn.vb</DependentUpon>
