@@ -4343,8 +4343,6 @@ Public Class Process_frmMain
     Private Sub cmdIssueComment_Click(sender As Object, e As EventArgs) Handles cmdIssueComment.Click
         '=============================================================================================
         SaveData()
-        'SaveToDB()
-        'Dim pSelTabName As String =  TabControl1.SelectedTab.Name
         Dim pProcess_frmIssueComnt As New Process_frmIssueComnt(mProcess_Project)
         pProcess_frmIssueComnt.ShowDialog()
     End Sub
@@ -8266,6 +8264,44 @@ Public Class Process_frmMain
     Private Sub DTP_Quote_OnTextChange(ByVal sender As Object, ByVal e As EventArgs)
         '==================================================================================
         grdQuote.CurrentCell.Value = mDTP_Quote.Text.ToString()
+    End Sub
+
+    Private Sub cmdRiskAna_Click(sender As Object, e As EventArgs) Handles cmdRiskAna.Click
+        '==================================================================================
+        SaveData()
+        Dim pTabName As String = ""
+        Dim pTabIndex As Integer = TabControl1.SelectedIndex
+        If (pTabIndex = 0) Then
+            pTabName = "PreOrder"
+        ElseIf (pTabIndex = 1) Then
+            pTabName = "Export"
+        ElseIf (pTabIndex = 2) Then
+            pTabName = "OrdEntry"
+        ElseIf (pTabIndex = 3) Then
+            pTabName = "Cost"
+        ElseIf (pTabIndex = 4) Then
+            pTabName = "App"
+        ElseIf (pTabIndex = 5) Then
+            pTabName = "Design"
+        ElseIf (pTabIndex = 6) Then
+            pTabName = "Manf"
+        ElseIf (pTabIndex = 7) Then
+            pTabName = "Purchase"
+        ElseIf (pTabIndex = 8) Then
+            pTabName = "Qlty"
+        ElseIf (pTabIndex = 9) Then
+            pTabName = "Dwg"
+        ElseIf (pTabIndex = 10) Then
+            pTabName = "Test"
+        ElseIf (pTabIndex = 11) Then
+            pTabName = "Planning"
+        ElseIf (pTabIndex = 12) Then
+            pTabName = "Shipping"
+        End If
+        'pTabName = TabControl1.TabPages(pTabIndex).Name
+        Dim pProcess_frmRiskAna As New Process_frmRiskAnalysis(mProcess_Project, pTabName)
+        pProcess_frmRiskAna.ShowDialog()
+
     End Sub
 
     Private Sub grdDesign_Input_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles grdDesign_Input.CellEndEdit

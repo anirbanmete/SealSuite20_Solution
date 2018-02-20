@@ -22,9 +22,9 @@ Partial Class Process_frmRiskAnalysis
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Process_frmRiskAnalysis))
-        Me.grdPreOrderRiskAna = New System.Windows.Forms.DataGridView()
+        Me.grdRiskAna = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewComboBoxColumn2 = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -32,21 +32,21 @@ Partial Class Process_frmRiskAnalysis
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.cmdOK = New System.Windows.Forms.Button()
         Me.cmdCancel = New System.Windows.Forms.Button()
-        CType(Me.grdPreOrderRiskAna, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdRiskAna, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
-        'grdPreOrderRiskAna
+        'grdRiskAna
         '
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grdPreOrderRiskAna.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        Me.grdPreOrderRiskAna.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grdPreOrderRiskAna.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn10, Me.DataGridViewComboBoxColumn2, Me.DataGridViewTextBoxColumn11})
-        Me.grdPreOrderRiskAna.Location = New System.Drawing.Point(8, 9)
-        Me.grdPreOrderRiskAna.Name = "grdPreOrderRiskAna"
-        Me.grdPreOrderRiskAna.RowHeadersVisible = False
-        Me.grdPreOrderRiskAna.Size = New System.Drawing.Size(823, 149)
-        Me.grdPreOrderRiskAna.TabIndex = 742
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdRiskAna.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle2
+        Me.grdRiskAna.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.grdRiskAna.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn10, Me.DataGridViewComboBoxColumn2, Me.DataGridViewTextBoxColumn11})
+        Me.grdRiskAna.Location = New System.Drawing.Point(8, 9)
+        Me.grdRiskAna.Name = "grdRiskAna"
+        Me.grdRiskAna.RowHeadersVisible = False
+        Me.grdRiskAna.Size = New System.Drawing.Size(823, 149)
+        Me.grdRiskAna.TabIndex = 742
         '
         'DataGridViewTextBoxColumn10
         '
@@ -83,7 +83,7 @@ Partial Class Process_frmRiskAnalysis
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel1.Controls.Add(Me.cmdOK)
         Me.Panel1.Controls.Add(Me.cmdCancel)
-        Me.Panel1.Controls.Add(Me.grdPreOrderRiskAna)
+        Me.Panel1.Controls.Add(Me.grdRiskAna)
         Me.Panel1.Location = New System.Drawing.Point(2, 2)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(842, 216)
@@ -128,13 +128,13 @@ Partial Class Process_frmRiskAnalysis
         Me.Name = "Process_frmRiskAnalysis"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "SealProcess: Risk Analysis"
-        CType(Me.grdPreOrderRiskAna, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdRiskAna, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
 
-    Friend WithEvents grdPreOrderRiskAna As DataGridView
+    Friend WithEvents grdRiskAna As DataGridView
     Friend WithEvents DataGridViewTextBoxColumn10 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewComboBoxColumn2 As DataGridViewComboBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn11 As DataGridViewTextBoxColumn

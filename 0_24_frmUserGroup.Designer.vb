@@ -22,22 +22,13 @@ Partial Class frmUserGroup
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmUserGroup))
         Me.lblBorder = New System.Windows.Forms.Label()
         Me.pnlPanel1 = New System.Windows.Forms.Panel()
-        Me.cmdIPE = New System.Windows.Forms.Button()
-        Me.cmdTest = New System.Windows.Forms.Button()
-        Me.cmdProcess = New System.Windows.Forms.Button()
-        Me.Label21 = New System.Windows.Forms.Label()
-        Me.cmdBrowse = New System.Windows.Forms.Button()
-        Me.txtFileName = New System.Windows.Forms.TextBox()
-        Me.cmdAdd = New System.Windows.Forms.Button()
-        Me.cmdEdit = New System.Windows.Forms.Button()
-        Me.cmdDelete = New System.Windows.Forms.Button()
-        Me.cmdSave = New System.Windows.Forms.Button()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.grdUsers = New System.Windows.Forms.DataGridView()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -48,12 +39,21 @@ Partial Class frmUserGroup
         Me.Column4 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.Column6 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.cmdIPE = New System.Windows.Forms.Button()
+        Me.cmdTest = New System.Windows.Forms.Button()
+        Me.cmdEdit = New System.Windows.Forms.Button()
+        Me.cmdProcess = New System.Windows.Forms.Button()
+        Me.cmdSave = New System.Windows.Forms.Button()
+        Me.cmdDelete = New System.Windows.Forms.Button()
+        Me.cmdAdd = New System.Windows.Forms.Button()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.cmdBrowse = New System.Windows.Forms.Button()
+        Me.txtFileName = New System.Windows.Forms.TextBox()
         Me.cmdClose = New System.Windows.Forms.Button()
         Me.openFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.pnlPanel1.SuspendLayout()
-        CType(Me.grdUsers, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.grdUsers, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblBorder
@@ -77,144 +77,34 @@ Partial Class frmUserGroup
         Me.pnlPanel1.Size = New System.Drawing.Size(976, 406)
         Me.pnlPanel1.TabIndex = 1
         '
-        'cmdIPE
+        'GroupBox1
         '
-        Me.cmdIPE.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.cmdIPE.Enabled = False
-        Me.cmdIPE.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdIPE.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdIPE.Location = New System.Drawing.Point(254, 275)
-        Me.cmdIPE.Name = "cmdIPE"
-        Me.cmdIPE.Size = New System.Drawing.Size(92, 28)
-        Me.cmdIPE.TabIndex = 647
-        Me.cmdIPE.Tag = ""
-        Me.cmdIPE.Text = "Seal&IPE"
-        Me.cmdIPE.UseVisualStyleBackColor = False
-        '
-        'cmdTest
-        '
-        Me.cmdTest.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.cmdTest.Enabled = False
-        Me.cmdTest.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdTest.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdTest.Location = New System.Drawing.Point(134, 275)
-        Me.cmdTest.Name = "cmdTest"
-        Me.cmdTest.Size = New System.Drawing.Size(92, 28)
-        Me.cmdTest.TabIndex = 646
-        Me.cmdTest.Tag = ""
-        Me.cmdTest.Text = "Seal&Test"
-        Me.cmdTest.UseVisualStyleBackColor = False
-        '
-        'cmdProcess
-        '
-        Me.cmdProcess.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.cmdProcess.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdProcess.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdProcess.Location = New System.Drawing.Point(14, 275)
-        Me.cmdProcess.Name = "cmdProcess"
-        Me.cmdProcess.Size = New System.Drawing.Size(92, 28)
-        Me.cmdProcess.TabIndex = 645
-        Me.cmdProcess.Tag = ""
-        Me.cmdProcess.Text = "Seal&Process"
-        Me.cmdProcess.UseVisualStyleBackColor = False
-        '
-        'Label21
-        '
-        Me.Label21.AutoSize = True
-        Me.Label21.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label21.Location = New System.Drawing.Point(8, 13)
-        Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(178, 13)
-        Me.Label21.TabIndex = 644
-        Me.Label21.Text = "Program Data File - User Role"
-        Me.Label21.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'cmdBrowse
-        '
-        Me.cmdBrowse.BackColor = System.Drawing.Color.Silver
-        Me.cmdBrowse.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdBrowse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdBrowse.Location = New System.Drawing.Point(524, 7)
-        Me.cmdBrowse.Name = "cmdBrowse"
-        Me.cmdBrowse.Size = New System.Drawing.Size(112, 24)
-        Me.cmdBrowse.TabIndex = 643
-        Me.cmdBrowse.Tag = "AOnly"
-        Me.cmdBrowse.Text = "&Browse && Read"
-        Me.cmdBrowse.UseVisualStyleBackColor = False
-        '
-        'txtFileName
-        '
-        Me.txtFileName.AcceptsReturn = True
-        Me.txtFileName.BackColor = System.Drawing.Color.White
-        Me.txtFileName.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtFileName.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFileName.ForeColor = System.Drawing.Color.Black
-        Me.txtFileName.Location = New System.Drawing.Point(191, 9)
-        Me.txtFileName.MaxLength = 0
-        Me.txtFileName.Name = "txtFileName"
-        Me.txtFileName.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.txtFileName.Size = New System.Drawing.Size(327, 21)
-        Me.txtFileName.TabIndex = 642
-        Me.txtFileName.Tag = "AOnly"
-        '
-        'cmdAdd
-        '
-        Me.cmdAdd.BackColor = System.Drawing.Color.Wheat
-        Me.cmdAdd.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdAdd.Location = New System.Drawing.Point(13, 233)
-        Me.cmdAdd.Name = "cmdAdd"
-        Me.cmdAdd.Size = New System.Drawing.Size(72, 28)
-        Me.cmdAdd.TabIndex = 638
-        Me.cmdAdd.Text = "&Add"
-        Me.cmdAdd.UseVisualStyleBackColor = False
-        '
-        'cmdEdit
-        '
-        Me.cmdEdit.BackColor = System.Drawing.Color.Wheat
-        Me.cmdEdit.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdEdit.Location = New System.Drawing.Point(100, 233)
-        Me.cmdEdit.Name = "cmdEdit"
-        Me.cmdEdit.Size = New System.Drawing.Size(72, 28)
-        Me.cmdEdit.TabIndex = 639
-        Me.cmdEdit.Text = "&Edit"
-        Me.cmdEdit.UseVisualStyleBackColor = False
-        '
-        'cmdDelete
-        '
-        Me.cmdDelete.BackColor = System.Drawing.Color.Wheat
-        Me.cmdDelete.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdDelete.Location = New System.Drawing.Point(274, 233)
-        Me.cmdDelete.Name = "cmdDelete"
-        Me.cmdDelete.Size = New System.Drawing.Size(72, 28)
-        Me.cmdDelete.TabIndex = 641
-        Me.cmdDelete.Text = "&Delete"
-        Me.cmdDelete.UseVisualStyleBackColor = False
-        '
-        'cmdSave
-        '
-        Me.cmdSave.BackColor = System.Drawing.Color.Wheat
-        Me.cmdSave.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdSave.Location = New System.Drawing.Point(187, 233)
-        Me.cmdSave.Name = "cmdSave"
-        Me.cmdSave.Size = New System.Drawing.Size(72, 28)
-        Me.cmdSave.TabIndex = 640
-        Me.cmdSave.Text = "&Save"
-        Me.cmdSave.UseVisualStyleBackColor = False
+        Me.GroupBox1.Controls.Add(Me.grdUsers)
+        Me.GroupBox1.Controls.Add(Me.cmdIPE)
+        Me.GroupBox1.Controls.Add(Me.cmdTest)
+        Me.GroupBox1.Controls.Add(Me.cmdEdit)
+        Me.GroupBox1.Controls.Add(Me.cmdProcess)
+        Me.GroupBox1.Controls.Add(Me.cmdSave)
+        Me.GroupBox1.Controls.Add(Me.cmdDelete)
+        Me.GroupBox1.Controls.Add(Me.cmdAdd)
+        Me.GroupBox1.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.Location = New System.Drawing.Point(9, 39)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(955, 316)
+        Me.GroupBox1.TabIndex = 649
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Enter User Data:"
         '
         'grdUsers
         '
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grdUsers.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grdUsers.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.grdUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdUsers.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column3, Me.Column2, Me.Column9, Me.Column7, Me.Column8, Me.Column4, Me.Column5, Me.Column6})
         Me.grdUsers.Location = New System.Drawing.Point(14, 22)
@@ -226,9 +116,9 @@ Partial Class frmUserGroup
         '
         'Column1
         '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Column1.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Column1.DefaultCellStyle = DataGridViewCellStyle2
         Me.Column1.HeaderText = "Last Name"
         Me.Column1.Name = "Column1"
         '
@@ -239,9 +129,9 @@ Partial Class frmUserGroup
         '
         'Column2
         '
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Verdana", 8.25!)
-        Me.Column2.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Verdana", 8.25!)
+        Me.Column2.DefaultCellStyle = DataGridViewCellStyle3
         Me.Column2.HeaderText = "System Login"
         Me.Column2.Name = "Column2"
         Me.Column2.Width = 120
@@ -289,6 +179,134 @@ Partial Class frmUserGroup
         Me.Column6.ReadOnly = True
         Me.Column6.Width = 80
         '
+        'cmdIPE
+        '
+        Me.cmdIPE.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.cmdIPE.Enabled = False
+        Me.cmdIPE.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdIPE.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cmdIPE.Location = New System.Drawing.Point(254, 275)
+        Me.cmdIPE.Name = "cmdIPE"
+        Me.cmdIPE.Size = New System.Drawing.Size(92, 28)
+        Me.cmdIPE.TabIndex = 647
+        Me.cmdIPE.Tag = ""
+        Me.cmdIPE.Text = "Seal&IPE"
+        Me.cmdIPE.UseVisualStyleBackColor = False
+        '
+        'cmdTest
+        '
+        Me.cmdTest.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.cmdTest.Enabled = False
+        Me.cmdTest.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdTest.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cmdTest.Location = New System.Drawing.Point(134, 275)
+        Me.cmdTest.Name = "cmdTest"
+        Me.cmdTest.Size = New System.Drawing.Size(92, 28)
+        Me.cmdTest.TabIndex = 646
+        Me.cmdTest.Tag = ""
+        Me.cmdTest.Text = "Seal&Test"
+        Me.cmdTest.UseVisualStyleBackColor = False
+        '
+        'cmdEdit
+        '
+        Me.cmdEdit.BackColor = System.Drawing.Color.Wheat
+        Me.cmdEdit.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cmdEdit.Location = New System.Drawing.Point(100, 233)
+        Me.cmdEdit.Name = "cmdEdit"
+        Me.cmdEdit.Size = New System.Drawing.Size(72, 28)
+        Me.cmdEdit.TabIndex = 639
+        Me.cmdEdit.Text = "&Edit"
+        Me.cmdEdit.UseVisualStyleBackColor = False
+        '
+        'cmdProcess
+        '
+        Me.cmdProcess.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.cmdProcess.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdProcess.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cmdProcess.Location = New System.Drawing.Point(14, 275)
+        Me.cmdProcess.Name = "cmdProcess"
+        Me.cmdProcess.Size = New System.Drawing.Size(92, 28)
+        Me.cmdProcess.TabIndex = 645
+        Me.cmdProcess.Tag = ""
+        Me.cmdProcess.Text = "Seal&Process"
+        Me.cmdProcess.UseVisualStyleBackColor = False
+        '
+        'cmdSave
+        '
+        Me.cmdSave.BackColor = System.Drawing.Color.Wheat
+        Me.cmdSave.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cmdSave.Location = New System.Drawing.Point(187, 233)
+        Me.cmdSave.Name = "cmdSave"
+        Me.cmdSave.Size = New System.Drawing.Size(72, 28)
+        Me.cmdSave.TabIndex = 640
+        Me.cmdSave.Text = "&Save"
+        Me.cmdSave.UseVisualStyleBackColor = False
+        '
+        'cmdDelete
+        '
+        Me.cmdDelete.BackColor = System.Drawing.Color.Wheat
+        Me.cmdDelete.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cmdDelete.Location = New System.Drawing.Point(274, 233)
+        Me.cmdDelete.Name = "cmdDelete"
+        Me.cmdDelete.Size = New System.Drawing.Size(72, 28)
+        Me.cmdDelete.TabIndex = 641
+        Me.cmdDelete.Text = "&Delete"
+        Me.cmdDelete.UseVisualStyleBackColor = False
+        '
+        'cmdAdd
+        '
+        Me.cmdAdd.BackColor = System.Drawing.Color.Wheat
+        Me.cmdAdd.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cmdAdd.Location = New System.Drawing.Point(13, 233)
+        Me.cmdAdd.Name = "cmdAdd"
+        Me.cmdAdd.Size = New System.Drawing.Size(72, 28)
+        Me.cmdAdd.TabIndex = 638
+        Me.cmdAdd.Text = "&Add"
+        Me.cmdAdd.UseVisualStyleBackColor = False
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label21.Location = New System.Drawing.Point(8, 13)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(178, 13)
+        Me.Label21.TabIndex = 644
+        Me.Label21.Text = "Program Data File - User Role"
+        Me.Label21.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'cmdBrowse
+        '
+        Me.cmdBrowse.BackColor = System.Drawing.Color.Silver
+        Me.cmdBrowse.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdBrowse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cmdBrowse.Location = New System.Drawing.Point(524, 7)
+        Me.cmdBrowse.Name = "cmdBrowse"
+        Me.cmdBrowse.Size = New System.Drawing.Size(112, 24)
+        Me.cmdBrowse.TabIndex = 643
+        Me.cmdBrowse.Tag = "AOnly"
+        Me.cmdBrowse.Text = "&Browse && Load"
+        Me.cmdBrowse.UseVisualStyleBackColor = False
+        '
+        'txtFileName
+        '
+        Me.txtFileName.AcceptsReturn = True
+        Me.txtFileName.BackColor = System.Drawing.Color.White
+        Me.txtFileName.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtFileName.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFileName.ForeColor = System.Drawing.Color.Black
+        Me.txtFileName.Location = New System.Drawing.Point(191, 9)
+        Me.txtFileName.MaxLength = 0
+        Me.txtFileName.Name = "txtFileName"
+        Me.txtFileName.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.txtFileName.Size = New System.Drawing.Size(327, 21)
+        Me.txtFileName.TabIndex = 642
+        Me.txtFileName.Tag = "AOnly"
+        '
         'cmdClose
         '
         Me.cmdClose.BackColor = System.Drawing.Color.Silver
@@ -306,24 +324,6 @@ Partial Class frmUserGroup
         '
         Me.openFileDialog1.FileName = "OpenFileDialog1"
         '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.grdUsers)
-        Me.GroupBox1.Controls.Add(Me.cmdIPE)
-        Me.GroupBox1.Controls.Add(Me.cmdTest)
-        Me.GroupBox1.Controls.Add(Me.cmdEdit)
-        Me.GroupBox1.Controls.Add(Me.cmdProcess)
-        Me.GroupBox1.Controls.Add(Me.cmdSave)
-        Me.GroupBox1.Controls.Add(Me.cmdDelete)
-        Me.GroupBox1.Controls.Add(Me.cmdAdd)
-        Me.GroupBox1.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(9, 39)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(955, 316)
-        Me.GroupBox1.TabIndex = 649
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Enter User Data:"
-        '
         'frmUserGroup
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -340,8 +340,8 @@ Partial Class frmUserGroup
         Me.Text = "User Group"
         Me.pnlPanel1.ResumeLayout(False)
         Me.pnlPanel1.PerformLayout()
-        CType(Me.grdUsers, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
+        CType(Me.grdUsers, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

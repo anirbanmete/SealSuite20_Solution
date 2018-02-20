@@ -18,9 +18,9 @@ Public Class clsProcessProj_Risk
 #Region "MEMBER VARIABLES:"
 
     Private mTabName As String
-    Private mRiskAnlayisQ As List(Of Dictionary(Of String, Integer))
-    Private mAnswered As List(Of Boolean)
-    Private mReason As List(Of String)
+    Private mRiskAnlayisQ As New Dictionary(Of String, Integer)
+    Private mAnswered As New List(Of Boolean)
+    Private mReason As New List(Of String)
 
     '....Tab Variables
     Dim mPreOrder, mExport, mOrdEntry, mCost, mApp, mDesign, mManf, mPurchase, mQlty, mDwg, mTest, mPlanning, mShipping As Boolean
@@ -43,13 +43,13 @@ Public Class clsProcessProj_Risk
 
 
     '....RiskAnlayisQ
-    Public Property RiskAnlayisQ() As List(Of Dictionary(Of String, Integer))
+    Public Property RiskAnlayisQ() As Dictionary(Of String, Integer)
         '====================================================================
         Get
             Return mRiskAnlayisQ
         End Get
 
-        Set(Obj As List(Of Dictionary(Of String, Integer)))
+        Set(Obj As Dictionary(Of String, Integer))
             mRiskAnlayisQ = Obj
         End Set
     End Property
@@ -336,6 +336,109 @@ Public Class clsProcessProj_Risk
         Catch pEXP As Exception
         End Try
     End Sub
+
+#Region "DATABASE RELATED ROUTINES:"
+
+    Public Sub RetrieveFromDB(ByVal ProjectID_In As Integer, ByVal TabName_In As String)
+        '===============================================================================
+        Dim pSealProcessDBEntities As New SealProcessDBEntities()
+
+        Try
+            mRiskAnlayisQ.Clear()
+            mAnswered.Clear()
+            mReason.Clear()
+
+            Dim pQryRisk = (From pRec In pSealProcessDBEntities.tblRisk
+                            Where pRec.fldProcessProjectID = ProjectID_In And pRec.fldTabName = TabName_In Select pRec).ToList()
+
+
+            If (pQryRisk.Count > 0) Then
+                For i As Integer = 0 To pQryRisk.Count - 1
+                    mRiskAnlayisQ.Add(pQryRisk(i).fldRiskAnalysisQ, pQryRisk(i).fldRiskAnalysisQ_ID)
+                    mAnswered.Add(pQryRisk(i).fldAnswered)
+                    mReason.Add(pQryRisk(i).fldReason)
+                Next
+
+            End If
+
+            Dim pHistoryID As Integer = 0
+            Dim pQryRiskAnaHistory = (From pRec In pSealProcessDBEntities.tblRiskAnaQSet
+                                      Order By pRec.fldHistoryID Descending Select pRec).ToList()
+            If (pQryRiskAnaHistory.Count > 0) Then
+                pHistoryID = pQryRiskAnaHistory(0).fldHistoryID
+            End If
+
+            If (pHistoryID > 0) Then
+                Dim pQryRiskAna = (From pRec In pSealProcessDBEntities.tblRiskAnaQSet
+                                   Where pRec.fldHistoryID = pHistoryID Select pRec).ToList()
+
+                For i As Integer = 0 To pQryRiskAna.Count - 1
+                    Dim pTabNames() As String = pQryRiskAna(i).fldTabName.Split(",")
+                    Dim pTabExists As Boolean = False
+                    For j As Integer = 0 To pTabNames.Count - 1
+                        If (TabName_In = pTabNames(j)) Then
+                            pTabExists = True
+                            Exit For
+                        End If
+                    Next
+                    If (pTabExists) Then
+                        Dim pRiskQ As String = pQryRiskAna(i).fldDesc
+                        If Not mRiskAnlayisQ.ContainsKey(pRiskQ) Then
+
+                            mRiskAnlayisQ.Add(pRiskQ, pQryRiskAna(i).fldID)
+                            mAnswered.Add(False)
+                            mReason.Add("")
+                        End If
+                    End If
+                Next
+
+            End If
+
+
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Public Sub SaveToDB(ByVal ProjectID_In As Integer, ByVal TabName_In As String)
+        '=========================================================================
+
+        Dim pSealProcessDBEntities As New SealProcessDBEntities()
+
+        '....tblRisk
+        Dim pRisk = (From Risk In pSealProcessDBEntities.tblRisk
+                     Where Risk.fldProcessProjectID = ProjectID_In And Risk.fldTabName = TabName_In Select Risk).ToList()
+
+
+        If (pRisk.Count > 0) Then
+            For j As Integer = 0 To pRisk.Count() - 1
+                pSealProcessDBEntities.DeleteObject(pRisk(j))
+                pSealProcessDBEntities.SaveChanges()
+            Next
+        End If
+
+        Dim pLstRisk As New List(Of tblRisk)
+
+        For j As Integer = 0 To mRiskAnlayisQ.Count - 1
+            Dim ptblRisk As New tblRisk
+            pLstRisk.Add(ptblRisk)
+            With pLstRisk(j)
+                .fldProcessProjectID = ProjectID_In
+                .fldTabName = TabName_In
+                .fldID = j + 1
+                .fldRiskAnalysisQ_ID = mRiskAnlayisQ.ElementAt(j).Value
+                .fldRiskAnalysisQ = mRiskAnlayisQ.ElementAt(j).Key
+                .fldAnswered = mAnswered(j)
+                .fldReason = mReason(j)
+            End With
+
+            pSealProcessDBEntities.AddTotblRisk(pLstRisk(j))
+        Next
+        pSealProcessDBEntities.SaveChanges()
+
+    End Sub
+
+#End Region
 
 
 End Class
