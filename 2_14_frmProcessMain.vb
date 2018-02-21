@@ -4013,6 +4013,18 @@ Public Class Process_frmMain
                 grdApp_Axial_Cavity.Rows(e.RowIndex).Cells(0).Value = e.FormattedValue
             End If
         End If
+
+        Dim pCell As DataGridViewCell = grdApp_Axial_Cavity.Item(e.ColumnIndex, e.RowIndex)
+
+        If pCell.IsInEditMode Then
+            Dim c As Control = grdApp_Axial_Cavity.EditingControl
+
+            Select Case grdApp_Axial_Cavity.Columns(e.ColumnIndex).HeaderText
+                Case "Assy. Min", "Assy. Max", "Oper. Min", "Oper. Max"
+                    c.Text = CleanInputNummeric(c.Text)
+            End Select
+        End If
+
     End Sub
 
     Private Sub grdApp_Axial_Cavity_EditingControlShowing(sender As Object,
@@ -4070,6 +4082,17 @@ Public Class Process_frmMain
             '        Column8.Items.Add(e.FormattedValue)
             '        grdManf_ToolNGage.Rows(e.RowIndex).Cells(5).Value = e.FormattedValue
             '    End If
+        End If
+
+        Dim pCell As DataGridViewCell = grdManf_ToolNGage.Item(e.ColumnIndex, e.RowIndex)
+
+        If pCell.IsInEditMode Then
+            Dim c As Control = grdManf_ToolNGage.EditingControl
+
+            Select Case grdManf_ToolNGage.Columns(e.ColumnIndex).HeaderText
+                Case "Lead Time (wks)"
+                    c.Text = CleanInputNummeric(c.Text)
+            End Select
         End If
 
     End Sub
@@ -7353,6 +7376,17 @@ Public Class Process_frmMain
                 grdPurchase_Mat.Rows(e.RowIndex).Cells(2).Value = e.FormattedValue
             End If
         End If
+
+        Dim pCell As DataGridViewCell = grdPurchase_Mat.Item(e.ColumnIndex, e.RowIndex)
+
+        If pCell.IsInEditMode Then
+            Dim c As Control = grdPurchase_Mat.EditingControl
+
+            Select Case grdPurchase_Mat.Columns(e.ColumnIndex).HeaderText
+                Case "Lead Time (wks)"
+                    c.Text = CleanInputNummeric(c.Text)
+            End Select
+        End If
     End Sub
 
     Private Sub grdPurchase_Mat_EditingControlShowing(sender As Object, e As DataGridViewEditingControlShowingEventArgs) _
@@ -7523,6 +7557,17 @@ Public Class Process_frmMain
                 grdCost_SplOperation.Rows(e.RowIndex).Cells(0).Value = e.FormattedValue
             End If
         End If
+
+        Dim pCell As DataGridViewCell = grdCost_SplOperation.Item(e.ColumnIndex, e.RowIndex)
+
+        If pCell.IsInEditMode Then
+            Dim c As Control = grdCost_SplOperation.EditingControl
+
+            Select Case grdCost_SplOperation.Columns(e.ColumnIndex).HeaderText
+                Case "Lead Time (wks)", "Cost ($)"
+                    c.Text = CleanInputNummeric(c.Text)
+            End Select
+        End If
     End Sub
 
     Private Sub grdCost_SplOperation_EditingControlShowing(sender As Object, e As DataGridViewEditingControlShowingEventArgs) _
@@ -7548,6 +7593,17 @@ Public Class Process_frmMain
                 grdQuality_SplOperation.Rows(e.RowIndex).Cells(0).Value = e.FormattedValue
             End If
         End If
+
+        Dim pCell As DataGridViewCell = grdQuality_SplOperation.Item(e.ColumnIndex, e.RowIndex)
+
+        If pCell.IsInEditMode Then
+            Dim c As Control = grdQuality_SplOperation.EditingControl
+
+            Select Case grdQuality_SplOperation.Columns(e.ColumnIndex).HeaderText
+                Case "Lead Time (wks)", "Cost ($)"
+                    c.Text = CleanInputNummeric(c.Text)
+            End Select
+        End If
     End Sub
 
     Private Sub grdQuality_SplOperation_EditingControlShowing(sender As Object,
@@ -7572,6 +7628,18 @@ Public Class Process_frmMain
                 grdApp_Face_Cavity.Rows(e.RowIndex).Cells(0).Value = e.FormattedValue
             End If
         End If
+
+        Dim pCell As DataGridViewCell = grdApp_Face_Cavity.Item(e.ColumnIndex, e.RowIndex)
+
+        If pCell.IsInEditMode Then
+            Dim c As Control = grdApp_Face_Cavity.EditingControl
+
+            Select Case grdApp_Face_Cavity.Columns(e.ColumnIndex).HeaderText
+                Case "Assy. Min", "Assy. Max", "Oper. Min", "Oper. Max"
+                    c.Text = CleanInputNummeric(c.Text)
+            End Select
+        End If
+
     End Sub
 
     Private Sub grdApp_Face_Cavity_EditingControlShowing(sender As Object, e As DataGridViewEditingControlShowingEventArgs) _
@@ -7675,6 +7743,17 @@ Public Class Process_frmMain
                 DataGridViewTextBoxColumn18.Items.Add(e.FormattedValue)
                 grdDesign_Seal.Rows(e.RowIndex).Cells(0).Value = e.FormattedValue
             End If
+        End If
+
+        Dim pCell As DataGridViewCell = grdDesign_Seal.Item(e.ColumnIndex, e.RowIndex)
+
+        If pCell.IsInEditMode Then
+            Dim c As Control = grdDesign_Seal.EditingControl
+
+            Select Case grdDesign_Seal.Columns(e.ColumnIndex).HeaderText
+                Case "Min", "Nom", "Max"
+                    c.Text = CleanInputNummeric(c.Text)
+            End Select
         End If
     End Sub
 
@@ -8269,6 +8348,7 @@ Public Class Process_frmMain
     Private Sub cmdRiskAna_Click(sender As Object, e As EventArgs) Handles cmdRiskAna.Click
         '==================================================================================
         SaveData()
+
         Dim pTabName As String = ""
         Dim pTabIndex As Integer = TabControl1.SelectedIndex
         If (pTabIndex = 0) Then
@@ -8298,10 +8378,385 @@ Public Class Process_frmMain
         ElseIf (pTabIndex = 12) Then
             pTabName = "Shipping"
         End If
-        'pTabName = TabControl1.TabPages(pTabIndex).Name
+
         Dim pProcess_frmRiskAna As New Process_frmRiskAnalysis(mProcess_Project, pTabName)
         pProcess_frmRiskAna.ShowDialog()
 
+    End Sub
+
+    Private Sub grdPreOrder_SalesData_CellValidating(sender As Object, e As DataGridViewCellValidatingEventArgs) _
+                                                     Handles grdPreOrder_SalesData.CellValidating
+        '=========================================================================================================
+        Dim pCell As DataGridViewCell = grdPreOrder_SalesData.Item(e.ColumnIndex, e.RowIndex)
+
+        If pCell.IsInEditMode Then
+            Dim c As Control = grdPreOrder_SalesData.EditingControl
+
+            Select Case grdPreOrder_SalesData.Columns(e.ColumnIndex).HeaderText
+                Case "Year", "Qty"
+                    c.Text = CleanInputNumber(c.Text)
+                Case "Price ($)", "Total ($)"
+                    c.Text = CleanInputNummeric(c.Text)
+            End Select
+        End If
+
+    End Sub
+
+    Private Function CleanInputNumber(ByVal str As String) As String
+        '===========================================================
+        Return System.Text.RegularExpressions.Regex.Replace(str, "[a-zA-Z\b\s-.@~`!#$%^&*()_//?<>:;+={}/[\]'""]", "")
+    End Function
+
+    Private Function CleanInputNummeric(ByVal str As String) As String
+        '===========================================================
+        Return System.Text.RegularExpressions.Regex.Replace(str, "[a-zA-Z\b\s-@~`!#$%^&*()_//?<>:;+={}/[\]'""]", "")
+    End Function
+
+    Private Sub txtOrderEntry_QtdLeadTime_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                                    Handles txtOrderEntry_QtdLeadTime.Validating
+        '===========================================================================================================
+        txtOrderEntry_QtdLeadTime.Text = CleanInputNummeric(txtOrderEntry_QtdLeadTime.Text)
+    End Sub
+
+    Private Sub txtOrdEntry_OrderQty_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                                Handles txtOrdEntry_OrderQty.Validating
+        '======================================================================================================
+        txtOrdEntry_OrderQty.Text = CleanInputNumber(txtOrdEntry_OrderQty.Text)
+    End Sub
+
+    Private Sub txtApp_MaxLeak_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                          Handles txtApp_MaxLeak.Validating
+        '================================================================================================
+        txtApp_MaxLeak.Text = CleanInputNummeric(txtApp_MaxLeak.Text)
+
+    End Sub
+
+    Private Sub txtApp_PressCycleFreq_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                                Handles txtApp_PressCycleFreq.Validating
+        '=======================================================================================================
+        txtApp_PressCycleFreq.Text = CleanInputNummeric(txtApp_PressCycleFreq.Text)
+    End Sub
+
+    Private Sub txtApp_PressCycleAmp_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                                Handles txtApp_PressCycleAmp.Validating
+        '======================================================================================================
+        txtApp_PressCycleAmp.Text = CleanInputNummeric(txtApp_PressCycleAmp.Text)
+    End Sub
+
+    Private Sub grdApp_OpCond_CellValidating(sender As Object, e As DataGridViewCellValidatingEventArgs) _
+                                            Handles grdApp_OpCond.CellValidating
+        '=================================================================================================
+        Dim pCell As DataGridViewCell = grdApp_OpCond.Item(e.ColumnIndex, e.RowIndex)
+
+        If pCell.IsInEditMode Then
+            Dim c As Control = grdApp_OpCond.EditingControl
+
+            Select Case grdApp_OpCond.Columns(e.ColumnIndex).HeaderText
+                Case "Assembly", "Min", "Max", "Operating"
+                    c.Text = CleanInputNummeric(c.Text)
+            End Select
+        End If
+
+    End Sub
+
+    Private Sub grdApp_Load_CellValidating(sender As Object, e As DataGridViewCellValidatingEventArgs) _
+                                            Handles grdApp_Load.CellValidating
+        '===============================================================================================
+        Dim pCell As DataGridViewCell = grdApp_Load.Item(e.ColumnIndex, e.RowIndex)
+
+        If pCell.IsInEditMode Then
+            Dim c As Control = grdApp_Load.EditingControl
+
+            Select Case grdApp_Load.Columns(e.ColumnIndex).HeaderText
+                Case "Min", "Max"
+                    c.Text = CleanInputNummeric(c.Text)
+            End Select
+        End If
+    End Sub
+
+    Private Sub txtApp_Hardness1_Face_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                                 Handles txtApp_Hardness1_Face.Validating
+        '========================================================================================================
+        txtApp_Hardness1_Face.Text = CleanInputNummeric(txtApp_Hardness1_Face.Text)
+
+    End Sub
+
+    Private Sub txtApp_Hardness2_Face_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                                 Handles txtApp_Hardness2_Face.Validating
+        '========================================================================================================
+        txtApp_Hardness2_Face.Text = CleanInputNummeric(txtApp_Hardness2_Face.Text)
+    End Sub
+
+    Private Sub txtApp_SF1_Face_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                           Handles txtApp_SF1_Face.Validating
+        '==================================================================================================
+        txtApp_SF1_Face.Text = CleanInputNummeric(txtApp_SF1_Face.Text)
+
+    End Sub
+
+    Private Sub txtApp_SF2_Face_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                           Handles txtApp_SF2_Face.Validating
+        '=================================================================================================
+        txtApp_SF2_Face.Text = CleanInputNummeric(txtApp_SF2_Face.Text)
+
+    End Sub
+
+    Private Sub txtApp_Face_MaxFlangeSeparation_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                                           Handles txtApp_Face_MaxFlangeSeparation.Validating
+        '===================================================================================================================
+        txtApp_Face_MaxFlangeSeparation.Text = CleanInputNummeric(txtApp_Face_MaxFlangeSeparation.Text)
+
+    End Sub
+
+    Private Sub txtApp_Hardness1_Axial_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                                  Handles txtApp_Hardness1_Axial.Validating
+        '=========================================================================================================
+        txtApp_Hardness1_Axial.Text = CleanInputNummeric(txtApp_Hardness1_Axial.Text)
+    End Sub
+
+    Private Sub txtApp_Hardness2_Axial_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                                  Handles txtApp_Hardness2_Axial.Validating
+        '========================================================================================================
+        txtApp_Hardness2_Axial.Text = CleanInputNummeric(txtApp_Hardness2_Axial.Text)
+    End Sub
+
+    Private Sub txtApp_SF1_Axial_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                            Handles txtApp_SF1_Axial.Validating
+        '====================================================================================================
+        txtApp_SF1_Axial.Text = CleanInputNummeric(txtApp_SF1_Axial.Text)
+    End Sub
+
+    Private Sub txtApp_SF2_Axial_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                            Handles txtApp_SF2_Axial.Validating
+        '===================================================================================================
+        txtApp_SF2_Axial.Text = CleanInputNummeric(txtApp_SF2_Axial.Text)
+    End Sub
+
+    Private Sub txtApp_RotateRPM_Axial_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                                  Handles txtApp_RotateRPM_Axial.Validating
+        '===========================================================================================================
+        txtApp_RotateRPM_Axial.Text = CleanInputNummeric(txtApp_RotateRPM_Axial.Text)
+    End Sub
+
+    Private Sub txtApp_RecipStrokeL_Axial_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                                     Handles txtApp_RecipStrokeL_Axial.Validating
+        '============================================================================================================
+        txtApp_RecipStrokeL_Axial.Text = CleanInputNummeric(txtApp_RecipStrokeL_Axial.Text)
+    End Sub
+
+    Private Sub txtApp_RecipV_Axial_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                               Handles txtApp_RecipV_Axial.Validating
+        '=======================================================================================================
+        txtApp_RecipV_Axial.Text = CleanInputNummeric(txtApp_RecipV_Axial.Text)
+    End Sub
+
+    Private Sub txtApp_RecipCycleRate_Axial_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                                       Handles txtApp_RecipCycleRate_Axial.Validating
+        '==============================================================================================================
+        txtApp_RecipCycleRate_Axial.Text = CleanInputNummeric(txtApp_RecipCycleRate_Axial.Text)
+    End Sub
+
+    Private Sub txtApp_RecipServiceLife_Axial_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                                         Handles txtApp_RecipServiceLife_Axial.Validating
+        '================================================================================================================
+        txtApp_RecipServiceLife_Axial.Text = CleanInputNummeric(txtApp_RecipServiceLife_Axial.Text)
+    End Sub
+
+    Private Sub txtApp_OscRot_Axial_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                               Handles txtApp_OscRot_Axial.Validating
+        '=======================================================================================================
+        txtApp_OscRot_Axial.Text = CleanInputNummeric(txtApp_OscRot_Axial.Text)
+    End Sub
+
+    Private Sub txtApp_OscV_Axial_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                             Handles txtApp_OscV_Axial.Validating
+        '=====================================================================================================
+        txtApp_OscV_Axial.Text = CleanInputNummeric(txtApp_OscV_Axial.Text)
+    End Sub
+
+    Private Sub txtApp_OscCycleRate_Axial_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                                     Handles txtApp_OscCycleRate_Axial.Validating
+        '=============================================================================================================
+        txtApp_OscCycleRate_Axial.Text = CleanInputNummeric(txtApp_OscCycleRate_Axial.Text)
+    End Sub
+
+    Private Sub txtApp_OscServiceLife_Axial_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                                       Handles txtApp_OscServiceLife_Axial.Validating
+        '================================================================================================================
+        txtApp_OscServiceLife_Axial.Text = CleanInputNummeric(txtApp_OscServiceLife_Axial.Text)
+    End Sub
+
+    Private Sub grdPurchase_Drawing_CellValidating(sender As Object, e As DataGridViewCellValidatingEventArgs) _
+                                                   Handles grdPurchase_Drawing.CellValidating
+        '========================================================================================================
+        Dim pCell As DataGridViewCell = grdPurchase_Drawing.Item(e.ColumnIndex, e.RowIndex)
+
+        If pCell.IsInEditMode Then
+            Dim c As Control = grdPurchase_Drawing.EditingControl
+
+            Select Case grdPurchase_Drawing.Columns(e.ColumnIndex).HeaderText
+                Case "Lead Time (wks)"
+                    c.Text = CleanInputNummeric(c.Text)
+            End Select
+        End If
+
+    End Sub
+
+    Private Sub grdDrawing_Needed_CellValidating(sender As Object, e As DataGridViewCellValidatingEventArgs) _
+                                                Handles grdDrawing_Needed.CellValidating
+        '=====================================================================================================
+        Dim pCell As DataGridViewCell = grdDrawing_Needed.Item(e.ColumnIndex, e.RowIndex)
+
+        If pCell.IsInEditMode Then
+            Dim c As Control = grdDrawing_Needed.EditingControl
+
+            Select Case grdDrawing_Needed.Columns(e.ColumnIndex).HeaderText
+                Case "Lead Time (wks)"
+                    c.Text = CleanInputNummeric(c.Text)
+            End Select
+        End If
+
+    End Sub
+
+    Private Sub grdDrawing_BOM_CellValidating(sender As Object, e As DataGridViewCellValidatingEventArgs) _
+                                              Handles grdDrawing_BOM.CellValidating
+        '===================================================================================================
+        Dim pCell As DataGridViewCell = grdDrawing_BOM.Item(e.ColumnIndex, e.RowIndex)
+
+        If pCell.IsInEditMode Then
+            Dim c As Control = grdDrawing_BOM.EditingControl
+
+            Select Case grdDrawing_BOM.Columns(e.ColumnIndex).HeaderText
+                Case "Qty"
+                    c.Text = CleanInputNumber(c.Text)
+            End Select
+        End If
+
+    End Sub
+
+    Private Sub txtTest_CompressPre_Leak_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                                    Handles txtTest_CompressPre_Leak.Validating
+        '=============================================================================================================
+        txtTest_CompressPre_Leak.Text = CleanInputNummeric(txtTest_CompressPre_Leak.Text)
+
+    End Sub
+
+    Private Sub txtTest_CompressPost_Leak_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                                     Handles txtTest_CompressPost_Leak.Validating
+        '=============================================================================================================
+        txtTest_CompressPost_Leak.Text = CleanInputNummeric(txtTest_CompressPost_Leak.Text)
+
+    End Sub
+
+    Private Sub txtTest_PressPre_Leak_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                                 Handles txtTest_PressPre_Leak.Validating
+        '=========================================================================================================
+        txtTest_PressPre_Leak.Text = CleanInputNummeric(txtTest_PressPre_Leak.Text)
+
+    End Sub
+
+    Private Sub txtTest_PressPost_Leak_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                                  Handles txtTest_PressPost_Leak.Validating
+        '=========================================================================================================
+        txtTest_PressPost_Leak.Text = CleanInputNummeric(txtTest_PressPost_Leak.Text)
+
+    End Sub
+
+    Private Sub txtTest_ReqPre_Leak_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                               Handles txtTest_ReqPre_Leak.Validating
+        '=======================================================================================================
+        txtTest_ReqPre_Leak.Text = CleanInputNummeric(txtTest_ReqPre_Leak.Text)
+    End Sub
+
+    Private Sub txtTest_ReqPost_Leak_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                                Handles txtTest_ReqPost_Leak.Validating
+        '=======================================================================================================
+        txtTest_ReqPost_Leak.Text = CleanInputNummeric(txtTest_ReqPost_Leak.Text)
+    End Sub
+
+    Private Sub cmbTest_QtyPre_Leak_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                               Handles cmbTest_QtyPre_Leak.Validating
+        '=======================================================================================================
+        cmbTest_QtyPre_Leak.Text = CleanInputNummeric(cmbTest_QtyPre_Leak.Text)
+    End Sub
+
+    Private Sub cmbTest_QtyPost_Leak_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                                Handles cmbTest_QtyPost_Leak.Validating
+        '=======================================================================================================
+        cmbTest_QtyPost_Leak.Text = CleanInputNummeric(cmbTest_QtyPost_Leak.Text)
+    End Sub
+
+    Private Sub txtTest_CompressPre_Load_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                                    Handles txtTest_CompressPre_Load.Validating
+        '===========================================================================================================
+        txtTest_CompressPre_Load.Text = CleanInputNummeric(txtTest_CompressPre_Load.Text)
+    End Sub
+
+    Private Sub txtTest_CompressPost_Load_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                                     Handles txtTest_CompressPost_Load.Validating
+        '===========================================================================================================
+        txtTest_CompressPost_Load.Text = CleanInputNummeric(txtTest_CompressPost_Load.Text)
+    End Sub
+
+    Private Sub txtTest_ReqPre_Load_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                               Handles txtTest_ReqPre_Load.Validating
+        '========================================================================================================
+        txtTest_ReqPre_Load.Text = CleanInputNummeric(txtTest_ReqPre_Load.Text)
+    End Sub
+
+    Private Sub txtTest_ReqPost_Load_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                                Handles txtTest_ReqPost_Load.Validating
+        '========================================================================================================
+        txtTest_ReqPost_Load.Text = CleanInputNummeric(txtTest_ReqPost_Load.Text)
+    End Sub
+
+    Private Sub cmbTest_QtyPre_Load_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                               Handles cmbTest_QtyPre_Load.Validating
+        '=========================================================================================================
+        cmbTest_QtyPre_Load.Text = CleanInputNummeric(cmbTest_QtyPre_Load.Text)
+
+    End Sub
+
+    Private Sub cmbTest_QtyPost_Load_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                                Handles cmbTest_QtyPost_Load.Validating
+        '=========================================================================================================
+        cmbTest_QtyPost_Load.Text = CleanInputNummeric(cmbTest_QtyPost_Load.Text)
+    End Sub
+
+    Private Sub txtTest_CompressPre_SpringBack_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                                          Handles txtTest_CompressPre_SpringBack.Validating
+        '==================================================================================================================
+        txtTest_CompressPre_SpringBack.Text = CleanInputNummeric(txtTest_CompressPre_SpringBack.Text)
+    End Sub
+
+    Private Sub txtTest_CompressPost_SpringBack_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                                           Handles txtTest_CompressPost_SpringBack.Validating
+        '===================================================================================================================
+        txtTest_CompressPost_SpringBack.Text = CleanInputNummeric(txtTest_CompressPost_SpringBack.Text)
+    End Sub
+
+    Private Sub txtTest_ReqPre_SpringBack_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                                     Handles txtTest_ReqPre_SpringBack.Validating
+        '=============================================================================================================
+        txtTest_ReqPre_SpringBack.Text = CleanInputNummeric(txtTest_ReqPre_SpringBack.Text)
+    End Sub
+
+    Private Sub txtTest_ReqPost_SpringBack_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                                      Handles txtTest_ReqPost_SpringBack.Validating
+        '=============================================================================================================
+        txtTest_ReqPost_SpringBack.Text = CleanInputNummeric(txtTest_ReqPost_SpringBack.Text)
+    End Sub
+
+    Private Sub cmbTest_QtyPre_SpringBack_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                                     Handles cmbTest_QtyPre_SpringBack.Validating
+        '=============================================================================================================
+        cmbTest_QtyPre_SpringBack.Text = CleanInputNummeric(cmbTest_QtyPre_SpringBack.Text)
+    End Sub
+
+    Private Sub cmbTest_QtyPost_SpringBack_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
+                                                      Handles cmbTest_QtyPost_SpringBack.Validating
+        '==============================================================================================================
+        cmbTest_QtyPost_SpringBack.Text = CleanInputNummeric(cmbTest_QtyPost_SpringBack.Text)
     End Sub
 
     Private Sub grdDesign_Input_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles grdDesign_Input.CellEndEdit
