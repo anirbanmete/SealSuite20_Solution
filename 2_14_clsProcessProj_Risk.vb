@@ -316,14 +316,13 @@ Public Class clsProcessProj_Risk
             MessageBox.Show(pMsg, "Risk Analysis DataFile!", MessageBoxButtons.OK)
 
         Catch ex As Exception
-
+            MessageBox.Show(ex.ToString())
         End Try
 
     End Sub
 
     Private Sub CloseExcelFiles()
-        '=======================
-
+        '========================
         Dim pProcesses As Process() = Process.GetProcesses()
 
         Try
@@ -384,7 +383,6 @@ Public Class clsProcessProj_Risk
                     If (pTabExists) Then
                         Dim pRiskQ As String = pQryRiskAna(i).fldDesc
                         If Not mRiskAnlayisQ.ContainsKey(pRiskQ) Then
-
                             mRiskAnlayisQ.Add(pRiskQ, pQryRiskAna(i).fldID)
                             mAnswered.Add(False)
                             mReason.Add("")

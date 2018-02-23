@@ -26,6 +26,11 @@ Public Class clsProcessProj_Unit
     Dim mcTUnit_List() As String = New String() {"ºF", "ºC"}
     Dim mcLeakUnit_List() As String = New String() {"scfm", "cc/s", "mL/min", "L/min", "sccm", "mbar L/s"}
 
+    'Dim mcLUnit_List() As String = New String() {"mm", "in"}
+    'Dim mcFUnit_List() As String = New String() {"N", "lbf", "kgf"}
+    'Dim mcPUnit_List() As String = New String() {"psi", "kPa", "atm", "bar"}
+    'Dim mcLeakUnit_List() As String = New String() {"mL/min", "L/min", "scfm", "sccm", "cc/s", "mbar L/s"}
+
 #Region "Structures:"
     <Serializable()>
     Public Structure sPH
@@ -52,7 +57,6 @@ Public Class clsProcessProj_Unit
     Public mCust As sCust
 
 #End Region
-
 
 #Region "CLASS PROPERTY ROUTINE:"
 
@@ -101,38 +105,53 @@ Public Class clsProcessProj_Unit
 
 #Region "PH:"
 
-    Public WriteOnly Property LIndx_PH() As Integer
+    Public Property LIndx_PH() As Integer
         '=========================================
+        Get
+            Return mPH.LIndx
+        End Get
         Set(ByVal Value As Integer)
             mPH.LIndx = Value
         End Set
     End Property
 
 
-    Public WriteOnly Property FIndx_PH() As Integer
+    Public Property FIndx_PH() As Integer
         '=========================================
+        Get
+            Return mPH.FIndx
+        End Get
         Set(ByVal Value As Integer)
             mPH.FIndx = Value
         End Set
     End Property
 
 
-    Public WriteOnly Property PIndx_PH() As Integer
+    Public Property PIndx_PH() As Integer
         '=========================================
+        Get
+            Return mPH.PIndx
+        End Get
         Set(ByVal Value As Integer)
             mPH.PIndx = Value
         End Set
     End Property
 
-    Public WriteOnly Property TIndx_PH() As Integer
+    Public Property TIndx_PH() As Integer
         '=========================================
+        Get
+            Return mPH.TIndx
+        End Get
         Set(ByVal Value As Integer)
             mPH.TIndx = Value
         End Set
     End Property
-    
-    Public WriteOnly Property LeakIndx_PH() As Integer
+
+    Public Property LeakIndx_PH() As Integer
         '=========================================
+        Get
+            Return mPH.LeakIndx
+        End Get
         Set(ByVal Value As Integer)
             mPH.LeakIndx = Value
         End Set
@@ -181,38 +200,54 @@ Public Class clsProcessProj_Unit
 
 #Region "CUST:"
 
-    Public WriteOnly Property LIndx_Cust() As Integer
+    Public Property LIndx_Cust() As Integer
         '=========================================
+        Get
+            Return mCust.LIndx
+        End Get
+
         Set(ByVal Value As Integer)
             mCust.LIndx = Value
         End Set
     End Property
 
 
-    Public WriteOnly Property FIndx_Cust() As Integer
+    Public Property FIndx_Cust() As Integer
         '=========================================
+        Get
+            Return mCust.FIndx
+        End Get
         Set(ByVal Value As Integer)
             mCust.FIndx = Value
         End Set
     End Property
 
 
-    Public WriteOnly Property PIndx_Cust() As Integer
+    Public Property PIndx_Cust() As Integer
         '=========================================
+        Get
+            Return mCust.PIndx
+        End Get
         Set(ByVal Value As Integer)
             mCust.PIndx = Value
         End Set
     End Property
 
-    Public WriteOnly Property TIndx_Cust() As Integer
+    Public Property TIndx_Cust() As Integer
         '=========================================
+        Get
+            Return mCust.TIndx
+        End Get
         Set(ByVal Value As Integer)
             mCust.TIndx = Value
         End Set
     End Property
 
-    Public WriteOnly Property LeakIndx_Cust() As Integer
+    Public Property LeakIndx_Cust() As Integer
         '=========================================
+        Get
+            Return mCust.LeakIndx
+        End Get
         Set(ByVal Value As Integer)
             mCust.LeakIndx = Value
         End Set
