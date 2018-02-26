@@ -53,6 +53,11 @@ Partial Class frmPartMain
         Me.txtRefPNNewDim_Legacy = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.toolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.tsbAdd = New System.Windows.Forms.ToolStripButton()
+        Me.tsbEdit = New System.Windows.Forms.ToolStripButton()
+        Me.tsbSave = New System.Windows.Forms.ToolStripButton()
+        Me.tsbDelete = New System.Windows.Forms.ToolStripButton()
+        Me.tsbCopy = New System.Windows.Forms.ToolStripButton()
         Me.grpButton = New System.Windows.Forms.GroupBox()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.cmdSealIPE = New System.Windows.Forms.Button()
@@ -72,7 +77,9 @@ Partial Class frmPartMain
         Me.Label6 = New System.Windows.Forms.Label()
         Me.txtPlatform = New System.Windows.Forms.TextBox()
         Me.grpCustomer = New System.Windows.Forms.GroupBox()
+        Me.cmdDown = New System.Windows.Forms.Button()
         Me.trvProjects = New System.Windows.Forms.TreeView()
+        Me.cmdUp = New System.Windows.Forms.Button()
         Me.grpPartNumber = New System.Windows.Forms.GroupBox()
         Me.txtParentCur_Part1 = New System.Windows.Forms.TextBox()
         Me.cmbParentCur_Part2 = New System.Windows.Forms.ComboBox()
@@ -106,13 +113,6 @@ Partial Class frmPartMain
         Me.openFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.cmdOK = New System.Windows.Forms.Button()
         Me.cmdCancel = New System.Windows.Forms.Button()
-        Me.tsbAdd = New System.Windows.Forms.ToolStripButton()
-        Me.tsbEdit = New System.Windows.Forms.ToolStripButton()
-        Me.tsbSave = New System.Windows.Forms.ToolStripButton()
-        Me.tsbDelete = New System.Windows.Forms.ToolStripButton()
-        Me.tsbCopy = New System.Windows.Forms.ToolStripButton()
-        Me.cmdDown = New System.Windows.Forms.Button()
-        Me.cmdUp = New System.Windows.Forms.Button()
         Me.bindingSourceProject = New System.Windows.Forms.BindingSource(Me.components)
         Me.bindingSourcePlatForm = New System.Windows.Forms.BindingSource(Me.components)
         Me.bindingSourceCustomer = New System.Windows.Forms.BindingSource(Me.components)
@@ -471,6 +471,53 @@ Partial Class frmPartMain
         Me.toolStrip1.TabIndex = 588
         Me.toolStrip1.Text = "ToolStrip1"
         '
+        'tsbAdd
+        '
+        Me.tsbAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbAdd.Image = CType(resources.GetObject("tsbAdd.Image"), System.Drawing.Image)
+        Me.tsbAdd.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbAdd.Name = "tsbAdd"
+        Me.tsbAdd.Size = New System.Drawing.Size(23, 22)
+        Me.tsbAdd.Text = "ToolStripButton1"
+        Me.tsbAdd.ToolTipText = "Add"
+        '
+        'tsbEdit
+        '
+        Me.tsbEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbEdit.Image = CType(resources.GetObject("tsbEdit.Image"), System.Drawing.Image)
+        Me.tsbEdit.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbEdit.Name = "tsbEdit"
+        Me.tsbEdit.Size = New System.Drawing.Size(23, 22)
+        Me.tsbEdit.Text = "Edit"
+        '
+        'tsbSave
+        '
+        Me.tsbSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbSave.Image = CType(resources.GetObject("tsbSave.Image"), System.Drawing.Image)
+        Me.tsbSave.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbSave.Name = "tsbSave"
+        Me.tsbSave.Size = New System.Drawing.Size(23, 22)
+        Me.tsbSave.Text = "Save"
+        '
+        'tsbDelete
+        '
+        Me.tsbDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbDelete.Image = CType(resources.GetObject("tsbDelete.Image"), System.Drawing.Image)
+        Me.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbDelete.Name = "tsbDelete"
+        Me.tsbDelete.Size = New System.Drawing.Size(23, 22)
+        Me.tsbDelete.Text = "Delete"
+        '
+        'tsbCopy
+        '
+        Me.tsbCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbCopy.Enabled = False
+        Me.tsbCopy.Image = CType(resources.GetObject("tsbCopy.Image"), System.Drawing.Image)
+        Me.tsbCopy.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbCopy.Name = "tsbCopy"
+        Me.tsbCopy.Size = New System.Drawing.Size(23, 22)
+        Me.tsbCopy.Text = "Copy"
+        '
         'grpButton
         '
         Me.grpButton.Controls.Add(Me.CheckBox1)
@@ -697,6 +744,19 @@ Partial Class frmPartMain
         Me.grpCustomer.TabStop = False
         Me.grpCustomer.Text = "Customer:"
         '
+        'cmdDown
+        '
+        Me.cmdDown.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.cmdDown.BackColor = System.Drawing.Color.Silver
+        Me.cmdDown.Enabled = False
+        Me.cmdDown.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdDown.Image = CType(resources.GetObject("cmdDown.Image"), System.Drawing.Image)
+        Me.cmdDown.Location = New System.Drawing.Point(247, 261)
+        Me.cmdDown.Name = "cmdDown"
+        Me.cmdDown.Size = New System.Drawing.Size(28, 28)
+        Me.cmdDown.TabIndex = 372
+        Me.cmdDown.UseVisualStyleBackColor = False
+        '
         'trvProjects
         '
         Me.trvProjects.BackColor = System.Drawing.SystemColors.Window
@@ -705,6 +765,19 @@ Partial Class frmPartMain
         Me.trvProjects.Name = "trvProjects"
         Me.trvProjects.Size = New System.Drawing.Size(234, 450)
         Me.trvProjects.TabIndex = 99
+        '
+        'cmdUp
+        '
+        Me.cmdUp.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.cmdUp.BackColor = System.Drawing.Color.Silver
+        Me.cmdUp.Enabled = False
+        Me.cmdUp.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdUp.Image = CType(resources.GetObject("cmdUp.Image"), System.Drawing.Image)
+        Me.cmdUp.Location = New System.Drawing.Point(247, 225)
+        Me.cmdUp.Name = "cmdUp"
+        Me.cmdUp.Size = New System.Drawing.Size(28, 28)
+        Me.cmdUp.TabIndex = 371
+        Me.cmdUp.UseVisualStyleBackColor = False
         '
         'grpPartNumber
         '
@@ -1049,79 +1122,6 @@ Partial Class frmPartMain
         Me.cmdCancel.TabIndex = 14
         Me.cmdCancel.Text = "  &Cancel"
         Me.cmdCancel.UseVisualStyleBackColor = False
-        '
-        'tsbAdd
-        '
-        Me.tsbAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.tsbAdd.Image = CType(resources.GetObject("tsbAdd.Image"), System.Drawing.Image)
-        Me.tsbAdd.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tsbAdd.Name = "tsbAdd"
-        Me.tsbAdd.Size = New System.Drawing.Size(23, 22)
-        Me.tsbAdd.Text = "ToolStripButton1"
-        Me.tsbAdd.ToolTipText = "Add"
-        '
-        'tsbEdit
-        '
-        Me.tsbEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.tsbEdit.Image = CType(resources.GetObject("tsbEdit.Image"), System.Drawing.Image)
-        Me.tsbEdit.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tsbEdit.Name = "tsbEdit"
-        Me.tsbEdit.Size = New System.Drawing.Size(23, 22)
-        Me.tsbEdit.Text = "Edit"
-        '
-        'tsbSave
-        '
-        Me.tsbSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.tsbSave.Image = CType(resources.GetObject("tsbSave.Image"), System.Drawing.Image)
-        Me.tsbSave.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tsbSave.Name = "tsbSave"
-        Me.tsbSave.Size = New System.Drawing.Size(23, 22)
-        Me.tsbSave.Text = "Save"
-        '
-        'tsbDelete
-        '
-        Me.tsbDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.tsbDelete.Image = CType(resources.GetObject("tsbDelete.Image"), System.Drawing.Image)
-        Me.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tsbDelete.Name = "tsbDelete"
-        Me.tsbDelete.Size = New System.Drawing.Size(23, 22)
-        Me.tsbDelete.Text = "Delete"
-        '
-        'tsbCopy
-        '
-        Me.tsbCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.tsbCopy.Enabled = False
-        Me.tsbCopy.Image = CType(resources.GetObject("tsbCopy.Image"), System.Drawing.Image)
-        Me.tsbCopy.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tsbCopy.Name = "tsbCopy"
-        Me.tsbCopy.Size = New System.Drawing.Size(23, 22)
-        Me.tsbCopy.Text = "Copy"
-        '
-        'cmdDown
-        '
-        Me.cmdDown.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.cmdDown.BackColor = System.Drawing.Color.Silver
-        Me.cmdDown.Enabled = False
-        Me.cmdDown.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdDown.Image = CType(resources.GetObject("cmdDown.Image"), System.Drawing.Image)
-        Me.cmdDown.Location = New System.Drawing.Point(247, 261)
-        Me.cmdDown.Name = "cmdDown"
-        Me.cmdDown.Size = New System.Drawing.Size(28, 28)
-        Me.cmdDown.TabIndex = 372
-        Me.cmdDown.UseVisualStyleBackColor = False
-        '
-        'cmdUp
-        '
-        Me.cmdUp.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.cmdUp.BackColor = System.Drawing.Color.Silver
-        Me.cmdUp.Enabled = False
-        Me.cmdUp.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdUp.Image = CType(resources.GetObject("cmdUp.Image"), System.Drawing.Image)
-        Me.cmdUp.Location = New System.Drawing.Point(247, 225)
-        Me.cmdUp.Name = "cmdUp"
-        Me.cmdUp.Size = New System.Drawing.Size(28, 28)
-        Me.cmdUp.TabIndex = 371
-        Me.cmdUp.UseVisualStyleBackColor = False
         '
         'frmPartMain
         '

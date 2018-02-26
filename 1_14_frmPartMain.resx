@@ -1373,6 +1373,22 @@
         wuVLR4b87l89K9UC82v5tUSWX4H5tRxX+RWYX8txlV+B+bUcRwH+H6vjbCP7ZA3DAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="cmdDown.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAkAAAAGCAYAAAARx7TFAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAAAYdEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My4zNqnn4iUA
+        AABASURBVBhXfYtJDgAgCANZDvz/xWoRcY2TkBZaqFFEpEBV1XXs6c0sQ2a+C907eUARionnySPcCwse
+        xsOXo0BUARJBIkizvKDHAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="cmdUp.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAkAAAAGCAYAAAARx7TFAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAAAYdEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My4zNqnn4iUA
+        AAA9SURBVBhXdYtbCgBACALLPrr/iV2K2ge0gmQ4yiDW/SoAquoMVpE2s86PCCCLARZx970MoOHwlc/T
+        8AuCC0fPIkh8oPRgAAAAAElFTkSuQmCC
+</value>
+  </data>
   <metadata name="tTipFormat.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>547, 17</value>
   </metadata>
@@ -1418,22 +1434,6 @@
         wMDAwMDAwMDAwMDAAACAAACAAACAAACAAACAAACAAACAAACAwMDAwMDAwMDAAACAAACAAACAAACAwMDA
         wMDAAACAAACAAACAAACAwMDAAACAAACAAACAAACAwMDAwMDAwMDAwMDAAACAAACAAACAAACAAACAAACA
         AACAwMDAwMDAwMDAwMDAwMDAwMDAAACAAACAAACA
-</value>
-  </data>
-  <data name="cmdDown.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAAkAAAAGCAYAAAARx7TFAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAAAYdEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My4zNqnn4iUA
-        AABASURBVBhXfYtJDgAgCANZDvz/xWoRcY2TkBZaqFFEpEBV1XXs6c0sQ2a+C907eUARionnySPcCwse
-        xsOXo0BUARJBIkizvKDHAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="cmdUp.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAAkAAAAGCAYAAAARx7TFAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAAAYdEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My4zNqnn4iUA
-        AAA9SURBVBhXdYtbCgBACALLPrr/iV2K2ge0gmQ4yiDW/SoAquoMVpE2s86PCCCLARZx970MoOHwlc/T
-        8AuCC0fPIkh8oPRgAAAAAElFTkSuQmCC
 </value>
   </data>
   <metadata name="bindingSourceProject.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

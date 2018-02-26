@@ -301,7 +301,6 @@ Public Class clsUnit
 
     End Sub
 
-
     Private Sub SetValuesMetric()
         '========================
 
@@ -362,6 +361,16 @@ Public Class clsUnit
         Return CFacUserP
 
     End Function
+
+    Public Sub SetLFormat(ByVal UnitSystem_In As String)
+        '==============================================
+        If UnitSystem_In = "English" Then
+            mLFormat = "##0.000"
+
+        ElseIf UnitSystem_In = "Metric" Then
+            mLFormat = "###0.00"
+        End If
+    End Sub
 
     Public Function ConvF(ByVal Type_In As String, ByVal PHIndex_In As Integer, ByVal CustIndex_In As Integer) As Double
         '===============================================================================================================
@@ -591,6 +600,25 @@ Public Class clsUnit
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
+
+    End Function
+
+    Public Function Format_Val(ByVal Val_In As Double) As String
+        '============================================================
+
+        Dim pVal As String = "0"
+
+        Dim pDecimalPart As Double
+        pDecimalPart = Val_In - Int(Val_In)
+
+        If pDecimalPart <= mcEPS Then
+            pVal = Format(NInt(Val_In), "#####")
+
+        ElseIf pDecimalPart > mcEPS Then
+            pVal = Val_In.ToString("#####.#", CurrentCulture)
+        End If
+
+        Return pVal
 
     End Function
 

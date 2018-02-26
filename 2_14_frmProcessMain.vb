@@ -4,7 +4,7 @@
 '                      FORM MODULE   :  Process_frmMain                        '
 '                        VERSION NO  :  1.4                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  23FEB18                                '
+'                     LAST MODIFIED  :  26FEB18                                '
 '                                                                              '
 '===============================================================================
 Imports System.Globalization
@@ -348,13 +348,13 @@ Public Class Process_frmMain
             mTabIndex.Add(10)
         End If
         If (mPlanning) Then
-            mTabIndex.Add(11)
+            ''mTabIndex.Add(11)
         End If
         If (mShipping) Then
             mTabIndex.Add(12)
         End If
         If (mKeyChar) Then
-            mTabIndex.Add(13)
+            ''mTabIndex.Add(13)
         End If
 
     End Sub
@@ -369,10 +369,11 @@ Public Class Process_frmMain
         SBPanel3.Width = pWidth
 
         SBpanel1.Text = gUser.FirstName + " " + gUser.LastName
-        SBPanel3.Text = gUser.Role
+        SBPanel3.Text = "Role: " & gUser.Role
         Dim pCI As New CultureInfo("en-US")
-        SBPanel4.Text = Today.DayOfWeek.ToString() & ", " &
-                        Today.ToString(" MMMM dd, yyyy", pCI.DateTimeFormat()) 'US Format only
+        'SBPanel4.Text = Today.DayOfWeek.ToString() & ", " &
+        '                Today.ToString(" MMMM dd, yyyy", pCI.DateTimeFormat()) 'US Format only
+        SBPanel4.Text = Today.ToString("dd MMM yyyy", pCI.DateTimeFormat()) 'US Format only
         '--------------------------------------------------------------------------------------
 
         cmdDel_Rec.Enabled = False
@@ -955,6 +956,13 @@ Public Class Process_frmMain
         mProcess_Project.IssueCommnt.RetrieveFromDB(mProcess_Project.ID)
         ''mProcess_Project.Approval.RetrieveFromDB(mProcess_Project.ID)
 
+        'AES 26FEB18
+        If (mProcess_Project.Unit.LUnit_Cust = "in") Then
+            gUnit.SetLFormat("English")
+        Else
+            gUnit.SetLFormat("Metric")
+        End If
+
     End Sub
 
 
@@ -1130,8 +1138,8 @@ Public Class Process_frmMain
                 grdPreOrder_SalesData.Rows.Add()
                 grdPreOrder_SalesData.Rows(j).Cells(0).Value = .SalesData.Year(j)
                 grdPreOrder_SalesData.Rows(j).Cells(1).Value = .SalesData.Qty(j)
-                grdPreOrder_SalesData.Rows(j).Cells(2).Value = .SalesData.Price(j)
-                grdPreOrder_SalesData.Rows(j).Cells(3).Value = .SalesData.Total(j)
+                grdPreOrder_SalesData.Rows(j).Cells(2).Value = .SalesData.Price(j).ToString("#0.##")
+                grdPreOrder_SalesData.Rows(j).Cells(3).Value = .SalesData.Total(j).ToString("#0.##")
             Next
 
             If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "PreOrder")) Then
@@ -1338,7 +1346,7 @@ Public Class Process_frmMain
                 'grdCost_SplOperation.Rows(j).Cells(0).Value = .SplOperation.Desc(j)
                 grdCost_SplOperation.Rows(j).Cells(1).Value = .SplOperation.Spec(j)
                 grdCost_SplOperation.Rows(j).Cells(2).Value = .SplOperation.LeadTime(j)
-                grdCost_SplOperation.Rows(j).Cells(3).Value = .SplOperation.Cost(j).ToString("#.00")
+                grdCost_SplOperation.Rows(j).Cells(3).Value = .SplOperation.Cost(j).ToString("#0.##")
             Next
 
             'If (.EditedBy.User.Signed) Then
@@ -1379,7 +1387,7 @@ Public Class Process_frmMain
 
             txtApp_Fluid.Text = .Fluid
             If (Math.Abs(.MaxLeak) > gcEPS) Then
-                txtApp_MaxLeak.Text = .MaxLeak.ToString("##0.000")
+                txtApp_MaxLeak.Text = Format(.MaxLeak, gUnit.LFormat)    'AES 26FEB18 '.MaxLeak.ToString("##0.000")
             Else
                 txtApp_MaxLeak.Text = ""
             End If
@@ -1387,8 +1395,8 @@ Public Class Process_frmMain
             If (.IsPressCyclic) Then
                 cmbApp_PressCycle.Text = "Y"
                 txtApp_PressCycleFreq.Enabled = True
-                txtApp_PressCycleFreq.Text = .PressCycle_Freq.ToString("##0.000")
-                txtApp_PressCycleAmp.Text = .PressCycle_Amp.ToString("##0.000")
+                txtApp_PressCycleFreq.Text = gUnit.Format_Val(.PressCycle_Freq) '.PressCycle_Freq.ToString("##0.000")
+                txtApp_PressCycleAmp.Text = gUnit.Format_Val(.PressCycle_Amp) '.PressCycle_Amp.ToString("##0.000")
                 txtApp_PressCycleAmp.Enabled = True
             Else
                 cmbApp_PressCycle.Text = "N"
@@ -1438,49 +1446,49 @@ Public Class Process_frmMain
             grdApp_OpCond.AllowUserToAddRows = False
 
             If (Math.Abs(.OpCond.T.Assy) > gcEPS) Then
-                grdApp_OpCond.Rows(0).Cells(1).Value = .OpCond.T.Assy.ToString("##0.0")
+                grdApp_OpCond.Rows(0).Cells(1).Value = gUnit.Format_Val(.OpCond.T.Assy) '.OpCond.T.Assy.ToString("##0.0")
             Else
                 grdApp_OpCond.Rows(0).Cells(1).Value = ""
             End If
 
             If (Math.Abs(.OpCond.T.Min) > gcEPS) Then
-                grdApp_OpCond.Rows(0).Cells(2).Value = .OpCond.T.Min.ToString("##0.0")
+                grdApp_OpCond.Rows(0).Cells(2).Value = gUnit.Format_Val(.OpCond.T.Min) '.OpCond.T.Min.ToString("##0.0")
             Else
                 grdApp_OpCond.Rows(0).Cells(2).Value = ""
             End If
 
             If (Math.Abs(.OpCond.T.Max) > gcEPS) Then
-                grdApp_OpCond.Rows(0).Cells(3).Value = .OpCond.T.Max.ToString("##0.0")
+                grdApp_OpCond.Rows(0).Cells(3).Value = gUnit.Format_Val(.OpCond.T.Max) '.OpCond.T.Max.ToString("##0.0")
             Else
                 grdApp_OpCond.Rows(0).Cells(3).Value = ""
             End If
 
             If (Math.Abs(.OpCond.T.Oper) > gcEPS) Then
-                grdApp_OpCond.Rows(0).Cells(4).Value = .OpCond.T.Oper.ToString("##0.0")
+                grdApp_OpCond.Rows(0).Cells(4).Value = gUnit.Format_Val(.OpCond.T.Oper) '.OpCond.T.Oper.ToString("##0.0")
             Else
                 grdApp_OpCond.Rows(0).Cells(4).Value = ""
             End If
 
             If (Math.Abs(.OpCond.Press.Assy) > gcEPS) Then
-                grdApp_OpCond.Rows(1).Cells(1).Value = .OpCond.Press.Assy.ToString("##0.0")
+                grdApp_OpCond.Rows(1).Cells(1).Value = gUnit.Format_Val(.OpCond.Press.Assy) '.OpCond.Press.Assy.ToString("##0.0")
             Else
                 grdApp_OpCond.Rows(1).Cells(1).Value = ""
             End If
 
             If (Math.Abs(.OpCond.Press.Min) > gcEPS) Then
-                grdApp_OpCond.Rows(1).Cells(2).Value = .OpCond.Press.Min.ToString("##0.0")
+                grdApp_OpCond.Rows(1).Cells(2).Value = gUnit.Format_Val(.OpCond.Press.Min) '.OpCond.Press.Min.ToString("##0.0")
             Else
                 grdApp_OpCond.Rows(1).Cells(2).Value = ""
             End If
 
             If (Math.Abs(.OpCond.Press.Max) > gcEPS) Then
-                grdApp_OpCond.Rows(1).Cells(3).Value = .OpCond.Press.Max.ToString("##0.0")
+                grdApp_OpCond.Rows(1).Cells(3).Value = gUnit.Format_Val(.OpCond.Press.Max) '.OpCond.Press.Max.ToString("##0.0")
             Else
                 grdApp_OpCond.Rows(1).Cells(3).Value = ""
             End If
 
             If (Math.Abs(.OpCond.Press.Oper) > gcEPS) Then
-                grdApp_OpCond.Rows(1).Cells(4).Value = .OpCond.Press.Oper.ToString("##0.0")
+                grdApp_OpCond.Rows(1).Cells(4).Value = gUnit.Format_Val(.OpCond.Press.Oper) '.OpCond.Press.Oper.ToString("##0.0")
             Else
                 grdApp_OpCond.Rows(1).Cells(4).Value = ""
             End If
@@ -1493,25 +1501,25 @@ Public Class Process_frmMain
             grdApp_Load.AllowUserToAddRows = False
 
             If (Math.Abs(.Load.Assy.Min) > gcEPS) Then
-                grdApp_Load.Rows(0).Cells(1).Value = .Load.Assy.Min.ToString("##0.0")
+                grdApp_Load.Rows(0).Cells(1).Value = Format(.Load.Assy.Min, gUnit.LFormat) '.Load.Assy.Min.ToString("##0.0")
             Else
                 grdApp_Load.Rows(0).Cells(1).Value = ""
             End If
 
             If (Math.Abs(.Load.Assy.Max) > gcEPS) Then
-                grdApp_Load.Rows(0).Cells(2).Value = .Load.Assy.Max.ToString("##0.0")
+                grdApp_Load.Rows(0).Cells(2).Value = Format(.Load.Assy.Max, gUnit.LFormat) '.Load.Assy.Max.ToString("##0.0")
             Else
                 grdApp_Load.Rows(0).Cells(2).Value = ""
             End If
 
             If (Math.Abs(.Load.Oper.Min) > gcEPS) Then
-                grdApp_Load.Rows(1).Cells(1).Value = .Load.Oper.Min.ToString("##0.0")
+                grdApp_Load.Rows(1).Cells(1).Value = Format(.Load.Oper.Min, gUnit.LFormat) '.Load.Oper.Min.ToString("##0.0")
             Else
                 grdApp_Load.Rows(1).Cells(1).Value = ""
             End If
 
             If (Math.Abs(.Load.Oper.Max) > gcEPS) Then
-                grdApp_Load.Rows(1).Cells(2).Value = .Load.Oper.Max.ToString("##0.0")
+                grdApp_Load.Rows(1).Cells(2).Value = Format(.Load.Oper.Max, gUnit.LFormat) '.Load.Oper.Max.ToString("##0.0")
             Else
                 grdApp_Load.Rows(1).Cells(2).Value = ""
             End If
@@ -1539,10 +1547,10 @@ Public Class Process_frmMain
                     Else
                         grdApp_Face_Cavity.Rows(j).Cells(0).Value = ""
                     End If
-                    grdApp_Face_Cavity.Rows(j).Cells(1).Value = .Cavity.Assy(j).Min.ToString("##0.000")
-                    grdApp_Face_Cavity.Rows(j).Cells(2).Value = .Cavity.Assy(j).Max.ToString("##0.000")
-                    grdApp_Face_Cavity.Rows(j).Cells(3).Value = .Cavity.Oper(j).Min.ToString("##0.000")
-                    grdApp_Face_Cavity.Rows(j).Cells(4).Value = .Cavity.Oper(j).Max.ToString("##0.000")
+                    grdApp_Face_Cavity.Rows(j).Cells(1).Value = Format(.Cavity.Assy(j).Min, gUnit.LFormat) '.Cavity.Assy(j).Min.ToString("##0.000")
+                    grdApp_Face_Cavity.Rows(j).Cells(2).Value = Format(.Cavity.Assy(j).Max, gUnit.LFormat) '.Cavity.Assy(j).Max.ToString("##0.000")
+                    grdApp_Face_Cavity.Rows(j).Cells(3).Value = Format(.Cavity.Oper(j).Min, gUnit.LFormat) '.Cavity.Oper(j).Min.ToString("##0.000")
+                    grdApp_Face_Cavity.Rows(j).Cells(4).Value = Format(.Cavity.Oper(j).Max, gUnit.LFormat) '.Cavity.Oper(j).Max.ToString("##0.000")
                 Next
 
                 'For j As Integer = 0 To .Cavity.ID_Cavity.Count - 1
@@ -1558,25 +1566,25 @@ Public Class Process_frmMain
                 txtApp_Mat2_Face.Text = .CavityFlange.Mat2
 
                 If (Math.Abs(.CavityFlange.Hard1) > gcEPS) Then
-                    txtApp_Hardness1_Face.Text = .CavityFlange.Hard1.ToString("##0.000")
+                    txtApp_Hardness1_Face.Text = Format(.CavityFlange.Hard1, gUnit.LFormat) '.CavityFlange.Hard1.ToString("##0.000")
                 Else
                     txtApp_Hardness1_Face.Text = ""
                 End If
 
                 If (Math.Abs(.CavityFlange.Hard2) > gcEPS) Then
-                    txtApp_Hardness2_Face.Text = .CavityFlange.Hard2.ToString("##0.000")
+                    txtApp_Hardness2_Face.Text = Format(.CavityFlange.Hard2, gUnit.LFormat) '.CavityFlange.Hard2.ToString("##0.000")
                 Else
                     txtApp_Hardness2_Face.Text = ""
                 End If
 
                 If (Math.Abs(.CavityFlange.SF1) > gcEPS) Then
-                    txtApp_SF1_Face.Text = .CavityFlange.SF1.ToString("##0.000")
+                    txtApp_SF1_Face.Text = Format(.CavityFlange.SF1, gUnit.LFormat) '.CavityFlange.SF1.ToString("##0.000")
                 Else
                     txtApp_SF1_Face.Text = ""
                 End If
 
                 If (Math.Abs(.CavityFlange.SF2) > gcEPS) Then
-                    txtApp_SF2_Face.Text = .CavityFlange.SF2.ToString("##0.000")
+                    txtApp_SF2_Face.Text = Format(.CavityFlange.SF2, gUnit.LFormat) '.CavityFlange.SF2.ToString("##0.000")
                 Else
                     txtApp_SF2_Face.Text = ""
                 End If
@@ -1588,7 +1596,7 @@ Public Class Process_frmMain
                 cmbApp_Face_POrient.Text = gPartProject.PNR.HW.POrient '.Face.POrient       'AES 09JAN18
 
                 If (Math.Abs(.Face.MaxFlangeSep) > gcEPS) Then
-                    txtApp_Face_MaxFlangeSeparation.Text = .Face.MaxFlangeSep.ToString("##0.000")
+                    txtApp_Face_MaxFlangeSeparation.Text = Format(.Face.MaxFlangeSep, gUnit.LFormat) '.Face.MaxFlangeSep.ToString("##0.000")
                 Else
                     txtApp_Face_MaxFlangeSeparation.Text = ""
                 End If
@@ -1627,10 +1635,10 @@ Public Class Process_frmMain
                     Else
                         grdApp_Axial_Cavity.Rows(j).Cells(0).Value = ""
                     End If
-                    grdApp_Axial_Cavity.Rows(j).Cells(1).Value = .Cavity.Assy(j).Min.ToString("##0.000")
-                    grdApp_Axial_Cavity.Rows(j).Cells(2).Value = .Cavity.Assy(j).Max.ToString("##0.000")
-                    grdApp_Axial_Cavity.Rows(j).Cells(3).Value = .Cavity.Oper(j).Min.ToString("##0.000")
-                    grdApp_Axial_Cavity.Rows(j).Cells(4).Value = .Cavity.Oper(j).Max.ToString("##0.000")
+                    grdApp_Axial_Cavity.Rows(j).Cells(1).Value = Format(.Cavity.Assy(j).Min, gUnit.LFormat) '.Cavity.Assy(j).Min.ToString("##0.000")
+                    grdApp_Axial_Cavity.Rows(j).Cells(2).Value = Format(.Cavity.Assy(j).Max, gUnit.LFormat) '.Cavity.Assy(j).Max.ToString("##0.000")
+                    grdApp_Axial_Cavity.Rows(j).Cells(3).Value = Format(.Cavity.Oper(j).Min, gUnit.LFormat) '.Cavity.Oper(j).Min.ToString("##0.000")
+                    grdApp_Axial_Cavity.Rows(j).Cells(4).Value = Format(.Cavity.Oper(j).Max, gUnit.LFormat) '.Cavity.Oper(j).Max.ToString("##0.000")
                 Next
 
                 ''....Axial Seal
@@ -1647,25 +1655,25 @@ Public Class Process_frmMain
                 txtApp_Mat2_Axial.Text = .CavityFlange.Mat2
 
                 If (Math.Abs(.CavityFlange.Hard1) > gcEPS) Then
-                    txtApp_Hardness1_Axial.Text = .CavityFlange.Hard1.ToString("##0.000")
+                    txtApp_Hardness1_Axial.Text = Format(.CavityFlange.Hard1, gUnit.LFormat) '.CavityFlange.Hard1.ToString("##0.000")
                 Else
                     txtApp_Hardness1_Axial.Text = ""
                 End If
 
                 If (Math.Abs(.CavityFlange.Hard2) > gcEPS) Then
-                    txtApp_Hardness2_Axial.Text = .CavityFlange.Hard2.ToString("##0.000")
+                    txtApp_Hardness2_Axial.Text = Format(.CavityFlange.Hard2, gUnit.LFormat) '.CavityFlange.Hard2.ToString("##0.000")
                 Else
                     txtApp_Hardness2_Axial.Text = ""
                 End If
 
                 If (Math.Abs(.CavityFlange.SF1) > gcEPS) Then
-                    txtApp_SF1_Axial.Text = .CavityFlange.SF1.ToString("##0.000")
+                    txtApp_SF1_Axial.Text = Format(.CavityFlange.SF1, gUnit.LFormat) '.CavityFlange.SF1.ToString("##0.000")
                 Else
                     txtApp_SF1_Axial.Text = ""
                 End If
 
                 If (Math.Abs(.CavityFlange.SF2) > gcEPS) Then
-                    txtApp_SF2_Axial.Text = .CavityFlange.SF2.ToString("##0.000")
+                    txtApp_SF2_Axial.Text = Format(.CavityFlange.SF2, gUnit.LFormat) '.CavityFlange.SF2.ToString("##0.000")
                 Else
                     txtApp_SF2_Axial.Text = ""
                 End If
@@ -1682,7 +1690,7 @@ Public Class Process_frmMain
                 If (.Axial.IsRotating) Then
                     cmbApp_Rotate_Axial.Text = "Y"
                     If (Math.Abs(.Axial.RPM)) Then
-                        txtApp_RotateRPM_Axial.Text = .Axial.RPM.ToString("##0")
+                        txtApp_RotateRPM_Axial.Text = gUnit.Format_Val(.Axial.RPM) '.Axial.RPM.ToString("##0")
                     Else
                         txtApp_RotateRPM_Axial.Text = ""
                     End If
@@ -1696,25 +1704,25 @@ Public Class Process_frmMain
                     cmbApp_Recip_Axial.Text = "Y"
 
                     If (Math.Abs(.Axial.Recip_Stroke)) Then
-                        txtApp_RecipStrokeL_Axial.Text = .Axial.Recip_Stroke.ToString("##0")
+                        txtApp_RecipStrokeL_Axial.Text = gUnit.Format_Val(.Axial.Recip_Stroke) '.Axial.Recip_Stroke.ToString("##0")
                     Else
                         txtApp_RecipStrokeL_Axial.Text = ""
                     End If
 
                     If (Math.Abs(.Axial.Recip_V)) Then
-                        txtApp_RecipV_Axial.Text = .Axial.Recip_V.ToString("##0")
+                        txtApp_RecipV_Axial.Text = gUnit.Format_Val(.Axial.Recip_V) '.Axial.Recip_V.ToString("##0")
                     Else
                         txtApp_RecipV_Axial.Text = ""
                     End If
 
                     If (Math.Abs(.Axial.Recip_CycleRate)) Then
-                        txtApp_RecipCycleRate_Axial.Text = .Axial.Recip_CycleRate.ToString("##0")
+                        txtApp_RecipCycleRate_Axial.Text = gUnit.Format_Val(.Axial.Recip_CycleRate) '.Axial.Recip_CycleRate.ToString("##0")
                     Else
                         txtApp_RecipCycleRate_Axial.Text = ""
                     End If
 
                     If (Math.Abs(.Axial.Recip_ServiceLife)) Then
-                        txtApp_RecipServiceLife_Axial.Text = .Axial.Recip_ServiceLife.ToString("##0")
+                        txtApp_RecipServiceLife_Axial.Text = gUnit.Format_Val(.Axial.Recip_ServiceLife) '.Axial.Recip_ServiceLife.ToString("##0")
                     Else
                         txtApp_RecipServiceLife_Axial.Text = ""
                     End If
@@ -1731,25 +1739,25 @@ Public Class Process_frmMain
                     cmbApp_Osc_Axial.Text = "Y"
 
                     If (Math.Abs(.Axial.Oscilate_Rot)) Then
-                        txtApp_OscRot_Axial.Text = .Axial.Oscilate_Rot.ToString("##0")
+                        txtApp_OscRot_Axial.Text = gUnit.Format_Val(.Axial.Oscilate_Rot) '.Axial.Oscilate_Rot.ToString("##0")
                     Else
                         txtApp_OscRot_Axial.Text = ""
                     End If
 
                     If (Math.Abs(.Axial.Oscilate_V)) Then
-                        txtApp_OscV_Axial.Text = .Axial.Oscilate_V.ToString("##0")
+                        txtApp_OscV_Axial.Text = gUnit.Format_Val(.Axial.Oscilate_V) '.Axial.Oscilate_V.ToString("##0")
                     Else
                         txtApp_OscV_Axial.Text = ""
                     End If
 
                     If (Math.Abs(.Axial.Oscilate_CycleRate)) Then
-                        txtApp_OscCycleRate_Axial.Text = .Axial.Oscilate_CycleRate.ToString("##0")
+                        txtApp_OscCycleRate_Axial.Text = gUnit.Format_Val(.Axial.Oscilate_CycleRate) '.Axial.Oscilate_CycleRate.ToString("##0")
                     Else
                         txtApp_OscCycleRate_Axial.Text = ""
                     End If
 
                     If (Math.Abs(.Axial.Oscilate_ServiceLife)) Then
-                        txtApp_OscServiceLife_Axial.Text = .Axial.Oscilate_ServiceLife.ToString("##0")
+                        txtApp_OscServiceLife_Axial.Text = gUnit.Format_Val(.Axial.Oscilate_ServiceLife) '.Axial.Oscilate_ServiceLife.ToString("##0")
                     Else
                         txtApp_OscServiceLife_Axial.Text = ""
                     End If
@@ -2027,21 +2035,21 @@ Public Class Process_frmMain
                 'grdDesign_Seal.Rows(i).Cells(0).Value = .SealDim.Name(i)
 
                 If (Math.Abs(.SealDim.Min(i)) > gcEPS) Then
-                    grdDesign_Seal.Rows(i).Cells(1).Value = .SealDim.Min(i).ToString("##0.000")
+                    grdDesign_Seal.Rows(i).Cells(1).Value = Format(.SealDim.Min(i), gUnit.LFormat) '.SealDim.Min(i).ToString("##0.000")
                 Else
                     grdDesign_Seal.Rows(i).Cells(1).Value = ""
                 End If
 
                 If (Math.Abs(.SealDim.Nom(i)) > gcEPS) Then
-                    grdDesign_Seal.Rows(i).Cells(2).Value = .SealDim.Nom(i).ToString("##0.000")
+                    grdDesign_Seal.Rows(i).Cells(2).Value = Format(.SealDim.Nom(i), gUnit.LFormat) '.SealDim.Nom(i).ToString("##0.000")
                 Else
-                    grdDesign_Seal.Rows(i).Cells(2).Value = .SealDim.Nom(i).ToString("##0.000")
+                    grdDesign_Seal.Rows(i).Cells(2).Value = "" '.SealDim.Nom(i).ToString("##0.000")
                 End If
 
                 If (Math.Abs(.SealDim.Max(i)) > gcEPS) Then
-                    grdDesign_Seal.Rows(i).Cells(3).Value = .SealDim.Max(i).ToString("##0.000")
+                    grdDesign_Seal.Rows(i).Cells(3).Value = Format(.SealDim.Max(i), gUnit.LFormat) '.SealDim.Max(i).ToString("##0.000")
                 Else
-                    grdDesign_Seal.Rows(i).Cells(3).Value = .SealDim.Max(i).ToString("##0.000")
+                    grdDesign_Seal.Rows(i).Cells(3).Value = "" '.SealDim.Max(i).ToString("##0.000")
                 End If
 
             Next
@@ -2213,7 +2221,7 @@ Public Class Process_frmMain
                 grdPurchase_Mat.Rows(i).Cells(3).Value = .Mat.Status(i)
 
                 If (Math.Abs(.Mat.LeadTime(i)) > gcEPS) Then
-                    grdPurchase_Mat.Rows(i).Cells(4).Value = .Mat.LeadTime(i)
+                    grdPurchase_Mat.Rows(i).Cells(4).Value = gUnit.Format_Val(.Mat.LeadTime(i)) '.Mat.LeadTime(i)
                 Else
                     grdPurchase_Mat.Rows(i).Cells(4).Value = ""
                 End If
@@ -2227,7 +2235,7 @@ Public Class Process_frmMain
                 grdPurchase_Drawing.Rows(i).Cells(1).Value = .Dwg.Desc(i)
 
                 If (Math.Abs(.Dwg.LeadTime(i)) > gcEPS) Then
-                    grdPurchase_Drawing.Rows(i).Cells(2).Value = .Dwg.LeadTime(i).ToString("#0.0")
+                    grdPurchase_Drawing.Rows(i).Cells(2).Value = gUnit.Format_Val(.Dwg.LeadTime(i)) '.Dwg.LeadTime(i).ToString("#0.0")
                 Else
                     grdPurchase_Drawing.Rows(i).Cells(2).Value = ""
                 End If
@@ -2317,8 +2325,8 @@ Public Class Process_frmMain
 
                 'grdQuality_SplOperation.Rows(j).Cells(0).Value = mProcess_Project.Cost.SplOperation.Desc(j)
                 grdQuality_SplOperation.Rows(j).Cells(1).Value = mProcess_Project.Cost.SplOperation.Spec(j)
-                grdQuality_SplOperation.Rows(j).Cells(2).Value = mProcess_Project.Cost.SplOperation.LeadTime(j)
-                grdQuality_SplOperation.Rows(j).Cells(3).Value = mProcess_Project.Cost.SplOperation.Cost(j).ToString("#.00")
+                grdQuality_SplOperation.Rows(j).Cells(2).Value = gUnit.Format_Val(mProcess_Project.Cost.SplOperation.LeadTime(j)) 'mProcess_Project.Cost.SplOperation.LeadTime(j)
+                grdQuality_SplOperation.Rows(j).Cells(3).Value = mProcess_Project.Cost.SplOperation.Cost(j).ToString("#0.##")
             Next
 
             If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Qlty")) Then
@@ -2346,7 +2354,7 @@ Public Class Process_frmMain
                 grdDrawing_Needed.Rows(j).Cells(2).Value = .Needed.Status(j)
 
                 If (Math.Abs(.Needed.LeadTime(j)) > gcEPS) Then
-                    grdDrawing_Needed.Rows(j).Cells(3).Value = .Needed.LeadTime(j)
+                    grdDrawing_Needed.Rows(j).Cells(3).Value = gUnit.Format_Val(.Needed.LeadTime(j)) '.Needed.LeadTime(j)
                 Else
                     grdDrawing_Needed.Rows(j).Cells(3).Value = ""
                 End If
@@ -2406,13 +2414,13 @@ Public Class Process_frmMain
 
             '...Leak
             If (Math.Abs(.Leak.Compress_Unplated) > gcEPS) Then
-                txtTest_CompressPre_Leak.Text = .Leak.Compress_Unplated.ToString("#0.###")
+                txtTest_CompressPre_Leak.Text = Format(.Leak.Compress_Unplated, gUnit.LFormat) '.Leak.Compress_Unplated.ToString("#0.###")
             Else
                 txtTest_CompressPre_Leak.Text = ""
             End If
 
             If (Math.Abs(.Leak.Compress_Plated) > gcEPS) Then
-                txtTest_CompressPost_Leak.Text = .Leak.Compress_Plated.ToString("#0.###")
+                txtTest_CompressPost_Leak.Text = Format(.Leak.Compress_Plated, gUnit.LFormat) '.Leak.Compress_Plated.ToString("#0.###")
             Else
                 txtTest_CompressPost_Leak.Text = ""
             End If
@@ -2421,25 +2429,25 @@ Public Class Process_frmMain
             cmbTest_MediaPost_Leak.Text = .Leak.Medium_Plated
 
             If (Math.Abs(.Leak.Press_Unplated) > gcEPS) Then
-                txtTest_PressPre_Leak.Text = .Leak.Press_Unplated.ToString("#0.###")
+                txtTest_PressPre_Leak.Text = gUnit.Format_Val(.Leak.Press_Unplated) '.Leak.Press_Unplated.ToString("#0.###")
             Else
                 txtTest_PressPre_Leak.Text = ""
             End If
 
             If (Math.Abs(.Leak.Press_Plated) > gcEPS) Then
-                txtTest_PressPost_Leak.Text = .Leak.Press_Plated.ToString("#0.###")
+                txtTest_PressPost_Leak.Text = gUnit.Format_Val(.Leak.Press_Plated) '.Leak.Press_Plated.ToString("#0.###")
             Else
                 txtTest_PressPost_Leak.Text = ""
             End If
 
             If (Math.Abs(.Leak.Max_Unplated) > gcEPS) Then
-                txtTest_ReqPre_Leak.Text = .Leak.Max_Unplated.ToString("#0.###")
+                txtTest_ReqPre_Leak.Text = Format(.Leak.Max_Unplated, gUnit.LFormat) '.Leak.Max_Unplated.ToString("#0.###")
             Else
                 txtTest_ReqPre_Leak.Text = ""
             End If
 
             If (Math.Abs(.Leak.Max_Plated) > gcEPS) Then
-                txtTest_ReqPost_Leak.Text = .Leak.Max_Plated.ToString("#0.###")
+                txtTest_ReqPost_Leak.Text = Format(.Leak.Max_Plated, gUnit.LFormat) '.Leak.Max_Plated.ToString("#0.###")
             Else
                 txtTest_ReqPost_Leak.Text = ""
             End If
@@ -2452,25 +2460,25 @@ Public Class Process_frmMain
 
             '...Load
             If (Math.Abs(.Load.Compress_Unplated) > gcEPS) Then
-                txtTest_CompressPre_Load.Text = .Load.Compress_Unplated.ToString("#0.###")
+                txtTest_CompressPre_Load.Text = Format(.Load.Compress_Unplated, gUnit.LFormat) '.Load.Compress_Unplated.ToString("#0.###")
             Else
                 txtTest_CompressPre_Load.Text = ""
             End If
 
             If (Math.Abs(.Load.Compress_Plated) > gcEPS) Then
-                txtTest_CompressPost_Load.Text = .Load.Compress_Plated.ToString("#0.###")
+                txtTest_CompressPost_Load.Text = Format(.Load.Compress_Plated, gUnit.LFormat) '.Load.Compress_Plated.ToString("#0.###")
             Else
                 txtTest_CompressPost_Load.Text = ""
             End If
 
             If (Math.Abs(.Load.Max_Unplated) > gcEPS) Then
-                txtTest_ReqPre_Load.Text = .Load.Max_Unplated.ToString("#0.###")
+                txtTest_ReqPre_Load.Text = Format(.Load.Max_Unplated, gUnit.LFormat) '.Load.Max_Unplated.ToString("#0.###")
             Else
                 txtTest_ReqPre_Load.Text = ""
             End If
 
             If (Math.Abs(.Load.Max_Plated) > gcEPS) Then
-                txtTest_ReqPost_Load.Text = .Load.Max_Plated.ToString("#0.###")
+                txtTest_ReqPost_Load.Text = Format(.Load.Max_Plated, gUnit.LFormat) '.Load.Max_Plated.ToString("#0.###")
             Else
                 txtTest_ReqPost_Load.Text = ""
             End If
@@ -2483,25 +2491,25 @@ Public Class Process_frmMain
 
             '....SpringBack
             If (Math.Abs(.SpringBack.Compress_Unplated) > gcEPS) Then
-                txtTest_CompressPre_SpringBack.Text = .SpringBack.Compress_Unplated.ToString("#0.###")
+                txtTest_CompressPre_SpringBack.Text = Format(.SpringBack.Compress_Unplated, gUnit.LFormat) '.SpringBack.Compress_Unplated.ToString("#0.###")
             Else
                 txtTest_CompressPre_SpringBack.Text = ""
             End If
 
             If (Math.Abs(.SpringBack.Compress_Plated) > gcEPS) Then
-                txtTest_CompressPost_SpringBack.Text = .SpringBack.Compress_Plated.ToString("#0.###")
+                txtTest_CompressPost_SpringBack.Text = Format(.SpringBack.Compress_Plated, gUnit.LFormat) '.SpringBack.Compress_Plated.ToString("#0.###")
             Else
                 txtTest_CompressPost_SpringBack.Text = ""
             End If
 
             If (Math.Abs(.SpringBack.Max_Unplated) > gcEPS) Then
-                txtTest_ReqPre_SpringBack.Text = .SpringBack.Max_Unplated.ToString("#0.###")
+                txtTest_ReqPre_SpringBack.Text = Format(.SpringBack.Max_Unplated, gUnit.LFormat) '.SpringBack.Max_Unplated.ToString("#0.###")
             Else
                 txtTest_ReqPre_SpringBack.Text = ""
             End If
 
             If (Math.Abs(.SpringBack.Max_Plated) > gcEPS) Then
-                txtTest_ReqPost_SpringBack.Text = .SpringBack.Max_Plated.ToString("#0.###")
+                txtTest_ReqPost_SpringBack.Text = Format(.SpringBack.Max_Plated, gUnit.LFormat) '.SpringBack.Max_Plated.ToString("#0.###")
             Else
                 txtTest_ReqPost_SpringBack.Text = ""
             End If
@@ -2678,6 +2686,12 @@ Public Class Process_frmMain
 
     Private Sub SetLabel_Unit_Cust()
         '===========================
+        If (mProcess_Project.Unit.LUnit_Cust = "in") Then
+            gUnit.SetLFormat("English")
+        Else
+            gUnit.SetLFormat("Metric")
+        End If
+
         '....Application
         lblApp_MaxLeak_Unit.Text = mProcess_Project.Unit.LeakUnit_Cust
         lblApp_T_Unit.Text = mProcess_Project.Unit.TUnit_Cust
@@ -2702,6 +2716,12 @@ Public Class Process_frmMain
 
     Private Sub SetLabel_Unit_PH()
         '===========================
+        If (mProcess_Project.Unit.LUnit_PH = "in") Then
+            gUnit.SetLFormat("English")
+        Else
+            gUnit.SetLFormat("Metric")
+        End If
+
         '....Application
         lblApp_MaxLeak_Unit.Text = mProcess_Project.Unit.LeakUnit_PH
         lblApp_T_Unit.Text = mProcess_Project.Unit.TUnit_PH
@@ -3166,6 +3186,103 @@ Public Class Process_frmMain
         '============================================================================================
         Dim pCI As New CultureInfo("en-US")
 
+        If (mPreOrder And TabControl1.SelectedIndex = 0) Then
+            cmdRiskAna.Enabled = True
+            cmdIssueComment.Enabled = True
+            cmdSealPart.Enabled = True
+        End If
+
+        If (mExport And TabControl1.SelectedIndex = 1) Then
+            cmdRiskAna.Enabled = True
+            cmdIssueComment.Enabled = True
+            cmdSealPart.Enabled = False
+        End If
+
+        If (mOrdEntry And TabControl1.SelectedIndex = 2) Then
+            cmdRiskAna.Enabled = True
+            cmdIssueComment.Enabled = True
+            cmdSealPart.Enabled = False
+        End If
+
+        If (mCost And TabControl1.SelectedIndex = 3) Then
+            cmdRiskAna.Enabled = True
+            cmdIssueComment.Enabled = True
+            cmdSealPart.Enabled = False
+        End If
+
+        If (mApp And TabControl1.SelectedIndex = 4) Then
+            cmdRiskAna.Enabled = True
+            cmdIssueComment.Enabled = True
+            cmdSealPart.Enabled = False
+        End If
+
+        If (mDesign And TabControl1.SelectedIndex = 5) Then
+            cmdRiskAna.Enabled = True
+            cmdIssueComment.Enabled = True
+            cmdSealPart.Enabled = True
+        End If
+
+        If (mManf And TabControl1.SelectedIndex = 6) Then
+            cmdRiskAna.Enabled = True
+            cmdIssueComment.Enabled = True
+            cmdSealPart.Enabled = False
+        End If
+
+        If (mPurchase And TabControl1.SelectedIndex = 7) Then
+            cmdRiskAna.Enabled = True
+            cmdIssueComment.Enabled = True
+            cmdSealPart.Enabled = False
+        End If
+
+        If (mQlty And TabControl1.SelectedIndex = 8) Then
+            cmdRiskAna.Enabled = True
+            cmdIssueComment.Enabled = True
+            cmdSealPart.Enabled = False
+        End If
+
+        If (mDwg And TabControl1.SelectedIndex = 9) Then
+            cmdRiskAna.Enabled = True
+            cmdIssueComment.Enabled = True
+            cmdSealPart.Enabled = False
+        End If
+
+        If (mTest And TabControl1.SelectedIndex = 10) Then
+            cmdRiskAna.Enabled = True
+            cmdIssueComment.Enabled = True
+            cmdSealPart.Enabled = False
+        End If
+
+        If (mPlanning And TabControl1.SelectedIndex = 11) Then
+            cmdRiskAna.Enabled = False
+            cmdIssueComment.Enabled = False
+            cmdSealPart.Enabled = False
+        End If
+
+        If (mShipping And TabControl1.SelectedIndex = 12) Then
+            cmdRiskAna.Enabled = True
+            cmdIssueComment.Enabled = True
+            cmdSealPart.Enabled = False
+        End If
+
+        If (TabControl1.SelectedIndex = 13) Then
+            cmdRiskAna.Enabled = False
+            cmdIssueComment.Enabled = False
+            cmdSealPart.Enabled = False
+        End If
+
+        If (TabControl1.SelectedIndex = 14) Then
+            cmdRiskAna.Enabled = False
+            cmdIssueComment.Enabled = False
+            cmdSealPart.Enabled = False
+        End If
+
+        If (TabControl1.SelectedIndex = 15) Then
+            cmdRiskAna.Enabled = False
+            cmdIssueComment.Enabled = False
+            cmdSealPart.Enabled = False
+        End If
+
+
         If (CompareVal_Header()) Then
             txtDateMod.Text = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
             txtModifiedBy.Text = gUser.FirstName + " " + gUser.LastName
@@ -3258,11 +3375,22 @@ Public Class Process_frmMain
         Dim pPencil As New SolidBrush(Color.Black)
         ''RENEMED VARIEBLE HERE...
         Dim pRect As RectangleF = RectangleF.op_Implicit(pTabControl.GetTabRect(e.Index))
+        pGrph.FillRectangle(Brushes.LightGray, pRect)
 
         'ControlPaint.DrawBorder(e.Graphics, TabControl1.TabPages(e.Index).ClientRectangle, Color.Black, ButtonBorderStyle.Solid)
+        If (e.Index = TabControl1.SelectedIndex) Then
+            pPencil = New SolidBrush(Color.White)
+            pGrph.FillRectangle(Brushes.Gray, pRect)
+        End If
 
         If mTabIndex.Contains(e.Index) Then
             pFont = New Font(pFont, FontStyle.Bold)
+            pGrph.FillRectangle(Brushes.LightSteelBlue, pRect)
+
+            If (e.Index = TabControl1.SelectedIndex) Then
+                pPencil = New SolidBrush(Color.White)
+                pGrph.FillRectangle(Brushes.SteelBlue, pRect)
+            End If
 
             'ControlPaint.DrawBorder(e.Graphics, pTabControl.TabPages(e.Index).ClientRectangle, Color.Black, ButtonBorderStyle.Solid)
 
@@ -3274,12 +3402,19 @@ Public Class Process_frmMain
         If (gUser.Role <> "Viewer") Then
             If e.Index = 14 Then
                 pFont = New Font(pFont, FontStyle.Bold)
+                pGrph.FillRectangle(Brushes.LightSteelBlue, pRect)
+
+                If (e.Index = TabControl1.SelectedIndex) Then
+                    pPencil = New SolidBrush(Color.White)
+                    pGrph.FillRectangle(Brushes.SteelBlue, pRect)
+                End If
             End If
         End If
 
+
         'pPencil = New SolidBrush(Color.White)
         'CHANGED BACKGROUN COLOR HERE...
-        pGrph.FillRectangle(Brushes.LightSteelBlue, pRect)
+        'pGrph.FillRectangle(Brushes.LightSteelBlue, pRect)
         pGrph.DrawString(pText, pFont, pPencil, pRect, pFormat)
 
     End Sub
@@ -9102,8 +9237,10 @@ Public Class Process_frmMain
     Private Sub ConvVal_PH()
         '===================
         SetLabel_Unit_PH()
+
         If (txtApp_MaxLeak.Text <> "") Then
-            txtApp_MaxLeak.Text = Convert.ToDouble(txtApp_MaxLeak.Text) * gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust).ToString("#0.000")
+            Dim pVal As Double = Convert.ToDouble(txtApp_MaxLeak.Text) * gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust)
+            txtApp_MaxLeak.Text = gUnit.Format_Val(pVal) 'Convert.ToDouble(txtApp_MaxLeak.Text) * gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust).ToString("#0.000")
         End If
 
         For i As Integer = 0 To grdApp_OpCond.Rows.Count - 1
@@ -9111,12 +9248,13 @@ Public Class Process_frmMain
                 If (Not IsNothing(grdApp_OpCond.Rows(i).Cells(j).Value)) Then
                     If (i = 0) Then
                         If (grdApp_OpCond.Rows(i).Cells(j).Value.ToString() <> "") Then
-                            grdApp_OpCond.Rows(i).Cells(j).Value = gUnit.ConvFToC(Convert.ToDouble(grdApp_OpCond.Rows(i).Cells(j).Value)).ToString("#0.0")
+                            grdApp_OpCond.Rows(i).Cells(j).Value = gUnit.Format_Val(gUnit.ConvFToC(Convert.ToDouble(grdApp_OpCond.Rows(i).Cells(j).Value))) ' gUnit.ConvFToC(Convert.ToDouble(grdApp_OpCond.Rows(i).Cells(j).Value)).ToString("#0.0")
                         End If
 
                     Else
                         If (grdApp_OpCond.Rows(i).Cells(j).Value.ToString() <> "") Then
-                            grdApp_OpCond.Rows(i).Cells(j).Value = (Convert.ToDouble(grdApp_OpCond.Rows(i).Cells(j).Value) * gUnit.ConvF("P", mProcess_Project.Unit.PIndx_PH, mProcess_Project.Unit.PIndx_Cust)).ToString("#0.000")
+                            Dim pVal As Double = (Convert.ToDouble(grdApp_OpCond.Rows(i).Cells(j).Value) * gUnit.ConvF("P", mProcess_Project.Unit.PIndx_PH, mProcess_Project.Unit.PIndx_Cust))
+                            grdApp_OpCond.Rows(i).Cells(j).Value = gUnit.Format_Val(pVal) '(Convert.ToDouble(grdApp_OpCond.Rows(i).Cells(j).Value) * gUnit.ConvF("P", mProcess_Project.Unit.PIndx_PH, mProcess_Project.Unit.PIndx_Cust)).ToString("#0.000")
                         End If
                     End If
 
@@ -9137,7 +9275,8 @@ Public Class Process_frmMain
                     'Dim pFact As Double = pF_Fact / pL_Fact
 
                     If (grdApp_Load.Rows(i).Cells(j).Value.ToString() <> "") Then
-                        grdApp_Load.Rows(i).Cells(j).Value = (Convert.ToDouble(grdApp_Load.Rows(i).Cells(j).Value) * pFact).ToString("#0.000")
+                        Dim pVal As Double = (Convert.ToDouble(grdApp_Load.Rows(i).Cells(j).Value) * pFact)
+                        grdApp_Load.Rows(i).Cells(j).Value = Format(pVal, gUnit.LFormat) '(Convert.ToDouble(grdApp_Load.Rows(i).Cells(j).Value) * pFact).ToString("#0.000")
                     End If
 
                 End If
@@ -9149,7 +9288,8 @@ Public Class Process_frmMain
                 If (Not IsNothing(grdApp_Face_Cavity.Rows(i).Cells(j).Value)) Then
 
                     If (grdApp_Face_Cavity.Rows(i).Cells(j).Value.ToString() <> "") Then
-                        grdApp_Face_Cavity.Rows(i).Cells(j).Value = (Convert.ToDouble(grdApp_Face_Cavity.Rows(i).Cells(j).Value) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust)).ToString("#0.000")
+                        Dim pVal As Double = (Convert.ToDouble(grdApp_Face_Cavity.Rows(i).Cells(j).Value) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust))
+                        grdApp_Face_Cavity.Rows(i).Cells(j).Value = Format(pVal, gUnit.LFormat) '(Convert.ToDouble(grdApp_Face_Cavity.Rows(i).Cells(j).Value) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust)).ToString("#0.000")
                     End If
 
                 End If
@@ -9161,7 +9301,8 @@ Public Class Process_frmMain
                 If (Not IsNothing(grdDesign_Seal.Rows(i).Cells(j).Value)) Then
 
                     If (grdDesign_Seal.Rows(i).Cells(j).Value.ToString() <> "") Then
-                        grdDesign_Seal.Rows(i).Cells(j).Value = (Convert.ToDouble(grdDesign_Seal.Rows(i).Cells(j).Value) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust)).ToString("#0.000")
+                        Dim pVal As Double = (Convert.ToDouble(grdDesign_Seal.Rows(i).Cells(j).Value) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust))
+                        grdDesign_Seal.Rows(i).Cells(j).Value = Format(pVal, gUnit.LFormat) '(Convert.ToDouble(grdDesign_Seal.Rows(i).Cells(j).Value) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust)).ToString("#0.000")
                     End If
 
                 End If
@@ -9170,62 +9311,75 @@ Public Class Process_frmMain
 
         '....Leak
         If (txtTest_CompressPre_Leak.Text <> "") Then
-            txtTest_CompressPre_Leak.Text = Convert.ToDouble(txtTest_CompressPre_Leak.Text) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
+            Dim pVal As Double = Convert.ToDouble(txtTest_CompressPre_Leak.Text) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust)
+            txtTest_CompressPre_Leak.Text = Format(pVal, gUnit.LFormat) 'Convert.ToDouble(txtTest_CompressPre_Leak.Text) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
         End If
 
         If (txtTest_CompressPost_Leak.Text <> "") Then
-            txtTest_CompressPost_Leak.Text = Convert.ToDouble(txtTest_CompressPost_Leak.Text) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
+            Dim pVal As Double = Convert.ToDouble(txtTest_CompressPost_Leak.Text) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust)
+            txtTest_CompressPost_Leak.Text = Format(pVal, gUnit.LFormat) 'Convert.ToDouble(txtTest_CompressPost_Leak.Text) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
         End If
 
         If (txtTest_PressPre_Leak.Text <> "") Then
-            txtTest_PressPre_Leak.Text = Convert.ToDouble(txtTest_PressPre_Leak.Text) * gUnit.ConvF("P", mProcess_Project.Unit.PIndx_PH, mProcess_Project.Unit.PIndx_Cust).ToString("#0.#00")
+            Dim pVal As Double = Convert.ToDouble(txtTest_PressPre_Leak.Text) * gUnit.ConvF("P", mProcess_Project.Unit.PIndx_PH, mProcess_Project.Unit.PIndx_Cust)
+            txtTest_PressPre_Leak.Text = gUnit.Format_Val(pVal) 'Convert.ToDouble(txtTest_PressPre_Leak.Text) * gUnit.ConvF("P", mProcess_Project.Unit.PIndx_PH, mProcess_Project.Unit.PIndx_Cust).ToString("#0.#00")
         End If
 
         If (txtTest_PressPost_Leak.Text <> "") Then
-            txtTest_PressPost_Leak.Text = Convert.ToDouble(txtTest_PressPost_Leak.Text) * gUnit.ConvF("P", mProcess_Project.Unit.PIndx_PH, mProcess_Project.Unit.PIndx_Cust).ToString("#0.#00")
+            Dim pVal As Double = Convert.ToDouble(txtTest_PressPost_Leak.Text) * gUnit.ConvF("P", mProcess_Project.Unit.PIndx_PH, mProcess_Project.Unit.PIndx_Cust)
+            txtTest_PressPost_Leak.Text = gUnit.Format_Val(pVal) 'Convert.ToDouble(txtTest_PressPost_Leak.Text) * gUnit.ConvF("P", mProcess_Project.Unit.PIndx_PH, mProcess_Project.Unit.PIndx_Cust).ToString("#0.#00")
         End If
 
         If (txtTest_ReqPre_Leak.Text <> "") Then
-            txtTest_ReqPre_Leak.Text = Convert.ToDouble(txtTest_ReqPre_Leak.Text) * gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust).ToString("#0.#00")
+            Dim pVal As Double = Convert.ToDouble(txtTest_ReqPre_Leak.Text) * gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust)
+            txtTest_ReqPre_Leak.Text = gUnit.Format_Val(pVal) 'Convert.ToDouble(txtTest_ReqPre_Leak.Text) * gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust).ToString("#0.#00")
         End If
 
         If (txtTest_ReqPost_Leak.Text <> "") Then
-            txtTest_ReqPost_Leak.Text = Convert.ToDouble(txtTest_ReqPost_Leak.Text) * gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust).ToString("#0.#00")
+            Dim pVal As Double = Convert.ToDouble(txtTest_ReqPost_Leak.Text) * gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust).ToString("#0.#00")
+            txtTest_ReqPost_Leak.Text = gUnit.Format_Val(pVal) 'Convert.ToDouble(txtTest_ReqPost_Leak.Text) * gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust).ToString("#0.#00")
         End If
 
         '....Load
         If (txtTest_CompressPre_Load.Text <> "") Then
-            txtTest_CompressPre_Load.Text = Convert.ToDouble(txtTest_CompressPre_Load.Text) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
+            Dim pVal As Double = Convert.ToDouble(txtTest_CompressPre_Load.Text) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust)
+            txtTest_CompressPre_Load.Text = Format(pVal, gUnit.LFormat) 'Convert.ToDouble(txtTest_CompressPre_Load.Text) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
         End If
 
         If (txtTest_CompressPost_Load.Text <> "") Then
-            txtTest_CompressPost_Load.Text = Convert.ToDouble(txtTest_CompressPost_Load.Text) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
+            Dim pVal As Double = Convert.ToDouble(txtTest_CompressPost_Load.Text) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust)
+            txtTest_CompressPost_Load.Text = Format(pVal, gUnit.LFormat) 'Convert.ToDouble(txtTest_CompressPost_Load.Text) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
         End If
 
         If (txtTest_ReqPre_Load.Text <> "") Then
-
-            txtTest_ReqPre_Load.Text = (Convert.ToDouble(txtTest_ReqPre_Load.Text) * pFact).ToString("#0.#00")
+            Dim pVal As Double = Convert.ToDouble(txtTest_ReqPre_Load.Text) * pFact
+            txtTest_ReqPre_Load.Text = Format(pVal, gUnit.LFormat) '(Convert.ToDouble(txtTest_ReqPre_Load.Text) * pFact).ToString("#0.#00")
         End If
 
         If (txtTest_ReqPost_Load.Text <> "") Then
-            txtTest_ReqPost_Load.Text = (Convert.ToDouble(txtTest_ReqPost_Load.Text) * pFact).ToString("#0.#00")
+            Dim pVal As Double = Convert.ToDouble(txtTest_ReqPost_Load.Text) * pFact
+            txtTest_ReqPost_Load.Text = Format(pVal, gUnit.LFormat) '(Convert.ToDouble(txtTest_ReqPost_Load.Text) * pFact).ToString("#0.#00")
         End If
 
         '....SpringBack
         If (txtTest_CompressPre_SpringBack.Text <> "") Then
-            txtTest_CompressPre_SpringBack.Text = Convert.ToDouble(txtTest_CompressPre_SpringBack.Text) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
+            Dim pVal As Double = Convert.ToDouble(txtTest_CompressPre_SpringBack.Text) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust)
+            txtTest_CompressPre_SpringBack.Text = Format(pVal, gUnit.LFormat) 'Convert.ToDouble(txtTest_CompressPre_SpringBack.Text) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
         End If
 
         If (txtTest_CompressPost_SpringBack.Text <> "") Then
-            txtTest_CompressPost_SpringBack.Text = Convert.ToDouble(txtTest_CompressPost_SpringBack.Text) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
+            Dim pVal As Double = Convert.ToDouble(txtTest_CompressPost_SpringBack.Text) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust)
+            txtTest_CompressPost_SpringBack.Text = Format(pVal, gUnit.LFormat) 'Convert.ToDouble(txtTest_CompressPost_SpringBack.Text) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
         End If
 
         If (txtTest_ReqPre_SpringBack.Text <> "") Then
-            txtTest_ReqPre_SpringBack.Text = Convert.ToDouble(txtTest_ReqPre_SpringBack.Text) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
+            Dim pVal As Double = Convert.ToDouble(txtTest_ReqPre_SpringBack.Text) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust)
+            txtTest_ReqPre_SpringBack.Text = Format(pVal, gUnit.LFormat) 'Convert.ToDouble(txtTest_ReqPre_SpringBack.Text) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
         End If
 
         If (txtTest_ReqPost_SpringBack.Text <> "") Then
-            txtTest_ReqPost_SpringBack.Text = Convert.ToDouble(txtTest_ReqPost_SpringBack.Text) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
+            Dim pVal As Double = Convert.ToDouble(txtTest_ReqPost_SpringBack.Text) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust)
+            txtTest_ReqPost_SpringBack.Text = Format(pVal, gUnit.LFormat) 'Convert.ToDouble(txtTest_ReqPost_SpringBack.Text) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
         End If
 
     End Sub
@@ -9234,7 +9388,8 @@ Public Class Process_frmMain
         '===================
         SetLabel_Unit_Cust()
         If (txtApp_MaxLeak.Text <> "") Then
-            txtApp_MaxLeak.Text = Convert.ToDouble(txtApp_MaxLeak.Text) / gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust).ToString("#0.000")
+            Dim pVal As Double = Convert.ToDouble(txtApp_MaxLeak.Text) / gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust)
+            txtApp_MaxLeak.Text = gUnit.Format_Val(pVal) 'Convert.ToDouble(txtApp_MaxLeak.Text) * gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust).ToString("#0.000")
         End If
 
         For i As Integer = 0 To grdApp_OpCond.Rows.Count - 1
@@ -9242,19 +9397,19 @@ Public Class Process_frmMain
                 If (Not IsNothing(grdApp_OpCond.Rows(i).Cells(j).Value)) Then
                     If (i = 0) Then
                         If (grdApp_OpCond.Rows(i).Cells(j).Value.ToString() <> "") Then
-                            grdApp_OpCond.Rows(i).Cells(j).Value = gUnit.ConvCToF(Convert.ToDouble(grdApp_OpCond.Rows(i).Cells(j).Value)).ToString("#0.0")
+                            grdApp_OpCond.Rows(i).Cells(j).Value = gUnit.Format_Val(gUnit.ConvCToF(Convert.ToDouble(grdApp_OpCond.Rows(i).Cells(j).Value))) ' gUnit.ConvFToC(Convert.ToDouble(grdApp_OpCond.Rows(i).Cells(j).Value)).ToString("#0.0")
                         End If
 
                     Else
                         If (grdApp_OpCond.Rows(i).Cells(j).Value.ToString() <> "") Then
-                            grdApp_OpCond.Rows(i).Cells(j).Value = (Convert.ToDouble(grdApp_OpCond.Rows(i).Cells(j).Value) / gUnit.ConvF("P", mProcess_Project.Unit.PIndx_PH, mProcess_Project.Unit.PIndx_Cust)).ToString("#0.000")
+                            Dim pVal As Double = (Convert.ToDouble(grdApp_OpCond.Rows(i).Cells(j).Value) / gUnit.ConvF("P", mProcess_Project.Unit.PIndx_PH, mProcess_Project.Unit.PIndx_Cust))
+                            grdApp_OpCond.Rows(i).Cells(j).Value = gUnit.Format_Val(pVal) '(Convert.ToDouble(grdApp_OpCond.Rows(i).Cells(j).Value) * gUnit.ConvF("P", mProcess_Project.Unit.PIndx_PH, mProcess_Project.Unit.PIndx_Cust)).ToString("#0.000")
                         End If
                     End If
 
                 End If
             Next
         Next
-
 
         Dim pF_Fact As Double = gUnit.ConvF("F", mProcess_Project.Unit.FIndx_PH, mProcess_Project.Unit.FIndx_Cust)
         Dim pL_Fact As Double = gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust)
@@ -9264,8 +9419,13 @@ Public Class Process_frmMain
             For j As Integer = 1 To grdApp_Load.Columns.Count - 1
                 If (Not IsNothing(grdApp_Load.Rows(i).Cells(j).Value)) Then
 
+                    'Dim pF_Fact As Double = gUnit.ConvF("F", mProcess_Project.Unit.FIndx_PH, mProcess_Project.Unit.FIndx_Cust)
+                    'Dim pL_Fact As Double = gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust)
+                    'Dim pFact As Double = pF_Fact / pL_Fact
+
                     If (grdApp_Load.Rows(i).Cells(j).Value.ToString() <> "") Then
-                        grdApp_Load.Rows(i).Cells(j).Value = (Convert.ToDouble(grdApp_Load.Rows(i).Cells(j).Value) / pFact).ToString("#0.000")
+                        Dim pVal As Double = (Convert.ToDouble(grdApp_Load.Rows(i).Cells(j).Value) / pFact)
+                        grdApp_Load.Rows(i).Cells(j).Value = Format(pVal, gUnit.LFormat) '(Convert.ToDouble(grdApp_Load.Rows(i).Cells(j).Value) * pFact).ToString("#0.000")
                     End If
 
                 End If
@@ -9277,7 +9437,8 @@ Public Class Process_frmMain
                 If (Not IsNothing(grdApp_Face_Cavity.Rows(i).Cells(j).Value)) Then
 
                     If (grdApp_Face_Cavity.Rows(i).Cells(j).Value.ToString() <> "") Then
-                        grdApp_Face_Cavity.Rows(i).Cells(j).Value = (Convert.ToDouble(grdApp_Face_Cavity.Rows(i).Cells(j).Value) / gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust)).ToString("#0.000")
+                        Dim pVal As Double = (Convert.ToDouble(grdApp_Face_Cavity.Rows(i).Cells(j).Value) / gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust))
+                        grdApp_Face_Cavity.Rows(i).Cells(j).Value = Format(pVal, gUnit.LFormat) '(Convert.ToDouble(grdApp_Face_Cavity.Rows(i).Cells(j).Value) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust)).ToString("#0.000")
                     End If
 
                 End If
@@ -9289,7 +9450,8 @@ Public Class Process_frmMain
                 If (Not IsNothing(grdDesign_Seal.Rows(i).Cells(j).Value)) Then
 
                     If (grdDesign_Seal.Rows(i).Cells(j).Value.ToString() <> "") Then
-                        grdDesign_Seal.Rows(i).Cells(j).Value = (Convert.ToDouble(grdDesign_Seal.Rows(i).Cells(j).Value) / gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust)).ToString("#0.000")
+                        Dim pVal As Double = (Convert.ToDouble(grdDesign_Seal.Rows(i).Cells(j).Value) / gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust))
+                        grdDesign_Seal.Rows(i).Cells(j).Value = Format(pVal, gUnit.LFormat) '(Convert.ToDouble(grdDesign_Seal.Rows(i).Cells(j).Value) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust)).ToString("#0.000")
                     End If
 
                 End If
@@ -9298,65 +9460,206 @@ Public Class Process_frmMain
 
         '....Leak
         If (txtTest_CompressPre_Leak.Text <> "") Then
-            txtTest_CompressPre_Leak.Text = Convert.ToDouble(txtTest_CompressPre_Leak.Text) / gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
+            Dim pVal As Double = Convert.ToDouble(txtTest_CompressPre_Leak.Text) / gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust)
+            txtTest_CompressPre_Leak.Text = Format(pVal, gUnit.LFormat) 'Convert.ToDouble(txtTest_CompressPre_Leak.Text) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
         End If
 
         If (txtTest_CompressPost_Leak.Text <> "") Then
-            txtTest_CompressPost_Leak.Text = Convert.ToDouble(txtTest_CompressPost_Leak.Text) / gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
+            Dim pVal As Double = Convert.ToDouble(txtTest_CompressPost_Leak.Text) / gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust)
+            txtTest_CompressPost_Leak.Text = Format(pVal, gUnit.LFormat) 'Convert.ToDouble(txtTest_CompressPost_Leak.Text) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
         End If
 
         If (txtTest_PressPre_Leak.Text <> "") Then
-            txtTest_PressPre_Leak.Text = Convert.ToDouble(txtTest_PressPre_Leak.Text) / gUnit.ConvF("P", mProcess_Project.Unit.PIndx_PH, mProcess_Project.Unit.PIndx_Cust).ToString("#0.#00")
+            Dim pVal As Double = Convert.ToDouble(txtTest_PressPre_Leak.Text) / gUnit.ConvF("P", mProcess_Project.Unit.PIndx_PH, mProcess_Project.Unit.PIndx_Cust)
+            txtTest_PressPre_Leak.Text = gUnit.Format_Val(pVal) 'Convert.ToDouble(txtTest_PressPre_Leak.Text) * gUnit.ConvF("P", mProcess_Project.Unit.PIndx_PH, mProcess_Project.Unit.PIndx_Cust).ToString("#0.#00")
         End If
 
         If (txtTest_PressPost_Leak.Text <> "") Then
-            txtTest_PressPost_Leak.Text = Convert.ToDouble(txtTest_PressPost_Leak.Text) / gUnit.ConvF("P", mProcess_Project.Unit.PIndx_PH, mProcess_Project.Unit.PIndx_Cust).ToString("#0.#00")
+            Dim pVal As Double = Convert.ToDouble(txtTest_PressPost_Leak.Text) / gUnit.ConvF("P", mProcess_Project.Unit.PIndx_PH, mProcess_Project.Unit.PIndx_Cust)
+            txtTest_PressPost_Leak.Text = gUnit.Format_Val(pVal) 'Convert.ToDouble(txtTest_PressPost_Leak.Text) * gUnit.ConvF("P", mProcess_Project.Unit.PIndx_PH, mProcess_Project.Unit.PIndx_Cust).ToString("#0.#00")
         End If
 
         If (txtTest_ReqPre_Leak.Text <> "") Then
-            txtTest_ReqPre_Leak.Text = Convert.ToDouble(txtTest_ReqPre_Leak.Text) / gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust).ToString("#0.#00")
+            Dim pVal As Double = Convert.ToDouble(txtTest_ReqPre_Leak.Text) / gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust)
+            txtTest_ReqPre_Leak.Text = gUnit.Format_Val(pVal) 'Convert.ToDouble(txtTest_ReqPre_Leak.Text) * gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust).ToString("#0.#00")
         End If
 
         If (txtTest_ReqPost_Leak.Text <> "") Then
-            txtTest_ReqPost_Leak.Text = Convert.ToDouble(txtTest_ReqPost_Leak.Text) / gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust).ToString("#0.#00")
+            Dim pVal As Double = Convert.ToDouble(txtTest_ReqPost_Leak.Text) / gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust).ToString("#0.#00")
+            txtTest_ReqPost_Leak.Text = gUnit.Format_Val(pVal) 'Convert.ToDouble(txtTest_ReqPost_Leak.Text) * gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust).ToString("#0.#00")
         End If
 
         '....Load
         If (txtTest_CompressPre_Load.Text <> "") Then
-            txtTest_CompressPre_Load.Text = Convert.ToDouble(txtTest_CompressPre_Load.Text) / gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
+            Dim pVal As Double = Convert.ToDouble(txtTest_CompressPre_Load.Text) / gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust)
+            txtTest_CompressPre_Load.Text = Format(pVal, gUnit.LFormat) 'Convert.ToDouble(txtTest_CompressPre_Load.Text) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
         End If
 
         If (txtTest_CompressPost_Load.Text <> "") Then
-            txtTest_CompressPost_Load.Text = Convert.ToDouble(txtTest_CompressPost_Load.Text) / gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
+            Dim pVal As Double = Convert.ToDouble(txtTest_CompressPost_Load.Text) / gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust)
+            txtTest_CompressPost_Load.Text = Format(pVal, gUnit.LFormat) 'Convert.ToDouble(txtTest_CompressPost_Load.Text) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
         End If
 
         If (txtTest_ReqPre_Load.Text <> "") Then
-
-            txtTest_ReqPre_Load.Text = (Convert.ToDouble(txtTest_ReqPre_Load.Text) / pFact).ToString("#0.#00")
+            Dim pVal As Double = Convert.ToDouble(txtTest_ReqPre_Load.Text) / pFact
+            txtTest_ReqPre_Load.Text = Format(pVal, gUnit.LFormat) '(Convert.ToDouble(txtTest_ReqPre_Load.Text) * pFact).ToString("#0.#00")
         End If
 
         If (txtTest_ReqPost_Load.Text <> "") Then
-            txtTest_ReqPost_Load.Text = (Convert.ToDouble(txtTest_ReqPost_Load.Text) / pFact).ToString("#0.#00")
+            Dim pVal As Double = Convert.ToDouble(txtTest_ReqPost_Load.Text) / pFact
+            txtTest_ReqPost_Load.Text = Format(pVal, gUnit.LFormat) '(Convert.ToDouble(txtTest_ReqPost_Load.Text) * pFact).ToString("#0.#00")
         End If
 
         '....SpringBack
         If (txtTest_CompressPre_SpringBack.Text <> "") Then
-            txtTest_CompressPre_SpringBack.Text = Convert.ToDouble(txtTest_CompressPre_SpringBack.Text) / gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
+            Dim pVal As Double = Convert.ToDouble(txtTest_CompressPre_SpringBack.Text) / gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust)
+            txtTest_CompressPre_SpringBack.Text = Format(pVal, gUnit.LFormat) 'Convert.ToDouble(txtTest_CompressPre_SpringBack.Text) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
         End If
 
         If (txtTest_CompressPost_SpringBack.Text <> "") Then
-            txtTest_CompressPost_SpringBack.Text = Convert.ToDouble(txtTest_CompressPost_SpringBack.Text) / gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
+            Dim pVal As Double = Convert.ToDouble(txtTest_CompressPost_SpringBack.Text) / gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust)
+            txtTest_CompressPost_SpringBack.Text = Format(pVal, gUnit.LFormat) 'Convert.ToDouble(txtTest_CompressPost_SpringBack.Text) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
         End If
 
         If (txtTest_ReqPre_SpringBack.Text <> "") Then
-            txtTest_ReqPre_SpringBack.Text = Convert.ToDouble(txtTest_ReqPre_SpringBack.Text) / gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
+            Dim pVal As Double = Convert.ToDouble(txtTest_ReqPre_SpringBack.Text) / gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust)
+            txtTest_ReqPre_SpringBack.Text = Format(pVal, gUnit.LFormat) 'Convert.ToDouble(txtTest_ReqPre_SpringBack.Text) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
         End If
 
         If (txtTest_ReqPost_SpringBack.Text <> "") Then
-            txtTest_ReqPost_SpringBack.Text = Convert.ToDouble(txtTest_ReqPost_SpringBack.Text) / gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
+            Dim pVal As Double = Convert.ToDouble(txtTest_ReqPost_SpringBack.Text) / gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust)
+            txtTest_ReqPost_SpringBack.Text = Format(pVal, gUnit.LFormat) 'Convert.ToDouble(txtTest_ReqPost_SpringBack.Text) * gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
         End If
 
     End Sub
+
+    'Private Sub ConvVal_Cust()
+    '    '===================
+    '    SetLabel_Unit_Cust()
+    '    If (txtApp_MaxLeak.Text <> "") Then
+    '        txtApp_MaxLeak.Text = Convert.ToDouble(txtApp_MaxLeak.Text) / gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust).ToString("#0.000")
+    '    End If
+
+    '    For i As Integer = 0 To grdApp_OpCond.Rows.Count - 1
+    '        For j As Integer = 1 To grdApp_OpCond.Columns.Count - 1
+    '            If (Not IsNothing(grdApp_OpCond.Rows(i).Cells(j).Value)) Then
+    '                If (i = 0) Then
+    '                    If (grdApp_OpCond.Rows(i).Cells(j).Value.ToString() <> "") Then
+    '                        grdApp_OpCond.Rows(i).Cells(j).Value = gUnit.ConvCToF(Convert.ToDouble(grdApp_OpCond.Rows(i).Cells(j).Value)).ToString("#0.0")
+    '                    End If
+
+    '                Else
+    '                    If (grdApp_OpCond.Rows(i).Cells(j).Value.ToString() <> "") Then
+    '                        grdApp_OpCond.Rows(i).Cells(j).Value = (Convert.ToDouble(grdApp_OpCond.Rows(i).Cells(j).Value) / gUnit.ConvF("P", mProcess_Project.Unit.PIndx_PH, mProcess_Project.Unit.PIndx_Cust)).ToString("#0.000")
+    '                    End If
+    '                End If
+
+    '            End If
+    '        Next
+    '    Next
+
+
+    '    Dim pF_Fact As Double = gUnit.ConvF("F", mProcess_Project.Unit.FIndx_PH, mProcess_Project.Unit.FIndx_Cust)
+    '    Dim pL_Fact As Double = gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust)
+    '    Dim pFact As Double = pF_Fact / pL_Fact
+
+    '    For i As Integer = 0 To grdApp_Load.Rows.Count - 1
+    '        For j As Integer = 1 To grdApp_Load.Columns.Count - 1
+    '            If (Not IsNothing(grdApp_Load.Rows(i).Cells(j).Value)) Then
+
+    '                If (grdApp_Load.Rows(i).Cells(j).Value.ToString() <> "") Then
+    '                    grdApp_Load.Rows(i).Cells(j).Value = (Convert.ToDouble(grdApp_Load.Rows(i).Cells(j).Value) / pFact).ToString("#0.000")
+    '                End If
+
+    '            End If
+    '        Next
+    '    Next
+
+    '    For i As Integer = 0 To grdApp_Face_Cavity.Rows.Count - 1
+    '        For j As Integer = 1 To grdApp_Face_Cavity.Columns.Count - 1
+    '            If (Not IsNothing(grdApp_Face_Cavity.Rows(i).Cells(j).Value)) Then
+
+    '                If (grdApp_Face_Cavity.Rows(i).Cells(j).Value.ToString() <> "") Then
+    '                    grdApp_Face_Cavity.Rows(i).Cells(j).Value = (Convert.ToDouble(grdApp_Face_Cavity.Rows(i).Cells(j).Value) / gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust)).ToString("#0.000")
+    '                End If
+
+    '            End If
+    '        Next
+    '    Next
+
+    '    For i As Integer = 0 To grdDesign_Seal.Rows.Count - 1
+    '        For j As Integer = 1 To grdDesign_Seal.Columns.Count - 1
+    '            If (Not IsNothing(grdDesign_Seal.Rows(i).Cells(j).Value)) Then
+
+    '                If (grdDesign_Seal.Rows(i).Cells(j).Value.ToString() <> "") Then
+    '                    grdDesign_Seal.Rows(i).Cells(j).Value = (Convert.ToDouble(grdDesign_Seal.Rows(i).Cells(j).Value) / gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust)).ToString("#0.000")
+    '                End If
+
+    '            End If
+    '        Next
+    '    Next
+
+    '    '....Leak
+    '    If (txtTest_CompressPre_Leak.Text <> "") Then
+    '        txtTest_CompressPre_Leak.Text = Convert.ToDouble(txtTest_CompressPre_Leak.Text) / gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
+    '    End If
+
+    '    If (txtTest_CompressPost_Leak.Text <> "") Then
+    '        txtTest_CompressPost_Leak.Text = Convert.ToDouble(txtTest_CompressPost_Leak.Text) / gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
+    '    End If
+
+    '    If (txtTest_PressPre_Leak.Text <> "") Then
+    '        txtTest_PressPre_Leak.Text = Convert.ToDouble(txtTest_PressPre_Leak.Text) / gUnit.ConvF("P", mProcess_Project.Unit.PIndx_PH, mProcess_Project.Unit.PIndx_Cust).ToString("#0.#00")
+    '    End If
+
+    '    If (txtTest_PressPost_Leak.Text <> "") Then
+    '        txtTest_PressPost_Leak.Text = Convert.ToDouble(txtTest_PressPost_Leak.Text) / gUnit.ConvF("P", mProcess_Project.Unit.PIndx_PH, mProcess_Project.Unit.PIndx_Cust).ToString("#0.#00")
+    '    End If
+
+    '    If (txtTest_ReqPre_Leak.Text <> "") Then
+    '        txtTest_ReqPre_Leak.Text = Convert.ToDouble(txtTest_ReqPre_Leak.Text) / gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust).ToString("#0.#00")
+    '    End If
+
+    '    If (txtTest_ReqPost_Leak.Text <> "") Then
+    '        txtTest_ReqPost_Leak.Text = Convert.ToDouble(txtTest_ReqPost_Leak.Text) / gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust).ToString("#0.#00")
+    '    End If
+
+    '    '....Load
+    '    If (txtTest_CompressPre_Load.Text <> "") Then
+    '        txtTest_CompressPre_Load.Text = Convert.ToDouble(txtTest_CompressPre_Load.Text) / gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
+    '    End If
+
+    '    If (txtTest_CompressPost_Load.Text <> "") Then
+    '        txtTest_CompressPost_Load.Text = Convert.ToDouble(txtTest_CompressPost_Load.Text) / gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
+    '    End If
+
+    '    If (txtTest_ReqPre_Load.Text <> "") Then
+
+    '        txtTest_ReqPre_Load.Text = (Convert.ToDouble(txtTest_ReqPre_Load.Text) / pFact).ToString("#0.#00")
+    '    End If
+
+    '    If (txtTest_ReqPost_Load.Text <> "") Then
+    '        txtTest_ReqPost_Load.Text = (Convert.ToDouble(txtTest_ReqPost_Load.Text) / pFact).ToString("#0.#00")
+    '    End If
+
+    '    '....SpringBack
+    '    If (txtTest_CompressPre_SpringBack.Text <> "") Then
+    '        txtTest_CompressPre_SpringBack.Text = Convert.ToDouble(txtTest_CompressPre_SpringBack.Text) / gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
+    '    End If
+
+    '    If (txtTest_CompressPost_SpringBack.Text <> "") Then
+    '        txtTest_CompressPost_SpringBack.Text = Convert.ToDouble(txtTest_CompressPost_SpringBack.Text) / gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
+    '    End If
+
+    '    If (txtTest_ReqPre_SpringBack.Text <> "") Then
+    '        txtTest_ReqPre_SpringBack.Text = Convert.ToDouble(txtTest_ReqPre_SpringBack.Text) / gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
+    '    End If
+
+    '    If (txtTest_ReqPost_SpringBack.Text <> "") Then
+    '        txtTest_ReqPost_SpringBack.Text = Convert.ToDouble(txtTest_ReqPost_SpringBack.Text) / gUnit.ConvF("L", mProcess_Project.Unit.LIndx_PH, mProcess_Project.Unit.LIndx_Cust).ToString("#0.#00")
+    '    End If
+
+    'End Sub
 
 #End Region
 
