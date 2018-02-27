@@ -623,6 +623,40 @@ Public Class clsUnit
     End Function
 
 
+    Public Function Format_LeakVal(ByVal Val_In As Double) As String
+        '============================================================
+
+        Dim pVal As String = "0"
+
+        Dim pDecimalPart As Double
+        Dim pIntPart As Integer
+        pIntPart = Int(Val_In)
+        pDecimalPart = Val_In - pIntPart
+
+        If pDecimalPart <= mcEPS Then
+            pVal = Format(NInt(Val_In), "#####")
+
+        ElseIf pDecimalPart > mcEPS Then
+            If (pIntPart > 99) Then
+                pVal = Format(NInt(Val_In), "#####")
+
+            ElseIf (pIntPart > 9) Then
+                pVal = Val_In.ToString("#####.#", CurrentCulture)
+
+            ElseIf (pIntPart <= 9 And pIntPart > 1) Then
+                pVal = Val_In.ToString("#####.##", CurrentCulture)
+
+            Else
+                pVal = Val_In.ToString("0.000E+0", CurrentCulture)
+
+            End If
+
+        End If
+
+            Return pVal
+
+    End Function
+
     Public Function RoundStressUnitUser(ByVal sngStressIn As Single) As String
         '====================================================================
         '....The return rounded value is in "Unit User Stress".

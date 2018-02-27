@@ -71,7 +71,7 @@ Partial Class frmSplash
         Me.GroupBox1.Controls.Add(Me.imgLogo)
         Me.GroupBox1.Location = New System.Drawing.Point(17, 20)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(885, 622)
+        Me.GroupBox1.Size = New System.Drawing.Size(885, 600)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         '
@@ -106,7 +106,7 @@ Partial Class frmSplash
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label16.ForeColor = System.Drawing.Color.Black
-        Me.Label16.Location = New System.Drawing.Point(712, 497)
+        Me.Label16.Location = New System.Drawing.Point(712, 486)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(37, 16)
         Me.Label16.TabIndex = 29
@@ -118,7 +118,7 @@ Partial Class frmSplash
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label15.ForeColor = System.Drawing.Color.Black
-        Me.Label15.Location = New System.Drawing.Point(665, 470)
+        Me.Label15.Location = New System.Drawing.Point(665, 459)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(130, 16)
         Me.Label15.TabIndex = 28
@@ -130,7 +130,7 @@ Partial Class frmSplash
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Verdana", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label14.ForeColor = System.Drawing.Color.Gray
-        Me.Label14.Location = New System.Drawing.Point(661, 385)
+        Me.Label14.Location = New System.Drawing.Point(661, 374)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(138, 18)
         Me.Label14.TabIndex = 27
@@ -142,7 +142,7 @@ Partial Class frmSplash
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label12.ForeColor = System.Drawing.Color.Black
-        Me.Label12.Location = New System.Drawing.Point(128, 479)
+        Me.Label12.Location = New System.Drawing.Point(128, 468)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(37, 16)
         Me.Label12.TabIndex = 26
@@ -154,7 +154,7 @@ Partial Class frmSplash
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label11.ForeColor = System.Drawing.Color.Black
-        Me.Label11.Location = New System.Drawing.Point(81, 452)
+        Me.Label11.Location = New System.Drawing.Point(81, 441)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(130, 16)
         Me.Label11.TabIndex = 25
@@ -166,7 +166,7 @@ Partial Class frmSplash
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Verdana", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.Black
-        Me.Label5.Location = New System.Drawing.Point(38, 415)
+        Me.Label5.Location = New System.Drawing.Point(38, 404)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(216, 25)
         Me.Label5.TabIndex = 24
@@ -178,7 +178,7 @@ Partial Class frmSplash
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Verdana", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label13.ForeColor = System.Drawing.Color.Gray
-        Me.Label13.Location = New System.Drawing.Point(80, 385)
+        Me.Label13.Location = New System.Drawing.Point(80, 374)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(133, 18)
         Me.Label13.TabIndex = 23
@@ -190,11 +190,11 @@ Partial Class frmSplash
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Verdana", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Label10.Location = New System.Drawing.Point(341, 142)
+        Me.Label10.Location = New System.Drawing.Point(354, 142)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(210, 38)
+        Me.Label10.Size = New System.Drawing.Size(184, 38)
         Me.Label10.TabIndex = 21
-        Me.Label10.Text = "Metalic Seal" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.Label10.Text = "Metal Seal" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         Me.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label7
@@ -202,7 +202,7 @@ Partial Class frmSplash
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Verdana", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.Black
-        Me.Label7.Location = New System.Drawing.Point(598, 443)
+        Me.Label7.Location = New System.Drawing.Point(598, 432)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(265, 25)
         Me.Label7.TabIndex = 17
@@ -214,7 +214,7 @@ Partial Class frmSplash
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Verdana", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.Black
-        Me.Label4.Location = New System.Drawing.Point(664, 417)
+        Me.Label4.Location = New System.Drawing.Point(664, 406)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(133, 18)
         Me.Label4.TabIndex = 15
@@ -226,7 +226,7 @@ Partial Class frmSplash
         Me.cmdMainForm.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdMainForm.Image = CType(resources.GetObject("cmdMainForm.Image"), System.Drawing.Image)
         Me.cmdMainForm.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.cmdMainForm.Location = New System.Drawing.Point(661, 573)
+        Me.cmdMainForm.Location = New System.Drawing.Point(661, 549)
         Me.cmdMainForm.Name = "cmdMainForm"
         Me.cmdMainForm.Size = New System.Drawing.Size(137, 37)
         Me.cmdMainForm.TabIndex = 1
@@ -250,7 +250,7 @@ Partial Class frmSplash
         Me.cmdExit.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdExit.Image = CType(resources.GetObject("cmdExit.Image"), System.Drawing.Image)
         Me.cmdExit.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.cmdExit.Location = New System.Drawing.Point(77, 573)
+        Me.cmdExit.Location = New System.Drawing.Point(77, 549)
         Me.cmdExit.Name = "cmdExit"
         Me.cmdExit.Size = New System.Drawing.Size(137, 37)
         Me.cmdExit.TabIndex = 2
@@ -259,7 +259,7 @@ Partial Class frmSplash
         'Label3
         '
         Me.Label3.BackColor = System.Drawing.SystemColors.ControlText
-        Me.Label3.Location = New System.Drawing.Point(5, 550)
+        Me.Label3.Location = New System.Drawing.Point(5, 526)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(875, 1)
         Me.Label3.TabIndex = 3
@@ -284,7 +284,7 @@ Partial Class frmSplash
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(133, 14)
         Me.Label1.TabIndex = 1
-        Me.Label1.Text = "February 26, 2018"
+        Me.Label1.Text = "February 28, 2018"
         '
         'imgLogo
         '
@@ -301,7 +301,7 @@ Partial Class frmSplash
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
-        Me.ClientSize = New System.Drawing.Size(919, 662)
+        Me.ClientSize = New System.Drawing.Size(919, 640)
         Me.ControlBox = False
         Me.Controls.Add(Me.GroupBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog

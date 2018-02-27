@@ -1033,6 +1033,9 @@ Public Class frmPartMain
                 Dim pUserRole As New List(Of String)
                 pUserRole = gUser.RetrieveProcessUserRoles()
 
+
+
+
                 Dim pfrmProcessRoleSelection As New Process_frmRoleSelection()
                 pfrmProcessRoleSelection.ShowDialog()
 
@@ -8770,16 +8773,20 @@ Public Class frmPartMain
     Private Sub UserGroupToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) _
                                                 Handles UserGroupToolStripMenuItem.Click
         '==========================================================================================
-        Dim pUserRole As New List(Of String)
-        pUserRole = gUser.RetrieveProcessUserRoles()
 
-        If (pUserRole.Contains("Admin")) Then
-            Dim pfrmUserGroup As New frmUserGroup()
-            pfrmUserGroup.ShowDialog()
-        Else
-            Dim pfrmAdminLogin As New frmAdminLogin()
-            pfrmAdminLogin.ShowDialog()
-        End If
+        Dim pfrmUserGroup As New frmUserGroup()
+        pfrmUserGroup.ShowDialog()
+
+        ''Dim pUserRole As New List(Of String)
+        ''pUserRole = gUser.RetrieveProcessUserRoles()
+
+        ''If (pUserRole.Contains("Admin")) Then
+        ''    Dim pfrmUserGroup As New frmUserGroup()
+        ''    pfrmUserGroup.ShowDialog()
+        ''Else
+        ''    Dim pfrmAdminLogin As New frmAdminLogin()
+        ''    pfrmAdminLogin.ShowDialog()
+        ''End If
 
 
     End Sub

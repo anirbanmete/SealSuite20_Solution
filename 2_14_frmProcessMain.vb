@@ -4,7 +4,7 @@
 '                      FORM MODULE   :  Process_frmMain                        '
 '                        VERSION NO  :  1.4                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  26FEB18                                '
+'                     LAST MODIFIED  :  27FEB18                                '
 '                                                                              '
 '===============================================================================
 Imports System.Globalization
@@ -219,6 +219,8 @@ Public Class Process_frmMain
 
         RetrieveFromDB()
         DisplayData()
+        TabControl1.SelectedIndex = 1
+        TabControl1.SelectedIndex = 0
 
         '....Move the vertical scrollbar at the Top
         txtParkerPart.Focus()
@@ -312,6 +314,25 @@ Public Class Process_frmMain
             mPlanning = pUserRolePrivilege(0).fldPlanning
             mShipping = pUserRolePrivilege(0).fldShipping
             mKeyChar = pUserRolePrivilege(0).fldKeyChar
+        End If
+
+        'AES 27FEB18
+        If (gUser.Role = "Admin") Then
+            mHeader = True
+            mPreOrder = True
+            mExport = True
+            mOrdEntry = True
+            mCost = True
+            mApp = True
+            mDesign = True
+            mManf = True
+            mPurchase = True
+            mQlty = True
+            mDwg = True
+            mTest = True
+            mPlanning = True
+            mShipping = True
+            mKeyChar = True
         End If
 
         If (mPreOrder) Then
@@ -738,27 +759,109 @@ Public Class Process_frmMain
 
         EnableTab(tabPreOrder_P1, mPreOrder)
         EnableTab(tabPreOrder_P2, mPreOrder)
+        txtPreOrderUserDate.Enabled = False
+        dtpPreOrderUserDate.Enabled = False
+        txtPreOrderUserName.Enabled = False
+        chkPreOrderUserSigned.Enabled = False
+        cmdPreOrderUserSign.Enabled = False
+
         EnableTab(tabExport, mExport)
+        txtITAR_Export_UserDate.Enabled = False
+        dtpITAR_Export_UserDate.Enabled = False
+        txtITAR_Export_UserName.Enabled = False
+        chkITAR_Export_UserSigned.Enabled = False
+        cmdITAR_Export_UserSign.Enabled = False
+
         EnableTab(tabOrder, mOrdEntry)
+        txtOrdEntry_UserDate.Enabled = False
+        dtpOrdEntry_UserDate.Enabled = False
+        txtOrdEntry_UserName.Enabled = False
+        chkOrdEntry_UserSigned.Enabled = False
+        cmdOrdEntry_UserSign.Enabled = False
+
         EnableTab(tabCosting, mCost)
+        txtCost_UserDate.Enabled = False
+        dtpCost_UserDate.Enabled = False
+        txtCost_UserName.Enabled = False
+        chkCost_UserSigned.Enabled = False
+        cmdCost_UserSign.Enabled = False
+
         EnableTab(tbpGen, mApp)
         EnableTab(tbpFace, mApp)
         EnableTab(tbpAxial, mApp)
+        txtApp_UserDate_Face.Enabled = False
+        dtpApp_UserDate_Face.Enabled = False
+        txtApp_UserName_Face.Enabled = False
+        chkApp_UserSigned_Face.Enabled = False
+        cmdApp_UserSign_Face.Enabled = False
+
+
         EnableTab(tbpDesign_P1, mDesign)
         EnableTab(tbpDesign_P2, mDesign)
+        txtDesign_UserDate.Enabled = False
+        dtpDesign_UserDate.Enabled = False
+        txtDesign_UserName.Enabled = False
+        chkDesign_UserSigned.Enabled = False
+        cmdDesign_UserSign.Enabled = False
+
         EnableTab(tabManufacturing, mManf)
+        txtManf_UserDate.Enabled = False
+        dtpManf_UserDate.Enabled = False
+        txtManf_UserName.Enabled = False
+        chkManf_UserSigned.Enabled = False
+        cmdManf_UserSign.Enabled = False
+
         EnableTab(tabPurchasing, mPurchase)
+        txtPurchase_UserDate.Enabled = False
+        dtpPurchase_UserDate.Enabled = False
+        txtPurchase_UserName.Enabled = False
+        chkPurchase_UserSigned.Enabled = False
+        cmdPurchase_UserSign.Enabled = False
+
         EnableTab(tabQuality, mQlty)
+        txtQuality_UserDate.Enabled = False
+        dtpQuality_UserDate.Enabled = False
+        txtQuality_UserName.Enabled = False
+        chkQuality_UserSigned.Enabled = False
+        cmdQuality_UserSign.Enabled = False
+
         EnableTab(tabDrawing, mDwg)
+        txtDwg_UserDate.Enabled = False
+        dtpDwg_UserDate.Enabled = False
+        txtDwg_UserName.Enabled = False
+        chkDwg_UserSigned.Enabled = False
+        cmdDwg_UserSign.Enabled = False
+
         EnableTab(tabLeak, mTest)
         EnableTab(tabLoad, mTest)
         EnableTab(tabSpringBack, mTest)
+        txtTest_UserDate.Enabled = False
+        dtpTest_UserDate.Enabled = False
+        txtTest_UserName.Enabled = False
+        chkTest_UserSigned.Enabled = False
+        cmdTest_UserSign.Enabled = False
+
         EnableTab(tabPlanning, False)
+        txtPlanning_UserDate.Enabled = False
+        dtpPlanning_UserDate.Enabled = False
+        txtPlanning_UserName.Enabled = False
+        chkPlanning_UserSigned.Enabled = False
+        cmdPlanning_UserSign.Enabled = False
+
         EnableTab(tabShipping, mShipping)
+        txtShipping_UserDate.Enabled = False
+        dtpShipping_UserDate.Enabled = False
+        txtShipping_UserName.Enabled = False
+        chkShipping_UserSigned.Enabled = False
+        cmdShipping_UserSign.Enabled = False
+
         EnableTab(tabKeyChar, False)
         EnableTab(tabApproval, False)
         If (gUser.Role = "Viewer") Then
             EnableTab(tabIssue, False)
+            cmdRiskAna.Enabled = False
+            cmdIssueComment.Enabled = False
+            cmdSealPart.Enabled = False
         Else
             EnableTab(tabIssue, True)
         End If
@@ -1345,7 +1448,7 @@ Public Class Process_frmMain
                 End If
                 'grdCost_SplOperation.Rows(j).Cells(0).Value = .SplOperation.Desc(j)
                 grdCost_SplOperation.Rows(j).Cells(1).Value = .SplOperation.Spec(j)
-                grdCost_SplOperation.Rows(j).Cells(2).Value = .SplOperation.LeadTime(j)
+                grdCost_SplOperation.Rows(j).Cells(2).Value = gUnit.Format_Val(.SplOperation.LeadTime(j)) '.SplOperation.LeadTime(j)
                 grdCost_SplOperation.Rows(j).Cells(3).Value = .SplOperation.Cost(j).ToString("#0.##")
             Next
 
@@ -1387,7 +1490,7 @@ Public Class Process_frmMain
 
             txtApp_Fluid.Text = .Fluid
             If (Math.Abs(.MaxLeak) > gcEPS) Then
-                txtApp_MaxLeak.Text = Format(.MaxLeak, gUnit.LFormat)    'AES 26FEB18 '.MaxLeak.ToString("##0.000")
+                txtApp_MaxLeak.Text = gUnit.Format_LeakVal(.MaxLeak) 'Format(.MaxLeak, gUnit.LFormat)    'AES 26FEB18 '.MaxLeak.ToString("##0.000")
             Else
                 txtApp_MaxLeak.Text = ""
             End If
@@ -2143,7 +2246,7 @@ Public Class Process_frmMain
                 grdManf_ToolNGage.Rows(i).Cells(3).Value = .ToolNGage.Status(i)
 
                 If (Math.Abs(.ToolNGage.LeadTime(i)) > gcEPS) Then
-                    grdManf_ToolNGage.Rows(i).Cells(4).Value = .ToolNGage.LeadTime(i)
+                    grdManf_ToolNGage.Rows(i).Cells(4).Value = gUnit.Format_Val(.ToolNGage.LeadTime(i)) '.ToolNGage.LeadTime(i)
                 Else
                     grdManf_ToolNGage.Rows(i).Cells(4).Value = ""
                 End If
@@ -2162,7 +2265,7 @@ Public Class Process_frmMain
                     'grdPurchase_ToolNGages.Rows(i).Cells(3).Value = .ToolNGage.Status(i)
 
                     If (Math.Abs(.ToolNGage.LeadTime(i)) > gcEPS) Then
-                        grdPurchase_ToolNGages.Rows(i).Cells(3).Value = .ToolNGage.LeadTime(i)
+                        grdPurchase_ToolNGages.Rows(i).Cells(3).Value = gUnit.Format_Val(.ToolNGage.LeadTime(i)) '.ToolNGage.LeadTime(i)
                     Else
                         grdPurchase_ToolNGages.Rows(i).Cells(3).Value = ""
                     End If
@@ -2441,13 +2544,13 @@ Public Class Process_frmMain
             End If
 
             If (Math.Abs(.Leak.Max_Unplated) > gcEPS) Then
-                txtTest_ReqPre_Leak.Text = Format(.Leak.Max_Unplated, gUnit.LFormat) '.Leak.Max_Unplated.ToString("#0.###")
+                txtTest_ReqPre_Leak.Text = gUnit.Format_LeakVal(.Leak.Max_Unplated) 'Format(.Leak.Max_Unplated, gUnit.LFormat) '.Leak.Max_Unplated.ToString("#0.###")
             Else
                 txtTest_ReqPre_Leak.Text = ""
             End If
 
             If (Math.Abs(.Leak.Max_Plated) > gcEPS) Then
-                txtTest_ReqPost_Leak.Text = Format(.Leak.Max_Plated, gUnit.LFormat) '.Leak.Max_Plated.ToString("#0.###")
+                txtTest_ReqPost_Leak.Text = gUnit.Format_LeakVal(.Leak.Max_Plated) 'Format(.Leak.Max_Plated, gUnit.LFormat) '.Leak.Max_Plated.ToString("#0.###")
             Else
                 txtTest_ReqPost_Leak.Text = ""
             End If
@@ -3158,23 +3261,29 @@ Public Class Process_frmMain
 
     Private Sub mnuRiskQ_Click(sender As Object, e As EventArgs) Handles mnuRiskQ.Click
         '===============================================================================
-        With openFileDialog1
+        If (gUser.Role = "Admin") Then
+            With openFileDialog1
 
-            .Filter = "Risk Analysis DataFile (*.xls)|*.xls"
-            .FilterIndex = 1
-            .InitialDirectory = gFile.DirProgramDataFile_Process
-            .FileName = ""
-            .Title = "Open"
+                .Filter = "Risk Analysis DataFile (*.xls)|*.xls"
+                .FilterIndex = 1
+                .InitialDirectory = gFile.DirProgramDataFile_Process
+                .FileName = ""
+                .Title = "Open"
 
-            If .ShowDialog = Windows.Forms.DialogResult.OK Then
-                Dim pRiskAnaFileName As String = .FileName
-                Cursor.Current = Cursors.WaitCursor
-                mProcess_Project.RiskAna.LoadRiskQ(pRiskAnaFileName)
-                Cursor.Current = Cursors.Default
+                If .ShowDialog = Windows.Forms.DialogResult.OK Then
+                    Dim pRiskAnaFileName As String = .FileName
+                    Cursor.Current = Cursors.WaitCursor
+                    mProcess_Project.RiskAna.LoadRiskQ(pRiskAnaFileName)
+                    Cursor.Current = Cursors.Default
 
-            End If
+                End If
+            End With
+        Else
+            Dim pMsg As String = "Only 'Admin' user can load the 'Risk Analysis DataFile'."
+            MessageBox.Show(pMsg, "Permission Denied!", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+        End If
 
-        End With
+
     End Sub
 
 #End Region
@@ -3186,6 +3295,10 @@ Public Class Process_frmMain
         '============================================================================================
         Dim pCI As New CultureInfo("en-US")
 
+        cmdRiskAna.Enabled = False
+        cmdIssueComment.Enabled = False
+        cmdSealPart.Enabled = False
+
         If (mPreOrder And TabControl1.SelectedIndex = 0) Then
             cmdRiskAna.Enabled = True
             cmdIssueComment.Enabled = True
@@ -3196,90 +3309,105 @@ Public Class Process_frmMain
             cmdRiskAna.Enabled = True
             cmdIssueComment.Enabled = True
             cmdSealPart.Enabled = False
+
         End If
 
         If (mOrdEntry And TabControl1.SelectedIndex = 2) Then
             cmdRiskAna.Enabled = True
             cmdIssueComment.Enabled = True
             cmdSealPart.Enabled = False
+
         End If
 
         If (mCost And TabControl1.SelectedIndex = 3) Then
             cmdRiskAna.Enabled = True
             cmdIssueComment.Enabled = True
             cmdSealPart.Enabled = False
+
         End If
 
         If (mApp And TabControl1.SelectedIndex = 4) Then
             cmdRiskAna.Enabled = True
             cmdIssueComment.Enabled = True
             cmdSealPart.Enabled = False
+
         End If
 
         If (mDesign And TabControl1.SelectedIndex = 5) Then
             cmdRiskAna.Enabled = True
             cmdIssueComment.Enabled = True
             cmdSealPart.Enabled = True
+
         End If
 
         If (mManf And TabControl1.SelectedIndex = 6) Then
             cmdRiskAna.Enabled = True
             cmdIssueComment.Enabled = True
             cmdSealPart.Enabled = False
+
         End If
 
         If (mPurchase And TabControl1.SelectedIndex = 7) Then
             cmdRiskAna.Enabled = True
             cmdIssueComment.Enabled = True
             cmdSealPart.Enabled = False
+
         End If
 
         If (mQlty And TabControl1.SelectedIndex = 8) Then
             cmdRiskAna.Enabled = True
             cmdIssueComment.Enabled = True
             cmdSealPart.Enabled = False
+
         End If
 
         If (mDwg And TabControl1.SelectedIndex = 9) Then
             cmdRiskAna.Enabled = True
             cmdIssueComment.Enabled = True
             cmdSealPart.Enabled = False
+
         End If
 
         If (mTest And TabControl1.SelectedIndex = 10) Then
             cmdRiskAna.Enabled = True
             cmdIssueComment.Enabled = True
             cmdSealPart.Enabled = False
+
         End If
 
         If (mPlanning And TabControl1.SelectedIndex = 11) Then
             cmdRiskAna.Enabled = False
             cmdIssueComment.Enabled = False
             cmdSealPart.Enabled = False
+
         End If
 
         If (mShipping And TabControl1.SelectedIndex = 12) Then
             cmdRiskAna.Enabled = True
             cmdIssueComment.Enabled = True
             cmdSealPart.Enabled = False
+
         End If
 
         If (TabControl1.SelectedIndex = 13) Then
             cmdRiskAna.Enabled = False
             cmdIssueComment.Enabled = False
             cmdSealPart.Enabled = False
+
         End If
 
         If (TabControl1.SelectedIndex = 14) Then
             cmdRiskAna.Enabled = False
             cmdIssueComment.Enabled = False
             cmdSealPart.Enabled = False
+
         End If
 
         If (TabControl1.SelectedIndex = 15) Then
             cmdRiskAna.Enabled = False
             cmdIssueComment.Enabled = False
             cmdSealPart.Enabled = False
+
         End If
 
 
@@ -9149,6 +9277,12 @@ Public Class Process_frmMain
 
     End Sub
 
+
+
+    'Private Sub pnlPanel1_Paint(sender As Object, e As PaintEventArgs) Handles pnlPanel1.Paint
+
+    'End Sub
+
     Private Sub grpCoating_MouseHover(sender As Object, e As EventArgs) Handles grpCoating.MouseHover
         '============================================================================================
         ToolTip1.SetToolTip(grpCoating, "Enter Data in SealPart.")
@@ -9240,7 +9374,7 @@ Public Class Process_frmMain
 
         If (txtApp_MaxLeak.Text <> "") Then
             Dim pVal As Double = Convert.ToDouble(txtApp_MaxLeak.Text) * gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust)
-            txtApp_MaxLeak.Text = gUnit.Format_Val(pVal) 'Convert.ToDouble(txtApp_MaxLeak.Text) * gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust).ToString("#0.000")
+            txtApp_MaxLeak.Text = gUnit.Format_LeakVal(pVal) 'gUnit.Format_Val(pVal) 'Convert.ToDouble(txtApp_MaxLeak.Text) * gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust).ToString("#0.000")
         End If
 
         For i As Integer = 0 To grdApp_OpCond.Rows.Count - 1
@@ -9332,12 +9466,12 @@ Public Class Process_frmMain
 
         If (txtTest_ReqPre_Leak.Text <> "") Then
             Dim pVal As Double = Convert.ToDouble(txtTest_ReqPre_Leak.Text) * gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust)
-            txtTest_ReqPre_Leak.Text = gUnit.Format_Val(pVal) 'Convert.ToDouble(txtTest_ReqPre_Leak.Text) * gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust).ToString("#0.#00")
+            txtTest_ReqPre_Leak.Text = gUnit.Format_LeakVal(pVal) 'gUnit.Format_Val(pVal) 'Convert.ToDouble(txtTest_ReqPre_Leak.Text) * gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust).ToString("#0.#00")
         End If
 
         If (txtTest_ReqPost_Leak.Text <> "") Then
             Dim pVal As Double = Convert.ToDouble(txtTest_ReqPost_Leak.Text) * gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust).ToString("#0.#00")
-            txtTest_ReqPost_Leak.Text = gUnit.Format_Val(pVal) 'Convert.ToDouble(txtTest_ReqPost_Leak.Text) * gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust).ToString("#0.#00")
+            txtTest_ReqPost_Leak.Text = gUnit.Format_LeakVal(pVal) 'gUnit.Format_Val(pVal) 'Convert.ToDouble(txtTest_ReqPost_Leak.Text) * gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust).ToString("#0.#00")
         End If
 
         '....Load
@@ -9389,7 +9523,7 @@ Public Class Process_frmMain
         SetLabel_Unit_Cust()
         If (txtApp_MaxLeak.Text <> "") Then
             Dim pVal As Double = Convert.ToDouble(txtApp_MaxLeak.Text) / gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust)
-            txtApp_MaxLeak.Text = gUnit.Format_Val(pVal) 'Convert.ToDouble(txtApp_MaxLeak.Text) * gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust).ToString("#0.000")
+            txtApp_MaxLeak.Text = gUnit.Format_LeakVal(pVal) 'gUnit.Format_Val(pVal) 'Convert.ToDouble(txtApp_MaxLeak.Text) * gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust).ToString("#0.000")
         End If
 
         For i As Integer = 0 To grdApp_OpCond.Rows.Count - 1
@@ -9481,12 +9615,12 @@ Public Class Process_frmMain
 
         If (txtTest_ReqPre_Leak.Text <> "") Then
             Dim pVal As Double = Convert.ToDouble(txtTest_ReqPre_Leak.Text) / gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust)
-            txtTest_ReqPre_Leak.Text = gUnit.Format_Val(pVal) 'Convert.ToDouble(txtTest_ReqPre_Leak.Text) * gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust).ToString("#0.#00")
+            txtTest_ReqPre_Leak.Text = gUnit.Format_LeakVal(pVal) 'gUnit.Format_Val(pVal) 'Convert.ToDouble(txtTest_ReqPre_Leak.Text) * gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust).ToString("#0.#00")
         End If
 
         If (txtTest_ReqPost_Leak.Text <> "") Then
             Dim pVal As Double = Convert.ToDouble(txtTest_ReqPost_Leak.Text) / gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust).ToString("#0.#00")
-            txtTest_ReqPost_Leak.Text = gUnit.Format_Val(pVal) 'Convert.ToDouble(txtTest_ReqPost_Leak.Text) * gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust).ToString("#0.#00")
+            txtTest_ReqPost_Leak.Text = gUnit.Format_LeakVal(pVal) 'gUnit.Format_Val(pVal) 'Convert.ToDouble(txtTest_ReqPost_Leak.Text) * gUnit.ConvF("Leak", mProcess_Project.Unit.LeakIndx_PH, mProcess_Project.Unit.LeakIndx_Cust).ToString("#0.#00")
         End If
 
         '....Load

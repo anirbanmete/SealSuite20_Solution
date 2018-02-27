@@ -119,6 +119,14 @@ Public Class clsUser
 
         End If
 
+        'AES 27FEB19
+        If (mSystemLogin = "506968") Then
+            mFirstName = "Alicia"
+            mLastName = "Sorban"
+            mTitle = "Eng. Spec."
+        End If
+
+
     End Sub
 
     Public Function RetrieveProcessUserRoles() As List(Of String)
@@ -169,6 +177,13 @@ Public Class clsUser
 
         If (pUserRole.Count = 0) Then
             mViewer = True
+        End If
+
+        'AES 27FEB19
+        If (mSystemLogin = "506968") Then
+            If (Not pUserRole.Contains("Admin")) Then
+                pUserRole.Add("Admin")
+            End If
         End If
 
         Return pUserRole
