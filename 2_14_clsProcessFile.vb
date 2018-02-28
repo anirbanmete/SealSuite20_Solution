@@ -1704,14 +1704,23 @@ Public Class clsProcessFile
                         mBOM_Qty = mPDS_CellColName(i)
 
                     '....Testing
+                    Case "Leak Compress To Unit"
+                        mPDS_Val(i) = ProcessProj_In.Unit.LUnit_Cust
+
                     Case "Leak Compress To (Pre-Plate)"
                         mPDS_Val(i) = ProcessProj_In.Test.Leak.Compress_Unplated
 
                     Case "Leak Media (Pre-Plate)"
                         mPDS_Val(i) = ProcessProj_In.Test.Leak.Medium_Unplated
 
+                    Case "Leak Pressure Unit"
+                        mPDS_Val(i) = ProcessProj_In.Unit.PUnit_Cust
+
                     Case "Leak Pressure (Pre-Plate)"
                         mPDS_Val(i) = ProcessProj_In.Test.Leak.Press_Unplated
+
+                    Case "Leak Requirement Unit"
+                        mPDS_Val(i) = ProcessProj_In.Unit.LeakUnit_Cust
 
                     Case "Leak Requirement (Pre-Plate)"
                         mPDS_Val(i) = ProcessProj_In.Test.Leak.Max_Unplated
@@ -1740,8 +1749,14 @@ Public Class clsProcessFile
                     Case "Leak Frequency (Post-Plate)"
                         mPDS_Val(i) = ProcessProj_In.Test.Leak.Freq_Plated
 
+                    Case "Load Compress To Unit"
+                        mPDS_Val(i) = ProcessProj_In.Unit.LUnit_Cust
+
                     Case "Load Compress To (Pre-Plate)"
                         mPDS_Val(i) = ProcessProj_In.Test.Load.Compress_Unplated
+
+                    Case "Load Requirement Unit"
+                        mPDS_Val(i) = ProcessProj_In.Unit.FUnit_Cust & "/" & ProcessProj_In.Unit.LUnit_Cust
 
                     Case "Load Requirement (Pre-Plate)"
                         mPDS_Val(i) = ProcessProj_In.Test.Load.Max_Unplated
@@ -1764,8 +1779,14 @@ Public Class clsProcessFile
                     Case "Load Frequency (Post-Plate)"
                         mPDS_Val(i) = ProcessProj_In.Test.Load.Freq_Plated
 
+                    Case "Springback Compress To Unit"
+                        mPDS_Val(i) = ProcessProj_In.Unit.LUnit_Cust
+
                     Case "Springback Compress To (Pre-Plate)"
                         mPDS_Val(i) = ProcessProj_In.Test.SpringBack.Compress_Unplated
+
+                    Case "Springback Requirement Unit"
+                        mPDS_Val(i) = ProcessProj_In.Unit.LUnit_Cust
 
                     Case "Springback Requirement (Pre-Plate)"
                         mPDS_Val(i) = ProcessProj_In.Test.SpringBack.Max_Unplated

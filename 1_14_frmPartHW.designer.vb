@@ -129,7 +129,7 @@ Partial Class Part_frmHW
         Me.pnlHW.Controls.Add(Me.grpGroupBox1)
         Me.pnlHW.Controls.Add(Me.lblType)
         Me.pnlHW.Controls.Add(Me.cmbType)
-        Me.pnlHW.Location = New System.Drawing.Point(4, 1)
+        Me.pnlHW.Location = New System.Drawing.Point(4, 2)
         Me.pnlHW.Name = "pnlHW"
         Me.pnlHW.Size = New System.Drawing.Size(729, 290)
         Me.pnlHW.TabIndex = 32

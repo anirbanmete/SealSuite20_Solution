@@ -4,7 +4,7 @@
 '                      FORM MODULE   :  Process_frmMain                        '
 '                        VERSION NO  :  1.4                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  27FEB18                                '
+'                     LAST MODIFIED  :  28FEB18                                '
 '                                                                              '
 '===============================================================================
 Imports System.Globalization
@@ -180,11 +180,10 @@ Public Class Process_frmMain
     Private Sub Process_ProductInfo_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         '===================================================================================================
         SetTabPrivilege()
-        InitializeControls()
-
         GetPartProjectInfo()
 
         Initialize_tbTesting_Controls()
+        InitializeControls()
 
         If (gPartProject.PNR.SealType.ToString() = "SC") Then
             PopulateMatComboBox(gPartProject.PNR.SealType.ToString(), cmbDesign_Mat_Spring)
@@ -316,24 +315,24 @@ Public Class Process_frmMain
             mKeyChar = pUserRolePrivilege(0).fldKeyChar
         End If
 
-        'AES 27FEB18
-        If (gUser.Role = "Admin") Then
-            mHeader = True
-            mPreOrder = True
-            mExport = True
-            mOrdEntry = True
-            mCost = True
-            mApp = True
-            mDesign = True
-            mManf = True
-            mPurchase = True
-            mQlty = True
-            mDwg = True
-            mTest = True
-            mPlanning = True
-            mShipping = True
-            mKeyChar = True
-        End If
+        '''AES 27FEB18
+        ''If (gUser.Role = "Admin") Then
+        ''    mHeader = True
+        ''    mPreOrder = True
+        ''    mExport = True
+        ''    mOrdEntry = True
+        ''    mCost = True
+        ''    mApp = True
+        ''    mDesign = True
+        ''    mManf = True
+        ''    mPurchase = True
+        ''    mQlty = True
+        ''    mDwg = True
+        ''    mTest = True
+        ''    mPlanning = True
+        ''    mShipping = True
+        ''    mKeyChar = True
+        ''End If
 
         If (mPreOrder) Then
             mTabIndex.Add(0)
@@ -832,6 +831,9 @@ Public Class Process_frmMain
         chkDwg_UserSigned.Enabled = False
         cmdDwg_UserSign.Enabled = False
 
+        chkTest.Enabled = mTest
+        grpUnit_Test.Enabled = mTest
+        txtTest_Other.Enabled = mTest
         EnableTab(tabLeak, mTest)
         EnableTab(tabLoad, mTest)
         EnableTab(tabSpringBack, mTest)
@@ -3843,11 +3845,13 @@ Public Class Process_frmMain
     Private Sub cmbITAR_Export_SaleExportControlled_SelectedIndexChanged(sender As System.Object,
                                                                          e As System.EventArgs) Handles cmbITAR_Export_SaleExportControlled.SelectedIndexChanged
         '========================================================================================================================================================
-
         If (cmbITAR_Export_SaleExportControlled.Text = "N") Then
             txtITAR_Export_EAR_Classification.Enabled = False
         Else
-            txtITAR_Export_EAR_Classification.Enabled = True
+            If (mExport) Then
+                txtITAR_Export_EAR_Classification.Enabled = True
+            End If
+
         End If
 
     End Sub
@@ -4041,7 +4045,10 @@ Public Class Process_frmMain
             txtQuality_Reason.Text = ""
             txtQuality_Reason.Enabled = False
         Else
-            txtQuality_Reason.Enabled = True
+            If (mQlty) Then
+                txtQuality_Reason.Enabled = True
+            End If
+
         End If
 
     End Sub
@@ -4054,7 +4061,10 @@ Public Class Process_frmMain
             cmbQuality_VisualInspection_Type.Text = ""
             cmbQuality_VisualInspection_Type.Enabled = False
         Else
-            cmbQuality_VisualInspection_Type.Enabled = True
+            If (mQlty) Then
+                cmbQuality_VisualInspection_Type.Enabled = True
+            End If
+
         End If
 
     End Sub
@@ -4555,10 +4565,13 @@ Public Class Process_frmMain
             EnableTab(tabLoad, False)
             EnableTab(tabSpringBack, False)
         Else
-            EnableTab(tabLeak, True)
-            EnableTab(tabLoad, True)
-            EnableTab(tabSpringBack, True)
-            txtTest_Other.Enabled = True
+            If (mTest) Then
+                EnableTab(tabLeak, True)
+                EnableTab(tabLoad, True)
+                EnableTab(tabSpringBack, True)
+                txtTest_Other.Enabled = True
+            End If
+
         End If
 
     End Sub
@@ -8232,6 +8245,7 @@ Public Class Process_frmMain
         Dim pblnValChanged As Boolean = False
         Dim pCount As Integer = 0
         Dim pCI As New CultureInfo("en-US")
+        Dim pDateVal As Date = DateTime.MinValue
 
         With mProcess_Project.PreOrder
             CompareVal(.Mgr.Mkt, cmbMgrPreOrder.Text, pCount)
@@ -8274,7 +8288,12 @@ Public Class Process_frmMain
             pCount = pCount + 1
         Else
             For i As Integer = 0 To mProcess_Project.PreOrder.Quote.QID.Count - 1
-                CompareVal(mProcess_Project.PreOrder.Quote.QDate(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdQuote.Rows(i).Cells(0).Value, pCount)
+                pDateVal = DateTime.MinValue
+                If (grdQuote.Rows(i).Cells(0).Value <> "" And Not IsNothing(grdQuote.Rows(i).Cells(0).Value)) Then
+                    pDateVal = Convert.ToDateTime(grdQuote.Rows(i).Cells(0).Value)
+                End If
+
+                CompareVal(mProcess_Project.PreOrder.Quote.QDate(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pDateVal.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pCount)
                 CompareVal(mProcess_Project.PreOrder.Quote.No(i), grdQuote.Rows(i).Cells(1).Value, pCount)
 
             Next
@@ -8287,7 +8306,7 @@ Public Class Process_frmMain
         Else
             For i As Integer = 0 To mProcess_Project.PreOrder.SalesData.ID_Sales.Count - 1
                 CompareVal(mProcess_Project.PreOrder.SalesData.Year(i).ToString(), grdPreOrder_SalesData.Rows(i).Cells(0).Value, pCount)
-                CompareVal(mProcess_Project.PreOrder.SalesData.Qty(i).ToString(), grdPreOrder_SalesData.Rows(i).Cells(1).Value, pCount)
+                CompareVal(mProcess_Project.PreOrder.SalesData.Qty(i), grdPreOrder_SalesData.Rows(i).Cells(1).Value, pCount)
                 CompareVal(mProcess_Project.PreOrder.SalesData.Price(i), grdPreOrder_SalesData.Rows(i).Cells(2).Value, pCount)
                 CompareVal(mProcess_Project.PreOrder.SalesData.Total(i), grdPreOrder_SalesData.Rows(i).Cells(3).Value, pCount)
 
@@ -8295,11 +8314,15 @@ Public Class Process_frmMain
         End If
 
         mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "PreOrder")
-        If (grdPreOrder_SalesData.Rows.Count - 1 <> mProcess_Project.EditedBy.ID_Edit.Count) Then
+        If (grdPreOrderEditedBy.Rows.Count <> mProcess_Project.EditedBy.ID_Edit.Count) Then
             pCount = pCount + 1
         Else
             For i As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
-                CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdPreOrderEditedBy.Rows(i).Cells(0).Value, pCount)
+                pDateVal = DateTime.MinValue
+                If (grdPreOrderEditedBy.Rows(i).Cells(0).Value <> "" And Not IsNothing(grdPreOrderEditedBy.Rows(i).Cells(0).Value)) Then
+                    pDateVal = Convert.ToDateTime(grdPreOrderEditedBy.Rows(i).Cells(0).Value)
+                End If
+                CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pDateVal.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pCount)
                 CompareVal(mProcess_Project.EditedBy.Name(i), grdPreOrderEditedBy.Rows(i).Cells(1).Value, pCount)
                 CompareVal(mProcess_Project.EditedBy.Comment(i), grdPreOrderEditedBy.Rows(i).Cells(2).Value, pCount)
             Next
@@ -8318,6 +8341,7 @@ Public Class Process_frmMain
         Dim pblnValChanged As Boolean = False
         Dim pCount As Integer = 0
         Dim pCI As New CultureInfo("en-US")
+        Dim pDateVal As Date = DateTime.MinValue
 
         With mProcess_Project.ITAR_Export
 
@@ -8368,11 +8392,16 @@ Public Class Process_frmMain
         End With
 
         mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Export")
-        If (grdPreOrder_SalesData.Rows.Count - 1 <> mProcess_Project.EditedBy.ID_Edit.Count) Then
+        If (grdExport_EditedBy.Rows.Count <> mProcess_Project.EditedBy.ID_Edit.Count) Then
             pCount = pCount + 1
         Else
             For i As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
-                CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdExport_EditedBy.Rows(i).Cells(0).Value, pCount)
+                pDateVal = DateTime.MinValue
+                If (grdExport_EditedBy.Rows(i).Cells(0).Value <> "" And Not IsNothing(grdExport_EditedBy.Rows(i).Cells(0).Value)) Then
+                    pDateVal = Convert.ToDateTime(grdExport_EditedBy.Rows(i).Cells(0).Value)
+                End If
+
+                CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pDateVal.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pCount)
                 CompareVal(mProcess_Project.EditedBy.Name(i), grdExport_EditedBy.Rows(i).Cells(1).Value, pCount)
                 CompareVal(mProcess_Project.EditedBy.Comment(i), grdExport_EditedBy.Rows(i).Cells(2).Value, pCount)
             Next
@@ -8391,12 +8420,17 @@ Public Class Process_frmMain
         Dim pblnValChanged As Boolean = False
         Dim pCount As Integer = 0
         Dim pCI As New CultureInfo("en-US")
+        Dim pDateVal As Date = DateTime.MinValue
 
         With mProcess_Project.OrdEntry
 
             CompareVal(.SalesOrderNo, txtOrdEntry_SalesOrderNo.Text, pCount)
 
-            CompareVal(.DateSales, txtOrdEntry_SalesDate.Text, pCount)
+            pDateVal = DateTime.MinValue
+            If (txtOrdEntry_SalesDate.Text <> "") Then
+                pDateVal = Convert.ToDateTime(txtOrdEntry_SalesDate.Text)
+            End If
+            CompareVal(.DateSales.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pDateVal.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pCount)
 
             CompareVal(.LeadTimeQuoted, ConvertToDbl(txtOrderEntry_QtdLeadTime.Text), pCount)
 
@@ -8417,9 +8451,17 @@ Public Class Process_frmMain
 
             CompareVal(.PONo, txtOrdEntry_PONo.Text, pCount)
 
-            CompareVal(.DatePO.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), txtOrdEntry_PODate.Text, pCount)
+            pDateVal = DateTime.MinValue
+            If (txtOrdEntry_PODate.Text <> "") Then
+                pDateVal = Convert.ToDateTime(txtOrdEntry_PODate.Text)
+            End If
+            CompareVal(.DatePO.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pDateVal.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pCount)
 
-            CompareVal(.DatePO_EDI.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), txtOrdEntry_PODate_EDI.Text, pCount)
+            pDateVal = DateTime.MinValue
+            If (txtOrdEntry_PODate_EDI.Text <> "") Then
+                pDateVal = Convert.ToDateTime(txtOrdEntry_PODate_EDI.Text)
+            End If
+            CompareVal(.DatePO_EDI.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pDateVal.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pCount)
 
             Dim pblnFlag As Boolean
             If (cmbOrdEntry_SpecialReq.Text = "Y") Then
@@ -8443,9 +8485,17 @@ Public Class Process_frmMain
             End If
             CompareVal(.SplPkg_Lbl_Reqd, pblnFlag, pCount)
 
-            CompareVal(.OrdQty.ToString(), txtOrdEntry_OrderQty.Text, pCount)
+            Dim pVal As Integer = 0
+            If (txtOrdEntry_OrderQty.Text <> "") Then
+                pVal = Convert.ToInt32(txtOrdEntry_OrderQty.Text)
+            End If
+            CompareVal(.OrdQty, pVal, pCount)
 
-            CompareVal(.DateOrdShip.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), txtOrdEntry_OrderShipDate.Text, pCount)
+            pDateVal = DateTime.MinValue
+            If (txtOrdEntry_OrderShipDate.Text <> "") Then
+                pDateVal = Convert.ToDateTime(txtOrdEntry_OrderShipDate.Text)
+            End If
+            CompareVal(.DateOrdShip.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pDateVal.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pCount)
 
             If (cmbOrdEntry_Expedited.Text = "Y") Then
                 pblnFlag = True
@@ -8464,11 +8514,15 @@ Public Class Process_frmMain
         End With
 
         mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "OrdEntry")
-        If (grdPreOrder_SalesData.Rows.Count - 1 <> mProcess_Project.EditedBy.ID_Edit.Count) Then
+        If (grdOrdEntry_EditedBy.Rows.Count <> mProcess_Project.EditedBy.ID_Edit.Count) Then
             pCount = pCount + 1
         Else
             For i As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
-                CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdOrdEntry_EditedBy.Rows(i).Cells(0).Value, pCount)
+                pDateVal = DateTime.MinValue
+                If (grdOrdEntry_EditedBy.Rows(i).Cells(0).Value <> "" And Not IsNothing(grdOrdEntry_EditedBy.Rows(i).Cells(0).Value)) Then
+                    pDateVal = Convert.ToDateTime(grdOrdEntry_EditedBy.Rows(i).Cells(0).Value)
+                End If
+                CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pDateVal.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pCount)
                 CompareVal(mProcess_Project.EditedBy.Name(i), grdOrdEntry_EditedBy.Rows(i).Cells(1).Value, pCount)
                 CompareVal(mProcess_Project.EditedBy.Comment(i), grdOrdEntry_EditedBy.Rows(i).Cells(2).Value, pCount)
             Next
@@ -8486,10 +8540,11 @@ Public Class Process_frmMain
         Dim pblnValChanged As Boolean = False
         Dim pCount As Integer = 0
         Dim pCI As New CultureInfo("en-US")
+        Dim pDateVal As Date = DateTime.MinValue
 
         With mProcess_Project.Cost
 
-            CompareVal(.QuoteFileLoc, cmbCostFileLoc.Text, pCount)
+            CompareVal(.QuoteFileLoc, cmbCost_QuoteFile.Text, pCount)
 
             If (grdCost_SplOperation.Rows.Count - 1 <> .SplOperation.ID_SplOp.Count) Then
                 pCount = pCount + 1
@@ -8498,11 +8553,8 @@ Public Class Process_frmMain
                 For i As Integer = 0 To .SplOperation.ID_SplOp.Count - 1
 
                     CompareVal(.SplOperation.Desc(i), grdCost_SplOperation.Rows(i).Cells(0).Value, pCount)
-
                     CompareVal(.SplOperation.Spec(i), grdCost_SplOperation.Rows(i).Cells(1).Value, pCount)
-
                     CompareVal(.SplOperation.LeadTime(i), grdCost_SplOperation.Rows(i).Cells(2).Value, pCount)
-
                     CompareVal(.SplOperation.Cost(i), grdCost_SplOperation.Rows(i).Cells(3).Value, pCount)
 
                 Next
@@ -8514,10 +8566,14 @@ Public Class Process_frmMain
         End With
 
         mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Cost")
-        If (grdPreOrder_SalesData.Rows.Count - 1 <> mProcess_Project.EditedBy.ID_Edit.Count) Then
+        If (grdCost_EditedBy.Rows.Count <> mProcess_Project.EditedBy.ID_Edit.Count) Then
             pCount = pCount + 1
         Else
             For i As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                pDateVal = DateTime.MinValue
+                If (grdCost_EditedBy.Rows(i).Cells(0).Value <> "" And Not IsNothing(grdCost_EditedBy.Rows(i).Cells(0).Value)) Then
+                    pDateVal = Convert.ToDateTime(grdCost_EditedBy.Rows(i).Cells(0).Value)
+                End If
                 CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdCost_EditedBy.Rows(i).Cells(0).Value, pCount)
                 CompareVal(mProcess_Project.EditedBy.Name(i), grdCost_EditedBy.Rows(i).Cells(1).Value, pCount)
                 CompareVal(mProcess_Project.EditedBy.Comment(i), grdCost_EditedBy.Rows(i).Cells(2).Value, pCount)
@@ -8537,6 +8593,7 @@ Public Class Process_frmMain
         Dim pCI As New CultureInfo("en-US")
         Dim pblnValChanged As Boolean = False
         Dim pCount As Integer = 0
+        Dim pDateVal As Date = DateTime.MinValue
 
         With mProcess_Project.App
 
@@ -8661,11 +8718,15 @@ Public Class Process_frmMain
             End With
 
             mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "App")
-            If (grdPreOrder_SalesData.Rows.Count - 1 <> mProcess_Project.EditedBy.ID_Edit.Count) Then
+            If (grdApp_EditedBy_Face.Rows.Count <> mProcess_Project.EditedBy.ID_Edit.Count) Then
                 pCount = pCount + 1
             Else
                 For i As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
-                    CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdApp_EditedBy_Face.Rows(i).Cells(0).Value, pCount)
+                    pDateVal = DateTime.MinValue
+                    If (grdApp_EditedBy_Face.Rows(i).Cells(0).Value <> "" And Not IsNothing(grdApp_EditedBy_Face.Rows(i).Cells(0).Value)) Then
+                        pDateVal = Convert.ToDateTime(grdApp_EditedBy_Face.Rows(i).Cells(0).Value)
+                    End If
+                    CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pDateVal.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pCount)
                     CompareVal(mProcess_Project.EditedBy.Name(i), grdApp_EditedBy_Face.Rows(i).Cells(1).Value, pCount)
                     CompareVal(mProcess_Project.EditedBy.Comment(i), grdApp_EditedBy_Face.Rows(i).Cells(2).Value, pCount)
                 Next
@@ -8746,11 +8807,15 @@ Public Class Process_frmMain
             End With
 
             mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "App")
-            If (grdPreOrder_SalesData.Rows.Count - 1 <> mProcess_Project.EditedBy.ID_Edit.Count) Then
+            If (grdApp_EditedBy_Axial.Rows.Count <> mProcess_Project.EditedBy.ID_Edit.Count) Then
                 pCount = pCount + 1
             Else
                 For i As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
-                    CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdApp_EditedBy_Axial.Rows(i).Cells(0).Value, pCount)
+                    pDateVal = DateTime.MinValue
+                    If (grdApp_EditedBy_Axial.Rows(i).Cells(0).Value <> "" And Not IsNothing(grdApp_EditedBy_Axial.Rows(i).Cells(0).Value)) Then
+                        pDateVal = Convert.ToDateTime(grdApp_EditedBy_Axial.Rows(i).Cells(0).Value)
+                    End If
+                    CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pDateVal.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pCount)
                     CompareVal(mProcess_Project.EditedBy.Name(i), grdApp_EditedBy_Axial.Rows(i).Cells(1).Value, pCount)
                     CompareVal(mProcess_Project.EditedBy.Comment(i), grdApp_EditedBy_Axial.Rows(i).Cells(2).Value, pCount)
                 Next
@@ -8771,6 +8836,7 @@ Public Class Process_frmMain
         Dim pCI As New CultureInfo("en-US")
         Dim pblnValChanged As Boolean = False
         Dim pCount As Integer = 0
+        Dim pDateVal As Date = DateTime.MinValue
 
         With mProcess_Project.Design
             CompareVal(.CustDwgNo, txtDesign_CustDwgNo.Text, pCount)
@@ -8872,11 +8938,15 @@ Public Class Process_frmMain
             CompareVal(.Notes, txtDesign_Notes.Text, pCount)
 
             mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Design")
-            If (grdPreOrder_SalesData.Rows.Count - 1 <> mProcess_Project.EditedBy.ID_Edit.Count) Then
+            If (grdDesign_EditedBy.Rows.Count <> mProcess_Project.EditedBy.ID_Edit.Count) Then
                 pCount = pCount + 1
             Else
                 For i As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
-                    CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdDesign_EditedBy.Rows(i).Cells(0).Value, pCount)
+                    pDateVal = DateTime.MinValue
+                    If (grdDesign_EditedBy.Rows(i).Cells(0).Value <> "" And Not IsNothing(grdDesign_EditedBy.Rows(i).Cells(0).Value)) Then
+                        pDateVal = Convert.ToDateTime(grdDesign_EditedBy.Rows(i).Cells(0).Value)
+                    End If
+                    CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pDateVal.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pCount)
                     CompareVal(mProcess_Project.EditedBy.Name(i), grdDesign_EditedBy.Rows(i).Cells(1).Value, pCount)
                     CompareVal(mProcess_Project.EditedBy.Comment(i), grdDesign_EditedBy.Rows(i).Cells(2).Value, pCount)
                 Next
@@ -8897,6 +8967,7 @@ Public Class Process_frmMain
         Dim pCI As New CultureInfo("en-US")
         Dim pblnValChanged As Boolean = False
         Dim pCount As Integer = 0
+        Dim pDateVal As Date = DateTime.MinValue
 
         With mProcess_Project.Manf
             CompareVal(.BaseMat_PartNo, txtManf_MatPartNo_Base.Text, pCount)
@@ -8920,11 +8991,15 @@ Public Class Process_frmMain
             End If
 
             mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Manf")
-            If (grdPreOrder_SalesData.Rows.Count - 1 <> mProcess_Project.EditedBy.ID_Edit.Count) Then
+            If (grdManf_EditedBy.Rows.Count <> mProcess_Project.EditedBy.ID_Edit.Count) Then
                 pCount = pCount + 1
             Else
                 For i As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
-                    CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdManf_EditedBy.Rows(i).Cells(0).Value, pCount)
+                    pDateVal = DateTime.MinValue
+                    If (grdManf_EditedBy.Rows(i).Cells(0).Value <> "" And Not IsNothing(grdManf_EditedBy.Rows(i).Cells(0).Value)) Then
+                        pDateVal = Convert.ToDateTime(grdManf_EditedBy.Rows(i).Cells(0).Value)
+                    End If
+                    CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pDateVal.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pCount)
                     CompareVal(mProcess_Project.EditedBy.Name(i), grdManf_EditedBy.Rows(i).Cells(1).Value, pCount)
                     CompareVal(mProcess_Project.EditedBy.Comment(i), grdManf_EditedBy.Rows(i).Cells(2).Value, pCount)
                 Next
@@ -8945,6 +9020,7 @@ Public Class Process_frmMain
         Dim pCI As New CultureInfo("en-US")
         Dim pblnValChanged As Boolean = False
         Dim pCount As Integer = 0
+        Dim pDateVal As Date = DateTime.MinValue
 
         With mProcess_Project.Purchase
 
@@ -8954,8 +9030,9 @@ Public Class Process_frmMain
                 For i As Integer = 0 To .Mat.ID_Mat.Count - 1
                     CompareVal(.Mat.Item(i), grdPurchase_Mat.Rows(i).Cells(0).Value, pCount)
                     CompareVal(.Mat.EstQty(i), grdPurchase_Mat.Rows(i).Cells(1).Value, pCount)
-                    CompareVal(.Mat.Status(i), grdPurchase_Mat.Rows(i).Cells(2).Value, pCount)
-                    CompareVal(.Mat.LeadTime(i), ConvertToDbl(grdPurchase_Mat.Rows(i).Cells(3).Value), pCount)
+                    CompareVal(.Mat.Qty_Unit(i), grdPurchase_Mat.Rows(i).Cells(2).Value, pCount)
+                    CompareVal(.Mat.Status(i), grdPurchase_Mat.Rows(i).Cells(3).Value, pCount)
+                    CompareVal(.Mat.LeadTime(i), ConvertToDbl(grdPurchase_Mat.Rows(i).Cells(4).Value), pCount)
                 Next
             End If
 
@@ -8970,11 +9047,15 @@ Public Class Process_frmMain
             End If
 
             mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Purchase")
-            If (grdPreOrder_SalesData.Rows.Count - 1 <> mProcess_Project.EditedBy.ID_Edit.Count) Then
+            If (grdPurchase_EditedBy.Rows.Count <> mProcess_Project.EditedBy.ID_Edit.Count) Then
                 pCount = pCount + 1
             Else
                 For i As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
-                    CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdPurchase_EditedBy.Rows(i).Cells(0).Value, pCount)
+                    pDateVal = DateTime.MinValue
+                    If (grdPurchase_EditedBy.Rows(i).Cells(0).Value <> "" And Not IsNothing(grdPurchase_EditedBy.Rows(i).Cells(0).Value)) Then
+                        pDateVal = Convert.ToDateTime(grdPurchase_EditedBy.Rows(i).Cells(0).Value)
+                    End If
+                    CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pDateVal.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pCount)
                     CompareVal(mProcess_Project.EditedBy.Name(i), grdPurchase_EditedBy.Rows(i).Cells(1).Value, pCount)
                     CompareVal(mProcess_Project.EditedBy.Comment(i), grdPurchase_EditedBy.Rows(i).Cells(2).Value, pCount)
                 Next
@@ -8995,6 +9076,7 @@ Public Class Process_frmMain
         Dim pCI As New CultureInfo("en-US")
         Dim pblnValChanged As Boolean = False
         Dim pCount As Integer = 0
+        Dim pDateVal As Date = DateTime.MinValue
 
         With mProcess_Project.Qlty
 
@@ -9047,11 +9129,15 @@ Public Class Process_frmMain
 
 
             mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Qlty")
-            If (grdPreOrder_SalesData.Rows.Count - 1 <> mProcess_Project.EditedBy.ID_Edit.Count) Then
+            If (grdQuality_EditedBy.Rows.Count <> mProcess_Project.EditedBy.ID_Edit.Count) Then
                 pCount = pCount + 1
             Else
                 For i As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
-                    CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdQuality_EditedBy.Rows(i).Cells(0).Value, pCount)
+                    pDateVal = DateTime.MinValue
+                    If (grdQuality_EditedBy.Rows(i).Cells(0).Value <> "" And Not IsNothing(grdQuality_EditedBy.Rows(i).Cells(0).Value)) Then
+                        pDateVal = Convert.ToDateTime(grdQuality_EditedBy.Rows(i).Cells(0).Value)
+                    End If
+                    CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pDateVal.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pCount)
                     CompareVal(mProcess_Project.EditedBy.Name(i), grdQuality_EditedBy.Rows(i).Cells(1).Value, pCount)
                     CompareVal(mProcess_Project.EditedBy.Comment(i), grdQuality_EditedBy.Rows(i).Cells(2).Value, pCount)
                 Next
@@ -9072,6 +9158,7 @@ Public Class Process_frmMain
         Dim pCI As New CultureInfo("en-US")
         Dim pblnValChanged As Boolean = False
         Dim pCount As Integer = 0
+        Dim pDateVal As Date = DateTime.MinValue
 
         With mProcess_Project.Dwg
 
@@ -9099,11 +9186,15 @@ Public Class Process_frmMain
             End If
 
             mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "DWG")
-            If (grdPreOrder_SalesData.Rows.Count - 1 <> mProcess_Project.EditedBy.ID_Edit.Count) Then
+            If (grdDwg_EditedBy.Rows.Count <> mProcess_Project.EditedBy.ID_Edit.Count) Then
                 pCount = pCount + 1
             Else
                 For i As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
-                    CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdDwg_EditedBy.Rows(i).Cells(0).Value, pCount)
+                    pDateVal = DateTime.MinValue
+                    If (grdDwg_EditedBy.Rows(i).Cells(0).Value <> "" And Not IsNothing(grdDwg_EditedBy.Rows(i).Cells(0).Value)) Then
+                        pDateVal = Convert.ToDateTime(grdDwg_EditedBy.Rows(i).Cells(0).Value)
+                    End If
+                    CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pDateVal.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pCount)
                     CompareVal(mProcess_Project.EditedBy.Name(i), grdDwg_EditedBy.Rows(i).Cells(1).Value, pCount)
                     CompareVal(mProcess_Project.EditedBy.Comment(i), grdDwg_EditedBy.Rows(i).Cells(2).Value, pCount)
                 Next
@@ -9124,6 +9215,7 @@ Public Class Process_frmMain
         Dim pCI As New CultureInfo("en-US")
         Dim pblnValChanged As Boolean = False
         Dim pCount As Integer = 0
+        Dim pDateVal As Date = DateTime.MinValue
 
         With mProcess_Project.Test
 
@@ -9140,8 +9232,17 @@ Public Class Process_frmMain
             CompareVal(.Leak.Max_Unplated, ConvertToDbl(txtTest_ReqPre_Leak.Text), pCount)
             CompareVal(.Leak.Max_Plated, ConvertToDbl(txtTest_ReqPost_Leak.Text), pCount)
 
-            CompareVal(.Leak.Qty_Unplated.ToString(), cmbTest_QtyPre_Leak.Text, pCount)
-            CompareVal(.Leak.Qty_Plated.ToString(), cmbTest_QtyPost_Leak.Text, pCount)
+            Dim pVal As Integer = 0
+            If (cmbTest_QtyPre_Leak.Text <> "") Then
+                pVal = Convert.ToInt32(cmbTest_QtyPre_Leak.Text)
+            End If
+            CompareVal(.Leak.Qty_Unplated, pVal, pCount)
+
+            pVal = 0
+            If (cmbTest_QtyPost_Leak.Text <> "") Then
+                pVal = Convert.ToInt32(cmbTest_QtyPost_Leak.Text)
+            End If
+            CompareVal(.Leak.Qty_Plated, pVal, pCount)
 
             CompareVal(.Leak.Freq_Unplated, cmbTest_FreqPre_Leak.Text, pCount)
             CompareVal(.Leak.Freq_Plated, cmbTest_FreqPost_Leak.Text, pCount)
@@ -9153,8 +9254,17 @@ Public Class Process_frmMain
             CompareVal(.Load.Max_Unplated, ConvertToDbl(txtTest_ReqPre_Load.Text), pCount)
             CompareVal(.Load.Max_Plated, ConvertToDbl(txtTest_ReqPost_Load.Text), pCount)
 
-            CompareVal(.Load.Qty_Unplated.ToString(), cmbTest_QtyPre_Load.Text, pCount)
-            CompareVal(.Load.Qty_Plated.ToString(), cmbTest_QtyPost_Load.Text, pCount)
+            pVal = 0
+            If (cmbTest_QtyPre_Load.Text <> "") Then
+                pVal = Convert.ToInt32(cmbTest_QtyPre_Load.Text)
+            End If
+            CompareVal(.Load.Qty_Unplated, pVal, pCount)
+
+            pVal = 0
+            If (cmbTest_QtyPost_Load.Text <> "") Then
+                pVal = Convert.ToInt32(cmbTest_QtyPost_Load.Text)
+            End If
+            CompareVal(.Load.Qty_Plated, pVal, pCount)
 
             CompareVal(.Load.Freq_Unplated, cmbTest_FreqPre_Load.Text, pCount)
             CompareVal(.Load.Freq_Plated, cmbTest_FreqPost_Load.Text, pCount)
@@ -9166,8 +9276,17 @@ Public Class Process_frmMain
             CompareVal(.SpringBack.Max_Unplated, ConvertToDbl(txtTest_ReqPre_SpringBack.Text), pCount)
             CompareVal(.SpringBack.Max_Plated, ConvertToDbl(txtTest_ReqPost_SpringBack.Text), pCount)
 
-            CompareVal(.SpringBack.Qty_Unplated.ToString(), cmbTest_QtyPre_SpringBack.Text, pCount)
-            CompareVal(.SpringBack.Qty_Plated.ToString(), cmbTest_QtyPost_SpringBack.Text, pCount)
+            pVal = 0
+            If (cmbTest_QtyPre_SpringBack.Text <> "") Then
+                pVal = Convert.ToInt32(cmbTest_QtyPre_SpringBack.Text)
+            End If
+            CompareVal(.SpringBack.Qty_Unplated, pVal, pCount)
+
+            pVal = 0
+            If (cmbTest_QtyPost_SpringBack.Text <> "") Then
+                pVal = Convert.ToInt32(cmbTest_QtyPost_SpringBack.Text)
+            End If
+            CompareVal(.SpringBack.Qty_Plated, pVal, pCount)
 
             CompareVal(.SpringBack.Freq_Unplated, cmbTest_FreqPre_SpringBack.Text, pCount)
             CompareVal(.SpringBack.Freq_Plated, cmbTest_FreqPost_SpringBack.Text, pCount)
@@ -9175,11 +9294,15 @@ Public Class Process_frmMain
             CompareVal(.Other, txtTest_Other.Text, pCount)
 
             mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Test")
-            If (grdPreOrder_SalesData.Rows.Count - 1 <> mProcess_Project.EditedBy.ID_Edit.Count) Then
+            If (grdTest_EditedBy.Rows.Count <> mProcess_Project.EditedBy.ID_Edit.Count) Then
                 pCount = pCount + 1
             Else
                 For i As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
-                    CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdTest_EditedBy.Rows(i).Cells(0).Value, pCount)
+                    pDateVal = DateTime.MinValue
+                    If (grdTest_EditedBy.Rows(i).Cells(0).Value <> "" And Not IsNothing(grdTest_EditedBy.Rows(i).Cells(0).Value)) Then
+                        pDateVal = Convert.ToDateTime(grdTest_EditedBy.Rows(i).Cells(0).Value)
+                    End If
+                    CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pDateVal.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pCount)
                     CompareVal(mProcess_Project.EditedBy.Name(i), grdTest_EditedBy.Rows(i).Cells(1).Value, pCount)
                     CompareVal(mProcess_Project.EditedBy.Comment(i), grdTest_EditedBy.Rows(i).Cells(2).Value, pCount)
                 Next
@@ -9200,17 +9323,23 @@ Public Class Process_frmMain
         Dim pCI As New CultureInfo("en-US")
         Dim pblnValChanged As Boolean = False
         Dim pCount As Integer = 0
+        Dim pDateVal As Date = DateTime.MinValue
 
         With mProcess_Project.Shipping
 
             CompareVal(.Notes, txtShipping_Notes.Text, pCount)
 
             mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Shipping")
-            If (grdPreOrder_SalesData.Rows.Count - 1 <> mProcess_Project.EditedBy.ID_Edit.Count) Then
+            If (grdShipping_EditedBy.Rows.Count <> mProcess_Project.EditedBy.ID_Edit.Count) Then
                 pCount = pCount + 1
             Else
                 For i As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
-                    CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), grdShipping_EditedBy.Rows(i).Cells(0).Value, pCount)
+                    pDateVal = DateTime.MinValue
+                    If (grdShipping_EditedBy.Rows(i).Cells(0).Value <> "" And Not IsNothing(grdShipping_EditedBy.Rows(i).Cells(0).Value)) Then
+                        pDateVal = Convert.ToDateTime(grdShipping_EditedBy.Rows(i).Cells(0).Value)
+                    End If
+
+                    CompareVal(mProcess_Project.EditedBy.DateEdited(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pDateVal.ToString("MM/dd/yyyy", pCI.DateTimeFormat()), pCount)
                     CompareVal(mProcess_Project.EditedBy.Name(i), grdShipping_EditedBy.Rows(i).Cells(1).Value, pCount)
                     CompareVal(mProcess_Project.EditedBy.Comment(i), grdShipping_EditedBy.Rows(i).Cells(2).Value, pCount)
                 Next
