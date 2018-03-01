@@ -282,9 +282,9 @@ Partial Class frmSplash
         Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.Label1.Location = New System.Drawing.Point(652, 80)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(133, 14)
+        Me.Label1.Size = New System.Drawing.Size(113, 14)
         Me.Label1.TabIndex = 1
-        Me.Label1.Text = "February 28, 2018"
+        Me.Label1.Text = "March 01, 2018"
         '
         'imgLogo
         '

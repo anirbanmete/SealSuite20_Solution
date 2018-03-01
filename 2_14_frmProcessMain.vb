@@ -396,6 +396,8 @@ Public Class Process_frmMain
         SBPanel4.Text = Today.ToString("dd MMM yyyy", pCI.DateTimeFormat()) 'US Format only
         '--------------------------------------------------------------------------------------
 
+        InitializeTabs()        'AES 01MAR18
+
         cmdDel_Rec.Enabled = False
         txtParkerPart.ReadOnly = True
         txtPN_Rev.ReadOnly = True
@@ -538,22 +540,25 @@ Public Class Process_frmMain
 
         End If
 
-        chkNewRef_Dim.Enabled = False
-        txtParkerPN_Part1_NewRef_Dim.Enabled = False
-        cmbParkerPN_Part2_NewRef_Dim.Enabled = True
-        txtParkerPN_Part3_NewRef_Dim.Enabled = False
-        txtPN_PH_Rev_NewRef_Dim.Enabled = False
-        chkNewRef_Notes.Enabled = False
-        txtParkerPN_Part1_Notes_Dim.Enabled = False
-        cmbParkerPN_Part2_Notes_Dim.Enabled = True
-        txtParkerPN_Part3_Notes_Dim.Enabled = False
-        txtParkerPN_Rev_Notes_Dim.Enabled = False
-        chkLegacyRef_Dim.Enabled = False
-        txtLegacyRef_Dim.Enabled = False
-        txtLegacyRef_Dim_Rev.Enabled = False
-        chkLegacyRef_Notes.Enabled = False
-        txtLegacyRef_Notes.Enabled = False
-        txtLegacyRef_Notes_Rev.Enabled = False
+        If (mDesign) Then
+            chkNewRef_Dim.Enabled = False
+            txtParkerPN_Part1_NewRef_Dim.Enabled = False
+            cmbParkerPN_Part2_NewRef_Dim.Enabled = True
+            txtParkerPN_Part3_NewRef_Dim.Enabled = False
+            txtPN_PH_Rev_NewRef_Dim.Enabled = False
+            chkNewRef_Notes.Enabled = False
+            txtParkerPN_Part1_Notes_Dim.Enabled = False
+            cmbParkerPN_Part2_Notes_Dim.Enabled = True
+            txtParkerPN_Part3_Notes_Dim.Enabled = False
+            txtParkerPN_Rev_Notes_Dim.Enabled = False
+            chkLegacyRef_Dim.Enabled = False
+            txtLegacyRef_Dim.Enabled = False
+            txtLegacyRef_Dim_Rev.Enabled = False
+            chkLegacyRef_Notes.Enabled = False
+            txtLegacyRef_Notes.Enabled = False
+            txtLegacyRef_Notes_Rev.Enabled = False
+        End If
+
 
         '....Manf
         Dim pCmbColManf_ToolNGage As New DataGridViewComboBoxColumn
@@ -600,7 +605,9 @@ Public Class Process_frmMain
 
         '........Coating
         If (pSealType = "E") Then
-            grpCoating.Enabled = True
+            If (mDesign) Then
+                grpCoating.Enabled = True
+            End If
 
             '....Populate Coating Combo Box:
             With cmbCoating
@@ -615,34 +622,50 @@ Public Class Process_frmMain
                 chkCoating.Checked = True
             Else
                 chkCoating.Checked = False
-                cmbCoating.Enabled = False
+                If (mDesign) Then
+                    cmbCoating.Enabled = False
+                End If
+
             End If
 
             '........Populate Surface Finish Combo Box.
             PopulateCmbSFinish()
 
             If gPartProject.PNR.HW.Coating <> "" And gPartProject.PNR.HW.Coating <> "None" Then
-                cmbCoating.Enabled = True
+                If (mDesign) Then
+                    cmbCoating.Enabled = True
+                End If
+
                 cmbCoating.DropDownStyle = ComboBoxStyle.DropDownList
                 cmbCoating.Text = gPartProject.PNR.HW.Coating
 
                 If cmbCoating.Text = "T800" Then
-                    lblSFinish.Enabled = True
-                    cmbSFinish.Enabled = True
+                    If (mDesign) Then
+                        lblSFinish.Enabled = True
+                        cmbSFinish.Enabled = True
+                    End If
+
                     cmbSFinish.DropDownStyle = ComboBoxStyle.DropDownList
                 Else
-                    lblSFinish.Enabled = False
-                    cmbSFinish.Enabled = False
+                    If (mDesign) Then
+                        lblSFinish.Enabled = False
+                        cmbSFinish.Enabled = False
+                    End If
+
                     cmbSFinish.DropDownStyle = ComboBoxStyle.DropDown
                     cmbSFinish.Text = ""
                 End If
 
             Else
-                cmbCoating.Enabled = False
+                If (mDesign) Then
+                    cmbCoating.Enabled = False
+                    lblSFinish.Enabled = False
+                    cmbSFinish.Enabled = False
+                End If
+
                 cmbCoating.DropDownStyle = ComboBoxStyle.DropDown
                 cmbCoating.Text = ""
-                lblSFinish.Enabled = False
-                cmbSFinish.Enabled = False
+
                 cmbSFinish.DropDownStyle = ComboBoxStyle.DropDown
                 cmbSFinish.Text = ""
             End If
@@ -658,18 +681,28 @@ Public Class Process_frmMain
             End If
 
         Else
-            grpCoating.Enabled = False
+            If (mDesign) Then
+                grpCoating.Enabled = False
+            End If
+
         End If
 
         '....Plating
         If (pSealType = "C" Or pSealType = "SC") Then
-            grpPlating.Enabled = True
+            If (mDesign) Then
+                grpPlating.Enabled = True
+                cmbPlatingCode.Enabled = True
+                cmbPlatingThickCode.Enabled = True
+            End If
+
             chkPlating.Checked = False
-            cmbPlatingCode.Enabled = True
-            cmbPlatingThickCode.Enabled = True
+
 
         Else
-            grpPlating.Enabled = False
+            If (mDesign) Then
+                grpPlating.Enabled = False
+            End If
+
         End If
 
         Dim pSealSuiteEntities As New SealSuiteDBEntities()
@@ -744,6 +777,134 @@ Public Class Process_frmMain
         grdApproval_Attendees.AllowUserToAddRows = False
 
         '--------------
+        'grpParker.Enabled = mHeader
+        'grpCust.Enabled = mHeader
+        'cmbRating.Enabled = mHeader
+        'lblRating.Enabled = mHeader
+        'cmbType.Enabled = mHeader
+        'lblType.Enabled = mHeader
+        'lblStatus.Enabled = mHeader
+        ''grpProject.Enabled = mHeader
+        'grpDate.Enabled = mHeader
+        'cmdSetUnits.Enabled = mHeader
+
+
+        'EnableTab(tabPreOrder_P1, mPreOrder)
+        'EnableTab(tabPreOrder_P2, mPreOrder)
+        'txtPreOrderUserDate.Enabled = False
+        'dtpPreOrderUserDate.Enabled = False
+        'txtPreOrderUserName.Enabled = False
+        'chkPreOrderUserSigned.Enabled = False
+        'cmdPreOrderUserSign.Enabled = False
+
+        'EnableTab(tabExport, mExport)
+        'txtITAR_Export_UserDate.Enabled = False
+        'dtpITAR_Export_UserDate.Enabled = False
+        'txtITAR_Export_UserName.Enabled = False
+        'chkITAR_Export_UserSigned.Enabled = False
+        'cmdITAR_Export_UserSign.Enabled = False
+
+        'EnableTab(tabOrder, mOrdEntry)
+        'txtOrdEntry_UserDate.Enabled = False
+        'dtpOrdEntry_UserDate.Enabled = False
+        'txtOrdEntry_UserName.Enabled = False
+        'chkOrdEntry_UserSigned.Enabled = False
+        'cmdOrdEntry_UserSign.Enabled = False
+
+        'EnableTab(tabCosting, mCost)
+        'txtCost_UserDate.Enabled = False
+        'dtpCost_UserDate.Enabled = False
+        'txtCost_UserName.Enabled = False
+        'chkCost_UserSigned.Enabled = False
+        'cmdCost_UserSign.Enabled = False
+
+        'EnableTab(tbpGen, mApp)
+        'EnableTab(tbpFace, mApp)
+        'EnableTab(tbpAxial, mApp)
+        'txtApp_UserDate_Face.Enabled = False
+        'dtpApp_UserDate_Face.Enabled = False
+        'txtApp_UserName_Face.Enabled = False
+        'chkApp_UserSigned_Face.Enabled = False
+        'cmdApp_UserSign_Face.Enabled = False
+
+
+        'EnableTab(tbpDesign_P1, mDesign)
+        'EnableTab(tbpDesign_P2, mDesign)
+        'txtDesign_UserDate.Enabled = False
+        'dtpDesign_UserDate.Enabled = False
+        'txtDesign_UserName.Enabled = False
+        'chkDesign_UserSigned.Enabled = False
+        'cmdDesign_UserSign.Enabled = False
+
+        'EnableTab(tabManufacturing, mManf)
+        'txtManf_UserDate.Enabled = False
+        'dtpManf_UserDate.Enabled = False
+        'txtManf_UserName.Enabled = False
+        'chkManf_UserSigned.Enabled = False
+        'cmdManf_UserSign.Enabled = False
+
+        'EnableTab(tabPurchasing, mPurchase)
+        'txtPurchase_UserDate.Enabled = False
+        'dtpPurchase_UserDate.Enabled = False
+        'txtPurchase_UserName.Enabled = False
+        'chkPurchase_UserSigned.Enabled = False
+        'cmdPurchase_UserSign.Enabled = False
+
+        'EnableTab(tabQuality, mQlty)
+        'txtQuality_UserDate.Enabled = False
+        'dtpQuality_UserDate.Enabled = False
+        'txtQuality_UserName.Enabled = False
+        'chkQuality_UserSigned.Enabled = False
+        'cmdQuality_UserSign.Enabled = False
+
+        'EnableTab(tabDrawing, mDwg)
+        'txtDwg_UserDate.Enabled = False
+        'dtpDwg_UserDate.Enabled = False
+        'txtDwg_UserName.Enabled = False
+        'chkDwg_UserSigned.Enabled = False
+        'cmdDwg_UserSign.Enabled = False
+
+        'chkTest.Enabled = mTest
+        'grpUnit_Test.Enabled = mTest
+        'txtTest_Other.Enabled = mTest
+        'EnableTab(tabLeak, mTest)
+        'EnableTab(tabLoad, mTest)
+        'EnableTab(tabSpringBack, mTest)
+        'txtTest_UserDate.Enabled = False
+        'dtpTest_UserDate.Enabled = False
+        'txtTest_UserName.Enabled = False
+        'chkTest_UserSigned.Enabled = False
+        'cmdTest_UserSign.Enabled = False
+
+        'EnableTab(tabPlanning, False)
+        'txtPlanning_UserDate.Enabled = False
+        'dtpPlanning_UserDate.Enabled = False
+        'txtPlanning_UserName.Enabled = False
+        'chkPlanning_UserSigned.Enabled = False
+        'cmdPlanning_UserSign.Enabled = False
+
+        'EnableTab(tabShipping, mShipping)
+        'txtShipping_UserDate.Enabled = False
+        'dtpShipping_UserDate.Enabled = False
+        'txtShipping_UserName.Enabled = False
+        'chkShipping_UserSigned.Enabled = False
+        'cmdShipping_UserSign.Enabled = False
+
+        'EnableTab(tabKeyChar, False)
+        'EnableTab(tabApproval, False)
+        'If (gUser.Role = "Viewer") Then
+        '    EnableTab(tabIssue, False)
+        '    cmdRiskAna.Enabled = False
+        '    cmdIssueComment.Enabled = False
+        '    cmdSealPart.Enabled = False
+        'Else
+        '    EnableTab(tabIssue, True)
+        'End If
+
+    End Sub
+
+    Private Sub InitializeTabs()
+        '=======================
         grpParker.Enabled = mHeader
         grpCust.Enabled = mHeader
         cmbRating.Enabled = mHeader
@@ -1112,9 +1273,11 @@ Public Class Process_frmMain
             If (.Export.Reqd) Then
                 cmbExport_Reqd.Text = "Y"
                 cmbExport_Status.Text = .Export.Status
+                cmbExport_Status.Enabled = True
             Else
                 cmbExport_Reqd.Text = "N"
                 cmbExport_Status.Text = ""
+                cmbExport_Status.Enabled = False
             End If
 
             If (gPartProject.PNR.SealType.ToString() = "E") Then
@@ -1265,6 +1428,7 @@ Public Class Process_frmMain
 
         '.... "ITAR_Export:"
         With mProcess_Project.ITAR_Export
+            cmdExport_HTS.Enabled = False
 
             If (.IsCustOnDenialList) Then
                 cmbITAR_Export_CustOnDenialList.Text = "Y"
@@ -1287,16 +1451,20 @@ Public Class Process_frmMain
             If (.IsUnder_ITAR_Reg) Then
                 cmbITAR_Export_ProductITAR_Reg.Text = "Y"
                 txtExportControlled.Text = "Y"
+                txtITAR_Export_ITAR_Classification.Enabled = True
             Else
                 cmbITAR_Export_ProductITAR_Reg.Text = "N"
                 txtExportControlled.Text = "N"
                 txtExportStatus.Text = ""
+                txtITAR_Export_ITAR_Classification.Enabled = False
             End If
 
             If (.SaleExportControlled) Then
                 cmbITAR_Export_SaleExportControlled.Text = "Y"
+                txtITAR_Export_EAR_Classification.Enabled = True
             Else
                 cmbITAR_Export_SaleExportControlled.Text = "N"
+                txtITAR_Export_EAR_Classification.Enabled = False
             End If
 
             txtITAR_Export_ITAR_Classification.Text = .ITAR_Class
@@ -2002,9 +2170,11 @@ Public Class Process_frmMain
             If (.IsWinnovation) Then
                 cmbDesign_Winnovation.Text = "Y"
                 txtDesign_WinnovationNo.Text = .WinnovationNo
+                txtDesign_WinnovationNo.Enabled = True
             Else
                 cmbDesign_Winnovation.Text = "N"
                 txtDesign_WinnovationNo.Text = ""
+                txtDesign_WinnovationNo.Enabled = False
             End If
 
             'cmbDesign_TemperType.Text = .TemperType
@@ -3266,7 +3436,7 @@ Public Class Process_frmMain
         If (gUser.Role = "Admin") Then
             With openFileDialog1
 
-                .Filter = "Risk Analysis DataFile (*.xls)|*.xls"
+                .Filter = "Risk Analysis DataFile (*.xlsx)|*.xlsx"
                 .FilterIndex = 1
                 .InitialDirectory = gFile.DirProgramDataFile_Process
                 .FileName = ""
@@ -8198,8 +8368,8 @@ Public Class Process_frmMain
     Private Sub SaveToDB()
         '==================
         'mProcess_Project.SaveToDB(mPNID, mRevID)
-        mProcess_Project.CustContact.SaveToDB(mProcess_Project.ID)
         mProcess_Project.PreOrder.SaveToDB(mProcess_Project.ID)
+        mProcess_Project.CustContact.SaveToDB(mProcess_Project.ID)
         mProcess_Project.ITAR_Export.SaveToDB(mProcess_Project.ID)
         mProcess_Project.OrdEntry.SaveToDB(mProcess_Project.ID)
         mProcess_Project.Cost.SaveToDB(mProcess_Project.ID)

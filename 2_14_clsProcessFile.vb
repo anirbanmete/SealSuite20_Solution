@@ -1959,11 +1959,14 @@ Public Class clsProcessFile
                 pExcelCellRange = pWkSheet.Range(pColumn_Desc & pIndex.ToString()) : pExcelCellRange.Value = pDesc
 
                 Dim pStatus As String = ""
-                If (ProcessProj_In.Manf.ToolNGage.Status(i).Trim() = "Inventory") Then
-                    pStatus = "Yes" & "  " & ProcessProj_In.Manf.ToolNGage.DesignResponsibility(i)
-                Else
-                    pStatus = "No" & "  " & ProcessProj_In.Manf.ToolNGage.DesignResponsibility(i)
+                If (ProcessProj_In.Manf.ToolNGage.Status(i) <> "" And Not IsNothing(ProcessProj_In.Manf.ToolNGage.Status(i))) Then
+                    If (ProcessProj_In.Manf.ToolNGage.Status(i).Trim() = "Inventory") Then
+                        pStatus = "Yes" & "  " & ProcessProj_In.Manf.ToolNGage.DesignResponsibility(i)
+                    Else
+                        pStatus = "No" & "  " & ProcessProj_In.Manf.ToolNGage.DesignResponsibility(i)
+                    End If
                 End If
+
                 pExcelCellRange = pWkSheet.Range(pColumn_Response & pIndex.ToString()) : pExcelCellRange.Value = pStatus
 
             Next

@@ -120,7 +120,7 @@ Public Class frmUserGroup
         '==============================================================================================
         With openFileDialog1
 
-            .Filter = "SealSuite DataFile Use (*.xls)|*.xls"
+            .Filter = "SealSuite DataFile Use (*.xlsx)|*.xlsx"
             .FilterIndex = 1
             .InitialDirectory = gFile.DirUserData
             .FileName = ""

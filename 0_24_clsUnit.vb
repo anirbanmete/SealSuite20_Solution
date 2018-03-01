@@ -612,7 +612,7 @@ Public Class clsUnit
         pDecimalPart = Val_In - Int(Val_In)
 
         If pDecimalPart <= mcEPS Then
-            pVal = Format(NInt(Val_In), "#####")
+            pVal = Format(Int(Val_In), "#####")
 
         ElseIf pDecimalPart > mcEPS Then
             pVal = Val_In.ToString("#####.#", CurrentCulture)
@@ -634,11 +634,11 @@ Public Class clsUnit
         pDecimalPart = Val_In - pIntPart
 
         If pDecimalPart <= mcEPS Then
-            pVal = Format(NInt(Val_In), "#####")
+            pVal = Format(Int(Val_In), "#####")
 
         ElseIf pDecimalPart > mcEPS Then
             If (pIntPart > 99) Then
-                pVal = Format(NInt(Val_In), "#####")
+                pVal = Format(Int(Val_In), "#####")
 
             ElseIf (pIntPart > 9) Then
                 pVal = Val_In.ToString("#####.#", CurrentCulture)
