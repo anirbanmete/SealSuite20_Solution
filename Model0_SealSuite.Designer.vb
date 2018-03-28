@@ -18,7 +18,7 @@ Imports System.Runtime.Serialization
 Imports System.Xml.Serialization
 
 
-<Assembly: EdmSchemaAttribute("ab5a4f8c-e6c7-4271-97ff-b88c08a79f67")>
+<Assembly: EdmSchemaAttribute("7eea3e6b-4a7c-4b3e-badb-830561410238")>
 #Region "EDM Relationship Metadata"
 <Assembly: EdmRelationshipAttribute("SealSuiteDBModel", "FK_tblProcess_UserRole_tblRole", "tblRole", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(tblRole), "tblProcess_UserRole", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(tblProcess_UserRole), True)>
 <Assembly: EdmRelationshipAttribute("SealSuiteDBModel", "FK_tblProcess_UserRole_tblUser", "tblUser", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(tblUser), "tblProcess_UserRole", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(tblProcess_UserRole), True)>

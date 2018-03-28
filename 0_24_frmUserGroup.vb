@@ -120,7 +120,7 @@ Public Class frmUserGroup
         '==============================================================================================
         With openFileDialog1
 
-            .Filter = "SealSuite DataFile Use (*.xls)|*.xls"
+            .Filter = "SealSuite DataFile Use (*.xlsx)|*.xlsx"
             .FilterIndex = 1
             .InitialDirectory = gFile.DirUserData
             .FileName = ""
@@ -135,6 +135,7 @@ Public Class frmUserGroup
                 SaveToDB()
                 InitializeControls()
                 Cursor.Current = Cursors.Default
+                grdUsers.Rows.Clear()
             End If
 
         End With
@@ -537,6 +538,10 @@ Public Class frmUserGroup
         Catch ex As Exception
 
         End Try
+    End Sub
+
+    Private Sub cmdIPE_Click(sender As Object, e As EventArgs) Handles cmdIPE.Click
+
     End Sub
 
     Private Sub SaveToDB()

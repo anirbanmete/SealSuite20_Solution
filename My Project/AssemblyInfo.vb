@@ -8,10 +8,10 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("SealSuite23")>
+<Assembly: AssemblyTitle("SealSuite24")>
 <Assembly: AssemblyDescription("")> 
 <Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("SealSuite23")>
+<Assembly: AssemblyProduct("SealSuite24")>
 <Assembly: AssemblyCopyright("Copyright ©  2018")> 
 <Assembly: AssemblyTrademark("")> 
 
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("2.3.0.0")>
-<Assembly: AssemblyFileVersion("2.3.0.0")>
+<Assembly: AssemblyVersion("2.4.0.0")>
+<Assembly: AssemblyFileVersion("2.4.0.0")>

@@ -110,12 +110,12 @@ Partial Class frmPartMain
         Me.mnuProject = New System.Windows.Forms.ToolStripMenuItem()
         Me.UserGroupToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.cmdHardware = New System.Windows.Forms.Button()
+        Me.openFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.cmdOK = New System.Windows.Forms.Button()
         Me.cmdCancel = New System.Windows.Forms.Button()
         Me.bindingSourceProject = New System.Windows.Forms.BindingSource(Me.components)
         Me.bindingSourcePlatForm = New System.Windows.Forms.BindingSource(Me.components)
         Me.bindingSourceCustomer = New System.Windows.Forms.BindingSource(Me.components)
-        Me.openFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.pnlPanel3.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.toolStrip1.SuspendLayout()
@@ -1092,6 +1092,10 @@ Partial Class frmPartMain
         Me.cmdHardware.Text = "Hardware"
         Me.cmdHardware.UseVisualStyleBackColor = False
         '
+        'openFileDialog1
+        '
+        Me.openFileDialog1.FileName = "OpenFileDialog1"
+        '
         'cmdOK
         '
         Me.cmdOK.BackColor = System.Drawing.Color.Silver
@@ -1119,10 +1123,6 @@ Partial Class frmPartMain
         Me.cmdCancel.Text = "  &Cancel"
         Me.cmdCancel.UseVisualStyleBackColor = False
         '
-        'openFileDialog1
-        '
-        Me.openFileDialog1.FileName = "OpenFileDialog1"
-        '
         'frmPartMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1139,7 +1139,7 @@ Partial Class frmPartMain
         Me.Name = "frmPartMain"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "SealPart 1.4: Main Form                                                          " &
-    " Metalic Seal: P/N System"
+    " Metal Seal: P/N System"
         Me.pnlPanel3.ResumeLayout(False)
         Me.pnlPanel3.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)

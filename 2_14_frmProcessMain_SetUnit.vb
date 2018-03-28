@@ -143,6 +143,13 @@ Public Class Process_frmUnit
     Private Sub cmdOK_Click(sender As System.Object, e As System.EventArgs) Handles cmdOK.Click
         '======================================================================================
         SaveData()
+        'AES 26FEB18
+        If (mProcessProject.Unit.LUnit_Cust = "in") Then
+            gUnit.SetLFormat("English")
+        Else
+            gUnit.SetLFormat("Metric")
+        End If
+
         Me.Close()
     End Sub
 

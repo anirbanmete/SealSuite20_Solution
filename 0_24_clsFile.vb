@@ -65,6 +65,14 @@ Public Class clsFile
 
     End Property
 
+    Public ReadOnly Property DirProgramDataFile_Process() As String
+        '==========================================================       
+        Get
+            Return mcDirRoot & "SealProcess\Program Data Files\"
+        End Get
+
+    End Property
+
 #End Region
 
 

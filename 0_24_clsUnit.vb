@@ -3,9 +3,9 @@
 '                                                                              '
 '                          SOFTWARE  :  "SealSuite"                            '
 '                      CLASS MODULE  :  clsUnit                                '
-'                        VERSION NO  :  2.3                                    '
+'                        VERSION NO  :  2.4                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  06FEB18                                '
+'                     LAST MODIFIED  :  23FEB18                                '
 '                                                                              '
 '===============================================================================
 
@@ -301,7 +301,6 @@ Public Class clsUnit
 
     End Sub
 
-
     Private Sub SetValuesMetric()
         '========================
 
@@ -359,7 +358,72 @@ Public Class clsUnit
             CFacUserP = psngCFac
         End If
 
+        Return CFacUserP
+
     End Function
+
+    Public Sub SetLFormat(ByVal UnitSystem_In As String)
+        '==============================================
+        If UnitSystem_In = "English" Then
+            mLFormat = "##0.000"
+
+        ElseIf UnitSystem_In = "Metric" Then
+            mLFormat = "###0.00"
+        End If
+    End Sub
+
+    Public Function ConvF(ByVal Type_In As String, ByVal PHIndex_In As Integer, ByVal CustIndex_In As Integer) As Double
+        '===============================================================================================================
+        '....Conversion Factor List
+        Dim pcConvF_LList(,) As Double = {{1.0, 25.4},
+                                          {1 / 25.4, 1.0}}
+
+        Dim pcConvF_FList(,) As Double = {{1.0, 1.0 / 0.224809, 0.453592},
+                                         {0.224809, 1.0, 0.101972},
+                                         {1.0 / 0.453592, 1.0 / 0.101972, 1.0}}
+
+        Dim pcConvF_PList(,) As Double = {{1.0, 6.89476, 0.0689476, 0.068046},
+                                          {1 / 6.89476, 1.0, 0.01, 0.00986923},
+                                          {1 / 0.0689476, 100, 1.0, 1 / 1.01325},
+                                          {1 / 0.06846, 1 / 0.00986923, 1.01325, 1.0}}
+
+
+        Dim pcConvF_LeakList(,) As Double = {{1.0, 471.947, 1 / 0.000353, 1 / 0.0353, 28316.847, 1 / 0.0021188},
+                                             {1 / 471.947, 1.0, 60, 60 / 1000, 60, 60 / 59.234},
+                                             {0.0000353, 1 / 60, 1.0, 1 / 1000, 1.0, 1 / 59.234},
+                                             {0.0353, 1000 / 60, 1000, 1.0, 1000, 1000 / 59.234},
+                                             {1 / 28316.847, 1 / 60, 1.0, 1 / 1000, 1.0, 1 / 60},
+                                             {0.0021188, 59.234 / 60, 59.234, 59.234 / 1000, 59.234, 1.0}}
+
+        If (Type_In = "L") Then
+            Return pcConvF_LList(CustIndex_In, PHIndex_In)
+
+        ElseIf (Type_In = "F") Then
+            Return pcConvF_FList(CustIndex_In, PHIndex_In)
+
+        ElseIf (Type_In = "P") Then
+            Return pcConvF_PList(CustIndex_In, PHIndex_In)
+
+        ElseIf (Type_In = "Leak") Then
+            Return pcConvF_LeakList(CustIndex_In, PHIndex_In)
+        Else
+            Return 1.0
+        End If
+
+    End Function
+
+    Public Function ConvFToC(ByVal F_In As Double) As Double
+        '====================================================
+        Return (F_In - 32) * (5 / 9)
+
+    End Function
+
+    Public Function ConvCToF(ByVal C_In As Double) As Double
+        '====================================================
+        Return (9 * C_In + 160) / 5
+
+    End Function
+
 
 
 #Region "LENGTH CONVERSIONS ROUTINES:"
@@ -539,6 +603,59 @@ Public Class clsUnit
 
     End Function
 
+    Public Function Format_Val(ByVal Val_In As Double) As String
+        '============================================================
+
+        Dim pVal As String = "0"
+
+        Dim pDecimalPart As Double
+        pDecimalPart = Val_In - Int(Val_In)
+
+        If pDecimalPart <= mcEPS Then
+            pVal = Format(Int(Val_In), "#####")
+
+        ElseIf pDecimalPart > mcEPS Then
+            pVal = Val_In.ToString("#####.#", CurrentCulture)
+        End If
+
+        Return pVal
+
+    End Function
+
+
+    Public Function Format_LeakVal(ByVal Val_In As Double) As String
+        '============================================================
+
+        Dim pVal As String = "0"
+
+        Dim pDecimalPart As Double
+        Dim pIntPart As Integer
+        pIntPart = Int(Val_In)
+        pDecimalPart = Val_In - pIntPart
+
+        If pDecimalPart <= mcEPS Then
+            pVal = Format(Int(Val_In), "#####")
+
+        ElseIf pDecimalPart > mcEPS Then
+            If (pIntPart > 99) Then
+                pVal = Format(Int(Val_In), "#####")
+
+            ElseIf (pIntPart > 9) Then
+                pVal = Val_In.ToString("#####.#", CurrentCulture)
+
+            ElseIf (pIntPart <= 9 And pIntPart > 1) Then
+                pVal = Val_In.ToString("#####.##", CurrentCulture)
+
+            Else
+                pVal = Val_In.ToString("0.000E+0", CurrentCulture)
+
+            End If
+
+        End If
+
+            Return pVal
+
+    End Function
 
     Public Function RoundStressUnitUser(ByVal sngStressIn As Single) As String
         '====================================================================

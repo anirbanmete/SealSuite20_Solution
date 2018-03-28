@@ -8,9 +8,9 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{C7F10AE0-1A98-4ED2-BF8E-C0A93E9D9A8A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>SealSuite23.My.MyApplication</StartupObject>
-    <RootNamespace>SealSuite23</RootNamespace>
-    <AssemblyName>SealSuite23</AssemblyName>
+    <StartupObject>SealSuite24.My.MyApplication</StartupObject>
+    <RootNamespace>SealSuite24</RootNamespace>
+    <AssemblyName>SealSuite24</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
@@ -23,7 +23,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>SealSuite23.xml</DocumentationFile>
+    <DocumentationFile>SealSuite24.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
@@ -33,7 +33,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>SealSuite23.xml</DocumentationFile>
+    <DocumentationFile>SealSuite24.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -207,10 +207,10 @@
     <Compile Include="3_25_frmTestSignOff.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="0_23_frmSplash.designer.vb">
-      <DependentUpon>0_23_frmSplash.vb</DependentUpon>
+    <Compile Include="0_24_frmSplash.designer.vb">
+      <DependentUpon>0_24_frmSplash.vb</DependentUpon>
     </Compile>
-    <Compile Include="0_23_frmSplash.vb">
+    <Compile Include="0_24_frmSplash.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="3_25_frmTestUnit.designer.vb">
@@ -437,10 +437,10 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ApplicationEvents.vb" />
-    <Compile Include="2_13_frmProcessMain_tb10Dwg_Notes.Designer.vb">
-      <DependentUpon>2_13_frmProcessMain_tb10Dwg_Notes.vb</DependentUpon>
+    <Compile Include="2_14_frmProcessMain_Notes.Designer.vb">
+      <DependentUpon>2_14_frmProcessMain_Notes.vb</DependentUpon>
     </Compile>
-    <Compile Include="2_13_frmProcessMain_tb10Dwg_Notes.vb">
+    <Compile Include="2_14_frmProcessMain_Notes.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="1_14_frmPartHW.designer.vb">
@@ -467,24 +467,30 @@
     <Compile Include="1_14_frmPartNonStdCS_CSeal.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="0_23_clsUser.vb" />
-    <Compile Include="0_23_clsFile.vb" />
-    <Compile Include="0_23_frmUserGroup.Designer.vb">
-      <DependentUpon>0_23_frmUserGroup.vb</DependentUpon>
+    <Compile Include="0_24_clsUser.vb" />
+    <Compile Include="0_24_clsFile.vb" />
+    <Compile Include="0_24_frmUserGroup.Designer.vb">
+      <DependentUpon>0_24_frmUserGroup.vb</DependentUpon>
     </Compile>
-    <Compile Include="0_23_frmUserGroup.vb">
+    <Compile Include="0_24_frmUserGroup.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="2_13_clsProcessFile.vb" />
-    <Compile Include="0_23_frmUserRole.Designer.vb">
-      <DependentUpon>0_23_frmUserRole.vb</DependentUpon>
+    <Compile Include="2_14_clsProcessFile.vb" />
+    <Compile Include="0_24_frmUserRole.Designer.vb">
+      <DependentUpon>0_24_frmUserRole.vb</DependentUpon>
     </Compile>
-    <Compile Include="0_23_frmUserRole.vb">
+    <Compile Include="0_24_frmUserRole.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="2_13_clsProcessProj_Risk.vb" />
-    <Compile Include="2_13_clsProcessProj_Unit.vb" />
-    <Compile Include="0_23_clsUnit.vb" />
+    <Compile Include="2_14_clsProcessProj_Risk.vb" />
+    <Compile Include="2_14_clsProcessProj_Unit.vb" />
+    <Compile Include="0_24_clsUnit.vb" />
+    <Compile Include="0_24_frmAdminLogin.Designer.vb">
+      <DependentUpon>0_24_frmAdminLogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="0_24_frmAdminLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Model0_SealSuite.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -535,51 +541,63 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="modMain_Part.vb" />
-    <Compile Include="2_13_frmProcessMain.Designer.vb">
-      <DependentUpon>2_13_frmProcessMain.vb</DependentUpon>
+    <Compile Include="2_14_frmProcessMain.Designer.vb">
+      <DependentUpon>2_14_frmProcessMain.vb</DependentUpon>
     </Compile>
-    <Compile Include="2_13_frmProcessMain.vb">
+    <Compile Include="2_14_frmProcessMain.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="2_13_frmProcessMain_SetUnit.Designer.vb">
-      <DependentUpon>2_13_frmProcessMain_SetUnit.vb</DependentUpon>
+    <Compile Include="2_14_frmProcessMain_SetUnit.Designer.vb">
+      <DependentUpon>2_14_frmProcessMain_SetUnit.vb</DependentUpon>
     </Compile>
-    <Compile Include="2_13_frmProcessMain_SetUnit.vb">
+    <Compile Include="2_14_frmProcessMain_SetUnit.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="2_13_clsProcessProj.vb" />
-    <Compile Include="2_13_clsProcessProj_tb01_PreOrder.vb" />
-    <Compile Include="2_13_clsProcessProj_tb02_ITAR_Export.vb" />
-    <Compile Include="2_13_clsProcessProj_tb03_OrdEntry.vb" />
-    <Compile Include="2_13_clsProcessProj_tb04_Cost.vb" />
-    <Compile Include="2_13_clsProcessProj_tb05_App.vb" />
-    <Compile Include="2_13_clsProcessProj_tb06_Design.vb" />
-    <Compile Include="2_13_clsProcessProj_tb07_Manf.vb" />
-    <Compile Include="2_13_clsProcessProj_tb08_Purchase.vb" />
-    <Compile Include="2_13_clsProcessProj_tb09_Qlty.vb" />
-    <Compile Include="2_13_clsProcessProj_tb10_Dwg.vb" />
-    <Compile Include="2_13_clsProcessProj_tb11_Test.vb" />
-    <Compile Include="2_13_clsProcessProj_tb12_Planning.vb" />
-    <Compile Include="2_13_clsProcessProj_tb13_Shipping.vb" />
-    <Compile Include="2_13_clsProcessProj_tb14_IssueComment.vb" />
-    <Compile Include="2_13_clsProcessProj_EditedBy.vb" />
-    <Compile Include="2_13_clsProcessProj_tb15_Approval.vb" />
-    <Compile Include="2_13_frmProcessMain_CustomizeTab.Designer.vb">
-      <DependentUpon>2_13_frmProcessMain_CustomizeTab.vb</DependentUpon>
+    <Compile Include="2_14_clsProcessProj.vb" />
+    <Compile Include="2_14_clsProcessProj_tb01_PreOrder.vb" />
+    <Compile Include="2_14_clsProcessProj_tb02_ITAR_Export.vb" />
+    <Compile Include="2_14_clsProcessProj_tb03_OrdEntry.vb" />
+    <Compile Include="2_14_clsProcessProj_tb04_Cost.vb" />
+    <Compile Include="2_14_clsProcessProj_tb05_App.vb" />
+    <Compile Include="2_14_clsProcessProj_tb06_Design.vb" />
+    <Compile Include="2_14_clsProcessProj_tb07_Manf.vb" />
+    <Compile Include="2_14_clsProcessProj_tb08_Purchase.vb" />
+    <Compile Include="2_14_clsProcessProj_tb09_Qlty.vb" />
+    <Compile Include="2_14_clsProcessProj_tb10_Dwg.vb" />
+    <Compile Include="2_14_clsProcessProj_tb11_Test.vb" />
+    <Compile Include="2_14_clsProcessProj_tb12_Planning.vb" />
+    <Compile Include="2_14_clsProcessProj_tb13_Shipping.vb" />
+    <Compile Include="2_14_clsProcessProj_tb14_IssueComment.vb" />
+    <Compile Include="2_14_clsProcessProj_EditedBy.vb" />
+    <Compile Include="2_14_clsProcessProj_tb15_Approval.vb" />
+    <Compile Include="2_14_frmProcessMain_CustomizeTab.Designer.vb">
+      <DependentUpon>2_14_frmProcessMain_CustomizeTab.vb</DependentUpon>
     </Compile>
-    <Compile Include="2_13_frmProcessMain_CustomizeTab.vb">
+    <Compile Include="2_14_frmProcessMain_CustomizeTab.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="2_13_frmProcessIssueComnt.Designer.vb">
-      <DependentUpon>2_13_frmProcessIssueComnt.vb</DependentUpon>
+    <Compile Include="2_14_frmProcessIssueComnt.Designer.vb">
+      <DependentUpon>2_14_frmProcessIssueComnt.vb</DependentUpon>
     </Compile>
-    <Compile Include="2_13_frmProcessIssueComnt.vb">
+    <Compile Include="2_14_frmProcessIssueComnt.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="2_13_frmProcessIssueComnt_Resolution.Designer.vb">
-      <DependentUpon>2_13_frmProcessIssueComnt_Resolution.vb</DependentUpon>
+    <Compile Include="2_14_frmProcessIssueComnt_Resolution.Designer.vb">
+      <DependentUpon>2_14_frmProcessIssueComnt_Resolution.vb</DependentUpon>
     </Compile>
-    <Compile Include="2_13_frmProcessIssueComnt_Resolution.vb">
+    <Compile Include="2_14_frmProcessIssueComnt_Resolution.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="2_14_frmProcessRoleSelection.Designer.vb">
+      <DependentUpon>2_14_frmProcessRoleSelection.vb</DependentUpon>
+    </Compile>
+    <Compile Include="2_14_frmProcessRoleSelection.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="2_14_frmRiskAnalysis.Designer.vb">
+      <DependentUpon>2_14_frmRiskAnalysis.vb</DependentUpon>
+    </Compile>
+    <Compile Include="2_14_frmRiskAnalysis.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
@@ -590,11 +608,14 @@
     <EmbeddedResource Include="1_14_frmPartLegacyPN.resx">
       <DependentUpon>1_14_frmPartLegacyPN.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="2_13_frmProcessMain_tb10Dwg_Notes.resx">
-      <DependentUpon>2_13_frmProcessMain_tb10Dwg_Notes.vb</DependentUpon>
+    <EmbeddedResource Include="2_14_frmProcessMain_Notes.resx">
+      <DependentUpon>2_14_frmProcessMain_Notes.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="0_23_frmUserGroup.resx">
-      <DependentUpon>0_23_frmUserGroup.vb</DependentUpon>
+    <EmbeddedResource Include="0_24_frmUserGroup.resx">
+      <DependentUpon>0_24_frmUserGroup.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="2_14_frmRiskAnalysis.resx">
+      <DependentUpon>2_14_frmRiskAnalysis.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="3_25_frmTestAdminLogIn.resx">
       <DependentUpon>3_25_frmTestAdminLogIn.vb</DependentUpon>
@@ -635,8 +656,8 @@
     <EmbeddedResource Include="3_25_frmTestSignOff.resx">
       <DependentUpon>3_25_frmTestSignOff.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="0_23_frmSplash.resx">
-      <DependentUpon>0_23_frmSplash.vb</DependentUpon>
+    <EmbeddedResource Include="0_24_frmSplash.resx">
+      <DependentUpon>0_24_frmSplash.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="3_25_frmTestUnit.resx">
       <DependentUpon>3_25_frmTestUnit.vb</DependentUpon>
@@ -776,8 +797,11 @@
     <EmbeddedResource Include="1_14_frmPartNonStdCS_CSeal.resx">
       <DependentUpon>1_14_frmPartNonStdCS_CSeal.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="0_23_frmUserRole.resx">
-      <DependentUpon>0_23_frmUserRole.vb</DependentUpon>
+    <EmbeddedResource Include="0_24_frmUserRole.resx">
+      <DependentUpon>0_24_frmUserRole.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="0_24_frmAdminLogin.resx">
+      <DependentUpon>0_24_frmAdminLogin.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -785,20 +809,23 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="2_13_frmProcessMain.resx">
-      <DependentUpon>2_13_frmProcessMain.vb</DependentUpon>
+    <EmbeddedResource Include="2_14_frmProcessMain.resx">
+      <DependentUpon>2_14_frmProcessMain.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="2_13_frmProcessMain_SetUnit.resx">
-      <DependentUpon>2_13_frmProcessMain_SetUnit.vb</DependentUpon>
+    <EmbeddedResource Include="2_14_frmProcessMain_SetUnit.resx">
+      <DependentUpon>2_14_frmProcessMain_SetUnit.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="2_13_frmProcessMain_CustomizeTab.resx">
-      <DependentUpon>2_13_frmProcessMain_CustomizeTab.vb</DependentUpon>
+    <EmbeddedResource Include="2_14_frmProcessMain_CustomizeTab.resx">
+      <DependentUpon>2_14_frmProcessMain_CustomizeTab.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="2_13_frmProcessIssueComnt.resx">
-      <DependentUpon>2_13_frmProcessIssueComnt.vb</DependentUpon>
+    <EmbeddedResource Include="2_14_frmProcessIssueComnt.resx">
+      <DependentUpon>2_14_frmProcessIssueComnt.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="2_13_frmProcessIssueComnt_Resolution.resx">
-      <DependentUpon>2_13_frmProcessIssueComnt_Resolution.vb</DependentUpon>
+    <EmbeddedResource Include="2_14_frmProcessIssueComnt_Resolution.resx">
+      <DependentUpon>2_14_frmProcessIssueComnt_Resolution.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="2_14_frmProcessRoleSelection.resx">
+      <DependentUpon>2_14_frmProcessRoleSelection.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -17,7 +17,7 @@ Module modMain
 
 #Region "GLOBAL CONSTANTS:"
 
-    Public Const gcEPS As Single = 0.00001
+    Public Const gcEPS As Single = 0.0001
     Public gDBConnectionState As Boolean = False
 
     '....Named Constants:
@@ -250,6 +250,8 @@ Module modMain
         End If
 
         If (IsNothing(VarMod_In)) Then
+            VarMod_In = ""
+        ElseIf (VarMod_In = pMinDateVal) Then
             VarMod_In = ""
         End If
 

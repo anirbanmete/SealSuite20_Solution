@@ -54,6 +54,7 @@ Public Class clsProcessProj
     Private mIssueComnt As New clsProcessProj_IssueComment
     Private mApproval As New clsProcessProj_Approval
     Private mEditedBy As New clsProcessProj_EditedBy
+    Private mRiskAna As New clsProcessProj_Risk
 
     Private mCustContact As New clsCustContact
 
@@ -407,6 +408,20 @@ Public Class clsProcessProj
 
     End Property
 
+
+    '....Risk Ana
+    Public Property RiskAna() As clsProcessProj_Risk
+        '================================================
+        Get
+            Return mRiskAna
+        End Get
+
+        Set(ByVal value As clsProcessProj_Risk)
+            mRiskAna = value
+        End Set
+
+    End Property
+
 #Region "CustContact"
 
     Public Property CustContact() As clsCustContact
@@ -735,4 +750,5 @@ Public Class clsProcessProj
     End Class
 
 #End Region
+
 End Class

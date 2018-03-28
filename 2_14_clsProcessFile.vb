@@ -2,9 +2,9 @@
 '                                                                              '
 '                          SOFTWARE  :  "SealProcess"                          '
 '                      CLASS MODULE  :  clsProcessFile                         '
-'                        VERSION NO  :  1.2                                    '
+'                        VERSION NO  :  1.4                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  12JAN18                                '
+'                     LAST MODIFIED  :  27FEB18                                '
 '                                                                              '
 '===============================================================================
 
@@ -40,7 +40,7 @@ Public Class clsProcessFile
     Private Const mcDriveRoot As String = "C:"
 
     Private Const mcDirRoot As String = mcDriveRoot & "\SealSuite\SealProcess\"
-    Private Const mcPDSMappingFile As String = mcDirRoot & "Program Data Files\PD_PDSRevW_Mapping_11JAN18.xls"
+    Private Const mcPDSMappingFile As String = mcDirRoot & "Program Data Files\PD_PDSRevW_Mapping_27FEB18.xlsx"
 
     'PDS Template File:
     '------------------------
@@ -51,7 +51,7 @@ Public Class clsProcessFile
     Private Const mcDirOutput As String = mcDirRoot & "Output Files\"
 
     '....PDS Report  
-    Private Const mcPDSReportFileName As String = mcDirTemplates & "EN7300007 - Product Definition Sheet_Rev W_Rev01.xltx"
+    Private Const mcPDSReportFileName As String = mcDirTemplates & "EN7300007 - Product Definition Sheet_Rev W_Rev02.xltx"
 
     Private mPDS_FieldName As New List(Of String)
     Private mPDS_CellColName As New List(Of String)
@@ -429,66 +429,147 @@ Public Class clsProcessFile
                         mPDS_Val(i) = IIf(ProcessProj_In.App.IsPreComp = True, "Yes", "No")
 
                     Case "Operating Conditions Temp Assy (F)"
-                        If (ProcessProj_In.App.OpCond.T.Assy > gcEPS) Then
-                            mPDS_Val(i) = ProcessProj_In.App.OpCond.T.Assy
+                        If (ProcessProj_In.Unit.TUnit_Cust = "ºF") Then
+                            If (ProcessProj_In.App.OpCond.T.Assy > gcEPS) Then
+                                mPDS_Val(i) = ProcessProj_In.App.OpCond.T.Assy
+                            Else
+                                mPDS_Val(i) = ""
+                            End If
+
                         Else
-                            mPDS_Val(i) = ""
+                            If (ProcessProj_In.App.OpCond.T.Assy > gcEPS) Then
+                                Dim pVal As Double = ProcessProj_In.App.OpCond.T.Assy
+                                mPDS_Val(i) = ConvCToF(pVal)
+                            Else
+                                mPDS_Val(i) = ""
+                            End If
+
                         End If
 
 
                     Case "Operating Conditions Temp Min (F)"
-                        If (ProcessProj_In.App.OpCond.T.Min > gcEPS) Then
-                            mPDS_Val(i) = ProcessProj_In.App.OpCond.T.Min
+                        If (ProcessProj_In.Unit.TUnit_Cust = "ºF") Then
+                            If (ProcessProj_In.App.OpCond.T.Min > gcEPS) Then
+                                mPDS_Val(i) = ProcessProj_In.App.OpCond.T.Min
+                            Else
+                                mPDS_Val(i) = ""
+                            End If
                         Else
-                            mPDS_Val(i) = ""
+                            If (ProcessProj_In.App.OpCond.T.Min > gcEPS) Then
+                                Dim pVal As Double = ProcessProj_In.App.OpCond.T.Min
+                                mPDS_Val(i) = ConvCToF(pVal)
+                            Else
+                                mPDS_Val(i) = ""
+                            End If
+
                         End If
+
 
 
                     Case "Operating Conditions Temp Max (F)"
-                        If (ProcessProj_In.App.OpCond.T.Max > gcEPS) Then
-                            mPDS_Val(i) = ProcessProj_In.App.OpCond.T.Max
+                        If (ProcessProj_In.Unit.TUnit_Cust = "ºF") Then
+                            If (ProcessProj_In.App.OpCond.T.Max > gcEPS) Then
+                                mPDS_Val(i) = ProcessProj_In.App.OpCond.T.Max
+                            Else
+                                mPDS_Val(i) = ""
+                            End If
                         Else
-                            mPDS_Val(i) = ""
+                            If (ProcessProj_In.App.OpCond.T.Max > gcEPS) Then
+                                Dim pVal As Double = ProcessProj_In.App.OpCond.T.Max
+                                mPDS_Val(i) = ConvCToF(pVal)
+                            Else
+                                mPDS_Val(i) = ""
+                            End If
                         End If
 
+
                     Case "Operating Conditions Temp Operating (F)"
-                        If (ProcessProj_In.App.OpCond.T.Oper > gcEPS) Then
-                            mPDS_Val(i) = ProcessProj_In.App.OpCond.T.Oper
+                        If (ProcessProj_In.Unit.TUnit_Cust = "ºF") Then
+                            If (ProcessProj_In.App.OpCond.T.Oper > gcEPS) Then
+                                mPDS_Val(i) = ProcessProj_In.App.OpCond.T.Oper
+                            Else
+                                mPDS_Val(i) = ""
+                            End If
                         Else
-                            mPDS_Val(i) = ""
+                            If (ProcessProj_In.App.OpCond.T.Oper > gcEPS) Then
+                                Dim pVal As Double = ProcessProj_In.App.OpCond.T.Oper
+                                mPDS_Val(i) = ConvCToF(pVal)
+
+                            Else
+                                mPDS_Val(i) = ""
+                            End If
                         End If
+
                     '-------------------------------
                     Case "Operating Conditions Temp Assy (C)"
-                        If (ProcessProj_In.App.OpCond.T.Assy > gcEPS) Then
-                            mPDS_Val(i) = ConvFtoC(ProcessProj_In.App.OpCond.T.Assy)
+                        If (ProcessProj_In.Unit.TUnit_Cust = "ºF") Then
+                            If (ProcessProj_In.App.OpCond.T.Assy > gcEPS) Then
+                                mPDS_Val(i) = ConvFtoC(ProcessProj_In.App.OpCond.T.Assy)
+                            Else
+                                mPDS_Val(i) = ""
+                            End If
                         Else
-                            mPDS_Val(i) = ""
+                            If (ProcessProj_In.App.OpCond.T.Assy > gcEPS) Then
+                                mPDS_Val(i) = ProcessProj_In.App.OpCond.T.Assy
+                            Else
+                                mPDS_Val(i) = ""
+                            End If
                         End If
 
 
                     Case "Operating Conditions Temp Min (C)"
-                        If (ProcessProj_In.App.OpCond.T.Min > gcEPS) Then
-                            mPDS_Val(i) = ConvFtoC(ProcessProj_In.App.OpCond.T.Min)
+                        If (ProcessProj_In.Unit.TUnit_Cust = "ºF") Then
+                            If (ProcessProj_In.App.OpCond.T.Min > gcEPS) Then
+                                mPDS_Val(i) = ConvFtoC(ProcessProj_In.App.OpCond.T.Min)
+                            Else
+                                mPDS_Val(i) = ""
+                            End If
                         Else
-                            mPDS_Val(i) = ""
+                            If (ProcessProj_In.App.OpCond.T.Min > gcEPS) Then
+                                mPDS_Val(i) = ProcessProj_In.App.OpCond.T.Min
+                            Else
+                                mPDS_Val(i) = ""
+                            End If
                         End If
+
 
 
                     Case "Operating Conditions Temp Max (C)"
-                        If (ProcessProj_In.App.OpCond.T.Max > gcEPS) Then
-                            mPDS_Val(i) = ConvFtoC(ProcessProj_In.App.OpCond.T.Max)
+                        If (ProcessProj_In.Unit.TUnit_Cust = "ºF") Then
+                            If (ProcessProj_In.App.OpCond.T.Max > gcEPS) Then
+                                mPDS_Val(i) = ConvFtoC(ProcessProj_In.App.OpCond.T.Max)
+                            Else
+                                mPDS_Val(i) = ""
+                            End If
                         Else
-                            mPDS_Val(i) = ""
+                            If (ProcessProj_In.App.OpCond.T.Max > gcEPS) Then
+                                mPDS_Val(i) = ProcessProj_In.App.OpCond.T.Max
+                            Else
+                                mPDS_Val(i) = ""
+                            End If
                         End If
+
 
                     Case "Operating Conditions Temp Operating (C)"
-                        If (ProcessProj_In.App.OpCond.T.Oper > gcEPS) Then
-                            mPDS_Val(i) = ConvFtoC(ProcessProj_In.App.OpCond.T.Oper)
+                        If (ProcessProj_In.Unit.TUnit_Cust = "ºF") Then
+                            If (ProcessProj_In.App.OpCond.T.Oper > gcEPS) Then
+                                mPDS_Val(i) = ConvFtoC(ProcessProj_In.App.OpCond.T.Oper)
+                            Else
+                                mPDS_Val(i) = ""
+                            End If
                         Else
-                            mPDS_Val(i) = ""
+                            If (ProcessProj_In.App.OpCond.T.Oper > gcEPS) Then
+                                mPDS_Val(i) = ProcessProj_In.App.OpCond.T.Oper
+                            Else
+                                mPDS_Val(i) = ""
+                            End If
                         End If
 
+
                     '-----------------------
+                    Case "Operating Conditions Pressure Unit"
+                        mPDS_Val(i) = ProcessProj_In.Unit.PUnit_Cust
+
                     Case "Operating Conditions Pressure Assy (PSI)"
                         If (ProcessProj_In.App.OpCond.Press.Assy > gcEPS) Then
                             mPDS_Val(i) = ProcessProj_In.App.OpCond.Press.Assy
@@ -518,33 +599,33 @@ Public Class clsProcessFile
                         End If
 
                     '-----------
-                    Case "Operating Conditions Pressure Assy (Bar)"
-                        If (ProcessProj_In.App.OpCond.Press.Assy > gcEPS) Then
-                            mPDS_Val(i) = ConvPSIToBar(ProcessProj_In.App.OpCond.Press.Assy)
-                        Else
-                            mPDS_Val(i) = ""
-                        End If
+                    ''Case "Operating Conditions Pressure Assy (Bar)"
+                    ''    If (ProcessProj_In.App.OpCond.Press.Assy > gcEPS) Then
+                    ''        mPDS_Val(i) = ConvPSIToBar(ProcessProj_In.App.OpCond.Press.Assy)
+                    ''    Else
+                    ''        mPDS_Val(i) = ""
+                    ''    End If
 
-                    Case "Operating Conditions Pressure Min (Bar)"
-                        If (ProcessProj_In.App.OpCond.Press.Min > gcEPS) Then
-                            mPDS_Val(i) = ConvPSIToBar(ProcessProj_In.App.OpCond.Press.Min)
-                        Else
-                            mPDS_Val(i) = ""
-                        End If
+                    ''Case "Operating Conditions Pressure Min (Bar)"
+                    ''    If (ProcessProj_In.App.OpCond.Press.Min > gcEPS) Then
+                    ''        mPDS_Val(i) = ConvPSIToBar(ProcessProj_In.App.OpCond.Press.Min)
+                    ''    Else
+                    ''        mPDS_Val(i) = ""
+                    ''    End If
 
-                    Case "Operating Conditions Pressure Max (Bar)"
-                        If (ProcessProj_In.App.OpCond.Press.Max > gcEPS) Then
-                            mPDS_Val(i) = ConvPSIToBar(ProcessProj_In.App.OpCond.Press.Max)
-                        Else
-                            mPDS_Val(i) = ""
-                        End If
+                    ''Case "Operating Conditions Pressure Max (Bar)"
+                    ''    If (ProcessProj_In.App.OpCond.Press.Max > gcEPS) Then
+                    ''        mPDS_Val(i) = ConvPSIToBar(ProcessProj_In.App.OpCond.Press.Max)
+                    ''    Else
+                    ''        mPDS_Val(i) = ""
+                    ''    End If
 
-                    Case "Operating Conditions Pressure Operating (Bar)"
-                        If (ProcessProj_In.App.OpCond.Press.Oper > gcEPS) Then
-                            mPDS_Val(i) = ConvPSIToBar(ProcessProj_In.App.OpCond.Press.Oper)
-                        Else
-                            mPDS_Val(i) = ""
-                        End If
+                    ''Case "Operating Conditions Pressure Operating (Bar)"
+                    ''    If (ProcessProj_In.App.OpCond.Press.Oper > gcEPS) Then
+                    ''        mPDS_Val(i) = ConvPSIToBar(ProcessProj_In.App.OpCond.Press.Oper)
+                    ''    Else
+                    ''        mPDS_Val(i) = ""
+                    ''    End If
                     '----------
 
                     Case "Pressure Direction"
@@ -554,10 +635,16 @@ Public Class clsProcessFile
                         mPDS_Val(i) = ProcessProj_In.App.Face.MaxFlangeSep
 
                     Case "CavityDepthAssyMin (in)"
+
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Depth") Then
                                 If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
-                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Min
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Min
+                                    Else
+                                        mPDS_Val(i) = ConvMMToIn(ProcessProj_In.App.Cavity.Assy(j).Min)
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -569,7 +656,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Depth") Then
                                 If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
-                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Max
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Max
+                                    Else
+                                        mPDS_Val(i) = ConvMMToIn(ProcessProj_In.App.Cavity.Assy(j).Max)
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -581,7 +673,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Depth") Then
                                 If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
-                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Min
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Min
+                                    Else
+                                        mPDS_Val(i) = ConvMMToIn(ProcessProj_In.App.Cavity.Oper(j).Min)
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -593,7 +690,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Depth") Then
                                 If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
-                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Max
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Max
+                                    Else
+                                        mPDS_Val(i) = ConvMMToIn(ProcessProj_In.App.Cavity.Oper(j).Max)
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -605,7 +707,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Axial L") Then
                                 If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
-                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Min
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Min
+                                    Else
+                                        mPDS_Val(i) = ConvMMToIn(ProcessProj_In.App.Cavity.Assy(j).Min)
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -617,7 +724,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Axial L") Then
                                 If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
-                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Max
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Max
+                                    Else
+                                        mPDS_Val(i) = ConvMMToIn(ProcessProj_In.App.Cavity.Assy(j).Max)
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -629,7 +741,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Axial L") Then
                                 If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
-                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Min
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Min
+                                    Else
+                                        mPDS_Val(i) = ConvMMToIn(ProcessProj_In.App.Cavity.Oper(j).Min)
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -641,7 +758,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Axial L") Then
                                 If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
-                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Max
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Max
+                                    Else
+                                        mPDS_Val(i) = ConvMMToIn(ProcessProj_In.App.Cavity.Oper(j).Max)
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -654,7 +776,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Radial Wid") Then
                                 If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
-                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Min
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Min
+                                    Else
+                                        mPDS_Val(i) = ConvMMToIn(ProcessProj_In.App.Cavity.Assy(j).Min)
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -666,7 +793,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Radial Wid") Then
                                 If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
-                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Max
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Max
+                                    Else
+                                        mPDS_Val(i) = ConvMMToIn(ProcessProj_In.App.Cavity.Assy(j).Max)
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -678,7 +810,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Radial Wid") Then
                                 If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
-                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Min
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Min
+                                    Else
+                                        mPDS_Val(i) = ConvMMToIn(ProcessProj_In.App.Cavity.Oper(j).Min)
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -690,7 +827,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Radial Wid") Then
                                 If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
-                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Max
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Max
+                                    Else
+                                        mPDS_Val(i) = ConvMMToIn(ProcessProj_In.App.Cavity.Oper(j).Max)
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -703,7 +845,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "ID") Then
                                 If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
-                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Min
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Min
+                                    Else
+                                        mPDS_Val(i) = ConvMMToIn(ProcessProj_In.App.Cavity.Assy(j).Min)
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -715,7 +862,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "ID") Then
                                 If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
-                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Max
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Max
+                                    Else
+                                        mPDS_Val(i) = ConvMMToIn(ProcessProj_In.App.Cavity.Assy(j).Max)
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -727,7 +879,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "ID") Then
                                 If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
-                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Min
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Min
+                                    Else
+                                        mPDS_Val(i) = ConvMMToIn(ProcessProj_In.App.Cavity.Oper(j).Min)
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -739,7 +896,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "ID") Then
                                 If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
-                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Max
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Max
+                                    Else
+                                        mPDS_Val(i) = ConvMMToIn(ProcessProj_In.App.Cavity.Oper(j).Max)
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -752,7 +914,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "OD") Then
                                 If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
-                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Min
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Min
+                                    Else
+                                        mPDS_Val(i) = ConvMMToIn(ProcessProj_In.App.Cavity.Assy(j).Min)
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -764,7 +931,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "OD") Then
                                 If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
-                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Max
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Max
+                                    Else
+                                        mPDS_Val(i) = ConvMMToIn(ProcessProj_In.App.Cavity.Assy(j).Max)
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -776,7 +948,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "OD") Then
                                 If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
-                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Min
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Min
+                                    Else
+                                        mPDS_Val(i) = ConvMMToIn(ProcessProj_In.App.Cavity.Oper(j).Min)
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -788,7 +965,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "OD") Then
                                 If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
-                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Max
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Max
+                                    Else
+                                        mPDS_Val(i) = ConvMMToIn(ProcessProj_In.App.Cavity.Oper(j).Max)
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -801,7 +983,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Corner Radius") Then
                                 If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
-                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Min
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Min
+                                    Else
+                                        mPDS_Val(i) = ConvMMToIn(ProcessProj_In.App.Cavity.Assy(j).Min)
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -813,7 +1000,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Corner Radius") Then
                                 If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
-                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Max
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Max
+                                    Else
+                                        mPDS_Val(i) = ConvMMToIn(ProcessProj_In.App.Cavity.Assy(j).Max)
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -825,7 +1017,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Corner Radius") Then
                                 If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
-                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Min
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Min
+                                    Else
+                                        mPDS_Val(i) = ConvMMToIn(ProcessProj_In.App.Cavity.Oper(j).Min)
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -837,7 +1034,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Corner Radius") Then
                                 If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
-                                    mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Max
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Max
+                                    Else
+                                        mPDS_Val(i) = ConvMMToIn(ProcessProj_In.App.Cavity.Oper(j).Max)
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -850,7 +1052,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Depth") Then
                                 If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
-                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Min)
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Min)
+                                    Else
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Min
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -862,7 +1069,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Depth") Then
                                 If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
-                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Max)
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Max)
+                                    Else
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Max
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -874,7 +1086,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Depth") Then
                                 If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
-                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Min)
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Min)
+                                    Else
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Min
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -886,7 +1103,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Depth") Then
                                 If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
-                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Max)
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Max)
+                                    Else
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Max
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -898,7 +1120,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Axial L") Then
                                 If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
-                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Min)
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Min)
+                                    Else
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Min
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -910,7 +1137,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Axial L") Then
                                 If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
-                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Max)
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Max)
+                                    Else
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Max
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -922,7 +1154,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Axial L") Then
                                 If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
-                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Min)
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Min)
+                                    Else
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Min
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -934,7 +1171,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Axial L") Then
                                 If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
-                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Max)
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Max)
+                                    Else
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Max
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -947,7 +1189,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Radial Wid") Then
                                 If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
-                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Min)
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Min)
+                                    Else
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Min
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -959,7 +1206,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Radial Wid") Then
                                 If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
-                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Max)
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Max)
+                                    Else
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Max
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -971,7 +1223,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Radial Wid") Then
                                 If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
-                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Min)
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Min)
+                                    Else
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Min
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -983,7 +1240,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Radial Wid") Then
                                 If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
-                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Max)
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Max)
+                                    Else
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Max
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -996,7 +1258,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "ID") Then
                                 If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
-                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Min)
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Min)
+                                    Else
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Min
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -1008,7 +1275,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "ID") Then
                                 If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
-                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Max)
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Max)
+                                    Else
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Max
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -1020,7 +1292,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "ID") Then
                                 If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
-                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Min)
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Min)
+                                    Else
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Min
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -1032,7 +1309,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "ID") Then
                                 If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
-                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Max)
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Max)
+                                    Else
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Max
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -1045,7 +1327,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "OD") Then
                                 If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
-                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Min)
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Min)
+                                    Else
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Min
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -1057,7 +1344,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "OD") Then
                                 If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
-                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Max)
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Max)
+                                    Else
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Max
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -1069,7 +1361,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "OD") Then
                                 If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
-                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Min)
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Min)
+                                    Else
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Min
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -1081,7 +1378,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "OD") Then
                                 If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
-                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Max)
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Max)
+                                    Else
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Max
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -1094,7 +1396,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Corner Radius") Then
                                 If (ProcessProj_In.App.Cavity.Assy(j).Min > gcEPS) Then
-                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Min)
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Min)
+                                    Else
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Min
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -1106,7 +1413,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Corner Radius") Then
                                 If (ProcessProj_In.App.Cavity.Assy(j).Max > gcEPS) Then
-                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Max)
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Assy(j).Max)
+                                    Else
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Assy(j).Max
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -1118,7 +1430,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Corner Radius") Then
                                 If (ProcessProj_In.App.Cavity.Oper(j).Min > gcEPS) Then
-                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Min)
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Min)
+                                    Else
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Min
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -1130,7 +1447,12 @@ Public Class clsProcessFile
                         For j As Integer = 0 To ProcessProj_In.App.Cavity.DimName.Count - 1
                             If (ProcessProj_In.App.Cavity.DimName(j).Trim() = "Corner Radius") Then
                                 If (ProcessProj_In.App.Cavity.Oper(j).Max > gcEPS) Then
-                                    mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Max)
+                                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                                        mPDS_Val(i) = ConvInToMM(ProcessProj_In.App.Cavity.Oper(j).Max)
+                                    Else
+                                        mPDS_Val(i) = ProcessProj_In.App.Cavity.Oper(j).Max
+                                    End If
+
                                 Else
                                     mPDS_Val(i) = ""
                                 End If
@@ -1382,14 +1704,23 @@ Public Class clsProcessFile
                         mBOM_Qty = mPDS_CellColName(i)
 
                     '....Testing
+                    Case "Leak Compress To Unit"
+                        mPDS_Val(i) = ProcessProj_In.Unit.LUnit_Cust
+
                     Case "Leak Compress To (Pre-Plate)"
                         mPDS_Val(i) = ProcessProj_In.Test.Leak.Compress_Unplated
 
                     Case "Leak Media (Pre-Plate)"
                         mPDS_Val(i) = ProcessProj_In.Test.Leak.Medium_Unplated
 
+                    Case "Leak Pressure Unit"
+                        mPDS_Val(i) = ProcessProj_In.Unit.PUnit_Cust
+
                     Case "Leak Pressure (Pre-Plate)"
                         mPDS_Val(i) = ProcessProj_In.Test.Leak.Press_Unplated
+
+                    Case "Leak Requirement Unit"
+                        mPDS_Val(i) = ProcessProj_In.Unit.LeakUnit_Cust
 
                     Case "Leak Requirement (Pre-Plate)"
                         mPDS_Val(i) = ProcessProj_In.Test.Leak.Max_Unplated
@@ -1418,8 +1749,14 @@ Public Class clsProcessFile
                     Case "Leak Frequency (Post-Plate)"
                         mPDS_Val(i) = ProcessProj_In.Test.Leak.Freq_Plated
 
+                    Case "Load Compress To Unit"
+                        mPDS_Val(i) = ProcessProj_In.Unit.LUnit_Cust
+
                     Case "Load Compress To (Pre-Plate)"
                         mPDS_Val(i) = ProcessProj_In.Test.Load.Compress_Unplated
+
+                    Case "Load Requirement Unit"
+                        mPDS_Val(i) = ProcessProj_In.Unit.FUnit_Cust & "/" & ProcessProj_In.Unit.LUnit_Cust
 
                     Case "Load Requirement (Pre-Plate)"
                         mPDS_Val(i) = ProcessProj_In.Test.Load.Max_Unplated
@@ -1442,8 +1779,14 @@ Public Class clsProcessFile
                     Case "Load Frequency (Post-Plate)"
                         mPDS_Val(i) = ProcessProj_In.Test.Load.Freq_Plated
 
+                    Case "Springback Compress To Unit"
+                        mPDS_Val(i) = ProcessProj_In.Unit.LUnit_Cust
+
                     Case "Springback Compress To (Pre-Plate)"
                         mPDS_Val(i) = ProcessProj_In.Test.SpringBack.Compress_Unplated
+
+                    Case "Springback Requirement Unit"
+                        mPDS_Val(i) = ProcessProj_In.Unit.LUnit_Cust
 
                     Case "Springback Requirement (Pre-Plate)"
                         mPDS_Val(i) = ProcessProj_In.Test.SpringBack.Max_Unplated
@@ -1559,22 +1902,42 @@ Public Class clsProcessFile
                 Dim pIndex As Integer = ConvertToInt(mSealDimName.Substring(1, mSealDimName.Length - 1)) + i
                 Dim pMinVal As String = ""
                 If (ProcessProj_In.Design.SealDim.Min(i) > gcEPS) Then
-                    pMinVal = ProcessProj_In.Design.SealDim.Min(i)
+                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                        pMinVal = ProcessProj_In.Design.SealDim.Min(i)
+                    Else
+                        pMinVal = ConvMMToIn(ProcessProj_In.Design.SealDim.Min(i))
+                    End If
+
                 End If
                 Dim pMaxVal As String = ""
                 If (ProcessProj_In.Design.SealDim.Max(i) > gcEPS) Then
-                    pMaxVal = ProcessProj_In.Design.SealDim.Max(i)
+                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                        pMaxVal = ProcessProj_In.Design.SealDim.Max(i)
+                    Else
+                        pMaxVal = ConvMMToIn(ProcessProj_In.Design.SealDim.Max(i))
+                    End If
+
                 End If
                 pExcelCellRange = pWkSheet.Range(pColumn_Name & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.Design.SealDim.Name(i)
                 pExcelCellRange = pWkSheet.Range(pColumn_Min_in & pIndex.ToString()) : pExcelCellRange.Value = pMinVal
                 pExcelCellRange = pWkSheet.Range(pColumn_Max_in & pIndex.ToString()) : pExcelCellRange.Value = pMaxVal
 
                 If (ProcessProj_In.Design.SealDim.Min(i) > gcEPS) Then
-                    pMinVal = ConvInToMM(ProcessProj_In.Design.SealDim.Min(i))
+                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                        pMinVal = ConvInToMM(ProcessProj_In.Design.SealDim.Min(i))
+                    Else
+                        pMinVal = ProcessProj_In.Design.SealDim.Min(i)
+                    End If
+
                 End If
 
                 If (ProcessProj_In.Design.SealDim.Max(i) > gcEPS) Then
-                    pMaxVal = ConvInToMM(ProcessProj_In.Design.SealDim.Max(i))
+                    If (ProcessProj_In.Unit.LUnit_Cust = "in") Then
+                        pMaxVal = ConvInToMM(ProcessProj_In.Design.SealDim.Max(i))
+                    Else
+                        pMaxVal = ProcessProj_In.Design.SealDim.Max(i)
+                    End If
+
                 End If
 
                 pExcelCellRange = pWkSheet.Range(pColumn_Min_mm & pIndex.ToString()) : pExcelCellRange.Value = pMinVal
@@ -1596,11 +1959,14 @@ Public Class clsProcessFile
                 pExcelCellRange = pWkSheet.Range(pColumn_Desc & pIndex.ToString()) : pExcelCellRange.Value = pDesc
 
                 Dim pStatus As String = ""
-                If (ProcessProj_In.Manf.ToolNGage.Status(i).Trim() = "Inventory") Then
-                    pStatus = "Yes" & "  " & ProcessProj_In.Manf.ToolNGage.DesignResponsibility(i)
-                Else
-                    pStatus = "No" & "  " & ProcessProj_In.Manf.ToolNGage.DesignResponsibility(i)
+                If (ProcessProj_In.Manf.ToolNGage.Status(i) <> "" And Not IsNothing(ProcessProj_In.Manf.ToolNGage.Status(i))) Then
+                    If (ProcessProj_In.Manf.ToolNGage.Status(i).Trim() = "Inventory") Then
+                        pStatus = "Yes" & "  " & ProcessProj_In.Manf.ToolNGage.DesignResponsibility(i)
+                    Else
+                        pStatus = "No" & "  " & ProcessProj_In.Manf.ToolNGage.DesignResponsibility(i)
+                    End If
                 End If
+
                 pExcelCellRange = pWkSheet.Range(pColumn_Response & pIndex.ToString()) : pExcelCellRange.Value = pStatus
 
             Next
@@ -1683,6 +2049,7 @@ Public Class clsProcessFile
             pWkbOrg.SaveAs(mcDirOutput & pOutputFileName)
 
         Catch ex As Exception
+            MessageBox.Show(ex.ToString())
 
         Finally
 
@@ -1719,6 +2086,13 @@ Public Class clsProcessFile
         Return pC
     End Function
 
+
+    Public Function ConvCToF(ByVal C_In As Double) As Double
+        '====================================================
+        Return (9 * C_In + 160) / 5
+
+    End Function
+
     Private Function ConvPSIToBar(ByVal Val_In As Double) As Double
         '==========================================================
         Dim pcPSIToBar_ConvFac As Double = 0.0689476F
@@ -1732,6 +2106,15 @@ Public Class clsProcessFile
         Dim pcInToMM_ConvFac As Double = 25.4
         Dim pVal As Double
         pVal = Val_In * pcInToMM_ConvFac
+        Return pVal
+
+    End Function
+
+    Private Function ConvMMToIn(ByVal Val_In As Double) As Double
+        '========================================================
+        Dim pcInToMM_ConvFac As Double = 25.4
+        Dim pVal As Double
+        pVal = Val_In / pcInToMM_ConvFac
         Return pVal
 
     End Function
