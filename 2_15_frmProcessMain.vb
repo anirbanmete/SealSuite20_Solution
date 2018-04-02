@@ -2,7 +2,7 @@
 '                                                                              '
 '                          SOFTWARE  :  "SealProcess"                          '
 '                      FORM MODULE   :  Process_frmMain                        '
-'                        VERSION NO  :  1.4                                    '
+'                        VERSION NO  :  1.5                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
 '                     LAST MODIFIED  :  28FEB18                                '
 '                                                                              '
@@ -376,6 +376,8 @@ Public Class Process_frmMain
         If (mKeyChar) Then
             ''mTabIndex.Add(13)
         End If
+
+        mTabIndex.Add(15)   'AES 02APR18
 
     End Sub
 
@@ -776,131 +778,6 @@ Public Class Process_frmMain
 
         grdApproval_Attendees.AllowUserToAddRows = False
 
-        '--------------
-        'grpParker.Enabled = mHeader
-        'grpCust.Enabled = mHeader
-        'cmbRating.Enabled = mHeader
-        'lblRating.Enabled = mHeader
-        'cmbType.Enabled = mHeader
-        'lblType.Enabled = mHeader
-        'lblStatus.Enabled = mHeader
-        ''grpProject.Enabled = mHeader
-        'grpDate.Enabled = mHeader
-        'cmdSetUnits.Enabled = mHeader
-
-
-        'EnableTab(tabPreOrder_P1, mPreOrder)
-        'EnableTab(tabPreOrder_P2, mPreOrder)
-        'txtPreOrderUserDate.Enabled = False
-        'dtpPreOrderUserDate.Enabled = False
-        'txtPreOrderUserName.Enabled = False
-        'chkPreOrderUserSigned.Enabled = False
-        'cmdPreOrderUserSign.Enabled = False
-
-        'EnableTab(tabExport, mExport)
-        'txtITAR_Export_UserDate.Enabled = False
-        'dtpITAR_Export_UserDate.Enabled = False
-        'txtITAR_Export_UserName.Enabled = False
-        'chkITAR_Export_UserSigned.Enabled = False
-        'cmdITAR_Export_UserSign.Enabled = False
-
-        'EnableTab(tabOrder, mOrdEntry)
-        'txtOrdEntry_UserDate.Enabled = False
-        'dtpOrdEntry_UserDate.Enabled = False
-        'txtOrdEntry_UserName.Enabled = False
-        'chkOrdEntry_UserSigned.Enabled = False
-        'cmdOrdEntry_UserSign.Enabled = False
-
-        'EnableTab(tabCosting, mCost)
-        'txtCost_UserDate.Enabled = False
-        'dtpCost_UserDate.Enabled = False
-        'txtCost_UserName.Enabled = False
-        'chkCost_UserSigned.Enabled = False
-        'cmdCost_UserSign.Enabled = False
-
-        'EnableTab(tbpGen, mApp)
-        'EnableTab(tbpFace, mApp)
-        'EnableTab(tbpAxial, mApp)
-        'txtApp_UserDate_Face.Enabled = False
-        'dtpApp_UserDate_Face.Enabled = False
-        'txtApp_UserName_Face.Enabled = False
-        'chkApp_UserSigned_Face.Enabled = False
-        'cmdApp_UserSign_Face.Enabled = False
-
-
-        'EnableTab(tbpDesign_P1, mDesign)
-        'EnableTab(tbpDesign_P2, mDesign)
-        'txtDesign_UserDate.Enabled = False
-        'dtpDesign_UserDate.Enabled = False
-        'txtDesign_UserName.Enabled = False
-        'chkDesign_UserSigned.Enabled = False
-        'cmdDesign_UserSign.Enabled = False
-
-        'EnableTab(tabManufacturing, mManf)
-        'txtManf_UserDate.Enabled = False
-        'dtpManf_UserDate.Enabled = False
-        'txtManf_UserName.Enabled = False
-        'chkManf_UserSigned.Enabled = False
-        'cmdManf_UserSign.Enabled = False
-
-        'EnableTab(tabPurchasing, mPurchase)
-        'txtPurchase_UserDate.Enabled = False
-        'dtpPurchase_UserDate.Enabled = False
-        'txtPurchase_UserName.Enabled = False
-        'chkPurchase_UserSigned.Enabled = False
-        'cmdPurchase_UserSign.Enabled = False
-
-        'EnableTab(tabQuality, mQlty)
-        'txtQuality_UserDate.Enabled = False
-        'dtpQuality_UserDate.Enabled = False
-        'txtQuality_UserName.Enabled = False
-        'chkQuality_UserSigned.Enabled = False
-        'cmdQuality_UserSign.Enabled = False
-
-        'EnableTab(tabDrawing, mDwg)
-        'txtDwg_UserDate.Enabled = False
-        'dtpDwg_UserDate.Enabled = False
-        'txtDwg_UserName.Enabled = False
-        'chkDwg_UserSigned.Enabled = False
-        'cmdDwg_UserSign.Enabled = False
-
-        'chkTest.Enabled = mTest
-        'grpUnit_Test.Enabled = mTest
-        'txtTest_Other.Enabled = mTest
-        'EnableTab(tabLeak, mTest)
-        'EnableTab(tabLoad, mTest)
-        'EnableTab(tabSpringBack, mTest)
-        'txtTest_UserDate.Enabled = False
-        'dtpTest_UserDate.Enabled = False
-        'txtTest_UserName.Enabled = False
-        'chkTest_UserSigned.Enabled = False
-        'cmdTest_UserSign.Enabled = False
-
-        'EnableTab(tabPlanning, False)
-        'txtPlanning_UserDate.Enabled = False
-        'dtpPlanning_UserDate.Enabled = False
-        'txtPlanning_UserName.Enabled = False
-        'chkPlanning_UserSigned.Enabled = False
-        'cmdPlanning_UserSign.Enabled = False
-
-        'EnableTab(tabShipping, mShipping)
-        'txtShipping_UserDate.Enabled = False
-        'dtpShipping_UserDate.Enabled = False
-        'txtShipping_UserName.Enabled = False
-        'chkShipping_UserSigned.Enabled = False
-        'cmdShipping_UserSign.Enabled = False
-
-        'EnableTab(tabKeyChar, False)
-        'EnableTab(tabApproval, False)
-        'If (gUser.Role = "Viewer") Then
-        '    EnableTab(tabIssue, False)
-        '    cmdRiskAna.Enabled = False
-        '    cmdIssueComment.Enabled = False
-        '    cmdSealPart.Enabled = False
-        'Else
-        '    EnableTab(tabIssue, True)
-        'End If
-
     End Sub
 
     Private Sub InitializeTabs()
@@ -1019,7 +896,7 @@ Public Class Process_frmMain
         cmdShipping_UserSign.Enabled = False
 
         EnableTab(tabKeyChar, False)
-        EnableTab(tabApproval, False)
+        EnableTab(tabApproval, True)        'AES 02APR18
         If (gUser.Role = "Viewer") Then
             EnableTab(tabIssue, False)
             cmdRiskAna.Enabled = False
@@ -1220,7 +1097,7 @@ Public Class Process_frmMain
         mProcess_Project.Shipping.RetrieveFromDB(mProcess_Project.ID)
 
         mProcess_Project.IssueCommnt.RetrieveFromDB(mProcess_Project.ID)
-        ''mProcess_Project.Approval.RetrieveFromDB(mProcess_Project.ID)
+        mProcess_Project.Approval.RetrieveFromDB(mProcess_Project.ID)   'AES 02APR18
 
         'AES 26FEB18
         If (mProcess_Project.Unit.LUnit_Cust = "in") Then
@@ -4877,19 +4754,26 @@ Public Class Process_frmMain
     End Sub
 
 
-
-
     Private Sub grdApproval_Attendees_EditingControlShowing(sender As System.Object, e As System.Windows.Forms.DataGridViewEditingControlShowingEventArgs) _
                                                             Handles grdApproval_Attendees.EditingControlShowing
         '===================================================================================================================================================
         Dim pComboBox As ComboBox = TryCast(e.Control, ComboBox)
 
+        'AES 02APR18
+        'Dim pRowIndex As Integer = grdApproval_Attendees.CurrentCell.RowIndex
+        'Dim pUserName As String = ""
+        'pUserName = gUser.FirstName + " " + gUser.LastName
+        'If (gUser.Role = grdApproval_Attendees.Rows(pRowIndex).Cells(0).Value) Then
+        '    grdApproval_Attendees.Rows(pRowIndex).ReadOnly = False
         If (pComboBox IsNot Nothing) Then
-            RemoveHandler pComboBox.SelectionChangeCommitted, New EventHandler(AddressOf ComboBox_SelectionChangeCommitted)
+                RemoveHandler pComboBox.SelectionChangeCommitted, New EventHandler(AddressOf ComboBox_SelectionChangeCommitted)
 
-            mRowIndex = grdApproval_Attendees.CurrentCell.RowIndex
-            AddHandler pComboBox.SelectionChangeCommitted, New EventHandler(AddressOf ComboBox_SelectionChangeCommitted)
-        End If
+                mRowIndex = grdApproval_Attendees.CurrentCell.RowIndex
+                AddHandler pComboBox.SelectionChangeCommitted, New EventHandler(AddressOf ComboBox_SelectionChangeCommitted)
+            End If
+        'Else
+        '    grdApproval_Attendees.Rows(pRowIndex).ReadOnly = True
+        'End If
 
     End Sub
 
@@ -6142,9 +6026,14 @@ Public Class Process_frmMain
     Private Sub ComboBox_SelectionChangeCommitted(ByVal sender As System.Object, ByVal e As System.EventArgs)
         '====================================================================================================
         Dim combo As ComboBox = CType(sender, ComboBox)
-        'Dim pStr As String = grdApproval_Attendees.CurrentCell.RowIndex.ToString() & " " & combo.SelectedItem.ToString()
-        'MessageBox.Show(pStr)
+
+        'AES 02APR18
         Dim pUserID As Integer = 0
+        Dim pUserName As String = gUser.FirstName + " " + gUser.LastName
+        If (combo.SelectedItem.ToString() <> pUserName) Then
+            combo.SelectedItem = pUserName
+        End If
+
         For i As Integer = 0 To mUserName.Count - 1
             If (mUserName(i) = combo.SelectedItem.ToString()) Then
                 pUserID = mUserID(i)
@@ -6263,13 +6152,20 @@ Public Class Process_frmMain
 
     Private Sub cmdApproval_Sign_Click(sender As System.Object, e As System.EventArgs) Handles cmdApproval_Sign.Click
         '============================================================================================================
-        If (grdApproval_Attendees.Rows(grdApproval_Attendees.CurrentRow.Index).Cells(3).Value = True) Then
-            grdApproval_Attendees.Rows(grdApproval_Attendees.CurrentRow.Index).Cells(3).Value = False
-            grdApproval_Attendees.Rows(grdApproval_Attendees.CurrentRow.Index).Cells(4).Value = ""
-        Else
-            grdApproval_Attendees.Rows(grdApproval_Attendees.CurrentRow.Index).Cells(3).Value = True
-            Dim pCI As New CultureInfo("en-US")
-            grdApproval_Attendees.Rows(grdApproval_Attendees.CurrentRow.Index).Cells(4).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+        'AES 02APR18
+        Dim pUserName As String = ""
+        pUserName = gUser.FirstName + " " + gUser.LastName
+        If (gUser.Role = grdApproval_Attendees.Rows(grdApproval_Attendees.CurrentRow.Index).Cells(0).Value And
+            pUserName = grdApproval_Attendees.Rows(grdApproval_Attendees.CurrentRow.Index).Cells(1).Value) Then
+
+            If (grdApproval_Attendees.Rows(grdApproval_Attendees.CurrentRow.Index).Cells(3).Value = True) Then
+                grdApproval_Attendees.Rows(grdApproval_Attendees.CurrentRow.Index).Cells(3).Value = False
+                grdApproval_Attendees.Rows(grdApproval_Attendees.CurrentRow.Index).Cells(4).Value = ""
+            Else
+                grdApproval_Attendees.Rows(grdApproval_Attendees.CurrentRow.Index).Cells(3).Value = True
+                Dim pCI As New CultureInfo("en-US")
+                grdApproval_Attendees.Rows(grdApproval_Attendees.CurrentRow.Index).Cells(4).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+            End If
         End If
 
     End Sub
@@ -8332,30 +8228,46 @@ Public Class Process_frmMain
             End With
 
 
-            '.... "Approval:"
+            '.... "Approval:"   
+            'AES 02APR18
+            With mProcess_Project.Approval
+                .ID_Approval.Clear()
+                .Dept.Clear()
+                .Name.Clear()
+                .Title.Clear()
+                .Signed.Clear()
+                .DateSigned.Clear()
 
-            ''With mProcess_Project.Approval
-            ''    .ID_Approval.Clear()
-            ''    .Dept.Clear()
-            ''    .Name.Clear()
-            ''    .Title.Clear()
-            ''    .Signed.Clear()
-            ''    .DateSigned.Clear()
+                For j As Integer = 0 To grdApproval_Attendees.Rows.Count - 1
+                    .ID_Approval.Add(j + 1)
+                    .Dept.Add(grdApproval_Attendees.Rows(j).Cells(0).Value)
+                    If (grdApproval_Attendees.Rows(j).Cells(3).Value = True) Then
+                        .Name.Add(grdApproval_Attendees.Rows(j).Cells(1).Value)
+                        .Title.Add(grdApproval_Attendees.Rows(j).Cells(2).Value)
+                        .Signed.Add(grdApproval_Attendees.Rows(j).Cells(3).Value)
+                        If (grdApproval_Attendees.Rows(j).Cells(4).Value <> "" And Not IsNothing(grdApproval_Attendees.Rows(j).Cells(4).Value)) Then
+                            .DateSigned.Add(grdApproval_Attendees.Rows(j).Cells(4).Value)
+                        Else
+                            .DateSigned.Add(DateTime.MinValue)
+                        End If
+                    Else
+                        .Name.Add(Nothing)
+                        .Title.Add(Nothing)
+                        .Signed.Add(False)
+                        .DateSigned.Add(DateTime.MinValue)
 
-            ''    For j As Integer = 0 To grdApproval_Attendees.Rows.Count - 1
-            ''        .ID_Approval.Add(j + 1)
-            ''        .Dept.Add(grdApproval_Attendees.Rows(j).Cells(0).Value)
-            ''        .Name.Add(grdApproval_Attendees.Rows(j).Cells(1).Value)
-            ''        .Title.Add(grdApproval_Attendees.Rows(j).Cells(2).Value)
-            ''        .Signed.Add(grdApproval_Attendees.Rows(j).Cells(3).Value)
-            ''        If (grdApproval_Attendees.Rows(j).Cells(4).Value <> "" And Not IsNothing(grdApproval_Attendees.Rows(j).Cells(4).Value)) Then
-            ''            .DateSigned.Add(grdApproval_Attendees.Rows(j).Cells(4).Value)
-            ''        Else
-            ''            .DateSigned.Add(DateTime.MinValue)
-            ''        End If
+                    End If
+                    '.Name.Add(grdApproval_Attendees.Rows(j).Cells(1).Value)
+                    '.Title.Add(grdApproval_Attendees.Rows(j).Cells(2).Value)
+                    '.Signed.Add(grdApproval_Attendees.Rows(j).Cells(3).Value)
+                    'If (grdApproval_Attendees.Rows(j).Cells(4).Value <> "" And Not IsNothing(grdApproval_Attendees.Rows(j).Cells(4).Value)) Then
+                    '    .DateSigned.Add(grdApproval_Attendees.Rows(j).Cells(4).Value)
+                    'Else
+                    '    .DateSigned.Add(DateTime.MinValue)
+                    'End If
 
-            ''    Next
-            ''End With
+                Next
+            End With
 
             gProcessProject = mProcess_Project.Clone()
 
@@ -8383,7 +8295,7 @@ Public Class Process_frmMain
         'mProcess_Project.Planning.SaveToDB(mProcess_Project.ID)
         mProcess_Project.Shipping.SaveToDB(mProcess_Project.ID)
         mProcess_Project.IssueCommnt.SaveToDB(mProcess_Project.ID)
-        ''mProcess_Project.Approval.SaveToDB(mProcess_Project.ID)
+        mProcess_Project.Approval.SaveToDB(mProcess_Project.ID)     'AES 02APR18
 
     End Sub
 
@@ -9576,11 +9488,30 @@ Public Class Process_frmMain
 
     End Sub
 
+    Private Sub grdApproval_Attendees_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdApproval_Attendees.CellClick
+        '================================================================================================================================   'AES 02APR18
+        If (Not IsNothing(grdApproval_Attendees.CurrentCell)) Then
 
+            Dim pRowIndex As Integer = grdApproval_Attendees.CurrentCell.RowIndex
+            Dim pUserName As String = gUser.FirstName + " " + gUser.LastName
+            If (gUser.Role = grdApproval_Attendees.Rows(pRowIndex).Cells(0).Value) Then
 
-    'Private Sub pnlPanel1_Paint(sender As Object, e As PaintEventArgs) Handles pnlPanel1.Paint
+                If (grdApproval_Attendees.Rows(pRowIndex).Cells(3).Value = True) Then
+                    If (pUserName = grdApproval_Attendees.Rows(pRowIndex).Cells(1).Value) Then
+                        grdApproval_Attendees.ReadOnly = False
+                    Else
+                        grdApproval_Attendees.ReadOnly = True
+                    End If
+                Else
+                    grdApproval_Attendees.ReadOnly = False
+                End If
+                'grdApproval_Attendees.ReadOnly = False
+            Else
+                    grdApproval_Attendees.ReadOnly = True
+            End If
 
-    'End Sub
+        End If
+    End Sub
 
     Private Sub grpCoating_MouseHover(sender As Object, e As EventArgs) Handles grpCoating.MouseHover
         '============================================================================================

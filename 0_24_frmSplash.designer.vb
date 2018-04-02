@@ -94,11 +94,11 @@ Partial Class frmSplash
         Me.Label9.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.Label9.Font = New System.Drawing.Font("Verdana", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.ForeColor = System.Drawing.Color.DimGray
-        Me.Label9.Location = New System.Drawing.Point(198, 198)
+        Me.Label9.Location = New System.Drawing.Point(212, 198)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(497, 29)
+        Me.Label9.Size = New System.Drawing.Size(468, 29)
         Me.Label9.TabIndex = 30
-        Me.Label9.Text = "Engineering && Process Management"
+        Me.Label9.Text = "Engineering Process Management"
         Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label16
@@ -241,7 +241,7 @@ Partial Class frmSplash
         Me.lblVarNo.Name = "lblVarNo"
         Me.lblVarNo.Size = New System.Drawing.Size(213, 32)
         Me.lblVarNo.TabIndex = 6
-        Me.lblVarNo.Text = "SealSuite 2.4"
+        Me.lblVarNo.Text = "SealSuite 2.5"
         Me.lblVarNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'cmdExit
@@ -282,9 +282,9 @@ Partial Class frmSplash
         Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.Label1.Location = New System.Drawing.Point(652, 80)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(113, 14)
+        Me.Label1.Size = New System.Drawing.Size(104, 14)
         Me.Label1.TabIndex = 1
-        Me.Label1.Text = "March 01, 2018"
+        Me.Label1.Text = "April 10, 2018"
         '
         'imgLogo
         '

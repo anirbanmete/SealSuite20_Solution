@@ -10149,7 +10149,6 @@ Partial Class Process_frmMain
         Me.tabApproval.Size = New System.Drawing.Size(1039, 577)
         Me.tabApproval.TabIndex = 14
         Me.tabApproval.Text = "        Approval        "
-        Me.tabApproval.ToolTipText = "Will be functional in a future version"
         '
         'cmdApproval_Sign
         '
@@ -10157,6 +10156,7 @@ Partial Class Process_frmMain
         Me.cmdApproval_Sign.BackColor = System.Drawing.Color.Silver
         Me.cmdApproval_Sign.Enabled = False
         Me.cmdApproval_Sign.Font = New System.Drawing.Font("Verdana", 8.25!)
+        Me.cmdApproval_Sign.ForeColor = System.Drawing.Color.Black
         Me.cmdApproval_Sign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdApproval_Sign.Location = New System.Drawing.Point(818, 59)
         Me.cmdApproval_Sign.Name = "cmdApproval_Sign"
