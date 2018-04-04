@@ -4,7 +4,7 @@
 '                      FORM MODULE   :  Process_frmMain                        '
 '                        VERSION NO  :  1.5                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  28FEB18                                '
+'                     LAST MODIFIED  :  04APR18                                '
 '                                                                              '
 '===============================================================================
 Imports System.Globalization
@@ -231,6 +231,16 @@ Public Class Process_frmMain
     Private Sub Process_frmMain_Activated(sender As Object, e As EventArgs) Handles Me.Activated
         '=======================================================================================
         Dim pCI As New CultureInfo("en-US")
+
+        'AES 04APR18
+        If (gIsCustomizeTabActive) Then
+            gIsCustomizeTabActive = False
+            SetTabPrivilege()
+            Initialize_tbTesting_Controls()
+            ReInitializeControls()
+            TabControl1.Refresh()
+        End If
+
         If (gIsIssueCommentActive) Then
             gIsIssueCommentActive = False
             With grdIssueComment
@@ -288,6 +298,134 @@ Public Class Process_frmMain
 
 #Region "HELPER ROUTINES:"
 
+    Private Sub ReInitializeControls()
+        '=============================
+        InitializeTabs()
+
+        cmdDel_Rec.Enabled = False
+        txtParkerPart.ReadOnly = True
+        txtPN_Rev.ReadOnly = True
+        txtCustomer.ReadOnly = True
+        txtCustomerPN.ReadOnly = True
+        txtCustomerPN_Rev.ReadOnly = True
+
+        If (mDesign) Then
+            chkNewRef_Dim.Enabled = False
+            txtParkerPN_Part1_NewRef_Dim.Enabled = False
+            cmbParkerPN_Part2_NewRef_Dim.Enabled = True
+            txtParkerPN_Part3_NewRef_Dim.Enabled = False
+            txtPN_PH_Rev_NewRef_Dim.Enabled = False
+            chkNewRef_Notes.Enabled = False
+            txtParkerPN_Part1_Notes_Dim.Enabled = False
+            cmbParkerPN_Part2_Notes_Dim.Enabled = True
+            txtParkerPN_Part3_Notes_Dim.Enabled = False
+            txtParkerPN_Rev_Notes_Dim.Enabled = False
+            chkLegacyRef_Dim.Enabled = False
+            txtLegacyRef_Dim.Enabled = False
+            txtLegacyRef_Dim_Rev.Enabled = False
+            chkLegacyRef_Notes.Enabled = False
+            txtLegacyRef_Notes.Enabled = False
+            txtLegacyRef_Notes_Rev.Enabled = False
+        End If
+
+        Dim pSealType As String = gPartProject.PNR.SealType.ToString()
+
+        '....Coating
+        If (pSealType = "E") Then
+            If (mDesign) Then
+                grpCoating.Enabled = True
+            End If
+
+
+            If gPartProject.PNR.HW.Coating <> "None" Then
+                chkCoating.Checked = True
+            Else
+                chkCoating.Checked = False
+                If (mDesign) Then
+                    cmbCoating.Enabled = False
+                End If
+
+            End If
+
+            '........Populate Surface Finish Combo Box.
+            PopulateCmbSFinish()
+
+            If gPartProject.PNR.HW.Coating <> "" And gPartProject.PNR.HW.Coating <> "None" Then
+                If (mDesign) Then
+                    cmbCoating.Enabled = True
+                End If
+
+                cmbCoating.DropDownStyle = ComboBoxStyle.DropDownList
+                cmbCoating.Text = gPartProject.PNR.HW.Coating
+
+                If cmbCoating.Text = "T800" Then
+                    If (mDesign) Then
+                        lblSFinish.Enabled = True
+                        cmbSFinish.Enabled = True
+                    End If
+
+                    cmbSFinish.DropDownStyle = ComboBoxStyle.DropDownList
+                Else
+                    If (mDesign) Then
+                        lblSFinish.Enabled = False
+                        cmbSFinish.Enabled = False
+                    End If
+
+                    cmbSFinish.DropDownStyle = ComboBoxStyle.DropDown
+                    cmbSFinish.Text = ""
+                End If
+
+            Else
+                If (mDesign) Then
+                    cmbCoating.Enabled = False
+                    lblSFinish.Enabled = False
+                    cmbSFinish.Enabled = False
+                End If
+
+                cmbCoating.DropDownStyle = ComboBoxStyle.DropDown
+                cmbCoating.Text = ""
+
+                cmbSFinish.DropDownStyle = ComboBoxStyle.DropDown
+                cmbSFinish.Text = ""
+            End If
+
+            If cmbSFinish.Items.Count > 0 Then
+                If gPartProject.PNR.HW.SFinish > gcEPS Then
+                    cmbSFinish.Text = gPartProject.PNR.HW.SFinish
+
+                Else
+                    cmbSFinish.SelectedIndex = 0
+
+                End If
+            End If
+
+        Else
+            If (mDesign) Then
+                grpCoating.Enabled = False
+            End If
+
+        End If
+
+        '....Plating
+        If (pSealType = "C" Or pSealType = "SC") Then
+            If (mDesign) Then
+                grpPlating.Enabled = True
+                cmbPlatingCode.Enabled = True
+                cmbPlatingThickCode.Enabled = True
+            End If
+
+            chkPlating.Checked = False
+
+
+        Else
+            If (mDesign) Then
+                grpPlating.Enabled = False
+            End If
+
+        End If
+
+    End Sub
+
     Private Sub SetTabPrivilege()
         '=======================
         Dim pRoleID As Integer = gUser.GetRoleID(gUser.Role)
@@ -333,7 +471,7 @@ Public Class Process_frmMain
         ''    mShipping = True
         ''    mKeyChar = True
         ''End If
-
+        mTabIndex.Clear()       'AES 04APR18
         If (mPreOrder) Then
             mTabIndex.Add(0)
         End If
@@ -3308,6 +3446,12 @@ Public Class Process_frmMain
 
 #Region "MENU EVENT ROUTINES:"
 
+    Private Sub mnuTabView_Click(sender As Object, e As EventArgs) Handles mnuTabView.Click
+        '===================================================================================
+        Dim pfrmProcessMain_Custom As New Process_frmCustomTab()
+        pfrmProcessMain_Custom.ShowDialog()
+    End Sub
+
     Private Sub mnuRiskQ_Click(sender As Object, e As EventArgs) Handles mnuRiskQ.Click
         '===============================================================================
         If (gUser.Role = "Admin") Then
@@ -3550,7 +3694,7 @@ Public Class Process_frmMain
         pFormat.Alignment = StringAlignment.Center
         pFormat.LineAlignment = StringAlignment.Center
         Dim pPencil As New SolidBrush(Color.Black)
-        ''RENEMED VARIEBLE HERE...
+        ''RENAMED VARIABLE HERE...
         Dim pRect As RectangleF = RectangleF.op_Implicit(pTabControl.GetTabRect(e.Index))
         pGrph.FillRectangle(Brushes.LightGray, pRect)
 
@@ -6146,8 +6290,8 @@ Public Class Process_frmMain
 
     Private Sub cmdNotes_Click(sender As System.Object, e As System.EventArgs) Handles cmdNotes.Click
         '=============================================================================================
-        Dim pfrmNotes As New Process_frmNotes()
-        pfrmNotes.ShowDialog()
+        'Dim pfrmNotes As New Process_frmNotes()
+        'pfrmNotes.ShowDialog()
     End Sub
 
     Private Sub cmdApproval_Sign_Click(sender As System.Object, e As System.EventArgs) Handles cmdApproval_Sign.Click

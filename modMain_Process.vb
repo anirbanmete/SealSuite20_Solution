@@ -22,6 +22,7 @@ Module modMain_Process
     Public gIsProcessMainActive As Boolean = False
     Public gIsIssueCommentActive As Boolean = False
     Public gIsResolutionActive As Boolean = False
+    Public gIsCustomizeTabActive As Boolean = False
 
 #End Region
 

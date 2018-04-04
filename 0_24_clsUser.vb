@@ -17,6 +17,7 @@ Public Class clsUser
 
 #Region "MEMBER VARIABLE DECLARATIONS:"
     Private mSystemLogin As String
+    Private mUserID As Integer
     Private mFirstName As String
     Private mLastName As String
     Private mTitle As String
@@ -32,6 +33,14 @@ Public Class clsUser
         '===========================================
         Get
             Return mSystemLogin
+        End Get
+
+    End Property
+
+    Public ReadOnly Property ID() As Integer
+        '=======================================
+        Get
+            Return mUserID
         End Get
 
     End Property
@@ -174,6 +183,8 @@ Public Class clsUser
 
             End If
         End If
+
+        mUserID = pUserID       'AES 03APR18
 
         If (pUserRole.Count = 0) Then
             mViewer = True

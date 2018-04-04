@@ -943,7 +943,7 @@ Partial Class Process_frmMain
         Me.Column20 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.Column21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.menuStrip1 = New System.Windows.Forms.MenuStrip()
-        Me.TabViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuTabView = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuProgramData = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuRiskQ = New System.Windows.Forms.ToolStripMenuItem()
         Me.openFileDialog1 = New System.Windows.Forms.OpenFileDialog()
@@ -10242,20 +10242,19 @@ Partial Class Process_frmMain
         'menuStrip1
         '
         Me.menuStrip1.BackColor = System.Drawing.Color.White
-        Me.menuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TabViewToolStripMenuItem, Me.mnuProgramData})
+        Me.menuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuTabView, Me.mnuProgramData})
         Me.menuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.menuStrip1.Name = "menuStrip1"
         Me.menuStrip1.Size = New System.Drawing.Size(1106, 24)
         Me.menuStrip1.TabIndex = 683
         Me.menuStrip1.Text = "MenuStrip1"
         '
-        'TabViewToolStripMenuItem
+        'mnuTabView
         '
-        Me.TabViewToolStripMenuItem.Enabled = False
-        Me.TabViewToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TabViewToolStripMenuItem.Name = "TabViewToolStripMenuItem"
-        Me.TabViewToolStripMenuItem.Size = New System.Drawing.Size(76, 20)
-        Me.TabViewToolStripMenuItem.Text = "Tab View"
+        Me.mnuTabView.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.mnuTabView.Name = "mnuTabView"
+        Me.mnuTabView.Size = New System.Drawing.Size(76, 20)
+        Me.mnuTabView.Text = "Tab View"
         '
         'mnuProgramData
         '
@@ -10288,7 +10287,7 @@ Partial Class Process_frmMain
         Me.MainMenuStrip = Me.menuStrip1
         Me.Name = "Process_frmMain"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "SealProcess 1.4: Main Form                                                       " &
+        Me.Text = "SealProcess 1.5: Main Form                                                       " &
     "Metal Seal: Engineering Process Management System"
         Me.pnlPanel1.ResumeLayout(False)
         Me.pnlPanel1.PerformLayout()
@@ -11139,7 +11138,7 @@ Partial Class Process_frmMain
     Friend WithEvents Column9 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column20 As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents Column21 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents TabViewToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuTabView As System.Windows.Forms.ToolStripMenuItem
     Private WithEvents txtITAR_Export_HTS_Classification As System.Windows.Forms.TextBox
     Friend WithEvents Label60 As System.Windows.Forms.Label
     Private WithEvents txtITAR_Export_ITAR_Classification As System.Windows.Forms.TextBox
