@@ -156,12 +156,12 @@ Public Class clsProcessProj_Test
                                 Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
 
                 mOther = pQryTest.fldOther
-                mEditedBy.User_Name = pQryTest.fldUserName
-                mEditedBy.User_Signed = pQryTest.fldSigned
+                'mEditedBy.User_Name = pQryTest.fldUserName
+                'mEditedBy.User_Signed = pQryTest.fldSigned
 
-                If (Not IsNothing(pQryTest.fldDateSigned) And Not IsDBNull(pQryTest.fldDateSigned)) Then
-                    mEditedBy.User_DateSigned = pQryTest.fldDateSigned
-                End If
+                'If (Not IsNothing(pQryTest.fldDateSigned) And Not IsDBNull(pQryTest.fldDateSigned)) Then
+                '    mEditedBy.User_DateSigned = pQryTest.fldDateSigned
+                'End If
 
             End If
 
@@ -192,9 +192,9 @@ Public Class clsProcessProj_Test
                              Where Test.fldProcessProjectID = ProjectID_In Select Test).First()
 
                 pTest.fldOther = mOther
-                pTest.fldUserName = mEditedBy.User.Name
-                pTest.fldSigned = mEditedBy.User.Signed
-                pTest.fldDateSigned = mEditedBy.User.DateSigned
+                'pTest.fldUserName = mEditedBy.User.Name
+                'pTest.fldSigned = mEditedBy.User.Signed
+                'pTest.fldDateSigned = mEditedBy.User.DateSigned
 
                 pSealProcessDBEntities.SaveChanges()
 
@@ -206,9 +206,9 @@ Public Class clsProcessProj_Test
                 pTest.fldProcessProjectID = pID
 
                 pTest.fldOther = mOther
-                pTest.fldUserName = mEditedBy.User.Name
-                pTest.fldSigned = mEditedBy.User.Signed
-                pTest.fldDateSigned = mEditedBy.User.DateSigned
+                'pTest.fldUserName = mEditedBy.User.Name
+                'pTest.fldSigned = mEditedBy.User.Signed
+                'pTest.fldDateSigned = mEditedBy.User.DateSigned
 
                 pSealProcessDBEntities.AddTotblTest(pTest)
                 pSealProcessDBEntities.SaveChanges()

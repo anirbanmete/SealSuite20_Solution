@@ -127,12 +127,12 @@ Public Class clsProcessProj_Dwg
                                    Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
 
                 mDesignLevel = pQryDwg.fldDesignLevel
-                mEditedBy.User_Name = pQryDwg.fldUserName
-                mEditedBy.User_Signed = pQryDwg.fldSigned
+                'mEditedBy.User_Name = pQryDwg.fldUserName
+                'mEditedBy.User_Signed = pQryDwg.fldSigned
 
-                If (Not IsNothing(pQryDwg.fldDateSigned) And Not IsDBNull(pQryDwg.fldDateSigned)) Then
-                    mEditedBy.User_DateSigned = pQryDwg.fldDateSigned
-                End If
+                'If (Not IsNothing(pQryDwg.fldDateSigned) And Not IsDBNull(pQryDwg.fldDateSigned)) Then
+                '    mEditedBy.User_DateSigned = pQryDwg.fldDateSigned
+                'End If
 
             End If
 
@@ -160,9 +160,9 @@ Public Class clsProcessProj_Dwg
                                            Where Dwg.fldProcessProjectID = ProjectID_In Select Dwg).First()
 
             pDwg.fldDesignLevel = mDesignLevel
-            pDwg.fldUserName = mEditedBy.User.Name
-            pDwg.fldSigned = mEditedBy.User.Signed
-            pDwg.fldDateSigned = mEditedBy.User.DateSigned
+            'pDwg.fldUserName = mEditedBy.User.Name
+            'pDwg.fldSigned = mEditedBy.User.Signed
+            'pDwg.fldDateSigned = mEditedBy.User.DateSigned
 
             pSealProcessDBEntities.SaveChanges()
 
@@ -173,9 +173,9 @@ Public Class clsProcessProj_Dwg
             Dim pDwg As New tblDwg
             pDwg.fldProcessProjectID = pID
             pDwg.fldDesignLevel = mDesignLevel
-            pDwg.fldUserName = mEditedBy.User.Name
-            pDwg.fldSigned = mEditedBy.User.Signed
-            pDwg.fldDateSigned = mEditedBy.User.DateSigned
+            'pDwg.fldUserName = mEditedBy.User.Name
+            'pDwg.fldSigned = mEditedBy.User.Signed
+            'pDwg.fldDateSigned = mEditedBy.User.DateSigned
 
             pSealProcessDBEntities.AddTotblDwg(pDwg)
             pSealProcessDBEntities.SaveChanges()

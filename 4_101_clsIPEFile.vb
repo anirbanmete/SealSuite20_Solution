@@ -254,128 +254,128 @@ Public Class IPE_clsFile
 #End Region
 
 
-#Region "READ,WRITE INI FILE"
+    '#Region "READ,WRITE INI FILE"
 
-    Public Sub ReadIniFile(ByRef UserInfo_Out As IPE_clsUser, _
-                           ByRef Project_Out As IPE_clsProject, _
-                           ByRef ANSYS_Out As IPE_clsANSYS, _
-                           ByRef UnitSystem_Out As IPE_clsUnit)
-        '====================================================== 
-        '....XML File.
-        Dim pSR As FileStream
-        Dim pXML As XmlDocument
-        pXML = New XmlDocument()
+    '    Public Sub ReadIniFile(ByRef UserInfo_Out As IPE_clsUser, _
+    '                           ByRef Project_Out As IPE_clsProject, _
+    '                           ByRef ANSYS_Out As IPE_clsANSYS, _
+    '                           ByRef UnitSystem_Out As IPE_clsUnit)
+    '        '====================================================== 
+    '        '....XML File.
+    '        Dim pSR As FileStream
+    '        Dim pXML As XmlDocument
+    '        pXML = New XmlDocument()
 
-        Try
-            pSR = New FileStream(mIniFile_Name, FileMode.Open)
-            pXML.Load(pSR)
+    '        Try
+    '            pSR = New FileStream(mIniFile_Name, FileMode.Open)
+    '            pXML.Load(pSR)
 
-            '....Root Node of XML.
-            Dim pRoot As XmlNode
-            pRoot = pXML.DocumentElement
+    '            '....Root Node of XML.
+    '            Dim pRoot As XmlNode
+    '            pRoot = pXML.DocumentElement
 
-            For Each pRChild As XmlNode In pRoot.ChildNodes
+    '            For Each pRChild As XmlNode In pRoot.ChildNodes
 
-                Select Case pRChild.Name
+    '                Select Case pRChild.Name
 
-                    Case "UserName"
-                        UserInfo_Out.Name = pRChild.InnerText
+    '                    Case "UserName"
+    '                        UserInfo_Out.Name = pRChild.InnerText
 
-                    Case "PhoneNo"
-                        UserInfo_Out.PhoneNo = pRChild.InnerText
+    '                    Case "PhoneNo"
+    '                        UserInfo_Out.PhoneNo = pRChild.InnerText
 
-                    Case "UnitSystem"
-                        '....Unit System:
-                        UnitSystem_Out.System = pRChild.InnerText
+    '                    Case "UnitSystem"
+    '                        '....Unit System:
+    '                        UnitSystem_Out.System = pRChild.InnerText
 
-                    Case "ANSYSVersion"
-                        '....ANSYS Version:
-                        ANSYS_Out.Version = pRChild.InnerText
+    '                    Case "ANSYSVersion"
+    '                        '....ANSYS Version:
+    '                        ANSYS_Out.Version = pRChild.InnerText
 
-                    Case "CultureFormat"
-                        '....Culture Format:
-                        Project_Out.CultureName = pRChild.InnerText
+    '                    Case "CultureFormat"
+    '                        '....Culture Format:
+    '                        Project_Out.CultureName = pRChild.InnerText
 
-                    Case "IPE_LastSession_TimeStamp"
-                        '....TimeStamp:
-                        UserInfo_Out.IPE_LastSession_TimeStamp = pRChild.InnerText
+    '                    Case "IPE_LastSession_TimeStamp"
+    '                        '....TimeStamp:
+    '                        UserInfo_Out.IPE_LastSession_TimeStamp = pRChild.InnerText
 
-                End Select
+    '                End Select
 
-            Next
+    '            Next
 
-            pSR.Close()
+    '            pSR.Close()
 
-        Catch pEXP As Exception
-            MessageBox.Show(pEXP.Message, "File Path Not Found", MessageBoxButtons.OK, _
-                                                                 MessageBoxIcon.Error)
-        End Try
+    '        Catch pEXP As Exception
+    '            MessageBox.Show(pEXP.Message, "File Path Not Found", MessageBoxButtons.OK, _
+    '                                                                 MessageBoxIcon.Error)
+    '        End Try
 
-    End Sub
-
-
-    Public Sub SaveIniFile(ByVal UserInfo_In As IPE_clsUser, _
-                           ByVal Project_In As IPE_clsProject, _
-                           ByVal ANSYS_In As IPE_clsANSYS, _
-                           ByVal UnitSystem_In As IPE_clsUnit)
-        '======================================================= 
-        '....XML File.
-
-        Dim pXML As XmlDocument
-        pXML = New XmlDocument()
-
-        Try
-            Dim pXMLWriter As New XmlTextWriter(mIniFile_Name, System.Text.Encoding.UTF8)
-
-            With pXMLWriter
-
-                .WriteStartDocument(True)
-                .Formatting = Formatting.Indented
-                .Indentation = 2
-                .WriteStartElement(mcProgrameName)
-                .WriteStartElement("UserName")
-                .WriteString(Trim(UserInfo_In.Name))
-                .WriteEndElement()
-
-                .WriteStartElement("PhoneNo")
-                .WriteString(Trim(UserInfo_In.PhoneNo))
-                .WriteEndElement()
-
-                .WriteStartElement("UnitSystem")
-                .WriteComment("Unit System: English/Metric")
-                .WriteString(Trim(UnitSystem_In.System))
-                .WriteEndElement()
-
-                'AES 01APR16
-                .WriteStartElement("ANSYSVersion")
-                .WriteString(Trim(ANSYS_In.Version))
-                .WriteEndElement()
-
-                .WriteStartElement("CultureFormat")
-                .WriteComment("Culture Format: USA/UK/Germany/France")
-                .WriteString(Trim(Project_In.CultureName))
-                .WriteEndElement()
-
-                .WriteStartElement("IPE_LastSession_TimeStamp")
-                .WriteString(DateAndTime.Now())
-                .WriteEndElement()
-
-                .WriteEndElement()
-                .WriteEndDocument()
-                .Close()
-
-            End With
+    '    End Sub
 
 
-        Catch pEXP As Exception
-            MessageBox.Show(pEXP.Message, "File Path Not Found", MessageBoxButtons.OK, _
-                                                                 MessageBoxIcon.Error)
-        End Try
+    '    Public Sub SaveIniFile(ByVal UserInfo_In As IPE_clsUser, _
+    '                           ByVal Project_In As IPE_clsProject, _
+    '                           ByVal ANSYS_In As IPE_clsANSYS, _
+    '                           ByVal UnitSystem_In As IPE_clsUnit)
+    '        '======================================================= 
+    '        '....XML File.
 
-    End Sub
+    '        Dim pXML As XmlDocument
+    '        pXML = New XmlDocument()
+
+    '        Try
+    '            Dim pXMLWriter As New XmlTextWriter(mIniFile_Name, System.Text.Encoding.UTF8)
+
+    '            With pXMLWriter
+
+    '                .WriteStartDocument(True)
+    '                .Formatting = Formatting.Indented
+    '                .Indentation = 2
+    '                .WriteStartElement(mcProgrameName)
+    '                .WriteStartElement("UserName")
+    '                .WriteString(Trim(UserInfo_In.Name))
+    '                .WriteEndElement()
+
+    '                .WriteStartElement("PhoneNo")
+    '                .WriteString(Trim(UserInfo_In.PhoneNo))
+    '                .WriteEndElement()
+
+    '                .WriteStartElement("UnitSystem")
+    '                .WriteComment("Unit System: English/Metric")
+    '                .WriteString(Trim(UnitSystem_In.System))
+    '                .WriteEndElement()
+
+    '                'AES 01APR16
+    '                .WriteStartElement("ANSYSVersion")
+    '                .WriteString(Trim(ANSYS_In.Version))
+    '                .WriteEndElement()
+
+    '                .WriteStartElement("CultureFormat")
+    '                .WriteComment("Culture Format: USA/UK/Germany/France")
+    '                .WriteString(Trim(Project_In.CultureName))
+    '                .WriteEndElement()
+
+    '                .WriteStartElement("IPE_LastSession_TimeStamp")
+    '                .WriteString(DateAndTime.Now())
+    '                .WriteEndElement()
+
+    '                .WriteEndElement()
+    '                .WriteEndDocument()
+    '                .Close()
+
+    '            End With
 
 
-#End Region
+    '        Catch pEXP As Exception
+    '            MessageBox.Show(pEXP.Message, "File Path Not Found", MessageBoxButtons.OK, _
+    '                                                                 MessageBoxIcon.Error)
+    '        End Try
+
+    '    End Sub
+
+
+    '#End Region
 
 
     '#Region "READ CONFIG FILE"

@@ -387,12 +387,12 @@ Public Class clsProcessProj_App
                 mIsOoR = pQryApp.fldIsOoR
                 mIsSplitRing = pQryApp.fldIsSplitRing
                 mIsPreComp = pQryApp.fldIsPreComp
-                mEditedBy.User_Name = pQryApp.fldUserName
-                mEditedBy.User_Signed = pQryApp.fldSigned
+                'mEditedBy.User_Name = pQryApp.fldUserName
+                'mEditedBy.User_Signed = pQryApp.fldSigned
 
-                If (Not IsNothing(pQryApp.fldDateSigned) And Not IsDBNull(pQryApp.fldDateSigned)) Then
-                    mEditedBy.User_DateSigned = pQryApp.fldDateSigned
-                End If
+                'If (Not IsNothing(pQryApp.fldDateSigned) And Not IsDBNull(pQryApp.fldDateSigned)) Then
+                '    mEditedBy.User_DateSigned = pQryApp.fldDateSigned
+                'End If
 
             End If
 
@@ -437,9 +437,9 @@ Public Class clsProcessProj_App
             pApp.fldIsOoR = mIsOoR
             pApp.fldIsSplitRing = mIsSplitRing
             pApp.fldIsPreComp = mIsPreComp
-            pApp.fldUserName = mEditedBy.User.Name
-            pApp.fldSigned = mEditedBy.User.Signed
-            pApp.fldDateSigned = mEditedBy.User.DateSigned
+            'pApp.fldUserName = mEditedBy.User.Name
+            'pApp.fldSigned = mEditedBy.User.Signed
+            'pApp.fldDateSigned = mEditedBy.User.DateSigned
 
             pSealProcessDBEntities.SaveChanges()
 
@@ -462,9 +462,9 @@ Public Class clsProcessProj_App
             pApp.fldIsOoR = mIsOoR
             pApp.fldIsSplitRing = mIsSplitRing
             pApp.fldIsPreComp = mIsPreComp
-            pApp.fldUserName = mEditedBy.User.Name
-            pApp.fldSigned = mEditedBy.User.Signed
-            pApp.fldDateSigned = mEditedBy.User.DateSigned
+            'pApp.fldUserName = mEditedBy.User.Name
+            'pApp.fldSigned = mEditedBy.User.Signed
+            'pApp.fldDateSigned = mEditedBy.User.DateSigned
 
             pSealProcessDBEntities.AddTotblApp(pApp)
             pSealProcessDBEntities.SaveChanges()

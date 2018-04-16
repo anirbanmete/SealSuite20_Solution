@@ -30,6 +30,17 @@ Public Class Process_frmRoleSelection
             cmbRole.Items.Add(pUserRole(i))
         Next
         cmbRole.Items.Add("Viewer")
+
+        'AES 16APR18
+        If (Not IsNothing(gUser.Role) And gUser.Role <> "") Then
+            For i As Integer = 0 To cmbRole.Items.Count - 1
+                If (gUser.Role = cmbRole.Items(i)) Then
+                    cmbRole.SelectedIndex = i
+                    Exit Sub
+                End If
+            Next
+
+        End If
         cmbRole.SelectedIndex = 0
     End Sub
 

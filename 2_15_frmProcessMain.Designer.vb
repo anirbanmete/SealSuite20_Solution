@@ -136,6 +136,8 @@ Partial Class Process_frmMain
         Dim DataGridViewCellStyle110 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lblBorder = New System.Windows.Forms.Label()
         Me.pnlPanel1 = New System.Windows.Forms.Panel()
+        Me.txtHeaderUserName = New System.Windows.Forms.TextBox()
+        Me.chkHeaderUserSigned = New System.Windows.Forms.CheckBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.cmdRiskAna_Report = New System.Windows.Forms.Button()
         Me.cmdCreatePDS = New System.Windows.Forms.Button()
@@ -151,7 +153,6 @@ Partial Class Process_frmMain
         Me.txtStatus = New System.Windows.Forms.TextBox()
         Me.cmdSetUnits = New System.Windows.Forms.Button()
         Me.grpProject = New System.Windows.Forms.GroupBox()
-        Me.cmdClose = New System.Windows.Forms.Button()
         Me.cmdDelete = New System.Windows.Forms.Button()
         Me.cmdFilter = New System.Windows.Forms.Button()
         Me.cmdCopyFrom = New System.Windows.Forms.Button()
@@ -235,7 +236,7 @@ Partial Class Process_frmMain
         Me.cmbExport_Reqd = New System.Windows.Forms.ComboBox()
         Me.cmbExport_Status = New System.Windows.Forms.ComboBox()
         Me.tabPreOrder_P2 = New System.Windows.Forms.TabPage()
-        Me.GroupBox17 = New System.Windows.Forms.GroupBox()
+        Me.grpPreOrderEdited = New System.Windows.Forms.GroupBox()
         Me.chkPreOrderUserSigned = New System.Windows.Forms.CheckBox()
         Me.cmdPreOrderUserSign = New System.Windows.Forms.Button()
         Me.txtPreOrderUserName = New System.Windows.Forms.TextBox()
@@ -267,7 +268,7 @@ Partial Class Process_frmMain
         Me.txtITAR_Export_ITAR_Classification = New System.Windows.Forms.TextBox()
         Me.Label57 = New System.Windows.Forms.Label()
         Me.Label65 = New System.Windows.Forms.Label()
-        Me.GroupBox14 = New System.Windows.Forms.GroupBox()
+        Me.grpExportEdited = New System.Windows.Forms.GroupBox()
         Me.chkITAR_Export_UserSigned = New System.Windows.Forms.CheckBox()
         Me.cmdITAR_Export_UserSign = New System.Windows.Forms.Button()
         Me.txtITAR_Export_UserName = New System.Windows.Forms.TextBox()
@@ -333,7 +334,7 @@ Partial Class Process_frmMain
         Me.Label106 = New System.Windows.Forms.Label()
         Me.Label45 = New System.Windows.Forms.Label()
         Me.TextBox36 = New System.Windows.Forms.TextBox()
-        Me.GroupBox22 = New System.Windows.Forms.GroupBox()
+        Me.grpOrdEntryEdited = New System.Windows.Forms.GroupBox()
         Me.chkOrdEntry_UserSigned = New System.Windows.Forms.CheckBox()
         Me.cmdOrdEntry_UserSign = New System.Windows.Forms.Button()
         Me.txtOrdEntry_UserName = New System.Windows.Forms.TextBox()
@@ -367,7 +368,7 @@ Partial Class Process_frmMain
         Me.Label5 = New System.Windows.Forms.Label()
         Me.GroupBox47 = New System.Windows.Forms.GroupBox()
         Me.txtCost_Notes = New System.Windows.Forms.TextBox()
-        Me.GroupBox23 = New System.Windows.Forms.GroupBox()
+        Me.grpCostEdited = New System.Windows.Forms.GroupBox()
         Me.chkCost_UserSigned = New System.Windows.Forms.CheckBox()
         Me.cmdCost_UserSign = New System.Windows.Forms.Button()
         Me.txtCost_UserName = New System.Windows.Forms.TextBox()
@@ -459,7 +460,7 @@ Partial Class Process_frmMain
         Me.txtApp_Hardness2_Face = New System.Windows.Forms.TextBox()
         Me.txtApp_Hardness1_Face = New System.Windows.Forms.TextBox()
         Me.Label89 = New System.Windows.Forms.Label()
-        Me.GroupBox40 = New System.Windows.Forms.GroupBox()
+        Me.grpApp_Face_Edited = New System.Windows.Forms.GroupBox()
         Me.chkApp_UserSigned_Face = New System.Windows.Forms.CheckBox()
         Me.cmdApp_UserSign_Face = New System.Windows.Forms.Button()
         Me.txtApp_UserName_Face = New System.Windows.Forms.TextBox()
@@ -641,7 +642,7 @@ Partial Class Process_frmMain
         Me.txtDesign_Notes = New System.Windows.Forms.TextBox()
         Me.Label98 = New System.Windows.Forms.Label()
         Me.Label67 = New System.Windows.Forms.Label()
-        Me.GroupBox10 = New System.Windows.Forms.GroupBox()
+        Me.grpDesign_Edited = New System.Windows.Forms.GroupBox()
         Me.chkDesign_UserSigned = New System.Windows.Forms.CheckBox()
         Me.cmdDesign_UserSign = New System.Windows.Forms.Button()
         Me.txtDesign_UserName = New System.Windows.Forms.TextBox()
@@ -667,7 +668,7 @@ Partial Class Process_frmMain
         Me.DataGridViewTextBoxColumn34 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tabManufacturing = New System.Windows.Forms.TabPage()
         Me.Label111 = New System.Windows.Forms.Label()
-        Me.GroupBox33 = New System.Windows.Forms.GroupBox()
+        Me.grpManf_Edited = New System.Windows.Forms.GroupBox()
         Me.chkManf_UserSigned = New System.Windows.Forms.CheckBox()
         Me.cmdManf_UserSign = New System.Windows.Forms.Button()
         Me.txtManf_UserName = New System.Windows.Forms.TextBox()
@@ -709,7 +710,7 @@ Partial Class Process_frmMain
         Me.DataGridViewComboBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn91 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewComboBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.GroupBox34 = New System.Windows.Forms.GroupBox()
+        Me.grpPurchase_Edited = New System.Windows.Forms.GroupBox()
         Me.chkPurchase_UserSigned = New System.Windows.Forms.CheckBox()
         Me.cmdPurchase_UserSign = New System.Windows.Forms.Button()
         Me.txtPurchase_UserName = New System.Windows.Forms.TextBox()
@@ -733,7 +734,7 @@ Partial Class Process_frmMain
         Me.DataGridViewTextBoxColumn75 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn76 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label113 = New System.Windows.Forms.Label()
-        Me.GroupBox25 = New System.Windows.Forms.GroupBox()
+        Me.grpQlty_Edited = New System.Windows.Forms.GroupBox()
         Me.chkQuality_UserSigned = New System.Windows.Forms.CheckBox()
         Me.cmdQuality_UserSign = New System.Windows.Forms.Button()
         Me.txtQuality_UserName = New System.Windows.Forms.TextBox()
@@ -762,7 +763,7 @@ Partial Class Process_frmMain
         Me.Label103 = New System.Windows.Forms.Label()
         Me.tabDrawing = New System.Windows.Forms.TabPage()
         Me.Label115 = New System.Windows.Forms.Label()
-        Me.GroupBox29 = New System.Windows.Forms.GroupBox()
+        Me.grpDwg_Edited = New System.Windows.Forms.GroupBox()
         Me.chkDwg_UserSigned = New System.Windows.Forms.CheckBox()
         Me.cmdDwg_UserSign = New System.Windows.Forms.Button()
         Me.txtDwg_UserName = New System.Windows.Forms.TextBox()
@@ -792,7 +793,7 @@ Partial Class Process_frmMain
         Me.optTest_Parker = New System.Windows.Forms.RadioButton()
         Me.chkTest = New System.Windows.Forms.CheckBox()
         Me.Label119 = New System.Windows.Forms.Label()
-        Me.GroupBox32 = New System.Windows.Forms.GroupBox()
+        Me.grpTest_Edited = New System.Windows.Forms.GroupBox()
         Me.chkTest_UserSigned = New System.Windows.Forms.CheckBox()
         Me.cmdTest_UserSign = New System.Windows.Forms.Button()
         Me.txtTest_UserName = New System.Windows.Forms.TextBox()
@@ -884,7 +885,7 @@ Partial Class Process_frmMain
         Me.GroupBox60 = New System.Windows.Forms.GroupBox()
         Me.txtPlanning_Notes = New System.Windows.Forms.TextBox()
         Me.Label120 = New System.Windows.Forms.Label()
-        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.grpPlanning_Edited = New System.Windows.Forms.GroupBox()
         Me.chkPlanning_UserSigned = New System.Windows.Forms.CheckBox()
         Me.cmdPlanning_UserSign = New System.Windows.Forms.Button()
         Me.txtPlanning_UserName = New System.Windows.Forms.TextBox()
@@ -905,7 +906,7 @@ Partial Class Process_frmMain
         Me.DataGridViewTextBoxColumn60 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn61 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label139 = New System.Windows.Forms.Label()
-        Me.GroupBox28 = New System.Windows.Forms.GroupBox()
+        Me.grpShipping_Edited = New System.Windows.Forms.GroupBox()
         Me.chkShipping_UserSigned = New System.Windows.Forms.CheckBox()
         Me.cmdShipping_UserSign = New System.Windows.Forms.Button()
         Me.txtShipping_UserName = New System.Windows.Forms.TextBox()
@@ -972,14 +973,14 @@ Partial Class Process_frmMain
         CType(Me.grdCustContact, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpGroupBox2.SuspendLayout()
         Me.tabPreOrder_P2.SuspendLayout()
-        Me.GroupBox17.SuspendLayout()
+        Me.grpPreOrderEdited.SuspendLayout()
         CType(Me.grdPreOrderEditedBy, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox15.SuspendLayout()
         Me.GroupBox36.SuspendLayout()
         Me.GroupBox27.SuspendLayout()
         CType(Me.grdPreOrder_SalesData, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabExport.SuspendLayout()
-        Me.GroupBox14.SuspendLayout()
+        Me.grpExportEdited.SuspendLayout()
         CType(Me.grdExport_EditedBy, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabOrder.SuspendLayout()
         Me.GroupBox53.SuspendLayout()
@@ -988,13 +989,13 @@ Partial Class Process_frmMain
         Me.GroupBox51.SuspendLayout()
         Me.GroupBox31.SuspendLayout()
         Me.GroupBox18.SuspendLayout()
-        Me.GroupBox22.SuspendLayout()
+        Me.grpOrdEntryEdited.SuspendLayout()
         CType(Me.grdOrdEntry_EditedBy, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox21.SuspendLayout()
         Me.GroupBox19.SuspendLayout()
         Me.tabCosting.SuspendLayout()
         Me.GroupBox47.SuspendLayout()
-        Me.GroupBox23.SuspendLayout()
+        Me.grpCostEdited.SuspendLayout()
         CType(Me.grdCost_EditedBy, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox46.SuspendLayout()
         CType(Me.grdCost_SplOperation, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1011,7 +1012,7 @@ Partial Class Process_frmMain
         Me.GroupBox2.SuspendLayout()
         Me.tbpFace.SuspendLayout()
         Me.GroupBox54.SuspendLayout()
-        Me.GroupBox40.SuspendLayout()
+        Me.grpApp_Face_Edited.SuspendLayout()
         CType(Me.grdApp_EditedBy_Face, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpApp_Face_Cavity.SuspendLayout()
         CType(Me.grdApp_Face_Cavity, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1037,36 +1038,36 @@ Partial Class Process_frmMain
         Me.GroupBox12.SuspendLayout()
         Me.tbpDesign_P2.SuspendLayout()
         Me.GroupBox7.SuspendLayout()
-        Me.GroupBox10.SuspendLayout()
+        Me.grpDesign_Edited.SuspendLayout()
         CType(Me.grdDesign_EditedBy, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpDesign_SealDim.SuspendLayout()
         CType(Me.grdDesign_Seal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox5.SuspendLayout()
         CType(Me.grdDesign_CustSpec, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabManufacturing.SuspendLayout()
-        Me.GroupBox33.SuspendLayout()
+        Me.grpManf_Edited.SuspendLayout()
         CType(Me.grdManf_EditedBy, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdManf_ToolNGage, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox6.SuspendLayout()
         Me.tabPurchasing.SuspendLayout()
         CType(Me.grdPurchase_Drawing, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdPurchase_ToolNGages, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox34.SuspendLayout()
+        Me.grpPurchase_Edited.SuspendLayout()
         CType(Me.grdPurchase_EditedBy, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdPurchase_Mat, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabQuality.SuspendLayout()
         Me.GroupBox57.SuspendLayout()
         CType(Me.grdQuality_SplOperation, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox25.SuspendLayout()
+        Me.grpQlty_Edited.SuspendLayout()
         CType(Me.grdQuality_EditedBy, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabDrawing.SuspendLayout()
-        Me.GroupBox29.SuspendLayout()
+        Me.grpDwg_Edited.SuspendLayout()
         CType(Me.grdDwg_EditedBy, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdDrawing_BOM, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdDrawing_Needed, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabTesting.SuspendLayout()
         Me.grpUnit_Test.SuspendLayout()
-        Me.GroupBox32.SuspendLayout()
+        Me.grpTest_Edited.SuspendLayout()
         CType(Me.grdTest_EditedBy, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tbTest.SuspendLayout()
         Me.tabLeak.SuspendLayout()
@@ -1076,13 +1077,13 @@ Partial Class Process_frmMain
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdPlanning_Ordered, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox60.SuspendLayout()
-        Me.GroupBox4.SuspendLayout()
+        Me.grpPlanning_Edited.SuspendLayout()
         CType(Me.grdPlanning_EditedBy, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabShipping.SuspendLayout()
         Me.GroupBox59.SuspendLayout()
         Me.grpCustSpec_Shipping.SuspendLayout()
         CType(Me.grdShipping_CustSpec, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox28.SuspendLayout()
+        Me.grpShipping_Edited.SuspendLayout()
         CType(Me.grdShipping_EditedBy, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabKeyChar.SuspendLayout()
         Me.grpKeyChar.SuspendLayout()
@@ -1108,6 +1109,8 @@ Partial Class Process_frmMain
         Me.pnlPanel1.AutoScroll = True
         Me.pnlPanel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.pnlPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pnlPanel1.Controls.Add(Me.txtHeaderUserName)
+        Me.pnlPanel1.Controls.Add(Me.chkHeaderUserSigned)
         Me.pnlPanel1.Controls.Add(Me.GroupBox1)
         Me.pnlPanel1.Controls.Add(Me.cmdSealPart)
         Me.pnlPanel1.Controls.Add(Me.SBar1)
@@ -1133,6 +1136,28 @@ Partial Class Process_frmMain
         Me.pnlPanel1.Name = "pnlPanel1"
         Me.pnlPanel1.Size = New System.Drawing.Size(1108, 900)
         Me.pnlPanel1.TabIndex = 5
+        '
+        'txtHeaderUserName
+        '
+        Me.txtHeaderUserName.Enabled = False
+        Me.txtHeaderUserName.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtHeaderUserName.ForeColor = System.Drawing.SystemColors.GrayText
+        Me.txtHeaderUserName.Location = New System.Drawing.Point(969, 140)
+        Me.txtHeaderUserName.Name = "txtHeaderUserName"
+        Me.txtHeaderUserName.Size = New System.Drawing.Size(119, 21)
+        Me.txtHeaderUserName.TabIndex = 747
+        '
+        'chkHeaderUserSigned
+        '
+        Me.chkHeaderUserSigned.AutoSize = True
+        Me.chkHeaderUserSigned.ForeColor = System.Drawing.Color.Black
+        Me.chkHeaderUserSigned.Location = New System.Drawing.Point(971, 121)
+        Me.chkHeaderUserSigned.Name = "chkHeaderUserSigned"
+        Me.chkHeaderUserSigned.Size = New System.Drawing.Size(85, 17)
+        Me.chkHeaderUserSigned.TabIndex = 746
+        Me.chkHeaderUserSigned.Tag = "Tester"
+        Me.chkHeaderUserSigned.Text = "Signed-off"
+        Me.chkHeaderUserSigned.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
@@ -1285,7 +1310,7 @@ Partial Class Process_frmMain
         '
         Me.txtStatus.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtStatus.ForeColor = System.Drawing.Color.Black
-        Me.txtStatus.Location = New System.Drawing.Point(148, 141)
+        Me.txtStatus.Location = New System.Drawing.Point(130, 138)
         Me.txtStatus.Name = "txtStatus"
         Me.txtStatus.ReadOnly = True
         Me.txtStatus.Size = New System.Drawing.Size(52, 21)
@@ -1299,7 +1324,7 @@ Partial Class Process_frmMain
         Me.cmdSetUnits.BackColor = System.Drawing.Color.Silver
         Me.cmdSetUnits.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdSetUnits.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdSetUnits.Location = New System.Drawing.Point(1012, 131)
+        Me.cmdSetUnits.Location = New System.Drawing.Point(852, 137)
         Me.cmdSetUnits.Name = "cmdSetUnits"
         Me.cmdSetUnits.Size = New System.Drawing.Size(76, 28)
         Me.cmdSetUnits.TabIndex = 684
@@ -1309,31 +1334,21 @@ Partial Class Process_frmMain
         '
         'grpProject
         '
-        Me.grpProject.Controls.Add(Me.cmdClose)
         Me.grpProject.Controls.Add(Me.cmdDelete)
         Me.grpProject.Controls.Add(Me.cmdFilter)
         Me.grpProject.Controls.Add(Me.cmdCopyFrom)
         Me.grpProject.Controls.Add(Me.cmdOpenAgain)
         Me.grpProject.Enabled = False
-        Me.grpProject.Location = New System.Drawing.Point(224, 107)
+        Me.grpProject.Location = New System.Drawing.Point(203, 107)
         Me.grpProject.Name = "grpProject"
-        Me.grpProject.Size = New System.Drawing.Size(299, 66)
+        Me.grpProject.Size = New System.Drawing.Size(205, 66)
         Me.grpProject.TabIndex = 681
         Me.grpProject.TabStop = False
         Me.grpProject.Text = "Project:"
         '
-        'cmdClose
-        '
-        Me.cmdClose.Location = New System.Drawing.Point(207, 32)
-        Me.cmdClose.Name = "cmdClose"
-        Me.cmdClose.Size = New System.Drawing.Size(75, 23)
-        Me.cmdClose.TabIndex = 2
-        Me.cmdClose.Text = "Close"
-        Me.cmdClose.UseVisualStyleBackColor = True
-        '
         'cmdDelete
         '
-        Me.cmdDelete.Location = New System.Drawing.Point(14, 31)
+        Me.cmdDelete.Location = New System.Drawing.Point(14, 30)
         Me.cmdDelete.Name = "cmdDelete"
         Me.cmdDelete.Size = New System.Drawing.Size(75, 23)
         Me.cmdDelete.TabIndex = 0
@@ -1342,7 +1357,7 @@ Partial Class Process_frmMain
         '
         'cmdFilter
         '
-        Me.cmdFilter.Location = New System.Drawing.Point(14, 32)
+        Me.cmdFilter.Location = New System.Drawing.Point(14, 29)
         Me.cmdFilter.Name = "cmdFilter"
         Me.cmdFilter.Size = New System.Drawing.Size(75, 23)
         Me.cmdFilter.TabIndex = 665
@@ -1351,7 +1366,7 @@ Partial Class Process_frmMain
         '
         'cmdCopyFrom
         '
-        Me.cmdCopyFrom.Location = New System.Drawing.Point(105, 31)
+        Me.cmdCopyFrom.Location = New System.Drawing.Point(103, 30)
         Me.cmdCopyFrom.Name = "cmdCopyFrom"
         Me.cmdCopyFrom.Size = New System.Drawing.Size(86, 23)
         Me.cmdCopyFrom.TabIndex = 1
@@ -1360,7 +1375,7 @@ Partial Class Process_frmMain
         '
         'cmdOpenAgain
         '
-        Me.cmdOpenAgain.Location = New System.Drawing.Point(105, 32)
+        Me.cmdOpenAgain.Location = New System.Drawing.Point(103, 31)
         Me.cmdOpenAgain.Name = "cmdOpenAgain"
         Me.cmdOpenAgain.Size = New System.Drawing.Size(86, 23)
         Me.cmdOpenAgain.TabIndex = 666
@@ -1372,7 +1387,7 @@ Partial Class Process_frmMain
         Me.cmbRating.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbRating.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbRating.FormattingEnabled = True
-        Me.cmbRating.Location = New System.Drawing.Point(1012, 65)
+        Me.cmbRating.Location = New System.Drawing.Point(969, 65)
         Me.cmbRating.Name = "cmbRating"
         Me.cmbRating.Size = New System.Drawing.Size(60, 21)
         Me.cmbRating.TabIndex = 680
@@ -1386,7 +1401,7 @@ Partial Class Process_frmMain
         Me.grpExport.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grpExport.Location = New System.Drawing.Point(770, 33)
         Me.grpExport.Name = "grpExport"
-        Me.grpExport.Size = New System.Drawing.Size(192, 65)
+        Me.grpExport.Size = New System.Drawing.Size(183, 65)
         Me.grpExport.TabIndex = 665
         Me.grpExport.TabStop = False
         Me.grpExport.Text = "Export:"
@@ -1441,7 +1456,7 @@ Partial Class Process_frmMain
         Me.lblStatus.AutoSize = True
         Me.lblStatus.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.lblStatus.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblStatus.Location = New System.Drawing.Point(145, 122)
+        Me.lblStatus.Location = New System.Drawing.Point(127, 124)
         Me.lblStatus.Name = "lblStatus"
         Me.lblStatus.Size = New System.Drawing.Size(43, 13)
         Me.lblStatus.TabIndex = 662
@@ -1459,9 +1474,9 @@ Partial Class Process_frmMain
         Me.grpDate.Controls.Add(Me.Label203)
         Me.grpDate.Controls.Add(Me.txtModifiedBy)
         Me.grpDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grpDate.Location = New System.Drawing.Point(545, 107)
+        Me.grpDate.Location = New System.Drawing.Point(427, 107)
         Me.grpDate.Name = "grpDate"
-        Me.grpDate.Size = New System.Drawing.Size(417, 66)
+        Me.grpDate.Size = New System.Drawing.Size(410, 66)
         Me.grpDate.TabIndex = 660
         Me.grpDate.TabStop = False
         Me.grpDate.Text = "Date:"
@@ -1471,7 +1486,7 @@ Partial Class Process_frmMain
         Me.Label202.AutoSize = True
         Me.Label202.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.Label202.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label202.Location = New System.Drawing.Point(11, 15)
+        Me.Label202.Location = New System.Drawing.Point(11, 16)
         Me.Label202.Name = "Label202"
         Me.Label202.Size = New System.Drawing.Size(37, 13)
         Me.Label202.TabIndex = 650
@@ -1483,7 +1498,7 @@ Partial Class Process_frmMain
         Me.txtStartDate.BackColor = System.Drawing.Color.White
         Me.txtStartDate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtStartDate.ForeColor = System.Drawing.Color.Black
-        Me.txtStartDate.Location = New System.Drawing.Point(11, 31)
+        Me.txtStartDate.Location = New System.Drawing.Point(11, 32)
         Me.txtStartDate.Name = "txtStartDate"
         Me.txtStartDate.ReadOnly = True
         Me.txtStartDate.Size = New System.Drawing.Size(80, 21)
@@ -1495,7 +1510,7 @@ Partial Class Process_frmMain
         Me.txtDateMod.BackColor = System.Drawing.Color.White
         Me.txtDateMod.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDateMod.ForeColor = System.Drawing.Color.Black
-        Me.txtDateMod.Location = New System.Drawing.Point(120, 31)
+        Me.txtDateMod.Location = New System.Drawing.Point(120, 32)
         Me.txtDateMod.Name = "txtDateMod"
         Me.txtDateMod.ReadOnly = True
         Me.txtDateMod.Size = New System.Drawing.Size(80, 21)
@@ -1507,7 +1522,7 @@ Partial Class Process_frmMain
         Me.Label204.AutoSize = True
         Me.Label204.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.Label204.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label204.Location = New System.Drawing.Point(235, 15)
+        Me.Label204.Location = New System.Drawing.Point(235, 16)
         Me.Label204.Name = "Label204"
         Me.Label204.Size = New System.Drawing.Size(100, 13)
         Me.Label204.TabIndex = 657
@@ -1517,7 +1532,7 @@ Partial Class Process_frmMain
         'dtpDateMod
         '
         Me.dtpDateMod.Font = New System.Drawing.Font("Verdana", 8.25!)
-        Me.dtpDateMod.Location = New System.Drawing.Point(199, 31)
+        Me.dtpDateMod.Location = New System.Drawing.Point(199, 32)
         Me.dtpDateMod.Name = "dtpDateMod"
         Me.dtpDateMod.Size = New System.Drawing.Size(20, 21)
         Me.dtpDateMod.TabIndex = 655
@@ -1526,7 +1541,7 @@ Partial Class Process_frmMain
         'dtpStartDate
         '
         Me.dtpStartDate.Font = New System.Drawing.Font("Verdana", 8.25!)
-        Me.dtpStartDate.Location = New System.Drawing.Point(90, 31)
+        Me.dtpStartDate.Location = New System.Drawing.Point(90, 32)
         Me.dtpStartDate.Name = "dtpStartDate"
         Me.dtpStartDate.Size = New System.Drawing.Size(20, 21)
         Me.dtpStartDate.TabIndex = 652
@@ -1537,7 +1552,7 @@ Partial Class Process_frmMain
         Me.Label203.AutoSize = True
         Me.Label203.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.Label203.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label203.Location = New System.Drawing.Point(120, 15)
+        Me.Label203.Location = New System.Drawing.Point(120, 16)
         Me.Label203.Name = "Label203"
         Me.Label203.Size = New System.Drawing.Size(81, 13)
         Me.Label203.TabIndex = 653
@@ -1548,7 +1563,7 @@ Partial Class Process_frmMain
         '
         Me.txtModifiedBy.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtModifiedBy.ForeColor = System.Drawing.Color.Black
-        Me.txtModifiedBy.Location = New System.Drawing.Point(235, 32)
+        Me.txtModifiedBy.Location = New System.Drawing.Point(235, 33)
         Me.txtModifiedBy.Name = "txtModifiedBy"
         Me.txtModifiedBy.Size = New System.Drawing.Size(161, 21)
         Me.txtModifiedBy.TabIndex = 656
@@ -1717,7 +1732,7 @@ Partial Class Process_frmMain
         Me.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbType.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbType.FormattingEnabled = True
-        Me.cmbType.Location = New System.Drawing.Point(46, 141)
+        Me.cmbType.Location = New System.Drawing.Point(28, 138)
         Me.cmbType.Name = "cmbType"
         Me.cmbType.Size = New System.Drawing.Size(85, 21)
         Me.cmbType.TabIndex = 649
@@ -1727,7 +1742,7 @@ Partial Class Process_frmMain
         Me.lblType.AutoSize = True
         Me.lblType.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.lblType.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblType.Location = New System.Drawing.Point(46, 122)
+        Me.lblType.Location = New System.Drawing.Point(29, 124)
         Me.lblType.Name = "lblType"
         Me.lblType.Size = New System.Drawing.Size(35, 13)
         Me.lblType.TabIndex = 648
@@ -1739,7 +1754,7 @@ Partial Class Process_frmMain
         Me.lblRating.AutoSize = True
         Me.lblRating.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.lblRating.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblRating.Location = New System.Drawing.Point(1010, 49)
+        Me.lblRating.Location = New System.Drawing.Point(967, 49)
         Me.lblRating.Name = "lblRating"
         Me.lblRating.Size = New System.Drawing.Size(43, 13)
         Me.lblRating.TabIndex = 676
@@ -1792,7 +1807,7 @@ Partial Class Process_frmMain
         Me.TabControl1.Controls.Add(Me.tabApproval)
         Me.TabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed
         Me.TabControl1.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TabControl1.Location = New System.Drawing.Point(41, 183)
+        Me.TabControl1.Location = New System.Drawing.Point(30, 183)
         Me.TabControl1.Multiline = True
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
@@ -2270,7 +2285,7 @@ Partial Class Process_frmMain
         '
         Me.tabPreOrder_P2.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.tabPreOrder_P2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.tabPreOrder_P2.Controls.Add(Me.GroupBox17)
+        Me.tabPreOrder_P2.Controls.Add(Me.grpPreOrderEdited)
         Me.tabPreOrder_P2.Controls.Add(Me.Label27)
         Me.tabPreOrder_P2.Controls.Add(Me.GroupBox15)
         Me.tabPreOrder_P2.Location = New System.Drawing.Point(4, 22)
@@ -2280,25 +2295,24 @@ Partial Class Process_frmMain
         Me.tabPreOrder_P2.TabIndex = 1
         Me.tabPreOrder_P2.Text = "Page 2"
         '
-        'GroupBox17
+        'grpPreOrderEdited
         '
-        Me.GroupBox17.Controls.Add(Me.chkPreOrderUserSigned)
-        Me.GroupBox17.Controls.Add(Me.cmdPreOrderUserSign)
-        Me.GroupBox17.Controls.Add(Me.txtPreOrderUserName)
-        Me.GroupBox17.Controls.Add(Me.txtPreOrderUserDate)
-        Me.GroupBox17.Controls.Add(Me.dtpPreOrderUserDate)
-        Me.GroupBox17.Controls.Add(Me.grdPreOrderEditedBy)
-        Me.GroupBox17.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox17.Location = New System.Drawing.Point(15, 401)
-        Me.GroupBox17.Name = "GroupBox17"
-        Me.GroupBox17.Size = New System.Drawing.Size(867, 132)
-        Me.GroupBox17.TabIndex = 873
-        Me.GroupBox17.TabStop = False
-        Me.GroupBox17.Text = "Edited by:"
+        Me.grpPreOrderEdited.Controls.Add(Me.chkPreOrderUserSigned)
+        Me.grpPreOrderEdited.Controls.Add(Me.cmdPreOrderUserSign)
+        Me.grpPreOrderEdited.Controls.Add(Me.txtPreOrderUserName)
+        Me.grpPreOrderEdited.Controls.Add(Me.txtPreOrderUserDate)
+        Me.grpPreOrderEdited.Controls.Add(Me.dtpPreOrderUserDate)
+        Me.grpPreOrderEdited.Controls.Add(Me.grdPreOrderEditedBy)
+        Me.grpPreOrderEdited.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grpPreOrderEdited.Location = New System.Drawing.Point(15, 401)
+        Me.grpPreOrderEdited.Name = "grpPreOrderEdited"
+        Me.grpPreOrderEdited.Size = New System.Drawing.Size(867, 132)
+        Me.grpPreOrderEdited.TabIndex = 873
+        Me.grpPreOrderEdited.TabStop = False
+        Me.grpPreOrderEdited.Text = "Edited by:"
         '
         'chkPreOrderUserSigned
         '
-        Me.chkPreOrderUserSigned.Enabled = False
         Me.chkPreOrderUserSigned.ForeColor = System.Drawing.SystemColors.GrayText
         Me.chkPreOrderUserSigned.Location = New System.Drawing.Point(369, 109)
         Me.chkPreOrderUserSigned.Name = "chkPreOrderUserSigned"
@@ -2311,7 +2325,6 @@ Partial Class Process_frmMain
         '
         Me.cmdPreOrderUserSign.AutoSize = True
         Me.cmdPreOrderUserSign.BackColor = System.Drawing.Color.Silver
-        Me.cmdPreOrderUserSign.Enabled = False
         Me.cmdPreOrderUserSign.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdPreOrderUserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdPreOrderUserSign.Location = New System.Drawing.Point(390, 104)
@@ -2557,7 +2570,7 @@ Partial Class Process_frmMain
         Me.tabExport.Controls.Add(Me.txtITAR_Export_ITAR_Classification)
         Me.tabExport.Controls.Add(Me.Label57)
         Me.tabExport.Controls.Add(Me.Label65)
-        Me.tabExport.Controls.Add(Me.GroupBox14)
+        Me.tabExport.Controls.Add(Me.grpExportEdited)
         Me.tabExport.Controls.Add(Me.cmbITAR_Export_SaleExportControlled)
         Me.tabExport.Controls.Add(Me.Label240)
         Me.tabExport.Controls.Add(Me.cmbITAR_Export_ProductITAR_Reg)
@@ -2640,25 +2653,24 @@ Partial Class Process_frmMain
         Me.Label65.Size = New System.Drawing.Size(1040, 2)
         Me.Label65.TabIndex = 875
         '
-        'GroupBox14
+        'grpExportEdited
         '
-        Me.GroupBox14.Controls.Add(Me.chkITAR_Export_UserSigned)
-        Me.GroupBox14.Controls.Add(Me.cmdITAR_Export_UserSign)
-        Me.GroupBox14.Controls.Add(Me.txtITAR_Export_UserName)
-        Me.GroupBox14.Controls.Add(Me.txtITAR_Export_UserDate)
-        Me.GroupBox14.Controls.Add(Me.dtpITAR_Export_UserDate)
-        Me.GroupBox14.Controls.Add(Me.grdExport_EditedBy)
-        Me.GroupBox14.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox14.Location = New System.Drawing.Point(15, 436)
-        Me.GroupBox14.Name = "GroupBox14"
-        Me.GroupBox14.Size = New System.Drawing.Size(867, 132)
-        Me.GroupBox14.TabIndex = 874
-        Me.GroupBox14.TabStop = False
-        Me.GroupBox14.Text = "Edited by:"
+        Me.grpExportEdited.Controls.Add(Me.chkITAR_Export_UserSigned)
+        Me.grpExportEdited.Controls.Add(Me.cmdITAR_Export_UserSign)
+        Me.grpExportEdited.Controls.Add(Me.txtITAR_Export_UserName)
+        Me.grpExportEdited.Controls.Add(Me.txtITAR_Export_UserDate)
+        Me.grpExportEdited.Controls.Add(Me.dtpITAR_Export_UserDate)
+        Me.grpExportEdited.Controls.Add(Me.grdExport_EditedBy)
+        Me.grpExportEdited.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grpExportEdited.Location = New System.Drawing.Point(15, 436)
+        Me.grpExportEdited.Name = "grpExportEdited"
+        Me.grpExportEdited.Size = New System.Drawing.Size(867, 132)
+        Me.grpExportEdited.TabIndex = 874
+        Me.grpExportEdited.TabStop = False
+        Me.grpExportEdited.Text = "Edited by:"
         '
         'chkITAR_Export_UserSigned
         '
-        Me.chkITAR_Export_UserSigned.Enabled = False
         Me.chkITAR_Export_UserSigned.ForeColor = System.Drawing.SystemColors.GrayText
         Me.chkITAR_Export_UserSigned.Location = New System.Drawing.Point(369, 109)
         Me.chkITAR_Export_UserSigned.Name = "chkITAR_Export_UserSigned"
@@ -2671,7 +2683,6 @@ Partial Class Process_frmMain
         '
         Me.cmdITAR_Export_UserSign.AutoSize = True
         Me.cmdITAR_Export_UserSign.BackColor = System.Drawing.Color.Silver
-        Me.cmdITAR_Export_UserSign.Enabled = False
         Me.cmdITAR_Export_UserSign.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdITAR_Export_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdITAR_Export_UserSign.Location = New System.Drawing.Point(390, 104)
@@ -2922,7 +2933,7 @@ Partial Class Process_frmMain
         Me.tabOrder.Controls.Add(Me.GroupBox51)
         Me.tabOrder.Controls.Add(Me.GroupBox31)
         Me.tabOrder.Controls.Add(Me.GroupBox18)
-        Me.tabOrder.Controls.Add(Me.GroupBox22)
+        Me.tabOrder.Controls.Add(Me.grpOrdEntryEdited)
         Me.tabOrder.Controls.Add(Me.Label128)
         Me.tabOrder.Controls.Add(Me.GroupBox21)
         Me.tabOrder.Controls.Add(Me.Label133)
@@ -3394,25 +3405,24 @@ Partial Class Process_frmMain
         Me.TextBox36.Size = New System.Drawing.Size(99, 21)
         Me.TextBox36.TabIndex = 684
         '
-        'GroupBox22
+        'grpOrdEntryEdited
         '
-        Me.GroupBox22.Controls.Add(Me.chkOrdEntry_UserSigned)
-        Me.GroupBox22.Controls.Add(Me.cmdOrdEntry_UserSign)
-        Me.GroupBox22.Controls.Add(Me.txtOrdEntry_UserName)
-        Me.GroupBox22.Controls.Add(Me.txtOrdEntry_UserDate)
-        Me.GroupBox22.Controls.Add(Me.dtpOrdEntry_UserDate)
-        Me.GroupBox22.Controls.Add(Me.grdOrdEntry_EditedBy)
-        Me.GroupBox22.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox22.Location = New System.Drawing.Point(15, 436)
-        Me.GroupBox22.Name = "GroupBox22"
-        Me.GroupBox22.Size = New System.Drawing.Size(867, 132)
-        Me.GroupBox22.TabIndex = 876
-        Me.GroupBox22.TabStop = False
-        Me.GroupBox22.Text = "Edited by:"
+        Me.grpOrdEntryEdited.Controls.Add(Me.chkOrdEntry_UserSigned)
+        Me.grpOrdEntryEdited.Controls.Add(Me.cmdOrdEntry_UserSign)
+        Me.grpOrdEntryEdited.Controls.Add(Me.txtOrdEntry_UserName)
+        Me.grpOrdEntryEdited.Controls.Add(Me.txtOrdEntry_UserDate)
+        Me.grpOrdEntryEdited.Controls.Add(Me.dtpOrdEntry_UserDate)
+        Me.grpOrdEntryEdited.Controls.Add(Me.grdOrdEntry_EditedBy)
+        Me.grpOrdEntryEdited.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grpOrdEntryEdited.Location = New System.Drawing.Point(15, 436)
+        Me.grpOrdEntryEdited.Name = "grpOrdEntryEdited"
+        Me.grpOrdEntryEdited.Size = New System.Drawing.Size(867, 132)
+        Me.grpOrdEntryEdited.TabIndex = 876
+        Me.grpOrdEntryEdited.TabStop = False
+        Me.grpOrdEntryEdited.Text = "Edited by:"
         '
         'chkOrdEntry_UserSigned
         '
-        Me.chkOrdEntry_UserSigned.Enabled = False
         Me.chkOrdEntry_UserSigned.ForeColor = System.Drawing.SystemColors.GrayText
         Me.chkOrdEntry_UserSigned.Location = New System.Drawing.Point(369, 109)
         Me.chkOrdEntry_UserSigned.Name = "chkOrdEntry_UserSigned"
@@ -3425,7 +3435,6 @@ Partial Class Process_frmMain
         '
         Me.cmdOrdEntry_UserSign.AutoSize = True
         Me.cmdOrdEntry_UserSign.BackColor = System.Drawing.Color.Silver
-        Me.cmdOrdEntry_UserSign.Enabled = False
         Me.cmdOrdEntry_UserSign.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdOrdEntry_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdOrdEntry_UserSign.Location = New System.Drawing.Point(390, 104)
@@ -3740,7 +3749,7 @@ Partial Class Process_frmMain
         Me.tabCosting.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tabCosting.Controls.Add(Me.Label5)
         Me.tabCosting.Controls.Add(Me.GroupBox47)
-        Me.tabCosting.Controls.Add(Me.GroupBox23)
+        Me.tabCosting.Controls.Add(Me.grpCostEdited)
         Me.tabCosting.Controls.Add(Me.Label4)
         Me.tabCosting.Controls.Add(Me.GroupBox46)
         Me.tabCosting.Controls.Add(Me.GroupBox20)
@@ -3783,25 +3792,24 @@ Partial Class Process_frmMain
         Me.txtCost_Notes.Size = New System.Drawing.Size(827, 47)
         Me.txtCost_Notes.TabIndex = 750
         '
-        'GroupBox23
+        'grpCostEdited
         '
-        Me.GroupBox23.Controls.Add(Me.chkCost_UserSigned)
-        Me.GroupBox23.Controls.Add(Me.cmdCost_UserSign)
-        Me.GroupBox23.Controls.Add(Me.txtCost_UserName)
-        Me.GroupBox23.Controls.Add(Me.txtCost_UserDate)
-        Me.GroupBox23.Controls.Add(Me.dtpCost_UserDate)
-        Me.GroupBox23.Controls.Add(Me.grdCost_EditedBy)
-        Me.GroupBox23.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox23.Location = New System.Drawing.Point(15, 436)
-        Me.GroupBox23.Name = "GroupBox23"
-        Me.GroupBox23.Size = New System.Drawing.Size(867, 132)
-        Me.GroupBox23.TabIndex = 877
-        Me.GroupBox23.TabStop = False
-        Me.GroupBox23.Text = "Edited by:"
+        Me.grpCostEdited.Controls.Add(Me.chkCost_UserSigned)
+        Me.grpCostEdited.Controls.Add(Me.cmdCost_UserSign)
+        Me.grpCostEdited.Controls.Add(Me.txtCost_UserName)
+        Me.grpCostEdited.Controls.Add(Me.txtCost_UserDate)
+        Me.grpCostEdited.Controls.Add(Me.dtpCost_UserDate)
+        Me.grpCostEdited.Controls.Add(Me.grdCost_EditedBy)
+        Me.grpCostEdited.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grpCostEdited.Location = New System.Drawing.Point(15, 436)
+        Me.grpCostEdited.Name = "grpCostEdited"
+        Me.grpCostEdited.Size = New System.Drawing.Size(867, 132)
+        Me.grpCostEdited.TabIndex = 877
+        Me.grpCostEdited.TabStop = False
+        Me.grpCostEdited.Text = "Edited by:"
         '
         'chkCost_UserSigned
         '
-        Me.chkCost_UserSigned.Enabled = False
         Me.chkCost_UserSigned.ForeColor = System.Drawing.SystemColors.GrayText
         Me.chkCost_UserSigned.Location = New System.Drawing.Point(369, 109)
         Me.chkCost_UserSigned.Name = "chkCost_UserSigned"
@@ -3814,7 +3822,6 @@ Partial Class Process_frmMain
         '
         Me.cmdCost_UserSign.AutoSize = True
         Me.cmdCost_UserSign.BackColor = System.Drawing.Color.Silver
-        Me.cmdCost_UserSign.Enabled = False
         Me.cmdCost_UserSign.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdCost_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdCost_UserSign.Location = New System.Drawing.Point(390, 104)
@@ -4616,7 +4623,7 @@ Partial Class Process_frmMain
         Me.tbpFace.Controls.Add(Me.txtApp_Hardness2_Face)
         Me.tbpFace.Controls.Add(Me.txtApp_Hardness1_Face)
         Me.tbpFace.Controls.Add(Me.Label89)
-        Me.tbpFace.Controls.Add(Me.GroupBox40)
+        Me.tbpFace.Controls.Add(Me.grpApp_Face_Edited)
         Me.tbpFace.Controls.Add(Me.Label32)
         Me.tbpFace.Controls.Add(Me.grpApp_Face_Cavity)
         Me.tbpFace.Controls.Add(Me.cmbApp_Face_POrient)
@@ -4826,25 +4833,24 @@ Partial Class Process_frmMain
         Me.Label89.Text = "Hardness"
         Me.Label89.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'GroupBox40
+        'grpApp_Face_Edited
         '
-        Me.GroupBox40.Controls.Add(Me.chkApp_UserSigned_Face)
-        Me.GroupBox40.Controls.Add(Me.cmdApp_UserSign_Face)
-        Me.GroupBox40.Controls.Add(Me.txtApp_UserName_Face)
-        Me.GroupBox40.Controls.Add(Me.txtApp_UserDate_Face)
-        Me.GroupBox40.Controls.Add(Me.dtpApp_UserDate_Face)
-        Me.GroupBox40.Controls.Add(Me.grdApp_EditedBy_Face)
-        Me.GroupBox40.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox40.Location = New System.Drawing.Point(15, 398)
-        Me.GroupBox40.Name = "GroupBox40"
-        Me.GroupBox40.Size = New System.Drawing.Size(867, 132)
-        Me.GroupBox40.TabIndex = 877
-        Me.GroupBox40.TabStop = False
-        Me.GroupBox40.Text = "Edited by:"
+        Me.grpApp_Face_Edited.Controls.Add(Me.chkApp_UserSigned_Face)
+        Me.grpApp_Face_Edited.Controls.Add(Me.cmdApp_UserSign_Face)
+        Me.grpApp_Face_Edited.Controls.Add(Me.txtApp_UserName_Face)
+        Me.grpApp_Face_Edited.Controls.Add(Me.txtApp_UserDate_Face)
+        Me.grpApp_Face_Edited.Controls.Add(Me.dtpApp_UserDate_Face)
+        Me.grpApp_Face_Edited.Controls.Add(Me.grdApp_EditedBy_Face)
+        Me.grpApp_Face_Edited.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grpApp_Face_Edited.Location = New System.Drawing.Point(15, 398)
+        Me.grpApp_Face_Edited.Name = "grpApp_Face_Edited"
+        Me.grpApp_Face_Edited.Size = New System.Drawing.Size(867, 132)
+        Me.grpApp_Face_Edited.TabIndex = 877
+        Me.grpApp_Face_Edited.TabStop = False
+        Me.grpApp_Face_Edited.Text = "Edited by:"
         '
         'chkApp_UserSigned_Face
         '
-        Me.chkApp_UserSigned_Face.Enabled = False
         Me.chkApp_UserSigned_Face.ForeColor = System.Drawing.SystemColors.GrayText
         Me.chkApp_UserSigned_Face.Location = New System.Drawing.Point(369, 109)
         Me.chkApp_UserSigned_Face.Name = "chkApp_UserSigned_Face"
@@ -4857,7 +4863,6 @@ Partial Class Process_frmMain
         '
         Me.cmdApp_UserSign_Face.AutoSize = True
         Me.cmdApp_UserSign_Face.BackColor = System.Drawing.Color.Silver
-        Me.cmdApp_UserSign_Face.Enabled = False
         Me.cmdApp_UserSign_Face.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdApp_UserSign_Face.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdApp_UserSign_Face.Location = New System.Drawing.Point(390, 104)
@@ -6856,7 +6861,7 @@ Partial Class Process_frmMain
         Me.tbpDesign_P2.Controls.Add(Me.txtDesign_Notes)
         Me.tbpDesign_P2.Controls.Add(Me.Label98)
         Me.tbpDesign_P2.Controls.Add(Me.Label67)
-        Me.tbpDesign_P2.Controls.Add(Me.GroupBox10)
+        Me.tbpDesign_P2.Controls.Add(Me.grpDesign_Edited)
         Me.tbpDesign_P2.Controls.Add(Me.grpDesign_SealDim)
         Me.tbpDesign_P2.Controls.Add(Me.txtDesign_LessonsLearned)
         Me.tbpDesign_P2.Controls.Add(Me.Label243)
@@ -6944,25 +6949,24 @@ Partial Class Process_frmMain
         Me.Label67.Size = New System.Drawing.Size(1045, 2)
         Me.Label67.TabIndex = 879
         '
-        'GroupBox10
+        'grpDesign_Edited
         '
-        Me.GroupBox10.Controls.Add(Me.chkDesign_UserSigned)
-        Me.GroupBox10.Controls.Add(Me.cmdDesign_UserSign)
-        Me.GroupBox10.Controls.Add(Me.txtDesign_UserName)
-        Me.GroupBox10.Controls.Add(Me.txtDesign_UserDate)
-        Me.GroupBox10.Controls.Add(Me.dtpDesign_UserDate)
-        Me.GroupBox10.Controls.Add(Me.grdDesign_EditedBy)
-        Me.GroupBox10.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox10.Location = New System.Drawing.Point(15, 399)
-        Me.GroupBox10.Name = "GroupBox10"
-        Me.GroupBox10.Size = New System.Drawing.Size(867, 132)
-        Me.GroupBox10.TabIndex = 878
-        Me.GroupBox10.TabStop = False
-        Me.GroupBox10.Text = "Edited by:"
+        Me.grpDesign_Edited.Controls.Add(Me.chkDesign_UserSigned)
+        Me.grpDesign_Edited.Controls.Add(Me.cmdDesign_UserSign)
+        Me.grpDesign_Edited.Controls.Add(Me.txtDesign_UserName)
+        Me.grpDesign_Edited.Controls.Add(Me.txtDesign_UserDate)
+        Me.grpDesign_Edited.Controls.Add(Me.dtpDesign_UserDate)
+        Me.grpDesign_Edited.Controls.Add(Me.grdDesign_EditedBy)
+        Me.grpDesign_Edited.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grpDesign_Edited.Location = New System.Drawing.Point(15, 399)
+        Me.grpDesign_Edited.Name = "grpDesign_Edited"
+        Me.grpDesign_Edited.Size = New System.Drawing.Size(867, 132)
+        Me.grpDesign_Edited.TabIndex = 878
+        Me.grpDesign_Edited.TabStop = False
+        Me.grpDesign_Edited.Text = "Edited by:"
         '
         'chkDesign_UserSigned
         '
-        Me.chkDesign_UserSigned.Enabled = False
         Me.chkDesign_UserSigned.ForeColor = System.Drawing.SystemColors.GrayText
         Me.chkDesign_UserSigned.Location = New System.Drawing.Point(369, 109)
         Me.chkDesign_UserSigned.Name = "chkDesign_UserSigned"
@@ -6975,7 +6979,6 @@ Partial Class Process_frmMain
         '
         Me.cmdDesign_UserSign.AutoSize = True
         Me.cmdDesign_UserSign.BackColor = System.Drawing.Color.Silver
-        Me.cmdDesign_UserSign.Enabled = False
         Me.cmdDesign_UserSign.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdDesign_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdDesign_UserSign.Location = New System.Drawing.Point(390, 104)
@@ -7195,7 +7198,7 @@ Partial Class Process_frmMain
         Me.tabManufacturing.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.tabManufacturing.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tabManufacturing.Controls.Add(Me.Label111)
-        Me.tabManufacturing.Controls.Add(Me.GroupBox33)
+        Me.tabManufacturing.Controls.Add(Me.grpManf_Edited)
         Me.tabManufacturing.Controls.Add(Me.Label117)
         Me.tabManufacturing.Controls.Add(Me.grdManf_ToolNGage)
         Me.tabManufacturing.Controls.Add(Me.cmbManf_PrecompressionGlue)
@@ -7219,25 +7222,24 @@ Partial Class Process_frmMain
         Me.Label111.Size = New System.Drawing.Size(1045, 2)
         Me.Label111.TabIndex = 877
         '
-        'GroupBox33
+        'grpManf_Edited
         '
-        Me.GroupBox33.Controls.Add(Me.chkManf_UserSigned)
-        Me.GroupBox33.Controls.Add(Me.cmdManf_UserSign)
-        Me.GroupBox33.Controls.Add(Me.txtManf_UserName)
-        Me.GroupBox33.Controls.Add(Me.txtManf_UserDate)
-        Me.GroupBox33.Controls.Add(Me.dtpManf_UserDate)
-        Me.GroupBox33.Controls.Add(Me.grdManf_EditedBy)
-        Me.GroupBox33.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox33.Location = New System.Drawing.Point(15, 436)
-        Me.GroupBox33.Name = "GroupBox33"
-        Me.GroupBox33.Size = New System.Drawing.Size(867, 132)
-        Me.GroupBox33.TabIndex = 876
-        Me.GroupBox33.TabStop = False
-        Me.GroupBox33.Text = "Edited by:"
+        Me.grpManf_Edited.Controls.Add(Me.chkManf_UserSigned)
+        Me.grpManf_Edited.Controls.Add(Me.cmdManf_UserSign)
+        Me.grpManf_Edited.Controls.Add(Me.txtManf_UserName)
+        Me.grpManf_Edited.Controls.Add(Me.txtManf_UserDate)
+        Me.grpManf_Edited.Controls.Add(Me.dtpManf_UserDate)
+        Me.grpManf_Edited.Controls.Add(Me.grdManf_EditedBy)
+        Me.grpManf_Edited.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grpManf_Edited.Location = New System.Drawing.Point(15, 436)
+        Me.grpManf_Edited.Name = "grpManf_Edited"
+        Me.grpManf_Edited.Size = New System.Drawing.Size(867, 132)
+        Me.grpManf_Edited.TabIndex = 876
+        Me.grpManf_Edited.TabStop = False
+        Me.grpManf_Edited.Text = "Edited by:"
         '
         'chkManf_UserSigned
         '
-        Me.chkManf_UserSigned.Enabled = False
         Me.chkManf_UserSigned.ForeColor = System.Drawing.SystemColors.GrayText
         Me.chkManf_UserSigned.Location = New System.Drawing.Point(369, 109)
         Me.chkManf_UserSigned.Name = "chkManf_UserSigned"
@@ -7250,7 +7252,6 @@ Partial Class Process_frmMain
         '
         Me.cmdManf_UserSign.AutoSize = True
         Me.cmdManf_UserSign.BackColor = System.Drawing.Color.Silver
-        Me.cmdManf_UserSign.Enabled = False
         Me.cmdManf_UserSign.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdManf_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdManf_UserSign.Location = New System.Drawing.Point(390, 104)
@@ -7513,7 +7514,7 @@ Partial Class Process_frmMain
         Me.tabPurchasing.Controls.Add(Me.grdPurchase_Drawing)
         Me.tabPurchasing.Controls.Add(Me.Label33)
         Me.tabPurchasing.Controls.Add(Me.grdPurchase_ToolNGages)
-        Me.tabPurchasing.Controls.Add(Me.GroupBox34)
+        Me.tabPurchasing.Controls.Add(Me.grpPurchase_Edited)
         Me.tabPurchasing.Controls.Add(Me.grdPurchase_Mat)
         Me.tabPurchasing.Location = New System.Drawing.Point(4, 40)
         Me.tabPurchasing.Name = "tabPurchasing"
@@ -7659,25 +7660,24 @@ Partial Class Process_frmMain
         Me.DataGridViewComboBoxColumn14.Name = "DataGridViewComboBoxColumn14"
         Me.DataGridViewComboBoxColumn14.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         '
-        'GroupBox34
+        'grpPurchase_Edited
         '
-        Me.GroupBox34.Controls.Add(Me.chkPurchase_UserSigned)
-        Me.GroupBox34.Controls.Add(Me.cmdPurchase_UserSign)
-        Me.GroupBox34.Controls.Add(Me.txtPurchase_UserName)
-        Me.GroupBox34.Controls.Add(Me.txtPurchase_UserDate)
-        Me.GroupBox34.Controls.Add(Me.dtpPurchase_UserDate)
-        Me.GroupBox34.Controls.Add(Me.grdPurchase_EditedBy)
-        Me.GroupBox34.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox34.Location = New System.Drawing.Point(15, 436)
-        Me.GroupBox34.Name = "GroupBox34"
-        Me.GroupBox34.Size = New System.Drawing.Size(867, 132)
-        Me.GroupBox34.TabIndex = 879
-        Me.GroupBox34.TabStop = False
-        Me.GroupBox34.Text = "Edited by:"
+        Me.grpPurchase_Edited.Controls.Add(Me.chkPurchase_UserSigned)
+        Me.grpPurchase_Edited.Controls.Add(Me.cmdPurchase_UserSign)
+        Me.grpPurchase_Edited.Controls.Add(Me.txtPurchase_UserName)
+        Me.grpPurchase_Edited.Controls.Add(Me.txtPurchase_UserDate)
+        Me.grpPurchase_Edited.Controls.Add(Me.dtpPurchase_UserDate)
+        Me.grpPurchase_Edited.Controls.Add(Me.grdPurchase_EditedBy)
+        Me.grpPurchase_Edited.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grpPurchase_Edited.Location = New System.Drawing.Point(15, 436)
+        Me.grpPurchase_Edited.Name = "grpPurchase_Edited"
+        Me.grpPurchase_Edited.Size = New System.Drawing.Size(867, 132)
+        Me.grpPurchase_Edited.TabIndex = 879
+        Me.grpPurchase_Edited.TabStop = False
+        Me.grpPurchase_Edited.Text = "Edited by:"
         '
         'chkPurchase_UserSigned
         '
-        Me.chkPurchase_UserSigned.Enabled = False
         Me.chkPurchase_UserSigned.ForeColor = System.Drawing.SystemColors.GrayText
         Me.chkPurchase_UserSigned.Location = New System.Drawing.Point(369, 109)
         Me.chkPurchase_UserSigned.Name = "chkPurchase_UserSigned"
@@ -7690,7 +7690,6 @@ Partial Class Process_frmMain
         '
         Me.cmdPurchase_UserSign.AutoSize = True
         Me.cmdPurchase_UserSign.BackColor = System.Drawing.Color.Silver
-        Me.cmdPurchase_UserSign.Enabled = False
         Me.cmdPurchase_UserSign.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdPurchase_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdPurchase_UserSign.Location = New System.Drawing.Point(390, 104)
@@ -7834,7 +7833,7 @@ Partial Class Process_frmMain
         Me.tabQuality.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tabQuality.Controls.Add(Me.GroupBox57)
         Me.tabQuality.Controls.Add(Me.Label113)
-        Me.tabQuality.Controls.Add(Me.GroupBox25)
+        Me.tabQuality.Controls.Add(Me.grpQlty_Edited)
         Me.tabQuality.Controls.Add(Me.cmbQuality_CustAcceptStd)
         Me.tabQuality.Controls.Add(Me.cmbQuality_VisualInspection_Type)
         Me.tabQuality.Controls.Add(Me.cmbQuality_VisualInspection)
@@ -7938,25 +7937,24 @@ Partial Class Process_frmMain
         Me.Label113.Size = New System.Drawing.Size(1045, 2)
         Me.Label113.TabIndex = 878
         '
-        'GroupBox25
+        'grpQlty_Edited
         '
-        Me.GroupBox25.Controls.Add(Me.chkQuality_UserSigned)
-        Me.GroupBox25.Controls.Add(Me.cmdQuality_UserSign)
-        Me.GroupBox25.Controls.Add(Me.txtQuality_UserName)
-        Me.GroupBox25.Controls.Add(Me.txtQuality_UserDate)
-        Me.GroupBox25.Controls.Add(Me.dtpQuality_UserDate)
-        Me.GroupBox25.Controls.Add(Me.grdQuality_EditedBy)
-        Me.GroupBox25.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox25.Location = New System.Drawing.Point(15, 436)
-        Me.GroupBox25.Name = "GroupBox25"
-        Me.GroupBox25.Size = New System.Drawing.Size(867, 132)
-        Me.GroupBox25.TabIndex = 876
-        Me.GroupBox25.TabStop = False
-        Me.GroupBox25.Text = "Edited by:"
+        Me.grpQlty_Edited.Controls.Add(Me.chkQuality_UserSigned)
+        Me.grpQlty_Edited.Controls.Add(Me.cmdQuality_UserSign)
+        Me.grpQlty_Edited.Controls.Add(Me.txtQuality_UserName)
+        Me.grpQlty_Edited.Controls.Add(Me.txtQuality_UserDate)
+        Me.grpQlty_Edited.Controls.Add(Me.dtpQuality_UserDate)
+        Me.grpQlty_Edited.Controls.Add(Me.grdQuality_EditedBy)
+        Me.grpQlty_Edited.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grpQlty_Edited.Location = New System.Drawing.Point(15, 436)
+        Me.grpQlty_Edited.Name = "grpQlty_Edited"
+        Me.grpQlty_Edited.Size = New System.Drawing.Size(867, 132)
+        Me.grpQlty_Edited.TabIndex = 876
+        Me.grpQlty_Edited.TabStop = False
+        Me.grpQlty_Edited.Text = "Edited by:"
         '
         'chkQuality_UserSigned
         '
-        Me.chkQuality_UserSigned.Enabled = False
         Me.chkQuality_UserSigned.ForeColor = System.Drawing.SystemColors.GrayText
         Me.chkQuality_UserSigned.Location = New System.Drawing.Point(369, 109)
         Me.chkQuality_UserSigned.Name = "chkQuality_UserSigned"
@@ -7969,7 +7967,6 @@ Partial Class Process_frmMain
         '
         Me.cmdQuality_UserSign.AutoSize = True
         Me.cmdQuality_UserSign.BackColor = System.Drawing.Color.Silver
-        Me.cmdQuality_UserSign.Enabled = False
         Me.cmdQuality_UserSign.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdQuality_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdQuality_UserSign.Location = New System.Drawing.Point(390, 104)
@@ -8253,7 +8250,7 @@ Partial Class Process_frmMain
         Me.tabDrawing.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.tabDrawing.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tabDrawing.Controls.Add(Me.Label115)
-        Me.tabDrawing.Controls.Add(Me.GroupBox29)
+        Me.tabDrawing.Controls.Add(Me.grpDwg_Edited)
         Me.tabDrawing.Controls.Add(Me.Label150)
         Me.tabDrawing.Controls.Add(Me.Label149)
         Me.tabDrawing.Controls.Add(Me.grdDrawing_BOM)
@@ -8277,21 +8274,21 @@ Partial Class Process_frmMain
         Me.Label115.Size = New System.Drawing.Size(1045, 2)
         Me.Label115.TabIndex = 878
         '
-        'GroupBox29
+        'grpDwg_Edited
         '
-        Me.GroupBox29.Controls.Add(Me.chkDwg_UserSigned)
-        Me.GroupBox29.Controls.Add(Me.cmdDwg_UserSign)
-        Me.GroupBox29.Controls.Add(Me.txtDwg_UserName)
-        Me.GroupBox29.Controls.Add(Me.txtDwg_UserDate)
-        Me.GroupBox29.Controls.Add(Me.dtpDwg_UserDate)
-        Me.GroupBox29.Controls.Add(Me.grdDwg_EditedBy)
-        Me.GroupBox29.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox29.Location = New System.Drawing.Point(15, 436)
-        Me.GroupBox29.Name = "GroupBox29"
-        Me.GroupBox29.Size = New System.Drawing.Size(867, 132)
-        Me.GroupBox29.TabIndex = 877
-        Me.GroupBox29.TabStop = False
-        Me.GroupBox29.Text = "Edited by:"
+        Me.grpDwg_Edited.Controls.Add(Me.chkDwg_UserSigned)
+        Me.grpDwg_Edited.Controls.Add(Me.cmdDwg_UserSign)
+        Me.grpDwg_Edited.Controls.Add(Me.txtDwg_UserName)
+        Me.grpDwg_Edited.Controls.Add(Me.txtDwg_UserDate)
+        Me.grpDwg_Edited.Controls.Add(Me.dtpDwg_UserDate)
+        Me.grpDwg_Edited.Controls.Add(Me.grdDwg_EditedBy)
+        Me.grpDwg_Edited.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grpDwg_Edited.Location = New System.Drawing.Point(15, 436)
+        Me.grpDwg_Edited.Name = "grpDwg_Edited"
+        Me.grpDwg_Edited.Size = New System.Drawing.Size(867, 132)
+        Me.grpDwg_Edited.TabIndex = 877
+        Me.grpDwg_Edited.TabStop = False
+        Me.grpDwg_Edited.Text = "Edited by:"
         '
         'chkDwg_UserSigned
         '
@@ -8533,7 +8530,7 @@ Partial Class Process_frmMain
         Me.tabTesting.Controls.Add(Me.grpUnit_Test)
         Me.tabTesting.Controls.Add(Me.chkTest)
         Me.tabTesting.Controls.Add(Me.Label119)
-        Me.tabTesting.Controls.Add(Me.GroupBox32)
+        Me.tabTesting.Controls.Add(Me.grpTest_Edited)
         Me.tabTesting.Controls.Add(Me.txtTest_Other)
         Me.tabTesting.Controls.Add(Me.Label152)
         Me.tabTesting.Controls.Add(Me.tbTest)
@@ -8598,25 +8595,24 @@ Partial Class Process_frmMain
         Me.Label119.Size = New System.Drawing.Size(1045, 2)
         Me.Label119.TabIndex = 879
         '
-        'GroupBox32
+        'grpTest_Edited
         '
-        Me.GroupBox32.Controls.Add(Me.chkTest_UserSigned)
-        Me.GroupBox32.Controls.Add(Me.cmdTest_UserSign)
-        Me.GroupBox32.Controls.Add(Me.txtTest_UserName)
-        Me.GroupBox32.Controls.Add(Me.txtTest_UserDate)
-        Me.GroupBox32.Controls.Add(Me.dtpTest_UserDate)
-        Me.GroupBox32.Controls.Add(Me.grdTest_EditedBy)
-        Me.GroupBox32.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox32.Location = New System.Drawing.Point(15, 436)
-        Me.GroupBox32.Name = "GroupBox32"
-        Me.GroupBox32.Size = New System.Drawing.Size(867, 132)
-        Me.GroupBox32.TabIndex = 878
-        Me.GroupBox32.TabStop = False
-        Me.GroupBox32.Text = "Edited by:"
+        Me.grpTest_Edited.Controls.Add(Me.chkTest_UserSigned)
+        Me.grpTest_Edited.Controls.Add(Me.cmdTest_UserSign)
+        Me.grpTest_Edited.Controls.Add(Me.txtTest_UserName)
+        Me.grpTest_Edited.Controls.Add(Me.txtTest_UserDate)
+        Me.grpTest_Edited.Controls.Add(Me.dtpTest_UserDate)
+        Me.grpTest_Edited.Controls.Add(Me.grdTest_EditedBy)
+        Me.grpTest_Edited.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grpTest_Edited.Location = New System.Drawing.Point(15, 436)
+        Me.grpTest_Edited.Name = "grpTest_Edited"
+        Me.grpTest_Edited.Size = New System.Drawing.Size(867, 132)
+        Me.grpTest_Edited.TabIndex = 878
+        Me.grpTest_Edited.TabStop = False
+        Me.grpTest_Edited.Text = "Edited by:"
         '
         'chkTest_UserSigned
         '
-        Me.chkTest_UserSigned.Enabled = False
         Me.chkTest_UserSigned.ForeColor = System.Drawing.SystemColors.GrayText
         Me.chkTest_UserSigned.Location = New System.Drawing.Point(369, 109)
         Me.chkTest_UserSigned.Name = "chkTest_UserSigned"
@@ -8629,7 +8625,6 @@ Partial Class Process_frmMain
         '
         Me.cmdTest_UserSign.AutoSize = True
         Me.cmdTest_UserSign.BackColor = System.Drawing.Color.Silver
-        Me.cmdTest_UserSign.Enabled = False
         Me.cmdTest_UserSign.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdTest_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdTest_UserSign.Location = New System.Drawing.Point(390, 104)
@@ -9450,7 +9445,7 @@ Partial Class Process_frmMain
         Me.tabPlanning.Controls.Add(Me.Label156)
         Me.tabPlanning.Controls.Add(Me.GroupBox60)
         Me.tabPlanning.Controls.Add(Me.Label120)
-        Me.tabPlanning.Controls.Add(Me.GroupBox4)
+        Me.tabPlanning.Controls.Add(Me.grpPlanning_Edited)
         Me.tabPlanning.Controls.Add(Me.cmdResetSelectedAllNote)
         Me.tabPlanning.Controls.Add(Me.cmdSelectAllNote)
         Me.tabPlanning.ForeColor = System.Drawing.Color.Gray
@@ -9652,22 +9647,22 @@ Partial Class Process_frmMain
         Me.Label120.Size = New System.Drawing.Size(1045, 2)
         Me.Label120.TabIndex = 880
         '
-        'GroupBox4
+        'grpPlanning_Edited
         '
-        Me.GroupBox4.Controls.Add(Me.chkPlanning_UserSigned)
-        Me.GroupBox4.Controls.Add(Me.cmdPlanning_UserSign)
-        Me.GroupBox4.Controls.Add(Me.txtPlanning_UserName)
-        Me.GroupBox4.Controls.Add(Me.txtPlanning_UserDate)
-        Me.GroupBox4.Controls.Add(Me.dtpPlanning_UserDate)
-        Me.GroupBox4.Controls.Add(Me.grdPlanning_EditedBy)
-        Me.GroupBox4.Enabled = False
-        Me.GroupBox4.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox4.Location = New System.Drawing.Point(15, 436)
-        Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(867, 132)
-        Me.GroupBox4.TabIndex = 874
-        Me.GroupBox4.TabStop = False
-        Me.GroupBox4.Text = "Edited by:"
+        Me.grpPlanning_Edited.Controls.Add(Me.chkPlanning_UserSigned)
+        Me.grpPlanning_Edited.Controls.Add(Me.cmdPlanning_UserSign)
+        Me.grpPlanning_Edited.Controls.Add(Me.txtPlanning_UserName)
+        Me.grpPlanning_Edited.Controls.Add(Me.txtPlanning_UserDate)
+        Me.grpPlanning_Edited.Controls.Add(Me.dtpPlanning_UserDate)
+        Me.grpPlanning_Edited.Controls.Add(Me.grdPlanning_EditedBy)
+        Me.grpPlanning_Edited.Enabled = False
+        Me.grpPlanning_Edited.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grpPlanning_Edited.Location = New System.Drawing.Point(15, 436)
+        Me.grpPlanning_Edited.Name = "grpPlanning_Edited"
+        Me.grpPlanning_Edited.Size = New System.Drawing.Size(867, 132)
+        Me.grpPlanning_Edited.TabIndex = 874
+        Me.grpPlanning_Edited.TabStop = False
+        Me.grpPlanning_Edited.Text = "Edited by:"
         '
         'chkPlanning_UserSigned
         '
@@ -9684,6 +9679,7 @@ Partial Class Process_frmMain
         Me.cmdPlanning_UserSign.AutoSize = True
         Me.cmdPlanning_UserSign.BackColor = System.Drawing.Color.Silver
         Me.cmdPlanning_UserSign.Font = New System.Drawing.Font("Verdana", 8.25!)
+        Me.cmdPlanning_UserSign.ForeColor = System.Drawing.Color.Black
         Me.cmdPlanning_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdPlanning_UserSign.Location = New System.Drawing.Point(390, 104)
         Me.cmdPlanning_UserSign.Name = "cmdPlanning_UserSign"
@@ -9792,7 +9788,7 @@ Partial Class Process_frmMain
         Me.tabShipping.Controls.Add(Me.GroupBox59)
         Me.tabShipping.Controls.Add(Me.grpCustSpec_Shipping)
         Me.tabShipping.Controls.Add(Me.Label139)
-        Me.tabShipping.Controls.Add(Me.GroupBox28)
+        Me.tabShipping.Controls.Add(Me.grpShipping_Edited)
         Me.tabShipping.Location = New System.Drawing.Point(4, 40)
         Me.tabShipping.Name = "tabShipping"
         Me.tabShipping.Size = New System.Drawing.Size(1039, 577)
@@ -9877,25 +9873,24 @@ Partial Class Process_frmMain
         Me.Label139.Size = New System.Drawing.Size(1045, 2)
         Me.Label139.TabIndex = 880
         '
-        'GroupBox28
+        'grpShipping_Edited
         '
-        Me.GroupBox28.Controls.Add(Me.chkShipping_UserSigned)
-        Me.GroupBox28.Controls.Add(Me.cmdShipping_UserSign)
-        Me.GroupBox28.Controls.Add(Me.txtShipping_UserName)
-        Me.GroupBox28.Controls.Add(Me.txtShipping_UserDate)
-        Me.GroupBox28.Controls.Add(Me.dtpShipping_UserDate)
-        Me.GroupBox28.Controls.Add(Me.grdShipping_EditedBy)
-        Me.GroupBox28.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox28.Location = New System.Drawing.Point(15, 436)
-        Me.GroupBox28.Name = "GroupBox28"
-        Me.GroupBox28.Size = New System.Drawing.Size(867, 132)
-        Me.GroupBox28.TabIndex = 875
-        Me.GroupBox28.TabStop = False
-        Me.GroupBox28.Text = "Edited by:"
+        Me.grpShipping_Edited.Controls.Add(Me.chkShipping_UserSigned)
+        Me.grpShipping_Edited.Controls.Add(Me.cmdShipping_UserSign)
+        Me.grpShipping_Edited.Controls.Add(Me.txtShipping_UserName)
+        Me.grpShipping_Edited.Controls.Add(Me.txtShipping_UserDate)
+        Me.grpShipping_Edited.Controls.Add(Me.dtpShipping_UserDate)
+        Me.grpShipping_Edited.Controls.Add(Me.grdShipping_EditedBy)
+        Me.grpShipping_Edited.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grpShipping_Edited.Location = New System.Drawing.Point(15, 436)
+        Me.grpShipping_Edited.Name = "grpShipping_Edited"
+        Me.grpShipping_Edited.Size = New System.Drawing.Size(867, 132)
+        Me.grpShipping_Edited.TabIndex = 875
+        Me.grpShipping_Edited.TabStop = False
+        Me.grpShipping_Edited.Text = "Edited by:"
         '
         'chkShipping_UserSigned
         '
-        Me.chkShipping_UserSigned.Enabled = False
         Me.chkShipping_UserSigned.ForeColor = System.Drawing.SystemColors.GrayText
         Me.chkShipping_UserSigned.Location = New System.Drawing.Point(369, 109)
         Me.chkShipping_UserSigned.Name = "chkShipping_UserSigned"
@@ -9908,7 +9903,6 @@ Partial Class Process_frmMain
         '
         Me.cmdShipping_UserSign.AutoSize = True
         Me.cmdShipping_UserSign.BackColor = System.Drawing.Color.Silver
-        Me.cmdShipping_UserSign.Enabled = False
         Me.cmdShipping_UserSign.Font = New System.Drawing.Font("Verdana", 8.25!)
         Me.cmdShipping_UserSign.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdShipping_UserSign.Location = New System.Drawing.Point(390, 104)
@@ -10323,8 +10317,8 @@ Partial Class Process_frmMain
         Me.grpGroupBox2.ResumeLayout(False)
         Me.grpGroupBox2.PerformLayout()
         Me.tabPreOrder_P2.ResumeLayout(False)
-        Me.GroupBox17.ResumeLayout(False)
-        Me.GroupBox17.PerformLayout()
+        Me.grpPreOrderEdited.ResumeLayout(False)
+        Me.grpPreOrderEdited.PerformLayout()
         CType(Me.grdPreOrderEditedBy, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox15.ResumeLayout(False)
         Me.GroupBox15.PerformLayout()
@@ -10334,8 +10328,8 @@ Partial Class Process_frmMain
         CType(Me.grdPreOrder_SalesData, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabExport.ResumeLayout(False)
         Me.tabExport.PerformLayout()
-        Me.GroupBox14.ResumeLayout(False)
-        Me.GroupBox14.PerformLayout()
+        Me.grpExportEdited.ResumeLayout(False)
+        Me.grpExportEdited.PerformLayout()
         CType(Me.grdExport_EditedBy, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabOrder.ResumeLayout(False)
         Me.tabOrder.PerformLayout()
@@ -10349,8 +10343,8 @@ Partial Class Process_frmMain
         Me.GroupBox31.PerformLayout()
         Me.GroupBox18.ResumeLayout(False)
         Me.GroupBox18.PerformLayout()
-        Me.GroupBox22.ResumeLayout(False)
-        Me.GroupBox22.PerformLayout()
+        Me.grpOrdEntryEdited.ResumeLayout(False)
+        Me.grpOrdEntryEdited.PerformLayout()
         CType(Me.grdOrdEntry_EditedBy, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox21.ResumeLayout(False)
         Me.GroupBox21.PerformLayout()
@@ -10359,8 +10353,8 @@ Partial Class Process_frmMain
         Me.tabCosting.ResumeLayout(False)
         Me.GroupBox47.ResumeLayout(False)
         Me.GroupBox47.PerformLayout()
-        Me.GroupBox23.ResumeLayout(False)
-        Me.GroupBox23.PerformLayout()
+        Me.grpCostEdited.ResumeLayout(False)
+        Me.grpCostEdited.PerformLayout()
         CType(Me.grdCost_EditedBy, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox46.ResumeLayout(False)
         CType(Me.grdCost_SplOperation, System.ComponentModel.ISupportInitialize).EndInit()
@@ -10385,8 +10379,8 @@ Partial Class Process_frmMain
         Me.tbpFace.PerformLayout()
         Me.GroupBox54.ResumeLayout(False)
         Me.GroupBox54.PerformLayout()
-        Me.GroupBox40.ResumeLayout(False)
-        Me.GroupBox40.PerformLayout()
+        Me.grpApp_Face_Edited.ResumeLayout(False)
+        Me.grpApp_Face_Edited.PerformLayout()
         CType(Me.grdApp_EditedBy_Face, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpApp_Face_Cavity.ResumeLayout(False)
         CType(Me.grdApp_Face_Cavity, System.ComponentModel.ISupportInitialize).EndInit()
@@ -10426,8 +10420,8 @@ Partial Class Process_frmMain
         Me.tbpDesign_P2.PerformLayout()
         Me.GroupBox7.ResumeLayout(False)
         Me.GroupBox7.PerformLayout()
-        Me.GroupBox10.ResumeLayout(False)
-        Me.GroupBox10.PerformLayout()
+        Me.grpDesign_Edited.ResumeLayout(False)
+        Me.grpDesign_Edited.PerformLayout()
         CType(Me.grdDesign_EditedBy, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpDesign_SealDim.ResumeLayout(False)
         CType(Me.grdDesign_Seal, System.ComponentModel.ISupportInitialize).EndInit()
@@ -10435,8 +10429,8 @@ Partial Class Process_frmMain
         CType(Me.grdDesign_CustSpec, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabManufacturing.ResumeLayout(False)
         Me.tabManufacturing.PerformLayout()
-        Me.GroupBox33.ResumeLayout(False)
-        Me.GroupBox33.PerformLayout()
+        Me.grpManf_Edited.ResumeLayout(False)
+        Me.grpManf_Edited.PerformLayout()
         CType(Me.grdManf_EditedBy, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdManf_ToolNGage, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox6.ResumeLayout(False)
@@ -10445,21 +10439,21 @@ Partial Class Process_frmMain
         Me.tabPurchasing.PerformLayout()
         CType(Me.grdPurchase_Drawing, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdPurchase_ToolNGages, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox34.ResumeLayout(False)
-        Me.GroupBox34.PerformLayout()
+        Me.grpPurchase_Edited.ResumeLayout(False)
+        Me.grpPurchase_Edited.PerformLayout()
         CType(Me.grdPurchase_EditedBy, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdPurchase_Mat, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabQuality.ResumeLayout(False)
         Me.tabQuality.PerformLayout()
         Me.GroupBox57.ResumeLayout(False)
         CType(Me.grdQuality_SplOperation, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox25.ResumeLayout(False)
-        Me.GroupBox25.PerformLayout()
+        Me.grpQlty_Edited.ResumeLayout(False)
+        Me.grpQlty_Edited.PerformLayout()
         CType(Me.grdQuality_EditedBy, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabDrawing.ResumeLayout(False)
         Me.tabDrawing.PerformLayout()
-        Me.GroupBox29.ResumeLayout(False)
-        Me.GroupBox29.PerformLayout()
+        Me.grpDwg_Edited.ResumeLayout(False)
+        Me.grpDwg_Edited.PerformLayout()
         CType(Me.grdDwg_EditedBy, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdDrawing_BOM, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdDrawing_Needed, System.ComponentModel.ISupportInitialize).EndInit()
@@ -10467,8 +10461,8 @@ Partial Class Process_frmMain
         Me.tabTesting.PerformLayout()
         Me.grpUnit_Test.ResumeLayout(False)
         Me.grpUnit_Test.PerformLayout()
-        Me.GroupBox32.ResumeLayout(False)
-        Me.GroupBox32.PerformLayout()
+        Me.grpTest_Edited.ResumeLayout(False)
+        Me.grpTest_Edited.PerformLayout()
         CType(Me.grdTest_EditedBy, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tbTest.ResumeLayout(False)
         Me.tabLeak.ResumeLayout(False)
@@ -10483,16 +10477,16 @@ Partial Class Process_frmMain
         CType(Me.grdPlanning_Ordered, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox60.ResumeLayout(False)
         Me.GroupBox60.PerformLayout()
-        Me.GroupBox4.ResumeLayout(False)
-        Me.GroupBox4.PerformLayout()
+        Me.grpPlanning_Edited.ResumeLayout(False)
+        Me.grpPlanning_Edited.PerformLayout()
         CType(Me.grdPlanning_EditedBy, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabShipping.ResumeLayout(False)
         Me.GroupBox59.ResumeLayout(False)
         Me.GroupBox59.PerformLayout()
         Me.grpCustSpec_Shipping.ResumeLayout(False)
         CType(Me.grdShipping_CustSpec, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox28.ResumeLayout(False)
-        Me.GroupBox28.PerformLayout()
+        Me.grpShipping_Edited.ResumeLayout(False)
+        Me.grpShipping_Edited.PerformLayout()
         CType(Me.grdShipping_EditedBy, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabKeyChar.ResumeLayout(False)
         Me.grpKeyChar.ResumeLayout(False)
@@ -10812,14 +10806,14 @@ Partial Class Process_frmMain
     Friend WithEvents Label80 As System.Windows.Forms.Label
     Public WithEvents cmbQuality_CustAcceptStd As System.Windows.Forms.ComboBox
     Friend WithEvents lblStatus As System.Windows.Forms.Label
-    Friend WithEvents GroupBox17 As System.Windows.Forms.GroupBox
+    Friend WithEvents grpPreOrderEdited As System.Windows.Forms.GroupBox
     Private WithEvents txtPreOrderUserDate As System.Windows.Forms.TextBox
     Private WithEvents dtpPreOrderUserDate As System.Windows.Forms.DateTimePicker
     Friend WithEvents grdPreOrderEditedBy As System.Windows.Forms.DataGridView
     Friend WithEvents txtPreOrderUserName As System.Windows.Forms.TextBox
     Friend WithEvents chkPreOrderUserSigned As System.Windows.Forms.CheckBox
     Private WithEvents cmdPreOrderUserSign As System.Windows.Forms.Button
-    Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
+    Friend WithEvents grpPlanning_Edited As System.Windows.Forms.GroupBox
     Friend WithEvents chkPlanning_UserSigned As System.Windows.Forms.CheckBox
     Private WithEvents cmdPlanning_UserSign As System.Windows.Forms.Button
     Friend WithEvents txtPlanning_UserName As System.Windows.Forms.TextBox
@@ -10830,35 +10824,35 @@ Partial Class Process_frmMain
     Friend WithEvents DataGridViewTextBoxColumn33 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn54 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents tabShipping As System.Windows.Forms.TabPage
-    Friend WithEvents GroupBox22 As System.Windows.Forms.GroupBox
+    Friend WithEvents grpOrdEntryEdited As System.Windows.Forms.GroupBox
     Friend WithEvents chkOrdEntry_UserSigned As System.Windows.Forms.CheckBox
     Private WithEvents cmdOrdEntry_UserSign As System.Windows.Forms.Button
     Friend WithEvents txtOrdEntry_UserName As System.Windows.Forms.TextBox
     Private WithEvents txtOrdEntry_UserDate As System.Windows.Forms.TextBox
     Private WithEvents dtpOrdEntry_UserDate As System.Windows.Forms.DateTimePicker
     Friend WithEvents grdOrdEntry_EditedBy As System.Windows.Forms.DataGridView
-    Friend WithEvents GroupBox28 As System.Windows.Forms.GroupBox
+    Friend WithEvents grpShipping_Edited As System.Windows.Forms.GroupBox
     Friend WithEvents chkShipping_UserSigned As System.Windows.Forms.CheckBox
     Private WithEvents cmdShipping_UserSign As System.Windows.Forms.Button
     Friend WithEvents txtShipping_UserName As System.Windows.Forms.TextBox
     Private WithEvents txtShipping_UserDate As System.Windows.Forms.TextBox
     Private WithEvents dtpShipping_UserDate As System.Windows.Forms.DateTimePicker
     Friend WithEvents grdShipping_EditedBy As System.Windows.Forms.DataGridView
-    Friend WithEvents GroupBox33 As System.Windows.Forms.GroupBox
+    Friend WithEvents grpManf_Edited As System.Windows.Forms.GroupBox
     Friend WithEvents chkManf_UserSigned As System.Windows.Forms.CheckBox
     Private WithEvents cmdManf_UserSign As System.Windows.Forms.Button
     Friend WithEvents txtManf_UserName As System.Windows.Forms.TextBox
     Private WithEvents txtManf_UserDate As System.Windows.Forms.TextBox
     Private WithEvents dtpManf_UserDate As System.Windows.Forms.DateTimePicker
     Friend WithEvents grdManf_EditedBy As System.Windows.Forms.DataGridView
-    Friend WithEvents GroupBox25 As System.Windows.Forms.GroupBox
+    Friend WithEvents grpQlty_Edited As System.Windows.Forms.GroupBox
     Friend WithEvents chkQuality_UserSigned As System.Windows.Forms.CheckBox
     Private WithEvents cmdQuality_UserSign As System.Windows.Forms.Button
     Friend WithEvents txtQuality_UserName As System.Windows.Forms.TextBox
     Private WithEvents txtQuality_UserDate As System.Windows.Forms.TextBox
     Private WithEvents dtpQuality_UserDate As System.Windows.Forms.DateTimePicker
     Friend WithEvents grdQuality_EditedBy As System.Windows.Forms.DataGridView
-    Friend WithEvents GroupBox34 As System.Windows.Forms.GroupBox
+    Friend WithEvents grpPurchase_Edited As System.Windows.Forms.GroupBox
     Friend WithEvents chkPurchase_UserSigned As System.Windows.Forms.CheckBox
     Private WithEvents cmdPurchase_UserSign As System.Windows.Forms.Button
     Friend WithEvents txtPurchase_UserName As System.Windows.Forms.TextBox
@@ -10866,7 +10860,7 @@ Partial Class Process_frmMain
     Private WithEvents dtpPurchase_UserDate As System.Windows.Forms.DateTimePicker
     Friend WithEvents grdPurchase_EditedBy As System.Windows.Forms.DataGridView
     Friend WithEvents grdPurchase_Mat As System.Windows.Forms.DataGridView
-    Friend WithEvents GroupBox29 As System.Windows.Forms.GroupBox
+    Friend WithEvents grpDwg_Edited As System.Windows.Forms.GroupBox
     Friend WithEvents chkDwg_UserSigned As System.Windows.Forms.CheckBox
     Private WithEvents cmdDwg_UserSign As System.Windows.Forms.Button
     Friend WithEvents txtDwg_UserName As System.Windows.Forms.TextBox
@@ -10880,7 +10874,6 @@ Partial Class Process_frmMain
     Friend WithEvents Label199 As System.Windows.Forms.Label
     Private WithEvents txtExportControlled As System.Windows.Forms.TextBox
     Friend WithEvents grpProject As System.Windows.Forms.GroupBox
-    Friend WithEvents cmdClose As System.Windows.Forms.Button
     Friend WithEvents cmdCopyFrom As System.Windows.Forms.Button
     Friend WithEvents cmdDelete As System.Windows.Forms.Button
     Friend WithEvents cmdFilter As System.Windows.Forms.Button
@@ -10903,7 +10896,7 @@ Partial Class Process_frmMain
     Friend WithEvents Label106 As System.Windows.Forms.Label
     Friend WithEvents Label45 As System.Windows.Forms.Label
     Private WithEvents TextBox36 As System.Windows.Forms.TextBox
-    Friend WithEvents GroupBox23 As System.Windows.Forms.GroupBox
+    Friend WithEvents grpCostEdited As System.Windows.Forms.GroupBox
     Friend WithEvents chkCost_UserSigned As System.Windows.Forms.CheckBox
     Private WithEvents cmdCost_UserSign As System.Windows.Forms.Button
     Friend WithEvents txtCost_UserName As System.Windows.Forms.TextBox
@@ -10922,7 +10915,7 @@ Partial Class Process_frmMain
     Friend WithEvents grpApp_Load As System.Windows.Forms.GroupBox
     Friend WithEvents grdApp_Load As System.Windows.Forms.DataGridView
     Friend WithEvents tbpAxial As System.Windows.Forms.TabPage
-    Friend WithEvents GroupBox40 As System.Windows.Forms.GroupBox
+    Friend WithEvents grpApp_Face_Edited As System.Windows.Forms.GroupBox
     Friend WithEvents chkApp_UserSigned_Face As System.Windows.Forms.CheckBox
     Private WithEvents cmdApp_UserSign_Face As System.Windows.Forms.Button
     Friend WithEvents txtApp_UserName_Face As System.Windows.Forms.TextBox
@@ -10969,7 +10962,7 @@ Partial Class Process_frmMain
     Friend WithEvents grdPurchase_ToolNGages As System.Windows.Forms.DataGridView
     Private WithEvents cmdCreatePDS As System.Windows.Forms.Button
     Friend WithEvents menuStrip1 As System.Windows.Forms.MenuStrip
-    Friend WithEvents GroupBox14 As System.Windows.Forms.GroupBox
+    Friend WithEvents grpExportEdited As System.Windows.Forms.GroupBox
     Friend WithEvents chkITAR_Export_UserSigned As System.Windows.Forms.CheckBox
     Private WithEvents cmdITAR_Export_UserSign As System.Windows.Forms.Button
     Friend WithEvents txtITAR_Export_UserName As System.Windows.Forms.TextBox
@@ -10987,14 +10980,14 @@ Partial Class Process_frmMain
     Private WithEvents txtApp_Hardness2_Face As System.Windows.Forms.TextBox
     Private WithEvents txtApp_Hardness1_Face As System.Windows.Forms.TextBox
     Friend WithEvents Label89 As System.Windows.Forms.Label
-    Friend WithEvents GroupBox10 As System.Windows.Forms.GroupBox
+    Friend WithEvents grpDesign_Edited As System.Windows.Forms.GroupBox
     Friend WithEvents chkDesign_UserSigned As System.Windows.Forms.CheckBox
     Private WithEvents cmdDesign_UserSign As System.Windows.Forms.Button
     Friend WithEvents txtDesign_UserName As System.Windows.Forms.TextBox
     Private WithEvents txtDesign_UserDate As System.Windows.Forms.TextBox
     Private WithEvents dtpDesign_UserDate As System.Windows.Forms.DateTimePicker
     Friend WithEvents grdDesign_EditedBy As System.Windows.Forms.DataGridView
-    Friend WithEvents GroupBox32 As System.Windows.Forms.GroupBox
+    Friend WithEvents grpTest_Edited As System.Windows.Forms.GroupBox
     Friend WithEvents chkTest_UserSigned As System.Windows.Forms.CheckBox
     Private WithEvents cmdTest_UserSign As System.Windows.Forms.Button
     Friend WithEvents txtTest_UserName As System.Windows.Forms.TextBox
@@ -11323,4 +11316,6 @@ Partial Class Process_frmMain
     Friend WithEvents grpUnit_Test As GroupBox
     Friend WithEvents optTest_Cust As RadioButton
     Friend WithEvents optTest_Parker As RadioButton
+    Private WithEvents txtHeaderUserName As TextBox
+    Friend WithEvents chkHeaderUserSigned As CheckBox
 End Class

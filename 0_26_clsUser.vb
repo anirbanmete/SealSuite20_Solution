@@ -128,13 +128,6 @@ Public Class clsUser
 
         End If
 
-        '''AES 27FEB18
-        ''If (mSystemLogin = "506968") Then
-        ''    mFirstName = "Alicia"
-        ''    mLastName = "Sorban"
-        ''    mTitle = "Eng. Spec."
-        ''End If
-
 
     End Sub
 

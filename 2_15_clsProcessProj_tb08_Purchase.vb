@@ -119,12 +119,12 @@ Public Class clsProcessProj_Purchase
                 Dim pQryPurchase = (From pRec In pSealProcessDBEntities.tblPurchase
                                    Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
 
-                mEditedBy.User_Name = pQryPurchase.fldUserName
-                mEditedBy.User_Signed = pQryPurchase.fldSigned
+                'mEditedBy.User_Name = pQryPurchase.fldUserName
+                'mEditedBy.User_Signed = pQryPurchase.fldSigned
 
-                If (Not IsNothing(pQryPurchase.fldDateSigned) And Not IsDBNull(pQryPurchase.fldDateSigned)) Then
-                    mEditedBy.User_DateSigned = pQryPurchase.fldDateSigned
-                End If
+                'If (Not IsNothing(pQryPurchase.fldDateSigned) And Not IsDBNull(pQryPurchase.fldDateSigned)) Then
+                '    mEditedBy.User_DateSigned = pQryPurchase.fldDateSigned
+                'End If
 
             End If
 
@@ -150,9 +150,9 @@ Public Class clsProcessProj_Purchase
             Dim pPurchase = (From Manf In pSealProcessDBEntities.tblPurchase
                                            Where Manf.fldProcessProjectID = ProjectID_In Select Manf).First()
 
-            pPurchase.fldUserName = mEditedBy.User.Name
-            pPurchase.fldSigned = mEditedBy.User.Signed
-            pPurchase.fldDateSigned = mEditedBy.User.DateSigned
+            'pPurchase.fldUserName = mEditedBy.User.Name
+            'pPurchase.fldSigned = mEditedBy.User.Signed
+            'pPurchase.fldDateSigned = mEditedBy.User.DateSigned
 
             pSealProcessDBEntities.SaveChanges()
 
@@ -163,9 +163,9 @@ Public Class clsProcessProj_Purchase
             Dim pPurchase As New tblPurchase
             pPurchase.fldProcessProjectID = pID
 
-            pPurchase.fldUserName = mEditedBy.User.Name
-            pPurchase.fldSigned = mEditedBy.User.Signed
-            pPurchase.fldDateSigned = mEditedBy.User.DateSigned
+            'pPurchase.fldUserName = mEditedBy.User.Name
+            'pPurchase.fldSigned = mEditedBy.User.Signed
+            'pPurchase.fldDateSigned = mEditedBy.User.DateSigned
 
             pSealProcessDBEntities.AddTotblPurchase(pPurchase)
             pSealProcessDBEntities.SaveChanges()

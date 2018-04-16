@@ -4,7 +4,7 @@
 '                      FORM MODULE   :  Process_frmMain                        '
 '                        VERSION NO  :  1.5                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  04APR18                                '
+'                     LAST MODIFIED  :  12APR18                                '
 '                                                                              '
 '===============================================================================
 Imports System.Globalization
@@ -39,7 +39,7 @@ Public Class Process_frmMain
     Dim mDTP_Quote As DateTimePicker
 
     '....tab Variables
-    Dim mHeader, mPreOrder, mExport, mOrdEntry, mCost, mApp, mDesign, mManf, mPurchase, mQlty, mDwg, mTest, mPlanning, mShipping, mKeyChar As Boolean
+    Dim mHeader, mPreOrder, mExport, mOrdEntry, mCost, mApp, mDesign, mManf, mPurchase, mQlty, mDwg, mTest, mPlanning, mShipping, mIssue, mKeyChar As Boolean
     Dim mTabIndex As New List(Of Integer)
 
     '....Variables for Deleting Records from GridView
@@ -221,10 +221,48 @@ Public Class Process_frmMain
         TabControl1.SelectedIndex = 1
         TabControl1.SelectedIndex = 0
 
+        '''AES 11APR18
+        ''grpPreOrderEdited.Enabled = True
+        ''chkPreOrderUserSigned.Enabled = True
+        ''cmdPreOrderUserSign.Enabled = True
+
+        ''grpExportEdited.Enabled = True
+        ''chkITAR_Export_UserSigned.Enabled = True
+        ''cmdITAR_Export_UserSign.Enabled = True
+
+        ''grpOrdEntryEdited.Enabled = True
+        ''chkOrdEntry_UserSigned.Enabled = True
+        ''cmdOrdEntry_UserSign.Enabled = True
+
+        ''grpCostEdited.Enabled = True
+        ''chkCost_UserSigned.Enabled = True
+        ''cmdCost_UserSign.Enabled = True
+
+        ''grpApp_Face_Edited.Enabled = True
+        ''chkApp_UserSigned_Face.Enabled = True
+        ''cmdApp_UserSign_Face.Enabled = True
+
+        ''grpDesign_Edited.Enabled = True
+        ''chkDesign_UserSigned.Enabled = True
+        ''cmdDesign_UserSign.Enabled = True
+
+
         '....Move the vertical scrollbar at the Top
         txtParkerPart.Focus()
         txtParkerPart.Select()
         gIsProcessMainActive = True
+
+        '....Status Bar Panels:
+        Dim pWidth As Int32 = (SBar1.Width) / 3
+
+        SBpanel1.Width = pWidth
+        SBPanel3.Width = pWidth
+
+        SBpanel1.Text = gUser.FirstName + " " + gUser.LastName
+        SBPanel3.Text = "Role: " & gUser.Role
+        Dim pCI As New CultureInfo("en-US")
+
+        SBPanel4.Text = Today.ToString(" MMMM dd, yyyy", pCI.DateTimeFormat()) 'US Format only 
 
     End Sub
 
@@ -424,6 +462,8 @@ Public Class Process_frmMain
 
         End If
 
+
+
     End Sub
 
     Private Sub SetTabPrivilege()
@@ -515,26 +555,30 @@ Public Class Process_frmMain
             ''mTabIndex.Add(13)
         End If
 
-        mTabIndex.Add(15)   'AES 02APR18
+        'mTabIndex.Add(15)   'AES 02APR18
+
+        If (gUser.Role <> "Viewer") Then
+            mIssue = True
+        End If
 
     End Sub
 
     Private Sub InitializeControls()
         '===========================
-        '....Status Bar Panels:
+        ''....Status Bar Panels:
 
-        Dim pWidth As Int32 = (SBar1.Width) / 3
+        'Dim pWidth As Int32 = (SBar1.Width) / 3
 
-        SBpanel1.Width = pWidth
-        SBPanel3.Width = pWidth
+        'SBpanel1.Width = pWidth
+        'SBPanel3.Width = pWidth
 
-        SBpanel1.Text = gUser.FirstName + " " + gUser.LastName
-        SBPanel3.Text = "Role: " & gUser.Role
-        Dim pCI As New CultureInfo("en-US")
-        'SBPanel4.Text = Today.DayOfWeek.ToString() & ", " &
-        '                Today.ToString(" MMMM dd, yyyy", pCI.DateTimeFormat()) 'US Format only
-        SBPanel4.Text = Today.ToString("dd MMM yyyy", pCI.DateTimeFormat()) 'US Format only
-        '--------------------------------------------------------------------------------------
+        'SBpanel1.Text = gUser.FirstName + " " + gUser.LastName
+        'SBPanel3.Text = "Role: " & gUser.Role
+        'Dim pCI As New CultureInfo("en-US")
+        ''SBPanel4.Text = Today.DayOfWeek.ToString() & ", " &
+        ''                Today.ToString(" MMMM dd, yyyy", pCI.DateTimeFormat()) 'US Format only
+        'SBPanel4.Text = Today.ToString(" MMMM dd, yyyy", pCI.DateTimeFormat()) 'US Format only 'Today.ToString("dd MMM yyyy", pCI.DateTimeFormat()) 'US Format only
+        ''--------------------------------------------------------------------------------------
 
         InitializeTabs()        'AES 01MAR18
 
@@ -927,39 +971,57 @@ Public Class Process_frmMain
         cmbType.Enabled = mHeader
         lblType.Enabled = mHeader
         lblStatus.Enabled = mHeader
-        'grpProject.Enabled = mHeader
         grpDate.Enabled = mHeader
         cmdSetUnits.Enabled = mHeader
-
 
         EnableTab(tabPreOrder_P1, mPreOrder)
         EnableTab(tabPreOrder_P2, mPreOrder)
         txtPreOrderUserDate.Enabled = False
         dtpPreOrderUserDate.Enabled = False
         txtPreOrderUserName.Enabled = False
-        chkPreOrderUserSigned.Enabled = False
-        cmdPreOrderUserSign.Enabled = False
+        If (mTabIndex.Contains(0)) Then
+            grpPreOrderEdited.Enabled = True
+            chkPreOrderUserSigned.Enabled = True
+            cmdPreOrderUserSign.Enabled = True
+        Else
+            grpPreOrderEdited.Enabled = False
+        End If
 
         EnableTab(tabExport, mExport)
         txtITAR_Export_UserDate.Enabled = False
         dtpITAR_Export_UserDate.Enabled = False
         txtITAR_Export_UserName.Enabled = False
-        chkITAR_Export_UserSigned.Enabled = False
-        cmdITAR_Export_UserSign.Enabled = False
+        If (mTabIndex.Contains(1)) Then
+            grpExportEdited.Enabled = True
+        Else
+            grpExportEdited.Enabled = False
+        End If
+        chkITAR_Export_UserSigned.Enabled = True
+        cmdITAR_Export_UserSign.Enabled = True
 
         EnableTab(tabOrder, mOrdEntry)
         txtOrdEntry_UserDate.Enabled = False
         dtpOrdEntry_UserDate.Enabled = False
         txtOrdEntry_UserName.Enabled = False
-        chkOrdEntry_UserSigned.Enabled = False
-        cmdOrdEntry_UserSign.Enabled = False
+        If (mTabIndex.Contains(2)) Then
+            grpOrdEntryEdited.Enabled = True
+        Else
+            grpOrdEntryEdited.Enabled = False
+        End If
+        chkOrdEntry_UserSigned.Enabled = True
+        cmdOrdEntry_UserSign.Enabled = True
 
         EnableTab(tabCosting, mCost)
         txtCost_UserDate.Enabled = False
         dtpCost_UserDate.Enabled = False
         txtCost_UserName.Enabled = False
-        chkCost_UserSigned.Enabled = False
-        cmdCost_UserSign.Enabled = False
+        If (mTabIndex.Contains(3)) Then
+            grpCostEdited.Enabled = True
+        Else
+            grpCostEdited.Enabled = False
+        End If
+        chkCost_UserSigned.Enabled = True
+        cmdCost_UserSign.Enabled = True
 
         EnableTab(tbpGen, mApp)
         EnableTab(tbpFace, mApp)
@@ -967,8 +1029,13 @@ Public Class Process_frmMain
         txtApp_UserDate_Face.Enabled = False
         dtpApp_UserDate_Face.Enabled = False
         txtApp_UserName_Face.Enabled = False
-        chkApp_UserSigned_Face.Enabled = False
-        cmdApp_UserSign_Face.Enabled = False
+        If (mTabIndex.Contains(4)) Then
+            grpApp_Face_Edited.Enabled = True
+        Else
+            grpApp_Face_Edited.Enabled = False
+        End If
+        chkApp_UserSigned_Face.Enabled = True
+        cmdApp_UserSign_Face.Enabled = True
 
 
         EnableTab(tbpDesign_P1, mDesign)
@@ -976,36 +1043,61 @@ Public Class Process_frmMain
         txtDesign_UserDate.Enabled = False
         dtpDesign_UserDate.Enabled = False
         txtDesign_UserName.Enabled = False
-        chkDesign_UserSigned.Enabled = False
-        cmdDesign_UserSign.Enabled = False
+        If (mTabIndex.Contains(5)) Then
+            grpDesign_Edited.Enabled = True
+        Else
+            grpDesign_Edited.Enabled = False
+        End If
+        chkDesign_UserSigned.Enabled = True
+        cmdDesign_UserSign.Enabled = True
 
         EnableTab(tabManufacturing, mManf)
         txtManf_UserDate.Enabled = False
         dtpManf_UserDate.Enabled = False
         txtManf_UserName.Enabled = False
-        chkManf_UserSigned.Enabled = False
-        cmdManf_UserSign.Enabled = False
+        If (mTabIndex.Contains(6)) Then
+            grpManf_Edited.Enabled = True
+        Else
+            grpManf_Edited.Enabled = False
+        End If
+        chkManf_UserSigned.Enabled = True
+        cmdManf_UserSign.Enabled = True
 
         EnableTab(tabPurchasing, mPurchase)
         txtPurchase_UserDate.Enabled = False
         dtpPurchase_UserDate.Enabled = False
         txtPurchase_UserName.Enabled = False
-        chkPurchase_UserSigned.Enabled = False
-        cmdPurchase_UserSign.Enabled = False
+        If (mTabIndex.Contains(7)) Then
+            grpPurchase_Edited.Enabled = True
+        Else
+            grpPurchase_Edited.Enabled = False
+        End If
+        chkPurchase_UserSigned.Enabled = True
+        cmdPurchase_UserSign.Enabled = True
 
         EnableTab(tabQuality, mQlty)
         txtQuality_UserDate.Enabled = False
         dtpQuality_UserDate.Enabled = False
         txtQuality_UserName.Enabled = False
-        chkQuality_UserSigned.Enabled = False
-        cmdQuality_UserSign.Enabled = False
+        If (mTabIndex.Contains(8)) Then
+            grpQlty_Edited.Enabled = True
+        Else
+            grpQlty_Edited.Enabled = False
+        End If
+        chkQuality_UserSigned.Enabled = True
+        cmdQuality_UserSign.Enabled = True
 
         EnableTab(tabDrawing, mDwg)
         txtDwg_UserDate.Enabled = False
         dtpDwg_UserDate.Enabled = False
         txtDwg_UserName.Enabled = False
-        chkDwg_UserSigned.Enabled = False
-        cmdDwg_UserSign.Enabled = False
+        If (mTabIndex.Contains(9)) Then
+            grpDwg_Edited.Enabled = True
+        Else
+            grpDwg_Edited.Enabled = False
+        End If
+        chkDwg_UserSigned.Enabled = True
+        cmdDwg_UserSign.Enabled = True
 
         chkTest.Enabled = mTest
         grpUnit_Test.Enabled = mTest
@@ -1016,25 +1108,43 @@ Public Class Process_frmMain
         txtTest_UserDate.Enabled = False
         dtpTest_UserDate.Enabled = False
         txtTest_UserName.Enabled = False
-        chkTest_UserSigned.Enabled = False
-        cmdTest_UserSign.Enabled = False
+        If (mTabIndex.Contains(10)) Then
+            grpTest_Edited.Enabled = True
+        Else
+            grpTest_Edited.Enabled = False
+        End If
+        chkTest_UserSigned.Enabled = True
+        cmdTest_UserSign.Enabled = True
 
         EnableTab(tabPlanning, False)
         txtPlanning_UserDate.Enabled = False
         dtpPlanning_UserDate.Enabled = False
         txtPlanning_UserName.Enabled = False
-        chkPlanning_UserSigned.Enabled = False
-        cmdPlanning_UserSign.Enabled = False
+        If (mTabIndex.Contains(11)) Then
+            grpPlanning_Edited.Enabled = True
+        Else
+            grpPlanning_Edited.Enabled = False
+        End If
+        chkPlanning_UserSigned.Enabled = True
+        cmdPlanning_UserSign.Enabled = True
 
         EnableTab(tabShipping, mShipping)
         txtShipping_UserDate.Enabled = False
         dtpShipping_UserDate.Enabled = False
         txtShipping_UserName.Enabled = False
-        chkShipping_UserSigned.Enabled = False
-        cmdShipping_UserSign.Enabled = False
+        If (mTabIndex.Contains(12)) Then
+            grpShipping_Edited.Enabled = True
+        Else
+            grpShipping_Edited.Enabled = False
+        End If
+        chkShipping_UserSigned.Enabled = True
+        cmdShipping_UserSign.Enabled = True
 
         EnableTab(tabKeyChar, False)
-        EnableTab(tabApproval, True)        'AES 02APR18
+
+        'EnableTab(tabApproval, True)        'AES 02APR18
+        IsApprovalTab_Enabled()        'AES 12APR18
+
         If (gUser.Role = "Viewer") Then
             EnableTab(tabIssue, False)
             cmdRiskAna.Enabled = False
@@ -1045,6 +1155,38 @@ Public Class Process_frmMain
         End If
 
     End Sub
+
+    Private Function IsApprovalTab_Enabled() As Boolean
+        '==============================================    'AES 12APR18
+        Dim pApproval As Boolean = False
+
+        If (chkPreOrderUserSigned.Checked And chkITAR_Export_UserSigned.Checked And chkOrdEntry_UserSigned.Checked And
+            chkCost_UserSigned.Checked And chkApp_UserSigned_Face.Checked And chkDesign_UserSigned.Checked And
+            chkManf_UserSigned.Checked And chkPurchase_UserSigned.Checked And chkQuality_UserSigned.Checked And
+            chkDwg_UserSigned.Checked And chkTest_UserSigned.Checked And chkShipping_UserSigned.Checked) Then
+
+            'chkPlanning_UserSigned.Checked And
+            If (gUser.Role <> "Viewer") Then        'AES 16APR18
+                If (Not mTabIndex.Contains(15)) Then
+                    mTabIndex.Add(15)
+                End If
+
+                EnableTab(tabApproval, True)
+                pApproval = True
+            End If
+
+        Else
+            If (mTabIndex.Contains(15)) Then
+                mTabIndex.Remove(15)
+            End If
+            EnableTab(tabApproval, False)
+            pApproval = False
+        End If
+
+        'TabControl1.Refresh()
+        Return pApproval
+
+    End Function
 
     Private Sub GetPartProjectInfo()
         '===========================
@@ -1218,6 +1360,7 @@ Public Class Process_frmMain
     Private Sub RetrieveFromDB()
         '=======================
         mProcess_Project.RetrieveFromDB(mPNID, mRevID)
+
         mProcess_Project.Unit.RetrieveFrom_DB(mProcess_Project.ID)
         mProcess_Project.CustContact.RetrieveFromDB(mProcess_Project.ID)
         mProcess_Project.PreOrder.RetrieveFromDB(mProcess_Project.ID)
@@ -1257,6 +1400,19 @@ Public Class Process_frmMain
         txtCustomer.Text = gPartProject.CustInfo.CustName
         txtCustomerPN.Text = gPartProject.CustInfo.PN_Cust
         txtCustomerPN_Rev.Text = gPartProject.CustInfo.PN_Cust_Rev
+
+        'AES 06APR18
+        If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Header")) Then
+            If (mProcess_Project.EditedBy.Name(0) <> "") Then
+                txtHeaderUserName.Text = mProcess_Project.EditedBy.Name(0)
+                chkHeaderUserSigned.Checked = True
+            End If
+        Else
+            txtHeaderUserName.Text = ""
+            chkHeaderUserSigned.Checked = False
+        End If
+        SetControls_HeaderUserSign()
+
 
         With mProcess_Project
             cmbPopCoding.Text = .POPCoding
@@ -1322,32 +1478,6 @@ Public Class Process_frmMain
             cmbRFQPkgLoc.Text = .Loc.RFQPkg
             txtPreOrderPriceNotes.Text = .Notes_Price
 
-            'If (.EditedBy.User.Signed) Then
-            '    chkPreOrderUserSigned.Checked = True
-            '    txtPreOrderUserName.Text = .EditedBy.User.Name
-
-            '    'Dim pCI As New CultureInfo("en-US")
-            '    If (.EditedBy.User.DateSigned <> DateTime.MinValue) Then
-            '        txtPreOrderUserDate.Text = .EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-            '    Else
-            '        txtPreOrderUserDate.Text = ""
-            '    End If
-
-            '    'txtPreOrderUserDate.Text = .User.SignedDate.ToShortDateString()
-
-
-            'Else
-            '    chkPreOrderUserSigned.Checked = False
-            '    txtPreOrderUserName.Text = .EditedBy.User.Name
-            '    'txtPreOrderUserDate.Text = .User.SignedDate.ToShortDateString()
-
-            '    'Dim pCI As New CultureInfo("en-US")
-            '    If (.EditedBy.User.DateSigned <> DateTime.MinValue) Then
-            '        txtPreOrderUserDate.Text = .EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-            '    Else
-            '        txtPreOrderUserDate.Text = ""
-            '    End If
-            'End If
 
             '....Cust Contact Pre-Order
             For j As Integer = 0 To mProcess_Project.CustContact.DeptName.Count - 1
@@ -1438,6 +1568,12 @@ Public Class Process_frmMain
 
             End If
 
+            If (mProcess_Project.EditedBy.RetrieveFromDB_UserSignOff(mProcess_Project.ID, "PreOrder")) Then
+                txtPreOrderUserDate.Text = mProcess_Project.EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                txtPreOrderUserName.Text = mProcess_Project.EditedBy.User.Name
+                chkPreOrderUserSigned.Checked = mProcess_Project.EditedBy.User.Signed
+            End If
+
         End With
 
 
@@ -1508,6 +1644,12 @@ Public Class Process_frmMain
                     txtITAR_Export_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
                     txtITAR_Export_UserName.Text = mProcess_Project.EditedBy.Name(j)
                 Next
+            End If
+
+            If (mProcess_Project.EditedBy.RetrieveFromDB_UserSignOff(mProcess_Project.ID, "Export")) Then
+                txtITAR_Export_UserDate.Text = mProcess_Project.EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                txtITAR_Export_UserName.Text = mProcess_Project.EditedBy.User.Name
+                chkITAR_Export_UserSigned.Checked = mProcess_Project.EditedBy.User.Signed
             End If
 
         End With
@@ -1603,6 +1745,12 @@ Public Class Process_frmMain
                 Next
             End If
 
+            If (mProcess_Project.EditedBy.RetrieveFromDB_UserSignOff(mProcess_Project.ID, "OrdEntry")) Then
+                txtOrdEntry_UserDate.Text = mProcess_Project.EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                txtOrdEntry_UserName.Text = mProcess_Project.EditedBy.User.Name
+                chkOrdEntry_UserSigned.Checked = mProcess_Project.EditedBy.User.Signed
+            End If
+
         End With
 
         '.... "Cost Estimating:"
@@ -1657,6 +1805,12 @@ Public Class Process_frmMain
                     txtCost_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
                     txtCost_UserName.Text = mProcess_Project.EditedBy.Name(j)
                 Next
+            End If
+
+            If (mProcess_Project.EditedBy.RetrieveFromDB_UserSignOff(mProcess_Project.ID, "Cost")) Then
+                txtCost_UserDate.Text = mProcess_Project.EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                txtCost_UserName.Text = mProcess_Project.EditedBy.User.Name
+                chkCost_UserSigned.Checked = mProcess_Project.EditedBy.User.Signed
             End If
         End With
 
@@ -1899,6 +2053,12 @@ Public Class Process_frmMain
                         txtApp_UserDate_Face.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
                         txtApp_UserName_Face.Text = mProcess_Project.EditedBy.Name(j)
                     Next
+                End If
+
+                If (mProcess_Project.EditedBy.RetrieveFromDB_UserSignOff(mProcess_Project.ID, "App")) Then
+                    txtApp_UserName_Face.Text = mProcess_Project.EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    txtApp_UserDate_Face.Text = mProcess_Project.EditedBy.User.Name
+                    chkApp_UserSigned_Face.Checked = mProcess_Project.EditedBy.User.Signed
                 End If
 
             ElseIf (.Type = "Axial") Then
@@ -2358,6 +2518,12 @@ Public Class Process_frmMain
                 Next
             End If
 
+            If (mProcess_Project.EditedBy.RetrieveFromDB_UserSignOff(mProcess_Project.ID, "Design")) Then
+                txtDesign_UserDate.Text = mProcess_Project.EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                txtDesign_UserName.Text = mProcess_Project.EditedBy.User.Name
+                chkDesign_UserSigned.Checked = mProcess_Project.EditedBy.User.Signed
+            End If
+
         End With
 
 
@@ -2475,6 +2641,12 @@ Public Class Process_frmMain
                 Next
             End If
 
+            If (mProcess_Project.EditedBy.RetrieveFromDB_UserSignOff(mProcess_Project.ID, "Manf")) Then
+                txtManf_UserDate.Text = mProcess_Project.EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                txtManf_UserName.Text = mProcess_Project.EditedBy.User.Name
+                chkManf_UserSigned.Checked = mProcess_Project.EditedBy.User.Signed
+            End If
+
         End With
 
 
@@ -2542,6 +2714,13 @@ Public Class Process_frmMain
                     txtPurchase_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
                     txtPurchase_UserName.Text = mProcess_Project.EditedBy.Name(j)
                 Next
+            End If
+
+
+            If (mProcess_Project.EditedBy.RetrieveFromDB_UserSignOff(mProcess_Project.ID, "Purchase")) Then
+                txtPurchase_UserDate.Text = mProcess_Project.EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                txtPurchase_UserName.Text = mProcess_Project.EditedBy.User.Name
+                chkPurchase_UserSigned.Checked = mProcess_Project.EditedBy.User.Signed
             End If
 
         End With
@@ -2631,6 +2810,12 @@ Public Class Process_frmMain
                 Next
             End If
 
+            If (mProcess_Project.EditedBy.RetrieveFromDB_UserSignOff(mProcess_Project.ID, "Qlty")) Then
+                txtQuality_UserDate.Text = mProcess_Project.EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                txtQuality_UserName.Text = mProcess_Project.EditedBy.User.Name
+                chkQuality_UserSigned.Checked = mProcess_Project.EditedBy.User.Signed
+            End If
+
         End With
 
         '.... "Drawing:"
@@ -2685,6 +2870,12 @@ Public Class Process_frmMain
                     txtDwg_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
                     txtDwg_UserName.Text = mProcess_Project.EditedBy.Name(j)
                 Next
+            End If
+
+            If (mProcess_Project.EditedBy.RetrieveFromDB_UserSignOff(mProcess_Project.ID, "Dwg")) Then
+                txtDwg_UserDate.Text = mProcess_Project.EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                txtDwg_UserName.Text = mProcess_Project.EditedBy.User.Name
+                chkDwg_UserSigned.Checked = mProcess_Project.EditedBy.User.Signed
             End If
 
         End With
@@ -2835,6 +3026,12 @@ Public Class Process_frmMain
                 Next
             End If
 
+            If (mProcess_Project.EditedBy.RetrieveFromDB_UserSignOff(mProcess_Project.ID, "Test")) Then
+                txtTest_UserDate.Text = mProcess_Project.EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                txtTest_UserName.Text = mProcess_Project.EditedBy.User.Name
+                chkTest_UserSigned.Checked = mProcess_Project.EditedBy.User.Signed
+            End If
+
         End With
 
 
@@ -2916,6 +3113,12 @@ Public Class Process_frmMain
                 Next
             End If
 
+            If (mProcess_Project.EditedBy.RetrieveFromDB_UserSignOff(mProcess_Project.ID, "Shipping")) Then
+                txtShipping_UserDate.Text = mProcess_Project.EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                txtShipping_UserName.Text = mProcess_Project.EditedBy.User.Name
+                chkShipping_UserSigned.Checked = mProcess_Project.EditedBy.User.Signed
+            End If
+
         End With
 
 
@@ -2969,6 +3172,37 @@ Public Class Process_frmMain
             Next
 
         End With
+
+        'AES 06APR18
+        For i As Integer = 0 To grdApproval_Attendees.Rows.Count - 1
+            Dim pUserName As String = gUser.FirstName + " " + gUser.LastName
+            If (gUser.Role = grdApproval_Attendees.Rows(i).Cells(0).Value) Then
+                If (grdApproval_Attendees.Rows(i).Cells(3).Value = True) Then
+                    If (pUserName = grdApproval_Attendees.Rows(i).Cells(1).Value) Then
+                        grdApproval_Attendees.ReadOnly = False
+                        grdApproval_Attendees.EnableHeadersVisualStyles = False
+                        grdApproval_Attendees.Rows(i).HeaderCell.Style.BackColor = Color.Yellow
+
+                        For j As Integer = 0 To grdApproval_Attendees.ColumnCount - 1
+                            grdApproval_Attendees.Rows(i).Cells(j).Style.ForeColor = Color.Black
+                            grdApproval_Attendees.Rows(i).Cells(j).Style.BackColor = Color.Yellow
+                        Next
+                    Else
+                        grdApproval_Attendees.ReadOnly = True
+                    End If
+                Else
+                    grdApproval_Attendees.ReadOnly = False
+                    grdApproval_Attendees.EnableHeadersVisualStyles = False
+                    grdApproval_Attendees.Rows(i).HeaderCell.Style.BackColor = Color.Yellow
+                    For j As Integer = 0 To grdApproval_Attendees.ColumnCount - 1
+                        grdApproval_Attendees.Rows(i).Cells(j).Style.ForeColor = Color.Black
+                        grdApproval_Attendees.Rows(i).Cells(j).Style.BackColor = Color.Yellow
+                    Next
+                End If
+            Else
+                grdApproval_Attendees.ReadOnly = True
+            End If
+        Next
 
         SetLabel_Unit_Cust()
 
@@ -3720,8 +3954,139 @@ Public Class Process_frmMain
             'pGrph.FillRectangle(Brushes.Green, pRect)
         End If
 
+        If e.Index = 0 And chkPreOrderUserSigned.Checked And mTabIndex.Contains(e.Index) Then
+            pFont = New Font(pFont, FontStyle.Bold)
+            pGrph.FillRectangle(Brushes.Green, pRect)
+
+            If (e.Index = TabControl1.SelectedIndex) Then
+                pPencil = New SolidBrush(Color.White)
+                pGrph.FillRectangle(Brushes.Green, pRect)
+            End If
+
+        ElseIf e.Index = 1 And chkITAR_Export_UserSigned.Checked And mTabIndex.Contains(e.Index) Then
+            pFont = New Font(pFont, FontStyle.Bold)
+            pGrph.FillRectangle(Brushes.Green, pRect)
+
+            If (e.Index = TabControl1.SelectedIndex) Then
+                pPencil = New SolidBrush(Color.White)
+                pGrph.FillRectangle(Brushes.Green, pRect)
+            End If
+
+        ElseIf e.Index = 2 And chkOrdEntry_UserSigned.Checked And mTabIndex.Contains(e.Index) Then
+            pFont = New Font(pFont, FontStyle.Bold)
+            pGrph.FillRectangle(Brushes.Green, pRect)
+
+            If (e.Index = TabControl1.SelectedIndex) Then
+                pPencil = New SolidBrush(Color.White)
+                pGrph.FillRectangle(Brushes.Green, pRect)
+            End If
+
+        ElseIf e.Index = 3 And chkCost_UserSigned.Checked And mTabIndex.Contains(e.Index) Then
+            pFont = New Font(pFont, FontStyle.Bold)
+            pGrph.FillRectangle(Brushes.Green, pRect)
+
+            If (e.Index = TabControl1.SelectedIndex) Then
+                pPencil = New SolidBrush(Color.White)
+                pGrph.FillRectangle(Brushes.Green, pRect)
+            End If
+
+        ElseIf e.Index = 4 And chkApp_UserSigned_Face.Checked And mTabIndex.Contains(e.Index) Then
+            pFont = New Font(pFont, FontStyle.Bold)
+            pGrph.FillRectangle(Brushes.Green, pRect)
+
+            If (e.Index = TabControl1.SelectedIndex) Then
+                pPencil = New SolidBrush(Color.White)
+                pGrph.FillRectangle(Brushes.Green, pRect)
+            End If
+
+        ElseIf e.Index = 5 And chkDesign_UserSigned.Checked And mTabIndex.Contains(e.Index) Then
+            pFont = New Font(pFont, FontStyle.Bold)
+            pGrph.FillRectangle(Brushes.Green, pRect)
+
+            If (e.Index = TabControl1.SelectedIndex) Then
+                pPencil = New SolidBrush(Color.White)
+                pGrph.FillRectangle(Brushes.Green, pRect)
+            End If
+
+        ElseIf e.Index = 6 And chkManf_UserSigned.Checked And mTabIndex.Contains(e.Index) Then
+
+            pFont = New Font(pFont, FontStyle.Bold)
+            pGrph.FillRectangle(Brushes.Green, pRect)
+
+            If (e.Index = TabControl1.SelectedIndex) Then
+                pPencil = New SolidBrush(Color.White)
+                pGrph.FillRectangle(Brushes.Green, pRect)
+            End If
+
+
+        ElseIf e.Index = 7 And chkPurchase_UserSigned.Checked And mTabIndex.Contains(e.Index) Then
+            pFont = New Font(pFont, FontStyle.Bold)
+            pGrph.FillRectangle(Brushes.Green, pRect)
+
+            If (e.Index = TabControl1.SelectedIndex) Then
+                pPencil = New SolidBrush(Color.White)
+                pGrph.FillRectangle(Brushes.Green, pRect)
+            End If
+
+        ElseIf e.Index = 8 And chkQuality_UserSigned.Checked And mTabIndex.Contains(e.Index) Then
+            pFont = New Font(pFont, FontStyle.Bold)
+            pGrph.FillRectangle(Brushes.Green, pRect)
+
+            If (e.Index = TabControl1.SelectedIndex) Then
+                pPencil = New SolidBrush(Color.White)
+                pGrph.FillRectangle(Brushes.Green, pRect)
+            End If
+
+        ElseIf e.Index = 9 And chkDwg_UserSigned.Checked And mTabIndex.Contains(e.Index) Then
+            pFont = New Font(pFont, FontStyle.Bold)
+            pGrph.FillRectangle(Brushes.Green, pRect)
+
+            If (e.Index = TabControl1.SelectedIndex) Then
+                pPencil = New SolidBrush(Color.White)
+                pGrph.FillRectangle(Brushes.Green, pRect)
+            End If
+
+        ElseIf e.Index = 10 And chkTest_UserSigned.Checked And mTabIndex.Contains(e.Index) Then
+            pFont = New Font(pFont, FontStyle.Bold)
+            pGrph.FillRectangle(Brushes.Green, pRect)
+
+            If (e.Index = TabControl1.SelectedIndex) Then
+                pPencil = New SolidBrush(Color.White)
+                pGrph.FillRectangle(Brushes.Green, pRect)
+            End If
+
+        ElseIf e.Index = 11 And chkPlanning_UserSigned.Checked And mTabIndex.Contains(e.Index) Then
+            pFont = New Font(pFont, FontStyle.Bold)
+            pGrph.FillRectangle(Brushes.Green, pRect)
+
+            If (e.Index = TabControl1.SelectedIndex) Then
+                pPencil = New SolidBrush(Color.White)
+                pGrph.FillRectangle(Brushes.Green, pRect)
+            End If
+
+        ElseIf e.Index = 12 And chkShipping_UserSigned.Checked And mTabIndex.Contains(e.Index) Then
+            pFont = New Font(pFont, FontStyle.Bold)
+            pGrph.FillRectangle(Brushes.Green, pRect)
+
+            If (e.Index = TabControl1.SelectedIndex) Then
+                pPencil = New SolidBrush(Color.White)
+                pGrph.FillRectangle(Brushes.Green, pRect)
+            End If
+
+            'ElseIf e.Index = 15 And IsApprovalTab_Enabled() Then
+
+            '    pFont = New Font(pFont, FontStyle.Bold)
+            '    pGrph.FillRectangle(Brushes.Green, pRect)
+
+            '    If (e.Index = TabControl1.SelectedIndex) Then
+            '        pPencil = New SolidBrush(Color.White)
+            '        pGrph.FillRectangle(Brushes.Green, pRect)
+            '    End If
+        End If
+
+
         If (gUser.Role <> "Viewer") Then
-            If e.Index = 14 Then
+            If e.Index = 14 And mIssue = True Then
                 pFont = New Font(pFont, FontStyle.Bold)
                 pGrph.FillRectangle(Brushes.LightSteelBlue, pRect)
 
@@ -3729,6 +4094,15 @@ Public Class Process_frmMain
                     pPencil = New SolidBrush(Color.White)
                     pGrph.FillRectangle(Brushes.SteelBlue, pRect)
                 End If
+
+                'ElseIf e.Index = 15 And IsApprovalTab_Enabled() Then        'AES 16APR18
+                '    pFont = New Font(pFont, FontStyle.Bold)
+                '    pGrph.FillRectangle(Brushes.LightSteelBlue, pRect)
+
+                '    If (e.Index = TabControl1.SelectedIndex) Then
+                '        pPencil = New SolidBrush(Color.White)
+                '        pGrph.FillRectangle(Brushes.SteelBlue, pRect)
+                '    End If
             End If
         End If
 
@@ -4537,18 +4911,26 @@ Public Class Process_frmMain
 #End Region
 
 #Region "CHECK BOX RELATED ROUTINES:"
-    Private Sub chkPreOrderUserSigned_CheckedChanged(sender As System.Object,
+    Private Sub chkUserSigned_CheckedChanged(sender As System.Object,
                                                      e As System.EventArgs) Handles chkPreOrderUserSigned.CheckedChanged
         '================================================================================================================
+        txtPreOrderUserName.Text = gUser.FirstName + " " + gUser.LastName
+        txtPreOrderUserDate.Text = DateTime.Now.ToShortDateString()
+
         If (chkPreOrderUserSigned.Checked) Then
-            cmdPreOrderUserSign.Text = "Signed"
-            'txtPreOrderUserName.Text = "Jeffrey LaBonte"
-            txtPreOrderUserDate.Text = DateTime.Now.ToShortDateString()
+            mPreOrder = False
+            cmdPreOrderUserSign.Text = "Signed-off"
         Else
-            cmdPreOrderUserSign.Text = "Sign"
-            txtPreOrderUserName.Text = ""
-            txtPreOrderUserDate.Text = ""
+            mPreOrder = True
+            cmdPreOrderUserSign.Text = "Sign-off"
         End If
+
+        Initialize_tbTesting_Controls()
+        ReInitializeControls()
+        grpPreOrderEdited.Enabled = True
+        chkPreOrderUserSigned.Enabled = True
+        cmdPreOrderUserSign.Enabled = True
+        TabControl1.Refresh()
 
     End Sub
 
@@ -4556,43 +4938,263 @@ Public Class Process_frmMain
     Private Sub chkITAR_Export_UserSigned_CheckedChanged(sender As System.Object, e As System.EventArgs) _
                                                          Handles chkITAR_Export_UserSigned.CheckedChanged
         '==================================================================================================
+        txtITAR_Export_UserName.Text = gUser.FirstName + " " + gUser.LastName
+        txtITAR_Export_UserDate.Text = DateTime.Now.ToShortDateString()
         If (chkITAR_Export_UserSigned.Checked) Then
-            cmdITAR_Export_UserSign.Text = "Signed"
-            'txtITAR_Export_UserName.Text = "Jeffrey LaBonte"
-            txtITAR_Export_UserDate.Text = DateTime.Now.ToShortDateString()
+            mExport = False
+            cmdITAR_Export_UserSign.Text = "Signed-off"
         Else
-            cmdITAR_Export_UserSign.Text = "Sign"
-            txtITAR_Export_UserName.Text = ""
-            txtITAR_Export_UserDate.Text = ""
+            mExport = True
+            cmdITAR_Export_UserSign.Text = "Sign-off"
         End If
+
+        Initialize_tbTesting_Controls()
+        ReInitializeControls()
+        grpExportEdited.Enabled = True
+        chkITAR_Export_UserSigned.Enabled = True
+        cmdITAR_Export_UserSign.Enabled = True
+        TabControl1.Refresh()
     End Sub
 
     Private Sub chkOrdEntry_UserSigned_CheckedChanged(sender As System.Object, e As System.EventArgs) _
                                                       Handles chkOrdEntry_UserSigned.CheckedChanged
         '===============================================================================================
+        txtOrdEntry_UserName.Text = gUser.FirstName + " " + gUser.LastName
+        txtOrdEntry_UserDate.Text = DateTime.Now.ToShortDateString()
         If (chkOrdEntry_UserSigned.Checked) Then
-            cmdOrdEntry_UserSign.Text = "Signed"
-            'txtOrdEntry_UserName.Text = "Jeffrey LaBonte"
-            txtOrdEntry_UserDate.Text = DateTime.Now.ToShortDateString()
+            mOrdEntry = False
+            cmdOrdEntry_UserSign.Text = "Signed-off"
         Else
-            cmdOrdEntry_UserSign.Text = "Sign"
-            txtOrdEntry_UserName.Text = ""
-            txtOrdEntry_UserDate.Text = ""
+            mOrdEntry = True
+            cmdOrdEntry_UserSign.Text = "Sign-off"
         End If
+
+        Initialize_tbTesting_Controls()
+        ReInitializeControls()
+        grpOrdEntryEdited.Enabled = True
+        chkOrdEntry_UserSigned.Enabled = True
+        cmdOrdEntry_UserSign.Enabled = True
+        TabControl1.Refresh()
     End Sub
 
     Private Sub chkCost_UserSigned_CheckedChanged(sender As System.Object, e As System.EventArgs) _
                                                   Handles chkCost_UserSigned.CheckedChanged
         '===========================================================================================
+        txtCost_UserName.Text = gUser.FirstName + " " + gUser.LastName
+        txtCost_UserDate.Text = DateTime.Now.ToShortDateString()
+
         If (chkCost_UserSigned.Checked) Then
-            cmdCost_UserSign.Text = "Signed"
-            'txtCost_UserName.Text = "Jeffrey LaBonte"
-            txtCost_UserDate.Text = DateTime.Now.ToShortDateString()
+            mCost = False
+            cmdCost_UserSign.Text = "Signed-off"
         Else
-            cmdCost_UserSign.Text = "Sign"
-            txtCost_UserName.Text = ""
-            txtCost_UserDate.Text = ""
+            mCost = True
+            cmdCost_UserSign.Text = "Sign-off"
         End If
+
+        Initialize_tbTesting_Controls()
+        ReInitializeControls()
+        grpCostEdited.Enabled = True
+        chkCost_UserSigned.Enabled = True
+        cmdCost_UserSign.Enabled = True
+        TabControl1.Refresh()
+    End Sub
+
+    Private Sub chkApp_UserSigned_Face_CheckedChanged(sender As Object, e As EventArgs) _
+                                                      Handles chkApp_UserSigned_Face.CheckedChanged
+        '==========================================================================================
+        txtApp_UserName_Face.Text = gUser.FirstName + " " + gUser.LastName
+        txtApp_UserDate_Face.Text = DateTime.Now.ToShortDateString()
+
+        If (chkApp_UserSigned_Face.Checked) Then
+            mApp = False
+            cmdApp_UserSign_Face.Text = "Signed-off"
+        Else
+            mApp = True
+            cmdApp_UserSign_Face.Text = "Sign-off"
+        End If
+
+        Initialize_tbTesting_Controls()
+        ReInitializeControls()
+        grpApp_Face_Edited.Enabled = True
+        chkApp_UserSigned_Face.Enabled = True
+        cmdApp_UserSign_Face.Enabled = True
+        TabControl1.Refresh()
+    End Sub
+
+    Private Sub chkDesign_UserSigned_CheckedChanged(sender As Object, e As EventArgs) _
+                                                    Handles chkDesign_UserSigned.CheckedChanged
+        '=======================================================================================
+        txtDesign_UserName.Text = gUser.FirstName + " " + gUser.LastName
+        txtDesign_UserDate.Text = DateTime.Now.ToShortDateString()
+
+        If (chkDesign_UserSigned.Checked) Then
+            mDesign = False
+            cmdDesign_UserSign.Text = "Signed-off"
+        Else
+            mDesign = True
+            cmdDesign_UserSign.Text = "Sign-off"
+        End If
+
+        Initialize_tbTesting_Controls()
+        ReInitializeControls()
+        grpDesign_Edited.Enabled = True
+        chkDesign_UserSigned.Enabled = True
+        cmdDesign_UserSign.Enabled = True
+        TabControl1.Refresh()
+
+    End Sub
+
+    Private Sub chkManf_UserSigned_CheckedChanged(sender As Object, e As EventArgs) _
+                                                  Handles chkManf_UserSigned.CheckedChanged
+        '===================================================================================
+        txtManf_UserName.Text = gUser.FirstName + " " + gUser.LastName
+        txtManf_UserDate.Text = DateTime.Now.ToShortDateString()
+
+        If (chkManf_UserSigned.Checked) Then
+            mManf = False
+            cmdManf_UserSign.Text = "Signed-off"
+        Else
+            mManf = True
+            cmdManf_UserSign.Text = "Sign-off"
+        End If
+
+        Initialize_tbTesting_Controls()
+        ReInitializeControls()
+        grpManf_Edited.Enabled = True
+        chkManf_UserSigned.Enabled = True
+        cmdManf_UserSign.Enabled = True
+        TabControl1.Refresh()
+    End Sub
+
+    Private Sub chkPurchase_UserSigned_CheckedChanged(sender As Object, e As EventArgs) _
+                                                      Handles chkPurchase_UserSigned.CheckedChanged
+        '============================================================================================
+        txtPurchase_UserName.Text = gUser.FirstName + " " + gUser.LastName
+        txtPurchase_UserDate.Text = DateTime.Now.ToShortDateString()
+
+        If (chkPurchase_UserSigned.Checked) Then
+            mPurchase = False
+            cmdPurchase_UserSign.Text = "Signed-off"
+        Else
+            mPurchase = True
+            cmdPurchase_UserSign.Text = "Sign-off"
+        End If
+
+        Initialize_tbTesting_Controls()
+        ReInitializeControls()
+        grpPurchase_Edited.Enabled = True
+        chkPurchase_UserSigned.Enabled = True
+        cmdPurchase_UserSign.Enabled = True
+        TabControl1.Refresh()
+    End Sub
+
+    Private Sub chkQuality_UserSigned_CheckedChanged(sender As Object, e As EventArgs) _
+                                                     Handles chkQuality_UserSigned.CheckedChanged
+        '=========================================================================================
+        txtQuality_UserName.Text = gUser.FirstName + " " + gUser.LastName
+        txtQuality_UserDate.Text = DateTime.Now.ToShortDateString()
+
+        If (chkQuality_UserSigned.Checked) Then
+            mQlty = False
+            cmdQuality_UserSign.Text = "Signed-off"
+        Else
+            mQlty = True
+            cmdQuality_UserSign.Text = "Sign-off"
+        End If
+
+        Initialize_tbTesting_Controls()
+        ReInitializeControls()
+        grpQlty_Edited.Enabled = True
+        chkQuality_UserSigned.Enabled = True
+        cmdQuality_UserSign.Enabled = True
+        TabControl1.Refresh()
+    End Sub
+
+    Private Sub chkDwg_UserSigned_CheckedChanged(sender As Object, e As EventArgs) _
+                                                 Handles chkDwg_UserSigned.CheckedChanged
+        '=================================================================================
+        txtDwg_UserName.Text = gUser.FirstName + " " + gUser.LastName
+        txtDwg_UserDate.Text = DateTime.Now.ToShortDateString()
+
+        If (chkDwg_UserSigned.Checked) Then
+            mDwg = False
+            cmdDwg_UserSign.Text = "Signed-off"
+        Else
+            mDwg = True
+            cmdDwg_UserSign.Text = "Sign-off"
+        End If
+
+        Initialize_tbTesting_Controls()
+        ReInitializeControls()
+        grpDwg_Edited.Enabled = True
+        chkDwg_UserSigned.Enabled = True
+        cmdDwg_UserSign.Enabled = True
+        TabControl1.Refresh()
+    End Sub
+
+    Private Sub chkTest_UserSigned_CheckedChanged(sender As Object, e As EventArgs) _
+                                                  Handles chkTest_UserSigned.CheckedChanged
+        '====================================================================================
+        txtTest_UserName.Text = gUser.FirstName + " " + gUser.LastName
+        txtTest_UserDate.Text = DateTime.Now.ToShortDateString()
+
+        If (chkTest_UserSigned.Checked) Then
+            mTest = False
+            cmdTest_UserSign.Text = "Signed-off"
+        Else
+            mTest = True
+            cmdTest_UserSign.Text = "Sign-off"
+        End If
+
+        Initialize_tbTesting_Controls()
+        ReInitializeControls()
+        grpTest_Edited.Enabled = True
+        chkTest_UserSigned.Enabled = True
+        cmdTest_UserSign.Enabled = True
+        TabControl1.Refresh()
+    End Sub
+    Private Sub chkPlanning_UserSigned_CheckedChanged(sender As Object, e As EventArgs) _
+                                                      Handles chkPlanning_UserSigned.CheckedChanged
+        '===========================================================================================
+        txtPlanning_UserName.Text = gUser.FirstName + " " + gUser.LastName
+        txtPlanning_UserDate.Text = DateTime.Now.ToShortDateString()
+
+        If (chkPlanning_UserSigned.Checked) Then
+            mPlanning = False
+            cmdPlanning_UserSign.Text = "Signed-off"
+        Else
+            mPlanning = True
+            cmdPlanning_UserSign.Text = "Sign-off"
+        End If
+
+        Initialize_tbTesting_Controls()
+        ReInitializeControls()
+        grpPlanning_Edited.Enabled = True
+        chkPlanning_UserSigned.Enabled = True
+        cmdPlanning_UserSign.Enabled = True
+        TabControl1.Refresh()
+    End Sub
+
+    Private Sub chkShipping_UserSigned_CheckedChanged(sender As Object, e As EventArgs) _
+                                                      Handles chkShipping_UserSigned.CheckedChanged
+        '============================================================================================
+        txtShipping_UserName.Text = gUser.FirstName + " " + gUser.LastName
+        txtShipping_UserDate.Text = DateTime.Now.ToShortDateString()
+
+        If (chkShipping_UserSigned.Checked) Then
+            mShipping = False
+            cmdShipping_UserSign.Text = "Signed-off"
+        Else
+            mShipping = True
+            cmdShipping_UserSign.Text = "Sign-off"
+        End If
+
+        Initialize_tbTesting_Controls()
+        ReInitializeControls()
+        grpPlanning_Edited.Enabled = True
+        chkShipping_UserSigned.Enabled = True
+        cmdShipping_UserSign.Enabled = True
+        TabControl1.Refresh()
     End Sub
 
     Private Sub chkNewRef_Dim_CheckedChanged(sender As System.Object, e As System.EventArgs) _
@@ -4791,8 +5393,9 @@ Public Class Process_frmMain
 #Region "DATETIME PICKER RELATED ROUTINES:"
     Private Sub dtpStartDate_ValueChanged(sender As System.Object, e As System.EventArgs) Handles dtpStartDate.ValueChanged
         '==================================================================================================================
+        Dim pCI As New CultureInfo("en-US")
         txtStartDate.Text = dtpStartDate.Value.ToShortDateString()
-        txtDateMod.Text = DateTime.Now.ToShortDateString()
+        txtDateMod.Text = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
 
         If (gUser.FirstName <> "") Then
             txtModifiedBy.Text = gUser.FirstName & " " & gUser.LastName
@@ -6580,7 +7183,7 @@ Public Class Process_frmMain
                 .Type = cmbType.Text
 
                 If (txtStartDate.Text <> "") Then
-                    If (txtStartDate.Text <> DateTime.MinValue) Then
+                    If (txtStartDate.Text <> DateTime.MinValue.ToShortDateString()) Then
                         .DateOpen = Convert.ToDateTime(txtStartDate.Text)
                     End If
 
@@ -6629,11 +7232,11 @@ Public Class Process_frmMain
                         End If
                     Else
                         grdPreOrderEditedBy.Rows.Add()
-                        grdPreOrderEditedBy.Rows(0).Cells(0).Value = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        grdPreOrderEditedBy.Rows(0).Cells(0).Value = pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
                         grdPreOrderEditedBy.Rows(0).Cells(1).Value = gUser.FirstName + " " + gUser.LastName
 
-                        txtPreOrderUserDate.Text = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                        txtPreOrderUserName.Text = gUser.FirstName + " " + gUser.LastName
+                        txtPreOrderUserDate.Text = pDate.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        txtPreOrderUserName.Text = pName
                     End If
 
                     mProcess_Project.EditedBy.ID_Edit.Clear()
@@ -6651,7 +7254,16 @@ Public Class Process_frmMain
 
                 End With
                 mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "PreOrder")
+
             End If
+
+            If (txtPreOrderUserDate.Text <> "") Then
+                mProcess_Project.EditedBy.User_Name = txtPreOrderUserName.Text
+                mProcess_Project.EditedBy.User_DateSigned = Convert.ToDateTime(txtPreOrderUserDate.Text)
+                mProcess_Project.EditedBy.User_Signed = chkPreOrderUserSigned.Checked
+                mProcess_Project.EditedBy.SaveToDB_UserSignOff(mProcess_Project.ID, "PreOrder")     'AES 11APR18
+            End If
+
 
             If (CompareVal_Export()) Then
 
@@ -6693,8 +7305,15 @@ Public Class Process_frmMain
                 End With
 
                 mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Export")
-
             End If
+
+            If (txtITAR_Export_UserDate.Text <> "") Then
+                mProcess_Project.EditedBy.User_Name = txtITAR_Export_UserName.Text
+                mProcess_Project.EditedBy.User_DateSigned = Convert.ToDateTime(txtITAR_Export_UserDate.Text)
+                mProcess_Project.EditedBy.User_Signed = chkITAR_Export_UserSigned.Checked
+                mProcess_Project.EditedBy.SaveToDB_UserSignOff(mProcess_Project.ID, "Export")     'AES 11APR18
+            End If
+
 
             If (CompareVal_OrdEntry()) Then
 
@@ -6739,6 +7358,14 @@ Public Class Process_frmMain
 
             End If
 
+            If (txtOrdEntry_UserDate.Text <> "") Then
+                mProcess_Project.EditedBy.User_Name = txtOrdEntry_UserName.Text
+                mProcess_Project.EditedBy.User_DateSigned = Convert.ToDateTime(txtOrdEntry_UserDate.Text)
+                mProcess_Project.EditedBy.User_Signed = chkOrdEntry_UserSigned.Checked
+                mProcess_Project.EditedBy.SaveToDB_UserSignOff(mProcess_Project.ID, "OrdEntry")     'AES 11APR18
+            End If
+
+
             If (CompareVal_CostEstimating()) Then
 
                 With mProcess_Project.EditedBy
@@ -6781,6 +7408,14 @@ Public Class Process_frmMain
                 mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Cost")
 
             End If
+
+            If (txtCost_UserDate.Text <> "") Then
+                mProcess_Project.EditedBy.User_Name = txtCost_UserName.Text
+                mProcess_Project.EditedBy.User_DateSigned = Convert.ToDateTime(txtCost_UserDate.Text)
+                mProcess_Project.EditedBy.User_Signed = chkCost_UserSigned.Checked
+                mProcess_Project.EditedBy.SaveToDB_UserSignOff(mProcess_Project.ID, "Cost")     'AES 11APR18
+            End If
+
 
             If (CompareVal_App()) Then
 
@@ -6859,6 +7494,14 @@ Public Class Process_frmMain
 
             End If
 
+            If (txtApp_UserDate_Face.Text <> "") Then
+                mProcess_Project.EditedBy.User_Name = txtApp_UserName_Face.Text
+                mProcess_Project.EditedBy.User_DateSigned = Convert.ToDateTime(txtApp_UserDate_Face.Text)
+                mProcess_Project.EditedBy.User_Signed = chkApp_UserSigned_Face.Checked
+                mProcess_Project.EditedBy.SaveToDB_UserSignOff(mProcess_Project.ID, "App")     'AES 11APR18
+            End If
+
+
             If (CompareVal_Design()) Then
 
                 With mProcess_Project.EditedBy
@@ -6897,6 +7540,14 @@ Public Class Process_frmMain
                 End With
 
                 mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Design")
+            End If
+
+            If (txtDesign_UserDate.Text <> "") Then
+                mProcess_Project.EditedBy.User_Name = txtDesign_UserName.Text
+                mProcess_Project.EditedBy.User_DateSigned = Convert.ToDateTime(txtDesign_UserDate.Text)
+                mProcess_Project.EditedBy.User_Signed = chkDesign_UserSigned.Checked
+                mProcess_Project.EditedBy.SaveToDB_UserSignOff(mProcess_Project.ID, "Design")     'AES 11APR18
+
             End If
 
             If (CompareVal_Manf()) Then
@@ -6941,6 +7592,14 @@ Public Class Process_frmMain
                 mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Manf")
             End If
 
+            If (txtManf_UserDate.Text <> "") Then
+                mProcess_Project.EditedBy.User_Name = txtManf_UserName.Text
+                mProcess_Project.EditedBy.User_DateSigned = Convert.ToDateTime(txtManf_UserDate.Text)
+                mProcess_Project.EditedBy.User_Signed = chkManf_UserSigned.Checked
+                mProcess_Project.EditedBy.SaveToDB_UserSignOff(mProcess_Project.ID, "Manf")     'AES 11APR18
+            End If
+
+
             If (CompareVal_Purchase()) Then
 
                 With mProcess_Project.EditedBy
@@ -6982,6 +7641,14 @@ Public Class Process_frmMain
 
                 mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Purchase")
             End If
+
+            If (txtPurchase_UserDate.Text <> "") Then
+                mProcess_Project.EditedBy.User_Name = txtPurchase_UserName.Text
+                mProcess_Project.EditedBy.User_DateSigned = Convert.ToDateTime(txtPurchase_UserDate.Text)
+                mProcess_Project.EditedBy.User_Signed = chkPurchase_UserSigned.Checked
+                mProcess_Project.EditedBy.SaveToDB_UserSignOff(mProcess_Project.ID, "Purchase")     'AES 11APR18
+            End If
+
 
             If (CompareVal_Qlty()) Then
 
@@ -7025,6 +7692,14 @@ Public Class Process_frmMain
                 mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Qlty")
             End If
 
+            If (txtQuality_UserDate.Text <> "") Then
+                mProcess_Project.EditedBy.User_Name = txtQuality_UserName.Text
+                mProcess_Project.EditedBy.User_DateSigned = Convert.ToDateTime(txtQuality_UserDate.Text)
+                mProcess_Project.EditedBy.User_Signed = chkQuality_UserSigned.Checked
+                mProcess_Project.EditedBy.SaveToDB_UserSignOff(mProcess_Project.ID, "Qlty")     'AES 11APR18
+            End If
+
+
             If (CompareVal_DWG()) Then
 
                 With mProcess_Project.EditedBy
@@ -7066,6 +7741,14 @@ Public Class Process_frmMain
 
                 mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Dwg")
             End If
+
+            If (txtDwg_UserDate.Text <> "") Then
+                mProcess_Project.EditedBy.User_Name = txtDwg_UserName.Text
+                mProcess_Project.EditedBy.User_DateSigned = Convert.ToDateTime(txtDwg_UserDate.Text)
+                mProcess_Project.EditedBy.User_Signed = chkDwg_UserSigned.Checked
+                mProcess_Project.EditedBy.SaveToDB_UserSignOff(mProcess_Project.ID, "Dwg")     'AES 11APR18
+            End If
+
 
             If (CompareVal_Test()) Then
 
@@ -7109,6 +7792,14 @@ Public Class Process_frmMain
                 mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Test")
             End If
 
+            If (txtTest_UserDate.Text <> "") Then
+                mProcess_Project.EditedBy.User_Name = txtTest_UserName.Text
+                mProcess_Project.EditedBy.User_DateSigned = Convert.ToDateTime(txtTest_UserDate.Text)
+                mProcess_Project.EditedBy.User_Signed = chkTest_UserSigned.Checked
+                mProcess_Project.EditedBy.SaveToDB_UserSignOff(mProcess_Project.ID, "Test")     'AES 11APR18
+            End If
+
+
             If (CompareVal_Shipping()) Then
 
                 With mProcess_Project.EditedBy
@@ -7150,6 +7841,14 @@ Public Class Process_frmMain
 
                 mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Shipping")
             End If
+
+            If (txtShipping_UserDate.Text <> "") Then
+                mProcess_Project.EditedBy.User_Name = txtShipping_UserName.Text
+                mProcess_Project.EditedBy.User_DateSigned = Convert.ToDateTime(txtShipping_UserDate.Text)
+                mProcess_Project.EditedBy.User_Signed = chkShipping_UserSigned.Checked
+                mProcess_Project.EditedBy.SaveToDB_UserSignOff(mProcess_Project.ID, "Shipping")     'AES 11APR18
+            End If
+
 
 
             ''.... "Header:"
@@ -8424,6 +9123,19 @@ Public Class Process_frmMain
     Private Sub SaveToDB()
         '==================
         'mProcess_Project.SaveToDB(mPNID, mRevID)
+
+        '....Header Signed-Off
+        mProcess_Project.EditedBy.ID_Edit.Clear()
+        mProcess_Project.EditedBy.DateEdited.Clear()
+        mProcess_Project.EditedBy.Name.Clear()
+        mProcess_Project.EditedBy.Comment.Clear()
+
+        mProcess_Project.EditedBy.ID_Edit.Add(1)
+        mProcess_Project.EditedBy.DateEdited.Add(txtDateMod.Text)
+        mProcess_Project.EditedBy.Name.Add(txtHeaderUserName.Text)
+        mProcess_Project.EditedBy.Comment.Add("")
+        mProcess_Project.EditedBy.SaveToDB(mProcess_Project.ID, "Header")
+
         mProcess_Project.PreOrder.SaveToDB(mProcess_Project.ID)
         mProcess_Project.CustContact.SaveToDB(mProcess_Project.ID)
         mProcess_Project.ITAR_Export.SaveToDB(mProcess_Project.ID)
@@ -9643,16 +10355,225 @@ Public Class Process_frmMain
                 If (grdApproval_Attendees.Rows(pRowIndex).Cells(3).Value = True) Then
                     If (pUserName = grdApproval_Attendees.Rows(pRowIndex).Cells(1).Value) Then
                         grdApproval_Attendees.ReadOnly = False
+                        'grdApproval_Attendees.EnableHeadersVisualStyles = False
+                        'grdApproval_Attendees.Rows(pRowIndex).HeaderCell.Style.BackColor = Color.Green
+
                     Else
                         grdApproval_Attendees.ReadOnly = True
                     End If
                 Else
                     grdApproval_Attendees.ReadOnly = False
+                    'grdApproval_Attendees.EnableHeadersVisualStyles = False
+                    'grdApproval_Attendees.Rows(pRowIndex).HeaderCell.Style.BackColor = Color.Green
+
                 End If
                 'grdApproval_Attendees.ReadOnly = False
             Else
                     grdApproval_Attendees.ReadOnly = True
             End If
+
+        End If
+    End Sub
+
+    Private Sub chkHeaderUserSigned_CheckedChanged(sender As Object, e As EventArgs) _
+                                                   Handles chkHeaderUserSigned.CheckedChanged
+        '====================================================================================
+        SetControls_HeaderUserSign()
+
+    End Sub
+
+    Private Sub cmdUserSign_Click(sender As Object, e As EventArgs) Handles _
+                                  cmdPreOrderUserSign.Click, cmdITAR_Export_UserSign.Click,
+                                  cmdOrdEntry_UserSign.Click, cmdCost_UserSign.Click,
+                                  cmdApp_UserSign_Face.Click, cmdDesign_UserSign.Click,
+                                  cmdManf_UserSign.Click, cmdPurchase_UserSign.Click,
+                                  cmdQuality_UserSign.Click, cmdDwg_UserSign.Click,
+                                  cmdTest_UserSign.Click, cmdPlanning_UserSign.Click,
+                                  cmdShipping_UserSign.Click
+        '======================================================================================
+        Dim pCmdButton As Button = CType(sender, Button)
+
+        Select Case pCmdButton.Name
+
+            Case "cmdPreOrderUserSign"
+                '---------------------
+                If (chkPreOrderUserSigned.Checked) Then
+                    chkPreOrderUserSigned.Checked = False
+                    cmdPreOrderUserSign.Text = "Sign-off"
+                Else
+                    chkPreOrderUserSigned.Checked = True
+                    cmdPreOrderUserSign.Text = "Signed-off"
+                End If
+
+            Case "cmdITAR_Export_UserSign"
+                '---------------------
+                If (chkITAR_Export_UserSigned.Checked) Then
+                    chkITAR_Export_UserSigned.Checked = False
+                    cmdITAR_Export_UserSign.Text = "Sign-off"
+                Else
+                    chkITAR_Export_UserSigned.Checked = True
+                    cmdITAR_Export_UserSign.Text = "Signed-off"
+                End If
+
+            Case "cmdOrdEntry_UserSign"
+                '----------------------
+                If (chkOrdEntry_UserSigned.Checked) Then
+                    chkOrdEntry_UserSigned.Checked = False
+                    cmdOrdEntry_UserSign.Text = "Sign-off"
+                Else
+                    chkOrdEntry_UserSigned.Checked = True
+                    cmdOrdEntry_UserSign.Text = "Signed-off"
+                End If
+
+            Case "cmdCost_UserSign"
+                '------------------
+                If (chkCost_UserSigned.Checked) Then
+                    chkCost_UserSigned.Checked = False
+                    cmdCost_UserSign.Text = "Sign-off"
+                Else
+                    chkCost_UserSigned.Checked = True
+                    cmdCost_UserSign.Text = "Signed-off"
+                End If
+
+            Case "cmdApp_UserSign_Face"
+                '---------------------
+                If (chkApp_UserSigned_Face.Checked) Then
+                    chkApp_UserSigned_Face.Checked = False
+                    cmdApp_UserSign_Face.Text = "Sign-off"
+                Else
+                    chkApp_UserSigned_Face.Checked = True
+                    cmdApp_UserSign_Face.Text = "Signed-off"
+                End If
+
+            Case "cmdDesign_UserSign"
+                '------------------
+                If (chkDesign_UserSigned.Checked) Then
+                    chkDesign_UserSigned.Checked = False
+                    cmdDesign_UserSign.Text = "Sign-off"
+                Else
+                    chkDesign_UserSigned.Checked = True
+                    cmdDesign_UserSign.Text = "Signed-off"
+                End If
+
+            Case "cmdManf_UserSign"
+                '------------------
+                If (chkManf_UserSigned.Checked) Then
+                    chkManf_UserSigned.Checked = False
+                    cmdManf_UserSign.Text = "Sign-off"
+                Else
+                    chkManf_UserSigned.Checked = True
+                    cmdManf_UserSign.Text = "Signed-off"
+                End If
+
+            Case "cmdPurchase_UserSign"
+                '----------------------
+                If (chkPurchase_UserSigned.Checked) Then
+                    chkPurchase_UserSigned.Checked = False
+                    cmdPurchase_UserSign.Text = "Sign-off"
+                Else
+                    chkPurchase_UserSigned.Checked = True
+                    cmdPurchase_UserSign.Text = "Signed-off"
+                End If
+
+            Case "cmdQuality_UserSign"
+                '---------------------
+                If (chkQuality_UserSigned.Checked) Then
+                    chkQuality_UserSigned.Checked = False
+                    cmdQuality_UserSign.Text = "Sign-off"
+                Else
+                    chkQuality_UserSigned.Checked = True
+                    cmdQuality_UserSign.Text = "Signed-off"
+                End If
+
+            Case "cmdDwg_UserSign"
+                '------------------
+                If (chkDwg_UserSigned.Checked) Then
+                    chkDwg_UserSigned.Checked = False
+                    cmdDwg_UserSign.Text = "Sign-off"
+                Else
+                    chkDwg_UserSigned.Checked = True
+                    cmdDwg_UserSign.Text = "Signed-off"
+                End If
+
+            Case "cmdTest_UserSign"
+                '------------------
+                If (chkTest_UserSigned.Checked) Then
+                    chkTest_UserSigned.Checked = False
+                    cmdTest_UserSign.Text = "Sign-off"
+                Else
+                    chkTest_UserSigned.Checked = True
+                    cmdTest_UserSign.Text = "Signed-off"
+                End If
+
+            Case "cmdPlanning_UserSign"
+                '----------------------
+                If (chkPlanning_UserSigned.Checked) Then
+                    chkPlanning_UserSigned.Checked = False
+                    cmdPlanning_UserSign.Text = "Sign-off"
+                Else
+                    chkPlanning_UserSigned.Checked = True
+                    cmdPlanning_UserSign.Text = "Signed-off"
+                End If
+
+            Case "cmdShipping_UserSign"
+                '------------------
+                If (chkShipping_UserSigned.Checked) Then
+                    chkShipping_UserSigned.Checked = False
+                    cmdShipping_UserSign.Text = "Sign-off"
+                Else
+                    chkShipping_UserSigned.Checked = True
+                    cmdShipping_UserSign.Text = "Signed-off"
+                End If
+        End Select
+
+    End Sub
+
+
+    Private Sub SetControls_HeaderUserSign()
+        '===================================
+        Dim pCI As New CultureInfo("en-US")
+
+        If (chkHeaderUserSigned.Checked) Then
+            chkHeaderUserSigned.Text = "Signed-off"
+            SetTabPrivilege()
+
+            '....Header disabled
+            mHeader = False
+
+            '....Enable all tabs according to User Previlege
+            Initialize_tbTesting_Controls()
+            ReInitializeControls()
+            TabControl1.Refresh()
+            txtHeaderUserName.Text = gUser.FirstName + " " + gUser.LastName
+            txtDateMod.Text = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+
+        Else
+            chkHeaderUserSigned.Text = "Sign-off"
+            '....Header enabled
+            mHeader = True
+            txtHeaderUserName.Text = ""
+
+            '....Disable all tabs according to User Previlege
+            mTabIndex.Clear()
+            mPreOrder = False
+            mExport = False
+            mOrdEntry = False
+            mCost = False
+            mApp = False
+            mDesign = False
+            mManf = False
+            mPurchase = False
+            mQlty = False
+            mDwg = False
+            mTest = False
+            mPlanning = False
+            mShipping = False
+            mKeyChar = False
+            mIssue = False
+            EnableTab(tabIssue, False)
+            EnableTab(tabApproval, False)
+            ReInitializeControls()
+            TabControl1.Refresh()
 
         End If
     End Sub

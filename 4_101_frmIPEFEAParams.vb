@@ -452,7 +452,7 @@ Public Class IPE_frmFEAParams
         Dim pCmdBtn As Button = CType(sender, Button)
         If pCmdBtn.Name = "cmdOK" Then
             SaveData()
-            gIPE_File.SaveIniFile(gIPE_User, gIPE_Project, gIPE_ANSYS, gIPE_Unit)
+            gFile.SaveIniFile(gUser, gIPE_Project, gIPE_ANSYS, gIPE_Unit)
         End If
 
         Me.Close()

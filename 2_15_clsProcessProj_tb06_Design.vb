@@ -365,12 +365,12 @@ Public Class clsProcessProj_Design
                 mFOD_Risks = pQryDesign.fldFOD_Risks
                 mLessonsLearned = pQryDesign.fldLessonsLearned
                 mNotes = pQryDesign.fldNotes
-                mEditedBy.User_Name = pQryDesign.fldUserName
-                mEditedBy.User_Signed = pQryDesign.fldSigned
+                'mEditedBy.User_Name = pQryDesign.fldUserName
+                'mEditedBy.User_Signed = pQryDesign.fldSigned
 
-                If (Not IsNothing(pQryDesign.fldDateSigned) And Not IsDBNull(pQryDesign.fldDateSigned)) Then
-                    mEditedBy.User_DateSigned = pQryDesign.fldDateSigned
-                End If
+                'If (Not IsNothing(pQryDesign.fldDateSigned) And Not IsDBNull(pQryDesign.fldDateSigned)) Then
+                '    mEditedBy.User_DateSigned = pQryDesign.fldDateSigned
+                'End If
 
             End If
 
@@ -413,9 +413,9 @@ Public Class clsProcessProj_Design
             pDesign.fldFOD_Risks = mFOD_Risks
             pDesign.fldLessonsLearned = mLessonsLearned
             pDesign.fldNotes = mNotes
-            pDesign.fldUserName = mEditedBy.User.Name
-            pDesign.fldSigned = mEditedBy.User.Signed
-            pDesign.fldDateSigned = mEditedBy.User.DateSigned
+            'pDesign.fldUserName = mEditedBy.User.Name
+            'pDesign.fldSigned = mEditedBy.User.Signed
+            'pDesign.fldDateSigned = mEditedBy.User.DateSigned
 
             pSealProcessDBEntities.SaveChanges()
 
@@ -438,9 +438,9 @@ Public Class clsProcessProj_Design
             pDesign.fldFOD_Risks = mFOD_Risks
             pDesign.fldLessonsLearned = mLessonsLearned
             pDesign.fldNotes = mNotes
-            pDesign.fldUserName = mEditedBy.User.Name
-            pDesign.fldSigned = mEditedBy.User.Signed
-            pDesign.fldDateSigned = mEditedBy.User.DateSigned
+            'pDesign.fldUserName = mEditedBy.User.Name
+            'pDesign.fldSigned = mEditedBy.User.Signed
+            'pDesign.fldDateSigned = mEditedBy.User.DateSigned
 
             pSealProcessDBEntities.AddTotblDesign(pDesign)
             pSealProcessDBEntities.SaveChanges()

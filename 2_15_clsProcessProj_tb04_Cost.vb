@@ -127,12 +127,12 @@ Public Class clsProcessProj_Cost
 
                 mLocQuoteFile = pQryCost.fldLocQuoteFile
                 mNotes = pQryCost.fldNotes
-                mEditedBy.User_Name = pQryCost.fldUserName
-                mEditedBy.User_Signed = pQryCost.fldSigned
+                'mEditedBy.User_Name = pQryCost.fldUserName
+                'mEditedBy.User_Signed = pQryCost.fldSigned
 
-                If (Not IsNothing(pQryCost.fldDateSigned) And Not IsDBNull(pQryCost.fldDateSigned)) Then
-                    mEditedBy.User_DateSigned = pQryCost.fldDateSigned
-                End If
+                'If (Not IsNothing(pQryCost.fldDateSigned) And Not IsDBNull(pQryCost.fldDateSigned)) Then
+                '    mEditedBy.User_DateSigned = pQryCost.fldDateSigned
+                'End If
 
             End If
 
@@ -160,9 +160,9 @@ Public Class clsProcessProj_Cost
 
             pCost.fldLocQuoteFile = mLocQuoteFile
             pCost.fldNotes = mNotes
-            pCost.fldUserName = mEditedBy.User.Name
-            pCost.fldSigned = mEditedBy.User.Signed
-            pCost.fldDateSigned = mEditedBy.User.DateSigned
+            'pCost.fldUserName = mEditedBy.User.Name
+            'pCost.fldSigned = mEditedBy.User.Signed
+            'pCost.fldDateSigned = mEditedBy.User.DateSigned
 
             pSealProcessDBEntities.SaveChanges()
 
@@ -174,9 +174,9 @@ Public Class clsProcessProj_Cost
             pCost.fldProcessProjectID = pID
             pCost.fldLocQuoteFile = mLocQuoteFile
             pCost.fldNotes = mNotes
-            pCost.fldUserName = mEditedBy.User.Name
-            pCost.fldSigned = mEditedBy.User.Signed
-            pCost.fldDateSigned = mEditedBy.User.DateSigned
+            'pCost.fldUserName = mEditedBy.User.Name
+            'pCost.fldSigned = mEditedBy.User.Signed
+            'pCost.fldDateSigned = mEditedBy.User.DateSigned
 
             pSealProcessDBEntities.AddTotblCost(pCost)
             pSealProcessDBEntities.SaveChanges()

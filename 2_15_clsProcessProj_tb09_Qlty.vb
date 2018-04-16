@@ -218,12 +218,12 @@ Public Class clsProcessProj_Qlty
                 mCustAcceptStd = pQryQlty.fldCustAcceptStd
                 mSPC_Reqd = pQryQlty.fldSPC_Reqd
                 mGageRnR_Reqd = pQryQlty.fldGageRnR_Reqd
-                mEditedBy.User_Name = pQryQlty.fldUserName
-                mEditedBy.User_Signed = pQryQlty.fldSigned
+                'mEditedBy.User_Name = pQryQlty.fldUserName
+                'mEditedBy.User_Signed = pQryQlty.fldSigned
 
-                If (Not IsNothing(pQryQlty.fldDateSigned) And Not IsDBNull(pQryQlty.fldDateSigned)) Then
-                    mEditedBy.User_DateSigned = pQryQlty.fldDateSigned
-                End If
+                'If (Not IsNothing(pQryQlty.fldDateSigned) And Not IsDBNull(pQryQlty.fldDateSigned)) Then
+                '    mEditedBy.User_DateSigned = pQryQlty.fldDateSigned
+                'End If
 
             End If
 
@@ -256,9 +256,9 @@ Public Class clsProcessProj_Qlty
             pQlty.fldCustAcceptStd = mCustAcceptStd
             pQlty.fldSPC_Reqd = mSPC_Reqd
             pQlty.fldGageRnR_Reqd = mGageRnR_Reqd
-            pQlty.fldUserName = mEditedBy.User.Name
-            pQlty.fldSigned = mEditedBy.User.Signed
-            pQlty.fldDateSigned = mEditedBy.User.DateSigned
+            'pQlty.fldUserName = mEditedBy.User.Name
+            'pQlty.fldSigned = mEditedBy.User.Signed
+            'pQlty.fldDateSigned = mEditedBy.User.DateSigned
 
             pSealProcessDBEntities.SaveChanges()
 
@@ -278,9 +278,9 @@ Public Class clsProcessProj_Qlty
             pQlty.fldCustAcceptStd = mCustAcceptStd
             pQlty.fldSPC_Reqd = mSPC_Reqd
             pQlty.fldGageRnR_Reqd = mGageRnR_Reqd
-            pQlty.fldUserName = mEditedBy.User.Name
-            pQlty.fldSigned = mEditedBy.User.Signed
-            pQlty.fldDateSigned = mEditedBy.User.DateSigned
+            'pQlty.fldUserName = mEditedBy.User.Name
+            'pQlty.fldSigned = mEditedBy.User.Signed
+            'pQlty.fldDateSigned = mEditedBy.User.DateSigned
 
             pSealProcessDBEntities.AddTotblQlty(pQlty)
             pSealProcessDBEntities.SaveChanges()

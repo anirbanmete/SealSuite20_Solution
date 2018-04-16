@@ -168,12 +168,12 @@ Public Class clsProcessProj_Manf
                 mHT = pQryManf.fldHT
                 mPreComp_Glue = pQryManf.fldPreComp_Glue
 
-                mEditedBy.User_Name = pQryManf.fldUserName
-                mEditedBy.User_Signed = pQryManf.fldSigned
+                'mEditedBy.User_Name = pQryManf.fldUserName
+                'mEditedBy.User_Signed = pQryManf.fldSigned
 
-                If (Not IsNothing(pQryManf.fldDateSigned) And Not IsDBNull(pQryManf.fldDateSigned)) Then
-                    mEditedBy.User_DateSigned = pQryManf.fldDateSigned
-                End If
+                'If (Not IsNothing(pQryManf.fldDateSigned) And Not IsDBNull(pQryManf.fldDateSigned)) Then
+                '    mEditedBy.User_DateSigned = pQryManf.fldDateSigned
+                'End If
 
             End If
 
@@ -205,9 +205,9 @@ Public Class clsProcessProj_Manf
             pManf.fldHT = mHT
             pManf.fldPreComp_Glue = mPreComp_Glue
 
-            pManf.fldUserName = mEditedBy.User.Name
-            pManf.fldSigned = mEditedBy.User.Signed
-            pManf.fldDateSigned = mEditedBy.User.DateSigned
+            'pManf.fldUserName = mEditedBy.User.Name
+            'pManf.fldSigned = mEditedBy.User.Signed
+            'pManf.fldDateSigned = mEditedBy.User.DateSigned
 
             pSealProcessDBEntities.SaveChanges()
 
@@ -223,9 +223,9 @@ Public Class clsProcessProj_Manf
             pManf.fldHT = mHT
             pManf.fldPreComp_Glue = mPreComp_Glue
 
-            pManf.fldUserName = mEditedBy.User.Name
-            pManf.fldSigned = mEditedBy.User.Signed
-            pManf.fldDateSigned = mEditedBy.User.DateSigned
+            'pManf.fldUserName = mEditedBy.User.Name
+            'pManf.fldSigned = mEditedBy.User.Signed
+            'pManf.fldDateSigned = mEditedBy.User.DateSigned
 
             pSealProcessDBEntities.AddTotblManf(pManf)
             pSealProcessDBEntities.SaveChanges()

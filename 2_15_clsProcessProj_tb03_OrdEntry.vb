@@ -315,12 +315,12 @@ Public Class clsProcessProj_OrdEntry
                 mExpedited = pQryOrdEntry.fldExpedited
                 mIsDFAR = pQryOrdEntry.fldIsDFAR
 
-                mEditedBy.User_Name = pQryOrdEntry.fldUserName
-                mEditedBy.User_Signed = pQryOrdEntry.fldSigned
+                'mEditedBy.User_Name = pQryOrdEntry.fldUserName
+                'mEditedBy.User_Signed = pQryOrdEntry.fldSigned
 
-                If (Not IsNothing(pQryOrdEntry.fldDateSigned) And Not IsDBNull(pQryOrdEntry.fldDateSigned)) Then
-                    mEditedBy.User_DateSigned = pQryOrdEntry.fldDateSigned
-                End If
+                'If (Not IsNothing(pQryOrdEntry.fldDateSigned) And Not IsDBNull(pQryOrdEntry.fldDateSigned)) Then
+                '    mEditedBy.User_DateSigned = pQryOrdEntry.fldDateSigned
+                'End If
 
             End If
             'mCustContact.RetrieveFromDB(ProjectID_In)
@@ -360,9 +360,9 @@ Public Class clsProcessProj_OrdEntry
             pOrdEntry.fldExpedited = mExpedited
             pOrdEntry.fldIsDFAR = mIsDFAR
 
-            pOrdEntry.fldUserName = mEditedBy.User.Name
-            pOrdEntry.fldSigned = mEditedBy.User.Signed
-            pOrdEntry.fldDateSigned = mEditedBy.User.DateSigned
+            'pOrdEntry.fldUserName = mEditedBy.User.Name
+            'pOrdEntry.fldSigned = mEditedBy.User.Signed
+            'pOrdEntry.fldDateSigned = mEditedBy.User.DateSigned
 
             pSealProcessDBEntities.SaveChanges()
 
@@ -386,9 +386,9 @@ Public Class clsProcessProj_OrdEntry
             pOrdEntry.fldExpedited = mExpedited
             pOrdEntry.fldIsDFAR = mIsDFAR
 
-            pOrdEntry.fldUserName = mEditedBy.User.Name
-            pOrdEntry.fldSigned = mEditedBy.User.Signed
-            pOrdEntry.fldDateSigned = mEditedBy.User.DateSigned
+            'pOrdEntry.fldUserName = mEditedBy.User.Name
+            'pOrdEntry.fldSigned = mEditedBy.User.Signed
+            'pOrdEntry.fldDateSigned = mEditedBy.User.DateSigned
 
             pSealProcessDBEntities.AddTotblOrdEntry(pOrdEntry)
             pSealProcessDBEntities.SaveChanges()

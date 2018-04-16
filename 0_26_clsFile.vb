@@ -2,9 +2,9 @@
 '                                                                              '
 '                          SOFTWARE  :  "SealSuite"                          '
 '                      CLASS MODULE  :  clsFile                                '
-'                        VERSION NO  :  2.3                                    '
+'                        VERSION NO  :  2.6                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  13DEC17                                '
+'                     LAST MODIFIED  :  16APR18                                '
 '                                                                              '
 '===============================================================================
 
@@ -34,8 +34,16 @@ Public Class clsFile
     '........Installation: 
     Private Const mcDirRoot As String = mcDriveRoot & "\SealSuite\"
 
-    Private Const mcConfigFile_Title As String = "SealSuite10.config"
+    Private Const mcConfigFile_Title As String = "SealSuite.config"
     Private Const mConfigFile_Name As String = mcDirRoot & mcConfigFile_Title
+
+    'Titles & Names:            
+    '---------------
+    '....Initialization.                                        
+    Private Const mcIniFile_Title As String = "SealSuite.ini"
+    Private Const mIniFile_Name As String = mcDirRoot & mcIniFile_Title
+
+    Private Const mcProgrameName As String = "SealSuite"
 
 #End Region
 
@@ -50,6 +58,7 @@ Public Class clsFile
     Public Sub New()
         '===========
         ReadConfigFile()
+
     End Sub
 
 #End Region
@@ -246,6 +255,137 @@ Public Class clsFile
 
 
     End Sub
+
+#End Region
+
+
+#Region "READ,WRITE INI FILE"
+
+    Public Sub ReadIniFile(ByRef User_Out As clsUser,
+                           ByRef Project_Out As IPE_clsProject,
+                           ByRef ANSYS_Out As IPE_clsANSYS,
+                           ByRef UnitSystem_Out As IPE_clsUnit)
+        '====================================================== 
+        '....XML File.
+        Dim pSR As FileStream
+        Dim pXML As XmlDocument
+        pXML = New XmlDocument()
+
+        gUser.RetrieveUserTitle()
+        Dim pUserName As String = ""
+        Dim pUserName_CurrentSession As String = (gUser.FirstName + " " + gUser.LastName).Trim()
+
+        Try
+            pSR = New FileStream(mIniFile_Name, FileMode.Open)
+            pXML.Load(pSR)
+
+            '....Root Node of XML.
+            Dim pRoot As XmlNode
+            pRoot = pXML.DocumentElement
+
+            For Each pRChild As XmlNode In pRoot.ChildNodes
+
+                Select Case pRChild.Name
+
+                    Case "UserName"
+                        pUserName = pRChild.InnerText
+
+                    Case "Role"
+                        If (pUserName = pUserName_CurrentSession) Then
+                            User_Out.Role = pRChild.InnerText
+                        End If
+
+
+                    Case "UnitSystem"
+                        '....Unit System:
+                        UnitSystem_Out.System = pRChild.InnerText
+
+                    Case "ANSYSVersion"
+                        '....ANSYS Version:
+                        ANSYS_Out.Version = pRChild.InnerText
+
+                    Case "CultureFormat"
+                        '....Culture Format:
+                        Project_Out.CultureName = pRChild.InnerText
+
+                        'Case "IPE_LastSession_TimeStamp"
+                        '    '....TimeStamp:
+                        '    UserInfo_Out.IPE_LastSession_TimeStamp = pRChild.InnerText
+
+                End Select
+
+            Next
+
+            pSR.Close()
+
+        Catch pEXP As Exception
+            MessageBox.Show(pEXP.Message, "File Path Not Found", MessageBoxButtons.OK,
+                                                                 MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+
+    Public Sub SaveIniFile(ByVal User_In As clsUser,
+                           ByVal Project_In As IPE_clsProject,
+                           ByVal ANSYS_In As IPE_clsANSYS,
+                           ByVal UnitSystem_In As IPE_clsUnit)
+        '======================================================= 
+        '....XML File.
+
+        Dim pXML As XmlDocument
+        pXML = New XmlDocument()
+
+        Try
+            Dim pXMLWriter As New XmlTextWriter(mIniFile_Name, System.Text.Encoding.UTF8)
+
+            With pXMLWriter
+
+                .WriteStartDocument(True)
+                .Formatting = Formatting.Indented
+                .Indentation = 2
+                .WriteStartElement(mcProgrameName)
+                Dim pUserName As String = gUser.FirstName + " " + gUser.LastName
+                .WriteStartElement("UserName")
+                .WriteString(Trim(pUserName))
+                .WriteEndElement()
+
+                .WriteStartElement("Role")
+                .WriteString(Trim(gUser.Role))
+                .WriteEndElement()
+
+                .WriteStartElement("UnitSystem")
+                .WriteComment("Unit System: English/Metric")
+                .WriteString(Trim(UnitSystem_In.System))
+                .WriteEndElement()
+
+                'AES 01APR16
+                .WriteStartElement("ANSYSVersion")
+                .WriteString(Trim(ANSYS_In.Version))
+                .WriteEndElement()
+
+                .WriteStartElement("CultureFormat")
+                .WriteComment("Culture Format: USA/UK/Germany/France")
+                .WriteString(Trim(Project_In.CultureName))
+                .WriteEndElement()
+
+                ''.WriteStartElement("IPE_LastSession_TimeStamp")
+                ''.WriteString(DateAndTime.Now())
+                ''.WriteEndElement()
+
+                .WriteEndElement()
+                .WriteEndDocument()
+                .Close()
+
+            End With
+
+
+        Catch pEXP As Exception
+            MessageBox.Show(pEXP.Message, "File Path Not Found", MessageBoxButtons.OK,
+                                                                 MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+
 
 #End Region
 

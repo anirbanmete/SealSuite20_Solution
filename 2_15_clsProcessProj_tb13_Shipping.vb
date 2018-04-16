@@ -99,12 +99,12 @@ Public Class clsProcessProj_Shipping
                                    Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
 
                 mNotes = pQryShipping.fldNotes
-                mEditedBy.User_Name = pQryShipping.fldUserName
-                mEditedBy.User_Signed = pQryShipping.fldSigned
+                'mEditedBy.User_Name = pQryShipping.fldUserName
+                'mEditedBy.User_Signed = pQryShipping.fldSigned
 
-                If (Not IsNothing(pQryShipping.fldDateSigned) And Not IsDBNull(pQryShipping.fldDateSigned)) Then
-                    mEditedBy.User_DateSigned = pQryShipping.fldDateSigned
-                End If
+                'If (Not IsNothing(pQryShipping.fldDateSigned) And Not IsDBNull(pQryShipping.fldDateSigned)) Then
+                '    mEditedBy.User_DateSigned = pQryShipping.fldDateSigned
+                'End If
 
             End If
 
@@ -130,9 +130,9 @@ Public Class clsProcessProj_Shipping
                                  Where Shipping.fldProcessProjectID = ProjectID_In Select Shipping).First()
 
                 pShipping.fldNotes = mNotes
-                pShipping.fldUserName = mEditedBy.User.Name
-                pShipping.fldSigned = mEditedBy.User.Signed
-                pShipping.fldDateSigned = mEditedBy.User.DateSigned
+                'pShipping.fldUserName = mEditedBy.User.Name
+                'pShipping.fldSigned = mEditedBy.User.Signed
+                'pShipping.fldDateSigned = mEditedBy.User.DateSigned
 
                 pSealProcessDBEntities.SaveChanges()
 
@@ -143,9 +143,9 @@ Public Class clsProcessProj_Shipping
                 Dim pShipping As New tblShipping
                 pShipping.fldProcessProjectID = pID
                 pShipping.fldNotes = mNotes
-                pShipping.fldUserName = mEditedBy.User.Name
-                pShipping.fldSigned = mEditedBy.User.Signed
-                pShipping.fldDateSigned = mEditedBy.User.DateSigned
+                'pShipping.fldUserName = mEditedBy.User.Name
+                'pShipping.fldSigned = mEditedBy.User.Signed
+                'pShipping.fldDateSigned = mEditedBy.User.DateSigned
 
                 pSealProcessDBEntities.AddTotblShipping(pShipping)
                 pSealProcessDBEntities.SaveChanges()

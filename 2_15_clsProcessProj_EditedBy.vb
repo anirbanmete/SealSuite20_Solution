@@ -2,9 +2,9 @@
 '                                                                              '
 '                          SOFTWARE  :  "SealProcess"                          '
 '                      CLASS MODULE  :  Process_clsEditedBy                    '
-'                        VERSION NO  :  1.1                                    '
+'                        VERSION NO  :  1.5                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  28DEC17                                '
+'                     LAST MODIFIED  :  11APR18                                '
 '                                                                              '
 '===============================================================================
 
@@ -169,6 +169,192 @@ Public Class clsProcessProj_EditedBy
 
     End Function
 
+    Public Function RetrieveFromDB_UserSignOff(ByVal ProjectID_In As Integer, ByVal TabName_In As String) As Boolean
+        '==========================================================================================================
+        Dim pSealProcessDBEntities As New SealProcessDBEntities()
+        Dim pIsRecExists As Boolean = False
+
+        Try
+
+            If (TabName_In = "PreOrder") Then
+                Dim pUserSignOff = (From SignOff In pSealProcessDBEntities.tblPreOrder
+                                    Where SignOff.fldProcessProjectID = ProjectID_In Where SignOff.fldSigned = True Select SignOff).ToList()
+
+                If (pUserSignOff.Count > 0) Then
+                    pIsRecExists = True
+                    '....Record already exists
+                    mUser.Name = pUserSignOff(0).fldUserName
+                    mUser.Signed = pUserSignOff(0).fldSigned
+                    mUser.DateSigned = pUserSignOff(0).fldDateSigned
+                End If
+
+            ElseIf (TabName_In = "Export") Then
+                Dim pUserSignOff = (From SignOff In pSealProcessDBEntities.tblITAR_Export
+                                    Where SignOff.fldProcessProjectID = ProjectID_In Where SignOff.fldSigned = True Select SignOff).ToList()
+
+                If (pUserSignOff.Count > 0) Then
+                    pIsRecExists = True
+                    '....Record already exists
+                    mUser.Name = pUserSignOff(0).fldUserName
+                    mUser.Signed = pUserSignOff(0).fldSigned
+                    mUser.DateSigned = pUserSignOff(0).fldDateSigned
+                End If
+
+            ElseIf (TabName_In = "OrdEntry") Then
+                Dim pUserSignOff = (From SignOff In pSealProcessDBEntities.tblOrdEntry
+                                    Where SignOff.fldProcessProjectID = ProjectID_In Where SignOff.fldSigned = True Select SignOff).ToList()
+
+                If (pUserSignOff.Count > 0) Then
+                    pIsRecExists = True
+                    '....Record already exists
+                    mUser.Name = pUserSignOff(0).fldUserName
+                    mUser.Signed = pUserSignOff(0).fldSigned
+                    mUser.DateSigned = pUserSignOff(0).fldDateSigned
+                End If
+
+            ElseIf (TabName_In = "Cost") Then
+                Dim pUserSignOff = (From SignOff In pSealProcessDBEntities.tblCost
+                                    Where SignOff.fldProcessProjectID = ProjectID_In Where SignOff.fldSigned = True Select SignOff).ToList()
+
+                If (pUserSignOff.Count > 0) Then
+                    pIsRecExists = True
+                    '....Record already exists
+                    mUser.Name = pUserSignOff(0).fldUserName
+                    mUser.Signed = pUserSignOff(0).fldSigned
+                    mUser.DateSigned = pUserSignOff(0).fldDateSigned
+                End If
+
+            ElseIf (TabName_In = "App") Then
+                Dim pUserSignOff = (From SignOff In pSealProcessDBEntities.tblApp
+                                    Where SignOff.fldProcessProjectID = ProjectID_In Where SignOff.fldSigned = True Select SignOff).ToList()
+
+                If (pUserSignOff.Count > 0) Then
+                    pIsRecExists = True
+                    '....Record already exists
+                    mUser.Name = pUserSignOff(0).fldUserName
+                    mUser.Signed = pUserSignOff(0).fldSigned
+                    mUser.DateSigned = pUserSignOff(0).fldDateSigned
+                End If
+
+            ElseIf (TabName_In = "Design") Then
+                Dim pUserSignOff = (From SignOff In pSealProcessDBEntities.tblDesign
+                                    Where SignOff.fldProcessProjectID = ProjectID_In Where SignOff.fldSigned = True Select SignOff).ToList()
+
+                If (pUserSignOff.Count > 0) Then
+                    pIsRecExists = True
+                    '....Record already exists
+                    mUser.Name = pUserSignOff(0).fldUserName
+                    mUser.Signed = pUserSignOff(0).fldSigned
+                    mUser.DateSigned = pUserSignOff(0).fldDateSigned
+                End If
+
+            ElseIf (TabName_In = "Manf") Then
+                Dim pUserSignOff = (From SignOff In pSealProcessDBEntities.tblManf
+                                    Where SignOff.fldProcessProjectID = ProjectID_In Where SignOff.fldSigned = True Select SignOff).ToList()
+
+                If (pUserSignOff.Count > 0) Then
+                    pIsRecExists = True
+                    '....Record already exists
+                    mUser.Name = pUserSignOff(0).fldUserName
+                    mUser.Signed = pUserSignOff(0).fldSigned
+                    mUser.DateSigned = pUserSignOff(0).fldDateSigned
+                End If
+
+            ElseIf (TabName_In = "Purchase") Then
+                Dim pUserSignOff = (From SignOff In pSealProcessDBEntities.tblPurchase
+                                    Where SignOff.fldProcessProjectID = ProjectID_In Where SignOff.fldSigned = True Select SignOff).ToList()
+
+                If (pUserSignOff.Count > 0) Then
+                    pIsRecExists = True
+                    '....Record already exists
+                    mUser.Name = pUserSignOff(0).fldUserName
+                    mUser.Signed = pUserSignOff(0).fldSigned
+                    mUser.DateSigned = pUserSignOff(0).fldDateSigned
+                End If
+
+            ElseIf (TabName_In = "Qlty") Then
+                Dim pUserSignOff = (From SignOff In pSealProcessDBEntities.tblQlty
+                                    Where SignOff.fldProcessProjectID = ProjectID_In Where SignOff.fldSigned = True Select SignOff).ToList()
+
+                If (pUserSignOff.Count > 0) Then
+                    pIsRecExists = True
+                    '....Record already exists
+                    mUser.Name = pUserSignOff(0).fldUserName
+                    mUser.Signed = pUserSignOff(0).fldSigned
+                    mUser.DateSigned = pUserSignOff(0).fldDateSigned
+                End If
+
+            ElseIf (TabName_In = "Dwg") Then
+                Dim pUserSignOff = (From SignOff In pSealProcessDBEntities.tblDwg
+                                    Where SignOff.fldProcessProjectID = ProjectID_In Where SignOff.fldSigned = True Select SignOff).ToList()
+
+                If (pUserSignOff.Count > 0) Then
+                    pIsRecExists = True
+                    '....Record already exists
+                    mUser.Name = pUserSignOff(0).fldUserName
+                    mUser.Signed = pUserSignOff(0).fldSigned
+                    mUser.DateSigned = pUserSignOff(0).fldDateSigned
+                End If
+
+            ElseIf (TabName_In = "Dwg") Then
+                Dim pUserSignOff = (From SignOff In pSealProcessDBEntities.tblDwg
+                                    Where SignOff.fldProcessProjectID = ProjectID_In Where SignOff.fldSigned = True Select SignOff).ToList()
+
+                If (pUserSignOff.Count > 0) Then
+                    pIsRecExists = True
+                    '....Record already exists
+                    mUser.Name = pUserSignOff(0).fldUserName
+                    mUser.Signed = pUserSignOff(0).fldSigned
+                    mUser.DateSigned = pUserSignOff(0).fldDateSigned
+                End If
+
+            ElseIf (TabName_In = "Test") Then
+                Dim pUserSignOff = (From SignOff In pSealProcessDBEntities.tblTest
+                                    Where SignOff.fldProcessProjectID = ProjectID_In Where SignOff.fldSigned = True Select SignOff).ToList()
+
+                If (pUserSignOff.Count > 0) Then
+                    pIsRecExists = True
+                    '....Record already exists
+                    mUser.Name = pUserSignOff(0).fldUserName
+                    mUser.Signed = pUserSignOff(0).fldSigned
+                    mUser.DateSigned = pUserSignOff(0).fldDateSigned
+                End If
+
+                ''ElseIf (TabName_In = "Planning") Then
+                ''    Dim pUserSignOff = (From SignOff In pSealProcessDBEntities.tblPlanning
+                ''                        Where SignOff.fldProcessProjectID = ProjectID_In Where SignOff.fldUserSigned = True Select SignOff).ToList()
+
+                ''    If (pUserSignOff.Count > 0) Then
+                ''        pIsRecExists = True
+                ''        '....Record already exists
+                ''        mUser.Name = pUserSignOff(0).fldUserName
+                ''        mUser.Signed = pUserSignOff(0).fldUserSigned
+                ''        mUser.DateSigned = pUserSignOff(0).fldUserDate
+                ''    End If
+
+            ElseIf (TabName_In = "Shipping") Then
+                Dim pUserSignOff = (From SignOff In pSealProcessDBEntities.tblShipping
+                                    Where SignOff.fldProcessProjectID = ProjectID_In Where SignOff.fldSigned = True Select SignOff).ToList()
+
+                If (pUserSignOff.Count > 0) Then
+                    pIsRecExists = True
+                    '....Record already exists
+                    mUser.Name = pUserSignOff(0).fldUserName
+                    mUser.Signed = pUserSignOff(0).fldSigned
+                    mUser.DateSigned = pUserSignOff(0).fldDateSigned
+                End If
+
+            End If
+
+
+        Catch ex As Exception
+
+        End Try
+
+        Return pIsRecExists
+
+    End Function
+
     'Public Sub SaveToDB(ByVal ProjectID_In As Integer, ByVal TabName_In As String)
     '    '===========================================================================
 
@@ -252,6 +438,301 @@ Public Class clsProcessProj_EditedBy
             pSealProcessDBEntities.AddTotblEditedBy(pEdited(j))
         Next
         pSealProcessDBEntities.SaveChanges()
+
+    End Sub
+
+    Public Sub SaveToDB_UserSignOff(ByVal ProjectID_In As Integer, ByVal TabName_In As String)
+        '=====================================================================================
+
+        Dim pSealProcessDBEntities As New SealProcessDBEntities()
+
+        If (TabName_In = "PreOrder") Then
+            Dim pUserSignOff = (From SignOff In pSealProcessDBEntities.tblPreOrder
+                                Where SignOff.fldProcessProjectID = ProjectID_In Select SignOff).ToList()
+
+            If (pUserSignOff.Count > 0) Then
+                '....Record already exists
+                pUserSignOff(0).fldUserName = mUser.Name
+                pUserSignOff(0).fldSigned = mUser.Signed
+                pUserSignOff(0).fldDateSigned = mUser.DateSigned
+                pSealProcessDBEntities.SaveChanges()
+            Else
+                '....New Record
+                Dim pRec As New tblPreOrder
+                pRec.fldProcessProjectID = ProjectID_In
+                pRec.fldUserName = mUser.Name
+                pRec.fldSigned = mUser.Signed
+                pRec.fldDateSigned = mUser.DateSigned
+
+                pSealProcessDBEntities.AddTotblPreOrder(pRec)
+                pSealProcessDBEntities.SaveChanges()
+            End If
+
+        ElseIf (TabName_In = "Export") Then
+            Dim pUserSignOff = (From SignOff In pSealProcessDBEntities.tblITAR_Export
+                                Where SignOff.fldProcessProjectID = ProjectID_In Select SignOff).ToList()
+
+            If (pUserSignOff.Count > 0) Then
+                '....Record already exists
+                pUserSignOff(0).fldUserName = mUser.Name
+                pUserSignOff(0).fldSigned = mUser.Signed
+                pUserSignOff(0).fldDateSigned = mUser.DateSigned
+                pSealProcessDBEntities.SaveChanges()
+            Else
+                '....New Record
+                Dim pRec As New tblITAR_Export
+                pRec.fldProcessProjectID = ProjectID_In
+                pRec.fldUserName = mUser.Name
+                pRec.fldSigned = mUser.Signed
+                pRec.fldDateSigned = mUser.DateSigned
+
+                pSealProcessDBEntities.AddTotblITAR_Export(pRec)
+                pSealProcessDBEntities.SaveChanges()
+            End If
+
+        ElseIf (TabName_In = "OrdEntry") Then
+            Dim pUserSignOff = (From SignOff In pSealProcessDBEntities.tblOrdEntry
+                                Where SignOff.fldProcessProjectID = ProjectID_In Select SignOff).ToList()
+
+            If (pUserSignOff.Count > 0) Then
+                '....Record already exists
+                pUserSignOff(0).fldUserName = mUser.Name
+                pUserSignOff(0).fldSigned = mUser.Signed
+                pUserSignOff(0).fldDateSigned = mUser.DateSigned
+                pSealProcessDBEntities.SaveChanges()
+            Else
+                '....New Record
+                Dim pRec As New tblOrdEntry
+                pRec.fldProcessProjectID = ProjectID_In
+                pRec.fldUserName = mUser.Name
+                pRec.fldSigned = mUser.Signed
+                pRec.fldDateSigned = mUser.DateSigned
+
+                pSealProcessDBEntities.AddTotblOrdEntry(pRec)
+                pSealProcessDBEntities.SaveChanges()
+            End If
+
+        ElseIf (TabName_In = "Cost") Then
+            Dim pUserSignOff = (From SignOff In pSealProcessDBEntities.tblCost
+                                Where SignOff.fldProcessProjectID = ProjectID_In Select SignOff).ToList()
+
+            If (pUserSignOff.Count > 0) Then
+                '....Record already exists
+                pUserSignOff(0).fldUserName = mUser.Name
+                pUserSignOff(0).fldSigned = mUser.Signed
+                pUserSignOff(0).fldDateSigned = mUser.DateSigned
+                pSealProcessDBEntities.SaveChanges()
+            Else
+                '....New Record
+                Dim pRec As New tblCost
+                pRec.fldProcessProjectID = ProjectID_In
+                pRec.fldUserName = mUser.Name
+                pRec.fldSigned = mUser.Signed
+                pRec.fldDateSigned = mUser.DateSigned
+
+                pSealProcessDBEntities.AddTotblCost(pRec)
+                pSealProcessDBEntities.SaveChanges()
+            End If
+
+        ElseIf (TabName_In = "App") Then
+            Dim pUserSignOff = (From SignOff In pSealProcessDBEntities.tblApp
+                                Where SignOff.fldProcessProjectID = ProjectID_In Select SignOff).ToList()
+
+            If (pUserSignOff.Count > 0) Then
+                '....Record already exists
+                pUserSignOff(0).fldUserName = mUser.Name
+                pUserSignOff(0).fldSigned = mUser.Signed
+                pUserSignOff(0).fldDateSigned = mUser.DateSigned
+                pSealProcessDBEntities.SaveChanges()
+            Else
+                '....New Record
+                Dim pRec As New tblApp
+                pRec.fldProcessProjectID = ProjectID_In
+                pRec.fldUserName = mUser.Name
+                pRec.fldSigned = mUser.Signed
+                pRec.fldDateSigned = mUser.DateSigned
+
+                pSealProcessDBEntities.AddTotblApp(pRec)
+                pSealProcessDBEntities.SaveChanges()
+            End If
+
+        ElseIf (TabName_In = "Design") Then
+            Dim pUserSignOff = (From SignOff In pSealProcessDBEntities.tblDesign
+                                Where SignOff.fldProcessProjectID = ProjectID_In Select SignOff).ToList()
+
+            If (pUserSignOff.Count > 0) Then
+                '....Record already exists
+                pUserSignOff(0).fldUserName = mUser.Name
+                pUserSignOff(0).fldSigned = mUser.Signed
+                pUserSignOff(0).fldDateSigned = mUser.DateSigned
+                pSealProcessDBEntities.SaveChanges()
+            Else
+                '....New Record
+                Dim pRec As New tblDesign
+                pRec.fldProcessProjectID = ProjectID_In
+                pRec.fldUserName = mUser.Name
+                pRec.fldSigned = mUser.Signed
+                pRec.fldDateSigned = mUser.DateSigned
+
+                pSealProcessDBEntities.AddTotblDesign(pRec)
+                pSealProcessDBEntities.SaveChanges()
+            End If
+
+        ElseIf (TabName_In = "Manf") Then
+            Dim pUserSignOff = (From SignOff In pSealProcessDBEntities.tblManf
+                                Where SignOff.fldProcessProjectID = ProjectID_In Select SignOff).ToList()
+
+            If (pUserSignOff.Count > 0) Then
+                '....Record already exists
+                pUserSignOff(0).fldUserName = mUser.Name
+                pUserSignOff(0).fldSigned = mUser.Signed
+                pUserSignOff(0).fldDateSigned = mUser.DateSigned
+                pSealProcessDBEntities.SaveChanges()
+            Else
+                '....New Record
+                Dim pRec As New tblManf
+                pRec.fldProcessProjectID = ProjectID_In
+                pRec.fldUserName = mUser.Name
+                pRec.fldSigned = mUser.Signed
+                pRec.fldDateSigned = mUser.DateSigned
+
+                pSealProcessDBEntities.AddTotblManf(pRec)
+                pSealProcessDBEntities.SaveChanges()
+            End If
+
+        ElseIf (TabName_In = "Purchase") Then
+            Dim pUserSignOff = (From SignOff In pSealProcessDBEntities.tblPurchase
+                                Where SignOff.fldProcessProjectID = ProjectID_In Select SignOff).ToList()
+
+            If (pUserSignOff.Count > 0) Then
+                '....Record already exists
+                pUserSignOff(0).fldUserName = mUser.Name
+                pUserSignOff(0).fldSigned = mUser.Signed
+                pUserSignOff(0).fldDateSigned = mUser.DateSigned
+                pSealProcessDBEntities.SaveChanges()
+            Else
+                '....New Record
+                Dim pRec As New tblPurchase
+                pRec.fldProcessProjectID = ProjectID_In
+                pRec.fldUserName = mUser.Name
+                pRec.fldSigned = mUser.Signed
+                pRec.fldDateSigned = mUser.DateSigned
+
+                pSealProcessDBEntities.AddTotblPurchase(pRec)
+                pSealProcessDBEntities.SaveChanges()
+            End If
+
+        ElseIf (TabName_In = "Qlty") Then
+            Dim pUserSignOff = (From SignOff In pSealProcessDBEntities.tblQlty
+                                Where SignOff.fldProcessProjectID = ProjectID_In Select SignOff).ToList()
+
+            If (pUserSignOff.Count > 0) Then
+                '....Record already exists
+                pUserSignOff(0).fldUserName = mUser.Name
+                pUserSignOff(0).fldSigned = mUser.Signed
+                pUserSignOff(0).fldDateSigned = mUser.DateSigned
+                pSealProcessDBEntities.SaveChanges()
+            Else
+                '....New Record
+                Dim pRec As New tblQlty
+                pRec.fldProcessProjectID = ProjectID_In
+                pRec.fldUserName = mUser.Name
+                pRec.fldSigned = mUser.Signed
+                pRec.fldDateSigned = mUser.DateSigned
+
+                pSealProcessDBEntities.AddTotblQlty(pRec)
+                pSealProcessDBEntities.SaveChanges()
+            End If
+
+        ElseIf (TabName_In = "Dwg") Then
+            Dim pUserSignOff = (From SignOff In pSealProcessDBEntities.tblDwg
+                                Where SignOff.fldProcessProjectID = ProjectID_In Select SignOff).ToList()
+
+            If (pUserSignOff.Count > 0) Then
+                '....Record already exists
+                pUserSignOff(0).fldUserName = mUser.Name
+                pUserSignOff(0).fldSigned = mUser.Signed
+                pUserSignOff(0).fldDateSigned = mUser.DateSigned
+                pSealProcessDBEntities.SaveChanges()
+            Else
+                '....New Record
+                Dim pRec As New tblDwg
+                pRec.fldProcessProjectID = ProjectID_In
+                pRec.fldUserName = mUser.Name
+                pRec.fldSigned = mUser.Signed
+                pRec.fldDateSigned = mUser.DateSigned
+
+                pSealProcessDBEntities.AddTotblDwg(pRec)
+                pSealProcessDBEntities.SaveChanges()
+            End If
+
+        ElseIf (TabName_In = "Test") Then
+            Dim pUserSignOff = (From SignOff In pSealProcessDBEntities.tblTest
+                                Where SignOff.fldProcessProjectID = ProjectID_In Select SignOff).ToList()
+
+            If (pUserSignOff.Count > 0) Then
+                '....Record already exists
+                pUserSignOff(0).fldUserName = mUser.Name
+                pUserSignOff(0).fldSigned = mUser.Signed
+                pUserSignOff(0).fldDateSigned = mUser.DateSigned
+                pSealProcessDBEntities.SaveChanges()
+            Else
+                '....New Record
+                Dim pRec As New tblTest
+                pRec.fldProcessProjectID = ProjectID_In
+                pRec.fldUserName = mUser.Name
+                pRec.fldSigned = mUser.Signed
+                pRec.fldDateSigned = mUser.DateSigned
+
+                pSealProcessDBEntities.AddTotblTest(pRec)
+                pSealProcessDBEntities.SaveChanges()
+            End If
+
+            ''ElseIf (TabName_In = "Planning") Then
+            ''    Dim pUserSignOff = (From SignOff In pSealProcessDBEntities.tblPlanning
+            ''                        Where SignOff.fldProcessProjectID = ProjectID_In Select SignOff).ToList()
+
+            ''    If (pUserSignOff.Count > 0) Then
+            ''        '....Record already exists
+            ''        pUserSignOff(0).fldUserName = mUser.Name
+            ''        pUserSignOff(0).fldUserSigned = mUser.Signed
+            ''        pUserSignOff(0).fldUserDate = mUser.DateSigned
+            ''        pSealProcessDBEntities.SaveChanges()
+            ''    Else
+            ''        '....New Record
+            ''        Dim pRec As New tblPlanning
+            ''        pRec.fldProcessProjectID = ProjectID_In
+            ''        pRec.fldUserName = mUser.Name
+            ''        pRec.fldUserSigned = mUser.Signed
+            ''        pRec.fldUserDate = mUser.DateSigned
+
+            ''        pSealProcessDBEntities.AddTotblPlanning(pRec)
+            ''        pSealProcessDBEntities.SaveChanges()
+            ''    End If
+
+        ElseIf (TabName_In = "Shipping") Then
+            Dim pUserSignOff = (From SignOff In pSealProcessDBEntities.tblShipping
+                                Where SignOff.fldProcessProjectID = ProjectID_In Select SignOff).ToList()
+
+            If (pUserSignOff.Count > 0) Then
+                '....Record already exists
+                pUserSignOff(0).fldUserName = mUser.Name
+                pUserSignOff(0).fldSigned = mUser.Signed
+                pUserSignOff(0).fldDateSigned = mUser.DateSigned
+                pSealProcessDBEntities.SaveChanges()
+            Else
+                '....New Record
+                Dim pRec As New tblShipping
+                pRec.fldProcessProjectID = ProjectID_In
+                pRec.fldUserName = mUser.Name
+                pRec.fldSigned = mUser.Signed
+                pRec.fldDateSigned = mUser.DateSigned
+
+                pSealProcessDBEntities.AddTotblShipping(pRec)
+                pSealProcessDBEntities.SaveChanges()
+            End If
+
+        End If
 
     End Sub
 

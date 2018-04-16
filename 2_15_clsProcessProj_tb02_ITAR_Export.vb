@@ -217,12 +217,12 @@ Public Class clsProcessProj_ITAR_Export
                 mStatus = pQryITAR_Export.fldStatus
                 mHTS_Class = pQryITAR_Export.fldHTS_Class
 
-                mEditedBy.User_Name = pQryITAR_Export.fldUserName
-                mEditedBy.User_Signed = pQryITAR_Export.fldSigned
+                ''mEditedBy.User_Name = pQryITAR_Export.fldUserName
+                ''mEditedBy.User_Signed = pQryITAR_Export.fldSigned
 
-                If (Not IsNothing(pQryITAR_Export.fldDateSigned) And Not IsDBNull(pQryITAR_Export.fldDateSigned)) Then
-                    mEditedBy.User_DateSigned = pQryITAR_Export.fldDateSigned
-                End If
+                ''If (Not IsNothing(pQryITAR_Export.fldDateSigned) And Not IsDBNull(pQryITAR_Export.fldDateSigned)) Then
+                ''    mEditedBy.User_DateSigned = pQryITAR_Export.fldDateSigned
+                ''End If
 
             End If
 
@@ -257,9 +257,9 @@ Public Class clsProcessProj_ITAR_Export
             pITAR_Export.fldStatus = mStatus
             pITAR_Export.fldHTS_Class = mHTS_Class
 
-            pITAR_Export.fldUserName = mEditedBy.User.Name
-            pITAR_Export.fldSigned = mEditedBy.User.Signed
-            pITAR_Export.fldDateSigned = mEditedBy.User.DateSigned
+            ''pITAR_Export.fldUserName = mEditedBy.User.Name
+            ''pITAR_Export.fldSigned = mEditedBy.User.Signed
+            ''pITAR_Export.fldDateSigned = mEditedBy.User.DateSigned
 
             pSealProcessDBEntities.SaveChanges()
 
@@ -279,9 +279,9 @@ Public Class clsProcessProj_ITAR_Export
             pITAR_Export.fldStatus = mStatus
             pITAR_Export.fldHTS_Class = mHTS_Class
 
-            pITAR_Export.fldUserName = mEditedBy.User.Name
-            pITAR_Export.fldSigned = mEditedBy.User.Signed
-            pITAR_Export.fldDateSigned = mEditedBy.User.DateSigned
+            ''pITAR_Export.fldUserName = mEditedBy.User.Name
+            ''pITAR_Export.fldSigned = mEditedBy.User.Signed
+            ''pITAR_Export.fldDateSigned = mEditedBy.User.DateSigned
 
             pSealProcessDBEntities.AddTotblITAR_Export(pITAR_Export)
             pSealProcessDBEntities.SaveChanges()

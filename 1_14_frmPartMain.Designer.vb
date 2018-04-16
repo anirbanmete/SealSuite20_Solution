@@ -1138,8 +1138,8 @@ Partial Class frmPartMain
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "frmPartMain"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "SealPart 1.4: Main Form                                                          " &
-    " Metal Seal: P/N System"
+        Me.Text = "SealPartTrial 1.4: Main Form                                                     " &
+    "      Metal Seal: P/N System"
         Me.pnlPanel3.ResumeLayout(False)
         Me.pnlPanel3.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)

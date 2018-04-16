@@ -214,7 +214,7 @@ Public Class IPE_frmUser
             '.CultureName = cmbCulturalFormat.Text
         End With
 
-        gIPE_File.SaveIniFile(gIPE_User, gIPE_Project, gIPE_ANSYS, gIPE_Unit)
+        gFile.SaveIniFile(gUser, gIPE_Project, gIPE_ANSYS, gIPE_Unit)
 
         '....SECONDARY ASSIGNMENT
         gIPE_Dwg.UserInfo = gIPE_User

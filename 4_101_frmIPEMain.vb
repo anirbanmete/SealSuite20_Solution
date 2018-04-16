@@ -504,7 +504,7 @@ Public Class IPE_frmMain
         GroupBox1.Visible = True
 
         '....Read the Ini file:                     
-        gIPE_File.ReadIniFile(gIPE_User, gIPE_Project, gIPE_ANSYS, gIPE_Unit)  '....Get UserName, Phone No & Unit System. 
+        gFile.ReadIniFile(gUser, gIPE_Project, gIPE_ANSYS, gIPE_Unit)  '....Get UserName, Phone No & Unit System. 
 
         '---------------------------------------------------------------------------------
         '....Status Bar Panels:

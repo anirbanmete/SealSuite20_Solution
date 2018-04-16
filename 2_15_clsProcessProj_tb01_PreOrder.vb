@@ -331,12 +331,12 @@ Public Class clsProcessProj_PreOrder
                 mNotes = pQryPreOrder.fldNotes
                 mNotes_Price = pQryPreOrder.fldNotesPrice
 
-                mEditedBy.User_Name = pQryPreOrder.fldUserName
-                mEditedBy.User_Signed = pQryPreOrder.fldSigned
+                ''mEditedBy.User_Name = pQryPreOrder.fldUserName
+                ''mEditedBy.User_Signed = pQryPreOrder.fldSigned
 
-                If (Not IsNothing(pQryPreOrder.fldDateSigned) And Not IsDBNull(pQryPreOrder.fldDateSigned)) Then
-                    mEditedBy.User_DateSigned = pQryPreOrder.fldDateSigned
-                End If
+                ''If (Not IsNothing(pQryPreOrder.fldDateSigned) And Not IsDBNull(pQryPreOrder.fldDateSigned)) Then
+                ''    mEditedBy.User_DateSigned = pQryPreOrder.fldDateSigned
+                ''End If
 
             End If
 
@@ -377,9 +377,9 @@ Public Class clsProcessProj_PreOrder
             pPreOrder.fldNotes = mNotes
             pPreOrder.fldNotesPrice = mNotes_Price
 
-            pPreOrder.fldUserName = mEditedBy.User.Name ' mUser.Name
-            pPreOrder.fldSigned = mEditedBy.User.Signed
-            pPreOrder.fldDateSigned = mEditedBy.User.DateSigned
+            'pPreOrder.fldUserName = mEditedBy.User.Name ' mUser.Name
+            'pPreOrder.fldSigned = mEditedBy.User.Signed
+            'pPreOrder.fldDateSigned = mEditedBy.User.DateSigned
 
             pSealProcessDBEntities.SaveChanges()
 
@@ -400,9 +400,9 @@ Public Class clsProcessProj_PreOrder
             pPreOrder.fldLocRFQPkg = mLoc.RFQPkg
             pPreOrder.fldNotes = mNotes
             pPreOrder.fldNotesPrice = mNotes_Price
-            pPreOrder.fldUserName = mEditedBy.User.Name ' mUser.Name
-            pPreOrder.fldSigned = mEditedBy.User.Signed
-            pPreOrder.fldDateSigned = mEditedBy.User.DateSigned
+            'pPreOrder.fldUserName = mEditedBy.User.Name ' mUser.Name
+            'pPreOrder.fldSigned = mEditedBy.User.Signed
+            'pPreOrder.fldDateSigned = mEditedBy.User.DateSigned
 
             pSealProcessDBEntities.AddTotblPreOrder(pPreOrder)
             pSealProcessDBEntities.SaveChanges()

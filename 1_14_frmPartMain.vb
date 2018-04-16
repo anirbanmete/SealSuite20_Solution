@@ -153,6 +153,9 @@ Public Class frmPartMain
             'RetrievePN()
         End If
 
+        '....Read the Ini file:                     
+        gFile.ReadIniFile(gUser, gIPE_Project, gIPE_ANSYS, gIPE_Unit)  '....Get UserName, Phone No & Unit System. 
+
         DisplayData()
 
     End Sub
@@ -2908,6 +2911,7 @@ Public Class frmPartMain
             End With
         End If
 
+        gFile.SaveIniFile(gUser, gIPE_Project, gIPE_ANSYS, gIPE_Unit)
         SaveData()
         Environment.Exit(0)
         '....UPDATE MAIN FORM DISPLAY.

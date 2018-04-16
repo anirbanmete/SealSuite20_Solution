@@ -143,12 +143,12 @@ Public Class clsProcessProj_Planning
                                    Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
 
                 mNotes = pQryPlanning.fldNotes
-                mUser.Name = pQryPlanning.fldUserName
-                mUser.Signed = pQryPlanning.fldUserSigned
+                'mUser.Name = pQryPlanning.fldUserName
+                'mUser.Signed = pQryPlanning.fldUserSigned
 
-                If (Not IsNothing(pQryPlanning.fldUserDate) And Not IsDBNull(pQryPlanning.fldUserDate)) Then
-                    mUser.SignedDate = pQryPlanning.fldUserDate
-                End If
+                'If (Not IsNothing(pQryPlanning.fldUserDate) And Not IsDBNull(pQryPlanning.fldUserDate)) Then
+                '    mUser.SignedDate = pQryPlanning.fldUserDate
+                'End If
 
             End If
 
@@ -176,9 +176,9 @@ Public Class clsProcessProj_Planning
                                            Where Planning.fldProcessProjectID = ProjectID_In Select Planning).First()
 
             pPlanning.fldNotes = mNotes
-            pPlanning.fldUserName = mUser.Name
-            pPlanning.fldUserSigned = mUser.Signed
-            pPlanning.fldUserDate = mUser.SignedDate
+            'pPlanning.fldUserName = mUser.Name
+            'pPlanning.fldUserSigned = mUser.Signed
+            'pPlanning.fldUserDate = mUser.SignedDate
 
             pSealProcessDBEntities.SaveChanges()
 
@@ -189,9 +189,9 @@ Public Class clsProcessProj_Planning
             Dim pPlanning As New tblPlanning
             pPlanning.fldProcessProjectID = pID
             pPlanning.fldNotes = mNotes
-            pPlanning.fldUserName = mUser.Name
-            pPlanning.fldUserSigned = mUser.Signed
-            pPlanning.fldUserDate = mUser.SignedDate
+            'pPlanning.fldUserName = mUser.Name
+            'pPlanning.fldUserSigned = mUser.Signed
+            'pPlanning.fldUserDate = mUser.SignedDate
 
             pSealProcessDBEntities.AddTotblPlanning(pPlanning)
             pSealProcessDBEntities.SaveChanges()
