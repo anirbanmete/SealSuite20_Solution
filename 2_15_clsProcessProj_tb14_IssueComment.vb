@@ -182,7 +182,7 @@ Public Class clsProcessProj_IssueComment
             If (pQryIssueCount > 0) Then
 
                 Dim pQryIssue = (From pRec In pSealProcessDBEntities.tblIssueComnt
-                                   Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
+                                 Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
 
                 For i As Integer = 0 To pQryIssue.Count - 1
                     mID.Add(pQryIssue(i).fldID)
@@ -196,6 +196,18 @@ Public Class clsProcessProj_IssueComment
                     mDateResolution.Add(pQryIssue(i).fldDate)
                     mResolution.Add(pQryIssue(i).fldResolution)
                 Next
+
+            Else
+                mID.Clear()
+                mComment.Clear()
+                mByDept.Clear()
+                mByName.Clear()
+                mByDate.Clear()
+                mToDept.Clear()
+                mResolved.Clear()
+                mName.Clear()
+                mDateResolution.Clear()
+                mResolution.Clear()
 
             End If
 

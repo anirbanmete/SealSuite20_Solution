@@ -274,7 +274,7 @@ Public Class clsProcessProj_OrdEntry
             If (pQryOrdEntryCount > 0) Then
 
                 Dim pQryOrdEntry = (From pRec In pSealProcessDBEntities.tblOrdEntry
-                                   Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
+                                    Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
 
                 mSalesOrderNo = pQryOrdEntry.fldSalesOrderNo
 
@@ -321,6 +321,26 @@ Public Class clsProcessProj_OrdEntry
                 'If (Not IsNothing(pQryOrdEntry.fldDateSigned) And Not IsDBNull(pQryOrdEntry.fldDateSigned)) Then
                 '    mEditedBy.User_DateSigned = pQryOrdEntry.fldDateSigned
                 'End If
+
+            Else
+
+                mSalesOrderNo = ""
+
+                mDateSales = DateTime.MinValue
+                mLeadTimeQuoted = 0
+
+                mPONo = ""
+                mDatePO = DateTime.MinValue
+                mDatePO_EDI = DateTime.MinValue
+
+                mHasSplReq = False
+                mTool_Reqd = False
+                mSplPkg_Lbl_Reqd = False
+                mOrdQty = 0
+                mDateOrdShip = DateTime.MinValue
+
+                mExpedited = False
+                mIsDFAR = False
 
             End If
             'mCustContact.RetrieveFromDB(ProjectID_In)

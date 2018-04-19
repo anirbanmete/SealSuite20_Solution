@@ -96,7 +96,7 @@ Public Class clsProcessProj_Shipping
             If (pQryShippingCount > 0) Then
 
                 Dim pQryShipping = (From pRec In pSealProcessDBEntities.tblShipping
-                                   Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
+                                    Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
 
                 mNotes = pQryShipping.fldNotes
                 'mEditedBy.User_Name = pQryShipping.fldUserName
@@ -105,6 +105,8 @@ Public Class clsProcessProj_Shipping
                 'If (Not IsNothing(pQryShipping.fldDateSigned) And Not IsDBNull(pQryShipping.fldDateSigned)) Then
                 '    mEditedBy.User_DateSigned = pQryShipping.fldDateSigned
                 'End If
+            Else
+                mNotes = ""
 
             End If
 

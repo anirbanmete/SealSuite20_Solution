@@ -23,22 +23,13 @@ Partial Class frmUserGroup
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmUserGroup))
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmUserGroup))
         Me.lblBorder = New System.Windows.Forms.Label()
         Me.pnlPanel1 = New System.Windows.Forms.Panel()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.grdUsers = New System.Windows.Forms.DataGridView()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column9 = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.Column7 = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.Column8 = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.Column6 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.cmdIPE = New System.Windows.Forms.Button()
         Me.cmdTest = New System.Windows.Forms.Button()
         Me.cmdEdit = New System.Windows.Forms.Button()
@@ -51,6 +42,15 @@ Partial Class frmUserGroup
         Me.txtFileName = New System.Windows.Forms.TextBox()
         Me.cmdClose = New System.Windows.Forms.Button()
         Me.openFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column9 = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.Column7 = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.Column8 = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.Column6 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.pnlPanel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.grdUsers, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -61,7 +61,7 @@ Partial Class frmUserGroup
         Me.lblBorder.BackColor = System.Drawing.Color.Black
         Me.lblBorder.Location = New System.Drawing.Point(2, 2)
         Me.lblBorder.Name = "lblBorder"
-        Me.lblBorder.Size = New System.Drawing.Size(978, 408)
+        Me.lblBorder.Size = New System.Drawing.Size(1010, 408)
         Me.lblBorder.TabIndex = 0
         '
         'pnlPanel1
@@ -74,7 +74,7 @@ Partial Class frmUserGroup
         Me.pnlPanel1.Controls.Add(Me.cmdClose)
         Me.pnlPanel1.Location = New System.Drawing.Point(3, 3)
         Me.pnlPanel1.Name = "pnlPanel1"
-        Me.pnlPanel1.Size = New System.Drawing.Size(976, 406)
+        Me.pnlPanel1.Size = New System.Drawing.Size(1008, 406)
         Me.pnlPanel1.TabIndex = 1
         '
         'GroupBox1
@@ -90,7 +90,7 @@ Partial Class frmUserGroup
         Me.GroupBox1.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(9, 39)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(955, 316)
+        Me.GroupBox1.Size = New System.Drawing.Size(988, 316)
         Me.GroupBox1.TabIndex = 649
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Enter User Data:"
@@ -111,73 +111,8 @@ Partial Class frmUserGroup
         Me.grdUsers.MultiSelect = False
         Me.grdUsers.Name = "grdUsers"
         Me.grdUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.grdUsers.Size = New System.Drawing.Size(927, 198)
+        Me.grdUsers.Size = New System.Drawing.Size(968, 198)
         Me.grdUsers.TabIndex = 637
-        '
-        'Column1
-        '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Column1.DefaultCellStyle = DataGridViewCellStyle2
-        Me.Column1.HeaderText = "Last Name"
-        Me.Column1.Name = "Column1"
-        '
-        'Column3
-        '
-        Me.Column3.HeaderText = "First Name"
-        Me.Column3.Name = "Column3"
-        '
-        'Column2
-        '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Verdana", 8.25!)
-        Me.Column2.DefaultCellStyle = DataGridViewCellStyle3
-        Me.Column2.HeaderText = "System Login"
-        Me.Column2.Name = "Column2"
-        Me.Column2.Width = 120
-        '
-        'Column9
-        '
-        Me.Column9.HeaderText = "Title"
-        Me.Column9.Name = "Column9"
-        Me.Column9.Width = 150
-        '
-        'Column7
-        '
-        Me.Column7.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.Column7.HeaderText = "Signature"
-        Me.Column7.Name = "Column7"
-        Me.Column7.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.Column7.Text = "Browse"
-        Me.Column7.UseColumnTextForButtonValue = True
-        Me.Column7.Width = 70
-        '
-        'Column8
-        '
-        Me.Column8.HeaderText = "Image"
-        Me.Column8.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch
-        Me.Column8.Name = "Column8"
-        '
-        'Column4
-        '
-        Me.Column4.HeaderText = "SealProcess"
-        Me.Column4.Name = "Column4"
-        Me.Column4.Width = 80
-        '
-        'Column5
-        '
-        Me.Column5.HeaderText = "SealTest"
-        Me.Column5.Name = "Column5"
-        Me.Column5.ReadOnly = True
-        Me.Column5.Width = 80
-        '
-        'Column6
-        '
-        Me.Column6.HeaderText = "SealIPE"
-        Me.Column6.Name = "Column6"
-        Me.Column6.ReadOnly = True
-        Me.Column6.Width = 80
         '
         'cmdIPE
         '
@@ -324,11 +259,79 @@ Partial Class frmUserGroup
         '
         Me.openFileDialog1.FileName = "OpenFileDialog1"
         '
+        'Column1
+        '
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Column1.DefaultCellStyle = DataGridViewCellStyle2
+        Me.Column1.HeaderText = "Last Name"
+        Me.Column1.Name = "Column1"
+        Me.Column1.Width = 114
+        '
+        'Column3
+        '
+        Me.Column3.HeaderText = "First Name"
+        Me.Column3.Name = "Column3"
+        Me.Column3.Width = 114
+        '
+        'Column2
+        '
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Verdana", 8.25!)
+        Me.Column2.DefaultCellStyle = DataGridViewCellStyle3
+        Me.Column2.HeaderText = "System Login"
+        Me.Column2.Name = "Column2"
+        Me.Column2.Width = 120
+        '
+        'Column9
+        '
+        Me.Column9.HeaderText = "Title"
+        Me.Column9.Name = "Column9"
+        Me.Column9.Width = 160
+        '
+        'Column7
+        '
+        Me.Column7.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.Column7.HeaderText = "Signature"
+        Me.Column7.Name = "Column7"
+        Me.Column7.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.Column7.Text = "Browse"
+        Me.Column7.UseColumnTextForButtonValue = True
+        Me.Column7.Width = 70
+        '
+        'Column8
+        '
+        Me.Column8.HeaderText = "Image"
+        Me.Column8.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch
+        Me.Column8.Name = "Column8"
+        Me.Column8.Width = 102
+        '
+        'Column4
+        '
+        Me.Column4.HeaderText = "SealProcess"
+        Me.Column4.Name = "Column4"
+        Me.Column4.Width = 80
+        '
+        'Column5
+        '
+        Me.Column5.HeaderText = "SealTest"
+        Me.Column5.Name = "Column5"
+        Me.Column5.ReadOnly = True
+        Me.Column5.Width = 80
+        '
+        'Column6
+        '
+        Me.Column6.HeaderText = "SealIPE"
+        Me.Column6.Name = "Column6"
+        Me.Column6.ReadOnly = True
+        Me.Column6.Width = 80
+        '
         'frmUserGroup
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(980, 412)
+        Me.ClientSize = New System.Drawing.Size(1013, 412)
         Me.ControlBox = False
         Me.Controls.Add(Me.pnlPanel1)
         Me.Controls.Add(Me.lblBorder)
@@ -360,6 +363,7 @@ Partial Class frmUserGroup
     Friend WithEvents grdUsers As System.Windows.Forms.DataGridView
     Friend WithEvents cmdClose As System.Windows.Forms.Button
     Friend WithEvents openFileDialog1 As System.Windows.Forms.OpenFileDialog
+    Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
@@ -369,5 +373,4 @@ Partial Class frmUserGroup
     Friend WithEvents Column4 As DataGridViewCheckBoxColumn
     Friend WithEvents Column5 As DataGridViewCheckBoxColumn
     Friend WithEvents Column6 As DataGridViewCheckBoxColumn
-    Friend WithEvents GroupBox1 As GroupBox
 End Class

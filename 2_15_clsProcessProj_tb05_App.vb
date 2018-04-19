@@ -373,7 +373,7 @@ Public Class clsProcessProj_App
             If (pQryAppCount > 0) Then
 
                 Dim pQryApp = (From pRec In pSealProcessDBEntities.tblApp
-                                   Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
+                               Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
 
                 mEqp = pQryApp.fldEqp
                 mExistingSeal = pQryApp.fldExistingSeal
@@ -393,6 +393,20 @@ Public Class clsProcessProj_App
                 'If (Not IsNothing(pQryApp.fldDateSigned) And Not IsDBNull(pQryApp.fldDateSigned)) Then
                 '    mEditedBy.User_DateSigned = pQryApp.fldDateSigned
                 'End If
+
+            Else
+                mEqp = ""
+                mExistingSeal = ""
+                mType = ""
+                mFluid = ""
+                mMaxLeak = 0.0
+                mIsPressCyclic = False
+                mPressCycle_Freq = 0.0
+                mPressCycle_Amp = 0.0
+                mShaped = False
+                mIsOoR = False
+                mIsSplitRing = False
+                mIsPreComp = False
 
             End If
 
@@ -612,7 +626,7 @@ Public Class clsProcessProj_App
                 If (pQryOpCondCount > 0) Then
 
                     Dim pQryOpCond = (From pRec In pSealProcessDBEntities.tblApp_OpCond
-                                       Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
+                                      Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
 
                     mT.Assy = pQryOpCond.fldTAssy
                     mT.Min = pQryOpCond.fldTMin
@@ -623,6 +637,17 @@ Public Class clsProcessProj_App
                     mPress.Min = pQryOpCond.fldPressMin
                     mPress.Max = pQryOpCond.fldPressMax
                     mPress.Oper = pQryOpCond.fldPressOper
+
+                Else
+                    mT.Assy = 0.0
+                    mT.Min = 0.0
+                    mT.Max = 0.0
+                    mT.Oper = 0.0
+
+                    mPress.Assy = 0.0
+                    mPress.Min = 0.0
+                    mPress.Max = 0.0
+                    mPress.Oper = 0.0
                 End If
 
             Catch ex As Exception
@@ -785,7 +810,7 @@ Public Class clsProcessProj_App
                 If (pAppLoadCount > 0) Then
 
                     Dim pAppLoad = (From pRec In pSealProcessDBEntities.tblApp_Load
-                                       Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
+                                    Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
 
 
                     mAssy.Min = pAppLoad.fldAssyMin
@@ -794,6 +819,12 @@ Public Class clsProcessProj_App
                     mOper.Min = pAppLoad.fldOperMin
                     mOper.Max = pAppLoad.fldOperMax
 
+                Else
+                    mAssy.Min = 0.0
+                    mAssy.Max = 0.0
+
+                    mOper.Min = 0.0
+                    mOper.Max = 0.0
 
                 End If
 
@@ -952,7 +983,7 @@ Public Class clsProcessProj_App
                 If (pAppFaceCavityCount > 0) Then
 
                     Dim pAppFaceCavity = (From pRec In pSealProcessDBEntities.tblApp_Cavity
-                                       Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
+                                          Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
 
                     For i As Integer = 0 To pAppFaceCavity.Count - 1
                         mID_Cavity.Add(pAppFaceCavity(i).fldID)
@@ -969,6 +1000,12 @@ Public Class clsProcessProj_App
                         Oper.Add(pOper)
                     Next
 
+                Else
+                    mID_Cavity.Clear()
+                    mDimName.Clear()
+
+                    Assy.Clear()
+                    Oper.Clear()
                 End If
 
             Catch ex As Exception
@@ -1174,7 +1211,7 @@ Public Class clsProcessProj_App
                 If (pQryCavityFlangeCount > 0) Then
 
                     Dim pQryCavityFlange = (From pRec In pSealProcessDBEntities.tblApp_CavityFlange
-                                       Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
+                                            Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
 
                     mMat1 = pQryCavityFlange.fldMat1
                     mMat2 = pQryCavityFlange.fldMat2
@@ -1184,6 +1221,16 @@ Public Class clsProcessProj_App
                     mSF2 = pQryCavityFlange.fldSF2
                     mMeasureSF = pQryCavityFlange.fldMeasureSF
                     mUnitSF = pQryCavityFlange.fldUnitSF
+
+                Else
+                    mMat1 = ""
+                    mMat2 = ""
+                    mHard1 = 0.0
+                    mHard2 = 0.0
+                    mSF1 = 0.0
+                    mSF2 = 0.0
+                    mMeasureSF = ""
+                    mUnitSF = ""
                 End If
 
             Catch ex As Exception
@@ -1310,6 +1357,10 @@ Public Class clsProcessProj_App
 
                     mPOrient = pQryAppFace.fldPOrient
                     mMaxFlangeSep = pQryAppFace.fldMaxFlangeSep
+
+                Else
+                    mPOrient = ""
+                    mMaxFlangeSep = 0.0
 
                 End If
 
@@ -1591,7 +1642,7 @@ Public Class clsProcessProj_App
                 If (pAppAxialCount > 0) Then
 
                     Dim pQryAppAxial = (From pRec In pSealProcessDBEntities.tblApp_Axial
-                                       Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
+                                        Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
 
                     mIsStatic = pQryAppAxial.fldIsStatic
                     mIsRotating = pQryAppAxial.fldIsRotating
@@ -1606,6 +1657,21 @@ Public Class clsProcessProj_App
                     mOscilate_V = pQryAppAxial.fldOscilate_V
                     mOscilate_CycleRate = pQryAppAxial.fldOscilate_CycleRate
                     mOscilate_ServiceLife = pQryAppAxial.fldOscilate_ServiceLife
+
+                Else
+                    mIsStatic = False
+                    mIsRotating = False
+                    mRPM = 0.0
+                    mIsRecip = False
+                    mRecip_Stroke = 0.0
+                    mRecip_V = 0.0
+                    mRecip_CycleRate = 0.0
+                    mRecip_ServiceLife = 0.0
+                    mIsOscilatory = False
+                    mOscilate_Rot = 0.0
+                    mOscilate_V = 0.0
+                    mOscilate_CycleRate = 0.0
+                    mOscilate_ServiceLife = 0.0
 
                 End If
 

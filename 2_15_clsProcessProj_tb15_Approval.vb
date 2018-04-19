@@ -114,7 +114,7 @@ Public Class clsProcessProj_Approval
             If (pQryApprovalCount > 0) Then
 
                 Dim pQryApproval = (From pRec In pSealProcessDBEntities.tblApproval
-                                   Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
+                                    Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
 
                 For i As Integer = 0 To pQryApproval.Count - 1
                     mID_Approval.Add(pQryApproval(i).fldID)
@@ -124,6 +124,15 @@ Public Class clsProcessProj_Approval
                     mSigned.Add(pQryApproval(i).fldSigned)
                     mDateSigned.Add(pQryApproval(i).fldDate)
                 Next
+
+            Else
+
+                mID_Approval.Clear()
+                mDept.Clear()
+                mName.Clear()
+                mTitle.Clear()
+                mSigned.Clear()
+                mDateSigned.Clear()
 
             End If
 

@@ -205,7 +205,7 @@ Public Class clsProcessProj_ITAR_Export
             If (pQryITAR_ExportCount > 0) Then
 
                 Dim pQryITAR_Export = (From pRec In pSealProcessDBEntities.tblITAR_Export
-                                   Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
+                                       Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
 
                 mIsCustOnDenialList = pQryITAR_Export.fldIsCustOnDenialList
                 mCountryProhibited = pQryITAR_Export.fldCountryProhibited
@@ -223,6 +223,16 @@ Public Class clsProcessProj_ITAR_Export
                 ''If (Not IsNothing(pQryITAR_Export.fldDateSigned) And Not IsDBNull(pQryITAR_Export.fldDateSigned)) Then
                 ''    mEditedBy.User_DateSigned = pQryITAR_Export.fldDateSigned
                 ''End If
+            Else
+                mIsCustOnDenialList = False
+                mCountryProhibited = False
+                mHasAntiBoycottLang = False
+                mIsUnder_ITAR_Reg = False
+                mITAR_Class = ""
+                mSaleExportControlled = ""
+                mEAR_Class = ""
+                mStatus = ""
+                mHTS_Class = ""
 
             End If
 

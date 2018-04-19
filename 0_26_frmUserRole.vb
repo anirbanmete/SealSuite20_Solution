@@ -4,7 +4,7 @@
 '                      FORM MODULE   :  frmUserRole                            '
 '                        VERSION NO  :  2.0                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  03JAN18                                '
+'                     LAST MODIFIED  :  17APR18                                '
 '                                                                              '
 '===============================================================================
 '
@@ -74,6 +74,13 @@ Public Class frmUserRole
 
         Dim pSealSuiteEntities As New SealSuiteDBEntities()
 
+        'AES 17APR18
+        pCmbColDesign_Role1.Items.Add("")
+        pCmbColDesign_Role2.Items.Add("")
+        pCmbColDesign_Role3.Items.Add("")
+        pCmbColDesign_SuperRole1.Items.Add("")
+        pCmbColDesign_SuperRole2.Items.Add("")
+
         '....tblRole
         Dim pQryRole = (From pRec In pSealSuiteEntities.tblRole Where pRec.fldIsSuperRole = False Order By pRec.fldID Ascending Select pRec).ToList()
 
@@ -95,6 +102,7 @@ Public Class frmUserRole
             Next
 
         End If
+
 
     End Sub
 
@@ -299,6 +307,58 @@ Public Class frmUserRole
 
         Return pIsSuperRole
     End Function
+
+    Private Sub grdUsers_EditingControlShowing(sender As Object, e As DataGridViewEditingControlShowingEventArgs) _
+                                                Handles grdUsers.EditingControlShowing
+        '===========================================================================================================    'AES 18APR18
+        Try
+            Dim pComboBoxUserRole As ComboBox = TryCast(e.Control, ComboBox)
+
+            If (pComboBoxUserRole IsNot Nothing) Then
+                RemoveHandler pComboBoxUserRole.SelectionChangeCommitted, New EventHandler(AddressOf ComboBoxUserRole_SelectionChangeCommitted)
+
+                AddHandler pComboBoxUserRole.SelectionChangeCommitted, New EventHandler(AddressOf ComboBoxUserRole_SelectionChangeCommitted)
+            End If
+
+            If (grdUsers.CurrentCellAddress.X = Column2.DisplayIndex) Then
+                Dim pCmbBox As ComboBox = e.Control
+            End If
+
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub ComboBoxUserRole_SelectionChangeCommitted(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        '============================================================================================================   'AES 18APR18
+        Try
+
+            Dim combo As ComboBox = CType(sender, ComboBox)
+            Dim pRowIndex As Integer = grdUsers.CurrentRow.Index
+            If (grdUsers.CurrentCellAddress.X = Column2.DisplayIndex) Then
+
+                If (combo.SelectedItem.ToString() = "") Then
+                    grdUsers.Item(2, pRowIndex).Value = ""
+                    grdUsers.Item(3, pRowIndex).Value = ""
+                End If
+
+            ElseIf (grdUsers.CurrentCellAddress.X = Column3.DisplayIndex) Then
+                If (combo.SelectedItem.ToString() = "") Then
+                    grdUsers.Item(3, pRowIndex).Value = ""
+                End If
+
+            ElseIf (grdUsers.CurrentCellAddress.X = Column5.DisplayIndex) Then
+                If (combo.SelectedItem.ToString() = "") Then
+                    grdUsers.Item(5, pRowIndex).Value = ""
+                End If
+
+            End If
+
+        Catch ex As Exception
+
+        End Try
+
+    End Sub
 
 #End Region
 

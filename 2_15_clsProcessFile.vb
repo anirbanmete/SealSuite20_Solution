@@ -2,9 +2,9 @@
 '                                                                              '
 '                          SOFTWARE  :  "SealProcess"                          '
 '                      CLASS MODULE  :  clsProcessFile                         '
-'                        VERSION NO  :  1.4                                    '
+'                        VERSION NO  :  1.5                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  27FEB18                                '
+'                     LAST MODIFIED  :  19APR18                                '
 '                                                                              '
 '===============================================================================
 
@@ -51,7 +51,7 @@ Public Class clsProcessFile
     Private Const mcDirOutput As String = mcDirRoot & "Output Files\"
 
     '....PDS Report  
-    Private Const mcPDSReportFileName As String = mcDirTemplates & "EN7300007 - Product Definition Sheet_Rev W_Rev02.xltx"
+    Private Const mcPDSReportFileName As String = mcDirTemplates & "EN7300007 - Product Definition Sheet_Rev W_Rev03.xltx"
 
     Private mPDS_FieldName As New List(Of String)
     Private mPDS_CellColName As New List(Of String)
@@ -1995,26 +1995,122 @@ Public Class clsProcessFile
 
             Next
 
+            Dim pSealSuiteEntities As New SealSuiteDBEntities()
+            Dim mcImgAspectRatio As Double = 1.8
             '....Attendees
-            ''For i As Integer = 0 To ProcessProj_In.Approval.Dept.Count - 1
-            ''    Dim pColumn_Dept As String = mAttendeesStartColName_Dept.Substring(0, 1)
-            ''    Dim pColumn_Name As String = mAttendeesStartColName_Name.Substring(0, 1)
-            ''    Dim pColumn_Title As String = mAttendeesStartColName_Title.Substring(0, 1)
-            ''    Dim pColumn_Date As String = mAttendeesStartColName_Date.Substring(0, 1)
+            For i As Integer = 0 To ProcessProj_In.Approval.Dept.Count - 1
+                Dim pColumn_Dept As String = mAttendeesStartColName_Dept.Substring(0, 1)
+                Dim pColumn_Signature As String = mAttendeesStartColName_Sign.Substring(0, 1)
+                Dim pColumn_Name As String = mAttendeesStartColName_Name.Substring(0, 1)
+                Dim pColumn_Title As String = mAttendeesStartColName_Title.Substring(0, 1)
+                Dim pColumn_Date As String = mAttendeesStartColName_Date.Substring(0, 1)
 
-            ''    Dim pIndex As Integer = ConvertToInt(mAttendeesStartColName_Dept.Substring(1, mAttendeesStartColName_Dept.Length - 1)) + i
-            ''    pExcelCellRange = pWkSheet.Range(pColumn_Dept & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.Approval.Dept(i)
+                Dim pIndex As Integer = ConvertToInt(mAttendeesStartColName_Dept.Substring(1, mAttendeesStartColName_Dept.Length - 1)) + i
+                pExcelCellRange = pWkSheet.Range(pColumn_Dept & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.Approval.Dept(i)
 
-            ''    pExcelCellRange = pWkSheet.Range(pColumn_Name & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.Approval.Name(i)
-            ''    pExcelCellRange = pWkSheet.Range(pColumn_Title & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.Approval.Title(i)
+                'AES 19APR18
+                If (Not IsNothing(ProcessProj_In.Approval.Name(i))) Then
 
-            ''    If (ProcessProj_In.Approval.DateSigned(i) <> DateTime.MinValue) Then
-            ''        pExcelCellRange = pWkSheet.Range(pColumn_Date & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.Approval.DateSigned(i)
-            ''    Else
-            ''        pExcelCellRange = pWkSheet.Range(pColumn_Date & pIndex.ToString()) : pExcelCellRange.Value = ""
-            ''    End If
+                    Dim pQry = (From pRec In pSealSuiteEntities.tblUser).ToList()
 
-            ''Next
+                    If (pQry.Count > 0) Then
+
+                        For j As Integer = 0 To pQry.Count - 1
+                            Dim pName As String = pQry(j).fldFirstName + " " + pQry(j).fldLastName
+
+                            If (ProcessProj_In.Approval.Name(i).Trim() = pName.Trim()) Then
+                                Dim pID As Integer = pQry(j).fldID
+                                Dim pQryUser = (From pRec In pSealSuiteEntities.tblUser Where pRec.fldID = pID Select pRec).ToList()
+
+                                Dim pWidth As Integer = 120
+                                Dim pHeight As Integer = pWidth / mcImgAspectRatio
+
+                                If (pQryUser.Count > 0) Then
+                                    If Not IsNothing(pQryUser(0).fldSignature) Then
+                                        Dim pArray As Byte() = DirectCast(pQryUser(0).fldSignature, Byte())
+                                        Dim pMS As New MemoryStream(pArray)
+
+                                        Dim pImage As Image = Image.FromStream(pMS)
+
+                                        Dim pBmp As Bitmap = New Bitmap(pImage)
+                                        Dim pNewBmp As Bitmap = New Bitmap(pWidth, pHeight)
+
+                                        '....Declare graphic taken from new bitmap
+                                        Dim pGr As Graphics = Graphics.FromImage(pNewBmp)
+                                        pGr.DrawImage(pBmp, 0, 0, pNewBmp.Width, pNewBmp.Height)
+
+                                        Dim pTemp_ImagePath As String = "C:\SealSuite\Images\User.jpeg"
+                                        pNewBmp.Save(pTemp_ImagePath, Imaging.ImageFormat.Jpeg)
+
+                                        pExcelCellRange = pWkSheet.Range(pColumn_Signature & pIndex.ToString())
+                                        pWkSheet.Shapes.AddPicture(pTemp_ImagePath, False, True, pExcelCellRange.Left, pExcelCellRange.Top, pExcelCellRange.Width * 2, pExcelCellRange.Height)
+                                        'Dim picture As EXCEL.Picture = pWkSheet.Pictures.(1, 1, pTemp_ImagePath)
+
+
+                                        If (File.Exists(pTemp_ImagePath)) Then
+                                            File.Delete(pTemp_ImagePath)
+                                        End If
+                                    End If
+                                End If
+                            End If
+
+                        Next
+
+                    End If
+
+
+                    ''If (ProcessProj_In.Approval.Name(i).Trim() = "Adam") Then
+                    ''    Dim pQryUser = (From pRec In pSealSuiteEntities.tblUser Where pRec.fldID = 1 Select pRec).ToList()
+
+                    ''    Dim pWidth As Integer = 120
+                    ''    Dim pHeight As Integer = pWidth / mcImgAspectRatio
+
+                    ''    If (pQryUser.Count > 0) Then
+                    ''        If Not IsNothing(pQryUser(0).fldSignature) Then
+                    ''            Dim pArray As Byte() = DirectCast(pQryUser(0).fldSignature, Byte())
+                    ''            Dim pMS As New MemoryStream(pArray)
+
+                    ''            'pExcelCellRange = pWkSheet.Range("B" & (i + 1).ToString()) : pExcelCellRange.Value = Image.FromStream(pMS)
+                    ''            Dim pImage As Image = Image.FromStream(pMS)
+                    ''            ''pWkSheet.Cells(i + 2, 2) = Image.FromStream(pMS)
+
+                    ''            Dim pBmp As Bitmap = New Bitmap(pImage)
+                    ''            'Dim pWidth As Integer = 120
+                    ''            'Dim pHeight As Integer = pWidth / mcImgAspectRatio
+                    ''            Dim pNewBmp As Bitmap = New Bitmap(pWidth, pHeight)
+
+                    ''            '....Declare graphic taken from new bitmap
+                    ''            Dim pGr As Graphics = Graphics.FromImage(pNewBmp)
+                    ''            pGr.DrawImage(pBmp, 0, 0, pNewBmp.Width, pNewBmp.Height)
+
+                    ''            Dim pTemp_ImagePath As String = "C:\SealSuite\Images\User.jpeg"
+                    ''            pNewBmp.Save(pTemp_ImagePath, Imaging.ImageFormat.Jpeg)
+
+                    ''            pExcelCellRange = pWkSheet.Range(pColumn_Signature & pIndex.ToString())
+                    ''            pWkSheet.Shapes.AddPicture(pTemp_ImagePath, False, True, pExcelCellRange.Left, pExcelCellRange.Top, pExcelCellRange.Width * 2, pExcelCellRange.Height)
+                    ''            'Dim picture As EXCEL.Picture = pWkSheet.Pictures.(1, 1, pTemp_ImagePath)
+
+
+                    ''            If (File.Exists(pTemp_ImagePath)) Then
+                    ''                File.Delete(pTemp_ImagePath)
+                    ''            End If
+                    ''        End If
+                    ''    End If
+                    ''End If
+                End If
+
+                'pExcelCellRange = pWkSheet.Range(pColumn_Signature & pIndex.ToString()) : pExcelCellRange.Insert(pTemp_ImagePath)
+
+                pExcelCellRange = pWkSheet.Range(pColumn_Name & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.Approval.Name(i)
+                pExcelCellRange = pWkSheet.Range(pColumn_Title & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.Approval.Title(i)
+
+                If (ProcessProj_In.Approval.DateSigned(i) <> DateTime.MinValue) Then
+                    pExcelCellRange = pWkSheet.Range(pColumn_Date & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.Approval.DateSigned(i)
+                Else
+                    pExcelCellRange = pWkSheet.Range(pColumn_Date & pIndex.ToString()) : pExcelCellRange.Value = ""
+                End If
+
+            Next
 
             pWkSheet = pWkbOrg.Worksheets("Issues-Comments")
             mIssueCommentStartColName_Issue = "A4"
@@ -2044,6 +2140,9 @@ Public Class clsProcessFile
 
                 pExcelCellRange = pWkSheet.Range(pColumn_Resolution & pIndex.ToString()) : pExcelCellRange.Value = ProcessProj_In.IssueCommnt.Resolution(i)
             Next
+
+            pWkSheet = pWkbOrg.Worksheets("DateTracking")
+            pWkSheet.Cells(6, 5) = ProcessProj_In.OrdEntry.LeadTimeQuoted
 
             Dim pOutputFileName As String = PartProj_In.PNR.PN() & PartProj_In.PNR.PN_Rev() & " PDS_RevW"
             pWkbOrg.SaveAs(mcDirOutput & pOutputFileName)

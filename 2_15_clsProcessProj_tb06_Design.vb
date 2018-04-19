@@ -350,7 +350,7 @@ Public Class clsProcessProj_Design
             If (pQryDesignCount > 0) Then
 
                 Dim pQryDesign = (From pRec In pSealProcessDBEntities.tblDesign
-                                   Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
+                                  Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
 
                 mCustDwgNo = pQryDesign.fldCustDwgNo
                 mCustDwgRev = pQryDesign.fldCustDwgRev
@@ -371,6 +371,21 @@ Public Class clsProcessProj_Design
                 'If (Not IsNothing(pQryDesign.fldDateSigned) And Not IsDBNull(pQryDesign.fldDateSigned)) Then
                 '    mEditedBy.User_DateSigned = pQryDesign.fldDateSigned
                 'End If
+
+            Else
+                mCustDwgNo = ""
+                mCustDwgRev = ""
+                mFrozen.Design = False
+                mFrozen.Process = False
+                mIsClass1 = False
+                mIsBuildToPrint = False
+                mMCS = ""
+                mIsWinnovation = False
+                mWinnovationNo = ""
+                mIsMat_OutsideVender = False
+                mFOD_Risks = ""
+                mLessonsLearned = ""
+                mNotes = ""
 
             End If
 
@@ -514,12 +529,16 @@ Public Class clsProcessProj_Design
                 If (pQryDesignInputCount > 0) Then
 
                     Dim pQryInput = (From pRec In pSealProcessDBEntities.tblDesign_Input
-                                       Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
+                                     Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
 
                     For i As Integer = 0 To pQryInput.Count - 1
                         mID_Input.Add(pQryInput(i).fldID)
                         mDesc.Add(pQryInput(i).fldDesc)
                     Next
+                Else
+
+                    mID_Input.Clear()
+                    mDesc.Clear()
 
                 End If
 
@@ -651,7 +670,7 @@ Public Class clsProcessProj_Design
                 If (pQryDesignVerificationCount > 0) Then
 
                     Dim pQryVerification = (From pRec In pSealProcessDBEntities.tblDesign_Verification
-                                       Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
+                                            Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
 
                     For i As Integer = 0 To pQryVerification.Count - 1
                         mID_Verification.Add(pQryVerification(i).fldID)
@@ -659,6 +678,12 @@ Public Class clsProcessProj_Design
                         mOwner.Add(pQryVerification(i).fldOwner)
                         mResult.Add(pQryVerification(i).fldResult)
                     Next
+
+                Else
+                    mID_Verification.Clear()
+                    mDesc.Clear()
+                    mOwner.Clear()
+                    mResult.Clear()
 
                 End If
 
@@ -799,6 +824,12 @@ Public Class clsProcessProj_Design
                         mInterpret.Add(pQrySpec(i).fldInterpret)
 
                     Next
+
+                Else
+                    ID_Cust.Clear()
+                    mType.Clear()
+                    mDesc.Clear()
+                    mInterpret.Clear()
 
                 End If
 
@@ -952,6 +983,13 @@ Public Class clsProcessProj_Design
                         mMax.Add(pQrySeal(i).fldMax)
 
                     Next
+
+                Else
+                    ID_Seal.Clear()
+                    mName.Clear()
+                    mMin.Clear()
+                    mNom.Clear()
+                    mMax.Clear()
 
                 End If
 

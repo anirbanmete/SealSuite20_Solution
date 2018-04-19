@@ -4,13 +4,14 @@
 '                      FORM MODULE   :  frmMain                                '
 '                        VERSION NO  :  1.4                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  14FEB18                                '
+'                     LAST MODIFIED  :  19APR18                                '
 '                                                                              '
 '===============================================================================
 '
 Imports System.DateTime
 Imports System.Globalization
 Imports System.Linq
+Imports System.Threading
 
 Public Class frmPartMain
     Inherits System.Windows.Forms.Form
@@ -926,6 +927,7 @@ Public Class frmPartMain
 
                     '....Rev
                     Dim pGrandChildNode As TreeNode = Nothing
+
                     If (Not IsNothing(pChildNode)) Then
                         For j As Integer = 0 To pChildNode.Nodes.Count - 1
                             If (pChildNode.Nodes(j).Text = mPartProject.PNR.PN_Rev) Then
@@ -1036,12 +1038,11 @@ Public Class frmPartMain
                 Dim pUserRole As New List(Of String)
                 pUserRole = gUser.RetrieveProcessUserRoles()
 
-
-
-
+                gIsProcessMainActive = True     'AES 17APR18
                 Dim pfrmProcessRoleSelection As New Process_frmRoleSelection()
                 pfrmProcessRoleSelection.ShowDialog()
 
+                SelectTreeNode()
                 'If (pUserRole.Count > 0) Then
                 '    Dim pfrmProcessRoleSelection As New Process_frmRoleSelection()
                 '    pfrmProcessRoleSelection.ShowDialog()
@@ -2783,6 +2784,7 @@ Public Class frmPartMain
     Private Sub cmdSave_Click(sender As System.Object, e As System.EventArgs) _
                               Handles tsbSave.Click
         '======================================================================
+        SaveData()      'AES 18APR18
         If (mblnAdd) Then
             AddRecords(mCustomerID, mPlatformID, mLocationID, mPNID, mRevID)
 
@@ -5568,6 +5570,24 @@ Public Class frmPartMain
                     mPartEntities.AddTotblRev(pRev)
                     mPartEntities.SaveChanges()
 
+                    '....Retrive records of previous Rev HW.        'AES 18APR18
+                    If (pID > 0) Then
+                        mPartProject.PNR.RetrieveFromDB(PNID_In, pID)
+                        mPartProject.PNR.SaveToDB(PNID_In, pRevID)
+
+                        'AES 19APR18
+                        Dim pPrev_Rev As String = ""
+                        Dim pQryRev = (From it In mPartEntities.tblRev
+                                       Where it.fldPNID = PNID_In And it.fldID = pID Select it).First()
+
+                        If (Not IsDBNull(pQryRev.fldCurrent) And Not IsNothing(pQryRev.fldCurrent)) Then
+                            pPrev_Rev = pQryRev.fldCurrent
+                        End If
+
+                        MessageBox.Show("All the Hardware data of the Previous Rev " & pPrev_Rev & vbLf & "have been copied to this New Rev " +
+                                        txtPN_PH_Rev.Text & ".", "New Rev Creation", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    End If
+
                 Else
                     'MessageBox.Show("Record already exists.", "Record Exists", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     'Exit Sub
@@ -6919,6 +6939,7 @@ Public Class frmPartMain
 
                 mPN = pPN
                 mPN_Rev = pRev
+                'mCurrent.Rev = pRev
 
                 Dim pPNID As Integer = Convert.ToInt64(e.Node.Parent.Tag)
                 Dim pRevID As Integer = Convert.ToInt64(e.Node.Tag)
@@ -8490,6 +8511,17 @@ Public Class frmPartMain
             End If
         End If
 
+        'AES 17APR18
+        If (gIsHWActive) Then
+            gIsHWActive = False
+            mPartProject = gPartProject.Clone()
+        End If
+
+        If (gIsProcessMainActive) Then
+            gIsProcessMainActive = False
+            mPartProject = gPartProject.Clone()
+        End If
+
     End Sub
 
     Private Sub cmbParkerPN_Part2_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) _
@@ -8703,10 +8735,16 @@ Public Class frmPartMain
         '=====================================================================================
         If (chkPNNew_Parent.Checked) Then
             mPartProject.PNR.ParentCurrent_Exists = True
+            chkPNLegacy_Parent.Checked = False
+            txtPNLegacy_Parent.Enabled = False
+            txtPNParentLegacy_Rev.Enabled = False
         Else
             mPartProject.PNR.ParentCurrent_Exists = False
-            txtParentCur_Part3.Text = ""
-            txtParentCur_Rev.Text = ""
+            ''txtParentCur_Part3.Text = ""
+            ''txtParentCur_Rev.Text = ""
+            chkPNLegacy_Parent.Checked = True
+            txtPNLegacy_Parent.Enabled = True
+            txtPNParentLegacy_Rev.Enabled = True
         End If
 
     End Sub
@@ -8716,10 +8754,18 @@ Public Class frmPartMain
         '=============================================================================================
         If (chkPNLegacy_Parent.Checked) Then
             mPartProject.PNR.ParentLegacy_Exists = True
+            chkPNNew_Parent.Checked = False
+            cmbParentCur_Part2.Enabled = False
+            txtParentCur_Part3.Enabled = False
+            txtParentCur_Rev.Enabled = False
         Else
             mPartProject.PNR.ParentLegacy_Exists = False
-            txtPNLegacy_Parent.Text = ""
-            txtPNParentLegacy_Rev.Text = ""
+            ''txtPNLegacy_Parent.Text = ""
+            ''txtPNParentLegacy_Rev.Text = ""
+            chkPNNew_Parent.Checked = True
+            cmbParentCur_Part2.Enabled = True
+            txtParentCur_Part3.Enabled = True
+            txtParentCur_Rev.Enabled = True
         End If
 
     End Sub
@@ -8729,10 +8775,16 @@ Public Class frmPartMain
         '===========================================================================================
         If (chkRefDimNew_Exists.Checked) Then
             mPartProject.PNR.RefDimCurrent_Exists = True
+            chkRefDimLegacy_Exists.Checked = False
+            txtRefPNNewDim_Legacy.Enabled = False
+            txtRefPNLegacyDim_Rev.Enabled = False
         Else
             mPartProject.PNR.RefDimCurrent_Exists = False
-            txtRefPNNewDim_Part3.Text = ""
-            txtRefPNNewDim_Rev.Text = ""
+            ''txtRefPNNewDim_Part3.Text = ""
+            ''txtRefPNNewDim_Rev.Text = ""
+            chkRefDimLegacy_Exists.Checked = True
+            txtRefPNNewDim_Legacy.Enabled = True
+            txtRefPNLegacyDim_Rev.Enabled = True
         End If
 
     End Sub
@@ -8742,10 +8794,18 @@ Public Class frmPartMain
         '==============================================================================================
         If (chkRefDimLegacy_Exists.Checked) Then
             mPartProject.PNR.RefDimLegacy_Exists = True
+            chkRefDimNew_Exists.Checked = False
+            cmbRefPNNewDim_Part2.Enabled = False
+            txtRefPNNewDim_Part3.Enabled = False
+            txtRefPNNewDim_Rev.Enabled = False
         Else
             mPartProject.PNR.RefDimLegacy_Exists = False
-            txtRefPNNewNotes_Legacy.Text = ""
-            txtRefPNLegacyNotes_Rev.Text = ""
+            ''txtRefPNNewNotes_Legacy.Text = ""
+            ''txtRefPNLegacyNotes_Rev.Text = ""
+            chkRefDimNew_Exists.Checked = True
+            cmbRefPNNewDim_Part2.Enabled = True
+            txtRefPNNewDim_Part3.Enabled = True
+            txtRefPNNewDim_Rev.Enabled = True
         End If
 
     End Sub
@@ -8755,10 +8815,16 @@ Public Class frmPartMain
         '==============================================================================================
         If (chkRefDimNotes_Exists.Checked) Then
             mPartProject.PNR.RefNotesCurrent_Exists = True
+            chkRefNotesLegacy_Exists.Checked = False
+            txtRefPNNewNotes_Legacy.Enabled = False
+            txtRefPNLegacyNotes_Rev.Enabled = False
         Else
             mPartProject.PNR.RefNotesCurrent_Exists = False
-            txtRefPNNotes_Part3.Text = ""
-            txtRefPNNewNotes_Rev.Text = ""
+            ''txtRefPNNotes_Part3.Text = ""
+            ''txtRefPNNewNotes_Rev.Text = ""
+            chkRefNotesLegacy_Exists.Checked = True
+            txtRefPNNewNotes_Legacy.Enabled = True
+            txtRefPNLegacyNotes_Rev.Enabled = True
         End If
     End Sub
 
@@ -8767,10 +8833,18 @@ Public Class frmPartMain
         '==================================================================================================
         If (chkRefNotesLegacy_Exists.Checked) Then
             mPartProject.PNR.RefNotesLegacy_Exists = True
+            chkRefDimNotes_Exists.Checked = False
+            cmbRefNotesNewPN_Part2.Enabled = False
+            txtRefPNNotes_Part3.Enabled = False
+            txtRefPNNewNotes_Rev.Enabled = False
         Else
             mPartProject.PNR.RefNotesLegacy_Exists = False
-            txtRefPNNewNotes_Legacy.Text = ""
-            txtRefPNLegacyNotes_Rev.Text = ""
+            ''txtRefPNNewNotes_Legacy.Text = ""
+            ''txtRefPNLegacyNotes_Rev.Text = ""
+            chkRefDimNotes_Exists.Checked = True
+            cmbRefNotesNewPN_Part2.Enabled = True
+            txtRefPNNotes_Part3.Enabled = True
+            txtRefPNNewNotes_Rev.Enabled = True
         End If
     End Sub
 

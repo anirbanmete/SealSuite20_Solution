@@ -341,6 +341,21 @@ Public Class clsProcessProj_Unit
                 mCust.PIndx = Array.IndexOf(mcPUnit_List, pQry(0).fldPUnitCust)
                 mCust.TIndx = Array.IndexOf(mcTUnit_List, pQry(0).fldTUnitCust)
                 mCust.LeakIndx = Array.IndexOf(mcLeakUnit_List, pQry(0).fldLeakUnitCust)
+
+            Else
+                '....PH
+                mPH.LIndx = 0
+                mPH.FIndx = 0
+                mPH.PIndx = 0
+                mPH.TIndx = 0
+                mPH.LeakIndx = 0
+
+                '....Cust
+                mCust.LIndx = 0
+                mCust.FIndx = 0
+                mCust.PIndx = 0
+                mCust.TIndx = 0
+                mCust.LeakIndx = 0
             End If
 
         Catch ex As Exception

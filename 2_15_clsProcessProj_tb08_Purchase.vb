@@ -288,7 +288,7 @@ Public Class clsProcessProj_Purchase
                 If (pQryPurchaseMatCount > 0) Then
 
                     Dim pQryMat = (From pRec In pSealProcessDBEntities.tblPurchase_Mat
-                                       Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
+                                   Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
 
                     For i As Integer = 0 To pQryMat.Count - 1
                         mID_Mat.Add(pQryMat(i).fldID)
@@ -299,6 +299,14 @@ Public Class clsProcessProj_Purchase
                         mLeadTime.Add(pQryMat(i).fldLeadTime)
 
                     Next
+
+                Else
+                    mID_Mat.Clear()
+                    mItem.Clear()
+                    mEstQty.Clear()
+                    mQty_Unit.Clear()
+                    mStatus.Clear()
+                    mLeadTime.Clear()
 
                 End If
 
@@ -436,7 +444,7 @@ Public Class clsProcessProj_Purchase
                 If (pQryPurchaseDwgCount > 0) Then
 
                     Dim pQryPurchaseDwg = (From pRec In pSealProcessDBEntities.tblPurchase_Dwg
-                                       Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
+                                           Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
 
                     For i As Integer = 0 To pQryPurchaseDwg.Count - 1
                         mID_Dwg.Add(pQryPurchaseDwg(i).fldID)
@@ -444,6 +452,11 @@ Public Class clsProcessProj_Purchase
                         mDesc.Add(pQryPurchaseDwg(i).fldDesc)
                         mLeadTime.Add(pQryPurchaseDwg(i).fldLeadTime)
                     Next
+                Else
+                    mID_Dwg.Clear()
+                    mNo.Clear()
+                    mDesc.Clear()
+                    mLeadTime.Clear()
 
                 End If
 

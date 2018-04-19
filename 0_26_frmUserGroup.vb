@@ -12,6 +12,8 @@ Imports System.Globalization
 Imports System.Linq
 Imports System.Windows.Forms
 Imports System.IO
+Imports Microsoft.Office
+Imports EXCEL = Microsoft.Office.Interop.Excel
 
 Public Class frmUserGroup
 
@@ -68,6 +70,7 @@ Public Class frmUserGroup
 
     Private Sub PopulateDataGrid()
         '==========================
+
         Dim pSealSuiteEntities As New SealSuiteDBEntities()
         Try
 

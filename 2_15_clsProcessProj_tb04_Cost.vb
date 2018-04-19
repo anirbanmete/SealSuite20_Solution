@@ -123,7 +123,7 @@ Public Class clsProcessProj_Cost
             If (pQryCostCount > 0) Then
 
                 Dim pQryCost = (From pRec In pSealProcessDBEntities.tblCost
-                                   Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
+                                Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
 
                 mLocQuoteFile = pQryCost.fldLocQuoteFile
                 mNotes = pQryCost.fldNotes
@@ -133,6 +133,10 @@ Public Class clsProcessProj_Cost
                 'If (Not IsNothing(pQryCost.fldDateSigned) And Not IsDBNull(pQryCost.fldDateSigned)) Then
                 '    mEditedBy.User_DateSigned = pQryCost.fldDateSigned
                 'End If
+
+            Else
+                mLocQuoteFile = ""
+                mNotes = ""
 
             End If
 
@@ -282,7 +286,7 @@ Public Class clsProcessProj_Cost
                 If (pQryCostCount > 0) Then
 
                     Dim pQryCostSplOperation = (From pRec In pSealProcessDBEntities.tblCost_SplOperation
-                                       Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
+                                                Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
 
                     For i As Integer = 0 To pQryCostSplOperation.Count - 1
                         mID_SplOp.Add(pQryCostSplOperation(i).fldID)
@@ -291,6 +295,13 @@ Public Class clsProcessProj_Cost
                         mLeadTime.Add(pQryCostSplOperation(i).fldLeadTime)
                         mCost.Add(pQryCostSplOperation(i).fldCost)
                     Next
+
+                Else
+                    mID_SplOp.Clear()
+                    mDesc.Clear()
+                    mSpec.Clear()
+                    mLeadTime.Clear()
+                    mCost.Clear()
 
                 End If
 

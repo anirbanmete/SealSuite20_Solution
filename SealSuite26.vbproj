@@ -8,9 +8,9 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{C7F10AE0-1A98-4ED2-BF8E-C0A93E9D9A8A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>SealSuite24.My.MyApplication</StartupObject>
-    <RootNamespace>SealSuite24</RootNamespace>
-    <AssemblyName>SealSuite24</AssemblyName>
+    <StartupObject>SealSuiteTrial26.My.MyApplication</StartupObject>
+    <RootNamespace>SealSuiteTrial26</RootNamespace>
+    <AssemblyName>SealSuiteTrial26</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
@@ -23,7 +23,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>SealSuite24.xml</DocumentationFile>
+    <DocumentationFile>SealSuiteTrial26.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
@@ -33,7 +33,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>SealSuite24.xml</DocumentationFile>
+    <DocumentationFile>SealSuiteTrial26.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -496,15 +496,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model0_SealSuite.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Model5_SealProcess.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model5_SealProcess.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Model2_SealMCS.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model2_SealMCS.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model5_SealProcess.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model5_SealProcess.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model4_SealIPE.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -848,13 +848,13 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model4_SealIPE.Designer.vb</LastGenOutput>
     </EntityDeploy>
-    <EntityDeploy Include="Model2_SealMCS.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model2_SealMCS.Designer.vb</LastGenOutput>
-    </EntityDeploy>
     <EntityDeploy Include="Model5_SealProcess.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model5_SealProcess.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Model2_SealMCS.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model2_SealMCS.Designer.vb</LastGenOutput>
     </EntityDeploy>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
@@ -864,28 +864,35 @@
     <None Include="My Project\DataSources\SealIPEDBEntities1.datasource" />
     <None Include="My Project\DataSources\SealIPEDBEntities2.datasource" />
     <None Include="My Project\DataSources\SealIPEDBEntities3.datasource" />
+    <None Include="My Project\DataSources\SealIPEDBEntities4.datasource" />
     <None Include="My Project\DataSources\SealIPEMCSDBEntities.datasource" />
     <None Include="My Project\DataSources\SealIPEMCSDBEntities1.datasource" />
     <None Include="My Project\DataSources\SealIPEMCSDBEntities2.datasource" />
     <None Include="My Project\DataSources\SealIPEMCSDBEntities3.datasource" />
+    <None Include="My Project\DataSources\SealIPEMCSDBEntities4.datasource" />
     <None Include="My Project\DataSources\SealMCSDBEntities.datasource" />
     <None Include="My Project\DataSources\SealMCSDBEntities1.datasource" />
+    <None Include="My Project\DataSources\SealMCSDBEntities2.datasource" />
     <None Include="My Project\DataSources\SealPartDBEntities.datasource" />
     <None Include="My Project\DataSources\SealPartDBEntities1.datasource" />
     <None Include="My Project\DataSources\SealPartDBEntities2.datasource" />
     <None Include="My Project\DataSources\SealPartDBEntities3.datasource" />
+    <None Include="My Project\DataSources\SealPartDBEntities4.datasource" />
     <None Include="My Project\DataSources\SealProcessDBEntities.datasource" />
     <None Include="My Project\DataSources\SealProcessDBEntities1.datasource" />
     <None Include="My Project\DataSources\SealProcessDBEntities2.datasource" />
     <None Include="My Project\DataSources\SealProcessDBEntities3.datasource" />
+    <None Include="My Project\DataSources\SealProcessDBEntities4.datasource" />
     <None Include="My Project\DataSources\SealSuiteDBEntities.datasource" />
     <None Include="My Project\DataSources\SealSuiteDBEntities1.datasource" />
     <None Include="My Project\DataSources\SealSuiteDBEntities2.datasource" />
     <None Include="My Project\DataSources\SealSuiteDBEntities3.datasource" />
+    <None Include="My Project\DataSources\SealSuiteDBEntities4.datasource" />
     <None Include="My Project\DataSources\SealTestDBEntities.datasource" />
     <None Include="My Project\DataSources\SealTestDBEntities1.datasource" />
     <None Include="My Project\DataSources\SealTestDBEntities2.datasource" />
     <None Include="My Project\DataSources\SealTestDBEntities3.datasource" />
+    <None Include="My Project\DataSources\SealTestDBEntities4.datasource" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>

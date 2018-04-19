@@ -22,6 +22,7 @@
           <EntitySet Name="tblMaterial" EntityType="SealIPEMCSDBModel.Store.tblMaterial" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblMaterial_S" EntityType="SealIPEMCSDBModel.Store.tblMaterial_S" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblMatTemper" EntityType="SealIPEMCSDBModel.Store.tblMatTemper" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblMatTemper_S" EntityType="SealIPEMCSDBModel.Store.tblMatTemper_S" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblPlatingThick" EntityType="SealIPEMCSDBModel.Store.tblPlatingThick" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblPlatingType" EntityType="SealIPEMCSDBModel.Store.tblPlatingType" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblTemper" EntityType="SealIPEMCSDBModel.Store.tblTemper" store:Type="Tables" Schema="dbo" />
@@ -236,7 +237,7 @@
             <PropertyRef Name="fldMatCode" />
           </Key>
           <Property Name="fldMatCode" Type="int" Nullable="false" />
-          <Property Name="fldCode" Type="int" />
+          <Property Name="fldCode" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="tblMaterial">
           <Key>
@@ -262,6 +263,13 @@
           </Key>
           <Property Name="fldMatCode" Type="int" Nullable="false" />
           <Property Name="fldTemperCode" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblMatTemper_S">
+          <Key>
+            <PropertyRef Name="fldMatCode" />
+          </Key>
+          <Property Name="fldMatCode" Type="int" Nullable="false" />
+          <Property Name="fldTemperCode" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="tblPlatingThick">
           <Key>
@@ -326,7 +334,7 @@
           <Property Name="fldGeomTemplate" Type="bit" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'SealMCSDB1.dbo.tblUSeal_ManfData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'SealMCSDB1a.dbo.tblUSeal_ManfData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="tblUSeal_ManfData">
           <Key>
@@ -385,6 +393,7 @@
           <EntitySet Name="tblMaterial" EntityType="SealIPEMCSDBModel.tblMaterial" />
           <EntitySet Name="tblMaterial_S" EntityType="SealIPEMCSDBModel.tblMaterial_S" />
           <EntitySet Name="tblMatTemper" EntityType="SealIPEMCSDBModel.tblMatTemper" />
+          <EntitySet Name="tblMatTemper_S" EntityType="SealIPEMCSDBModel.tblMatTemper_S" />
           <EntitySet Name="tblPlatingThick" EntityType="SealIPEMCSDBModel.tblPlatingThick" />
           <EntitySet Name="tblPlatingType" EntityType="SealIPEMCSDBModel.tblPlatingType" />
           <EntitySet Name="tblTemper" EntityType="SealIPEMCSDBModel.tblTemper" />
@@ -588,7 +597,7 @@
             <PropertyRef Name="fldMatCode" />
           </Key>
           <Property Name="fldMatCode" Type="Int32" Nullable="false" />
-          <Property Name="fldCode" Type="Int32" />
+          <Property Name="fldCode" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
         </EntityType>
         <EntityType Name="tblMaterial">
           <Key>
@@ -614,6 +623,13 @@
           </Key>
           <Property Name="fldMatCode" Type="Int32" Nullable="false" />
           <Property Name="fldTemperCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblMatTemper_S">
+          <Key>
+            <PropertyRef Name="fldMatCode" />
+          </Key>
+          <Property Name="fldMatCode" Type="Int32" Nullable="false" />
+          <Property Name="fldTemperCode" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
         </EntityType>
         <EntityType Name="tblPlatingThick">
           <Key>
@@ -947,6 +963,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tblMatTemper_S">
+            <EntityTypeMapping TypeName="SealIPEMCSDBModel.tblMatTemper_S">
+              <MappingFragment StoreEntitySet="tblMatTemper_S">
+                <ScalarProperty Name="fldMatCode" ColumnName="fldMatCode" />
+                <ScalarProperty Name="fldTemperCode" ColumnName="fldTemperCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tblPlatingThick">
             <EntityTypeMapping TypeName="SealIPEMCSDBModel.tblPlatingThick">
               <MappingFragment StoreEntitySet="tblPlatingThick">
@@ -1084,14 +1108,15 @@
         <EntityTypeShape EntityType="SealIPEMCSDBModel.tblMaterial" Width="1.5" PointX="10.75" PointY="7.75" Height="1.9802864583333388" IsExpanded="true" />
         <EntityTypeShape EntityType="SealIPEMCSDBModel.tblMaterial_S" Width="1.5" PointX="10.75" PointY="10.75" Height="1.5956835937500031" IsExpanded="true" />
         <EntityTypeShape EntityType="SealIPEMCSDBModel.tblMatTemper" Width="1.5" PointX="0.75" PointY="11.75" Height="1.4033821614583388" IsExpanded="true" />
-        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblPlatingThick" Width="1.5" PointX="12.75" PointY="0.75" Height="1.9802864583333388" IsExpanded="true" />
-        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblPlatingType" Width="1.5" PointX="12.75" PointY="3.75" Height="1.4033821614583388" IsExpanded="true" />
-        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblTemper" Width="1.5" PointX="12.75" PointY="6.75" Height="1.5956835937500031" IsExpanded="true" />
-        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblUSeal_Envelope" Width="1.5" PointX="12.75" PointY="9.75" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblUSeal_FEAParams" Width="1.5" PointX="12.75" PointY="12.75" Height="2.5571907552083317" IsExpanded="true" />
-        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblUSeal_Geom" Width="1.5" PointX="2.75" PointY="13.75" Height="2.9417936197916674" IsExpanded="true" />
-        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblUSeal_ManfData" Width="1.5" PointX="4.75" PointY="13.75" Height="2.5571907552083246" IsExpanded="true" />
-        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblUSealNew_Geom" Width="1.5" PointX="6.75" PointY="13.75" Height="3.3263964843750102" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblMatTemper_S" Width="1.5" PointX="12.75" PointY="0.75" Height="1.4033821614583388" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblPlatingThick" Width="1.5" PointX="12.75" PointY="3.75" Height="1.9802864583333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblPlatingType" Width="1.5" PointX="12.75" PointY="6.75" Height="1.4033821614583388" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblTemper" Width="1.5" PointX="12.75" PointY="9.75" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblUSeal_Envelope" Width="1.5" PointX="12.75" PointY="12.75" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblUSeal_FEAParams" Width="1.5" PointX="2.75" PointY="13.75" Height="2.5571907552083282" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblUSeal_Geom" Width="1.5" PointX="4.75" PointY="13.75" Height="2.9417936197916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblUSeal_ManfData" Width="1.5" PointX="6.75" PointY="13.75" Height="2.5571907552083246" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealIPEMCSDBModel.tblUSealNew_Geom" Width="1.5" PointX="8.75" PointY="13.75" Height="3.3263964843750102" IsExpanded="true" />
       </Diagram>
     </Diagrams>
   </Designer>

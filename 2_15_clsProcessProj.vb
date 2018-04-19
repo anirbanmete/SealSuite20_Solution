@@ -490,7 +490,13 @@ Public Class clsProcessProj
 
         Else
             mID = 0
-
+            mPOPCoding = ""
+            mRating = ""
+            mType = ""
+            mDateOpen = DateTime.MinValue
+            mDateLastModified = DateTime.MinValue
+            mDateClose = DateTime.MinValue
+            mLastModifiedBy = ""
         End If
 
     End Sub
@@ -688,7 +694,7 @@ Public Class clsProcessProj
                 If (pQryCustContactCount > 0) Then
 
                     Dim pQryCustContact = (From pRec In pSealProcessDBEntities.tblPreOrder_CustContact
-                                       Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
+                                           Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
 
                     For i As Integer = 0 To pQryCustContact.Count - 1
                         mID_Cust.Add(pQryCustContact(i).fldID)
@@ -697,6 +703,13 @@ Public Class clsProcessProj
                         mPhone.Add(pQryCustContact(i).fldPhone)
                         mEmail.Add(pQryCustContact(i).fldEmail)
                     Next
+
+                Else
+                    mID_Cust.Clear()
+                    mDeptName.Clear()
+                    mName.Clear()
+                    mPhone.Clear()
+                    mEmail.Clear()
 
                 End If
 

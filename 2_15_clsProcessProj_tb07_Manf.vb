@@ -154,14 +154,14 @@ Public Class clsProcessProj_Manf
 
         Try
 
-            '....tblApp
+            '....tblManf
             Dim pQryManfCount As Integer = (From pRec In pSealProcessDBEntities.tblManf
                                Where pRec.fldProcessProjectID = ProjectID_In Select pRec).Count()
 
             If (pQryManfCount > 0) Then
 
                 Dim pQryManf = (From pRec In pSealProcessDBEntities.tblManf
-                                   Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
+                                Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
 
                 mBaseMat_PartNo = pQryManf.fldBaseMat_PartNo
                 mSpringMat_PartNo = pQryManf.fldSpringMat_PartNo
@@ -174,6 +174,12 @@ Public Class clsProcessProj_Manf
                 'If (Not IsNothing(pQryManf.fldDateSigned) And Not IsDBNull(pQryManf.fldDateSigned)) Then
                 '    mEditedBy.User_DateSigned = pQryManf.fldDateSigned
                 'End If
+
+            Else
+                mBaseMat_PartNo = ""
+                mSpringMat_PartNo = ""
+                mHT = ""
+                mPreComp_Glue = ""
 
             End If
 
@@ -359,7 +365,7 @@ Public Class clsProcessProj_Manf
                 If (pQryManfCount > 0) Then
 
                     Dim pQryManf = (From pRec In pSealProcessDBEntities.tblManf_Tool_Gage
-                                       Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
+                                    Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
 
                     For i As Integer = 0 To pQryManf.Count - 1
                         mID_Tool.Add(pQryManf(i).fldID)
@@ -371,6 +377,15 @@ Public Class clsProcessProj_Manf
                         mDesignResponsibility.Add(pQryManf(i).fldDesignResponsibility)
 
                     Next
+
+                Else
+                    mID_Tool.Clear()
+                    mPartNo.Clear()
+                    mDesc.Clear()
+                    mType.Clear()
+                    mStatus.Clear()
+                    mLeadTime.Clear()
+                    mDesignResponsibility.Clear()
 
                 End If
 

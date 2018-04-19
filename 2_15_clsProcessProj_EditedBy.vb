@@ -173,6 +173,9 @@ Public Class clsProcessProj_EditedBy
         '==========================================================================================================
         Dim pSealProcessDBEntities As New SealProcessDBEntities()
         Dim pIsRecExists As Boolean = False
+        mUser.Name = ""
+        mUser.Signed = False
+        mUser.DateSigned = DateTime.MinValue
 
         Try
 

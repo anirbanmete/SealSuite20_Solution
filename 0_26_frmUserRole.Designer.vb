@@ -47,7 +47,7 @@ Partial Class frmUserRole
         Me.lblBorder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lblBorder.Location = New System.Drawing.Point(2, 2)
         Me.lblBorder.Name = "lblBorder"
-        Me.lblBorder.Size = New System.Drawing.Size(770, 244)
+        Me.lblBorder.Size = New System.Drawing.Size(862, 258)
         Me.lblBorder.TabIndex = 0
         '
         'pnlPanel1
@@ -58,7 +58,7 @@ Partial Class frmUserRole
         Me.pnlPanel1.Controls.Add(Me.grdUsers)
         Me.pnlPanel1.Location = New System.Drawing.Point(3, 3)
         Me.pnlPanel1.Name = "pnlPanel1"
-        Me.pnlPanel1.Size = New System.Drawing.Size(768, 242)
+        Me.pnlPanel1.Size = New System.Drawing.Size(860, 256)
         Me.pnlPanel1.TabIndex = 1
         '
         'cmdCancel
@@ -67,7 +67,7 @@ Partial Class frmUserRole
         Me.cmdCancel.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdCancel.Image = CType(resources.GetObject("cmdCancel.Image"), System.Drawing.Image)
         Me.cmdCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdCancel.Location = New System.Drawing.Point(677, 204)
+        Me.cmdCancel.Location = New System.Drawing.Point(769, 214)
         Me.cmdCancel.Name = "cmdCancel"
         Me.cmdCancel.Size = New System.Drawing.Size(80, 30)
         Me.cmdCancel.TabIndex = 82
@@ -80,7 +80,7 @@ Partial Class frmUserRole
         Me.cmdOK.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdOK.Image = CType(resources.GetObject("cmdOK.Image"), System.Drawing.Image)
         Me.cmdOK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdOK.Location = New System.Drawing.Point(581, 204)
+        Me.cmdOK.Location = New System.Drawing.Point(673, 214)
         Me.cmdOK.Name = "cmdOK"
         Me.cmdOK.Size = New System.Drawing.Size(80, 30)
         Me.cmdOK.TabIndex = 81
@@ -103,7 +103,7 @@ Partial Class frmUserRole
         Me.grdUsers.MultiSelect = False
         Me.grdUsers.Name = "grdUsers"
         Me.grdUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.grdUsers.Size = New System.Drawing.Size(751, 186)
+        Me.grdUsers.Size = New System.Drawing.Size(841, 186)
         Me.grdUsers.TabIndex = 80
         '
         'Column1
@@ -119,31 +119,31 @@ Partial Class frmUserRole
         '
         Me.Column2.HeaderText = "Role 1"
         Me.Column2.Name = "Column2"
-        Me.Column2.Width = 108
+        Me.Column2.Width = 135
         '
         'Column3
         '
         Me.Column3.HeaderText = "Role 2"
         Me.Column3.Name = "Column3"
-        Me.Column3.Width = 108
+        Me.Column3.Width = 135
         '
         'Column4
         '
         Me.Column4.HeaderText = "Role 3"
         Me.Column4.Name = "Column4"
-        Me.Column4.Width = 108
+        Me.Column4.Width = 135
         '
         'Column5
         '
         Me.Column5.HeaderText = "Super Role 1"
         Me.Column5.Name = "Column5"
-        Me.Column5.Width = 108
+        Me.Column5.Width = 110
         '
         'Column6
         '
         Me.Column6.HeaderText = "Super Role 2"
         Me.Column6.Name = "Column6"
-        Me.Column6.Width = 108
+        Me.Column6.Width = 110
         '
         'Column7
         '
@@ -155,7 +155,7 @@ Partial Class frmUserRole
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(773, 248)
+        Me.ClientSize = New System.Drawing.Size(865, 260)
         Me.ControlBox = False
         Me.Controls.Add(Me.pnlPanel1)
         Me.Controls.Add(Me.lblBorder)
@@ -174,11 +174,11 @@ Partial Class frmUserRole
     Private WithEvents cmdCancel As System.Windows.Forms.Button
     Private WithEvents cmdOK As System.Windows.Forms.Button
     Friend WithEvents grdUsers As System.Windows.Forms.DataGridView
-    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewComboBoxColumn
-    Friend WithEvents Column3 As System.Windows.Forms.DataGridViewComboBoxColumn
-    Friend WithEvents Column4 As System.Windows.Forms.DataGridViewComboBoxColumn
-    Friend WithEvents Column5 As System.Windows.Forms.DataGridViewComboBoxColumn
-    Friend WithEvents Column6 As System.Windows.Forms.DataGridViewComboBoxColumn
-    Friend WithEvents Column7 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As DataGridViewComboBoxColumn
+    Friend WithEvents Column3 As DataGridViewComboBoxColumn
+    Friend WithEvents Column4 As DataGridViewComboBoxColumn
+    Friend WithEvents Column5 As DataGridViewComboBoxColumn
+    Friend WithEvents Column6 As DataGridViewComboBoxColumn
+    Friend WithEvents Column7 As DataGridViewTextBoxColumn
 End Class

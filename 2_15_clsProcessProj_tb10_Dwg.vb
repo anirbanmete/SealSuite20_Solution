@@ -124,7 +124,7 @@ Public Class clsProcessProj_Dwg
             If (pQryDwgCount > 0) Then
 
                 Dim pQryDwg = (From pRec In pSealProcessDBEntities.tblDwg
-                                   Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
+                               Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
 
                 mDesignLevel = pQryDwg.fldDesignLevel
                 'mEditedBy.User_Name = pQryDwg.fldUserName
@@ -133,6 +133,9 @@ Public Class clsProcessProj_Dwg
                 'If (Not IsNothing(pQryDwg.fldDateSigned) And Not IsDBNull(pQryDwg.fldDateSigned)) Then
                 '    mEditedBy.User_DateSigned = pQryDwg.fldDateSigned
                 'End If
+
+            Else
+                mDesignLevel = ""
 
             End If
 
@@ -284,7 +287,7 @@ Public Class clsProcessProj_Dwg
                 If (pQryNeededCount > 0) Then
 
                     Dim pQryDwgNeeded = (From pRec In pSealProcessDBEntities.tblDwg_Needed
-                                       Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
+                                         Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
 
                     For i As Integer = 0 To pQryDwgNeeded.Count - 1
                         mID_Needed.Add(pQryDwgNeeded(i).fldID)
@@ -293,6 +296,13 @@ Public Class clsProcessProj_Dwg
                         mStatus.Add(pQryDwgNeeded(i).fldStatus)
                         mLeadTime.Add(pQryDwgNeeded(i).fldLeadTime)
                     Next
+
+                Else
+                    mID_Needed.Clear()
+                    mDwgNo.Clear()
+                    mDesc.Clear()
+                    mStatus.Clear()
+                    mLeadTime.Clear()
 
                 End If
 
@@ -428,7 +438,7 @@ Public Class clsProcessProj_Dwg
                 If (pQryBOMCount > 0) Then
 
                     Dim pQryBOM = (From pRec In pSealProcessDBEntities.tblDwg_BOM
-                                       Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
+                                   Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
 
                     For i As Integer = 0 To pQryBOM.Count - 1
                         mID_BOM.Add(pQryBOM(i).fldID)
@@ -436,6 +446,12 @@ Public Class clsProcessProj_Dwg
                         mChild_PartNo.Add(pQryBOM(i).fldChild_PartNo)
                         mQty.Add(pQryBOM(i).fldQty)
                     Next
+
+                Else
+                    mID_BOM.Clear()
+                    mParent_PartNo.Clear()
+                    mChild_PartNo.Clear()
+                    mQty.Clear()
 
                 End If
 

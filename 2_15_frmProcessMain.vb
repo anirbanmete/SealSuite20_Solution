@@ -189,7 +189,6 @@ Public Class Process_frmMain
             PopulateMatComboBox(gPartProject.PNR.SealType.ToString(), cmbDesign_Mat_Spring)
         Else
             PopulateMatComboBox(gPartProject.PNR.SealType.ToString(), cmbDesign_Mat_Seal)
-
         End If
 
 
@@ -250,7 +249,7 @@ Public Class Process_frmMain
         '....Move the vertical scrollbar at the Top
         txtParkerPart.Focus()
         txtParkerPart.Select()
-        gIsProcessMainActive = True
+        'gIsProcessMainActive = True
 
         '....Status Bar Panels:
         Dim pWidth As Int32 = (SBar1.Width) / 3
@@ -270,13 +269,16 @@ Public Class Process_frmMain
         '=======================================================================================
         Dim pCI As New CultureInfo("en-US")
 
-        'AES 04APR18
         If (gIsCustomizeTabActive) Then
-            gIsCustomizeTabActive = False
-            SetTabPrivilege()
-            Initialize_tbTesting_Controls()
-            ReInitializeControls()
-            TabControl1.Refresh()
+
+            If (chkHeaderUserSigned.Checked) Then       'AES 18APR18
+                gIsCustomizeTabActive = False
+                SetTabPrivilege()
+                Initialize_tbTesting_Controls()
+                ReInitializeControls()
+                TabControl1.Refresh()
+            End If
+
         End If
 
         If (gIsIssueCommentActive) Then
@@ -452,8 +454,8 @@ Public Class Process_frmMain
                 cmbPlatingThickCode.Enabled = True
             End If
 
-            chkPlating.Checked = False
-
+            'chkPlating.Checked = False
+            chkPlating.Enabled = False      'AES 17APR18
 
         Else
             If (mDesign) Then
@@ -512,6 +514,11 @@ Public Class Process_frmMain
         ''    mKeyChar = True
         ''End If
         mTabIndex.Clear()       'AES 04APR18
+
+        If (mHeader) Then
+            mTabIndex.Add(99)
+        End If
+
         If (mPreOrder) Then
             mTabIndex.Add(0)
         End If
@@ -951,7 +958,29 @@ Public Class Process_frmMain
 
                     Next
 
-                    grdApproval_Attendees.Item(1, i) = dgvcc
+                    '....ToDo..
+                    If (Not dgvcc.Items.Contains("Adam ")) Then
+                        dgvcc.Items.Add("Adam ")
+                    End If
+
+                    'grdApproval_Attendees.Item(1, i) = dgvcc1
+
+                    'Try
+
+
+                    '    grdApproval_Attendees.Item(1, i) = dgvcc
+
+                    '    Dim dgvcc1 As New DataGridViewComboBoxCell
+                    '    dgvcc1 = grdApproval_Attendees.Item(1, i)
+                    '    '....ToDo..
+                    '    If (Not dgvcc1.Items.Contains("Adam ")) Then
+                    '        dgvcc1.Items.Add("Adam ")
+                    '    End If
+
+                    '    grdApproval_Attendees.Item(1, i) = dgvcc1
+                    'Catch ex As Exception
+
+                    'End Try
 
                 End If
             Next
@@ -973,6 +1002,14 @@ Public Class Process_frmMain
         lblStatus.Enabled = mHeader
         grpDate.Enabled = mHeader
         cmdSetUnits.Enabled = mHeader
+
+        'AES 18APR18
+        If (mTabIndex.Contains(99)) Then
+            chkHeaderUserSigned.Enabled = True
+        Else
+            chkHeaderUserSigned.Enabled = False
+        End If
+
 
         EnableTab(tabPreOrder_P1, mPreOrder)
         EnableTab(tabPreOrder_P2, mPreOrder)
@@ -1401,7 +1438,8 @@ Public Class Process_frmMain
         txtCustomerPN.Text = gPartProject.CustInfo.PN_Cust
         txtCustomerPN_Rev.Text = gPartProject.CustInfo.PN_Cust_Rev
 
-        'AES 06APR18
+        'If (Not IsNothing(mProcess_Project)) Then   'AES 19APR18
+
         If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Header")) Then
             If (mProcess_Project.EditedBy.Name(0) <> "") Then
                 txtHeaderUserName.Text = mProcess_Project.EditedBy.Name(0)
@@ -1411,14 +1449,29 @@ Public Class Process_frmMain
             txtHeaderUserName.Text = ""
             chkHeaderUserSigned.Checked = False
         End If
+
         SetControls_HeaderUserSign()
 
-
         With mProcess_Project
-            cmbPopCoding.Text = .POPCoding
+            If (.POPCoding <> "") Then
+                cmbPopCoding.Text = .POPCoding
+            Else
+                cmbPopCoding.SelectedIndex = -1
+            End If
 
-            cmbRating.Text = .Rating
-            cmbType.Text = .Type
+            If (.Rating <> "") Then
+                cmbRating.Text = .Rating
+            Else
+                cmbRating.SelectedIndex = -1
+
+            End If
+
+            If (.Type <> "") Then
+                cmbType.Text = .Type
+            Else
+                cmbType.SelectedIndex = -1
+            End If
+
 
             If (.DateOpen <> DateTime.MinValue) Then
                 txtStartDate.Text = .DateOpen.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
@@ -1438,48 +1491,58 @@ Public Class Process_frmMain
         '.... "PreOrder:"
         With mProcess_Project.PreOrder
 
-            cmbMgrPreOrder.Text = .Mgr.Mkt
+            If (.Mgr.Mkt <> "") Then
+                cmbMgrPreOrder.Text = .Mgr.Mkt
+            Else
+                cmbMgrPreOrder.SelectedIndex = -1
+            End If
+
             txtMgrSales.Text = .Mgr.Sales
 
-            If (.Export.Reqd) Then
-                cmbExport_Reqd.Text = "Y"
-                cmbExport_Status.Text = .Export.Status
-                cmbExport_Status.Enabled = True
-            Else
-                cmbExport_Reqd.Text = "N"
-                cmbExport_Status.Text = ""
-                cmbExport_Status.Enabled = False
-            End If
+                If (.Export.Reqd) Then
+                    cmbExport_Reqd.Text = "Y"
+                    cmbExport_Status.Text = .Export.Status
+                    cmbExport_Status.Enabled = True
+                Else
+                    cmbExport_Reqd.Text = "N"
+                    cmbExport_Status.Text = ""
+                    cmbExport_Status.Enabled = False
+                End If
 
-            If (gPartProject.PNR.SealType.ToString() = "E") Then
-                cmbPartFamily.Text = "E-Seal"
-                'cmbPartFamily.Enabled = False
-            ElseIf (gPartProject.PNR.SealType.ToString() = "C") Then
-                cmbPartFamily.Text = "C-Seal"
-                'cmbPartFamily.Enabled = False
-            ElseIf (gPartProject.PNR.SealType.ToString() = "SC") Then
-                cmbPartFamily.Text = "SC-Seal"
-                'cmbPartFamily.Enabled = False
-            ElseIf (gPartProject.PNR.SealType.ToString() = "U") Then
-                cmbPartFamily.Text = "U-Seal"
-                'cmbPartFamily.Enabled = False
-            Else
-                cmbPartFamily.Text = .Part.Family
-                'cmbPartFamily.Enabled = True
-            End If
+                If (gPartProject.PNR.SealType.ToString() = "E") Then
+                    cmbPartFamily.Text = "E-Seal"
+                    'cmbPartFamily.Enabled = False
+                ElseIf (gPartProject.PNR.SealType.ToString() = "C") Then
+                    cmbPartFamily.Text = "C-Seal"
+                    'cmbPartFamily.Enabled = False
+                ElseIf (gPartProject.PNR.SealType.ToString() = "SC") Then
+                    cmbPartFamily.Text = "SC-Seal"
+                    'cmbPartFamily.Enabled = False
+                ElseIf (gPartProject.PNR.SealType.ToString() = "U") Then
+                    cmbPartFamily.Text = "U-Seal"
+                    'cmbPartFamily.Enabled = False
+                Else
+                    cmbPartFamily.Text = .Part.Family
+                    'cmbPartFamily.Enabled = True
+                End If
 
-            cmbPartType.Text = .Part.Type
+            If (.Part.Type <> "") Then
+                cmbPartType.Text = .Part.Type
+            Else
+                cmbPartType.SelectedIndex = -1
+            End If
 
             cmbPreOrderSeg.Text = .Mkt.Seg
             cmbPreOrderChannel.Text = .Mkt.Channel
+
             txtPreOrderNotes.Text = .Notes
 
             cmbCostFileLoc.Text = .Loc.CostFile
             cmbRFQPkgLoc.Text = .Loc.RFQPkg
             txtPreOrderPriceNotes.Text = .Notes_Price
 
-
             '....Cust Contact Pre-Order
+            grdCustContact.Rows.Clear()
             For j As Integer = 0 To mProcess_Project.CustContact.DeptName.Count - 1
                 Dim pCmbColDept_PreOrd As New DataGridViewComboBoxColumn
                 pCmbColDept_PreOrd = grdCustContact.Columns.Item(0)
@@ -1507,6 +1570,7 @@ Public Class Process_frmMain
             Next
 
             '....Cust Contact Order-Entry
+            grdOrdEntry_CustContact.Rows.Clear()
             For j As Integer = 0 To mProcess_Project.CustContact.DeptName.Count - 1
                 Dim pCmbColDept_OrdEntry As New DataGridViewComboBoxColumn
                 pCmbColDept_OrdEntry = grdOrdEntry_CustContact.Columns.Item(0)
@@ -1534,6 +1598,7 @@ Public Class Process_frmMain
             Next
 
             '....Quote
+            grdQuote.Rows.Clear()
             For k As Integer = 0 To .Quote.QDate.Count - 1
                 grdQuote.Rows.Add()
 
@@ -1547,6 +1612,7 @@ Public Class Process_frmMain
             Next
 
             '....SalesData
+            grdPreOrder_SalesData.Rows.Clear()
             For j As Integer = 0 To .SalesData.Year.Count - 1
                 grdPreOrder_SalesData.Rows.Add()
                 grdPreOrder_SalesData.Rows(j).Cells(0).Value = .SalesData.Year(j)
@@ -1555,6 +1621,8 @@ Public Class Process_frmMain
                 grdPreOrder_SalesData.Rows(j).Cells(3).Value = .SalesData.Total(j).ToString("#0.##")
             Next
 
+            '....EditedBy
+            grdPreOrderEditedBy.Rows.Clear()
             If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "PreOrder")) Then
                 For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
                     grdPreOrderEditedBy.Rows.Add()
@@ -1572,56 +1640,60 @@ Public Class Process_frmMain
                 txtPreOrderUserDate.Text = mProcess_Project.EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
                 txtPreOrderUserName.Text = mProcess_Project.EditedBy.User.Name
                 chkPreOrderUserSigned.Checked = mProcess_Project.EditedBy.User.Signed
+            Else
+                txtPreOrderUserDate.Text = ""
+                txtPreOrderUserName.Text = ""
+                chkPreOrderUserSigned.Checked = False
             End If
 
         End With
 
 
-        '.... "ITAR_Export:"
-        With mProcess_Project.ITAR_Export
-            cmdExport_HTS.Enabled = False
+            '.... "ITAR_Export:"
+            With mProcess_Project.ITAR_Export
+                cmdExport_HTS.Enabled = False
 
-            If (.IsCustOnDenialList) Then
-                cmbITAR_Export_CustOnDenialList.Text = "Y"
-            Else
-                cmbITAR_Export_CustOnDenialList.Text = "N"
-            End If
+                If (.IsCustOnDenialList) Then
+                    cmbITAR_Export_CustOnDenialList.Text = "Y"
+                Else
+                    cmbITAR_Export_CustOnDenialList.Text = "N"
+                End If
 
-            If (.CountryProhibited) Then
-                cmbITAR_Export_CountryProhibited.Text = "Y"
-            Else
-                cmbITAR_Export_CountryProhibited.Text = "N"
-            End If
+                If (.CountryProhibited) Then
+                    cmbITAR_Export_CountryProhibited.Text = "Y"
+                Else
+                    cmbITAR_Export_CountryProhibited.Text = "N"
+                End If
 
-            If (.HasAntiBoycottLang) Then
-                cmbITAR_Export_AntiBoycottLang.Text = "Y"
-            Else
-                cmbITAR_Export_AntiBoycottLang.Text = "N"
-            End If
+                If (.HasAntiBoycottLang) Then
+                    cmbITAR_Export_AntiBoycottLang.Text = "Y"
+                Else
+                    cmbITAR_Export_AntiBoycottLang.Text = "N"
+                End If
 
-            If (.IsUnder_ITAR_Reg) Then
-                cmbITAR_Export_ProductITAR_Reg.Text = "Y"
-                txtExportControlled.Text = "Y"
-                txtITAR_Export_ITAR_Classification.Enabled = True
-            Else
-                cmbITAR_Export_ProductITAR_Reg.Text = "N"
-                txtExportControlled.Text = "N"
-                txtExportStatus.Text = ""
-                txtITAR_Export_ITAR_Classification.Enabled = False
-            End If
+                If (.IsUnder_ITAR_Reg) Then
+                    cmbITAR_Export_ProductITAR_Reg.Text = "Y"
+                    txtExportControlled.Text = "Y"
+                    txtITAR_Export_ITAR_Classification.Enabled = True
+                Else
+                    cmbITAR_Export_ProductITAR_Reg.Text = "N"
+                    txtExportControlled.Text = "N"
+                    txtExportStatus.Text = ""
+                    txtITAR_Export_ITAR_Classification.Enabled = False
+                End If
 
-            If (.SaleExportControlled) Then
-                cmbITAR_Export_SaleExportControlled.Text = "Y"
-                txtITAR_Export_EAR_Classification.Enabled = True
-            Else
-                cmbITAR_Export_SaleExportControlled.Text = "N"
-                txtITAR_Export_EAR_Classification.Enabled = False
-            End If
+                If (.SaleExportControlled) Then
+                    cmbITAR_Export_SaleExportControlled.Text = "Y"
+                    txtITAR_Export_EAR_Classification.Enabled = True
+                Else
+                    cmbITAR_Export_SaleExportControlled.Text = "N"
+                    txtITAR_Export_EAR_Classification.Enabled = False
+                End If
 
-            txtITAR_Export_ITAR_Classification.Text = .ITAR_Class
-            txtITAR_Export_EAR_Classification.Text = .EAR_Class
-            cmbITAR_Export_Status.Text = .Status
-            txtITAR_Export_HTS_Classification.Text = .HTS_Class
+                txtITAR_Export_ITAR_Classification.Text = .ITAR_Class
+                txtITAR_Export_EAR_Classification.Text = .EAR_Class
+                cmbITAR_Export_Status.Text = .Status
+                txtITAR_Export_HTS_Classification.Text = .HTS_Class
 
             'If (.EditedBy.User.Signed) Then
             '    chkITAR_Export_UserSigned.Checked = True
@@ -1634,94 +1706,103 @@ Public Class Process_frmMain
             '    txtITAR_Export_UserDate.Text = ""
             'End If
 
+            grdExport_EditedBy.Rows.Clear()
             If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Export")) Then
-                For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
-                    grdExport_EditedBy.Rows.Add()
-                    grdExport_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    grdExport_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
-                    grdExport_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+                    For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                        grdExport_EditedBy.Rows.Add()
+                        grdExport_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        grdExport_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
+                        grdExport_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
 
-                    txtITAR_Export_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    txtITAR_Export_UserName.Text = mProcess_Project.EditedBy.Name(j)
-                Next
-            End If
+                        txtITAR_Export_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        txtITAR_Export_UserName.Text = mProcess_Project.EditedBy.Name(j)
+                    Next
+                End If
 
             If (mProcess_Project.EditedBy.RetrieveFromDB_UserSignOff(mProcess_Project.ID, "Export")) Then
                 txtITAR_Export_UserDate.Text = mProcess_Project.EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
                 txtITAR_Export_UserName.Text = mProcess_Project.EditedBy.User.Name
                 chkITAR_Export_UserSigned.Checked = mProcess_Project.EditedBy.User.Signed
-            End If
-
-        End With
-
-
-        '.... "OrderEntrty:"
-        With mProcess_Project.OrdEntry
-            txtOrdEntry_SalesOrderNo.Text = .SalesOrderNo
-
-            If (.DateSales <> DateTime.MinValue) Then
-                txtOrdEntry_SalesDate.Text = .DateSales.ToShortDateString()
             Else
-                txtOrdEntry_SalesDate.Text = ""
+                txtITAR_Export_UserDate.Text = ""
+                txtITAR_Export_UserName.Text = ""
+                chkITAR_Export_UserSigned.Checked = False
             End If
 
-            If (Math.Abs(.LeadTimeQuoted) > gcEPS) Then
-                txtOrderEntry_QtdLeadTime.Text = .LeadTimeQuoted
-            Else
-                txtOrderEntry_QtdLeadTime.Text = ""
-            End If
+            End With
 
-            txtOrdEntry_PONo.Text = .PONo
+
+            '.... "OrderEntrty:"
+            With mProcess_Project.OrdEntry
+                txtOrdEntry_SalesOrderNo.Text = .SalesOrderNo
+
+                If (.DateSales <> DateTime.MinValue) Then
+                    txtOrdEntry_SalesDate.Text = .DateSales.ToShortDateString()
+                Else
+                    txtOrdEntry_SalesDate.Text = ""
+                End If
+
+                If (Math.Abs(.LeadTimeQuoted) > gcEPS) Then
+                    txtOrderEntry_QtdLeadTime.Text = .LeadTimeQuoted
+                Else
+                    txtOrderEntry_QtdLeadTime.Text = ""
+                End If
+
+                txtOrdEntry_PONo.Text = .PONo
             If (.DatePO <> DateTime.MinValue) Then
                 txtOrdEntry_PODate.Text = .DatePO.ToShortDateString()
+            Else
+                txtOrdEntry_PODate.Text = ""
             End If
 
             If (.DatePO_EDI <> DateTime.MinValue) Then
                 txtOrdEntry_PODate_EDI.Text = .DatePO_EDI.ToShortDateString()
-            End If
-
-
-            If (.HasSplReq) Then
-                cmbOrdEntry_SpecialReq.Text = "Y"
             Else
-                cmbOrdEntry_SpecialReq.Text = "N"
+                txtOrdEntry_PODate_EDI.Text = ""
             End If
 
-            If (.Tool_Reqd) Then
-                cmbOrdEntry_Tooling.Text = "Y"
-            Else
-                cmbOrdEntry_Tooling.Text = "N"
-            End If
 
-            If (.SplPkg_Lbl_Reqd) Then
-                cmbOrdEntry_SplPkgNLbl.Text = "Y"
-            Else
-                cmbOrdEntry_SplPkgNLbl.Text = "N"
-            End If
+                If (.HasSplReq) Then
+                    cmbOrdEntry_SpecialReq.Text = "Y"
+                Else
+                    cmbOrdEntry_SpecialReq.Text = "N"
+                End If
 
-            If (.OrdQty > 0) Then
-                txtOrdEntry_OrderQty.Text = .OrdQty.ToString()
-            Else
-                txtOrdEntry_OrderQty.Text = ""
-            End If
+                If (.Tool_Reqd) Then
+                    cmbOrdEntry_Tooling.Text = "Y"
+                Else
+                    cmbOrdEntry_Tooling.Text = "N"
+                End If
 
-            If (.DateOrdShip <> DateTime.MinValue) Then
-                txtOrdEntry_OrderShipDate.Text = .DateOrdShip.ToShortDateString()
-            Else
-                txtOrdEntry_OrderShipDate.Text = ""
-            End If
+                If (.SplPkg_Lbl_Reqd) Then
+                    cmbOrdEntry_SplPkgNLbl.Text = "Y"
+                Else
+                    cmbOrdEntry_SplPkgNLbl.Text = "N"
+                End If
 
-            If (.Expedited) Then
-                cmbOrdEntry_Expedited.Text = "Y"
-            Else
-                cmbOrdEntry_Expedited.Text = "N"
-            End If
+                If (.OrdQty > 0) Then
+                    txtOrdEntry_OrderQty.Text = .OrdQty.ToString()
+                Else
+                    txtOrdEntry_OrderQty.Text = ""
+                End If
 
-            If (.IsDFAR) Then
-                cmbOrdEntry_DFAR.Text = "Y"
-            Else
-                cmbOrdEntry_DFAR.Text = "N"
-            End If
+                If (.DateOrdShip <> DateTime.MinValue) Then
+                    txtOrdEntry_OrderShipDate.Text = .DateOrdShip.ToShortDateString()
+                Else
+                    txtOrdEntry_OrderShipDate.Text = ""
+                End If
+
+                If (.Expedited) Then
+                    cmbOrdEntry_Expedited.Text = "Y"
+                Else
+                    cmbOrdEntry_Expedited.Text = "N"
+                End If
+
+                If (.IsDFAR) Then
+                    cmbOrdEntry_DFAR.Text = "Y"
+                Else
+                    cmbOrdEntry_DFAR.Text = "N"
+                End If
 
             'If (.EditedBy.User.Signed) Then
             '    chkOrdEntry_UserSigned.Checked = True
@@ -1733,57 +1814,63 @@ Public Class Process_frmMain
             '    txtOrdEntry_UserDate.Text = ""
             'End If
 
+            grdOrdEntry_EditedBy.Rows.Clear()
             If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "OrdEntry")) Then
-                For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
-                    grdOrdEntry_EditedBy.Rows.Add()
-                    grdOrdEntry_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    grdOrdEntry_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
-                    grdOrdEntry_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+                    For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                        grdOrdEntry_EditedBy.Rows.Add()
+                        grdOrdEntry_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        grdOrdEntry_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
+                        grdOrdEntry_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
 
-                    txtOrdEntry_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    txtOrdEntry_UserName.Text = mProcess_Project.EditedBy.Name(j)
-                Next
-            End If
+                        txtOrdEntry_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        txtOrdEntry_UserName.Text = mProcess_Project.EditedBy.Name(j)
+                    Next
+                End If
 
             If (mProcess_Project.EditedBy.RetrieveFromDB_UserSignOff(mProcess_Project.ID, "OrdEntry")) Then
                 txtOrdEntry_UserDate.Text = mProcess_Project.EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
                 txtOrdEntry_UserName.Text = mProcess_Project.EditedBy.User.Name
                 chkOrdEntry_UserSigned.Checked = mProcess_Project.EditedBy.User.Signed
+            Else
+                txtOrdEntry_UserDate.Text = ""
+                txtOrdEntry_UserName.Text = ""
+                chkOrdEntry_UserSigned.Checked = False
             End If
 
-        End With
+            End With
 
-        '.... "Cost Estimating:"
-        With mProcess_Project.Cost
-            cmbCost_QuoteFile.Text = .QuoteFileLoc
-            txtCost_Notes.Text = .Notes
-
-            '....Spl Operation
-            For j As Integer = 0 To .SplOperation.Desc.Count - 1
-                Dim pCmbColDesc_Cost As New DataGridViewComboBoxColumn
-                pCmbColDesc_Cost = grdCost_SplOperation.Columns.Item(0)
-                Dim pVal As String = ""
-                If (Not IsNothing(.SplOperation.Desc(j))) Then
-                    pVal = .SplOperation.Desc(j)
-                End If
-                If (Not pCmbColDesc_Cost.Items.Contains(pVal)) Then
-                    pCmbColDesc_Cost.Items.Add(pVal)
-                End If
-            Next
+            '.... "Cost Estimating:"
+            With mProcess_Project.Cost
+                cmbCost_QuoteFile.Text = .QuoteFileLoc
+                txtCost_Notes.Text = .Notes
 
             '....Spl Operation
+            grdCost_SplOperation.Rows.Clear()
             For j As Integer = 0 To .SplOperation.Desc.Count - 1
-                grdCost_SplOperation.Rows.Add()
-                If (Not IsNothing(.SplOperation.Desc(j))) Then
-                    grdCost_SplOperation.Rows(j).Cells(0).Value = .SplOperation.Desc(j)
-                Else
-                    grdCost_SplOperation.Rows(j).Cells(0).Value = ""
-                End If
-                'grdCost_SplOperation.Rows(j).Cells(0).Value = .SplOperation.Desc(j)
-                grdCost_SplOperation.Rows(j).Cells(1).Value = .SplOperation.Spec(j)
-                grdCost_SplOperation.Rows(j).Cells(2).Value = gUnit.Format_Val(.SplOperation.LeadTime(j)) '.SplOperation.LeadTime(j)
-                grdCost_SplOperation.Rows(j).Cells(3).Value = .SplOperation.Cost(j).ToString("#0.##")
-            Next
+                    Dim pCmbColDesc_Cost As New DataGridViewComboBoxColumn
+                    pCmbColDesc_Cost = grdCost_SplOperation.Columns.Item(0)
+                    Dim pVal As String = ""
+                    If (Not IsNothing(.SplOperation.Desc(j))) Then
+                        pVal = .SplOperation.Desc(j)
+                    End If
+                    If (Not pCmbColDesc_Cost.Items.Contains(pVal)) Then
+                        pCmbColDesc_Cost.Items.Add(pVal)
+                    End If
+                Next
+
+                '....Spl Operation
+                For j As Integer = 0 To .SplOperation.Desc.Count - 1
+                    grdCost_SplOperation.Rows.Add()
+                    If (Not IsNothing(.SplOperation.Desc(j))) Then
+                        grdCost_SplOperation.Rows(j).Cells(0).Value = .SplOperation.Desc(j)
+                    Else
+                        grdCost_SplOperation.Rows(j).Cells(0).Value = ""
+                    End If
+                    'grdCost_SplOperation.Rows(j).Cells(0).Value = .SplOperation.Desc(j)
+                    grdCost_SplOperation.Rows(j).Cells(1).Value = .SplOperation.Spec(j)
+                    grdCost_SplOperation.Rows(j).Cells(2).Value = gUnit.Format_Val(.SplOperation.LeadTime(j)) '.SplOperation.LeadTime(j)
+                    grdCost_SplOperation.Rows(j).Cells(3).Value = .SplOperation.Cost(j).ToString("#0.##")
+                Next
 
             'If (.EditedBy.User.Signed) Then
             '    chkCost_UserSigned.Checked = True
@@ -1795,1416 +1882,1448 @@ Public Class Process_frmMain
             '    txtCost_UserDate.Text = .EditedBy.User.DateSigned.ToShortDateString()
             'End If
 
+            grdCost_EditedBy.Rows.Clear()
             If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Cost")) Then
-                For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
-                    grdCost_EditedBy.Rows.Add()
-                    grdCost_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    grdCost_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
-                    grdCost_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+                    For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                        grdCost_EditedBy.Rows.Add()
+                        grdCost_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        grdCost_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
+                        grdCost_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
 
-                    txtCost_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    txtCost_UserName.Text = mProcess_Project.EditedBy.Name(j)
-                Next
-            End If
+                        txtCost_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        txtCost_UserName.Text = mProcess_Project.EditedBy.Name(j)
+                    Next
+                End If
 
             If (mProcess_Project.EditedBy.RetrieveFromDB_UserSignOff(mProcess_Project.ID, "Cost")) Then
                 txtCost_UserDate.Text = mProcess_Project.EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
                 txtCost_UserName.Text = mProcess_Project.EditedBy.User.Name
                 chkCost_UserSigned.Checked = mProcess_Project.EditedBy.User.Signed
+            Else
+                txtCost_UserDate.Text = ""
+                txtCost_UserName.Text = ""
+                chkCost_UserSigned.Checked = False
             End If
+
         End With
 
 
-        '.... "Application:"
-        With mProcess_Project.App
-            txtApp_Equip.Text = .Eqp
-            txtApp_ExistingSeal.Text = .ExistingSeal
-            cmbApp_InsertLoc.Text = .Type
+            '.... "Application:"
+            With mProcess_Project.App
+                txtApp_Equip.Text = .Eqp
+                txtApp_ExistingSeal.Text = .ExistingSeal
+                cmbApp_InsertLoc.Text = .Type
 
-            'If (.InsertLoc = "Face") Then
-            '    tbApp.Controls.Remove(tbpAxial)
-            'Else
-            '    tbApp.Controls.Remove(tbpFace)
-            'End If
+                'If (.InsertLoc = "Face") Then
+                '    tbApp.Controls.Remove(tbpAxial)
+                'Else
+                '    tbApp.Controls.Remove(tbpFace)
+                'End If
 
-            txtApp_Fluid.Text = .Fluid
-            If (Math.Abs(.MaxLeak) > gcEPS) Then
-                txtApp_MaxLeak.Text = gUnit.Format_LeakVal(.MaxLeak) 'Format(.MaxLeak, gUnit.LFormat)    'AES 26FEB18 '.MaxLeak.ToString("##0.000")
-            Else
-                txtApp_MaxLeak.Text = ""
-            End If
-
-            If (.IsPressCyclic) Then
-                cmbApp_PressCycle.Text = "Y"
-                txtApp_PressCycleFreq.Enabled = True
-                txtApp_PressCycleFreq.Text = gUnit.Format_Val(.PressCycle_Freq) '.PressCycle_Freq.ToString("##0.000")
-                txtApp_PressCycleAmp.Text = gUnit.Format_Val(.PressCycle_Amp) '.PressCycle_Amp.ToString("##0.000")
-                txtApp_PressCycleAmp.Enabled = True
-            Else
-                cmbApp_PressCycle.Text = "N"
-                txtApp_PressCycleFreq.Text = ""
-                txtApp_PressCycleAmp.Text = ""
-                txtApp_PressCycleFreq.Enabled = False
-                txtApp_PressCycleAmp.Enabled = False
-            End If
-
-            If (.Shaped) Then
-                cmbApp_Shaped.Text = "Y"
-            Else
-                cmbApp_Shaped.Text = "N"
-            End If
-
-            If (.IsOoR) Then
-                cmbApp_OutOfRound.Text = "Y"
-            Else
-                cmbApp_OutOfRound.Text = "N"
-            End If
-
-            If (.IsSplitRing) Then
-                cmbApp_SplitRing.Text = "Y"
-            Else
-                cmbApp_SplitRing.Text = "N"
-            End If
-
-            If (.IsPreComp) Then
-                cmbApp_PreComp.Text = "Y"
-            Else
-                cmbApp_PreComp.Text = "N"
-            End If
-
-            If (gPartProject.PNR.HW.IsSegmented) Then
-                chkSeg.Checked = True
-                txtSegNo.Text = gPartProject.PNR.HW.CountSegment.ToString()
-            Else
-                chkSeg.Checked = False
-                txtSegNo.Text = ""
-            End If
-
-            grdApp_OpCond.Rows.Add()
-            grdApp_OpCond.Rows.Add()
-            grdApp_OpCond.Rows(0).Cells(0).Value = "Temperature"
-            grdApp_OpCond.Rows(1).Cells(0).Value = "Pressure"
-            grdApp_OpCond.Columns(0).ReadOnly = True
-            grdApp_OpCond.AllowUserToAddRows = False
-
-            If (Math.Abs(.OpCond.T.Assy) > gcEPS) Then
-                grdApp_OpCond.Rows(0).Cells(1).Value = gUnit.Format_Val(.OpCond.T.Assy) '.OpCond.T.Assy.ToString("##0.0")
-            Else
-                grdApp_OpCond.Rows(0).Cells(1).Value = ""
-            End If
-
-            If (Math.Abs(.OpCond.T.Min) > gcEPS) Then
-                grdApp_OpCond.Rows(0).Cells(2).Value = gUnit.Format_Val(.OpCond.T.Min) '.OpCond.T.Min.ToString("##0.0")
-            Else
-                grdApp_OpCond.Rows(0).Cells(2).Value = ""
-            End If
-
-            If (Math.Abs(.OpCond.T.Max) > gcEPS) Then
-                grdApp_OpCond.Rows(0).Cells(3).Value = gUnit.Format_Val(.OpCond.T.Max) '.OpCond.T.Max.ToString("##0.0")
-            Else
-                grdApp_OpCond.Rows(0).Cells(3).Value = ""
-            End If
-
-            If (Math.Abs(.OpCond.T.Oper) > gcEPS) Then
-                grdApp_OpCond.Rows(0).Cells(4).Value = gUnit.Format_Val(.OpCond.T.Oper) '.OpCond.T.Oper.ToString("##0.0")
-            Else
-                grdApp_OpCond.Rows(0).Cells(4).Value = ""
-            End If
-
-            If (Math.Abs(.OpCond.Press.Assy) > gcEPS) Then
-                grdApp_OpCond.Rows(1).Cells(1).Value = gUnit.Format_Val(.OpCond.Press.Assy) '.OpCond.Press.Assy.ToString("##0.0")
-            Else
-                grdApp_OpCond.Rows(1).Cells(1).Value = ""
-            End If
-
-            If (Math.Abs(.OpCond.Press.Min) > gcEPS) Then
-                grdApp_OpCond.Rows(1).Cells(2).Value = gUnit.Format_Val(.OpCond.Press.Min) '.OpCond.Press.Min.ToString("##0.0")
-            Else
-                grdApp_OpCond.Rows(1).Cells(2).Value = ""
-            End If
-
-            If (Math.Abs(.OpCond.Press.Max) > gcEPS) Then
-                grdApp_OpCond.Rows(1).Cells(3).Value = gUnit.Format_Val(.OpCond.Press.Max) '.OpCond.Press.Max.ToString("##0.0")
-            Else
-                grdApp_OpCond.Rows(1).Cells(3).Value = ""
-            End If
-
-            If (Math.Abs(.OpCond.Press.Oper) > gcEPS) Then
-                grdApp_OpCond.Rows(1).Cells(4).Value = gUnit.Format_Val(.OpCond.Press.Oper) '.OpCond.Press.Oper.ToString("##0.0")
-            Else
-                grdApp_OpCond.Rows(1).Cells(4).Value = ""
-            End If
-
-            grdApp_Load.Rows.Add()
-            grdApp_Load.Rows.Add()
-            grdApp_Load.Rows(0).Cells(0).Value = "Assembly"
-            grdApp_Load.Rows(1).Cells(0).Value = "Operating"
-            grdApp_Load.Columns(0).ReadOnly = True
-            grdApp_Load.AllowUserToAddRows = False
-
-            If (Math.Abs(.Load.Assy.Min) > gcEPS) Then
-                grdApp_Load.Rows(0).Cells(1).Value = Format(.Load.Assy.Min, gUnit.LFormat) '.Load.Assy.Min.ToString("##0.0")
-            Else
-                grdApp_Load.Rows(0).Cells(1).Value = ""
-            End If
-
-            If (Math.Abs(.Load.Assy.Max) > gcEPS) Then
-                grdApp_Load.Rows(0).Cells(2).Value = Format(.Load.Assy.Max, gUnit.LFormat) '.Load.Assy.Max.ToString("##0.0")
-            Else
-                grdApp_Load.Rows(0).Cells(2).Value = ""
-            End If
-
-            If (Math.Abs(.Load.Oper.Min) > gcEPS) Then
-                grdApp_Load.Rows(1).Cells(1).Value = Format(.Load.Oper.Min, gUnit.LFormat) '.Load.Oper.Min.ToString("##0.0")
-            Else
-                grdApp_Load.Rows(1).Cells(1).Value = ""
-            End If
-
-            If (Math.Abs(.Load.Oper.Max) > gcEPS) Then
-                grdApp_Load.Rows(1).Cells(2).Value = Format(.Load.Oper.Max, gUnit.LFormat) '.Load.Oper.Max.ToString("##0.0")
-            Else
-                grdApp_Load.Rows(1).Cells(2).Value = ""
-            End If
-
-            '....Face Seal
-            If (.Type = "Face") Then
-                '....Cavity Dimension
-                For j As Integer = 0 To .Cavity.ID_Cavity.Count - 1
-                    Dim pCmbColCavityDim As New DataGridViewComboBoxColumn
-                    pCmbColCavityDim = grdApp_Face_Cavity.Columns.Item(0)
-                    Dim pVal As String = ""
-                    If (Not IsNothing(.Cavity.DimName(j))) Then
-                        pVal = .Cavity.DimName(j)
-                    End If
-                    If (Not pCmbColCavityDim.Items.Contains(pVal)) Then
-                        pCmbColCavityDim.Items.Add(pVal)
-                    End If
-                Next
-
-                '....Cavity Dimension
-                For j As Integer = 0 To .Cavity.ID_Cavity.Count - 1
-                    grdApp_Face_Cavity.Rows.Add()
-                    If (Not IsNothing(.Cavity.DimName(j))) Then
-                        grdApp_Face_Cavity.Rows(j).Cells(0).Value = .Cavity.DimName(j)
-                    Else
-                        grdApp_Face_Cavity.Rows(j).Cells(0).Value = ""
-                    End If
-                    grdApp_Face_Cavity.Rows(j).Cells(1).Value = Format(.Cavity.Assy(j).Min, gUnit.LFormat) '.Cavity.Assy(j).Min.ToString("##0.000")
-                    grdApp_Face_Cavity.Rows(j).Cells(2).Value = Format(.Cavity.Assy(j).Max, gUnit.LFormat) '.Cavity.Assy(j).Max.ToString("##0.000")
-                    grdApp_Face_Cavity.Rows(j).Cells(3).Value = Format(.Cavity.Oper(j).Min, gUnit.LFormat) '.Cavity.Oper(j).Min.ToString("##0.000")
-                    grdApp_Face_Cavity.Rows(j).Cells(4).Value = Format(.Cavity.Oper(j).Max, gUnit.LFormat) '.Cavity.Oper(j).Max.ToString("##0.000")
-                Next
-
-                'For j As Integer = 0 To .Cavity.ID_Cavity.Count - 1
-                '    grdApp_Face_Cavity.Rows.Add()
-                '    grdApp_Face_Cavity.Rows(j).Cells(0).Value = .Cavity.DimName(j)
-                '    grdApp_Face_Cavity.Rows(j).Cells(1).Value = .Cavity.Assy(j).Min.ToString("##0.000")
-                '    grdApp_Face_Cavity.Rows(j).Cells(2).Value = .Cavity.Assy(j).Max.ToString("##0.000")
-                '    grdApp_Face_Cavity.Rows(j).Cells(3).Value = .Cavity.Oper(j).Min.ToString("##0.000")
-                '    grdApp_Face_Cavity.Rows(j).Cells(4).Value = .Cavity.Oper(j).Max.ToString("##0.000")
-                'Next
-
-                txtApp_Mat1_Face.Text = .CavityFlange.Mat1
-                txtApp_Mat2_Face.Text = .CavityFlange.Mat2
-
-                If (Math.Abs(.CavityFlange.Hard1) > gcEPS) Then
-                    txtApp_Hardness1_Face.Text = Format(.CavityFlange.Hard1, gUnit.LFormat) '.CavityFlange.Hard1.ToString("##0.000")
+                txtApp_Fluid.Text = .Fluid
+                If (Math.Abs(.MaxLeak) > gcEPS) Then
+                    txtApp_MaxLeak.Text = gUnit.Format_LeakVal(.MaxLeak) 'Format(.MaxLeak, gUnit.LFormat)    'AES 26FEB18 '.MaxLeak.ToString("##0.000")
                 Else
-                    txtApp_Hardness1_Face.Text = ""
+                    txtApp_MaxLeak.Text = ""
                 End If
 
-                If (Math.Abs(.CavityFlange.Hard2) > gcEPS) Then
-                    txtApp_Hardness2_Face.Text = Format(.CavityFlange.Hard2, gUnit.LFormat) '.CavityFlange.Hard2.ToString("##0.000")
+                If (.IsPressCyclic) Then
+                    cmbApp_PressCycle.Text = "Y"
+                    txtApp_PressCycleFreq.Enabled = True
+                    txtApp_PressCycleFreq.Text = gUnit.Format_Val(.PressCycle_Freq) '.PressCycle_Freq.ToString("##0.000")
+                    txtApp_PressCycleAmp.Text = gUnit.Format_Val(.PressCycle_Amp) '.PressCycle_Amp.ToString("##0.000")
+                    txtApp_PressCycleAmp.Enabled = True
                 Else
-                    txtApp_Hardness2_Face.Text = ""
+                    cmbApp_PressCycle.Text = "N"
+                    txtApp_PressCycleFreq.Text = ""
+                    txtApp_PressCycleAmp.Text = ""
+                    txtApp_PressCycleFreq.Enabled = False
+                    txtApp_PressCycleAmp.Enabled = False
                 End If
 
-                If (Math.Abs(.CavityFlange.SF1) > gcEPS) Then
-                    txtApp_SF1_Face.Text = Format(.CavityFlange.SF1, gUnit.LFormat) '.CavityFlange.SF1.ToString("##0.000")
+                If (.Shaped) Then
+                    cmbApp_Shaped.Text = "Y"
                 Else
-                    txtApp_SF1_Face.Text = ""
+                    cmbApp_Shaped.Text = "N"
                 End If
 
-                If (Math.Abs(.CavityFlange.SF2) > gcEPS) Then
-                    txtApp_SF2_Face.Text = Format(.CavityFlange.SF2, gUnit.LFormat) '.CavityFlange.SF2.ToString("##0.000")
+                If (.IsOoR) Then
+                    cmbApp_OutOfRound.Text = "Y"
                 Else
-                    txtApp_SF2_Face.Text = ""
+                    cmbApp_OutOfRound.Text = "N"
                 End If
 
-                cmbFace_SF_ProcessName.Text = .CavityFlange.MeasureSF
-                cmbFace_SF_Unit.Text = .CavityFlange.UnitSF
-
-
-                cmbApp_Face_POrient.Text = gPartProject.PNR.HW.POrient '.Face.POrient       'AES 09JAN18
-
-                If (Math.Abs(.Face.MaxFlangeSep) > gcEPS) Then
-                    txtApp_Face_MaxFlangeSeparation.Text = Format(.Face.MaxFlangeSep, gUnit.LFormat) '.Face.MaxFlangeSep.ToString("##0.000")
+                If (.IsSplitRing) Then
+                    cmbApp_SplitRing.Text = "Y"
                 Else
-                    txtApp_Face_MaxFlangeSeparation.Text = ""
+                    cmbApp_SplitRing.Text = "N"
                 End If
 
-                If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "App")) Then
-                    For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
-                        grdApp_EditedBy_Face.Rows.Add()
-                        grdApp_EditedBy_Face.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                        grdApp_EditedBy_Face.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
-                        grdApp_EditedBy_Face.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+                If (.IsPreComp) Then
+                    cmbApp_PreComp.Text = "Y"
+                Else
+                    cmbApp_PreComp.Text = "N"
+                End If
 
-                        txtApp_UserDate_Face.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                        txtApp_UserName_Face.Text = mProcess_Project.EditedBy.Name(j)
+                If (gPartProject.PNR.HW.IsSegmented) Then
+                    chkSeg.Checked = True
+                    txtSegNo.Text = gPartProject.PNR.HW.CountSegment.ToString()
+                Else
+                    chkSeg.Checked = False
+                    txtSegNo.Text = ""
+                End If
+
+                grdApp_OpCond.Rows.Add()
+                grdApp_OpCond.Rows.Add()
+                grdApp_OpCond.Rows(0).Cells(0).Value = "Temperature"
+                grdApp_OpCond.Rows(1).Cells(0).Value = "Pressure"
+                grdApp_OpCond.Columns(0).ReadOnly = True
+                grdApp_OpCond.AllowUserToAddRows = False
+
+                If (Math.Abs(.OpCond.T.Assy) > gcEPS) Then
+                    grdApp_OpCond.Rows(0).Cells(1).Value = gUnit.Format_Val(.OpCond.T.Assy) '.OpCond.T.Assy.ToString("##0.0")
+                Else
+                    grdApp_OpCond.Rows(0).Cells(1).Value = ""
+                End If
+
+                If (Math.Abs(.OpCond.T.Min) > gcEPS) Then
+                    grdApp_OpCond.Rows(0).Cells(2).Value = gUnit.Format_Val(.OpCond.T.Min) '.OpCond.T.Min.ToString("##0.0")
+                Else
+                    grdApp_OpCond.Rows(0).Cells(2).Value = ""
+                End If
+
+                If (Math.Abs(.OpCond.T.Max) > gcEPS) Then
+                    grdApp_OpCond.Rows(0).Cells(3).Value = gUnit.Format_Val(.OpCond.T.Max) '.OpCond.T.Max.ToString("##0.0")
+                Else
+                    grdApp_OpCond.Rows(0).Cells(3).Value = ""
+                End If
+
+                If (Math.Abs(.OpCond.T.Oper) > gcEPS) Then
+                    grdApp_OpCond.Rows(0).Cells(4).Value = gUnit.Format_Val(.OpCond.T.Oper) '.OpCond.T.Oper.ToString("##0.0")
+                Else
+                    grdApp_OpCond.Rows(0).Cells(4).Value = ""
+                End If
+
+                If (Math.Abs(.OpCond.Press.Assy) > gcEPS) Then
+                    grdApp_OpCond.Rows(1).Cells(1).Value = gUnit.Format_Val(.OpCond.Press.Assy) '.OpCond.Press.Assy.ToString("##0.0")
+                Else
+                    grdApp_OpCond.Rows(1).Cells(1).Value = ""
+                End If
+
+                If (Math.Abs(.OpCond.Press.Min) > gcEPS) Then
+                    grdApp_OpCond.Rows(1).Cells(2).Value = gUnit.Format_Val(.OpCond.Press.Min) '.OpCond.Press.Min.ToString("##0.0")
+                Else
+                    grdApp_OpCond.Rows(1).Cells(2).Value = ""
+                End If
+
+                If (Math.Abs(.OpCond.Press.Max) > gcEPS) Then
+                    grdApp_OpCond.Rows(1).Cells(3).Value = gUnit.Format_Val(.OpCond.Press.Max) '.OpCond.Press.Max.ToString("##0.0")
+                Else
+                    grdApp_OpCond.Rows(1).Cells(3).Value = ""
+                End If
+
+                If (Math.Abs(.OpCond.Press.Oper) > gcEPS) Then
+                    grdApp_OpCond.Rows(1).Cells(4).Value = gUnit.Format_Val(.OpCond.Press.Oper) '.OpCond.Press.Oper.ToString("##0.0")
+                Else
+                    grdApp_OpCond.Rows(1).Cells(4).Value = ""
+                End If
+
+                grdApp_Load.Rows.Add()
+                grdApp_Load.Rows.Add()
+                grdApp_Load.Rows(0).Cells(0).Value = "Assembly"
+                grdApp_Load.Rows(1).Cells(0).Value = "Operating"
+                grdApp_Load.Columns(0).ReadOnly = True
+                grdApp_Load.AllowUserToAddRows = False
+
+                If (Math.Abs(.Load.Assy.Min) > gcEPS) Then
+                    grdApp_Load.Rows(0).Cells(1).Value = Format(.Load.Assy.Min, gUnit.LFormat) '.Load.Assy.Min.ToString("##0.0")
+                Else
+                    grdApp_Load.Rows(0).Cells(1).Value = ""
+                End If
+
+                If (Math.Abs(.Load.Assy.Max) > gcEPS) Then
+                    grdApp_Load.Rows(0).Cells(2).Value = Format(.Load.Assy.Max, gUnit.LFormat) '.Load.Assy.Max.ToString("##0.0")
+                Else
+                    grdApp_Load.Rows(0).Cells(2).Value = ""
+                End If
+
+                If (Math.Abs(.Load.Oper.Min) > gcEPS) Then
+                    grdApp_Load.Rows(1).Cells(1).Value = Format(.Load.Oper.Min, gUnit.LFormat) '.Load.Oper.Min.ToString("##0.0")
+                Else
+                    grdApp_Load.Rows(1).Cells(1).Value = ""
+                End If
+
+                If (Math.Abs(.Load.Oper.Max) > gcEPS) Then
+                    grdApp_Load.Rows(1).Cells(2).Value = Format(.Load.Oper.Max, gUnit.LFormat) '.Load.Oper.Max.ToString("##0.0")
+                Else
+                    grdApp_Load.Rows(1).Cells(2).Value = ""
+                End If
+
+                '....Face Seal
+                If (.Type = "Face") Then
+                    '....Cavity Dimension
+                    For j As Integer = 0 To .Cavity.ID_Cavity.Count - 1
+                        Dim pCmbColCavityDim As New DataGridViewComboBoxColumn
+                        pCmbColCavityDim = grdApp_Face_Cavity.Columns.Item(0)
+                        Dim pVal As String = ""
+                        If (Not IsNothing(.Cavity.DimName(j))) Then
+                            pVal = .Cavity.DimName(j)
+                        End If
+                        If (Not pCmbColCavityDim.Items.Contains(pVal)) Then
+                            pCmbColCavityDim.Items.Add(pVal)
+                        End If
                     Next
-                End If
 
-                If (mProcess_Project.EditedBy.RetrieveFromDB_UserSignOff(mProcess_Project.ID, "App")) Then
-                    txtApp_UserName_Face.Text = mProcess_Project.EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    txtApp_UserDate_Face.Text = mProcess_Project.EditedBy.User.Name
-                    chkApp_UserSigned_Face.Checked = mProcess_Project.EditedBy.User.Signed
-                End If
+                    '....Cavity Dimension
+                    For j As Integer = 0 To .Cavity.ID_Cavity.Count - 1
+                        grdApp_Face_Cavity.Rows.Add()
+                        If (Not IsNothing(.Cavity.DimName(j))) Then
+                            grdApp_Face_Cavity.Rows(j).Cells(0).Value = .Cavity.DimName(j)
+                        Else
+                            grdApp_Face_Cavity.Rows(j).Cells(0).Value = ""
+                        End If
+                        grdApp_Face_Cavity.Rows(j).Cells(1).Value = Format(.Cavity.Assy(j).Min, gUnit.LFormat) '.Cavity.Assy(j).Min.ToString("##0.000")
+                        grdApp_Face_Cavity.Rows(j).Cells(2).Value = Format(.Cavity.Assy(j).Max, gUnit.LFormat) '.Cavity.Assy(j).Max.ToString("##0.000")
+                        grdApp_Face_Cavity.Rows(j).Cells(3).Value = Format(.Cavity.Oper(j).Min, gUnit.LFormat) '.Cavity.Oper(j).Min.ToString("##0.000")
+                        grdApp_Face_Cavity.Rows(j).Cells(4).Value = Format(.Cavity.Oper(j).Max, gUnit.LFormat) '.Cavity.Oper(j).Max.ToString("##0.000")
+                    Next
 
-            ElseIf (.Type = "Axial") Then
-                '....Cavity Dimension
-                For j As Integer = 0 To .Cavity.ID_Cavity.Count - 1
-                    Dim pCmbColCavityDim As New DataGridViewComboBoxColumn
-                    pCmbColCavityDim = grdApp_Axial_Cavity.Columns.Item(0)
-                    Dim pVal As String = ""
-                    If (Not IsNothing(.Cavity.DimName(j))) Then
-                        pVal = .Cavity.DimName(j)
-                    End If
-                    If (Not pCmbColCavityDim.Items.Contains(pVal)) Then
-                        pCmbColCavityDim.Items.Add(pVal)
-                    End If
-                Next
+                    'For j As Integer = 0 To .Cavity.ID_Cavity.Count - 1
+                    '    grdApp_Face_Cavity.Rows.Add()
+                    '    grdApp_Face_Cavity.Rows(j).Cells(0).Value = .Cavity.DimName(j)
+                    '    grdApp_Face_Cavity.Rows(j).Cells(1).Value = .Cavity.Assy(j).Min.ToString("##0.000")
+                    '    grdApp_Face_Cavity.Rows(j).Cells(2).Value = .Cavity.Assy(j).Max.ToString("##0.000")
+                    '    grdApp_Face_Cavity.Rows(j).Cells(3).Value = .Cavity.Oper(j).Min.ToString("##0.000")
+                    '    grdApp_Face_Cavity.Rows(j).Cells(4).Value = .Cavity.Oper(j).Max.ToString("##0.000")
+                    'Next
 
-                '....Cavity Dimension
-                For j As Integer = 0 To .Cavity.ID_Cavity.Count - 1
-                    grdApp_Axial_Cavity.Rows.Add()
-                    If (Not IsNothing(.Cavity.DimName(j))) Then
-                        grdApp_Axial_Cavity.Rows(j).Cells(0).Value = .Cavity.DimName(j)
+                    txtApp_Mat1_Face.Text = .CavityFlange.Mat1
+                    txtApp_Mat2_Face.Text = .CavityFlange.Mat2
+
+                    If (Math.Abs(.CavityFlange.Hard1) > gcEPS) Then
+                        txtApp_Hardness1_Face.Text = Format(.CavityFlange.Hard1, gUnit.LFormat) '.CavityFlange.Hard1.ToString("##0.000")
                     Else
-                        grdApp_Axial_Cavity.Rows(j).Cells(0).Value = ""
+                        txtApp_Hardness1_Face.Text = ""
                     End If
-                    grdApp_Axial_Cavity.Rows(j).Cells(1).Value = Format(.Cavity.Assy(j).Min, gUnit.LFormat) '.Cavity.Assy(j).Min.ToString("##0.000")
-                    grdApp_Axial_Cavity.Rows(j).Cells(2).Value = Format(.Cavity.Assy(j).Max, gUnit.LFormat) '.Cavity.Assy(j).Max.ToString("##0.000")
-                    grdApp_Axial_Cavity.Rows(j).Cells(3).Value = Format(.Cavity.Oper(j).Min, gUnit.LFormat) '.Cavity.Oper(j).Min.ToString("##0.000")
-                    grdApp_Axial_Cavity.Rows(j).Cells(4).Value = Format(.Cavity.Oper(j).Max, gUnit.LFormat) '.Cavity.Oper(j).Max.ToString("##0.000")
-                Next
 
-                ''....Axial Seal
-                'For j As Integer = 0 To .Cavity.ID_Cavity.Count - 1
-                '    grdApp_Axial_Cavity.Rows.Add()
-                '    grdApp_Axial_Cavity.Rows(j).Cells(0).Value = .Cavity.DimName(j)
-                '    grdApp_Axial_Cavity.Rows(j).Cells(1).Value = .Cavity.Assy(j).Min.ToString("##0.000")
-                '    grdApp_Axial_Cavity.Rows(j).Cells(2).Value = .Cavity.Assy(j).Max.ToString("##0.000")
-                '    grdApp_Axial_Cavity.Rows(j).Cells(3).Value = .Cavity.Oper(j).Min.ToString("##0.000")
-                '    grdApp_Axial_Cavity.Rows(j).Cells(4).Value = .Cavity.Oper(j).Max.ToString("##0.000")
-                'Next
-
-                txtApp_Mat1_Axial.Text = .CavityFlange.Mat1
-                txtApp_Mat2_Axial.Text = .CavityFlange.Mat2
-
-                If (Math.Abs(.CavityFlange.Hard1) > gcEPS) Then
-                    txtApp_Hardness1_Axial.Text = Format(.CavityFlange.Hard1, gUnit.LFormat) '.CavityFlange.Hard1.ToString("##0.000")
-                Else
-                    txtApp_Hardness1_Axial.Text = ""
-                End If
-
-                If (Math.Abs(.CavityFlange.Hard2) > gcEPS) Then
-                    txtApp_Hardness2_Axial.Text = Format(.CavityFlange.Hard2, gUnit.LFormat) '.CavityFlange.Hard2.ToString("##0.000")
-                Else
-                    txtApp_Hardness2_Axial.Text = ""
-                End If
-
-                If (Math.Abs(.CavityFlange.SF1) > gcEPS) Then
-                    txtApp_SF1_Axial.Text = Format(.CavityFlange.SF1, gUnit.LFormat) '.CavityFlange.SF1.ToString("##0.000")
-                Else
-                    txtApp_SF1_Axial.Text = ""
-                End If
-
-                If (Math.Abs(.CavityFlange.SF2) > gcEPS) Then
-                    txtApp_SF2_Axial.Text = Format(.CavityFlange.SF2, gUnit.LFormat) '.CavityFlange.SF2.ToString("##0.000")
-                Else
-                    txtApp_SF2_Axial.Text = ""
-                End If
-
-                cmbAxial_SF_ProcessName.Text = .CavityFlange.MeasureSF
-                cmbAxial_SF_Unit.Text = .CavityFlange.UnitSF
-
-                If (.Axial.IsStatic) Then
-                    cmbApp_Static_Axial.Text = "Y"
-                Else
-                    cmbApp_Static_Axial.Text = "N"
-                End If
-
-                If (.Axial.IsRotating) Then
-                    cmbApp_Rotate_Axial.Text = "Y"
-                    If (Math.Abs(.Axial.RPM)) Then
-                        txtApp_RotateRPM_Axial.Text = gUnit.Format_Val(.Axial.RPM) '.Axial.RPM.ToString("##0")
+                    If (Math.Abs(.CavityFlange.Hard2) > gcEPS) Then
+                        txtApp_Hardness2_Face.Text = Format(.CavityFlange.Hard2, gUnit.LFormat) '.CavityFlange.Hard2.ToString("##0.000")
                     Else
+                        txtApp_Hardness2_Face.Text = ""
+                    End If
+
+                    If (Math.Abs(.CavityFlange.SF1) > gcEPS) Then
+                        txtApp_SF1_Face.Text = Format(.CavityFlange.SF1, gUnit.LFormat) '.CavityFlange.SF1.ToString("##0.000")
+                    Else
+                        txtApp_SF1_Face.Text = ""
+                    End If
+
+                    If (Math.Abs(.CavityFlange.SF2) > gcEPS) Then
+                        txtApp_SF2_Face.Text = Format(.CavityFlange.SF2, gUnit.LFormat) '.CavityFlange.SF2.ToString("##0.000")
+                    Else
+                        txtApp_SF2_Face.Text = ""
+                    End If
+
+                    cmbFace_SF_ProcessName.Text = .CavityFlange.MeasureSF
+                    cmbFace_SF_Unit.Text = .CavityFlange.UnitSF
+
+
+                    cmbApp_Face_POrient.Text = gPartProject.PNR.HW.POrient '.Face.POrient       'AES 09JAN18
+
+                    If (Math.Abs(.Face.MaxFlangeSep) > gcEPS) Then
+                        txtApp_Face_MaxFlangeSeparation.Text = Format(.Face.MaxFlangeSep, gUnit.LFormat) '.Face.MaxFlangeSep.ToString("##0.000")
+                    Else
+                        txtApp_Face_MaxFlangeSeparation.Text = ""
+                    End If
+
+                    If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "App")) Then
+                        For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                            grdApp_EditedBy_Face.Rows.Add()
+                            grdApp_EditedBy_Face.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                            grdApp_EditedBy_Face.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
+                            grdApp_EditedBy_Face.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+
+                            txtApp_UserDate_Face.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                            txtApp_UserName_Face.Text = mProcess_Project.EditedBy.Name(j)
+                        Next
+                    End If
+
+                    If (mProcess_Project.EditedBy.RetrieveFromDB_UserSignOff(mProcess_Project.ID, "App")) Then
+                        txtApp_UserName_Face.Text = mProcess_Project.EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        txtApp_UserDate_Face.Text = mProcess_Project.EditedBy.User.Name
+                        chkApp_UserSigned_Face.Checked = mProcess_Project.EditedBy.User.Signed
+                    End If
+
+                ElseIf (.Type = "Axial") Then
+                    '....Cavity Dimension
+                    For j As Integer = 0 To .Cavity.ID_Cavity.Count - 1
+                        Dim pCmbColCavityDim As New DataGridViewComboBoxColumn
+                        pCmbColCavityDim = grdApp_Axial_Cavity.Columns.Item(0)
+                        Dim pVal As String = ""
+                        If (Not IsNothing(.Cavity.DimName(j))) Then
+                            pVal = .Cavity.DimName(j)
+                        End If
+                        If (Not pCmbColCavityDim.Items.Contains(pVal)) Then
+                            pCmbColCavityDim.Items.Add(pVal)
+                        End If
+                    Next
+
+                    '....Cavity Dimension
+                    For j As Integer = 0 To .Cavity.ID_Cavity.Count - 1
+                        grdApp_Axial_Cavity.Rows.Add()
+                        If (Not IsNothing(.Cavity.DimName(j))) Then
+                            grdApp_Axial_Cavity.Rows(j).Cells(0).Value = .Cavity.DimName(j)
+                        Else
+                            grdApp_Axial_Cavity.Rows(j).Cells(0).Value = ""
+                        End If
+                        grdApp_Axial_Cavity.Rows(j).Cells(1).Value = Format(.Cavity.Assy(j).Min, gUnit.LFormat) '.Cavity.Assy(j).Min.ToString("##0.000")
+                        grdApp_Axial_Cavity.Rows(j).Cells(2).Value = Format(.Cavity.Assy(j).Max, gUnit.LFormat) '.Cavity.Assy(j).Max.ToString("##0.000")
+                        grdApp_Axial_Cavity.Rows(j).Cells(3).Value = Format(.Cavity.Oper(j).Min, gUnit.LFormat) '.Cavity.Oper(j).Min.ToString("##0.000")
+                        grdApp_Axial_Cavity.Rows(j).Cells(4).Value = Format(.Cavity.Oper(j).Max, gUnit.LFormat) '.Cavity.Oper(j).Max.ToString("##0.000")
+                    Next
+
+                    ''....Axial Seal
+                    'For j As Integer = 0 To .Cavity.ID_Cavity.Count - 1
+                    '    grdApp_Axial_Cavity.Rows.Add()
+                    '    grdApp_Axial_Cavity.Rows(j).Cells(0).Value = .Cavity.DimName(j)
+                    '    grdApp_Axial_Cavity.Rows(j).Cells(1).Value = .Cavity.Assy(j).Min.ToString("##0.000")
+                    '    grdApp_Axial_Cavity.Rows(j).Cells(2).Value = .Cavity.Assy(j).Max.ToString("##0.000")
+                    '    grdApp_Axial_Cavity.Rows(j).Cells(3).Value = .Cavity.Oper(j).Min.ToString("##0.000")
+                    '    grdApp_Axial_Cavity.Rows(j).Cells(4).Value = .Cavity.Oper(j).Max.ToString("##0.000")
+                    'Next
+
+                    txtApp_Mat1_Axial.Text = .CavityFlange.Mat1
+                    txtApp_Mat2_Axial.Text = .CavityFlange.Mat2
+
+                    If (Math.Abs(.CavityFlange.Hard1) > gcEPS) Then
+                        txtApp_Hardness1_Axial.Text = Format(.CavityFlange.Hard1, gUnit.LFormat) '.CavityFlange.Hard1.ToString("##0.000")
+                    Else
+                        txtApp_Hardness1_Axial.Text = ""
+                    End If
+
+                    If (Math.Abs(.CavityFlange.Hard2) > gcEPS) Then
+                        txtApp_Hardness2_Axial.Text = Format(.CavityFlange.Hard2, gUnit.LFormat) '.CavityFlange.Hard2.ToString("##0.000")
+                    Else
+                        txtApp_Hardness2_Axial.Text = ""
+                    End If
+
+                    If (Math.Abs(.CavityFlange.SF1) > gcEPS) Then
+                        txtApp_SF1_Axial.Text = Format(.CavityFlange.SF1, gUnit.LFormat) '.CavityFlange.SF1.ToString("##0.000")
+                    Else
+                        txtApp_SF1_Axial.Text = ""
+                    End If
+
+                    If (Math.Abs(.CavityFlange.SF2) > gcEPS) Then
+                        txtApp_SF2_Axial.Text = Format(.CavityFlange.SF2, gUnit.LFormat) '.CavityFlange.SF2.ToString("##0.000")
+                    Else
+                        txtApp_SF2_Axial.Text = ""
+                    End If
+
+                    cmbAxial_SF_ProcessName.Text = .CavityFlange.MeasureSF
+                    cmbAxial_SF_Unit.Text = .CavityFlange.UnitSF
+
+                    If (.Axial.IsStatic) Then
+                        cmbApp_Static_Axial.Text = "Y"
+                    Else
+                        cmbApp_Static_Axial.Text = "N"
+                    End If
+
+                    If (.Axial.IsRotating) Then
+                        cmbApp_Rotate_Axial.Text = "Y"
+                        If (Math.Abs(.Axial.RPM)) Then
+                            txtApp_RotateRPM_Axial.Text = gUnit.Format_Val(.Axial.RPM) '.Axial.RPM.ToString("##0")
+                        Else
+                            txtApp_RotateRPM_Axial.Text = ""
+                        End If
+
+                    Else
+                        cmbApp_Rotate_Axial.Text = "N"
                         txtApp_RotateRPM_Axial.Text = ""
                     End If
 
-                Else
-                    cmbApp_Rotate_Axial.Text = "N"
-                    txtApp_RotateRPM_Axial.Text = ""
-                End If
+                    If (.Axial.IsRecip) Then
+                        cmbApp_Recip_Axial.Text = "Y"
 
-                If (.Axial.IsRecip) Then
-                    cmbApp_Recip_Axial.Text = "Y"
+                        If (Math.Abs(.Axial.Recip_Stroke)) Then
+                            txtApp_RecipStrokeL_Axial.Text = gUnit.Format_Val(.Axial.Recip_Stroke) '.Axial.Recip_Stroke.ToString("##0")
+                        Else
+                            txtApp_RecipStrokeL_Axial.Text = ""
+                        End If
 
-                    If (Math.Abs(.Axial.Recip_Stroke)) Then
-                        txtApp_RecipStrokeL_Axial.Text = gUnit.Format_Val(.Axial.Recip_Stroke) '.Axial.Recip_Stroke.ToString("##0")
+                        If (Math.Abs(.Axial.Recip_V)) Then
+                            txtApp_RecipV_Axial.Text = gUnit.Format_Val(.Axial.Recip_V) '.Axial.Recip_V.ToString("##0")
+                        Else
+                            txtApp_RecipV_Axial.Text = ""
+                        End If
+
+                        If (Math.Abs(.Axial.Recip_CycleRate)) Then
+                            txtApp_RecipCycleRate_Axial.Text = gUnit.Format_Val(.Axial.Recip_CycleRate) '.Axial.Recip_CycleRate.ToString("##0")
+                        Else
+                            txtApp_RecipCycleRate_Axial.Text = ""
+                        End If
+
+                        If (Math.Abs(.Axial.Recip_ServiceLife)) Then
+                            txtApp_RecipServiceLife_Axial.Text = gUnit.Format_Val(.Axial.Recip_ServiceLife) '.Axial.Recip_ServiceLife.ToString("##0")
+                        Else
+                            txtApp_RecipServiceLife_Axial.Text = ""
+                        End If
+
                     Else
+                        cmbApp_Recip_Axial.Text = "N"
                         txtApp_RecipStrokeL_Axial.Text = ""
-                    End If
-
-                    If (Math.Abs(.Axial.Recip_V)) Then
-                        txtApp_RecipV_Axial.Text = gUnit.Format_Val(.Axial.Recip_V) '.Axial.Recip_V.ToString("##0")
-                    Else
                         txtApp_RecipV_Axial.Text = ""
-                    End If
-
-                    If (Math.Abs(.Axial.Recip_CycleRate)) Then
-                        txtApp_RecipCycleRate_Axial.Text = gUnit.Format_Val(.Axial.Recip_CycleRate) '.Axial.Recip_CycleRate.ToString("##0")
-                    Else
                         txtApp_RecipCycleRate_Axial.Text = ""
-                    End If
-
-                    If (Math.Abs(.Axial.Recip_ServiceLife)) Then
-                        txtApp_RecipServiceLife_Axial.Text = gUnit.Format_Val(.Axial.Recip_ServiceLife) '.Axial.Recip_ServiceLife.ToString("##0")
-                    Else
                         txtApp_RecipServiceLife_Axial.Text = ""
                     End If
 
-                Else
-                    cmbApp_Recip_Axial.Text = "N"
-                    txtApp_RecipStrokeL_Axial.Text = ""
-                    txtApp_RecipV_Axial.Text = ""
-                    txtApp_RecipCycleRate_Axial.Text = ""
-                    txtApp_RecipServiceLife_Axial.Text = ""
-                End If
+                    If (.Axial.IsOscilatory) Then
+                        cmbApp_Osc_Axial.Text = "Y"
 
-                If (.Axial.IsOscilatory) Then
-                    cmbApp_Osc_Axial.Text = "Y"
+                        If (Math.Abs(.Axial.Oscilate_Rot)) Then
+                            txtApp_OscRot_Axial.Text = gUnit.Format_Val(.Axial.Oscilate_Rot) '.Axial.Oscilate_Rot.ToString("##0")
+                        Else
+                            txtApp_OscRot_Axial.Text = ""
+                        End If
 
-                    If (Math.Abs(.Axial.Oscilate_Rot)) Then
-                        txtApp_OscRot_Axial.Text = gUnit.Format_Val(.Axial.Oscilate_Rot) '.Axial.Oscilate_Rot.ToString("##0")
+                        If (Math.Abs(.Axial.Oscilate_V)) Then
+                            txtApp_OscV_Axial.Text = gUnit.Format_Val(.Axial.Oscilate_V) '.Axial.Oscilate_V.ToString("##0")
+                        Else
+                            txtApp_OscV_Axial.Text = ""
+                        End If
+
+                        If (Math.Abs(.Axial.Oscilate_CycleRate)) Then
+                            txtApp_OscCycleRate_Axial.Text = gUnit.Format_Val(.Axial.Oscilate_CycleRate) '.Axial.Oscilate_CycleRate.ToString("##0")
+                        Else
+                            txtApp_OscCycleRate_Axial.Text = ""
+                        End If
+
+                        If (Math.Abs(.Axial.Oscilate_ServiceLife)) Then
+                            txtApp_OscServiceLife_Axial.Text = gUnit.Format_Val(.Axial.Oscilate_ServiceLife) '.Axial.Oscilate_ServiceLife.ToString("##0")
+                        Else
+                            txtApp_OscServiceLife_Axial.Text = ""
+                        End If
+
                     Else
+                        cmbApp_Osc_Axial.Text = "N"
                         txtApp_OscRot_Axial.Text = ""
-                    End If
-
-                    If (Math.Abs(.Axial.Oscilate_V)) Then
-                        txtApp_OscV_Axial.Text = gUnit.Format_Val(.Axial.Oscilate_V) '.Axial.Oscilate_V.ToString("##0")
-                    Else
                         txtApp_OscV_Axial.Text = ""
-                    End If
-
-                    If (Math.Abs(.Axial.Oscilate_CycleRate)) Then
-                        txtApp_OscCycleRate_Axial.Text = gUnit.Format_Val(.Axial.Oscilate_CycleRate) '.Axial.Oscilate_CycleRate.ToString("##0")
-                    Else
                         txtApp_OscCycleRate_Axial.Text = ""
-                    End If
-
-                    If (Math.Abs(.Axial.Oscilate_ServiceLife)) Then
-                        txtApp_OscServiceLife_Axial.Text = gUnit.Format_Val(.Axial.Oscilate_ServiceLife) '.Axial.Oscilate_ServiceLife.ToString("##0")
-                    Else
                         txtApp_OscServiceLife_Axial.Text = ""
                     End If
 
-                Else
-                    cmbApp_Osc_Axial.Text = "N"
-                    txtApp_OscRot_Axial.Text = ""
-                    txtApp_OscV_Axial.Text = ""
-                    txtApp_OscCycleRate_Axial.Text = ""
-                    txtApp_OscServiceLife_Axial.Text = ""
+                    If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "App")) Then
+                        For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                            grdApp_EditedBy_Axial.Rows.Add()
+                            grdApp_EditedBy_Axial.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                            grdApp_EditedBy_Axial.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
+                            grdApp_EditedBy_Axial.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+
+                            txtApp_UserDate_Axial.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                            txtApp_UserName_Axial.Text = mProcess_Project.EditedBy.Name(j)
+                        Next
+                    End If
+
                 End If
 
-                If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "App")) Then
-                    For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
-                        grdApp_EditedBy_Axial.Rows.Add()
-                        grdApp_EditedBy_Axial.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                        grdApp_EditedBy_Axial.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
-                        grdApp_EditedBy_Axial.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+            End With
 
-                        txtApp_UserDate_Axial.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                        txtApp_UserName_Axial.Text = mProcess_Project.EditedBy.Name(j)
+
+            '...."Design:"
+            With mProcess_Project.Design
+
+                txtDesign_CustDwgNo.Text = .CustDwgNo
+                txtDesign_CustDwgRev.Text = .CustDwgRev
+
+                If (.Frozen.Design) Then
+                    cmbDesign_Frozen.Text = "Y"
+                Else
+                    cmbDesign_Frozen.Text = "N"
+                End If
+
+                If (.Frozen.Process) Then
+                    cmbDesign_Process.Text = "Y"
+                Else
+                    cmbDesign_Process.Text = "N"
+                End If
+
+                If (.IsClass1) Then
+                    cmbDesign_Class1.Text = "Y"
+                Else
+                    cmbDesign_Class1.Text = "N"
+                End If
+
+                If (.IsBuildToPrint) Then
+                    cmbDesign_BuildToPrint.Text = "Y"
+                Else
+                    cmbDesign_BuildToPrint.Text = "N"
+                End If
+
+                '....Verfication Desc
+                For j As Integer = 0 To .Verification.ID_Verification.Count - 1
+                    Dim pCmbColDesc_Verify As New DataGridViewComboBoxColumn
+                    pCmbColDesc_Verify = grdDesign_Verification.Columns.Item(0)
+                    Dim pVal As String = ""
+                    If (Not IsNothing(.Verification.Desc(j))) Then
+                        pVal = .Verification.Desc(j)
+                    End If
+                    If (Not pCmbColDesc_Verify.Items.Contains(pVal)) Then
+                        pCmbColDesc_Verify.Items.Add(pVal)
+                    End If
+                Next
+
+                For i As Integer = 0 To .Verification.ID_Verification.Count - 1
+                    grdDesign_Verification.Rows.Add()
+                    If (Not IsNothing(.Verification.Desc(i))) Then
+                        grdDesign_Verification.Rows(i).Cells(0).Value = .Verification.Desc(i)
+                    Else
+                        grdDesign_Verification.Rows(i).Cells(0).Value = ""
+                    End If
+                    grdDesign_Verification.Rows(i).Cells(1).Value = .Verification.Owner(i)
+                    grdDesign_Verification.Rows(i).Cells(2).Value = .Verification.Result(i)
+                Next
+
+                '....Referance PN
+                '........Current Dim
+                chkNewRef_Dim.Checked = gPartProject.PNR.RefDimCurrent.Exists
+                If (gPartProject.PNR.RefDimCurrent.Exists) Then
+                    Dim pParkerPN As String = "NH-" & gPartProject.PNR.RefDimCurrent.TypeNo & gPartProject.PNR.RefDimCurrent.Val
+                    Dim pParkerPN_Prefix As String = pParkerPN.Substring(3, 2)
+                    cmbParkerPN_Part2_NewRef_Dim.Text = pParkerPN_Prefix
+                    Dim pParkerPN_No As String = pParkerPN.Substring(5)
+                    txtParkerPN_Part3_NewRef_Dim.Text = pParkerPN_No
+                    txtPN_PH_Rev_NewRef_Dim.Text = gPartProject.PNR.RefDimCurrent.Rev.Trim()
+                Else
+                    cmbParkerPN_Part2_NewRef_Dim.Text = ""
+                    txtParkerPN_Part3_NewRef_Dim.Text = ""
+                    txtPN_PH_Rev_NewRef_Dim.Text = ""
+                End If
+
+                '........Current Notes
+                chkNewRef_Notes.Checked = gPartProject.PNR.RefNotesCurrent.Exists
+                If (gPartProject.PNR.RefNotesCurrent.Exists) Then
+                    Dim pParkerPN As String = "NH-" & gPartProject.PNR.RefNotesCurrent.TypeNo & gPartProject.PNR.RefNotesCurrent.Val
+                    Dim pParkerPN_Prefix As String = pParkerPN.Substring(3, 2)
+                    cmbParkerPN_Part2_Notes_Dim.Text = pParkerPN_Prefix
+                    Dim pParkerPN_No As String = pParkerPN.Substring(5)
+                    txtParkerPN_Part3_Notes_Dim.Text = pParkerPN_No
+                    txtParkerPN_Rev_Notes_Dim.Text = gPartProject.PNR.RefNotesCurrent.Rev.Trim()
+                Else
+                    cmbParkerPN_Part2_Notes_Dim.Text = ""
+                    txtParkerPN_Part3_Notes_Dim.Text = ""
+                    txtParkerPN_Rev_Notes_Dim.Text = ""
+                End If
+
+                '........Current Legacy Dim
+                chkLegacyRef_Dim.Checked = gPartProject.PNR.RefDimLegacy.Exists
+                If (gPartProject.PNR.RefDimLegacy.Exists) Then
+                    txtLegacyRef_Dim.Text = gPartProject.PNR.RefDimLegacy.Val
+                    txtLegacyRef_Dim_Rev.Text = gPartProject.PNR.RefDimLegacy.Rev.Trim()
+                Else
+                    txtLegacyRef_Dim.Text = ""
+                    txtLegacyRef_Dim_Rev.Text = ""
+                End If
+
+                '........Current Legacy Notes
+                chkLegacyRef_Notes.Checked = gPartProject.PNR.RefNotesLegacy.Exists
+                If (gPartProject.PNR.RefNotesLegacy.Exists) Then
+                    txtLegacyRef_Notes.Text = gPartProject.PNR.RefNotesLegacy.Val
+                    txtLegacyRef_Notes_Rev.Text = gPartProject.PNR.RefNotesLegacy.Rev.Trim()
+                Else
+                    txtLegacyRef_Notes.Text = ""
+                    txtLegacyRef_Notes_Rev.Text = ""
+                End If
+
+                txtDesign_MCS.Text = gPartProject.PNR.HW.MCrossSecNo '.MCS      'AES 09JAN18
+
+                If (.IsWinnovation) Then
+                    cmbDesign_Winnovation.Text = "Y"
+                    txtDesign_WinnovationNo.Text = .WinnovationNo
+                    txtDesign_WinnovationNo.Enabled = True
+                Else
+                    cmbDesign_Winnovation.Text = "N"
+                    txtDesign_WinnovationNo.Text = ""
+                    txtDesign_WinnovationNo.Enabled = False
+                End If
+
+                'cmbDesign_TemperType.Text = .TemperType
+
+                If (.IsMat_OutsideVender) Then
+                    cmbDesign_OutsideVendor.Text = "Y"
+                Else
+                    cmbDesign_OutsideVendor.Text = "N"
+                End If
+
+                txtDesign_FOD_Risks.Text = .FOD_Risks
+
+                '....Material Section from HW
+                If (gPartProject.PNR.SealType.ToString() = "SC") Then
+                    cmbDesign_Mat_Spring.Text = gPartProject.PNR.HW.MatName
+                    cmbDesign_Mat_Seal.Enabled = False
+                    cmbDesign_Mat_Spring.Enabled = True
+                Else
+                    cmbDesign_Mat_Seal.Text = gPartProject.PNR.HW.MatName
+                    cmbDesign_Mat_Seal.Enabled = True
+                    cmbDesign_Mat_Spring.Enabled = False
+                End If
+                'cmbHT.Text = gPartProject.HT
+                Dim pTemperCode As Integer = gPartProject.PNR.HW.Temper
+
+                If (pTemperCode = 1) Then
+                    cmbDesign_TemperType.Text = "Work(Hardened)"
+                ElseIf (pTemperCode = 2) Then
+                    cmbDesign_TemperType.Text = "Age(Hardened)"
+                ElseIf (pTemperCode = 4) Then
+                    cmbDesign_TemperType.Text = "Annealed"
+                ElseIf (pTemperCode = 6) Then
+                    cmbDesign_TemperType.Text = "Solution and Precip"
+                ElseIf (pTemperCode = 8) Then
+                    cmbDesign_TemperType.Text = "NACE"
+                End If
+
+                If (gPartProject.PNR.SealType = clsPartProject.clsPNR.eType.E) Then
+                    If (gPartProject.PNR.HW.Coating = "None") Then
+                        chkCoating.Checked = False
+                        cmbCoating.Text = ""
+                    Else
+                        chkCoating.Checked = True
+                        cmbCoating.Text = gPartProject.PNR.HW.Coating
+                    End If
+
+                    If (gPartProject.PNR.HW.SFinish = "0") Then
+                        cmbSFinish.Text = ""
+                    Else
+                        cmbSFinish.Text = gPartProject.PNR.HW.SFinish
+                    End If
+
+                ElseIf (gPartProject.PNR.SealType = clsPartProject.clsPNR.eType.C Or gPartProject.PNR.SealType = clsPartProject.clsPNR.eType.SC) Then
+                    If (gPartProject.PNR.HW.Plating.Code <> "") Then
+                        chkPlating.Checked = True
+                        cmbPlatingCode.Text = gPartProject.PNR.HW.Plating.Code
+                        cmbPlatingThickCode.Text = gPartProject.PNR.HW.Plating.ThickCode
+                    End If
+
+                End If
+
+                '....Input
+                For j As Integer = 0 To .Input.ID_Input.Count - 1
+                    Dim pCmbColDesc_Input As New DataGridViewComboBoxColumn
+                    pCmbColDesc_Input = grdDesign_Input.Columns.Item(0)
+                    Dim pVal As String = ""
+                    If (Not IsNothing(.Input.Desc(j))) Then
+                        pVal = .Input.Desc(j)
+                    End If
+                    If (Not pCmbColDesc_Input.Items.Contains(pVal)) Then
+                        pCmbColDesc_Input.Items.Add(pVal)
+                    End If
+                Next
+
+                For i As Integer = 0 To .Input.ID_Input.Count - 1
+                    grdDesign_Input.Rows.Add()
+                    If (Not IsNothing(.Input.Desc(i))) Then
+                        grdDesign_Input.Rows(i).Cells(0).Value = .Input.Desc(i)
+                    Else
+                        grdDesign_Input.Rows(i).Cells(0).Value = ""
+                    End If
+                    'grdDesign_Input.Rows(i).Cells(0).Value = .Input.Desc(i)
+                Next
+
+                '....Cust Spec
+                For j As Integer = 0 To .CustSpec.ID_Cust.Count - 1
+                    Dim pCmbColDesc_CustSpec As New DataGridViewComboBoxColumn
+                    pCmbColDesc_CustSpec = grdDesign_CustSpec.Columns.Item(0)
+                    Dim pVal As String = ""
+                    If (Not IsNothing(.CustSpec.Type(j))) Then
+                        pVal = .CustSpec.Type(j)
+                    End If
+                    If (Not pCmbColDesc_CustSpec.Items.Contains(pVal)) Then
+                        pCmbColDesc_CustSpec.Items.Add(pVal)
+                    End If
+                Next
+
+                For i As Integer = 0 To .CustSpec.ID_Cust.Count - 1
+                    grdDesign_CustSpec.Rows.Add()
+                    If (Not IsNothing(.CustSpec.Type(i))) Then
+                        grdDesign_CustSpec.Rows(i).Cells(0).Value = .CustSpec.Type(i)
+                    Else
+                        grdDesign_CustSpec.Rows(i).Cells(0).Value = ""
+                    End If
+
+                    grdDesign_CustSpec.Rows(i).Cells(1).Value = .CustSpec.Desc(i)
+                    grdDesign_CustSpec.Rows(i).Cells(2).Value = .CustSpec.Interpret(i)
+
+                Next
+
+                '....Seal Dimension
+                For j As Integer = 0 To .SealDim.ID_Seal.Count - 1
+                    Dim pCmbColDesc_SealDim As New DataGridViewComboBoxColumn
+                    pCmbColDesc_SealDim = grdDesign_Seal.Columns.Item(0)
+                    Dim pVal As String = ""
+                    If (Not IsNothing(.SealDim.Name(j))) Then
+                        pVal = .SealDim.Name(j)
+                    End If
+                    If (Not pCmbColDesc_SealDim.Items.Contains(pVal)) Then
+                        pCmbColDesc_SealDim.Items.Add(pVal)
+                    End If
+                Next
+
+                For i As Integer = 0 To .SealDim.ID_Seal.Count - 1
+                    grdDesign_Seal.Rows.Add()
+
+                    If (Not IsNothing(.SealDim.Name(i))) Then
+                        grdDesign_Seal.Rows(i).Cells(0).Value = .SealDim.Name(i)
+                    Else
+                        grdDesign_Seal.Rows(i).Cells(0).Value = ""
+                    End If
+
+                    'grdDesign_Seal.Rows(i).Cells(0).Value = .SealDim.Name(i)
+
+                    If (Math.Abs(.SealDim.Min(i)) > gcEPS) Then
+                        grdDesign_Seal.Rows(i).Cells(1).Value = Format(.SealDim.Min(i), gUnit.LFormat) '.SealDim.Min(i).ToString("##0.000")
+                    Else
+                        grdDesign_Seal.Rows(i).Cells(1).Value = ""
+                    End If
+
+                    If (Math.Abs(.SealDim.Nom(i)) > gcEPS) Then
+                        grdDesign_Seal.Rows(i).Cells(2).Value = Format(.SealDim.Nom(i), gUnit.LFormat) '.SealDim.Nom(i).ToString("##0.000")
+                    Else
+                        grdDesign_Seal.Rows(i).Cells(2).Value = "" '.SealDim.Nom(i).ToString("##0.000")
+                    End If
+
+                    If (Math.Abs(.SealDim.Max(i)) > gcEPS) Then
+                        grdDesign_Seal.Rows(i).Cells(3).Value = Format(.SealDim.Max(i), gUnit.LFormat) '.SealDim.Max(i).ToString("##0.000")
+                    Else
+                        grdDesign_Seal.Rows(i).Cells(3).Value = "" '.SealDim.Max(i).ToString("##0.000")
+                    End If
+
+                Next
+                txtDesign_LessonsLearned.Text = .LessonsLearned
+                txtDesign_Notes.Text = .Notes
+
+                If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Design")) Then
+                    For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                        grdDesign_EditedBy.Rows.Add()
+                        grdDesign_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        grdDesign_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
+                        grdDesign_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+
+                        txtDesign_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        txtDesign_UserName.Text = mProcess_Project.EditedBy.Name(j)
                     Next
                 End If
 
-            End If
-
-        End With
-
-
-        '...."Design:"
-        With mProcess_Project.Design
-
-            txtDesign_CustDwgNo.Text = .CustDwgNo
-            txtDesign_CustDwgRev.Text = .CustDwgRev
-
-            If (.Frozen.Design) Then
-                cmbDesign_Frozen.Text = "Y"
-            Else
-                cmbDesign_Frozen.Text = "N"
-            End If
-
-            If (.Frozen.Process) Then
-                cmbDesign_Process.Text = "Y"
-            Else
-                cmbDesign_Process.Text = "N"
-            End If
-
-            If (.IsClass1) Then
-                cmbDesign_Class1.Text = "Y"
-            Else
-                cmbDesign_Class1.Text = "N"
-            End If
-
-            If (.IsBuildToPrint) Then
-                cmbDesign_BuildToPrint.Text = "Y"
-            Else
-                cmbDesign_BuildToPrint.Text = "N"
-            End If
-
-            '....Verfication Desc
-            For j As Integer = 0 To .Verification.ID_Verification.Count - 1
-                Dim pCmbColDesc_Verify As New DataGridViewComboBoxColumn
-                pCmbColDesc_Verify = grdDesign_Verification.Columns.Item(0)
-                Dim pVal As String = ""
-                If (Not IsNothing(.Verification.Desc(j))) Then
-                    pVal = .Verification.Desc(j)
-                End If
-                If (Not pCmbColDesc_Verify.Items.Contains(pVal)) Then
-                    pCmbColDesc_Verify.Items.Add(pVal)
-                End If
-            Next
-
-            For i As Integer = 0 To .Verification.ID_Verification.Count - 1
-                grdDesign_Verification.Rows.Add()
-                If (Not IsNothing(.Verification.Desc(i))) Then
-                    grdDesign_Verification.Rows(i).Cells(0).Value = .Verification.Desc(i)
-                Else
-                    grdDesign_Verification.Rows(i).Cells(0).Value = ""
-                End If
-                grdDesign_Verification.Rows(i).Cells(1).Value = .Verification.Owner(i)
-                grdDesign_Verification.Rows(i).Cells(2).Value = .Verification.Result(i)
-            Next
-
-            '....Referance PN
-            '........Current Dim
-            chkNewRef_Dim.Checked = gPartProject.PNR.RefDimCurrent.Exists
-            If (gPartProject.PNR.RefDimCurrent.Exists) Then
-                Dim pParkerPN As String = "NH-" & gPartProject.PNR.RefDimCurrent.TypeNo & gPartProject.PNR.RefDimCurrent.Val
-                Dim pParkerPN_Prefix As String = pParkerPN.Substring(3, 2)
-                cmbParkerPN_Part2_NewRef_Dim.Text = pParkerPN_Prefix
-                Dim pParkerPN_No As String = pParkerPN.Substring(5)
-                txtParkerPN_Part3_NewRef_Dim.Text = pParkerPN_No
-                txtPN_PH_Rev_NewRef_Dim.Text = gPartProject.PNR.RefDimCurrent.Rev.Trim()
-            Else
-                cmbParkerPN_Part2_NewRef_Dim.Text = ""
-                txtParkerPN_Part3_NewRef_Dim.Text = ""
-                txtPN_PH_Rev_NewRef_Dim.Text = ""
-            End If
-
-            '........Current Notes
-            chkNewRef_Notes.Checked = gPartProject.PNR.RefNotesCurrent.Exists
-            If (gPartProject.PNR.RefNotesCurrent.Exists) Then
-                Dim pParkerPN As String = "NH-" & gPartProject.PNR.RefNotesCurrent.TypeNo & gPartProject.PNR.RefNotesCurrent.Val
-                Dim pParkerPN_Prefix As String = pParkerPN.Substring(3, 2)
-                cmbParkerPN_Part2_Notes_Dim.Text = pParkerPN_Prefix
-                Dim pParkerPN_No As String = pParkerPN.Substring(5)
-                txtParkerPN_Part3_Notes_Dim.Text = pParkerPN_No
-                txtParkerPN_Rev_Notes_Dim.Text = gPartProject.PNR.RefNotesCurrent.Rev.Trim()
-            Else
-                cmbParkerPN_Part2_Notes_Dim.Text = ""
-                txtParkerPN_Part3_Notes_Dim.Text = ""
-                txtParkerPN_Rev_Notes_Dim.Text = ""
-            End If
-
-            '........Current Legacy Dim
-            chkLegacyRef_Dim.Checked = gPartProject.PNR.RefDimLegacy.Exists
-            If (gPartProject.PNR.RefDimLegacy.Exists) Then
-                txtLegacyRef_Dim.Text = gPartProject.PNR.RefDimLegacy.Val
-                txtLegacyRef_Dim_Rev.Text = gPartProject.PNR.RefDimLegacy.Rev.Trim()
-            Else
-                txtLegacyRef_Dim.Text = ""
-                txtLegacyRef_Dim_Rev.Text = ""
-            End If
-
-            '........Current Legacy Notes
-            chkLegacyRef_Notes.Checked = gPartProject.PNR.RefNotesLegacy.Exists
-            If (gPartProject.PNR.RefNotesLegacy.Exists) Then
-                txtLegacyRef_Notes.Text = gPartProject.PNR.RefNotesLegacy.Val
-                txtLegacyRef_Notes_Rev.Text = gPartProject.PNR.RefNotesLegacy.Rev.Trim()
-            Else
-                txtLegacyRef_Notes.Text = ""
-                txtLegacyRef_Notes_Rev.Text = ""
-            End If
-
-            txtDesign_MCS.Text = gPartProject.PNR.HW.MCrossSecNo '.MCS      'AES 09JAN18
-
-            If (.IsWinnovation) Then
-                cmbDesign_Winnovation.Text = "Y"
-                txtDesign_WinnovationNo.Text = .WinnovationNo
-                txtDesign_WinnovationNo.Enabled = True
-            Else
-                cmbDesign_Winnovation.Text = "N"
-                txtDesign_WinnovationNo.Text = ""
-                txtDesign_WinnovationNo.Enabled = False
-            End If
-
-            'cmbDesign_TemperType.Text = .TemperType
-
-            If (.IsMat_OutsideVender) Then
-                cmbDesign_OutsideVendor.Text = "Y"
-            Else
-                cmbDesign_OutsideVendor.Text = "N"
-            End If
-
-            txtDesign_FOD_Risks.Text = .FOD_Risks
-
-            '....Material Section from HW
-            If (gPartProject.PNR.SealType.ToString() = "SC") Then
-                cmbDesign_Mat_Spring.Text = gPartProject.PNR.HW.MatName
-                cmbDesign_Mat_Seal.Enabled = False
-                cmbDesign_Mat_Spring.Enabled = True
-            Else
-                cmbDesign_Mat_Seal.Text = gPartProject.PNR.HW.MatName
-                cmbDesign_Mat_Seal.Enabled = True
-                cmbDesign_Mat_Spring.Enabled = False
-            End If
-            'cmbHT.Text = gPartProject.HT
-            Dim pTemperCode As Integer = gPartProject.PNR.HW.Temper
-
-            If (pTemperCode = 1) Then
-                cmbDesign_TemperType.Text = "Work(Hardened)"
-            ElseIf (pTemperCode = 2) Then
-                cmbDesign_TemperType.Text = "Age(Hardened)"
-            ElseIf (pTemperCode = 4) Then
-                cmbDesign_TemperType.Text = "Annealed"
-            ElseIf (pTemperCode = 6) Then
-                cmbDesign_TemperType.Text = "Solution and Precip"
-            ElseIf (pTemperCode = 8) Then
-                cmbDesign_TemperType.Text = "NACE"
-            End If
-
-            If (gPartProject.PNR.SealType = clsPartProject.clsPNR.eType.E) Then
-                If (gPartProject.PNR.HW.Coating = "None") Then
-                    chkCoating.Checked = False
-                    cmbCoating.Text = ""
-                Else
-                    chkCoating.Checked = True
-                    cmbCoating.Text = gPartProject.PNR.HW.Coating
+                If (mProcess_Project.EditedBy.RetrieveFromDB_UserSignOff(mProcess_Project.ID, "Design")) Then
+                    txtDesign_UserDate.Text = mProcess_Project.EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    txtDesign_UserName.Text = mProcess_Project.EditedBy.User.Name
+                    chkDesign_UserSigned.Checked = mProcess_Project.EditedBy.User.Signed
                 End If
 
-                If (gPartProject.PNR.HW.SFinish = "0") Then
-                    cmbSFinish.Text = ""
-                Else
-                    cmbSFinish.Text = gPartProject.PNR.HW.SFinish
-                End If
+            End With
 
-            ElseIf (gPartProject.PNR.SealType = clsPartProject.clsPNR.eType.C Or gPartProject.PNR.SealType = clsPartProject.clsPNR.eType.SC) Then
-                If (gPartProject.PNR.HW.Plating.Code <> "") Then
-                    chkPlating.Checked = True
-                    cmbPlatingCode.Text = gPartProject.PNR.HW.Plating.Code
-                    cmbPlatingThickCode.Text = gPartProject.PNR.HW.Plating.ThickCode
-                End If
 
-            End If
+            '.... "Manufacturing:"
+            With mProcess_Project.Manf
 
-            '....Input
-            For j As Integer = 0 To .Input.ID_Input.Count - 1
-                Dim pCmbColDesc_Input As New DataGridViewComboBoxColumn
-                pCmbColDesc_Input = grdDesign_Input.Columns.Item(0)
-                Dim pVal As String = ""
-                If (Not IsNothing(.Input.Desc(j))) Then
-                    pVal = .Input.Desc(j)
-                End If
-                If (Not pCmbColDesc_Input.Items.Contains(pVal)) Then
-                    pCmbColDesc_Input.Items.Add(pVal)
-                End If
-            Next
+                txtManf_MatPartNo_Base.Text = .BaseMat_PartNo
+                txtManf_MatPartNo_Spring.Text = .SpringMat_PartNo
+                txtManf_HT.Text = .HT
+                cmbManf_PrecompressionGlue.Text = .PreComp_Glue
 
-            For i As Integer = 0 To .Input.ID_Input.Count - 1
-                grdDesign_Input.Rows.Add()
-                If (Not IsNothing(.Input.Desc(i))) Then
-                    grdDesign_Input.Rows(i).Cells(0).Value = .Input.Desc(i)
-                Else
-                    grdDesign_Input.Rows(i).Cells(0).Value = ""
-                End If
-                'grdDesign_Input.Rows(i).Cells(0).Value = .Input.Desc(i)
-            Next
-
-            '....Cust Spec
-            For j As Integer = 0 To .CustSpec.ID_Cust.Count - 1
-                Dim pCmbColDesc_CustSpec As New DataGridViewComboBoxColumn
-                pCmbColDesc_CustSpec = grdDesign_CustSpec.Columns.Item(0)
-                Dim pVal As String = ""
-                If (Not IsNothing(.CustSpec.Type(j))) Then
-                    pVal = .CustSpec.Type(j)
-                End If
-                If (Not pCmbColDesc_CustSpec.Items.Contains(pVal)) Then
-                    pCmbColDesc_CustSpec.Items.Add(pVal)
-                End If
-            Next
-
-            For i As Integer = 0 To .CustSpec.ID_Cust.Count - 1
-                grdDesign_CustSpec.Rows.Add()
-                If (Not IsNothing(.CustSpec.Type(i))) Then
-                    grdDesign_CustSpec.Rows(i).Cells(0).Value = .CustSpec.Type(i)
-                Else
-                    grdDesign_CustSpec.Rows(i).Cells(0).Value = ""
-                End If
-
-                grdDesign_CustSpec.Rows(i).Cells(1).Value = .CustSpec.Desc(i)
-                grdDesign_CustSpec.Rows(i).Cells(2).Value = .CustSpec.Interpret(i)
-
-            Next
-
-            '....Seal Dimension
-            For j As Integer = 0 To .SealDim.ID_Seal.Count - 1
-                Dim pCmbColDesc_SealDim As New DataGridViewComboBoxColumn
-                pCmbColDesc_SealDim = grdDesign_Seal.Columns.Item(0)
-                Dim pVal As String = ""
-                If (Not IsNothing(.SealDim.Name(j))) Then
-                    pVal = .SealDim.Name(j)
-                End If
-                If (Not pCmbColDesc_SealDim.Items.Contains(pVal)) Then
-                    pCmbColDesc_SealDim.Items.Add(pVal)
-                End If
-            Next
-
-            For i As Integer = 0 To .SealDim.ID_Seal.Count - 1
-                grdDesign_Seal.Rows.Add()
-
-                If (Not IsNothing(.SealDim.Name(i))) Then
-                    grdDesign_Seal.Rows(i).Cells(0).Value = .SealDim.Name(i)
-                Else
-                    grdDesign_Seal.Rows(i).Cells(0).Value = ""
-                End If
-
-                'grdDesign_Seal.Rows(i).Cells(0).Value = .SealDim.Name(i)
-
-                If (Math.Abs(.SealDim.Min(i)) > gcEPS) Then
-                    grdDesign_Seal.Rows(i).Cells(1).Value = Format(.SealDim.Min(i), gUnit.LFormat) '.SealDim.Min(i).ToString("##0.000")
-                Else
-                    grdDesign_Seal.Rows(i).Cells(1).Value = ""
-                End If
-
-                If (Math.Abs(.SealDim.Nom(i)) > gcEPS) Then
-                    grdDesign_Seal.Rows(i).Cells(2).Value = Format(.SealDim.Nom(i), gUnit.LFormat) '.SealDim.Nom(i).ToString("##0.000")
-                Else
-                    grdDesign_Seal.Rows(i).Cells(2).Value = "" '.SealDim.Nom(i).ToString("##0.000")
-                End If
-
-                If (Math.Abs(.SealDim.Max(i)) > gcEPS) Then
-                    grdDesign_Seal.Rows(i).Cells(3).Value = Format(.SealDim.Max(i), gUnit.LFormat) '.SealDim.Max(i).ToString("##0.000")
-                Else
-                    grdDesign_Seal.Rows(i).Cells(3).Value = "" '.SealDim.Max(i).ToString("##0.000")
-                End If
-
-            Next
-            txtDesign_LessonsLearned.Text = .LessonsLearned
-            txtDesign_Notes.Text = .Notes
-
-            If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Design")) Then
-                For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
-                    grdDesign_EditedBy.Rows.Add()
-                    grdDesign_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    grdDesign_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
-                    grdDesign_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
-
-                    txtDesign_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    txtDesign_UserName.Text = mProcess_Project.EditedBy.Name(j)
+                '....Desc
+                For j As Integer = 0 To .ToolNGage.ID_Tool.Count - 1
+                    Dim pCmbColDesc_ToolGage As New DataGridViewComboBoxColumn
+                    pCmbColDesc_ToolGage = grdManf_ToolNGage.Columns.Item(1)
+                    Dim pVal As String = ""
+                    If (Not IsNothing(.ToolNGage.Desc(j))) Then
+                        pVal = .ToolNGage.Desc(j)
+                    End If
+                    If (Not pCmbColDesc_ToolGage.Items.Contains(pVal)) Then
+                        pCmbColDesc_ToolGage.Items.Add(pVal)
+                    End If
                 Next
-            End If
 
-            If (mProcess_Project.EditedBy.RetrieveFromDB_UserSignOff(mProcess_Project.ID, "Design")) Then
-                txtDesign_UserDate.Text = mProcess_Project.EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                txtDesign_UserName.Text = mProcess_Project.EditedBy.User.Name
-                chkDesign_UserSigned.Checked = mProcess_Project.EditedBy.User.Signed
-            End If
-
-        End With
-
-
-        '.... "Manufacturing:"
-        With mProcess_Project.Manf
-
-            txtManf_MatPartNo_Base.Text = .BaseMat_PartNo
-            txtManf_MatPartNo_Spring.Text = .SpringMat_PartNo
-            txtManf_HT.Text = .HT
-            cmbManf_PrecompressionGlue.Text = .PreComp_Glue
-
-            '....Desc
-            For j As Integer = 0 To .ToolNGage.ID_Tool.Count - 1
-                Dim pCmbColDesc_ToolGage As New DataGridViewComboBoxColumn
-                pCmbColDesc_ToolGage = grdManf_ToolNGage.Columns.Item(1)
-                Dim pVal As String = ""
-                If (Not IsNothing(.ToolNGage.Desc(j))) Then
-                    pVal = .ToolNGage.Desc(j)
-                End If
-                If (Not pCmbColDesc_ToolGage.Items.Contains(pVal)) Then
-                    pCmbColDesc_ToolGage.Items.Add(pVal)
-                End If
-            Next
-
-            For i As Integer = 0 To .ToolNGage.ID_Tool.Count - 1
-                grdManf_ToolNGage.Rows.Add()
-                grdManf_ToolNGage.Rows(i).Cells(0).Value = .ToolNGage.PartNo(i)
-                If (Not IsNothing(.ToolNGage.Desc(i))) Then
-                    grdManf_ToolNGage.Rows(i).Cells(1).Value = .ToolNGage.Desc(i)
-                Else
-                    grdManf_ToolNGage.Rows(i).Cells(1).Value = ""
-                End If
-
-                'grdManf_ToolNGage.Rows(i).Cells(1).Value = .ToolNGage.Desc(i)
-
-                If ("Roll tooling" = .ToolNGage.Desc(i)) Then
-
-                    Dim dgvcc As New DataGridViewComboBoxCell
-
-                    dgvcc.Items.Clear()
-                    dgvcc.Items.Add("E-Seal form")
-                    dgvcc.Items.Add("Pre-form")
-                    dgvcc.Items.Add("C-Ring")
-                    grdManf_ToolNGage.Item(2, i) = dgvcc
-
-                ElseIf ("Die" = .ToolNGage.Desc(i)) Then
-
-                    Dim dgvcc As New DataGridViewComboBoxCell
-                    dgvcc.Items.Clear()
-                    dgvcc.Items.Add("Std")
-                    dgvcc.Items.Add("Pre-form PF")
-                    dgvcc.Items.Add("After-plate AP")
-                    grdManf_ToolNGage.Item(2, i) = dgvcc
-
-                ElseIf ("Window gauge" = .ToolNGage.Desc(i)) Then
-
-                    Dim dgvcc As New DataGridViewComboBoxCell
-                    dgvcc.Items.Clear()
-                    dgvcc.Items.Add("Std")
-                    dgvcc.Items.Add("3D gauge")
-                    dgvcc.Items.Add("3D tooling")
-                    grdManf_ToolNGage.Item(2, i) = dgvcc
-
-                Else
-                    Dim dgvcc As New DataGridViewComboBoxCell
-                    dgvcc.Items.Clear()
-                    grdManf_ToolNGage.Item(2, i) = dgvcc
-
-                End If
-
-
-                grdManf_ToolNGage.Rows(i).Cells(2).Value = .ToolNGage.Type(i)
-                grdManf_ToolNGage.Rows(i).Cells(3).Value = .ToolNGage.Status(i)
-
-                If (Math.Abs(.ToolNGage.LeadTime(i)) > gcEPS) Then
-                    grdManf_ToolNGage.Rows(i).Cells(4).Value = gUnit.Format_Val(.ToolNGage.LeadTime(i)) '.ToolNGage.LeadTime(i)
-                Else
-                    grdManf_ToolNGage.Rows(i).Cells(4).Value = ""
-                End If
-
-                grdManf_ToolNGage.Rows(i).Cells(5).Value = .ToolNGage.DesignResponsibility(i)
-
-            Next
-
-
-            For i As Integer = 0 To .ToolNGage.ID_Tool.Count - 1
-                If (.ToolNGage.Status(i) = "Buy") Then
-                    grdPurchase_ToolNGages.Rows.Add()
-                    grdPurchase_ToolNGages.Rows(i).Cells(0).Value = .ToolNGage.PartNo(i)
-                    grdPurchase_ToolNGages.Rows(i).Cells(1).Value = .ToolNGage.Desc(i)
-                    grdPurchase_ToolNGages.Rows(i).Cells(2).Value = .ToolNGage.Type(i)
-                    'grdPurchase_ToolNGages.Rows(i).Cells(3).Value = .ToolNGage.Status(i)
-
-                    If (Math.Abs(.ToolNGage.LeadTime(i)) > gcEPS) Then
-                        grdPurchase_ToolNGages.Rows(i).Cells(3).Value = gUnit.Format_Val(.ToolNGage.LeadTime(i)) '.ToolNGage.LeadTime(i)
+                For i As Integer = 0 To .ToolNGage.ID_Tool.Count - 1
+                    grdManf_ToolNGage.Rows.Add()
+                    grdManf_ToolNGage.Rows(i).Cells(0).Value = .ToolNGage.PartNo(i)
+                    If (Not IsNothing(.ToolNGage.Desc(i))) Then
+                        grdManf_ToolNGage.Rows(i).Cells(1).Value = .ToolNGage.Desc(i)
                     Else
-                        grdPurchase_ToolNGages.Rows(i).Cells(3).Value = ""
+                        grdManf_ToolNGage.Rows(i).Cells(1).Value = ""
                     End If
 
-                    grdPurchase_ToolNGages.Rows(i).Cells(4).Value = .ToolNGage.DesignResponsibility(i)
-                End If
-            Next
-            grdPurchase_ToolNGages.AllowUserToAddRows = False
-            grdPurchase_ToolNGages.Enabled = False
+                    'grdManf_ToolNGage.Rows(i).Cells(1).Value = .ToolNGage.Desc(i)
 
-            If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Manf")) Then
-                For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
-                    grdManf_EditedBy.Rows.Add()
-                    grdManf_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    grdManf_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
-                    grdManf_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+                    If ("Roll tooling" = .ToolNGage.Desc(i)) Then
 
-                    txtManf_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    txtManf_UserName.Text = mProcess_Project.EditedBy.Name(j)
+                        Dim dgvcc As New DataGridViewComboBoxCell
+
+                        dgvcc.Items.Clear()
+                        dgvcc.Items.Add("E-Seal form")
+                        dgvcc.Items.Add("Pre-form")
+                        dgvcc.Items.Add("C-Ring")
+                        grdManf_ToolNGage.Item(2, i) = dgvcc
+
+                    ElseIf ("Die" = .ToolNGage.Desc(i)) Then
+
+                        Dim dgvcc As New DataGridViewComboBoxCell
+                        dgvcc.Items.Clear()
+                        dgvcc.Items.Add("Std")
+                        dgvcc.Items.Add("Pre-form PF")
+                        dgvcc.Items.Add("After-plate AP")
+                        grdManf_ToolNGage.Item(2, i) = dgvcc
+
+                    ElseIf ("Window gauge" = .ToolNGage.Desc(i)) Then
+
+                        Dim dgvcc As New DataGridViewComboBoxCell
+                        dgvcc.Items.Clear()
+                        dgvcc.Items.Add("Std")
+                        dgvcc.Items.Add("3D gauge")
+                        dgvcc.Items.Add("3D tooling")
+                        grdManf_ToolNGage.Item(2, i) = dgvcc
+
+                    Else
+                        Dim dgvcc As New DataGridViewComboBoxCell
+                        dgvcc.Items.Clear()
+                        grdManf_ToolNGage.Item(2, i) = dgvcc
+
+                    End If
+
+
+                    grdManf_ToolNGage.Rows(i).Cells(2).Value = .ToolNGage.Type(i)
+                    grdManf_ToolNGage.Rows(i).Cells(3).Value = .ToolNGage.Status(i)
+
+                    If (Math.Abs(.ToolNGage.LeadTime(i)) > gcEPS) Then
+                        grdManf_ToolNGage.Rows(i).Cells(4).Value = gUnit.Format_Val(.ToolNGage.LeadTime(i)) '.ToolNGage.LeadTime(i)
+                    Else
+                        grdManf_ToolNGage.Rows(i).Cells(4).Value = ""
+                    End If
+
+                    grdManf_ToolNGage.Rows(i).Cells(5).Value = .ToolNGage.DesignResponsibility(i)
+
                 Next
-            End If
-
-            If (mProcess_Project.EditedBy.RetrieveFromDB_UserSignOff(mProcess_Project.ID, "Manf")) Then
-                txtManf_UserDate.Text = mProcess_Project.EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                txtManf_UserName.Text = mProcess_Project.EditedBy.User.Name
-                chkManf_UserSigned.Checked = mProcess_Project.EditedBy.User.Signed
-            End If
-
-        End With
 
 
-        '....Purchasing
-        With mProcess_Project.Purchase
+                For i As Integer = 0 To .ToolNGage.ID_Tool.Count - 1
+                    If (.ToolNGage.Status(i) = "Buy") Then
+                        grdPurchase_ToolNGages.Rows.Add()
+                        grdPurchase_ToolNGages.Rows(i).Cells(0).Value = .ToolNGage.PartNo(i)
+                        grdPurchase_ToolNGages.Rows(i).Cells(1).Value = .ToolNGage.Desc(i)
+                        grdPurchase_ToolNGages.Rows(i).Cells(2).Value = .ToolNGage.Type(i)
+                        'grdPurchase_ToolNGages.Rows(i).Cells(3).Value = .ToolNGage.Status(i)
 
-            For j As Integer = 0 To .Mat.ID_Mat.Count - 1
-                Dim pCmbColPurchase_Unit As New DataGridViewComboBoxColumn
-                pCmbColPurchase_Unit = grdPurchase_Mat.Columns.Item(2)
-                Dim pVal As String = ""
-                If (Not IsNothing(mProcess_Project.Purchase.Mat.Qty_Unit(j))) Then
-                    pVal = mProcess_Project.Purchase.Mat.Qty_Unit(j)
-                End If
-                If (Not pCmbColPurchase_Unit.Items.Contains(pVal)) Then
-                    pCmbColPurchase_Unit.Items.Add(pVal)
-                End If
-            Next
+                        If (Math.Abs(.ToolNGage.LeadTime(i)) > gcEPS) Then
+                            grdPurchase_ToolNGages.Rows(i).Cells(3).Value = gUnit.Format_Val(.ToolNGage.LeadTime(i)) '.ToolNGage.LeadTime(i)
+                        Else
+                            grdPurchase_ToolNGages.Rows(i).Cells(3).Value = ""
+                        End If
 
-            For i As Integer = 0 To .Mat.ID_Mat.Count - 1
-                grdPurchase_Mat.Rows.Add()
-                grdPurchase_Mat.Rows(i).Cells(0).Value = .Mat.Item(i)
-                If (Math.Abs(.Mat.EstQty(i)) > gcEPS) Then
-                    grdPurchase_Mat.Rows(i).Cells(1).Value = .Mat.EstQty(i)
-                Else
-                    grdPurchase_Mat.Rows(i).Cells(1).Value = ""
-                End If
-
-                If (Not IsNothing(mProcess_Project.Purchase.Mat.Qty_Unit(i))) Then
-                    grdPurchase_Mat.Rows(i).Cells(2).Value = mProcess_Project.Purchase.Mat.Qty_Unit(i)
-                Else
-                    grdPurchase_Mat.Rows(i).Cells(2).Value = ""
-                End If
-
-                grdPurchase_Mat.Rows(i).Cells(3).Value = .Mat.Status(i)
-
-                If (Math.Abs(.Mat.LeadTime(i)) > gcEPS) Then
-                    grdPurchase_Mat.Rows(i).Cells(4).Value = gUnit.Format_Val(.Mat.LeadTime(i)) '.Mat.LeadTime(i)
-                Else
-                    grdPurchase_Mat.Rows(i).Cells(4).Value = ""
-                End If
-
-            Next
-
-
-            For i As Integer = 0 To .Dwg.ID_Dwg.Count - 1
-                grdPurchase_Drawing.Rows.Add()
-                grdPurchase_Drawing.Rows(i).Cells(0).Value = .Dwg.No(i)
-                grdPurchase_Drawing.Rows(i).Cells(1).Value = .Dwg.Desc(i)
-
-                If (Math.Abs(.Dwg.LeadTime(i)) > gcEPS) Then
-                    grdPurchase_Drawing.Rows(i).Cells(2).Value = gUnit.Format_Val(.Dwg.LeadTime(i)) '.Dwg.LeadTime(i).ToString("#0.0")
-                Else
-                    grdPurchase_Drawing.Rows(i).Cells(2).Value = ""
-                End If
-
-            Next
-
-            If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Purchase")) Then
-                For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
-                    grdPurchase_EditedBy.Rows.Add()
-                    grdPurchase_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    grdPurchase_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
-                    grdPurchase_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
-
-                    txtPurchase_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    txtPurchase_UserName.Text = mProcess_Project.EditedBy.Name(j)
+                        grdPurchase_ToolNGages.Rows(i).Cells(4).Value = .ToolNGage.DesignResponsibility(i)
+                    End If
                 Next
-            End If
+                grdPurchase_ToolNGages.AllowUserToAddRows = False
+                grdPurchase_ToolNGages.Enabled = False
 
+                If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Manf")) Then
+                    For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                        grdManf_EditedBy.Rows.Add()
+                        grdManf_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        grdManf_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
+                        grdManf_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
 
-            If (mProcess_Project.EditedBy.RetrieveFromDB_UserSignOff(mProcess_Project.ID, "Purchase")) Then
-                txtPurchase_UserDate.Text = mProcess_Project.EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                txtPurchase_UserName.Text = mProcess_Project.EditedBy.User.Name
-                chkPurchase_UserSigned.Checked = mProcess_Project.EditedBy.User.Signed
-            End If
-
-        End With
-
-
-        '.... "Quality:"
-        With mProcess_Project.Qlty
-            If (.IsApvdSupplierOnly) Then
-                cmbQuality_ApprovedSupplier.Text = "Y"
-            Else
-                cmbQuality_ApprovedSupplier.Text = "N"
-            End If
-
-            If (.Separate_Tool_Gage_Reqd) Then
-                cmbQuality_TNG.Text = "Y"
-            Else
-                cmbQuality_TNG.Text = "N"
-            End If
-
-            If (.HasCustComplaint) Then
-                cmbQuality_CustComplaint.Text = "Y"
-                txtQuality_Reason.Text = .Reason
-            Else
-                cmbQuality_CustComplaint.Text = "N"
-                txtQuality_Reason.Text = ""
-            End If
-
-            If (.VisualInspection) Then
-                cmbQuality_VisualInspection.Text = "Y"
-                cmbQuality_VisualInspection_Type.Text = .VisualInspection_Type
-            Else
-                cmbQuality_VisualInspection.Text = "N"
-                cmbQuality_VisualInspection_Type.Text = ""
-            End If
-
-            If (.SPC_Reqd) Then
-                cmbQuality_SPC.Text = "Y"
-            Else
-                cmbQuality_SPC.Text = "N"
-            End If
-
-            If (.GageRnR_Reqd) Then
-                cmbQuality_GageRnR_Reqd.Text = "Y"
-            Else
-                cmbQuality_GageRnR_Reqd.Text = "N"
-            End If
-
-            cmbQuality_CustAcceptStd.Text = .CustAcceptStd
-
-            '....Spl Operation
-            For j As Integer = 0 To mProcess_Project.Cost.SplOperation.Desc.Count - 1
-                Dim pCmbColDesc_Cost As New DataGridViewComboBoxColumn
-                pCmbColDesc_Cost = grdQuality_SplOperation.Columns.Item(0)
-                Dim pVal As String = ""
-                If (Not IsNothing(mProcess_Project.Cost.SplOperation.Desc(j))) Then
-                    pVal = mProcess_Project.Cost.SplOperation.Desc(j)
-                End If
-                If (Not pCmbColDesc_Cost.Items.Contains(pVal)) Then
-                    pCmbColDesc_Cost.Items.Add(pVal)
-                End If
-            Next
-
-            '....Spl Operation
-            For j As Integer = 0 To mProcess_Project.Cost.SplOperation.Desc.Count - 1
-                grdQuality_SplOperation.Rows.Add()
-                If (Not IsNothing(mProcess_Project.Cost.SplOperation.Desc(j))) Then
-                    grdQuality_SplOperation.Rows(j).Cells(0).Value = mProcess_Project.Cost.SplOperation.Desc(j)
-                Else
-                    grdQuality_SplOperation.Rows(j).Cells(0).Value = ""
+                        txtManf_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        txtManf_UserName.Text = mProcess_Project.EditedBy.Name(j)
+                    Next
                 End If
 
-                'grdQuality_SplOperation.Rows(j).Cells(0).Value = mProcess_Project.Cost.SplOperation.Desc(j)
-                grdQuality_SplOperation.Rows(j).Cells(1).Value = mProcess_Project.Cost.SplOperation.Spec(j)
-                grdQuality_SplOperation.Rows(j).Cells(2).Value = gUnit.Format_Val(mProcess_Project.Cost.SplOperation.LeadTime(j)) 'mProcess_Project.Cost.SplOperation.LeadTime(j)
-                grdQuality_SplOperation.Rows(j).Cells(3).Value = mProcess_Project.Cost.SplOperation.Cost(j).ToString("#0.##")
-            Next
+                If (mProcess_Project.EditedBy.RetrieveFromDB_UserSignOff(mProcess_Project.ID, "Manf")) Then
+                    txtManf_UserDate.Text = mProcess_Project.EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    txtManf_UserName.Text = mProcess_Project.EditedBy.User.Name
+                    chkManf_UserSigned.Checked = mProcess_Project.EditedBy.User.Signed
+                End If
 
-            If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Qlty")) Then
-                For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
-                    grdQuality_EditedBy.Rows.Add()
-                    grdQuality_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    grdQuality_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
-                    grdQuality_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+            End With
 
-                    txtQuality_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    txtQuality_UserName.Text = mProcess_Project.EditedBy.Name(j)
+
+            '....Purchasing
+            With mProcess_Project.Purchase
+
+                For j As Integer = 0 To .Mat.ID_Mat.Count - 1
+                    Dim pCmbColPurchase_Unit As New DataGridViewComboBoxColumn
+                    pCmbColPurchase_Unit = grdPurchase_Mat.Columns.Item(2)
+                    Dim pVal As String = ""
+                    If (Not IsNothing(mProcess_Project.Purchase.Mat.Qty_Unit(j))) Then
+                        pVal = mProcess_Project.Purchase.Mat.Qty_Unit(j)
+                    End If
+                    If (Not pCmbColPurchase_Unit.Items.Contains(pVal)) Then
+                        pCmbColPurchase_Unit.Items.Add(pVal)
+                    End If
                 Next
-            End If
 
-            If (mProcess_Project.EditedBy.RetrieveFromDB_UserSignOff(mProcess_Project.ID, "Qlty")) Then
-                txtQuality_UserDate.Text = mProcess_Project.EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                txtQuality_UserName.Text = mProcess_Project.EditedBy.User.Name
-                chkQuality_UserSigned.Checked = mProcess_Project.EditedBy.User.Signed
-            End If
+                For i As Integer = 0 To .Mat.ID_Mat.Count - 1
+                    grdPurchase_Mat.Rows.Add()
+                    grdPurchase_Mat.Rows(i).Cells(0).Value = .Mat.Item(i)
+                    If (Math.Abs(.Mat.EstQty(i)) > gcEPS) Then
+                        grdPurchase_Mat.Rows(i).Cells(1).Value = .Mat.EstQty(i)
+                    Else
+                        grdPurchase_Mat.Rows(i).Cells(1).Value = ""
+                    End If
 
-        End With
+                    If (Not IsNothing(mProcess_Project.Purchase.Mat.Qty_Unit(i))) Then
+                        grdPurchase_Mat.Rows(i).Cells(2).Value = mProcess_Project.Purchase.Mat.Qty_Unit(i)
+                    Else
+                        grdPurchase_Mat.Rows(i).Cells(2).Value = ""
+                    End If
 
-        '.... "Drawing:"
-        With mProcess_Project.Dwg
-            cmbDwg_DesignLevel.Text = .DesignLevel
+                    grdPurchase_Mat.Rows(i).Cells(3).Value = .Mat.Status(i)
 
-            For j As Integer = 0 To .Needed.ID_Needed.Count - 1
-                grdDrawing_Needed.Rows.Add()
-                grdDrawing_Needed.Rows(j).Cells(0).Value = .Needed.DwgNo(j)
-                grdDrawing_Needed.Rows(j).Cells(1).Value = .Needed.Desc(j)
-                grdDrawing_Needed.Rows(j).Cells(2).Value = .Needed.Status(j)
+                    If (Math.Abs(.Mat.LeadTime(i)) > gcEPS) Then
+                        grdPurchase_Mat.Rows(i).Cells(4).Value = gUnit.Format_Val(.Mat.LeadTime(i)) '.Mat.LeadTime(i)
+                    Else
+                        grdPurchase_Mat.Rows(i).Cells(4).Value = ""
+                    End If
 
-                If (Math.Abs(.Needed.LeadTime(j)) > gcEPS) Then
-                    grdDrawing_Needed.Rows(j).Cells(3).Value = gUnit.Format_Val(.Needed.LeadTime(j)) '.Needed.LeadTime(j)
-                Else
-                    grdDrawing_Needed.Rows(j).Cells(3).Value = ""
-                End If
-            Next
-
-            For j As Integer = 0 To .BOM.ID_BOM.Count - 1
-                grdDrawing_BOM.Rows.Add()
-                grdDrawing_BOM.Rows(j).Cells(0).Value = .BOM.Parent_PartNo(j)
-                grdDrawing_BOM.Rows(j).Cells(1).Value = .BOM.Child_PartNo(j)
-
-                If (.BOM.Qty(j) > 0) Then
-                    grdDrawing_BOM.Rows(j).Cells(2).Value = .BOM.Qty(j)
-                Else
-                    grdDrawing_BOM.Rows(j).Cells(2).Value = ""
-                End If
-            Next
-
-            'If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Dwg")) Then
-            '    If (mProcess_Project.EditedBy.Name <> "") Then
-            '        If (mProcess_Project.EditedBy.DateEdited <> DateTime.MinValue) Then
-            '            grdDwg_EditedBy.Rows(0).Cells(0).Value = mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-            '        Else
-            '            grdDwg_EditedBy.Rows(0).Cells(0).Value = ""
-            '        End If
-
-            '        grdDwg_EditedBy.Rows(0).Cells(1).Value = mProcess_Project.EditedBy.Name
-            '        grdDwg_EditedBy.Rows(0).Cells(2).Value = mProcess_Project.EditedBy.Comment
-            '    End If
-            'End If
-
-            If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Dwg")) Then
-                For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
-                    grdDwg_EditedBy.Rows.Add()
-                    grdDwg_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    grdDwg_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
-                    grdDwg_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
-
-                    txtDwg_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    txtDwg_UserName.Text = mProcess_Project.EditedBy.Name(j)
                 Next
-            End If
-
-            If (mProcess_Project.EditedBy.RetrieveFromDB_UserSignOff(mProcess_Project.ID, "Dwg")) Then
-                txtDwg_UserDate.Text = mProcess_Project.EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                txtDwg_UserName.Text = mProcess_Project.EditedBy.User.Name
-                chkDwg_UserSigned.Checked = mProcess_Project.EditedBy.User.Signed
-            End If
-
-        End With
 
 
-        '.... "Testing:"
-        With mProcess_Project.Test
+                For i As Integer = 0 To .Dwg.ID_Dwg.Count - 1
+                    grdPurchase_Drawing.Rows.Add()
+                    grdPurchase_Drawing.Rows(i).Cells(0).Value = .Dwg.No(i)
+                    grdPurchase_Drawing.Rows(i).Cells(1).Value = .Dwg.Desc(i)
 
-            If (.IsNeeded()) Then
-                chkTest.Checked = True
-            Else
-                chkTest.Checked = True
-                chkTest.Checked = False
-            End If
+                    If (Math.Abs(.Dwg.LeadTime(i)) > gcEPS) Then
+                        grdPurchase_Drawing.Rows(i).Cells(2).Value = gUnit.Format_Val(.Dwg.LeadTime(i)) '.Dwg.LeadTime(i).ToString("#0.0")
+                    Else
+                        grdPurchase_Drawing.Rows(i).Cells(2).Value = ""
+                    End If
 
-            txtTest_Other.Text = .Other
-
-            '...Leak
-            If (Math.Abs(.Leak.Compress_Unplated) > gcEPS) Then
-                txtTest_CompressPre_Leak.Text = Format(.Leak.Compress_Unplated, gUnit.LFormat) '.Leak.Compress_Unplated.ToString("#0.###")
-            Else
-                txtTest_CompressPre_Leak.Text = ""
-            End If
-
-            If (Math.Abs(.Leak.Compress_Plated) > gcEPS) Then
-                txtTest_CompressPost_Leak.Text = Format(.Leak.Compress_Plated, gUnit.LFormat) '.Leak.Compress_Plated.ToString("#0.###")
-            Else
-                txtTest_CompressPost_Leak.Text = ""
-            End If
-
-            cmbTest_MediaPre_Leak.Text = .Leak.Medium_Unplated
-            cmbTest_MediaPost_Leak.Text = .Leak.Medium_Plated
-
-            If (Math.Abs(.Leak.Press_Unplated) > gcEPS) Then
-                txtTest_PressPre_Leak.Text = gUnit.Format_Val(.Leak.Press_Unplated) '.Leak.Press_Unplated.ToString("#0.###")
-            Else
-                txtTest_PressPre_Leak.Text = ""
-            End If
-
-            If (Math.Abs(.Leak.Press_Plated) > gcEPS) Then
-                txtTest_PressPost_Leak.Text = gUnit.Format_Val(.Leak.Press_Plated) '.Leak.Press_Plated.ToString("#0.###")
-            Else
-                txtTest_PressPost_Leak.Text = ""
-            End If
-
-            If (Math.Abs(.Leak.Max_Unplated) > gcEPS) Then
-                txtTest_ReqPre_Leak.Text = gUnit.Format_LeakVal(.Leak.Max_Unplated) 'Format(.Leak.Max_Unplated, gUnit.LFormat) '.Leak.Max_Unplated.ToString("#0.###")
-            Else
-                txtTest_ReqPre_Leak.Text = ""
-            End If
-
-            If (Math.Abs(.Leak.Max_Plated) > gcEPS) Then
-                txtTest_ReqPost_Leak.Text = gUnit.Format_LeakVal(.Leak.Max_Plated) 'Format(.Leak.Max_Plated, gUnit.LFormat) '.Leak.Max_Plated.ToString("#0.###")
-            Else
-                txtTest_ReqPost_Leak.Text = ""
-            End If
-
-            cmbTest_QtyPre_Leak.Text = .Leak.Qty_Unplated
-            cmbTest_QtyPost_Leak.Text = .Leak.Qty_Plated
-
-            cmbTest_FreqPre_Leak.Text = .Leak.Freq_Unplated
-            cmbTest_FreqPost_Leak.Text = .Leak.Freq_Plated
-
-            '...Load
-            If (Math.Abs(.Load.Compress_Unplated) > gcEPS) Then
-                txtTest_CompressPre_Load.Text = Format(.Load.Compress_Unplated, gUnit.LFormat) '.Load.Compress_Unplated.ToString("#0.###")
-            Else
-                txtTest_CompressPre_Load.Text = ""
-            End If
-
-            If (Math.Abs(.Load.Compress_Plated) > gcEPS) Then
-                txtTest_CompressPost_Load.Text = Format(.Load.Compress_Plated, gUnit.LFormat) '.Load.Compress_Plated.ToString("#0.###")
-            Else
-                txtTest_CompressPost_Load.Text = ""
-            End If
-
-            If (Math.Abs(.Load.Max_Unplated) > gcEPS) Then
-                txtTest_ReqPre_Load.Text = Format(.Load.Max_Unplated, gUnit.LFormat) '.Load.Max_Unplated.ToString("#0.###")
-            Else
-                txtTest_ReqPre_Load.Text = ""
-            End If
-
-            If (Math.Abs(.Load.Max_Plated) > gcEPS) Then
-                txtTest_ReqPost_Load.Text = Format(.Load.Max_Plated, gUnit.LFormat) '.Load.Max_Plated.ToString("#0.###")
-            Else
-                txtTest_ReqPost_Load.Text = ""
-            End If
-
-            cmbTest_QtyPre_Load.Text = .Load.Qty_Unplated
-            cmbTest_QtyPost_Load.Text = .Load.Qty_Plated
-
-            cmbTest_FreqPre_Load.Text = .Load.Freq_Unplated
-            cmbTest_FreqPost_Load.Text = .Load.Freq_Plated
-
-            '....SpringBack
-            If (Math.Abs(.SpringBack.Compress_Unplated) > gcEPS) Then
-                txtTest_CompressPre_SpringBack.Text = Format(.SpringBack.Compress_Unplated, gUnit.LFormat) '.SpringBack.Compress_Unplated.ToString("#0.###")
-            Else
-                txtTest_CompressPre_SpringBack.Text = ""
-            End If
-
-            If (Math.Abs(.SpringBack.Compress_Plated) > gcEPS) Then
-                txtTest_CompressPost_SpringBack.Text = Format(.SpringBack.Compress_Plated, gUnit.LFormat) '.SpringBack.Compress_Plated.ToString("#0.###")
-            Else
-                txtTest_CompressPost_SpringBack.Text = ""
-            End If
-
-            If (Math.Abs(.SpringBack.Max_Unplated) > gcEPS) Then
-                txtTest_ReqPre_SpringBack.Text = Format(.SpringBack.Max_Unplated, gUnit.LFormat) '.SpringBack.Max_Unplated.ToString("#0.###")
-            Else
-                txtTest_ReqPre_SpringBack.Text = ""
-            End If
-
-            If (Math.Abs(.SpringBack.Max_Plated) > gcEPS) Then
-                txtTest_ReqPost_SpringBack.Text = Format(.SpringBack.Max_Plated, gUnit.LFormat) '.SpringBack.Max_Plated.ToString("#0.###")
-            Else
-                txtTest_ReqPost_SpringBack.Text = ""
-            End If
-
-            cmbTest_QtyPre_SpringBack.Text = .SpringBack.Qty_Unplated
-            cmbTest_QtyPost_SpringBack.Text = .SpringBack.Qty_Plated
-
-            cmbTest_FreqPre_SpringBack.Text = .SpringBack.Freq_Unplated
-            cmbTest_FreqPost_SpringBack.Text = .SpringBack.Freq_Plated
-
-            'If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Test")) Then
-            '    If (mProcess_Project.EditedBy.Name <> "") Then
-            '        If (mProcess_Project.EditedBy.DateEdited <> DateTime.MinValue) Then
-            '            grdTest_EditedBy.Rows(0).Cells(0).Value = mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-            '        Else
-            '            grdTest_EditedBy.Rows(0).Cells(0).Value = ""
-            '        End If
-
-            '        grdTest_EditedBy.Rows(0).Cells(1).Value = mProcess_Project.EditedBy.Name
-            '        grdTest_EditedBy.Rows(0).Cells(2).Value = mProcess_Project.EditedBy.Comment
-            '    End If
-            'End If
-
-            If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Test")) Then
-                For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
-                    grdTest_EditedBy.Rows.Add()
-                    grdTest_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    grdTest_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
-                    grdTest_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
-
-                    txtTest_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    txtTest_UserName.Text = mProcess_Project.EditedBy.Name(j)
                 Next
-            End If
 
-            If (mProcess_Project.EditedBy.RetrieveFromDB_UserSignOff(mProcess_Project.ID, "Test")) Then
-                txtTest_UserDate.Text = mProcess_Project.EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                txtTest_UserName.Text = mProcess_Project.EditedBy.User.Name
-                chkTest_UserSigned.Checked = mProcess_Project.EditedBy.User.Signed
-            End If
+                If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Purchase")) Then
+                    For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                        grdPurchase_EditedBy.Rows.Add()
+                        grdPurchase_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        grdPurchase_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
+                        grdPurchase_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
 
-        End With
-
-
-        '.... "Planning:"
-
-        '....Planning
-        ''With mProcess_Project.Planning
-
-        ''    For j As Integer = 0 To .SplOperation.ID_SplOperation.Count - 1
-        ''        grdPlanning_Ordered.Rows.Add()
-        ''        grdPlanning_Ordered.Rows(j).Cells(0).Value = .SplOperation.Desc(j)
-
-        ''        If (Math.Abs(.SplOperation.LeadTimeStart(j)) > gcEPS) Then
-        ''            grdPlanning_Ordered.Rows(j).Cells(1).Value = .SplOperation.LeadTimeStart(j)
-        ''        Else
-        ''            grdPlanning_Ordered.Rows(j).Cells(1).Value = ""
-        ''        End If
-        ''    Next
-
-        ''    grdPlanning_Ordered.AllowUserToAddRows = False
-
-        ''    For j As Integer = 0 To .MileOperation.ID_MileOperation.Count - 1
-        ''        grdPlanning_MileStoneOperation.Rows.Add()
-        ''        grdPlanning_MileStoneOperation.Rows(j).Cells(0).Value = .MileOperation.Name(j)
-
-        ''        If (Math.Abs(.MileOperation.LeadTime(j)) > gcEPS) Then
-        ''            grdPlanning_MileStoneOperation.Rows(j).Cells(1).Value = .MileOperation.LeadTime(j)
-        ''        Else
-        ''            grdPlanning_MileStoneOperation.Rows(j).Cells(1).Value = ""
-        ''        End If
-        ''    Next
-
-        ''    lstPlanning_Notes_Dim.Items.Clear()
-        ''    For i As Integer = 0 To mProcess_Project.Cost.SplOperation.ID_Cost.Count - 1
-        ''        Dim pName As String = mProcess_Project.Cost.SplOperation.Desc(i)
-
-        ''        Dim pFlag As Boolean = False
-        ''        For j As Integer = 0 To .SplOperation.ID_SplOperation.Count - 1
-        ''            If (pName = .SplOperation.Desc(j)) Then
-        ''                pFlag = True
-        ''                Exit For
-        ''            End If
-        ''        Next
-        ''        If (Not pFlag) Then
-        ''            lstPlanning_Notes_Dim.Items.Add(pName)
-        ''        End If
-        ''    Next
-
-        ''    txtPlanning_Notes.Text = .Notes
-
-        ''End With
-
-
-        '.... "Shipping:"
-        With mProcess_Project.Shipping
-
-            Dim pRowCount As Integer = 0
-            For i As Integer = 0 To mProcess_Project.Design.CustSpec.ID_Cust.Count - 1
-                If (mProcess_Project.Design.CustSpec.Type(i) = "Packaging") Then
-                    grdShipping_CustSpec.Rows.Add()
-                    grdShipping_CustSpec.Rows(pRowCount).Cells(0).Value = mProcess_Project.Design.CustSpec.Desc(i)
-                    grdShipping_CustSpec.Rows(pRowCount).Cells(1).Value = mProcess_Project.Design.CustSpec.Interpret(i)
-                    pRowCount = pRowCount + 1
+                        txtPurchase_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        txtPurchase_UserName.Text = mProcess_Project.EditedBy.Name(j)
+                    Next
                 End If
-            Next
-            grdShipping_CustSpec.AllowUserToAddRows = False
-            'grpCustSpec_Shipping.Enabled = False
-            txtShipping_Notes.Text = .Notes
-
-            If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Shipping")) Then
-                For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
-                    grdShipping_EditedBy.Rows.Add()
-                    grdShipping_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    grdShipping_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
-                    grdShipping_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
-
-                    txtShipping_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                    txtShipping_UserName.Text = mProcess_Project.EditedBy.Name(j)
-                Next
-            End If
-
-            If (mProcess_Project.EditedBy.RetrieveFromDB_UserSignOff(mProcess_Project.ID, "Shipping")) Then
-                txtShipping_UserDate.Text = mProcess_Project.EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                txtShipping_UserName.Text = mProcess_Project.EditedBy.User.Name
-                chkShipping_UserSigned.Checked = mProcess_Project.EditedBy.User.Signed
-            End If
-
-        End With
 
 
-        '.... "IssueComment:"
-        With mProcess_Project.IssueCommnt
+                If (mProcess_Project.EditedBy.RetrieveFromDB_UserSignOff(mProcess_Project.ID, "Purchase")) Then
+                    txtPurchase_UserDate.Text = mProcess_Project.EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    txtPurchase_UserName.Text = mProcess_Project.EditedBy.User.Name
+                    chkPurchase_UserSigned.Checked = mProcess_Project.EditedBy.User.Signed
+                End If
 
-            For i As Integer = 0 To .ID.Count - 1
+            End With
 
-                grdIssueComment.Rows.Add()
-                'grdIssueComment.Rows(i).Cells(0).Value = .SlNo(i)
-                grdIssueComment.Rows(i).Cells(0).Value = .Comment(i)
-                grdIssueComment.Rows(i).Cells(1).Value = .ByDept(i)
-                grdIssueComment.Rows(i).Cells(2).Value = .ByName(i)
-                grdIssueComment.Rows(i).Cells(3).Value = .ByDate(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                grdIssueComment.Rows(i).Cells(4).Value = .ToDept(i)
-                'grdIssueComment.Rows(i).Cells(6).Value = .Resolved(i)
 
-                If (.Resolved(i)) Then
-                    grdIssueComment.Rows(i).Cells(5).Value = "Y"
-                    grdIssueComment.Rows(i).Cells(6).Value = .Name(i)
-                    grdIssueComment.Rows(i).Cells(7).Value = .DateResolution(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-
-                    grdIssueComment.Rows(i).Cells(8).Value = .Resolution(i)
+            '.... "Quality:"
+            With mProcess_Project.Qlty
+                If (.IsApvdSupplierOnly) Then
+                    cmbQuality_ApprovedSupplier.Text = "Y"
                 Else
-                    grdIssueComment.Rows(i).Cells(5).Value = "N"
-                    grdIssueComment.Rows(i).Cells(6).Value = .Name(i)
-                    grdIssueComment.Rows(i).Cells(7).Value = ""
-
-                    grdIssueComment.Rows(i).Cells(8).Value = .Resolution(i)
+                    cmbQuality_ApprovedSupplier.Text = "N"
                 End If
 
-            Next
-        End With
+                If (.Separate_Tool_Gage_Reqd) Then
+                    cmbQuality_TNG.Text = "Y"
+                Else
+                    cmbQuality_TNG.Text = "N"
+                End If
+
+                If (.HasCustComplaint) Then
+                    cmbQuality_CustComplaint.Text = "Y"
+                    txtQuality_Reason.Text = .Reason
+                Else
+                    cmbQuality_CustComplaint.Text = "N"
+                    txtQuality_Reason.Text = ""
+                End If
+
+                If (.VisualInspection) Then
+                    cmbQuality_VisualInspection.Text = "Y"
+                    cmbQuality_VisualInspection_Type.Text = .VisualInspection_Type
+                Else
+                    cmbQuality_VisualInspection.Text = "N"
+                    cmbQuality_VisualInspection_Type.Text = ""
+                End If
+
+                If (.SPC_Reqd) Then
+                    cmbQuality_SPC.Text = "Y"
+                Else
+                    cmbQuality_SPC.Text = "N"
+                End If
+
+                If (.GageRnR_Reqd) Then
+                    cmbQuality_GageRnR_Reqd.Text = "Y"
+                Else
+                    cmbQuality_GageRnR_Reqd.Text = "N"
+                End If
+
+                cmbQuality_CustAcceptStd.Text = .CustAcceptStd
+
+                '....Spl Operation
+                For j As Integer = 0 To mProcess_Project.Cost.SplOperation.Desc.Count - 1
+                    Dim pCmbColDesc_Cost As New DataGridViewComboBoxColumn
+                    pCmbColDesc_Cost = grdQuality_SplOperation.Columns.Item(0)
+                    Dim pVal As String = ""
+                    If (Not IsNothing(mProcess_Project.Cost.SplOperation.Desc(j))) Then
+                        pVal = mProcess_Project.Cost.SplOperation.Desc(j)
+                    End If
+                    If (Not pCmbColDesc_Cost.Items.Contains(pVal)) Then
+                        pCmbColDesc_Cost.Items.Add(pVal)
+                    End If
+                Next
+
+                '....Spl Operation
+                For j As Integer = 0 To mProcess_Project.Cost.SplOperation.Desc.Count - 1
+                    grdQuality_SplOperation.Rows.Add()
+                    If (Not IsNothing(mProcess_Project.Cost.SplOperation.Desc(j))) Then
+                        grdQuality_SplOperation.Rows(j).Cells(0).Value = mProcess_Project.Cost.SplOperation.Desc(j)
+                    Else
+                        grdQuality_SplOperation.Rows(j).Cells(0).Value = ""
+                    End If
+
+                    'grdQuality_SplOperation.Rows(j).Cells(0).Value = mProcess_Project.Cost.SplOperation.Desc(j)
+                    grdQuality_SplOperation.Rows(j).Cells(1).Value = mProcess_Project.Cost.SplOperation.Spec(j)
+                    grdQuality_SplOperation.Rows(j).Cells(2).Value = gUnit.Format_Val(mProcess_Project.Cost.SplOperation.LeadTime(j)) 'mProcess_Project.Cost.SplOperation.LeadTime(j)
+                    grdQuality_SplOperation.Rows(j).Cells(3).Value = mProcess_Project.Cost.SplOperation.Cost(j).ToString("#0.##")
+                Next
+
+                If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Qlty")) Then
+                    For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                        grdQuality_EditedBy.Rows.Add()
+                        grdQuality_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        grdQuality_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
+                        grdQuality_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+
+                        txtQuality_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        txtQuality_UserName.Text = mProcess_Project.EditedBy.Name(j)
+                    Next
+                End If
+
+                If (mProcess_Project.EditedBy.RetrieveFromDB_UserSignOff(mProcess_Project.ID, "Qlty")) Then
+                    txtQuality_UserDate.Text = mProcess_Project.EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    txtQuality_UserName.Text = mProcess_Project.EditedBy.User.Name
+                    chkQuality_UserSigned.Checked = mProcess_Project.EditedBy.User.Signed
+                End If
+
+            End With
+
+            '.... "Drawing:"
+            With mProcess_Project.Dwg
+                cmbDwg_DesignLevel.Text = .DesignLevel
+
+                For j As Integer = 0 To .Needed.ID_Needed.Count - 1
+                    grdDrawing_Needed.Rows.Add()
+                    grdDrawing_Needed.Rows(j).Cells(0).Value = .Needed.DwgNo(j)
+                    grdDrawing_Needed.Rows(j).Cells(1).Value = .Needed.Desc(j)
+                    grdDrawing_Needed.Rows(j).Cells(2).Value = .Needed.Status(j)
+
+                    If (Math.Abs(.Needed.LeadTime(j)) > gcEPS) Then
+                        grdDrawing_Needed.Rows(j).Cells(3).Value = gUnit.Format_Val(.Needed.LeadTime(j)) '.Needed.LeadTime(j)
+                    Else
+                        grdDrawing_Needed.Rows(j).Cells(3).Value = ""
+                    End If
+                Next
+
+                For j As Integer = 0 To .BOM.ID_BOM.Count - 1
+                    grdDrawing_BOM.Rows.Add()
+                    grdDrawing_BOM.Rows(j).Cells(0).Value = .BOM.Parent_PartNo(j)
+                    grdDrawing_BOM.Rows(j).Cells(1).Value = .BOM.Child_PartNo(j)
+
+                    If (.BOM.Qty(j) > 0) Then
+                        grdDrawing_BOM.Rows(j).Cells(2).Value = .BOM.Qty(j)
+                    Else
+                        grdDrawing_BOM.Rows(j).Cells(2).Value = ""
+                    End If
+                Next
+
+                'If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Dwg")) Then
+                '    If (mProcess_Project.EditedBy.Name <> "") Then
+                '        If (mProcess_Project.EditedBy.DateEdited <> DateTime.MinValue) Then
+                '            grdDwg_EditedBy.Rows(0).Cells(0).Value = mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                '        Else
+                '            grdDwg_EditedBy.Rows(0).Cells(0).Value = ""
+                '        End If
+
+                '        grdDwg_EditedBy.Rows(0).Cells(1).Value = mProcess_Project.EditedBy.Name
+                '        grdDwg_EditedBy.Rows(0).Cells(2).Value = mProcess_Project.EditedBy.Comment
+                '    End If
+                'End If
+
+                If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Dwg")) Then
+                    For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                        grdDwg_EditedBy.Rows.Add()
+                        grdDwg_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        grdDwg_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
+                        grdDwg_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+
+                        txtDwg_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        txtDwg_UserName.Text = mProcess_Project.EditedBy.Name(j)
+                    Next
+                End If
+
+                If (mProcess_Project.EditedBy.RetrieveFromDB_UserSignOff(mProcess_Project.ID, "Dwg")) Then
+                    txtDwg_UserDate.Text = mProcess_Project.EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    txtDwg_UserName.Text = mProcess_Project.EditedBy.User.Name
+                    chkDwg_UserSigned.Checked = mProcess_Project.EditedBy.User.Signed
+                End If
+
+            End With
+
+
+            '.... "Testing:"
+            With mProcess_Project.Test
+
+                If (.IsNeeded()) Then
+                    chkTest.Checked = True
+                Else
+                    chkTest.Checked = True
+                    chkTest.Checked = False
+                End If
+
+                txtTest_Other.Text = .Other
+
+                '...Leak
+                If (Math.Abs(.Leak.Compress_Unplated) > gcEPS) Then
+                    txtTest_CompressPre_Leak.Text = Format(.Leak.Compress_Unplated, gUnit.LFormat) '.Leak.Compress_Unplated.ToString("#0.###")
+                Else
+                    txtTest_CompressPre_Leak.Text = ""
+                End If
+
+                If (Math.Abs(.Leak.Compress_Plated) > gcEPS) Then
+                    txtTest_CompressPost_Leak.Text = Format(.Leak.Compress_Plated, gUnit.LFormat) '.Leak.Compress_Plated.ToString("#0.###")
+                Else
+                    txtTest_CompressPost_Leak.Text = ""
+                End If
+
+                cmbTest_MediaPre_Leak.Text = .Leak.Medium_Unplated
+                cmbTest_MediaPost_Leak.Text = .Leak.Medium_Plated
+
+                If (Math.Abs(.Leak.Press_Unplated) > gcEPS) Then
+                    txtTest_PressPre_Leak.Text = gUnit.Format_Val(.Leak.Press_Unplated) '.Leak.Press_Unplated.ToString("#0.###")
+                Else
+                    txtTest_PressPre_Leak.Text = ""
+                End If
+
+                If (Math.Abs(.Leak.Press_Plated) > gcEPS) Then
+                    txtTest_PressPost_Leak.Text = gUnit.Format_Val(.Leak.Press_Plated) '.Leak.Press_Plated.ToString("#0.###")
+                Else
+                    txtTest_PressPost_Leak.Text = ""
+                End If
+
+                If (Math.Abs(.Leak.Max_Unplated) > gcEPS) Then
+                    txtTest_ReqPre_Leak.Text = gUnit.Format_LeakVal(.Leak.Max_Unplated) 'Format(.Leak.Max_Unplated, gUnit.LFormat) '.Leak.Max_Unplated.ToString("#0.###")
+                Else
+                    txtTest_ReqPre_Leak.Text = ""
+                End If
+
+                If (Math.Abs(.Leak.Max_Plated) > gcEPS) Then
+                    txtTest_ReqPost_Leak.Text = gUnit.Format_LeakVal(.Leak.Max_Plated) 'Format(.Leak.Max_Plated, gUnit.LFormat) '.Leak.Max_Plated.ToString("#0.###")
+                Else
+                    txtTest_ReqPost_Leak.Text = ""
+                End If
+
+                cmbTest_QtyPre_Leak.Text = .Leak.Qty_Unplated
+                cmbTest_QtyPost_Leak.Text = .Leak.Qty_Plated
+
+                cmbTest_FreqPre_Leak.Text = .Leak.Freq_Unplated
+                cmbTest_FreqPost_Leak.Text = .Leak.Freq_Plated
+
+                '...Load
+                If (Math.Abs(.Load.Compress_Unplated) > gcEPS) Then
+                    txtTest_CompressPre_Load.Text = Format(.Load.Compress_Unplated, gUnit.LFormat) '.Load.Compress_Unplated.ToString("#0.###")
+                Else
+                    txtTest_CompressPre_Load.Text = ""
+                End If
+
+                If (Math.Abs(.Load.Compress_Plated) > gcEPS) Then
+                    txtTest_CompressPost_Load.Text = Format(.Load.Compress_Plated, gUnit.LFormat) '.Load.Compress_Plated.ToString("#0.###")
+                Else
+                    txtTest_CompressPost_Load.Text = ""
+                End If
+
+                If (Math.Abs(.Load.Max_Unplated) > gcEPS) Then
+                    txtTest_ReqPre_Load.Text = Format(.Load.Max_Unplated, gUnit.LFormat) '.Load.Max_Unplated.ToString("#0.###")
+                Else
+                    txtTest_ReqPre_Load.Text = ""
+                End If
+
+                If (Math.Abs(.Load.Max_Plated) > gcEPS) Then
+                    txtTest_ReqPost_Load.Text = Format(.Load.Max_Plated, gUnit.LFormat) '.Load.Max_Plated.ToString("#0.###")
+                Else
+                    txtTest_ReqPost_Load.Text = ""
+                End If
+
+                cmbTest_QtyPre_Load.Text = .Load.Qty_Unplated
+                cmbTest_QtyPost_Load.Text = .Load.Qty_Plated
+
+                cmbTest_FreqPre_Load.Text = .Load.Freq_Unplated
+                cmbTest_FreqPost_Load.Text = .Load.Freq_Plated
+
+                '....SpringBack
+                If (Math.Abs(.SpringBack.Compress_Unplated) > gcEPS) Then
+                    txtTest_CompressPre_SpringBack.Text = Format(.SpringBack.Compress_Unplated, gUnit.LFormat) '.SpringBack.Compress_Unplated.ToString("#0.###")
+                Else
+                    txtTest_CompressPre_SpringBack.Text = ""
+                End If
+
+                If (Math.Abs(.SpringBack.Compress_Plated) > gcEPS) Then
+                    txtTest_CompressPost_SpringBack.Text = Format(.SpringBack.Compress_Plated, gUnit.LFormat) '.SpringBack.Compress_Plated.ToString("#0.###")
+                Else
+                    txtTest_CompressPost_SpringBack.Text = ""
+                End If
+
+                If (Math.Abs(.SpringBack.Max_Unplated) > gcEPS) Then
+                    txtTest_ReqPre_SpringBack.Text = Format(.SpringBack.Max_Unplated, gUnit.LFormat) '.SpringBack.Max_Unplated.ToString("#0.###")
+                Else
+                    txtTest_ReqPre_SpringBack.Text = ""
+                End If
+
+                If (Math.Abs(.SpringBack.Max_Plated) > gcEPS) Then
+                    txtTest_ReqPost_SpringBack.Text = Format(.SpringBack.Max_Plated, gUnit.LFormat) '.SpringBack.Max_Plated.ToString("#0.###")
+                Else
+                    txtTest_ReqPost_SpringBack.Text = ""
+                End If
+
+                cmbTest_QtyPre_SpringBack.Text = .SpringBack.Qty_Unplated
+                cmbTest_QtyPost_SpringBack.Text = .SpringBack.Qty_Plated
+
+                cmbTest_FreqPre_SpringBack.Text = .SpringBack.Freq_Unplated
+                cmbTest_FreqPost_SpringBack.Text = .SpringBack.Freq_Plated
+
+                'If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Test")) Then
+                '    If (mProcess_Project.EditedBy.Name <> "") Then
+                '        If (mProcess_Project.EditedBy.DateEdited <> DateTime.MinValue) Then
+                '            grdTest_EditedBy.Rows(0).Cells(0).Value = mProcess_Project.EditedBy.DateEdited.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                '        Else
+                '            grdTest_EditedBy.Rows(0).Cells(0).Value = ""
+                '        End If
+
+                '        grdTest_EditedBy.Rows(0).Cells(1).Value = mProcess_Project.EditedBy.Name
+                '        grdTest_EditedBy.Rows(0).Cells(2).Value = mProcess_Project.EditedBy.Comment
+                '    End If
+                'End If
+
+                If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Test")) Then
+                    For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                        grdTest_EditedBy.Rows.Add()
+                        grdTest_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        grdTest_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
+                        grdTest_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+
+                        txtTest_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        txtTest_UserName.Text = mProcess_Project.EditedBy.Name(j)
+                    Next
+                End If
+
+                If (mProcess_Project.EditedBy.RetrieveFromDB_UserSignOff(mProcess_Project.ID, "Test")) Then
+                    txtTest_UserDate.Text = mProcess_Project.EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    txtTest_UserName.Text = mProcess_Project.EditedBy.User.Name
+                    chkTest_UserSigned.Checked = mProcess_Project.EditedBy.User.Signed
+                End If
+
+            End With
+
+
+            '.... "Planning:"
+
+            '....Planning
+            ''With mProcess_Project.Planning
+
+            ''    For j As Integer = 0 To .SplOperation.ID_SplOperation.Count - 1
+            ''        grdPlanning_Ordered.Rows.Add()
+            ''        grdPlanning_Ordered.Rows(j).Cells(0).Value = .SplOperation.Desc(j)
+
+            ''        If (Math.Abs(.SplOperation.LeadTimeStart(j)) > gcEPS) Then
+            ''            grdPlanning_Ordered.Rows(j).Cells(1).Value = .SplOperation.LeadTimeStart(j)
+            ''        Else
+            ''            grdPlanning_Ordered.Rows(j).Cells(1).Value = ""
+            ''        End If
+            ''    Next
+
+            ''    grdPlanning_Ordered.AllowUserToAddRows = False
+
+            ''    For j As Integer = 0 To .MileOperation.ID_MileOperation.Count - 1
+            ''        grdPlanning_MileStoneOperation.Rows.Add()
+            ''        grdPlanning_MileStoneOperation.Rows(j).Cells(0).Value = .MileOperation.Name(j)
+
+            ''        If (Math.Abs(.MileOperation.LeadTime(j)) > gcEPS) Then
+            ''            grdPlanning_MileStoneOperation.Rows(j).Cells(1).Value = .MileOperation.LeadTime(j)
+            ''        Else
+            ''            grdPlanning_MileStoneOperation.Rows(j).Cells(1).Value = ""
+            ''        End If
+            ''    Next
+
+            ''    lstPlanning_Notes_Dim.Items.Clear()
+            ''    For i As Integer = 0 To mProcess_Project.Cost.SplOperation.ID_Cost.Count - 1
+            ''        Dim pName As String = mProcess_Project.Cost.SplOperation.Desc(i)
+
+            ''        Dim pFlag As Boolean = False
+            ''        For j As Integer = 0 To .SplOperation.ID_SplOperation.Count - 1
+            ''            If (pName = .SplOperation.Desc(j)) Then
+            ''                pFlag = True
+            ''                Exit For
+            ''            End If
+            ''        Next
+            ''        If (Not pFlag) Then
+            ''            lstPlanning_Notes_Dim.Items.Add(pName)
+            ''        End If
+            ''    Next
+
+            ''    txtPlanning_Notes.Text = .Notes
+
+            ''End With
+
+
+            '.... "Shipping:"
+            With mProcess_Project.Shipping
+
+                Dim pRowCount As Integer = 0
+                For i As Integer = 0 To mProcess_Project.Design.CustSpec.ID_Cust.Count - 1
+                    If (mProcess_Project.Design.CustSpec.Type(i) = "Packaging") Then
+                        grdShipping_CustSpec.Rows.Add()
+                        grdShipping_CustSpec.Rows(pRowCount).Cells(0).Value = mProcess_Project.Design.CustSpec.Desc(i)
+                        grdShipping_CustSpec.Rows(pRowCount).Cells(1).Value = mProcess_Project.Design.CustSpec.Interpret(i)
+                        pRowCount = pRowCount + 1
+                    End If
+                Next
+                grdShipping_CustSpec.AllowUserToAddRows = False
+                'grpCustSpec_Shipping.Enabled = False
+                txtShipping_Notes.Text = .Notes
+
+                If (mProcess_Project.EditedBy.RetrieveFromDB(mProcess_Project.ID, "Shipping")) Then
+                    For j As Integer = 0 To mProcess_Project.EditedBy.ID_Edit.Count - 1
+                        grdShipping_EditedBy.Rows.Add()
+                        grdShipping_EditedBy.Rows(j).Cells(0).Value = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        grdShipping_EditedBy.Rows(j).Cells(1).Value = mProcess_Project.EditedBy.Name(j)
+                        grdShipping_EditedBy.Rows(j).Cells(2).Value = mProcess_Project.EditedBy.Comment(j)
+
+                        txtShipping_UserDate.Text = mProcess_Project.EditedBy.DateEdited(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                        txtShipping_UserName.Text = mProcess_Project.EditedBy.Name(j)
+                    Next
+                End If
+
+                If (mProcess_Project.EditedBy.RetrieveFromDB_UserSignOff(mProcess_Project.ID, "Shipping")) Then
+                    txtShipping_UserDate.Text = mProcess_Project.EditedBy.User.DateSigned.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    txtShipping_UserName.Text = mProcess_Project.EditedBy.User.Name
+                    chkShipping_UserSigned.Checked = mProcess_Project.EditedBy.User.Signed
+                End If
+
+            End With
+
+
+            '.... "IssueComment:"
+            With mProcess_Project.IssueCommnt
+
+                For i As Integer = 0 To .ID.Count - 1
+
+                    grdIssueComment.Rows.Add()
+                    'grdIssueComment.Rows(i).Cells(0).Value = .SlNo(i)
+                    grdIssueComment.Rows(i).Cells(0).Value = .Comment(i)
+                    grdIssueComment.Rows(i).Cells(1).Value = .ByDept(i)
+                    grdIssueComment.Rows(i).Cells(2).Value = .ByName(i)
+                    grdIssueComment.Rows(i).Cells(3).Value = .ByDate(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    grdIssueComment.Rows(i).Cells(4).Value = .ToDept(i)
+                    'grdIssueComment.Rows(i).Cells(6).Value = .Resolved(i)
+
+                    If (.Resolved(i)) Then
+                        grdIssueComment.Rows(i).Cells(5).Value = "Y"
+                        grdIssueComment.Rows(i).Cells(6).Value = .Name(i)
+                        grdIssueComment.Rows(i).Cells(7).Value = .DateResolution(i).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+
+                        grdIssueComment.Rows(i).Cells(8).Value = .Resolution(i)
+                    Else
+                        grdIssueComment.Rows(i).Cells(5).Value = "N"
+                        grdIssueComment.Rows(i).Cells(6).Value = .Name(i)
+                        grdIssueComment.Rows(i).Cells(7).Value = ""
+
+                        grdIssueComment.Rows(i).Cells(8).Value = .Resolution(i)
+                    End If
+
+                Next
+            End With
 
 
         '.... "Approval:"
         With mProcess_Project.Approval
 
-            For j As Integer = 0 To .ID_Approval.Count - 1
-                grdApproval_Attendees.Rows(j).Cells(1).Value = .Name(j)
-                grdApproval_Attendees.Rows(j).Cells(2).Value = .Title(j)
-                grdApproval_Attendees.Rows(j).Cells(3).Value = .Signed(j)
+            Try
 
-                If (.Signed(j)) Then
 
-                    grdApproval_Attendees.Rows(j).Cells(4).Value = .DateSigned(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-                Else
-                    grdApproval_Attendees.Rows(j).Cells(4).Value = ""
-                End If
 
-            Next
+                For j As Integer = 0 To .ID_Approval.Count - 1
+
+                    Dim dgvcc As New DataGridViewComboBoxCell
+                    dgvcc.Items.Clear()
+                    Dim pFlag As Boolean = False
+                    dgvcc = grdApproval_Attendees.Item(1, j)
+                    If (Not dgvcc.Items.Contains(.Name(j))) Then
+                        dgvcc.Items.Add(.Name(j))
+                        pFlag = True
+                    End If
+
+                    If (pFlag) Then
+                        grdApproval_Attendees.Item(1, j) = dgvcc
+                    End If
+
+                    grdApproval_Attendees.Rows(j).Cells(1).Value = .Name(j)
+                    grdApproval_Attendees.Rows(j).Cells(2).Value = .Title(j)
+                    grdApproval_Attendees.Rows(j).Cells(3).Value = .Signed(j)
+
+                    If (.Signed(j)) Then
+
+                        grdApproval_Attendees.Rows(j).Cells(4).Value = .DateSigned(j).ToString("MM/dd/yyyy", pCI.DateTimeFormat())
+                    Else
+                        grdApproval_Attendees.Rows(j).Cells(4).Value = ""
+                    End If
+
+                Next
+
+            Catch ex As Exception
+
+            End Try
 
         End With
 
         'AES 06APR18
         For i As Integer = 0 To grdApproval_Attendees.Rows.Count - 1
-            Dim pUserName As String = gUser.FirstName + " " + gUser.LastName
-            If (gUser.Role = grdApproval_Attendees.Rows(i).Cells(0).Value) Then
-                If (grdApproval_Attendees.Rows(i).Cells(3).Value = True) Then
-                    If (pUserName = grdApproval_Attendees.Rows(i).Cells(1).Value) Then
+                Dim pUserName As String = gUser.FirstName + " " + gUser.LastName
+                If (gUser.Role = grdApproval_Attendees.Rows(i).Cells(0).Value) Then
+                    If (grdApproval_Attendees.Rows(i).Cells(3).Value = True) Then
+                        If (pUserName = grdApproval_Attendees.Rows(i).Cells(1).Value) Then
+                            grdApproval_Attendees.ReadOnly = False
+                            grdApproval_Attendees.EnableHeadersVisualStyles = False
+                            grdApproval_Attendees.Rows(i).HeaderCell.Style.BackColor = Color.Yellow
+
+                            For j As Integer = 0 To grdApproval_Attendees.ColumnCount - 1
+                                grdApproval_Attendees.Rows(i).Cells(j).Style.ForeColor = Color.Black
+                                grdApproval_Attendees.Rows(i).Cells(j).Style.BackColor = Color.Yellow
+                            Next
+                        Else
+                            grdApproval_Attendees.ReadOnly = True
+                        End If
+                    Else
                         grdApproval_Attendees.ReadOnly = False
                         grdApproval_Attendees.EnableHeadersVisualStyles = False
                         grdApproval_Attendees.Rows(i).HeaderCell.Style.BackColor = Color.Yellow
-
                         For j As Integer = 0 To grdApproval_Attendees.ColumnCount - 1
                             grdApproval_Attendees.Rows(i).Cells(j).Style.ForeColor = Color.Black
                             grdApproval_Attendees.Rows(i).Cells(j).Style.BackColor = Color.Yellow
                         Next
-                    Else
-                        grdApproval_Attendees.ReadOnly = True
                     End If
                 Else
-                    grdApproval_Attendees.ReadOnly = False
-                    grdApproval_Attendees.EnableHeadersVisualStyles = False
-                    grdApproval_Attendees.Rows(i).HeaderCell.Style.BackColor = Color.Yellow
-                    For j As Integer = 0 To grdApproval_Attendees.ColumnCount - 1
-                        grdApproval_Attendees.Rows(i).Cells(j).Style.ForeColor = Color.Black
-                        grdApproval_Attendees.Rows(i).Cells(j).Style.BackColor = Color.Yellow
-                    Next
+                    grdApproval_Attendees.ReadOnly = True
                 End If
-            Else
-                grdApproval_Attendees.ReadOnly = True
-            End If
-        Next
+            Next
 
-        SetLabel_Unit_Cust()
+            SetLabel_Unit_Cust()
+
+        'End If
+
+        'SetLabel_Unit_Cust()
 
     End Sub
 
@@ -3963,6 +4082,17 @@ Public Class Process_frmMain
                 pGrph.FillRectangle(Brushes.Green, pRect)
             End If
 
+        ElseIf e.Index = 0 And chkPreOrderUserSigned.Checked Then
+            pPencil = New SolidBrush(Color.Black)
+            pFont = New Font(pFont, FontStyle.Regular)
+            pGrph.FillRectangle(Brushes.DarkSeaGreen, pRect)
+
+            If (e.Index = TabControl1.SelectedIndex) Then
+                pPencil = New SolidBrush(Color.Black)
+                pFont = New Font(pFont, FontStyle.Regular)
+                pGrph.FillRectangle(Brushes.DarkSeaGreen, pRect)
+            End If
+
         ElseIf e.Index = 1 And chkITAR_Export_UserSigned.Checked And mTabIndex.Contains(e.Index) Then
             pFont = New Font(pFont, FontStyle.Bold)
             pGrph.FillRectangle(Brushes.Green, pRect)
@@ -3970,6 +4100,17 @@ Public Class Process_frmMain
             If (e.Index = TabControl1.SelectedIndex) Then
                 pPencil = New SolidBrush(Color.White)
                 pGrph.FillRectangle(Brushes.Green, pRect)
+            End If
+
+        ElseIf e.Index = 1 And chkITAR_Export_UserSigned.Checked Then
+            pPencil = New SolidBrush(Color.Black)
+            pFont = New Font(pFont, FontStyle.Regular)
+            pGrph.FillRectangle(Brushes.DarkSeaGreen, pRect)
+
+            If (e.Index = TabControl1.SelectedIndex) Then
+                pPencil = New SolidBrush(Color.Black)
+                pFont = New Font(pFont, FontStyle.Underline)
+                pGrph.FillRectangle(Brushes.DarkSeaGreen, pRect)
             End If
 
         ElseIf e.Index = 2 And chkOrdEntry_UserSigned.Checked And mTabIndex.Contains(e.Index) Then
@@ -3981,6 +4122,17 @@ Public Class Process_frmMain
                 pGrph.FillRectangle(Brushes.Green, pRect)
             End If
 
+        ElseIf e.Index = 2 And chkOrdEntry_UserSigned.Checked Then
+            pPencil = New SolidBrush(Color.Black)
+            pFont = New Font(pFont, FontStyle.Regular)
+            pGrph.FillRectangle(Brushes.DarkSeaGreen, pRect)
+
+            If (e.Index = TabControl1.SelectedIndex) Then
+                pPencil = New SolidBrush(Color.Black)
+                pFont = New Font(pFont, FontStyle.Regular)
+                pGrph.FillRectangle(Brushes.DarkSeaGreen, pRect)
+            End If
+
         ElseIf e.Index = 3 And chkCost_UserSigned.Checked And mTabIndex.Contains(e.Index) Then
             pFont = New Font(pFont, FontStyle.Bold)
             pGrph.FillRectangle(Brushes.Green, pRect)
@@ -3988,6 +4140,17 @@ Public Class Process_frmMain
             If (e.Index = TabControl1.SelectedIndex) Then
                 pPencil = New SolidBrush(Color.White)
                 pGrph.FillRectangle(Brushes.Green, pRect)
+            End If
+
+        ElseIf e.Index = 3 And chkCost_UserSigned.Checked Then
+            pPencil = New SolidBrush(Color.Black)
+            pFont = New Font(pFont, FontStyle.Regular)
+            pGrph.FillRectangle(Brushes.DarkSeaGreen, pRect)
+
+            If (e.Index = TabControl1.SelectedIndex) Then
+                pPencil = New SolidBrush(Color.Black)
+                pFont = New Font(pFont, FontStyle.Regular)
+                pGrph.FillRectangle(Brushes.DarkSeaGreen, pRect)
             End If
 
         ElseIf e.Index = 4 And chkApp_UserSigned_Face.Checked And mTabIndex.Contains(e.Index) Then
@@ -3999,6 +4162,17 @@ Public Class Process_frmMain
                 pGrph.FillRectangle(Brushes.Green, pRect)
             End If
 
+        ElseIf e.Index = 4 And chkApp_UserSigned_Face.Checked Then
+            pPencil = New SolidBrush(Color.Black)
+            pFont = New Font(pFont, FontStyle.Regular)
+            pGrph.FillRectangle(Brushes.DarkSeaGreen, pRect)
+
+            If (e.Index = TabControl1.SelectedIndex) Then
+                pPencil = New SolidBrush(Color.Black)
+                pFont = New Font(pFont, FontStyle.Regular)
+                pGrph.FillRectangle(Brushes.DarkSeaGreen, pRect)
+            End If
+
         ElseIf e.Index = 5 And chkDesign_UserSigned.Checked And mTabIndex.Contains(e.Index) Then
             pFont = New Font(pFont, FontStyle.Bold)
             pGrph.FillRectangle(Brushes.Green, pRect)
@@ -4006,6 +4180,17 @@ Public Class Process_frmMain
             If (e.Index = TabControl1.SelectedIndex) Then
                 pPencil = New SolidBrush(Color.White)
                 pGrph.FillRectangle(Brushes.Green, pRect)
+            End If
+
+        ElseIf e.Index = 5 And chkDesign_UserSigned.Checked Then
+            pPencil = New SolidBrush(Color.Black)
+            pFont = New Font(pFont, FontStyle.Regular)
+            pGrph.FillRectangle(Brushes.DarkSeaGreen, pRect)
+
+            If (e.Index = TabControl1.SelectedIndex) Then
+                pPencil = New SolidBrush(Color.Black)
+                pFont = New Font(pFont, FontStyle.Regular)
+                pGrph.FillRectangle(Brushes.DarkSeaGreen, pRect)
             End If
 
         ElseIf e.Index = 6 And chkManf_UserSigned.Checked And mTabIndex.Contains(e.Index) Then
@@ -4018,6 +4203,17 @@ Public Class Process_frmMain
                 pGrph.FillRectangle(Brushes.Green, pRect)
             End If
 
+        ElseIf e.Index = 6 And chkManf_UserSigned.Checked Then
+            pPencil = New SolidBrush(Color.Black)
+            pFont = New Font(pFont, FontStyle.Regular)
+            pGrph.FillRectangle(Brushes.DarkSeaGreen, pRect)
+
+            If (e.Index = TabControl1.SelectedIndex) Then
+                pPencil = New SolidBrush(Color.Black)
+                pFont = New Font(pFont, FontStyle.Regular)
+                pGrph.FillRectangle(Brushes.DarkSeaGreen, pRect)
+            End If
+
 
         ElseIf e.Index = 7 And chkPurchase_UserSigned.Checked And mTabIndex.Contains(e.Index) Then
             pFont = New Font(pFont, FontStyle.Bold)
@@ -4026,6 +4222,17 @@ Public Class Process_frmMain
             If (e.Index = TabControl1.SelectedIndex) Then
                 pPencil = New SolidBrush(Color.White)
                 pGrph.FillRectangle(Brushes.Green, pRect)
+            End If
+
+        ElseIf e.Index = 7 And chkPurchase_UserSigned.Checked Then
+            pPencil = New SolidBrush(Color.Black)
+            pFont = New Font(pFont, FontStyle.Regular)
+            pGrph.FillRectangle(Brushes.DarkSeaGreen, pRect)
+
+            If (e.Index = TabControl1.SelectedIndex) Then
+                pPencil = New SolidBrush(Color.Black)
+                pFont = New Font(pFont, FontStyle.Regular)
+                pGrph.FillRectangle(Brushes.DarkSeaGreen, pRect)
             End If
 
         ElseIf e.Index = 8 And chkQuality_UserSigned.Checked And mTabIndex.Contains(e.Index) Then
@@ -4037,6 +4244,17 @@ Public Class Process_frmMain
                 pGrph.FillRectangle(Brushes.Green, pRect)
             End If
 
+        ElseIf e.Index = 8 And chkQuality_UserSigned.Checked Then
+            pPencil = New SolidBrush(Color.Black)
+            pFont = New Font(pFont, FontStyle.Regular)
+            pGrph.FillRectangle(Brushes.DarkSeaGreen, pRect)
+
+            If (e.Index = TabControl1.SelectedIndex) Then
+                pPencil = New SolidBrush(Color.Black)
+                pFont = New Font(pFont, FontStyle.Regular)
+                pGrph.FillRectangle(Brushes.DarkSeaGreen, pRect)
+            End If
+
         ElseIf e.Index = 9 And chkDwg_UserSigned.Checked And mTabIndex.Contains(e.Index) Then
             pFont = New Font(pFont, FontStyle.Bold)
             pGrph.FillRectangle(Brushes.Green, pRect)
@@ -4044,6 +4262,17 @@ Public Class Process_frmMain
             If (e.Index = TabControl1.SelectedIndex) Then
                 pPencil = New SolidBrush(Color.White)
                 pGrph.FillRectangle(Brushes.Green, pRect)
+            End If
+
+        ElseIf e.Index = 9 And chkDwg_UserSigned.Checked Then
+            pPencil = New SolidBrush(Color.Black)
+            pFont = New Font(pFont, FontStyle.Regular)
+            pGrph.FillRectangle(Brushes.DarkSeaGreen, pRect)
+
+            If (e.Index = TabControl1.SelectedIndex) Then
+                pPencil = New SolidBrush(Color.Black)
+                pFont = New Font(pFont, FontStyle.Regular)
+                pGrph.FillRectangle(Brushes.DarkSeaGreen, pRect)
             End If
 
         ElseIf e.Index = 10 And chkTest_UserSigned.Checked And mTabIndex.Contains(e.Index) Then
@@ -4055,6 +4284,17 @@ Public Class Process_frmMain
                 pGrph.FillRectangle(Brushes.Green, pRect)
             End If
 
+        ElseIf e.Index = 10 And chkTest_UserSigned.Checked Then
+            pPencil = New SolidBrush(Color.Black)
+            pFont = New Font(pFont, FontStyle.Regular)
+            pGrph.FillRectangle(Brushes.DarkSeaGreen, pRect)
+
+            If (e.Index = TabControl1.SelectedIndex) Then
+                pPencil = New SolidBrush(Color.Black)
+                pFont = New Font(pFont, FontStyle.Regular)
+                pGrph.FillRectangle(Brushes.DarkSeaGreen, pRect)
+            End If
+
         ElseIf e.Index = 11 And chkPlanning_UserSigned.Checked And mTabIndex.Contains(e.Index) Then
             pFont = New Font(pFont, FontStyle.Bold)
             pGrph.FillRectangle(Brushes.Green, pRect)
@@ -4064,6 +4304,17 @@ Public Class Process_frmMain
                 pGrph.FillRectangle(Brushes.Green, pRect)
             End If
 
+        ElseIf e.Index = 11 And chkPlanning_UserSigned.Checked Then
+            pPencil = New SolidBrush(Color.Black)
+            pFont = New Font(pFont, FontStyle.Regular)
+            pGrph.FillRectangle(Brushes.DarkSeaGreen, pRect)
+
+            If (e.Index = TabControl1.SelectedIndex) Then
+                pPencil = New SolidBrush(Color.Black)
+                pFont = New Font(pFont, FontStyle.Regular)
+                pGrph.FillRectangle(Brushes.DarkSeaGreen, pRect)
+            End If
+
         ElseIf e.Index = 12 And chkShipping_UserSigned.Checked And mTabIndex.Contains(e.Index) Then
             pFont = New Font(pFont, FontStyle.Bold)
             pGrph.FillRectangle(Brushes.Green, pRect)
@@ -4071,6 +4322,17 @@ Public Class Process_frmMain
             If (e.Index = TabControl1.SelectedIndex) Then
                 pPencil = New SolidBrush(Color.White)
                 pGrph.FillRectangle(Brushes.Green, pRect)
+            End If
+
+        ElseIf e.Index = 12 And chkShipping_UserSigned.Checked Then
+            pPencil = New SolidBrush(Color.Black)
+            pFont = New Font(pFont, FontStyle.Regular)
+            pGrph.FillRectangle(Brushes.DarkSeaGreen, pRect)
+
+            If (e.Index = TabControl1.SelectedIndex) Then
+                pPencil = New SolidBrush(Color.Black)
+                pFont = New Font(pFont, FontStyle.Regular)
+                pGrph.FillRectangle(Brushes.DarkSeaGreen, pRect)
             End If
 
             'ElseIf e.Index = 15 And IsApprovalTab_Enabled() Then
@@ -9244,7 +9506,12 @@ Public Class Process_frmMain
         Else
             For i As Integer = 0 To mProcess_Project.PreOrder.SalesData.ID_Sales.Count - 1
                 CompareVal(mProcess_Project.PreOrder.SalesData.Year(i).ToString(), grdPreOrder_SalesData.Rows(i).Cells(0).Value, pCount)
-                CompareVal(mProcess_Project.PreOrder.SalesData.Qty(i), grdPreOrder_SalesData.Rows(i).Cells(1).Value, pCount)
+                Dim pVal As Integer = 0
+
+                If (Not IsNothing(grdPreOrder_SalesData.Rows(i).Cells(1).Value)) Then
+                    pVal = Convert.ToInt32(grdPreOrder_SalesData.Rows(i).Cells(1).Value)
+                End If
+                CompareVal(mProcess_Project.PreOrder.SalesData.Qty(i), pVal, pCount)
                 CompareVal(mProcess_Project.PreOrder.SalesData.Price(i), grdPreOrder_SalesData.Rows(i).Cells(2).Value, pCount)
                 CompareVal(mProcess_Project.PreOrder.SalesData.Total(i), grdPreOrder_SalesData.Rows(i).Cells(3).Value, pCount)
 
@@ -10528,6 +10795,61 @@ Public Class Process_frmMain
 
     End Sub
 
+    Private Sub cmdDelete_Click(sender As Object, e As EventArgs) Handles cmdDelete.Click
+        '=================================================================================      'AES 19APR18
+        Dim pSealProcessEntities As New SealProcessDBEntities()
+
+        Dim pProcessProjectCount As Integer = (From ProcessProject In pSealProcessEntities.tblProcessProject
+                                               Where ProcessProject.fldID = mProcess_Project.ID).Count()
+
+        If (pProcessProjectCount > 0) Then
+            Dim pProcessProject = (From ProcessProject In pSealProcessEntities.tblProcessProject
+                                   Where ProcessProject.fldID = mProcess_Project.ID).First()
+            pSealProcessEntities.DeleteObject(pProcessProject)
+            pSealProcessEntities.SaveChanges()
+        End If
+
+        mProcess_Project.ID = 0
+
+        'mProcess_Project = Nothing
+        RetrieveFromDB()
+        'ClearForm(Me)
+        DisplayData()
+
+
+    End Sub
+
+    Public Sub ClearForm(Frm As Form)
+        '=================
+        Dim Ctr As Control
+
+        Try
+
+            For Each Ctr In Frm.Controls
+                If TypeOf Ctr Is TextBox Then
+                    Ctr.Text = ""
+                ElseIf TypeOf Ctr Is ComboBox Then
+                    If CType(Ctr, ComboBox).DropDownStyle = ComboBoxStyle.DropDownList Then
+                        CType(Ctr, ComboBox).SelectedIndex = -1
+
+                    Else CType(Ctr, ComboBox).DropDownStyle = ComboBoxStyle.DropDown
+                        CType(Ctr, ComboBox).Text = ""
+
+                    End If
+
+                ElseIf TypeOf Ctr Is CheckBox Then
+                    CType(Ctr, CheckBox).Checked = False
+
+                ElseIf TypeOf Ctr Is DataGridView Then
+                    CType(Ctr, DataGridView).Rows.Clear()
+
+                End If
+            Next
+        Catch ex As Exception
+
+        End Try
+
+    End Sub
 
     Private Sub SetControls_HeaderUserSign()
         '===================================
@@ -10549,12 +10871,19 @@ Public Class Process_frmMain
 
         Else
             chkHeaderUserSigned.Text = "Sign-off"
-            '....Header enabled
-            mHeader = True
-            txtHeaderUserName.Text = ""
+
+            If (mTabIndex.Contains(99)) Then
+                '....Header enabled
+                mHeader = True
+                txtHeaderUserName.Text = ""
+            End If
 
             '....Disable all tabs according to User Previlege
             mTabIndex.Clear()
+            If (mHeader) Then
+                mTabIndex.Add(99)       'AES 18APR18
+            End If
+
             mPreOrder = False
             mExport = False
             mOrdEntry = False

@@ -18,7 +18,7 @@ Imports System.Runtime.Serialization
 Imports System.Xml.Serialization
 
 
-<Assembly: EdmSchemaAttribute("d7e160fd-d0a7-41ef-b634-d660e7983cd3")>
+<Assembly: EdmSchemaAttribute("b0dcb3f6-78f7-4dd6-8eaa-66f0b1c7e256")>
 #Region "Contexts"
 
 ''' <summary>
@@ -294,6 +294,20 @@ Public Partial Class SealIPEMCSDBEntities
     ''' <summary>
     ''' No Metadata Documentation available.
     ''' </summary>
+    Public ReadOnly Property tblMatTemper_S() As ObjectSet(Of tblMatTemper_S)
+        Get
+            If (_tblMatTemper_S Is Nothing) Then
+                _tblMatTemper_S = MyBase.CreateObjectSet(Of tblMatTemper_S)("tblMatTemper_S")
+            End If
+            Return _tblMatTemper_S
+        End Get
+    End Property
+
+    Private _tblMatTemper_S As ObjectSet(Of tblMatTemper_S)
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
     Public ReadOnly Property tblPlatingThick() As ObjectSet(Of tblPlatingThick)
         Get
             If (_tblPlatingThick Is Nothing) Then
@@ -517,6 +531,13 @@ Public Partial Class SealIPEMCSDBEntities
     ''' </summary>
     Public Sub AddTotblMatTemper(ByVal tblMatTemper As tblMatTemper)
         MyBase.AddObject("tblMatTemper", tblMatTemper)
+    End Sub
+
+    ''' <summary>
+    ''' Deprecated Method for adding a new object to the tblMatTemper_S EntitySet. Consider using the .Add method of the associated ObjectSet(Of T) property instead.
+    ''' </summary>
+    Public Sub AddTotblMatTemper_S(ByVal tblMatTemper_S As tblMatTemper_S)
+        MyBase.AddObject("tblMatTemper_S", tblMatTemper_S)
     End Sub
 
     ''' <summary>
@@ -4086,21 +4107,21 @@ Public Partial Class tblHT
     ''' </summary>
     <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
     <DataMemberAttribute()>
-    Public Property fldCode() As Nullable(Of Global.System.Int32)
+    Public Property fldCode() As Global.System.String
         Get
             Return _fldCode
         End Get
         Set
             OnfldCodeChanging(value)
             ReportPropertyChanging("fldCode")
-            _fldCode = StructuralObject.SetValidValue(value)
+            _fldCode = StructuralObject.SetValidValue(value, true)
             ReportPropertyChanged("fldCode")
             OnfldCodeChanged()
         End Set
     End Property
 
-    Private _fldCode As Nullable(Of Global.System.Int32)
-    Private Partial Sub OnfldCodeChanging(value As Nullable(Of Global.System.Int32))
+    Private _fldCode As Global.System.String
+    Private Partial Sub OnfldCodeChanging(value As Global.System.String)
     End Sub
 
     Private Partial Sub OnfldCodeChanged()
@@ -4388,6 +4409,86 @@ Public Partial Class tblMatTemper
         Dim tblMatTemper as tblMatTemper = New tblMatTemper
         tblMatTemper.fldMatCode = fldMatCode
         Return tblMatTemper
+    End Function
+
+    #End Region
+
+    #Region "Primitive Properties"
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=true, IsNullable:=false)>
+    <DataMemberAttribute()>
+    Public Property fldMatCode() As Global.System.Int32
+        Get
+            Return _fldMatCode
+        End Get
+        Set
+            If (_fldMatCode <> Value) Then
+                OnfldMatCodeChanging(value)
+                ReportPropertyChanging("fldMatCode")
+                _fldMatCode = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("fldMatCode")
+                OnfldMatCodeChanged()
+            End If
+        End Set
+    End Property
+
+    Private _fldMatCode As Global.System.Int32
+    Private Partial Sub OnfldMatCodeChanging(value As Global.System.Int32)
+    End Sub
+
+    Private Partial Sub OnfldMatCodeChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property fldTemperCode() As Global.System.String
+        Get
+            Return _fldTemperCode
+        End Get
+        Set
+            OnfldTemperCodeChanging(value)
+            ReportPropertyChanging("fldTemperCode")
+            _fldTemperCode = StructuralObject.SetValidValue(value, true)
+            ReportPropertyChanged("fldTemperCode")
+            OnfldTemperCodeChanged()
+        End Set
+    End Property
+
+    Private _fldTemperCode As Global.System.String
+    Private Partial Sub OnfldTemperCodeChanging(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnfldTemperCodeChanged()
+    End Sub
+
+    #End Region
+
+End Class
+
+''' <summary>
+''' No Metadata Documentation available.
+''' </summary>
+<EdmEntityTypeAttribute(NamespaceName:="SealIPEMCSDBModel", Name:="tblMatTemper_S")>
+<Serializable()>
+<DataContractAttribute(IsReference:=True)>
+Public Partial Class tblMatTemper_S
+    Inherits EntityObject
+    #Region "Factory Method"
+
+    ''' <summary>
+    ''' Create a new tblMatTemper_S object.
+    ''' </summary>
+    ''' <param name="fldMatCode">Initial value of the fldMatCode property.</param>
+    Public Shared Function CreatetblMatTemper_S(fldMatCode As Global.System.Int32) As tblMatTemper_S
+        Dim tblMatTemper_S as tblMatTemper_S = New tblMatTemper_S
+        tblMatTemper_S.fldMatCode = fldMatCode
+        Return tblMatTemper_S
     End Function
 
     #End Region

@@ -4,7 +4,7 @@
 '                      FORM MODULE   :  frmHW                                  '
 '                        VERSION NO  :  1.4                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  12DEC17                                '
+'                     LAST MODIFIED  :  18APR18                                '
 '                                                                              '
 '===============================================================================
 Imports System.IO
@@ -96,10 +96,10 @@ Public Class Part_frmHW
 
         PopulatePlatingType()
         PopulatePlatingTCode()
-        RetrieveFromDB()
+        ''RetrieveFromDB()
+        mPartProject.PNR.RetrieveFromDB(mPNID, mRevID)      'AES 18APR18
 
         If (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.E) Then
-
             grpCoating.Enabled = True
         Else
             grpCoating.Enabled = False
@@ -139,7 +139,6 @@ Public Class Part_frmHW
         ElseIf (pSealType = "U") Then
             mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.U
         End If
-
 
         If (gPartProject.PNR.Legacy.Type = clsPartProject.clsPNR.eLegacyType.Catalogued) Then
             If (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.C Or mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.SC) Then
@@ -259,7 +258,8 @@ Public Class Part_frmHW
     Private Sub DisplayData()
         '====================
         InitializeControls()
-        RetrieveFromDB()
+        ''RetrieveFromDB()
+        mPartProject.PNR.RetrieveFromDB(mPNID, mRevID)      'AES 18APR18
         'txtHFree.Text = ""
         Dim pDHFree As Single = mPartProject.PNR.HW.DHfree
         Dim pDThetaOpening As Single = mPartProject.PNR.HW.DThetaOpening
@@ -953,75 +953,100 @@ Public Class Part_frmHW
 
         Dim pMCSEntities As New SealIPEMCSDBEntities()
 
-        If (cmbType.Text = "SC") Then
+        Dim pQryCountTemp = (From it In pMCSEntities.tblTemper Select it).ToList()
 
-            'AES 28JUL17
-            'If MatName_In.Contains("Co-Cr-Ni") Then
-            '    MatName_In = MatName_In.Replace("Co-Cr-Ni", "Cobalt Chromium-Nickel Alloy")
-            'End If
+        If (pQryCountTemp.Count() > 0) Then
 
-            'Dim pCount As Integer = (From it In pMCSEntities.tblMaterial_S
-            '                       Where it.fldName = MatName_In Select it).Count()
-            'Dim pMatCode As String = ""
-            'If (pCount > 0) Then
-            '    Dim pQry_Mat = (From it In pMCSEntities.tblMaterial_S
-            '                        Where it.fldName = MatName_In Select it).First()
-            '    pMatCode = pQry_Mat.fldCode
+            For i As Integer = 0 To pQryCountTemp.Count - 1
+                cmbTemperCode.Items.Add(pQryCountTemp(i).fldCode.ToString())
+            Next
 
+            If (cmbType.Text = "SC") Then
 
-            '    Dim pQry = (From pRec In pMCSEntities.tblMatTemper
-            '           Where pRec.fldMatCode = pMatCode Order By pRec.fldTemperCode Ascending Select pRec).ToList()
-            '    If (pQry.Count() > 0) Then
-            '        For i As Integer = 0 To pQry.Count() - 1
-            '            Dim pCode As String = pQry(i).fldTemperCode.ToString().Trim()
+                If MatName_In.Contains("Co-Cr-Ni") Then
+                    MatName_In = MatName_In.Replace("Co-Cr-Ni", "Cobalt Chromium-Nickel Alloy")
+                End If
 
-            '            If (pCode <> "") Then
-            '                cmbTemperCode.Items.Add(pCode)
-            '            End If
-            '        Next
+                Dim pCountMat As Integer = (From it In pMCSEntities.tblMaterial_S
+                                            Where it.fldName = MatName_In Select it).Count()
+                Dim pMatCode As Integer = 0
 
-            '    End If
+                If (pCountMat > 0) Then
+                    Dim pQry_Mat = (From it In pMCSEntities.tblMaterial_S
+                                    Where it.fldName = MatName_In Select it).First()
+                    pMatCode = pQry_Mat.fldCode
 
+                    Dim pCount_Temp As Integer = (From it In pMCSEntities.tblMatTemper_S
+                                                  Where it.fldMatCode = pMatCode Select it).Count()
 
-            'Else
-            '    cmbTemperCode.SelectedIndex = -1
-            'End If
+                    If (pCount_Temp > 0) Then
 
-            'If (cmbTemperCode.Items.Count > 0) Then
-            '    cmbTemperCode.SelectedIndex = 0
-            'End If
+                        Dim pQry = (From pRec In pMCSEntities.tblMatTemper_S
+                                    Where pRec.fldMatCode = pMatCode Select pRec).First()
 
-            cmbTemperCode.Items.Add("1")
-            cmbTemperCode.SelectedIndex = 0
+                        Dim pTemp_All As String = pQry.fldTemperCode.Trim()
 
-        Else
+                        If (pTemp_All.Contains(",")) Then
+                            Dim pTempCode() As String = pTemp_All.Split(",")
 
-            Dim pCount As Integer = (From it In pMCSEntities.tblMaterial
-                                     Where it.fldName = MatName_In Select it).Count()
-            Dim pMatCode As String = ""
-            If (pCount > 0) Then
-                Dim pQry_Mat = (From it In pMCSEntities.tblMaterial
-                                Where it.fldName = MatName_In Select it).First()
-                pMatCode = pQry_Mat.fldCode
-
-                Dim pQry = (From pRec In pMCSEntities.tblMatTemper
-                            Where pRec.fldMatCode = pMatCode Order By pRec.fldTemperCode Ascending Select pRec).ToList()
-                If (pQry.Count() > 0) Then
-                    For i As Integer = 0 To pQry.Count() - 1
-                        Dim pCode As String = pQry(i).fldTemperCode.ToString().Trim()
-
-                        If (pCode <> "") Then
-                            cmbTemperCode.Items.Add(pCode)
+                            For i As Integer = 0 To pTempCode.Count - 1
+                                cmbTemperCode.SelectedIndex = cmbTemperCode.Items.IndexOf(pTempCode(0).Trim())
+                                Exit For
+                            Next
+                        Else
+                            cmbTemperCode.SelectedIndex = cmbTemperCode.Items.IndexOf(pTemp_All.Trim())
                         End If
-                    Next
+
+                    Else
+                        cmbTemperCode.SelectedIndex = -1
+                    End If
+
+                Else
+                    cmbTemperCode.SelectedIndex = -1
+                End If
+
+            Else
+
+                Dim pCountMat As Integer = (From it In pMCSEntities.tblMaterial
+                                            Where it.fldName = MatName_In Select it).Count()
+                Dim pMatCode As Integer = 0
+
+                If (pCountMat > 0) Then
+                    Dim pQry_Mat = (From it In pMCSEntities.tblMaterial
+                                    Where it.fldName = MatName_In Select it).First()
+                    pMatCode = pQry_Mat.fldCode
+
+                    Dim pCount_Temp As Integer = (From it In pMCSEntities.tblMatTemper
+                                                  Where it.fldMatCode = pMatCode Select it).Count()
+
+                    If (pCount_Temp > 0) Then
+
+                        Dim pQry = (From pRec In pMCSEntities.tblMatTemper
+                                    Where pRec.fldMatCode = pMatCode Select pRec).First()
+
+                        Dim pTemp_All As String = pQry.fldTemperCode.Trim()
+
+                        If (pTemp_All.Contains(",")) Then
+                            Dim pTempCode() As String = pTemp_All.Split(",")
+
+                            For i As Integer = 0 To pTempCode.Count - 1
+                                cmbTemperCode.SelectedIndex = cmbTemperCode.Items.IndexOf(pTempCode(0).Trim())
+                                Exit For
+                            Next
+                        Else
+                            cmbTemperCode.SelectedIndex = cmbTemperCode.Items.IndexOf(pTemp_All.Trim())
+                        End If
+
+
+                    Else
+                        cmbTemperCode.SelectedIndex = -1
+                    End If
+
+                Else
+                    cmbTemperCode.SelectedIndex = -1
 
                 End If
-            Else
-                cmbTemperCode.SelectedIndex = -1
-            End If
 
-            If (cmbTemperCode.Items.Count > 0) Then
-                cmbTemperCode.SelectedIndex = 0
             End If
 
         End If
@@ -1281,9 +1306,11 @@ Public Class Part_frmHW
 
             cmbHT.SelectedIndex = -1
         Else
+
             Dim pCount As Integer = (From it In pSealMCSEntity.tblMaterial
                                      Where it.fldName = MatName_In Select it).Count()
-            Dim pMatCode As String = ""
+            'AES 06MAR18
+            Dim pMatCode As Integer = 0
             If (pCount > 0) Then
                 Dim pQry_Mat = (From it In pSealMCSEntity.tblMaterial
                                 Where it.fldName = MatName_In Select it).First()
@@ -1295,8 +1322,22 @@ Public Class Part_frmHW
                 If (pCount_HT > 0) Then
                     Dim pQry_HT = (From it In pSealMCSEntity.tblHT
                                    Where it.fldMatCode = pMatCode Select it).First()
-                    cmbHT.Items.Add(pQry_HT.fldCode)
-                    cmbHT.SelectedIndex = 0
+
+                    'AES 06MAR18
+                    Dim pHT_All As String = pQry_HT.fldCode
+
+                    If (pHT_All.Contains(",")) Then
+                        Dim pHT() As String = pHT_All.Split(",")
+
+                        For i As Integer = 0 To pHT.Count - 1
+                            cmbHT.Items.Add(pHT(i).Trim())
+                            cmbHT.SelectedIndex = 0
+                        Next
+                    Else
+                        cmbHT.Items.Add(pHT_All.Trim())
+                        cmbHT.SelectedIndex = 0
+                    End If
+
                 End If
             Else
                 cmbHT.SelectedIndex = -1
@@ -1573,7 +1614,8 @@ Public Class Part_frmHW
         End If
 
         SaveData()
-        SaveToDB()
+        'SaveToDB()
+        mPartProject.PNR.SaveToDB(mPNID, mRevID)        'AES 18APR18
         Me.Close()
     End Sub
 
@@ -1675,563 +1717,563 @@ Public Class Part_frmHW
     End Sub
 
 
-    Private Sub SaveToDB()
-        '================
-        Dim pPartEntities As New SealPartDBEntities()
-
-        '....HW_Face table
-        Dim pHWFace_Rec_Count As Integer = (From HWFace In pPartEntities.tblHW_Face
-                                            Where HWFace.fldPNID = mPNID And
-                                            HWFace.fldRevID = mRevID Select HWFace).Count()
-        If (pHWFace_Rec_Count > 0) Then
-            '....Record already exists
-            Dim pHWFace_Rec = (From HWFace In pPartEntities.tblHW_Face
-                               Where HWFace.fldPNID = mPNID And
-                                            HWFace.fldRevID = mRevID Select HWFace).First()
-            pHWFace_Rec.fldType = mPartProject.PNR.SealType.ToString()
-            pHWFace_Rec.fldMCS = mPartProject.PNR.HW.MCrossSecNo
-            pHWFace_Rec.fldSegmented = mPartProject.PNR.HW.IsSegmented
-            If (mPartProject.PNR.HW.IsSegmented) Then
-                pHWFace_Rec.fldSegmentCount = mPartProject.PNR.HW.CountSegment
-            Else
-                pHWFace_Rec.fldSegmentCount = 0
-            End If
-            pHWFace_Rec.fldMatName = mPartProject.PNR.HW.MatName
-            pHWFace_Rec.fldHT = mPartProject.PNR.HW.HT
-            pHWFace_Rec.fldTemper = mPartProject.PNR.HW.Temper
-            If (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.E) Then
-                pHWFace_Rec.fldCoating = mPartProject.PNR.HW.Coating
-                pHWFace_Rec.fldSFinish = mPartProject.PNR.HW.SFinish
-            End If
-            If (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.C Or mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.SC) Then
-                If (mPartProject.PNR.HW.Plating.Exists) Then
-                    pHWFace_Rec.fldIsPlating = True
-                Else
-                    pHWFace_Rec.fldIsPlating = False
-                End If
-
-                pHWFace_Rec.fldPlatingCode = mPartProject.PNR.HW.Plating.Code
-                pHWFace_Rec.fldPlatingThickCode = mPartProject.PNR.HW.Plating.ThickCode
-                pHWFace_Rec.fldPlatingThickMin = mPartProject.PNR.HW.Plating.ThickMin
-                pHWFace_Rec.fldPlatingThickMax = mPartProject.PNR.HW.Plating.ThickMax
-
-                SaveToDB_NonStd_CSeal()
-            ElseIf (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.E) Then
-
-                SaveToDB_NonStd_ESeal()
-            End If
-
-            If (txtHFree.Text <> "") Then
-                pHWFace_Rec.fldHfreeStd = Convert.ToDouble(txtHFree.Text)
-            Else
-                pHWFace_Rec.fldHfreeStd = 0
-            End If
-
-            pHWFace_Rec.fldHFreeTol1 = mPartProject.PNR.HW.HFreeTol(1)
-            pHWFace_Rec.fldHFreeTol2 = mPartProject.PNR.HW.HFreeTol(2)
-            pHWFace_Rec.fldPOrient = mPartProject.PNR.HW.POrient
-
-            If (txtDControl.Text <> "") Then
-                pHWFace_Rec.fldDControl = Convert.ToDouble(txtDControl.Text)
-            Else
-                pHWFace_Rec.fldDControl = 0
-            End If
-
-            If (txtH11Tol.Text <> "") Then
-                pHWFace_Rec.fldH11Tol = Convert.ToDouble(txtH11Tol.Text)
-            Else
-                pHWFace_Rec.fldH11Tol = 0
-            End If
-
-            'AES 31JUL17
-            If (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.C Or mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.SC Or mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.E) Then
-                pHWFace_Rec.fldAdjusted = mPartProject.PNR.HW.Adjusted
-            Else
-                pHWFace_Rec.fldAdjusted = False
-            End If
-
-
-            pPartEntities.SaveChanges()
-
-        Else
-            '....New Record
-            Dim pHWFace As New tblHW_Face
-            pHWFace.fldPNID = mPNID
-            pHWFace.fldRevID = mRevID
-
-            pHWFace.fldType = gPartProject.PNR.SealType.ToString()
-            pHWFace.fldMCS = mPartProject.PNR.HW.MCrossSecNo
-            pHWFace.fldSegmented = mPartProject.PNR.HW.IsSegmented
-            If (mPartProject.PNR.HW.IsSegmented) Then
-                pHWFace.fldSegmentCount = mPartProject.PNR.HW.CountSegment
-            Else
-                pHWFace.fldSegmentCount = 0
-            End If
-            pHWFace.fldMatName = mPartProject.PNR.HW.MatName
-            pHWFace.fldHT = mPartProject.PNR.HW.HT
-            pHWFace.fldTemper = mPartProject.PNR.HW.Temper
-            If (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.E) Then
-                pHWFace.fldCoating = mPartProject.PNR.HW.Coating
-                pHWFace.fldSFinish = mPartProject.PNR.HW.SFinish
-            End If
-            If (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.C Or mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.SC) Then
-                If (mPartProject.PNR.HW.Plating.Exists) Then
-                    pHWFace.fldIsPlating = True
-                Else
-                    pHWFace.fldIsPlating = False
-                End If
-
-                pHWFace.fldPlatingCode = mPartProject.PNR.HW.Plating.Code
-                pHWFace.fldPlatingThickCode = mPartProject.PNR.HW.Plating.ThickCode
-
-                pHWFace.fldPlatingThickMin = mPartProject.PNR.HW.Plating.ThickMin
-                pHWFace.fldPlatingThickMax = mPartProject.PNR.HW.Plating.ThickMax
-
-            End If
-
-            If (txtHFree.Text <> "") Then
-                pHWFace.fldHfreeStd = Convert.ToDouble(txtHFree.Text)
-            Else
-                pHWFace.fldHfreeStd = 0
-            End If
-
-            pHWFace.fldHFreeTol1 = mPartProject.PNR.HW.HFreeTol(1)
-            pHWFace.fldHFreeTol2 = mPartProject.PNR.HW.HFreeTol(2)
-            pHWFace.fldPOrient = mPartProject.PNR.HW.POrient
-
-            If (txtDControl.Text <> "") Then
-                pHWFace.fldDControl = Convert.ToDouble(txtDControl.Text)
-            Else
-                pHWFace.fldDControl = 0
-            End If
-
-            If (txtH11Tol.Text <> "") Then
-                pHWFace.fldH11Tol = Convert.ToDouble(txtH11Tol.Text)
-            Else
-                pHWFace.fldH11Tol = 0
-            End If
-
-            'pHWFace.fldAdjusted = False
-            'AES 31JUL17
-            If (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.C Or mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.SC) Then
-                pHWFace.fldAdjusted = mPartProject.PNR.HW.Adjusted
-                pPartEntities.AddTotblHW_Face(pHWFace)
-                pPartEntities.SaveChanges()
-                SaveToDB_NonStd_CSeal()
-
-            ElseIf (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.E) Then       'AES 11OCT17
-                pHWFace.fldAdjusted = mPartProject.PNR.HW.Adjusted
-                pPartEntities.AddTotblHW_Face(pHWFace)
-                pPartEntities.SaveChanges()
-                SaveToDB_NonStd_ESeal()
-            Else
-                pHWFace.fldAdjusted = False
-                pPartEntities.AddTotblHW_Face(pHWFace)
-                pPartEntities.SaveChanges()
-            End If
-
-        End If
-
-    End Sub
-
-
-    Private Sub SaveToDB_NonStd_CSeal()
-        '==============================
-        Dim pPartEntities As New SealPartDBEntities()
-
-        '....HW_AdjCSeal table
-        Dim pHW_AdjCSeal_Rec_Count As Integer = (From HWFace_AdjCSeal In pPartEntities.tblHW_AdjCSeal
-                                                 Where HWFace_AdjCSeal.fldPNID = mPNID And
-                                            HWFace_AdjCSeal.fldRevID = mRevID Select HWFace_AdjCSeal).Count()
-        If (pHW_AdjCSeal_Rec_Count > 0) Then
-            '....Record already exists
-            Dim pHWFace_AdjCSeal_Rec = (From HWFace_AdjCSeal In pPartEntities.tblHW_AdjCSeal
-                                        Where HWFace_AdjCSeal.fldPNID = mPNID And
-                                            HWFace_AdjCSeal.fldRevID = mRevID Select HWFace_AdjCSeal).First()
-
-            pHWFace_AdjCSeal_Rec.fldDHFree = mPartProject.PNR.HW.DHfree
-            pHWFace_AdjCSeal_Rec.fldDThetaOpening = mPartProject.PNR.HW.DThetaOpening
-            pHWFace_AdjCSeal_Rec.fldDT = mPartProject.PNR.HW.T
-
-            pPartEntities.SaveChanges()
-
-        Else
-            '....New Record
-            Dim pHWFace_AdjCSeal As New tblHW_AdjCSeal
-            pHWFace_AdjCSeal.fldPNID = mPNID
-            pHWFace_AdjCSeal.fldRevID = mRevID
-
-            pHWFace_AdjCSeal.fldDHFree = mPartProject.PNR.HW.DHfree
-            pHWFace_AdjCSeal.fldDThetaOpening = mPartProject.PNR.HW.DThetaOpening
-            pHWFace_AdjCSeal.fldDT = mPartProject.PNR.HW.T
-
-            pPartEntities.AddTotblHW_AdjCSeal(pHWFace_AdjCSeal)
-            pPartEntities.SaveChanges()
-        End If
-
-    End Sub
-
-    'AES 11OCT17
-    Private Sub SaveToDB_NonStd_ESeal()
-        '==============================
-        Dim pPartEntities As New SealPartDBEntities()
-
-        '....HW_AdjESeal table
-        Dim pHW_AdjESeal_Rec_Count As Integer = (From HWFace_AdjESeal In pPartEntities.tblHW_AdjESeal
-                                                 Where HWFace_AdjESeal.fldPNID = mPNID And
-                                            HWFace_AdjESeal.fldRevID = mRevID Select HWFace_AdjESeal).Count()
-        If (pHW_AdjESeal_Rec_Count > 0) Then
-            '....Record already exists
-            Dim pHWFace_AdjESeal_Rec = (From HWFace_AdjESeal In pPartEntities.tblHW_AdjESeal
-                                        Where HWFace_AdjESeal.fldPNID = mPNID And
-                                            HWFace_AdjESeal.fldRevID = mRevID Select HWFace_AdjESeal).First()
-
-            pHWFace_AdjESeal_Rec.fldDThetaE1 = mPartProject.PNR.HW.DThetaE1
-            pHWFace_AdjESeal_Rec.fldDThetaM1 = mPartProject.PNR.HW.DThetaM1
-
-            pPartEntities.SaveChanges()
-
-        Else
-            '....New Record
-            Dim pHWFace_AdjESeal As New tblHW_AdjESeal
-            pHWFace_AdjESeal.fldPNID = mPNID
-            pHWFace_AdjESeal.fldRevID = mRevID
-
-            pHWFace_AdjESeal.fldDThetaE1 = mPartProject.PNR.HW.DThetaE1
-            pHWFace_AdjESeal.fldDThetaM1 = mPartProject.PNR.HW.DThetaM1
-
-            pPartEntities.AddTotblHW_AdjESeal(pHWFace_AdjESeal)
-            pPartEntities.SaveChanges()
-        End If
-
-    End Sub
-
-
-    Private Sub RetrieveFromDB()
-        '=======================
-        Try
-
-            Dim pPartEntities As New SealPartDBEntities()
-
-            '....HW_Face table
-            Dim pHWFace_Rec_Count As Integer = (From HWFace In pPartEntities.tblHW_Face
-                                                Where HWFace.fldPNID = mPNID And
-                                                HWFace.fldRevID = mRevID Select HWFace).Count()
-            If (pHWFace_Rec_Count > 0) Then
-
-                Dim pHWFace_Rec = (From HWFace In pPartEntities.tblHW_Face
-                                   Where HWFace.fldPNID = mPNID And
-                                            HWFace.fldRevID = mRevID Select HWFace).First()
-
-                Dim pType As String = pHWFace_Rec.fldType.ToString().Trim()
-                mPartProject.PNR.SealType = CType([Enum].Parse(GetType(clsPartProject.clsPNR.eType), pType), clsPartProject.clsPNR.eType)
-                mPartProject.PNR.HW.InitializePNR(mPartProject.PNR)
-
-                If (gPartProject.PNR.Legacy.Exists And gPartProject.PNR.Legacy.Type = clsPartProject.clsPNR.eLegacyType.Catalogued) Then
-
-                    Dim pSealType As String = pHWFace_Rec.fldType.ToString().Trim()
-
-                    With mPartProject.PNR.HW
-                        mPartProject.PNR.SealType = CType([Enum].Parse(GetType(clsPartProject.clsPNR.eType), pSealType), clsPartProject.clsPNR.eType) 'pSealType
-                        .MCrossSecNo = pHWFace_Rec.fldMCS
-                        '.Hfree = pHWFace_Rec.fldHfreeStd
-                        .HFreeTol(1) = pHWFace_Rec.fldHFreeTol1
-                        .HFreeTol(2) = pHWFace_Rec.fldHFreeTol2
-                        .T = .TStd      'AES 02AUG17
-
-                        If (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.C Or mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.SC) Then
-                            '....HW_AdjCSeal table
-                            Dim pHW_AdjCSeal_Rec_Count As Integer = (From HWFace_AdjCSeal In pPartEntities.tblHW_AdjCSeal
-                                                                     Where HWFace_AdjCSeal.fldPNID = mPNID And
-                                                            HWFace_AdjCSeal.fldRevID = mRevID Select HWFace_AdjCSeal).Count()
-                            If (pHW_AdjCSeal_Rec_Count > 0) Then
-
-                                Dim pHWFace_AdjCSeal_Rec = (From HWFace_AdjCSeal In pPartEntities.tblHW_AdjCSeal
-                                                            Where HWFace_AdjCSeal.fldPNID = mPNID And
-                                                            HWFace_AdjCSeal.fldRevID = mRevID Select HWFace_AdjCSeal).First()
-
-                                With mPartProject.PNR.HW
-                                    If (Not IsNothing(pHWFace_AdjCSeal_Rec.fldDHFree)) Then
-                                        .DHfree = pHWFace_AdjCSeal_Rec.fldDHFree
-                                    Else
-                                        .DHfree = 0.0#
-                                    End If
-
-                                    If (Not IsNothing(pHWFace_AdjCSeal_Rec.fldDThetaOpening)) Then
-                                        .DThetaOpening = pHWFace_AdjCSeal_Rec.fldDThetaOpening
-                                    Else
-                                        .DThetaOpening = 0.0#
-                                    End If
-
-                                    If (Not IsNothing(pHWFace_AdjCSeal_Rec.fldDT)) Then
-                                        .T = pHWFace_AdjCSeal_Rec.fldDT
-                                    Else
-                                        .T = 0.0#
-                                    End If
-
-                                End With
-
-                            End If
-
-                            If (Not IsDBNull(pHWFace_Rec.fldIsPlating) And Not IsNothing(pHWFace_Rec.fldIsPlating)) Then
-                                .PlatingExists = pHWFace_Rec.fldIsPlating
-                            End If
-
-                            If (Not IsDBNull(pHWFace_Rec.fldPlatingThickCode) And Not IsNothing(pHWFace_Rec.fldPlatingThickCode)) Then
-                                .PlatingThickCode = pHWFace_Rec.fldPlatingThickCode
-
-                                If (.Plating.ThickCode = "X") Then
-                                    .PlatingThickMin = pHWFace_Rec.fldPlatingThickMin
-                                    .PlatingThickMax = pHWFace_Rec.fldPlatingThickMax
-
-                                Else
-                                    Dim pMCSEntities As New SealIPEMCSDBEntities()
-
-                                    Dim pThickCode As String = .Plating.ThickCode
-                                    Dim pQry = (From pRec In pMCSEntities.tblPlatingThick Where pRec.fldPlatingThickCode = pThickCode
-                                                Select pRec).ToList()
-
-                                    If (pQry.Count() > 0) Then
-
-                                        If (mPartProject.PNR.HW.UnitSystem = "English") Then
-                                            .PlatingThickMin = pQry(0).fldPlatingThickMinEng
-                                            .PlatingThickMax = pQry(0).fldPlatingThickMaxEng
-                                        Else
-                                            .PlatingThickMin = pQry(0).fldPlatingThickMinMet
-                                            .PlatingThickMax = pQry(0).fldPlatingThickMaxMet
-                                        End If
-                                    End If
-
-                                End If
-                            Else
-                                .PlatingThickCode = ""
-                                .PlatingThickMin = 0
-                                .PlatingThickMax = 0
-                            End If
-                            'Else
-                            '    .PlatingThickCode = ""
-                            '    .PlatingThickMin = 0
-                            '    .PlatingThickMax = 0
-                            'End If
-
-
-                        ElseIf (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.E) Then        'AES 11OCT17
-
-                            '....HW_AdjESeal table
-                            Dim pHW_AdjESeal_Rec_Count As Integer = (From HWFace_AdjESeal In pPartEntities.tblHW_AdjESeal
-                                                                     Where HWFace_AdjESeal.fldPNID = mPNID And
-                                                            HWFace_AdjESeal.fldRevID = mRevID Select HWFace_AdjESeal).Count()
-                            If (pHW_AdjESeal_Rec_Count > 0) Then
-
-                                Dim pHWFace_AdjESeal_Rec = (From HWFace_AdjESeal In pPartEntities.tblHW_AdjESeal
-                                                            Where HWFace_AdjESeal.fldPNID = mPNID And
-                                                            HWFace_AdjESeal.fldRevID = mRevID Select HWFace_AdjESeal).First()
-
-                                With mPartProject.PNR.HW
-                                    If (Not IsNothing(pHWFace_AdjESeal_Rec.fldDThetaE1)) Then
-                                        .DThetaE1 = pHWFace_AdjESeal_Rec.fldDThetaE1
-                                    Else
-                                        .DThetaE1 = 0.0#
-                                    End If
-
-                                    If (Not IsNothing(pHWFace_AdjESeal_Rec.fldDThetaM1)) Then
-                                        .DThetaM1 = pHWFace_AdjESeal_Rec.fldDThetaM1
-                                    Else
-                                        .DThetaM1 = 0.0#
-                                    End If
-
-
-                                End With
-
-                            End If
-
-                        End If
-
-                        Exit Sub
-                    End With
-
-                Else
-                    If (gPartProject.PNR.Current.Exists) Then
-                        Dim pPN As String = gPartProject.PNR.PN
-                        Dim pSealType As String = ""
-                        Dim pSealType_No As String = pPN.Substring(3, 2)
-
-                        Select Case pSealType_No
-
-                            Case "69"
-                                pSealType = "E"
-
-                            Case "76"
-                                pSealType = "C"
-
-                            Case "79"
-                                pSealType = "U"
-
-                            Case "44"
-                                pSealType = "SC"
-
-                        End Select
-
-                        If (pSealType <> pHWFace_Rec.fldType) Then
-                            Exit Sub
-                        End If
-
-                    End If
-
-                End If
-
-                With mPartProject.PNR.HW
-                    'Dim pSealType As String = pHWFace_Rec.fldType
-                    'mPartProject.PNR.SealType = CType([Enum].Parse(GetType(clsProject.clsPNR.eType), pSealType), clsProject.clsPNR.eType)
-                    .POrient = pHWFace_Rec.fldPOrient
-                    .MCrossSecNo = pHWFace_Rec.fldMCS
-                    .IsSegmented = pHWFace_Rec.fldSegmented
-                    If (.IsSegmented) Then
-                        .CountSegment = pHWFace_Rec.fldSegmentCount
-                    End If
-
-                    .MatName = pHWFace_Rec.fldMatName
-                    .HT = pHWFace_Rec.fldHT
-                    .Temper = pHWFace_Rec.fldTemper
-                    .T = .TStd      'AES 31JUL17
-
-                    If (Not IsDBNull(pHWFace_Rec.fldCoating) And Not IsNothing(pHWFace_Rec.fldCoating)) Then
-                        .Coating = pHWFace_Rec.fldCoating
-                    Else
-                        .Coating = "None"
-                    End If
-
-                    If (Not IsDBNull(pHWFace_Rec.fldSFinish) And Not IsNothing(pHWFace_Rec.fldSFinish)) Then
-                        .SFinish = pHWFace_Rec.fldSFinish
-                    Else
-                        .SFinish = 0
-                    End If
-
-                    If (Not IsDBNull(pHWFace_Rec.fldIsPlating) And Not IsNothing(pHWFace_Rec.fldIsPlating)) Then
-                        .PlatingExists = pHWFace_Rec.fldIsPlating
-                    End If
-
-                    If (Not IsDBNull(pHWFace_Rec.fldPlatingCode) And Not IsNothing(pHWFace_Rec.fldPlatingCode)) Then
-                        .PlatingCode = pHWFace_Rec.fldPlatingCode
-
-                    Else
-                        .PlatingCode = ""
-                    End If
-
-                    If (Not IsDBNull(pHWFace_Rec.fldPlatingThickCode) And Not IsNothing(pHWFace_Rec.fldPlatingThickCode)) Then
-                        .PlatingThickCode = pHWFace_Rec.fldPlatingThickCode
-
-                        If (.Plating.ThickCode = "X") Then
-                            .PlatingThickMin = pHWFace_Rec.fldPlatingThickMin
-                            .PlatingThickMax = pHWFace_Rec.fldPlatingThickMax
-
-                        Else
-                            Dim pMCSEntities As New SealIPEMCSDBEntities()
-
-                            Dim pThickCode As String = .Plating.ThickCode
-                            Dim pQry = (From pRec In pMCSEntities.tblPlatingThick Where pRec.fldPlatingThickCode = pThickCode
-                                        Select pRec).ToList()
-
-                            If (pQry.Count() > 0) Then
-
-                                If (mPartProject.PNR.HW.UnitSystem = "English") Then
-                                    .PlatingThickMin = pQry(0).fldPlatingThickMinEng
-                                    .PlatingThickMax = pQry(0).fldPlatingThickMaxEng
-                                Else
-                                    .PlatingThickMin = pQry(0).fldPlatingThickMinMet
-                                    .PlatingThickMax = pQry(0).fldPlatingThickMaxMet
-                                End If
-                            Else
-                                .PlatingThickCode = ""
-                                .PlatingThickMin = 0
-                                .PlatingThickMax = 0
-                            End If
-
-                        End If
-                    Else
-                        .PlatingThickCode = ""
-                        .PlatingThickMin = 0
-                        .PlatingThickMax = 0
-                    End If
-
-                    '.Hfree = pHWFace_Rec.fldHfreeStd
-                    .HFreeTol(1) = pHWFace_Rec.fldHFreeTol1
-                    .HFreeTol(2) = pHWFace_Rec.fldHFreeTol2
-                    .DControl = pHWFace_Rec.fldDControl
-                    '.H11Tol = pHWFace_Rec.fldH11Tol
-
-                End With
-
-            End If
-
-            If (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.C Or mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.SC) Then
-                '....HW_AdjCSeal table
-                Dim pHW_AdjCSeal_Rec_Count As Integer = (From HWFace_AdjCSeal In pPartEntities.tblHW_AdjCSeal
-                                                         Where HWFace_AdjCSeal.fldPNID = mPNID And
-                                                HWFace_AdjCSeal.fldRevID = mRevID Select HWFace_AdjCSeal).Count()
-                If (pHW_AdjCSeal_Rec_Count > 0) Then
-
-                    Dim pHWFace_AdjCSeal_Rec = (From HWFace_AdjCSeal In pPartEntities.tblHW_AdjCSeal
-                                                Where HWFace_AdjCSeal.fldPNID = mPNID And
-                                                    HWFace_AdjCSeal.fldRevID = mRevID Select HWFace_AdjCSeal).First()
-
-                    With mPartProject.PNR.HW
-                        If (Not IsNothing(pHWFace_AdjCSeal_Rec.fldDHFree)) Then
-                            .DHfree = pHWFace_AdjCSeal_Rec.fldDHFree
-                        Else
-                            .DHfree = 0.0#
-                        End If
-
-                        If (Not IsNothing(pHWFace_AdjCSeal_Rec.fldDThetaOpening)) Then
-                            .DThetaOpening = pHWFace_AdjCSeal_Rec.fldDThetaOpening
-                        Else
-                            .DThetaOpening = 0.0#
-                        End If
-
-                        If (Not IsNothing(pHWFace_AdjCSeal_Rec.fldDT)) Then
-                            .T = pHWFace_AdjCSeal_Rec.fldDT
-                        Else
-                            .T = 0.0#
-                        End If
-
-                    End With
-
-                End If
-            ElseIf (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.E) Then        'AES 11OCT17
-
-                '....HW_AdjESeal table
-                Dim pHW_AdjESeal_Rec_Count As Integer = (From HWFace_AdjESeal In pPartEntities.tblHW_AdjESeal
-                                                         Where HWFace_AdjESeal.fldPNID = mPNID And
-                                                 HWFace_AdjESeal.fldRevID = mRevID Select HWFace_AdjESeal).Count()
-                If (pHW_AdjESeal_Rec_Count > 0) Then
-
-                    Dim pHWFace_AdjESeal_Rec = (From HWFace_AdjESeal In pPartEntities.tblHW_AdjESeal
-                                                Where HWFace_AdjESeal.fldPNID = mPNID And
-                                                    HWFace_AdjESeal.fldRevID = mRevID Select HWFace_AdjESeal).First()
-
-                    With mPartProject.PNR.HW
-                        If (Not IsNothing(pHWFace_AdjESeal_Rec.fldDThetaE1)) Then
-                            .DThetaE1 = pHWFace_AdjESeal_Rec.fldDThetaE1
-                        Else
-                            .DThetaE1 = 0.0#
-                        End If
-
-                        If (Not IsNothing(pHWFace_AdjESeal_Rec.fldDThetaM1)) Then
-                            .DThetaM1 = pHWFace_AdjESeal_Rec.fldDThetaM1
-                        Else
-                            .DThetaM1 = 0.0#
-                        End If
-
-                    End With
-
-                End If
-
-            End If
-        Catch ex As Exception
-
-        End Try
-
-    End Sub
+    ''Private Sub SaveToDB()
+    ''    '================
+    ''    Dim pPartEntities As New SealPartDBEntities()
+
+    ''    '....HW_Face table
+    ''    Dim pHWFace_Rec_Count As Integer = (From HWFace In pPartEntities.tblHW_Face
+    ''                                        Where HWFace.fldPNID = mPNID And
+    ''                                        HWFace.fldRevID = mRevID Select HWFace).Count()
+    ''    If (pHWFace_Rec_Count > 0) Then
+    ''        '....Record already exists
+    ''        Dim pHWFace_Rec = (From HWFace In pPartEntities.tblHW_Face
+    ''                           Where HWFace.fldPNID = mPNID And
+    ''                                        HWFace.fldRevID = mRevID Select HWFace).First()
+    ''        pHWFace_Rec.fldType = mPartProject.PNR.SealType.ToString()
+    ''        pHWFace_Rec.fldMCS = mPartProject.PNR.HW.MCrossSecNo
+    ''        pHWFace_Rec.fldSegmented = mPartProject.PNR.HW.IsSegmented
+    ''        If (mPartProject.PNR.HW.IsSegmented) Then
+    ''            pHWFace_Rec.fldSegmentCount = mPartProject.PNR.HW.CountSegment
+    ''        Else
+    ''            pHWFace_Rec.fldSegmentCount = 0
+    ''        End If
+    ''        pHWFace_Rec.fldMatName = mPartProject.PNR.HW.MatName
+    ''        pHWFace_Rec.fldHT = mPartProject.PNR.HW.HT
+    ''        pHWFace_Rec.fldTemper = mPartProject.PNR.HW.Temper
+    ''        If (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.E) Then
+    ''            pHWFace_Rec.fldCoating = mPartProject.PNR.HW.Coating
+    ''            pHWFace_Rec.fldSFinish = mPartProject.PNR.HW.SFinish
+    ''        End If
+    ''        If (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.C Or mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.SC) Then
+    ''            If (mPartProject.PNR.HW.Plating.Exists) Then
+    ''                pHWFace_Rec.fldIsPlating = True
+    ''            Else
+    ''                pHWFace_Rec.fldIsPlating = False
+    ''            End If
+
+    ''            pHWFace_Rec.fldPlatingCode = mPartProject.PNR.HW.Plating.Code
+    ''            pHWFace_Rec.fldPlatingThickCode = mPartProject.PNR.HW.Plating.ThickCode
+    ''            pHWFace_Rec.fldPlatingThickMin = mPartProject.PNR.HW.Plating.ThickMin
+    ''            pHWFace_Rec.fldPlatingThickMax = mPartProject.PNR.HW.Plating.ThickMax
+
+    ''            SaveToDB_NonStd_CSeal()
+    ''        ElseIf (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.E) Then
+
+    ''            SaveToDB_NonStd_ESeal()
+    ''        End If
+
+    ''        If (txtHFree.Text <> "") Then
+    ''            pHWFace_Rec.fldHfreeStd = Convert.ToDouble(txtHFree.Text)
+    ''        Else
+    ''            pHWFace_Rec.fldHfreeStd = 0
+    ''        End If
+
+    ''        pHWFace_Rec.fldHFreeTol1 = mPartProject.PNR.HW.HFreeTol(1)
+    ''        pHWFace_Rec.fldHFreeTol2 = mPartProject.PNR.HW.HFreeTol(2)
+    ''        pHWFace_Rec.fldPOrient = mPartProject.PNR.HW.POrient
+
+    ''        If (txtDControl.Text <> "") Then
+    ''            pHWFace_Rec.fldDControl = Convert.ToDouble(txtDControl.Text)
+    ''        Else
+    ''            pHWFace_Rec.fldDControl = 0
+    ''        End If
+
+    ''        If (txtH11Tol.Text <> "") Then
+    ''            pHWFace_Rec.fldH11Tol = Convert.ToDouble(txtH11Tol.Text)
+    ''        Else
+    ''            pHWFace_Rec.fldH11Tol = 0
+    ''        End If
+
+    ''        'AES 31JUL17
+    ''        If (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.C Or mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.SC Or mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.E) Then
+    ''            pHWFace_Rec.fldAdjusted = mPartProject.PNR.HW.Adjusted
+    ''        Else
+    ''            pHWFace_Rec.fldAdjusted = False
+    ''        End If
+
+
+    ''        pPartEntities.SaveChanges()
+
+    ''    Else
+    ''        '....New Record
+    ''        Dim pHWFace As New tblHW_Face
+    ''        pHWFace.fldPNID = mPNID
+    ''        pHWFace.fldRevID = mRevID
+
+    ''        pHWFace.fldType = gPartProject.PNR.SealType.ToString()
+    ''        pHWFace.fldMCS = mPartProject.PNR.HW.MCrossSecNo
+    ''        pHWFace.fldSegmented = mPartProject.PNR.HW.IsSegmented
+    ''        If (mPartProject.PNR.HW.IsSegmented) Then
+    ''            pHWFace.fldSegmentCount = mPartProject.PNR.HW.CountSegment
+    ''        Else
+    ''            pHWFace.fldSegmentCount = 0
+    ''        End If
+    ''        pHWFace.fldMatName = mPartProject.PNR.HW.MatName
+    ''        pHWFace.fldHT = mPartProject.PNR.HW.HT
+    ''        pHWFace.fldTemper = mPartProject.PNR.HW.Temper
+    ''        If (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.E) Then
+    ''            pHWFace.fldCoating = mPartProject.PNR.HW.Coating
+    ''            pHWFace.fldSFinish = mPartProject.PNR.HW.SFinish
+    ''        End If
+    ''        If (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.C Or mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.SC) Then
+    ''            If (mPartProject.PNR.HW.Plating.Exists) Then
+    ''                pHWFace.fldIsPlating = True
+    ''            Else
+    ''                pHWFace.fldIsPlating = False
+    ''            End If
+
+    ''            pHWFace.fldPlatingCode = mPartProject.PNR.HW.Plating.Code
+    ''            pHWFace.fldPlatingThickCode = mPartProject.PNR.HW.Plating.ThickCode
+
+    ''            pHWFace.fldPlatingThickMin = mPartProject.PNR.HW.Plating.ThickMin
+    ''            pHWFace.fldPlatingThickMax = mPartProject.PNR.HW.Plating.ThickMax
+
+    ''        End If
+
+    ''        If (txtHFree.Text <> "") Then
+    ''            pHWFace.fldHfreeStd = Convert.ToDouble(txtHFree.Text)
+    ''        Else
+    ''            pHWFace.fldHfreeStd = 0
+    ''        End If
+
+    ''        pHWFace.fldHFreeTol1 = mPartProject.PNR.HW.HFreeTol(1)
+    ''        pHWFace.fldHFreeTol2 = mPartProject.PNR.HW.HFreeTol(2)
+    ''        pHWFace.fldPOrient = mPartProject.PNR.HW.POrient
+
+    ''        If (txtDControl.Text <> "") Then
+    ''            pHWFace.fldDControl = Convert.ToDouble(txtDControl.Text)
+    ''        Else
+    ''            pHWFace.fldDControl = 0
+    ''        End If
+
+    ''        If (txtH11Tol.Text <> "") Then
+    ''            pHWFace.fldH11Tol = Convert.ToDouble(txtH11Tol.Text)
+    ''        Else
+    ''            pHWFace.fldH11Tol = 0
+    ''        End If
+
+    ''        'pHWFace.fldAdjusted = False
+    ''        'AES 31JUL17
+    ''        If (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.C Or mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.SC) Then
+    ''            pHWFace.fldAdjusted = mPartProject.PNR.HW.Adjusted
+    ''            pPartEntities.AddTotblHW_Face(pHWFace)
+    ''            pPartEntities.SaveChanges()
+    ''            SaveToDB_NonStd_CSeal()
+
+    ''        ElseIf (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.E) Then       'AES 11OCT17
+    ''            pHWFace.fldAdjusted = mPartProject.PNR.HW.Adjusted
+    ''            pPartEntities.AddTotblHW_Face(pHWFace)
+    ''            pPartEntities.SaveChanges()
+    ''            SaveToDB_NonStd_ESeal()
+    ''        Else
+    ''            pHWFace.fldAdjusted = False
+    ''            pPartEntities.AddTotblHW_Face(pHWFace)
+    ''            pPartEntities.SaveChanges()
+    ''        End If
+
+    ''    End If
+
+    ''End Sub
+
+
+    ''Private Sub SaveToDB_NonStd_CSeal()
+    ''    '==============================
+    ''    Dim pPartEntities As New SealPartDBEntities()
+
+    ''    '....HW_AdjCSeal table
+    ''    Dim pHW_AdjCSeal_Rec_Count As Integer = (From HWFace_AdjCSeal In pPartEntities.tblHW_AdjCSeal
+    ''                                             Where HWFace_AdjCSeal.fldPNID = mPNID And
+    ''                                        HWFace_AdjCSeal.fldRevID = mRevID Select HWFace_AdjCSeal).Count()
+    ''    If (pHW_AdjCSeal_Rec_Count > 0) Then
+    ''        '....Record already exists
+    ''        Dim pHWFace_AdjCSeal_Rec = (From HWFace_AdjCSeal In pPartEntities.tblHW_AdjCSeal
+    ''                                    Where HWFace_AdjCSeal.fldPNID = mPNID And
+    ''                                        HWFace_AdjCSeal.fldRevID = mRevID Select HWFace_AdjCSeal).First()
+
+    ''        pHWFace_AdjCSeal_Rec.fldDHFree = mPartProject.PNR.HW.DHfree
+    ''        pHWFace_AdjCSeal_Rec.fldDThetaOpening = mPartProject.PNR.HW.DThetaOpening
+    ''        pHWFace_AdjCSeal_Rec.fldDT = mPartProject.PNR.HW.T
+
+    ''        pPartEntities.SaveChanges()
+
+    ''    Else
+    ''        '....New Record
+    ''        Dim pHWFace_AdjCSeal As New tblHW_AdjCSeal
+    ''        pHWFace_AdjCSeal.fldPNID = mPNID
+    ''        pHWFace_AdjCSeal.fldRevID = mRevID
+
+    ''        pHWFace_AdjCSeal.fldDHFree = mPartProject.PNR.HW.DHfree
+    ''        pHWFace_AdjCSeal.fldDThetaOpening = mPartProject.PNR.HW.DThetaOpening
+    ''        pHWFace_AdjCSeal.fldDT = mPartProject.PNR.HW.T
+
+    ''        pPartEntities.AddTotblHW_AdjCSeal(pHWFace_AdjCSeal)
+    ''        pPartEntities.SaveChanges()
+    ''    End If
+
+    ''End Sub
+
+    '''AES 11OCT17
+    ''Private Sub SaveToDB_NonStd_ESeal()
+    ''    '==============================
+    ''    Dim pPartEntities As New SealPartDBEntities()
+
+    ''    '....HW_AdjESeal table
+    ''    Dim pHW_AdjESeal_Rec_Count As Integer = (From HWFace_AdjESeal In pPartEntities.tblHW_AdjESeal
+    ''                                             Where HWFace_AdjESeal.fldPNID = mPNID And
+    ''                                        HWFace_AdjESeal.fldRevID = mRevID Select HWFace_AdjESeal).Count()
+    ''    If (pHW_AdjESeal_Rec_Count > 0) Then
+    ''        '....Record already exists
+    ''        Dim pHWFace_AdjESeal_Rec = (From HWFace_AdjESeal In pPartEntities.tblHW_AdjESeal
+    ''                                    Where HWFace_AdjESeal.fldPNID = mPNID And
+    ''                                        HWFace_AdjESeal.fldRevID = mRevID Select HWFace_AdjESeal).First()
+
+    ''        pHWFace_AdjESeal_Rec.fldDThetaE1 = mPartProject.PNR.HW.DThetaE1
+    ''        pHWFace_AdjESeal_Rec.fldDThetaM1 = mPartProject.PNR.HW.DThetaM1
+
+    ''        pPartEntities.SaveChanges()
+
+    ''    Else
+    ''        '....New Record
+    ''        Dim pHWFace_AdjESeal As New tblHW_AdjESeal
+    ''        pHWFace_AdjESeal.fldPNID = mPNID
+    ''        pHWFace_AdjESeal.fldRevID = mRevID
+
+    ''        pHWFace_AdjESeal.fldDThetaE1 = mPartProject.PNR.HW.DThetaE1
+    ''        pHWFace_AdjESeal.fldDThetaM1 = mPartProject.PNR.HW.DThetaM1
+
+    ''        pPartEntities.AddTotblHW_AdjESeal(pHWFace_AdjESeal)
+    ''        pPartEntities.SaveChanges()
+    ''    End If
+
+    ''End Sub
+
+
+    ''Private Sub RetrieveFromDB()
+    ''    '=======================
+    ''    Try
+
+    ''        Dim pPartEntities As New SealPartDBEntities()
+
+    ''        '....HW_Face table
+    ''        Dim pHWFace_Rec_Count As Integer = (From HWFace In pPartEntities.tblHW_Face
+    ''                                            Where HWFace.fldPNID = mPNID And
+    ''                                            HWFace.fldRevID = mRevID Select HWFace).Count()
+    ''        If (pHWFace_Rec_Count > 0) Then
+
+    ''            Dim pHWFace_Rec = (From HWFace In pPartEntities.tblHW_Face
+    ''                               Where HWFace.fldPNID = mPNID And
+    ''                                        HWFace.fldRevID = mRevID Select HWFace).First()
+
+    ''            Dim pType As String = pHWFace_Rec.fldType.ToString().Trim()
+    ''            mPartProject.PNR.SealType = CType([Enum].Parse(GetType(clsPartProject.clsPNR.eType), pType), clsPartProject.clsPNR.eType)
+    ''            mPartProject.PNR.HW.InitializePNR(mPartProject.PNR)
+
+    ''            If (gPartProject.PNR.Legacy.Exists And gPartProject.PNR.Legacy.Type = clsPartProject.clsPNR.eLegacyType.Catalogued) Then
+
+    ''                Dim pSealType As String = pHWFace_Rec.fldType.ToString().Trim()
+
+    ''                With mPartProject.PNR.HW
+    ''                    mPartProject.PNR.SealType = CType([Enum].Parse(GetType(clsPartProject.clsPNR.eType), pSealType), clsPartProject.clsPNR.eType) 'pSealType
+    ''                    .MCrossSecNo = pHWFace_Rec.fldMCS
+    ''                    '.Hfree = pHWFace_Rec.fldHfreeStd
+    ''                    .HFreeTol(1) = pHWFace_Rec.fldHFreeTol1
+    ''                    .HFreeTol(2) = pHWFace_Rec.fldHFreeTol2
+    ''                    .T = .TStd      'AES 02AUG17
+
+    ''                    If (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.C Or mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.SC) Then
+    ''                        '....HW_AdjCSeal table
+    ''                        Dim pHW_AdjCSeal_Rec_Count As Integer = (From HWFace_AdjCSeal In pPartEntities.tblHW_AdjCSeal
+    ''                                                                 Where HWFace_AdjCSeal.fldPNID = mPNID And
+    ''                                                        HWFace_AdjCSeal.fldRevID = mRevID Select HWFace_AdjCSeal).Count()
+    ''                        If (pHW_AdjCSeal_Rec_Count > 0) Then
+
+    ''                            Dim pHWFace_AdjCSeal_Rec = (From HWFace_AdjCSeal In pPartEntities.tblHW_AdjCSeal
+    ''                                                        Where HWFace_AdjCSeal.fldPNID = mPNID And
+    ''                                                        HWFace_AdjCSeal.fldRevID = mRevID Select HWFace_AdjCSeal).First()
+
+    ''                            With mPartProject.PNR.HW
+    ''                                If (Not IsNothing(pHWFace_AdjCSeal_Rec.fldDHFree)) Then
+    ''                                    .DHfree = pHWFace_AdjCSeal_Rec.fldDHFree
+    ''                                Else
+    ''                                    .DHfree = 0.0#
+    ''                                End If
+
+    ''                                If (Not IsNothing(pHWFace_AdjCSeal_Rec.fldDThetaOpening)) Then
+    ''                                    .DThetaOpening = pHWFace_AdjCSeal_Rec.fldDThetaOpening
+    ''                                Else
+    ''                                    .DThetaOpening = 0.0#
+    ''                                End If
+
+    ''                                If (Not IsNothing(pHWFace_AdjCSeal_Rec.fldDT)) Then
+    ''                                    .T = pHWFace_AdjCSeal_Rec.fldDT
+    ''                                Else
+    ''                                    .T = 0.0#
+    ''                                End If
+
+    ''                            End With
+
+    ''                        End If
+
+    ''                        If (Not IsDBNull(pHWFace_Rec.fldIsPlating) And Not IsNothing(pHWFace_Rec.fldIsPlating)) Then
+    ''                            .PlatingExists = pHWFace_Rec.fldIsPlating
+    ''                        End If
+
+    ''                        If (Not IsDBNull(pHWFace_Rec.fldPlatingThickCode) And Not IsNothing(pHWFace_Rec.fldPlatingThickCode)) Then
+    ''                            .PlatingThickCode = pHWFace_Rec.fldPlatingThickCode
+
+    ''                            If (.Plating.ThickCode = "X") Then
+    ''                                .PlatingThickMin = pHWFace_Rec.fldPlatingThickMin
+    ''                                .PlatingThickMax = pHWFace_Rec.fldPlatingThickMax
+
+    ''                            Else
+    ''                                Dim pMCSEntities As New SealIPEMCSDBEntities()
+
+    ''                                Dim pThickCode As String = .Plating.ThickCode
+    ''                                Dim pQry = (From pRec In pMCSEntities.tblPlatingThick Where pRec.fldPlatingThickCode = pThickCode
+    ''                                            Select pRec).ToList()
+
+    ''                                If (pQry.Count() > 0) Then
+
+    ''                                    If (mPartProject.PNR.HW.UnitSystem = "English") Then
+    ''                                        .PlatingThickMin = pQry(0).fldPlatingThickMinEng
+    ''                                        .PlatingThickMax = pQry(0).fldPlatingThickMaxEng
+    ''                                    Else
+    ''                                        .PlatingThickMin = pQry(0).fldPlatingThickMinMet
+    ''                                        .PlatingThickMax = pQry(0).fldPlatingThickMaxMet
+    ''                                    End If
+    ''                                End If
+
+    ''                            End If
+    ''                        Else
+    ''                            .PlatingThickCode = ""
+    ''                            .PlatingThickMin = 0
+    ''                            .PlatingThickMax = 0
+    ''                        End If
+    ''                        'Else
+    ''                        '    .PlatingThickCode = ""
+    ''                        '    .PlatingThickMin = 0
+    ''                        '    .PlatingThickMax = 0
+    ''                        'End If
+
+
+    ''                    ElseIf (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.E) Then        'AES 11OCT17
+
+    ''                        '....HW_AdjESeal table
+    ''                        Dim pHW_AdjESeal_Rec_Count As Integer = (From HWFace_AdjESeal In pPartEntities.tblHW_AdjESeal
+    ''                                                                 Where HWFace_AdjESeal.fldPNID = mPNID And
+    ''                                                        HWFace_AdjESeal.fldRevID = mRevID Select HWFace_AdjESeal).Count()
+    ''                        If (pHW_AdjESeal_Rec_Count > 0) Then
+
+    ''                            Dim pHWFace_AdjESeal_Rec = (From HWFace_AdjESeal In pPartEntities.tblHW_AdjESeal
+    ''                                                        Where HWFace_AdjESeal.fldPNID = mPNID And
+    ''                                                        HWFace_AdjESeal.fldRevID = mRevID Select HWFace_AdjESeal).First()
+
+    ''                            With mPartProject.PNR.HW
+    ''                                If (Not IsNothing(pHWFace_AdjESeal_Rec.fldDThetaE1)) Then
+    ''                                    .DThetaE1 = pHWFace_AdjESeal_Rec.fldDThetaE1
+    ''                                Else
+    ''                                    .DThetaE1 = 0.0#
+    ''                                End If
+
+    ''                                If (Not IsNothing(pHWFace_AdjESeal_Rec.fldDThetaM1)) Then
+    ''                                    .DThetaM1 = pHWFace_AdjESeal_Rec.fldDThetaM1
+    ''                                Else
+    ''                                    .DThetaM1 = 0.0#
+    ''                                End If
+
+
+    ''                            End With
+
+    ''                        End If
+
+    ''                    End If
+
+    ''                    Exit Sub
+    ''                End With
+
+    ''            Else
+    ''                If (gPartProject.PNR.Current.Exists) Then
+    ''                    Dim pPN As String = gPartProject.PNR.PN
+    ''                    Dim pSealType As String = ""
+    ''                    Dim pSealType_No As String = pPN.Substring(3, 2)
+
+    ''                    Select Case pSealType_No
+
+    ''                        Case "69"
+    ''                            pSealType = "E"
+
+    ''                        Case "76"
+    ''                            pSealType = "C"
+
+    ''                        Case "79"
+    ''                            pSealType = "U"
+
+    ''                        Case "44"
+    ''                            pSealType = "SC"
+
+    ''                    End Select
+
+    ''                    If (pSealType <> pHWFace_Rec.fldType) Then
+    ''                        Exit Sub
+    ''                    End If
+
+    ''                End If
+
+    ''            End If
+
+    ''            With mPartProject.PNR.HW
+    ''                'Dim pSealType As String = pHWFace_Rec.fldType
+    ''                'mPartProject.PNR.SealType = CType([Enum].Parse(GetType(clsProject.clsPNR.eType), pSealType), clsProject.clsPNR.eType)
+    ''                .POrient = pHWFace_Rec.fldPOrient
+    ''                .MCrossSecNo = pHWFace_Rec.fldMCS
+    ''                .IsSegmented = pHWFace_Rec.fldSegmented
+    ''                If (.IsSegmented) Then
+    ''                    .CountSegment = pHWFace_Rec.fldSegmentCount
+    ''                End If
+
+    ''                .MatName = pHWFace_Rec.fldMatName
+    ''                .HT = pHWFace_Rec.fldHT
+    ''                .Temper = pHWFace_Rec.fldTemper
+    ''                .T = .TStd      'AES 31JUL17
+
+    ''                If (Not IsDBNull(pHWFace_Rec.fldCoating) And Not IsNothing(pHWFace_Rec.fldCoating)) Then
+    ''                    .Coating = pHWFace_Rec.fldCoating
+    ''                Else
+    ''                    .Coating = "None"
+    ''                End If
+
+    ''                If (Not IsDBNull(pHWFace_Rec.fldSFinish) And Not IsNothing(pHWFace_Rec.fldSFinish)) Then
+    ''                    .SFinish = pHWFace_Rec.fldSFinish
+    ''                Else
+    ''                    .SFinish = 0
+    ''                End If
+
+    ''                If (Not IsDBNull(pHWFace_Rec.fldIsPlating) And Not IsNothing(pHWFace_Rec.fldIsPlating)) Then
+    ''                    .PlatingExists = pHWFace_Rec.fldIsPlating
+    ''                End If
+
+    ''                If (Not IsDBNull(pHWFace_Rec.fldPlatingCode) And Not IsNothing(pHWFace_Rec.fldPlatingCode)) Then
+    ''                    .PlatingCode = pHWFace_Rec.fldPlatingCode
+
+    ''                Else
+    ''                    .PlatingCode = ""
+    ''                End If
+
+    ''                If (Not IsDBNull(pHWFace_Rec.fldPlatingThickCode) And Not IsNothing(pHWFace_Rec.fldPlatingThickCode)) Then
+    ''                    .PlatingThickCode = pHWFace_Rec.fldPlatingThickCode
+
+    ''                    If (.Plating.ThickCode = "X") Then
+    ''                        .PlatingThickMin = pHWFace_Rec.fldPlatingThickMin
+    ''                        .PlatingThickMax = pHWFace_Rec.fldPlatingThickMax
+
+    ''                    Else
+    ''                        Dim pMCSEntities As New SealIPEMCSDBEntities()
+
+    ''                        Dim pThickCode As String = .Plating.ThickCode
+    ''                        Dim pQry = (From pRec In pMCSEntities.tblPlatingThick Where pRec.fldPlatingThickCode = pThickCode
+    ''                                    Select pRec).ToList()
+
+    ''                        If (pQry.Count() > 0) Then
+
+    ''                            If (mPartProject.PNR.HW.UnitSystem = "English") Then
+    ''                                .PlatingThickMin = pQry(0).fldPlatingThickMinEng
+    ''                                .PlatingThickMax = pQry(0).fldPlatingThickMaxEng
+    ''                            Else
+    ''                                .PlatingThickMin = pQry(0).fldPlatingThickMinMet
+    ''                                .PlatingThickMax = pQry(0).fldPlatingThickMaxMet
+    ''                            End If
+    ''                        Else
+    ''                            .PlatingThickCode = ""
+    ''                            .PlatingThickMin = 0
+    ''                            .PlatingThickMax = 0
+    ''                        End If
+
+    ''                    End If
+    ''                Else
+    ''                    .PlatingThickCode = ""
+    ''                    .PlatingThickMin = 0
+    ''                    .PlatingThickMax = 0
+    ''                End If
+
+    ''                '.Hfree = pHWFace_Rec.fldHfreeStd
+    ''                .HFreeTol(1) = pHWFace_Rec.fldHFreeTol1
+    ''                .HFreeTol(2) = pHWFace_Rec.fldHFreeTol2
+    ''                .DControl = pHWFace_Rec.fldDControl
+    ''                '.H11Tol = pHWFace_Rec.fldH11Tol
+
+    ''            End With
+
+    ''        End If
+
+    ''        If (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.C Or mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.SC) Then
+    ''            '....HW_AdjCSeal table
+    ''            Dim pHW_AdjCSeal_Rec_Count As Integer = (From HWFace_AdjCSeal In pPartEntities.tblHW_AdjCSeal
+    ''                                                     Where HWFace_AdjCSeal.fldPNID = mPNID And
+    ''                                            HWFace_AdjCSeal.fldRevID = mRevID Select HWFace_AdjCSeal).Count()
+    ''            If (pHW_AdjCSeal_Rec_Count > 0) Then
+
+    ''                Dim pHWFace_AdjCSeal_Rec = (From HWFace_AdjCSeal In pPartEntities.tblHW_AdjCSeal
+    ''                                            Where HWFace_AdjCSeal.fldPNID = mPNID And
+    ''                                                HWFace_AdjCSeal.fldRevID = mRevID Select HWFace_AdjCSeal).First()
+
+    ''                With mPartProject.PNR.HW
+    ''                    If (Not IsNothing(pHWFace_AdjCSeal_Rec.fldDHFree)) Then
+    ''                        .DHfree = pHWFace_AdjCSeal_Rec.fldDHFree
+    ''                    Else
+    ''                        .DHfree = 0.0#
+    ''                    End If
+
+    ''                    If (Not IsNothing(pHWFace_AdjCSeal_Rec.fldDThetaOpening)) Then
+    ''                        .DThetaOpening = pHWFace_AdjCSeal_Rec.fldDThetaOpening
+    ''                    Else
+    ''                        .DThetaOpening = 0.0#
+    ''                    End If
+
+    ''                    If (Not IsNothing(pHWFace_AdjCSeal_Rec.fldDT)) Then
+    ''                        .T = pHWFace_AdjCSeal_Rec.fldDT
+    ''                    Else
+    ''                        .T = 0.0#
+    ''                    End If
+
+    ''                End With
+
+    ''            End If
+    ''        ElseIf (mPartProject.PNR.SealType = clsPartProject.clsPNR.eType.E) Then        'AES 11OCT17
+
+    ''            '....HW_AdjESeal table
+    ''            Dim pHW_AdjESeal_Rec_Count As Integer = (From HWFace_AdjESeal In pPartEntities.tblHW_AdjESeal
+    ''                                                     Where HWFace_AdjESeal.fldPNID = mPNID And
+    ''                                             HWFace_AdjESeal.fldRevID = mRevID Select HWFace_AdjESeal).Count()
+    ''            If (pHW_AdjESeal_Rec_Count > 0) Then
+
+    ''                Dim pHWFace_AdjESeal_Rec = (From HWFace_AdjESeal In pPartEntities.tblHW_AdjESeal
+    ''                                            Where HWFace_AdjESeal.fldPNID = mPNID And
+    ''                                                HWFace_AdjESeal.fldRevID = mRevID Select HWFace_AdjESeal).First()
+
+    ''                With mPartProject.PNR.HW
+    ''                    If (Not IsNothing(pHWFace_AdjESeal_Rec.fldDThetaE1)) Then
+    ''                        .DThetaE1 = pHWFace_AdjESeal_Rec.fldDThetaE1
+    ''                    Else
+    ''                        .DThetaE1 = 0.0#
+    ''                    End If
+
+    ''                    If (Not IsNothing(pHWFace_AdjESeal_Rec.fldDThetaM1)) Then
+    ''                        .DThetaM1 = pHWFace_AdjESeal_Rec.fldDThetaM1
+    ''                    Else
+    ''                        .DThetaM1 = 0.0#
+    ''                    End If
+
+    ''                End With
+
+    ''            End If
+
+    ''        End If
+    ''    Catch ex As Exception
+
+    ''    End Try
+
+    ''End Sub
 
     Private Sub cmdCancel_Click(sender As System.Object, e As System.EventArgs) _
                                 Handles cmdCancel.Click

@@ -892,8 +892,8 @@ Public Class clsUser
             ''End While
 
             Dim pFileTitle As String = Path.GetFileName(FileName_In)
-            Dim pMsg As String = "User Data Updated from: " & vbLf & Space(10) & pFileTitle
-            MessageBox.Show(pMsg, "User Data File!", MessageBoxButtons.OK)
+            Dim pMsg As String = "Updated from: " & Space(4) & pFileTitle
+            MessageBox.Show(pMsg, "User Data File Loading", MessageBoxButtons.OK)
 
         Catch ex As Exception
             MessageBox.Show(ex.ToString())

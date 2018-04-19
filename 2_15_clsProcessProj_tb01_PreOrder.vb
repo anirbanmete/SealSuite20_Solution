@@ -308,17 +308,15 @@ Public Class clsProcessProj_PreOrder
             If (pQryPreOrderCount > 0) Then
 
                 Dim pQryPreOrder = (From pRec In pSealProcessDBEntities.tblPreOrder
-                                   Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
+                                    Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
 
                 mMgr.Mkt = pQryPreOrder.fldMgrMkt
                 mMgr.Sales = pQryPreOrder.fldMgrSales
 
                 mExport.Reqd = pQryPreOrder.fldExportReqd
-
                 mExport.Status = pQryPreOrder.fldExportStatus
 
                 mPart.Family = pQryPreOrder.fldPartFamily
-
                 mPart.Type = pQryPreOrder.fldPartType
 
 
@@ -337,6 +335,25 @@ Public Class clsProcessProj_PreOrder
                 ''If (Not IsNothing(pQryPreOrder.fldDateSigned) And Not IsDBNull(pQryPreOrder.fldDateSigned)) Then
                 ''    mEditedBy.User_DateSigned = pQryPreOrder.fldDateSigned
                 ''End If
+            Else
+
+                mMgr.Mkt = ""
+                mMgr.Sales = ""
+
+                mExport.Reqd = False
+                mExport.Status = ""
+
+                mPart.Family = ""
+                mPart.Type = ""
+
+                mMkt.Seg = ""
+                mMkt.Channel = ""
+
+                mLoc.CostFile = ""
+                mLoc.RFQPkg = ""
+
+                mNotes = ""
+                mNotes_Price = ""
 
             End If
 
@@ -484,7 +501,7 @@ Public Class clsProcessProj_PreOrder
                 If (pQryQuoteCount > 0) Then
 
                     Dim pQryQuote = (From pRec In pSealProcessDBEntities.tblPreOrder_Quote
-                                       Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
+                                     Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
 
                     For i As Integer = 0 To pQryQuote.Count - 1
                         mQID.Add(pQryQuote(i).fldID)
@@ -492,6 +509,11 @@ Public Class clsProcessProj_PreOrder
                         mNo.Add(pQryQuote(i).fldNo)
 
                     Next
+
+                Else
+                    mQID.Clear()
+                    mQDate.Clear()
+                    mNo.Clear()
 
                 End If
 
@@ -635,7 +657,7 @@ Public Class clsProcessProj_PreOrder
                 If (pQrySalesCount > 0) Then
 
                     Dim pQrySalesData = (From pRec In pSealProcessDBEntities.tblPreOrder_SalesData
-                                       Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
+                                         Where pRec.fldProcessProjectID = ProjectID_In Select pRec).ToList()
 
                     For i As Integer = 0 To pQrySalesData.Count - 1
                         mID_Sales.Add(pQrySalesData(i).fldID)
@@ -645,6 +667,12 @@ Public Class clsProcessProj_PreOrder
                         mTotal.Add(pQrySalesData(i).fldTotal)
                     Next
 
+                Else
+                    mID_Sales.Clear()
+                    mYear.Clear()
+                    mQty.Clear()
+                    mPrice.Clear()
+                    mTotal.Clear()
                 End If
 
             Catch ex As Exception

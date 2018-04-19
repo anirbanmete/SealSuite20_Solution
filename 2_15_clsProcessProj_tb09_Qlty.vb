@@ -207,7 +207,7 @@ Public Class clsProcessProj_Qlty
             If (pQryQltyCount > 0) Then
 
                 Dim pQryQlty = (From pRec In pSealProcessDBEntities.tblQlty
-                                   Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
+                                Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
 
                 mIsApvdSupplierOnly = pQryQlty.fldIsApvdSupplierOnly
                 mSeparate_Tool_Gage_Reqd = pQryQlty.fldSeparate_Tool_Gage_Reqd
@@ -224,6 +224,16 @@ Public Class clsProcessProj_Qlty
                 'If (Not IsNothing(pQryQlty.fldDateSigned) And Not IsDBNull(pQryQlty.fldDateSigned)) Then
                 '    mEditedBy.User_DateSigned = pQryQlty.fldDateSigned
                 'End If
+            Else
+                mIsApvdSupplierOnly = False
+                mSeparate_Tool_Gage_Reqd = False
+                mHasCustComplaint = False
+                mReason = ""
+                mVisualInspection = False
+                mVisualInspection_Type = ""
+                mCustAcceptStd = ""
+                mSPC_Reqd = False
+                mGageRnR_Reqd = False
 
             End If
 
