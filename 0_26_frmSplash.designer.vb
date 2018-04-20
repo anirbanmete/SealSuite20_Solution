@@ -239,9 +239,9 @@ Partial Class frmSplash
         Me.lblVarNo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.lblVarNo.Location = New System.Drawing.Point(306, 282)
         Me.lblVarNo.Name = "lblVarNo"
-        Me.lblVarNo.Size = New System.Drawing.Size(280, 32)
+        Me.lblVarNo.Size = New System.Drawing.Size(282, 32)
         Me.lblVarNo.TabIndex = 6
-        Me.lblVarNo.Text = "SealSuiteTrial 2.6"
+        Me.lblVarNo.Text = "SealSuiteBeta 2.6"
         Me.lblVarNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'cmdExit
@@ -284,7 +284,7 @@ Partial Class frmSplash
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(104, 14)
         Me.Label1.TabIndex = 1
-        Me.Label1.Text = "April 10, 2018"
+        Me.Label1.Text = "April 30, 2018"
         '
         'imgLogo
         '

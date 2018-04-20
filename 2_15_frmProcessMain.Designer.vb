@@ -938,20 +938,20 @@ Partial Class Process_frmMain
         Me.cmdApproval_Sign = New System.Windows.Forms.Button()
         Me.GroupBox63 = New System.Windows.Forms.GroupBox()
         Me.grdApproval_Attendees = New System.Windows.Forms.DataGridView()
-        Me.menuStrip1 = New System.Windows.Forms.MenuStrip()
-        Me.mnuTabView = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuProgramData = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuRiskQ = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuBlank = New System.Windows.Forms.ToolStripMenuItem()
-        Me.openFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.HelpProvider1 = New System.Windows.Forms.HelpProvider()
-        Me.mnuAnalytics = New System.Windows.Forms.ToolStripMenuItem()
         Me.DataGridViewComboBoxColumn16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn62 = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column20 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.Column21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.menuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.mnuTabView = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuProgramData = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuRiskQ = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuBlank = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuAnalytics = New System.Windows.Forms.ToolStripMenuItem()
+        Me.openFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.HelpProvider1 = New System.Windows.Forms.HelpProvider()
         Me.pnlPanel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.SBar1.SuspendLayout()
@@ -10193,55 +10193,6 @@ Partial Class Process_frmMain
         Me.grdApproval_Attendees.Size = New System.Drawing.Size(720, 427)
         Me.grdApproval_Attendees.TabIndex = 741
         '
-        'menuStrip1
-        '
-        Me.menuStrip1.BackColor = System.Drawing.Color.White
-        Me.menuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuTabView, Me.mnuProgramData, Me.mnuBlank, Me.mnuAnalytics})
-        Me.menuStrip1.Location = New System.Drawing.Point(0, 0)
-        Me.menuStrip1.Name = "menuStrip1"
-        Me.menuStrip1.Size = New System.Drawing.Size(1106, 24)
-        Me.menuStrip1.TabIndex = 683
-        Me.menuStrip1.Text = "MenuStrip1"
-        '
-        'mnuTabView
-        '
-        Me.mnuTabView.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.mnuTabView.Name = "mnuTabView"
-        Me.mnuTabView.Size = New System.Drawing.Size(76, 20)
-        Me.mnuTabView.Text = "Tab View"
-        '
-        'mnuProgramData
-        '
-        Me.mnuProgramData.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuRiskQ})
-        Me.mnuProgramData.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.mnuProgramData.Name = "mnuProgramData"
-        Me.mnuProgramData.Size = New System.Drawing.Size(106, 20)
-        Me.mnuProgramData.Text = "Program Data"
-        '
-        'mnuRiskQ
-        '
-        Me.mnuRiskQ.Name = "mnuRiskQ"
-        Me.mnuRiskQ.Size = New System.Drawing.Size(202, 22)
-        Me.mnuRiskQ.Text = "Load Risk Questions"
-        '
-        'mnuBlank
-        '
-        Me.mnuBlank.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.mnuBlank.Name = "mnuBlank"
-        Me.mnuBlank.Size = New System.Drawing.Size(91, 20)
-        Me.mnuBlank.Text = "                  "
-        '
-        'openFileDialog1
-        '
-        Me.openFileDialog1.FileName = "OpenFileDialog1"
-        '
-        'mnuAnalytics
-        '
-        Me.mnuAnalytics.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.mnuAnalytics.Name = "mnuAnalytics"
-        Me.mnuAnalytics.Size = New System.Drawing.Size(79, 20)
-        Me.mnuAnalytics.Text = "Analytics"
-        '
         'DataGridViewComboBoxColumn16
         '
         DataGridViewCellStyle109.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
@@ -10283,6 +10234,55 @@ Partial Class Process_frmMain
         Me.Column21.HeaderText = "Date"
         Me.Column21.Name = "Column21"
         Me.Column21.ReadOnly = True
+        '
+        'menuStrip1
+        '
+        Me.menuStrip1.BackColor = System.Drawing.Color.White
+        Me.menuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuTabView, Me.mnuProgramData, Me.mnuBlank, Me.mnuAnalytics})
+        Me.menuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.menuStrip1.Name = "menuStrip1"
+        Me.menuStrip1.Size = New System.Drawing.Size(1106, 24)
+        Me.menuStrip1.TabIndex = 683
+        Me.menuStrip1.Text = "MenuStrip1"
+        '
+        'mnuTabView
+        '
+        Me.mnuTabView.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.mnuTabView.Name = "mnuTabView"
+        Me.mnuTabView.Size = New System.Drawing.Size(76, 20)
+        Me.mnuTabView.Text = "Tab View"
+        '
+        'mnuProgramData
+        '
+        Me.mnuProgramData.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuRiskQ})
+        Me.mnuProgramData.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.mnuProgramData.Name = "mnuProgramData"
+        Me.mnuProgramData.Size = New System.Drawing.Size(106, 20)
+        Me.mnuProgramData.Text = "Program Data"
+        '
+        'mnuRiskQ
+        '
+        Me.mnuRiskQ.Name = "mnuRiskQ"
+        Me.mnuRiskQ.Size = New System.Drawing.Size(202, 22)
+        Me.mnuRiskQ.Text = "Load Risk Questions"
+        '
+        'mnuBlank
+        '
+        Me.mnuBlank.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.mnuBlank.Name = "mnuBlank"
+        Me.mnuBlank.Size = New System.Drawing.Size(91, 20)
+        Me.mnuBlank.Text = "                  "
+        '
+        'mnuAnalytics
+        '
+        Me.mnuAnalytics.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.mnuAnalytics.Name = "mnuAnalytics"
+        Me.mnuAnalytics.Size = New System.Drawing.Size(79, 20)
+        Me.mnuAnalytics.Text = "Analytics"
+        '
+        'openFileDialog1
+        '
+        Me.openFileDialog1.FileName = "OpenFileDialog1"
         '
         'Process_frmMain
         '

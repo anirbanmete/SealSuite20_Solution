@@ -327,7 +327,7 @@ Public Class clsProcessProj_OrdEntry
                 mSalesOrderNo = ""
 
                 mDateSales = DateTime.MinValue
-                mLeadTimeQuoted = 0
+                mLeadTimeQuoted = 0.0
 
                 mPONo = ""
                 mDatePO = DateTime.MinValue

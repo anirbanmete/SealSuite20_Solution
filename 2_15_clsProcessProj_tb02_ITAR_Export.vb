@@ -229,7 +229,7 @@ Public Class clsProcessProj_ITAR_Export
                 mHasAntiBoycottLang = False
                 mIsUnder_ITAR_Reg = False
                 mITAR_Class = ""
-                mSaleExportControlled = ""
+                mSaleExportControlled = False
                 mEAR_Class = ""
                 mStatus = ""
                 mHTS_Class = ""

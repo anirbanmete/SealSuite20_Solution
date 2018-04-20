@@ -397,7 +397,7 @@ Public Class clsProcessProj_App
             Else
                 mEqp = ""
                 mExistingSeal = ""
-                mType = ""
+                mType = "Face"
                 mFluid = ""
                 mMaxLeak = 0.0
                 mIsPressCyclic = False
@@ -811,7 +811,6 @@ Public Class clsProcessProj_App
 
                     Dim pAppLoad = (From pRec In pSealProcessDBEntities.tblApp_Load
                                     Where pRec.fldProcessProjectID = ProjectID_In Select pRec).First()
-
 
                     mAssy.Min = pAppLoad.fldAssyMin
                     mAssy.Max = pAppLoad.fldAssyMax

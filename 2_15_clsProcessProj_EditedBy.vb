@@ -429,6 +429,10 @@ Public Class clsProcessProj_EditedBy
             Dim ptblEdited As New tblEditedBy
             pEdited.Add(ptblEdited)
             With pEdited(j)
+                'AES 20APR18
+                If (IsNothing(mName(j))) Then
+                    Continue For
+                End If
                 .fldProcessProjectID = ProjectID_In
                 .fldTabName = TabName_In
                 .fldID = j + 1

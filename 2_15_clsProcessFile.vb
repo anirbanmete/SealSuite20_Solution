@@ -53,6 +53,9 @@ Public Class clsProcessFile
     '....PDS Report  
     Private Const mcPDSReportFileName As String = mcDirTemplates & "EN7300007 - Product Definition Sheet_Rev W_Rev03.xltx"
 
+    '....Analytics
+    Private Const mcAnalyticsFileName As String = mcDirTemplates & "SealProcess_Dashboard_20APR18.xlsm"
+
     Private mPDS_FieldName As New List(Of String)
     Private mPDS_CellColName As New List(Of String)
     Private mPDS_Val As New List(Of String)
@@ -97,7 +100,15 @@ Public Class clsProcessFile
 
 #Region "PROPERTY ROUTINES:"
 
-    
+    Public ReadOnly Property AnalysisFileName() As String
+        '================================================
+        Get
+            Return mcAnalyticsFileName
+        End Get
+
+
+    End Property
+
 #End Region
 
 #Region "PD - PDS:"
