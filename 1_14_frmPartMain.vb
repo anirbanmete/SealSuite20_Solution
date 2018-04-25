@@ -4,7 +4,7 @@
 '                      FORM MODULE   :  frmMain                                '
 '                        VERSION NO  :  1.4                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  19APR18                                '
+'                     LAST MODIFIED  :  25APR18                                '
 '                                                                              '
 '===============================================================================
 '
@@ -1031,7 +1031,7 @@ Public Class frmPartMain
         Select Case pcmdButton.Name
 
             Case "cmdSealProcess"
-                SetDefaultData()
+                'SetDefaultData()
                 SaveData()
                 gUser.RetrieveUserTitle()
 
@@ -2791,6 +2791,7 @@ Public Class frmPartMain
         ElseIf (mblnEdit) Then
             UpdateRecords(mCustomerID, mPlatformID, mLocationID,
                       mPNID, mRevID)
+
         End If
 
         tsbAdd.Enabled = True
@@ -2805,14 +2806,16 @@ Public Class frmPartMain
         '===============================================================================================
         Dim pintAnswer As Integer
         pintAnswer = MessageBox.Show("Are you sure you want to permanently delete this record?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
-
         If pintAnswer = Windows.Forms.DialogResult.Yes Then
+            SaveData()
             DeleteRecords(mCustomerID, mPlatformID, mLocationID,
                           mPNID, mRevID)
-            PopulateTreeView()
-            SetDefaultData()
-            trvProjects.ExpandAll()
-            SelectTreeNode()
+
+            mPNID = 0
+            mRevID = 0
+            DisplayData()
+            MessageBox.Show("Record deleted successfully.", "Delete Record", MessageBoxButtons.OK)
+
         End If
 
     End Sub
@@ -2875,7 +2878,7 @@ Public Class frmPartMain
 
     Private Sub cmdOK_Click(sender As System.Object, e As System.EventArgs) Handles cmdOK.Click
         '======================================================================================
-        SetDefaultData()
+        'SetDefaultData()
 
         If (mProjectView) Then
             With mPartProject
@@ -2915,7 +2918,29 @@ Public Class frmPartMain
 
         gFile.SaveIniFile(gUser, gIPE_Project, gIPE_ANSYS, gIPE_Unit)
         SaveData()
-        Environment.Exit(0)
+
+        'AES 25APR18
+        If (mblnAdd) Then
+            AddRecords(mCustomerID, mPlatformID, mLocationID, mPNID, mRevID)
+
+            tsbAdd.Enabled = True
+            tsbEdit.Enabled = True
+            tsbSave.Enabled = False
+            tsbDelete.Enabled = True
+
+        ElseIf (mblnEdit) Then
+            UpdateRecords(mCustomerID, mPlatformID, mLocationID,
+                      mPNID, mRevID)
+
+            tsbAdd.Enabled = True
+            tsbEdit.Enabled = True
+            tsbSave.Enabled = False
+            tsbDelete.Enabled = True
+
+        Else
+            Environment.Exit(0)
+        End If
+
         '....UPDATE MAIN FORM DISPLAY.
         ''gTest_frmMain.UpdateDisplay()
         ' ''modMain.gIPE_frmAnalysisSet.ShowDialog()
@@ -5521,13 +5546,16 @@ Public Class frmPartMain
                                                     Select Rev).ToList()
                 If (pRev_Rec.Count > 0) Then
                     pRevID = pRev_Rec(0).fldID
-
+                    mPartProject.PNR.Current_Exists = True
+                    mPartProject.PNR.Legacy_Exists = False
                 Else
                     Dim pRev_Rec1 = (From Rev In mPartEntities.tblRev
                                                    Where Rev.fldPNID = PNID_In And Rev.fldLegacy = pRevision
                                                    Select Rev).ToList()
                     If (pRev_Rec1.Count > 0) Then
                         pRevID = pRev_Rec1(0).fldID
+                        mPartProject.PNR.Legacy_Exists = True
+                        mPartProject.PNR.Current_Exists = False
                     End If
                 End If
 
@@ -5573,22 +5601,29 @@ Public Class frmPartMain
                     '....Retrive records of previous Rev HW.        'AES 18APR18
                     If (pID > 0) Then
                         mPartProject.PNR.RetrieveFromDB(PNID_In, pID)
-                        mPartProject.PNR.SaveToDB(PNID_In, pRevID)
+                        If (Not IsNothing(mPartProject.PNR.HW.MCrossSecNo)) Then
 
-                        'AES 19APR18
-                        Dim pPrev_Rev As String = ""
-                        Dim pQryRev = (From it In mPartEntities.tblRev
-                                       Where it.fldPNID = PNID_In And it.fldID = pID Select it).First()
+                            If (mPartProject.PNR.HW.MCrossSecNo <> "") Then
+                                mPartProject.PNR.SaveToDB(PNID_In, pRevID)
 
-                        If (Not IsDBNull(pQryRev.fldCurrent) And Not IsNothing(pQryRev.fldCurrent)) Then
-                            pPrev_Rev = pQryRev.fldCurrent
+                                'AES 19APR18
+                                Dim pPrev_Rev As String = ""
+                                Dim pQryRev = (From it In mPartEntities.tblRev
+                                               Where it.fldPNID = PNID_In And it.fldID = pID Select it).First()
+
+                                If (Not IsDBNull(pQryRev.fldCurrent) And Not IsNothing(pQryRev.fldCurrent)) Then
+                                    pPrev_Rev = pQryRev.fldCurrent
+                                End If
+
+                                MessageBox.Show("All the Hardware data of the Previous Rev " & pPrev_Rev & vbLf & "have been copied to this New Rev " +
+                                            txtPN_PH_Rev.Text & ".", "New Rev Creation", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                            End If
+
                         End If
 
-                        MessageBox.Show("All the Hardware data of the Previous Rev " & pPrev_Rev & vbLf & "have been copied to this New Rev " +
-                                        txtPN_PH_Rev.Text & ".", "New Rev Creation", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     End If
 
-                Else
+                    Else
                     'MessageBox.Show("Record already exists.", "Record Exists", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     'Exit Sub
                 End If
@@ -5596,6 +5631,13 @@ Public Class frmPartMain
                 mPNID = PNID_In
                 'mParkerPN_Rev = pRevision
                 mRevID = pRevID
+                If (mPartProject.PNR.Current.Exists) Then
+                    mPartProject.PNR.Current_Rev = txtPN_PH_Rev.Text
+
+                ElseIf (mPartProject.PNR.Legacy.Exists) Then
+                    mPartProject.PNR.Legacy_Rev = txtPN_PH_Rev.Text
+                End If
+
 
                 Dim pPNR_CustInfoID As Integer = 0
                 '....Customer Exists
@@ -5652,9 +5694,11 @@ Public Class frmPartMain
             mblnAdd = False
             InitializeControl(False)
             ''UpdateIndexField()  
-            PopulateTreeView()
-            trvProjects.ExpandAll()
-            SelectTreeNode()
+            'PopulateTreeView()
+            'trvProjects.ExpandAll()
+            'SelectTreeNode()
+
+            DisplayData()   'AES 25APR18
 
         End If
 
@@ -6201,9 +6245,10 @@ Public Class frmPartMain
 
                 mblnEdit = False    'AES 13OCT17
                 InitializeControl(False)
-                PopulateTreeView()
-                trvProjects.ExpandAll()
-                SelectTreeNode()
+                'PopulateTreeView()
+                'trvProjects.ExpandAll()
+                'SelectTreeNode()
+                DisplayData()       'AES 25APR18
 
             End If
 
@@ -6377,8 +6422,6 @@ Public Class frmPartMain
                             pSealProcessEntities.DeleteObject(pProcessProject)
                             pSealProcessEntities.SaveChanges()
                         End If
-
-
 
                         '....SealTestProject
                         Dim pSealTestEntities As New SealTestDBEntities()
@@ -8057,8 +8100,9 @@ Public Class frmPartMain
                             If pRecCountPNRev > 0 Then
 
                                 Dim pQuery3 = (From it In mPartEntities.tblRev
-                                                        Where it.fldPNID = mPNID
-                                                     Order By it.fldID Descending Select it).ToList()
+                                               Where it.fldPNID = mPNID
+                                               Order By it.fldID Descending Select it).ToList()
+
 
                                 For m As Integer = 0 To pRecCountPNRev - 1
                                     mRevID = pQuery3(m).fldID

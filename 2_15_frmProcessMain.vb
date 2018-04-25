@@ -93,12 +93,12 @@ Public Class Process_frmMain
         '....Type.
         With cmbType.Items
             .Clear()
-            '.Add("Quoted")
+            .Add("Quoted")
             .Add("NPL")
-            '.Add("ECO")
-            '.Add("Production")
-            '.Add("Inactive")
-            '.Add("Replaced")
+            .Add("ECO")
+            .Add("Production")
+            .Add("Inactive")
+            .Add("Replaced")
         End With
 
         '....PreOrder
@@ -159,16 +159,29 @@ Public Class Process_frmMain
 
         With cmbCostFileLoc.Items
             .Clear()
-            .Add("Product Drive -Part")
-            .Add("Product Drive -Customer")
+            .Add("Product Drive - Part")
+            .Add("Product Drive - Customer")
             .Add("Enovia")
         End With
 
         With cmbRFQPkgLoc.Items
             .Clear()
-            .Add("Product Drive -Part")
-            .Add("Product Drive -Customer")
+            .Add("Product Drive - Part")
+            .Add("Product Drive - Customer")
             .Add("Enovia")
+        End With
+
+        With cmbCost_QuoteFile.Items
+            .Clear()
+            .Add("Product Drive - Part")
+            .Add("Product Drive - Customer")
+            .Add("Enovia")
+        End With
+
+        With cmbApp_InsertLoc.Items
+            .Clear()
+            .Add("Face")
+            .Add("Axial")
         End With
 
     End Sub
@@ -247,6 +260,7 @@ Public Class Process_frmMain
 
 
         '....Move the vertical scrollbar at the Top
+
         txtParkerPart.Focus()
         txtParkerPart.Select()
         'gIsProcessMainActive = True
@@ -348,6 +362,41 @@ Public Class Process_frmMain
         txtCustomer.ReadOnly = True
         txtCustomerPN.ReadOnly = True
         txtCustomerPN_Rev.ReadOnly = True
+
+        'AES 24APR18
+        If (cmbExport_Reqd.Text = "N") Then
+            cmbExport_Status.SelectedIndex = -1
+            cmbExport_Status.Enabled = False
+        Else
+            If (mPreOrder) Then
+                cmbExport_Status.Enabled = True
+            End If
+
+        End If
+
+        '....Export
+        If (cmbITAR_Export_ProductITAR_Reg.Text = "N") Then
+            txtITAR_Export_ITAR_Classification.Enabled = False
+            cmbITAR_Export_Status.SelectedIndex = -1
+            cmbITAR_Export_Status.Enabled = False
+            txtExportControlled.Text = "N"
+        Else
+            If (mExport) Then
+                txtITAR_Export_ITAR_Classification.Enabled = True
+                cmbITAR_Export_Status.Enabled = True
+                txtExportControlled.Text = "Y"
+            End If
+
+        End If
+
+        If (cmbITAR_Export_SaleExportControlled.Text = "N") Then
+            txtITAR_Export_EAR_Classification.Enabled = False
+        Else
+            If (mExport) Then
+                txtITAR_Export_EAR_Classification.Enabled = True
+            End If
+
+        End If
 
         If (mDesign) Then
             chkNewRef_Dim.Enabled = False
@@ -452,19 +501,98 @@ Public Class Process_frmMain
                 grpPlating.Enabled = True
                 cmbPlatingCode.Enabled = True
                 cmbPlatingThickCode.Enabled = True
+
             End If
 
             'chkPlating.Checked = False
             chkPlating.Enabled = False      'AES 17APR18
 
+            'AES 25APR18
+            If (mManf And pSealType = "SC") Then
+                txtManf_MatPartNo_Spring.Enabled = True
+            Else
+                txtManf_MatPartNo_Spring.Enabled = False
+            End If
+
         Else
+            txtManf_MatPartNo_Spring.Enabled = False
             If (mDesign) Then
                 grpPlating.Enabled = False
             End If
 
         End If
 
+        'AES 24APR18
 
+        '....Application
+        grpSegment.Enabled = False
+
+        If (cmbApp_PressCycle.Text = "N") Then
+            txtApp_PressCycleFreq.Text = ""
+            txtApp_PressCycleAmp.Text = ""
+            txtApp_PressCycleFreq.Enabled = False
+            txtApp_PressCycleAmp.Enabled = False
+        Else
+            If (mApp) Then
+                txtApp_PressCycleFreq.Enabled = True
+                txtApp_PressCycleAmp.Enabled = True
+            Else
+                txtApp_PressCycleFreq.Enabled = False
+                txtApp_PressCycleAmp.Enabled = False
+            End If
+
+        End If
+
+        If (cmbDesign_Winnovation.Text = "N") Then
+            txtDesign_WinnovationNo.Enabled = False
+        Else
+            If (mDesign) Then
+                txtDesign_WinnovationNo.Enabled = True
+            Else
+                txtDesign_WinnovationNo.Enabled = False
+            End If
+
+        End If
+
+        If (cmbQuality_CustComplaint.Text = "N") Then
+            txtQuality_Reason.Text = ""
+            txtQuality_Reason.Enabled = False
+        Else
+            If (mQlty) Then
+                txtQuality_Reason.Enabled = True
+            Else
+                txtQuality_Reason.Enabled = False
+            End If
+
+        End If
+
+        If (cmbQuality_VisualInspection.Text = "N") Then
+            cmbQuality_VisualInspection_Type.Text = ""
+            cmbQuality_VisualInspection_Type.Enabled = False
+        Else
+            cmbQuality_VisualInspection_Type.Text = ""
+            If (mQlty) Then
+                cmbQuality_VisualInspection_Type.Enabled = True
+            Else
+                cmbQuality_VisualInspection_Type.Enabled = False
+            End If
+
+        End If
+
+        If (mTest) Then
+            If (chkTest.Checked) Then
+                EnableTab(tabLeak, True)
+                EnableTab(tabLoad, True)
+                EnableTab(tabSpringBack, True)
+                txtTest_Other.Enabled = True
+            Else
+                EnableTab(tabLeak, False)
+                EnableTab(tabLoad, False)
+                EnableTab(tabSpringBack, False)
+                txtTest_Other.Enabled = False
+            End If
+
+        End If
 
     End Sub
 
@@ -589,6 +717,7 @@ Public Class Process_frmMain
 
         InitializeTabs()        'AES 01MAR18
 
+        'cmdSealPart.Enabled = True
         cmdDel_Rec.Enabled = False
         txtParkerPart.ReadOnly = True
         txtPN_Rev.ReadOnly = True
@@ -642,7 +771,7 @@ Public Class Process_frmMain
 
         cmbPopCoding.SelectedIndex = 0
         cmbRating.SelectedIndex = 0
-        cmbType.SelectedIndex = 0
+        cmbType.SelectedIndex = 1   '0 23APR18
         cmbExport_Status.SelectedIndex = 0
         cmbPartFamily.SelectedIndex = 0
         cmbPartType.SelectedIndex = 0
@@ -650,6 +779,13 @@ Public Class Process_frmMain
 
         '....Pre-Order
         PopulateMarketingMgr()
+
+        'If (cmbExport_Reqd.Text = "N") Then
+        '    cmbExport_Status.SelectedIndex = -1
+        '    cmbExport_Status.Enabled = False
+        'Else
+        '    cmbExport_Status.Enabled = True
+        'End If
 
         Dim pCmbColDept_PreOrd As New DataGridViewComboBoxColumn
         pCmbColDept_PreOrd = grdCustContact.Columns.Item(0)
@@ -731,6 +867,9 @@ Public Class Process_frmMain
 
         End If
 
+        ''....Application
+        'grpSegment.Enabled = False
+
         If (mDesign) Then
             chkNewRef_Dim.Enabled = False
             txtParkerPN_Part1_NewRef_Dim.Enabled = False
@@ -748,6 +887,13 @@ Public Class Process_frmMain
             chkLegacyRef_Notes.Enabled = False
             txtLegacyRef_Notes.Enabled = False
             txtLegacyRef_Notes_Rev.Enabled = False
+
+            ''AES 24APR18
+            'If (cmbDesign_Winnovation.Text = "N") Then
+            '    txtDesign_WinnovationNo.Enabled = False
+            'Else
+            '    txtDesign_WinnovationNo.Enabled = True
+            'End If
         End If
 
 
@@ -1198,9 +1344,12 @@ Public Class Process_frmMain
             EnableTab(tabIssue, False)
             cmdRiskAna.Enabled = False
             cmdIssueComment.Enabled = False
-            cmdSealPart.Enabled = False
+            'cmdSealPart.Enabled = False
         Else
             EnableTab(tabIssue, True)
+
+            cmdIssueComment.Enabled = True      'AES 23APR18
+            cmdRiskAna.Enabled = True
         End If
 
     End Sub
@@ -1429,6 +1578,39 @@ Public Class Process_frmMain
         mProcess_Project.IssueCommnt.RetrieveFromDB(mProcess_Project.ID)
         mProcess_Project.Approval.RetrieveFromDB(mProcess_Project.ID)   'AES 02APR18
 
+        'AES 25APR18
+        '....Pre-Order
+        If (IsNothing(mProcess_Project.PreOrder.Part.Family) Or mProcess_Project.PreOrder.Part.Family = "") Then
+            mProcess_Project.PreOrder.Part_Family = gPartProject.PNR.SealType.ToString() & "-Seal"
+        End If
+
+        '....App
+        If (IsNothing(mProcess_Project.App.Type) Or mProcess_Project.App.Type = "") Then
+            mProcess_Project.App.Type = "Face"
+        End If
+
+        If (IsNothing(mProcess_Project.App.CavityFlange.MeasureSF) Or mProcess_Project.App.CavityFlange.MeasureSF = "") Then
+            mProcess_Project.App.CavityFlange.MeasureSF = "Ra"
+        End If
+
+        If (IsNothing(mProcess_Project.App.CavityFlange.UnitSF) Or mProcess_Project.App.CavityFlange.UnitSF = "") Then
+            mProcess_Project.App.CavityFlange.UnitSF = "µin"
+        End If
+
+        If (IsNothing(mProcess_Project.App.Face.POrient) Or mProcess_Project.App.Face.POrient = "") Then
+            If (Not IsNothing(gPartProject.PNR.HW)) Then
+                mProcess_Project.App.Face.POrient = gPartProject.PNR.HW.POrient
+            End If
+        End If
+
+        '....Quality
+        If (IsNothing(mProcess_Project.Qlty.VisualInspection_Type) ) Then
+            mProcess_Project.Qlty.VisualInspection_Type = "10x"
+        End If
+
+
+
+
         'AES 26FEB18
         If (mProcess_Project.Unit.LUnit_Cust = "in") Then
             gUnit.SetLFormat("English")
@@ -1486,7 +1668,8 @@ Public Class Process_frmMain
             If (.DateOpen <> DateTime.MinValue) Then
                 txtStartDate.Text = .DateOpen.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
             Else
-                txtStartDate.Text = ""
+                'txtStartDate.Text = ""
+                txtStartDate.Text = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())       'AES 23APR18
             End If
 
             If (.DateLastModified <> DateTime.MinValue) Then
@@ -3379,36 +3562,38 @@ Public Class Process_frmMain
 
         'AES 06APR18
         For i As Integer = 0 To grdApproval_Attendees.Rows.Count - 1
-                Dim pUserName As String = gUser.FirstName + " " + gUser.LastName
-                If (gUser.Role = grdApproval_Attendees.Rows(i).Cells(0).Value) Then
-                    If (grdApproval_Attendees.Rows(i).Cells(3).Value = True) Then
-                        If (pUserName = grdApproval_Attendees.Rows(i).Cells(1).Value) Then
-                            grdApproval_Attendees.ReadOnly = False
-                            grdApproval_Attendees.EnableHeadersVisualStyles = False
-                            grdApproval_Attendees.Rows(i).HeaderCell.Style.BackColor = Color.Yellow
-
-                            For j As Integer = 0 To grdApproval_Attendees.ColumnCount - 1
-                                grdApproval_Attendees.Rows(i).Cells(j).Style.ForeColor = Color.Black
-                                grdApproval_Attendees.Rows(i).Cells(j).Style.BackColor = Color.Yellow
-                            Next
-                        Else
-                            grdApproval_Attendees.ReadOnly = True
-                        End If
-                    Else
+            Dim pUserName As String = gUser.FirstName + " " + gUser.LastName
+            If (gUser.Role = grdApproval_Attendees.Rows(i).Cells(0).Value) Then
+                If (grdApproval_Attendees.Rows(i).Cells(3).Value = True) Then
+                    If (pUserName = grdApproval_Attendees.Rows(i).Cells(1).Value) Then
                         grdApproval_Attendees.ReadOnly = False
                         grdApproval_Attendees.EnableHeadersVisualStyles = False
                         grdApproval_Attendees.Rows(i).HeaderCell.Style.BackColor = Color.Yellow
+
                         For j As Integer = 0 To grdApproval_Attendees.ColumnCount - 1
                             grdApproval_Attendees.Rows(i).Cells(j).Style.ForeColor = Color.Black
                             grdApproval_Attendees.Rows(i).Cells(j).Style.BackColor = Color.Yellow
                         Next
+                    Else
+                        grdApproval_Attendees.ReadOnly = True
                     End If
                 Else
-                    grdApproval_Attendees.ReadOnly = True
+                    grdApproval_Attendees.ReadOnly = False
+                    grdApproval_Attendees.EnableHeadersVisualStyles = False
+                    grdApproval_Attendees.Rows(i).HeaderCell.Style.BackColor = Color.Yellow
+                    For j As Integer = 0 To grdApproval_Attendees.ColumnCount - 1
+                        grdApproval_Attendees.Rows(i).Cells(j).Style.ForeColor = Color.Black
+                        grdApproval_Attendees.Rows(i).Cells(j).Style.BackColor = Color.Yellow
+                    Next
                 End If
-            Next
+            Else
+                grdApproval_Attendees.ReadOnly = True
+            End If
+        Next
 
-            SetLabel_Unit_Cust()
+        grdApproval_Attendees.Columns(3).ReadOnly = True
+
+        SetLabel_Unit_Cust()
 
     End Sub
 
@@ -3430,43 +3615,43 @@ Public Class Process_frmMain
                 Dim pQryUserRole = (From pRec In pSealSuiteEntities.tblProcess_UserRole
                                     Where pRec.fldRoleID = pRoleID Select pRec).ToList()
 
-                If (pQryUserRole.Count > 0) Then
-                    Dim pListUserID As New List(Of Integer)
-                    For j As Integer = 0 To pQryUserRole.Count - 1
-                        Dim pUserID As Integer = pQryUserRole(j).fldUserID
-                        If (Not pListUserID.Contains(pUserID)) Then
-                            pListUserID.Add(pUserID)
-                        End If
-
-                    Next
-
-                    For k As Integer = 0 To pListUserID.Count - 1
-                        Dim pID As Integer = pListUserID(k)
-                        Dim pQryUser = (From pRec In pSealSuiteEntities.tblUser
-                                        Where pRec.fldID = pID Select pRec).ToList()
-
-                        If (pQryUser.Count > 0) Then
-                            Dim pUserName As String = pQryUser(0).fldFirstName & " " & pQryUser(0).fldLastName
-                            If (Not mUserName.Contains(pUserName)) Then
-                                mUserName.Add(pUserName)
-                                mUserID.Add(pID)
-                            End If
-
-                            dgvcc.Items.Add(pUserName)
-
-                        End If
-
-                    Next
-
-                If (Not IsNothing(Name_In)) Then
-                    If (Not dgvcc.Items.Contains(Name_In)) Then
-                        dgvcc.Items.Add(Name_In)
+            If (pQryUserRole.Count > 0) Then
+                Dim pListUserID As New List(Of Integer)
+                For j As Integer = 0 To pQryUserRole.Count - 1
+                    Dim pUserID As Integer = pQryUserRole(j).fldUserID
+                    If (Not pListUserID.Contains(pUserID)) Then
+                        pListUserID.Add(pUserID)
                     End If
-                End If
 
-                grdApproval_Attendees.Item(1, RowIndex_In) = dgvcc
+                Next
+
+                For k As Integer = 0 To pListUserID.Count - 1
+                    Dim pID As Integer = pListUserID(k)
+                    Dim pQryUser = (From pRec In pSealSuiteEntities.tblUser
+                                    Where pRec.fldID = pID Select pRec).ToList()
+
+                    If (pQryUser.Count > 0) Then
+                        Dim pUserName As String = pQryUser(0).fldFirstName & " " & pQryUser(0).fldLastName
+                        If (Not mUserName.Contains(pUserName)) Then
+                            mUserName.Add(pUserName)
+                            mUserID.Add(pID)
+                        End If
+
+                        dgvcc.Items.Add(pUserName)
+
+                    End If
+
+                Next
 
             End If
+
+            If (Not IsNothing(Name_In)) Then
+                If (Not dgvcc.Items.Contains(Name_In)) Then
+                    dgvcc.Items.Add(Name_In)
+                End If
+            End If
+
+            grdApproval_Attendees.Item(1, RowIndex_In) = dgvcc
 
         End If
 
@@ -3988,116 +4173,129 @@ Public Class Process_frmMain
 
         cmdRiskAna.Enabled = False
         cmdIssueComment.Enabled = False
-        cmdSealPart.Enabled = False
+        'cmdSealPart.Enabled = False
 
-        If (mPreOrder And TabControl1.SelectedIndex = 0) Then
-            cmdRiskAna.Enabled = True
-            cmdIssueComment.Enabled = True
-            cmdSealPart.Enabled = True
+        'If (mPreOrder And TabControl1.SelectedIndex = 0) Then
+        If (TabControl1.SelectedIndex = 0) Then
+                cmdRiskAna.Enabled = True
+                cmdIssueComment.Enabled = True
+            'cmdSealPart.Enabled = True
         End If
 
-        If (mExport And TabControl1.SelectedIndex = 1) Then
+        'If (mExport And TabControl1.SelectedIndex = 1) Then
+        If (TabControl1.SelectedIndex = 1) Then
             cmdRiskAna.Enabled = True
             cmdIssueComment.Enabled = True
-            cmdSealPart.Enabled = False
-
-        End If
-
-        If (mOrdEntry And TabControl1.SelectedIndex = 2) Then
-            cmdRiskAna.Enabled = True
-            cmdIssueComment.Enabled = True
-            cmdSealPart.Enabled = False
+            'cmdSealPart.Enabled = False
 
         End If
 
-        If (mCost And TabControl1.SelectedIndex = 3) Then
+        'If (mOrdEntry And TabControl1.SelectedIndex = 2) Then
+        If (TabControl1.SelectedIndex = 2) Then
             cmdRiskAna.Enabled = True
             cmdIssueComment.Enabled = True
-            cmdSealPart.Enabled = False
+            'cmdSealPart.Enabled = False
 
         End If
 
-        If (mApp And TabControl1.SelectedIndex = 4) Then
+        'If (mCost And TabControl1.SelectedIndex = 3) Then
+        If (TabControl1.SelectedIndex = 3) Then
             cmdRiskAna.Enabled = True
             cmdIssueComment.Enabled = True
-            cmdSealPart.Enabled = False
+            'cmdSealPart.Enabled = False
 
         End If
 
-        If (mDesign And TabControl1.SelectedIndex = 5) Then
+        'If (mApp And TabControl1.SelectedIndex = 4) Then
+        If (TabControl1.SelectedIndex = 4) Then
             cmdRiskAna.Enabled = True
             cmdIssueComment.Enabled = True
-            cmdSealPart.Enabled = True
+            'cmdSealPart.Enabled = False
 
         End If
 
-        If (mManf And TabControl1.SelectedIndex = 6) Then
+        'If (mDesign And TabControl1.SelectedIndex = 5) Then
+        If (TabControl1.SelectedIndex = 5) Then
             cmdRiskAna.Enabled = True
             cmdIssueComment.Enabled = True
-            cmdSealPart.Enabled = False
+            'cmdSealPart.Enabled = True
 
         End If
 
-        If (mPurchase And TabControl1.SelectedIndex = 7) Then
+        'If (mManf And TabControl1.SelectedIndex = 6) Then
+        If (TabControl1.SelectedIndex = 6) Then
             cmdRiskAna.Enabled = True
             cmdIssueComment.Enabled = True
-            cmdSealPart.Enabled = False
+            'cmdSealPart.Enabled = False
 
         End If
 
-        If (mQlty And TabControl1.SelectedIndex = 8) Then
+        'If (mPurchase And TabControl1.SelectedIndex = 7) Then
+        If (TabControl1.SelectedIndex = 7) Then
             cmdRiskAna.Enabled = True
             cmdIssueComment.Enabled = True
-            cmdSealPart.Enabled = False
+            'cmdSealPart.Enabled = False
 
         End If
 
-        If (mDwg And TabControl1.SelectedIndex = 9) Then
+        'If (mQlty And TabControl1.SelectedIndex = 8) Then
+        If (TabControl1.SelectedIndex = 8) Then
             cmdRiskAna.Enabled = True
             cmdIssueComment.Enabled = True
-            cmdSealPart.Enabled = False
+            'cmdSealPart.Enabled = False
 
         End If
 
-        If (mTest And TabControl1.SelectedIndex = 10) Then
+        'If (mDwg And TabControl1.SelectedIndex = 9) Then
+        If (TabControl1.SelectedIndex = 9) Then
             cmdRiskAna.Enabled = True
             cmdIssueComment.Enabled = True
-            cmdSealPart.Enabled = False
+            'cmdSealPart.Enabled = False
 
         End If
 
-        If (mPlanning And TabControl1.SelectedIndex = 11) Then
+        'If (mTest And TabControl1.SelectedIndex = 10) Then
+        If (TabControl1.SelectedIndex = 10) Then
+            cmdRiskAna.Enabled = True
+            cmdIssueComment.Enabled = True
+            'cmdSealPart.Enabled = False
+
+        End If
+
+        'If (mPlanning And TabControl1.SelectedIndex = 11) Then
+        If (TabControl1.SelectedIndex = 11) Then
             cmdRiskAna.Enabled = False
             cmdIssueComment.Enabled = False
-            cmdSealPart.Enabled = False
+            'cmdSealPart.Enabled = False
 
         End If
 
-        If (mShipping And TabControl1.SelectedIndex = 12) Then
+        'If (mShipping And TabControl1.SelectedIndex = 12) Then
+        If (TabControl1.SelectedIndex = 12) Then
             cmdRiskAna.Enabled = True
             cmdIssueComment.Enabled = True
-            cmdSealPart.Enabled = False
+            'cmdSealPart.Enabled = False
 
         End If
 
         If (TabControl1.SelectedIndex = 13) Then
             cmdRiskAna.Enabled = False
             cmdIssueComment.Enabled = False
-            cmdSealPart.Enabled = False
+            'cmdSealPart.Enabled = False
 
         End If
 
         If (TabControl1.SelectedIndex = 14) Then
             cmdRiskAna.Enabled = False
             cmdIssueComment.Enabled = False
-            cmdSealPart.Enabled = False
+            'cmdSealPart.Enabled = False
 
         End If
 
         If (TabControl1.SelectedIndex = 15) Then
             cmdRiskAna.Enabled = False
             cmdIssueComment.Enabled = False
-            cmdSealPart.Enabled = False
+            'cmdSealPart.Enabled = False
 
         End If
 
@@ -4176,8 +4374,15 @@ Public Class Process_frmMain
             'grpCustSpec_Shipping.Enabled = False
         End If
 
-        txtParkerPart.Focus()
-        txtParkerPart.Select()
+        'AES 25APR18
+        Me.VerticalScroll.Value = 0
+        Me.AutoScrollPosition = New Point(txtMenu.Left, txtMenu.Top)
+
+        If (TabControl1.SelectedIndex = 15) Then
+            grdApproval_Attendees.Focus()
+            Me.VerticalScroll.Value = 0
+            Me.AutoScrollPosition = New Point(txtMenu.Left, txtMenu.Top)
+        End If
 
     End Sub
 
@@ -4523,6 +4728,9 @@ Public Class Process_frmMain
     Private Sub tbApp_SelectedIndexChanged(sender As Object, e As EventArgs) Handles tbApp.SelectedIndexChanged
         '=======================================================================================================
         optApp_Cust_Gen.Checked = True
+        txtMenu.Focus()
+        txtMenu.Select()
+
     End Sub
 
 #Region "HELPER ROUTINE:"
@@ -4560,12 +4768,12 @@ Public Class Process_frmMain
     Private Sub txtDesign_MCS_MouseHover(sender As Object, e As EventArgs) Handles txtDesign_MCS.MouseHover
         '==================================================================================================
         ToolTip1.SetToolTip(txtDesign_MCS, "Enter Data in SealPart.")
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()         'AES 24APR18
     End Sub
 
     Private Sub txtDesign_MCS_MouseLeave(sender As Object, e As EventArgs) Handles txtDesign_MCS.MouseLeave
         '==================================================================================================
-        txtDesign_MCS.Focus()
+        'txtDesign_MCS.Focus()        'AES 24APR18
     End Sub
 
     Private Sub txtOrderEntry_QtdLeadTime_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) _
@@ -4808,8 +5016,10 @@ Public Class Process_frmMain
         '================================================================================================================
         If (cmbExport_Reqd.Text = "N") Then
             cmbExport_Status.Enabled = False
+            cmbExport_Status.SelectedIndex = -1
         Else
             cmbExport_Status.Enabled = True
+            cmbExport_Status.SelectedIndex = 0
         End If
     End Sub
 
@@ -4841,13 +5051,16 @@ Public Class Process_frmMain
         '======================================================================================================================
         If (cmbITAR_Export_ProductITAR_Reg.Text = "N") Then
             txtITAR_Export_ITAR_Classification.Enabled = False
+            cmbITAR_Export_Status.SelectedIndex = -1
             cmbITAR_Export_Status.Enabled = False
             txtExportStatus.Text = ""
+            txtExportControlled.Text = "N"
         Else
             txtITAR_Export_ITAR_Classification.Enabled = True
             cmbITAR_Export_Status.Enabled = True
             cmbITAR_Export_Status.SelectedIndex = 0
             txtExportStatus.Text = cmbITAR_Export_Status.Text
+            txtExportControlled.Text = "Y"
         End If
 
     End Sub
@@ -4868,6 +5081,7 @@ Public Class Process_frmMain
     Private Sub cmbApp_InsertLoc_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) _
                                                       Handles cmbApp_InsertLoc.SelectedIndexChanged
         '=============================================================================================
+        cmbApp_InsertLoc.Text = "Face"
 
         If (cmbApp_InsertLoc.Text = "Face") Then
             Dim pFaceExists As Boolean = False
@@ -5018,6 +5232,8 @@ Public Class Process_frmMain
         Else
             If (mQlty) Then
                 txtQuality_Reason.Enabled = True
+            Else
+                txtQuality_Reason.Enabled = False
             End If
 
         End If
@@ -5032,6 +5248,7 @@ Public Class Process_frmMain
             cmbQuality_VisualInspection_Type.Text = ""
             cmbQuality_VisualInspection_Type.Enabled = False
         Else
+            cmbQuality_VisualInspection_Type.Text = ""
             If (mQlty) Then
                 cmbQuality_VisualInspection_Type.Enabled = True
             End If
@@ -5043,36 +5260,36 @@ Public Class Process_frmMain
     Private Sub cmbPartFamily_MouseHover(sender As Object, e As EventArgs) Handles cmbPartFamily.MouseHover
         '==================================================================================================
         ToolTip1.SetToolTip(cmbPartFamily, "Enter Data in SealPart.")
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()      'AES 24APR18
     End Sub
 
     Private Sub cmbPartFamily_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbPartFamily.SelectedIndexChanged
         '======================================================================================================================
         cmbPartFamily.Text = gPartProject.PNR.SealType.ToString() & "-Seal"
-        cmdSealPart.Focus()
+        
     End Sub
 
     Private Sub cmbPartFamily_MouseLeave(sender As Object, e As EventArgs) Handles cmbPartFamily.MouseLeave
         '==================================================================================================
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()         'AES 24APR18
     End Sub
 
     Private Sub cmbApp_Face_POrient_SelectedIndexChanged(sender As Object, e As EventArgs) _
                                                          Handles cmbApp_Face_POrient.SelectedIndexChanged
         '================================================================================================
         cmbApp_Face_POrient.Text = gPartProject.PNR.HW.POrient
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()         'AES 24APR18
     End Sub
 
     Private Sub cmbApp_Face_POrient_MouseHover(sender As Object, e As EventArgs) Handles cmbApp_Face_POrient.MouseHover
         '=============================================================================================================
         ToolTip1.SetToolTip(cmbApp_Face_POrient, "Enter Data in SealPart.")
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()         'AES 24APR18
     End Sub
 
     Private Sub cmbApp_Face_POrient_MouseLeave(sender As Object, e As EventArgs) Handles cmbApp_Face_POrient.MouseLeave
         '==============================================================================================================
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()         'AES 24APR18
     End Sub
 
     Private Sub cmbParkerPN_Part2_NewRef_Dim_SelectedIndexChanged(sender As Object, e As EventArgs) _
@@ -5085,7 +5302,7 @@ Public Class Process_frmMain
         Else
             cmbParkerPN_Part2_NewRef_Dim.Text = ""
         End If
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()         'AES 24APR18
     End Sub
 
     Private Sub cmbParkerPN_Part2_Notes_Dim_SelectedIndexChanged(sender As Object, e As EventArgs) _
@@ -5099,33 +5316,33 @@ Public Class Process_frmMain
             cmbParkerPN_Part2_Notes_Dim.Text = ""
 
         End If
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()         'AES 24APR18
     End Sub
 
     Private Sub cmbParkerPN_Part2_NewRef_Dim_MouseHover(sender As Object, e As EventArgs) _
                                                         Handles cmbParkerPN_Part2_NewRef_Dim.MouseHover
         '==============================================================================================
         ToolTip1.SetToolTip(cmbParkerPN_Part2_NewRef_Dim, "Enter Data in SealPart.")
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()         'AES 24APR18
     End Sub
 
     Private Sub cmbParkerPN_Part2_NewRef_Dim_MouseLeave(sender As Object, e As EventArgs) _
                                                         Handles cmbParkerPN_Part2_NewRef_Dim.MouseLeave
         '==============================================================================================
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()         'AES 24APR18
     End Sub
 
     Private Sub cmbParkerPN_Part2_Notes_Dim_MouseHover(sender As Object, e As EventArgs) _
                                                        Handles cmbParkerPN_Part2_Notes_Dim.MouseHover
         '============================================================================================
         ToolTip1.SetToolTip(cmbParkerPN_Part2_Notes_Dim, "Enter Data in SealPart.")
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()         'AES 24APR18
     End Sub
 
     Private Sub cmbParkerPN_Part2_Notes_Dim_MouseLeave(sender As Object, e As EventArgs) _
                                                        Handles cmbParkerPN_Part2_Notes_Dim.MouseLeave
         '============================================================================================
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()         'AES 24APR18
     End Sub
 
 
@@ -5133,36 +5350,36 @@ Public Class Process_frmMain
                                                         Handles cmbDesign_Mat_Seal.SelectedIndexChanged
         '==============================================================================================
         cmbDesign_Mat_Seal.Text = gPartProject.PNR.HW.MatName
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()         'AES 24APR18
     End Sub
 
     Private Sub cmbDesign_Mat_Spring_SelectedIndexChanged(sender As Object, e As EventArgs) _
                                                           Handles cmbDesign_Mat_Spring.SelectedIndexChanged
         '==================================================================================================
         cmbDesign_Mat_Spring.Text = gPartProject.PNR.HW.MatName
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()         'AES 24APR18
     End Sub
 
     Private Sub cmbDesign_Mat_Seal_MouseHover(sender As Object, e As EventArgs) Handles cmbDesign_Mat_Seal.MouseHover
         '============================================================================================================
         ToolTip1.SetToolTip(cmbDesign_Mat_Seal, "Enter Data in SealPart.")
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()         'AES 24APR18
     End Sub
 
     Private Sub cmbDesign_Mat_Seal_MouseLeave(sender As Object, e As EventArgs) Handles cmbDesign_Mat_Seal.MouseLeave
         '============================================================================================================
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()         'AES 24APR18
     End Sub
 
     Private Sub cmbDesign_Mat_Spring_MouseLeave(sender As Object, e As EventArgs) Handles cmbDesign_Mat_Spring.MouseLeave
         '================================================================================================================
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()     'AES 24APR18
     End Sub
 
     Private Sub cmbDesign_Mat_Spring_MouseHover(sender As Object, e As EventArgs) Handles cmbDesign_Mat_Spring.MouseHover
         '================================================================================================================
         ToolTip1.SetToolTip(cmbDesign_Mat_Spring, "Enter Data in SealPart.")
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()         'AES 24APR18
     End Sub
 
     Private Sub cmbDesign_TemperType_SelectedIndexChanged(sender As Object, e As EventArgs) _
@@ -5181,18 +5398,18 @@ Public Class Process_frmMain
         ElseIf (pTemperCode = 8) Then
             cmbDesign_TemperType.Text = "NACE"
         End If
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()         'AES 24APR18
     End Sub
 
     Private Sub cmbDesign_TemperType_MouseHover(sender As Object, e As EventArgs) Handles cmbDesign_TemperType.MouseHover
         '================================================================================================================
         ToolTip1.SetToolTip(cmbDesign_TemperType, "Enter Data in SealPart.")
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()         'AES 24APR18
     End Sub
 
     Private Sub cmbDesign_TemperType_MouseLeave(sender As Object, e As EventArgs) Handles cmbDesign_TemperType.MouseLeave
         '================================================================================================================
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()         'AES 24APR18
     End Sub
 
     Private Sub cmbSFinish_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbSFinish.SelectedIndexChanged
@@ -5205,30 +5422,30 @@ Public Class Process_frmMain
                 cmbSFinish.Text = gPartProject.PNR.HW.SFinish
             End If
         End If
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()         'AES 24APR18
     End Sub
 
     Private Sub cmbCoating_MouseLeave(sender As Object, e As EventArgs) Handles cmbCoating.MouseLeave
         '============================================================================================
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()         'AES 24APR18
     End Sub
 
     Private Sub cmbCoating_MouseHover(sender As Object, e As EventArgs) Handles cmbCoating.MouseHover
         '============================================================================================
         ToolTip1.SetToolTip(cmbCoating, "Enter Data in SealPart.")
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()         'AES 24APR18
     End Sub
 
     Private Sub cmbSFinish_MouseHover(sender As Object, e As EventArgs) Handles cmbSFinish.MouseHover
         '============================================================================================
         ToolTip1.SetToolTip(cmbSFinish, "Enter Data in SealPart.")
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()         'AES 24APR18
 
     End Sub
 
     Private Sub cmbSFinish_MouseLeave(sender As Object, e As EventArgs) Handles cmbSFinish.MouseLeave
         '============================================================================================
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()         'AES 24APR18
     End Sub
 
     Private Sub cmbPlatingCode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbPlatingCode.SelectedIndexChanged
@@ -5240,18 +5457,18 @@ Public Class Process_frmMain
                 'cmbPlatingThickCode.Text = gPartProject.PNR.HW.Plating.ThickCode
             End If
         End If
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()         'AES 24APR18
     End Sub
 
     Private Sub cmbPlatingCode_MouseHover(sender As Object, e As EventArgs) Handles cmbPlatingCode.MouseHover
         '===================================================================================================
         ToolTip1.SetToolTip(cmbPlatingCode, "Enter Data in SealPart.")
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()         'AES 24APR18
     End Sub
 
     Private Sub cmbPlatingCode_MouseLeave(sender As Object, e As EventArgs) Handles cmbPlatingCode.MouseLeave
         '====================================================================================================
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()         'AES 24APR18
     End Sub
 
     Private Sub cmbPlatingThickCode_SelectedIndexChanged(sender As Object, e As EventArgs) _
@@ -5262,18 +5479,18 @@ Public Class Process_frmMain
                 cmbPlatingThickCode.Text = gPartProject.PNR.HW.Plating.ThickCode
             End If
         End If
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()         'AES 24APR18
     End Sub
 
     Private Sub cmbPlatingThickCode_MouseHover(sender As Object, e As EventArgs) Handles cmbPlatingThickCode.MouseHover
         '==============================================================================================================
         ToolTip1.SetToolTip(cmbPlatingThickCode, "Enter Data in SealPart.")
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()         'AES 24APR18
     End Sub
 
     Private Sub cmbPlatingThickCode_MouseLeave(sender As Object, e As EventArgs) Handles cmbPlatingThickCode.MouseLeave
         '==============================================================================================================
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()     'AES 24APR18
 
     End Sub
 
@@ -5801,6 +6018,7 @@ Public Class Process_frmMain
         '==================================================================================================================
         Dim pCI As New CultureInfo("en-US")
         txtStartDate.Text = dtpStartDate.Value.ToShortDateString()
+
         txtDateMod.Text = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
 
         If (gUser.FirstName <> "") Then
@@ -5811,10 +6029,10 @@ Public Class Process_frmMain
 
     Private Sub dtpDateMod_ValueChanged(sender As System.Object, e As System.EventArgs) Handles dtpDateMod.ValueChanged
         '==============================================================================================================
-        txtDateMod.Text = dtpDateMod.Value.ToShortDateString()
-        If (gUser.FirstName <> "") Then
-            txtModifiedBy.Text = gUser.FirstName & " " & gUser.LastName
-        End If
+        'txtDateMod.Text = dtpDateMod.Value.ToShortDateString()
+        'If (gUser.FirstName <> "") Then
+        '    txtModifiedBy.Text = gUser.FirstName & " " & gUser.LastName
+        'End If
     End Sub
 
     Private Sub dtpPreOrderUserDate_ValueChanged(sender As System.Object,
@@ -7385,7 +7603,7 @@ Public Class Process_frmMain
 
     End Sub
 
-    Private Sub cmdSealPart_Click(sender As Object, e As EventArgs) Handles cmdSealPart.Click
+    Private Sub cmdSealPart_Click(sender As Object, e As EventArgs)
         '====================================================================================
         SaveData()
         SaveToDB()
@@ -7417,7 +7635,8 @@ Public Class Process_frmMain
         '======================================================================================
         SaveData()
         SaveToDB()
-        Me.Close()
+        MessageBox.Show("Data Saved Succecfully.", "Save Record", MessageBoxButtons.OK)
+        ''Me.Close()
 
     End Sub
 
@@ -10463,7 +10682,9 @@ Public Class Process_frmMain
             End If
             CompareVal(.VisualInspection, pblnFlag, pCount)
 
-            CompareVal(.VisualInspection_Type, cmbQuality_VisualInspection_Type.Text, pCount)
+            If (pblnFlag) Then
+                CompareVal(.VisualInspection_Type, cmbQuality_VisualInspection_Type.Text, pCount)
+            End If
 
             If (cmbQuality_SPC.Text = "Y") Then
                 pblnFlag = True
@@ -10737,12 +10958,12 @@ Public Class Process_frmMain
     Private Sub grpRefPN_MouseHover(sender As Object, e As EventArgs) Handles grpRefPN.MouseHover
         '========================================================================================
         ToolTip1.SetToolTip(grpRefPN, "Enter Data in SealPart.")
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()         'AES 24APR18
     End Sub
 
     Private Sub grpRefPN_MouseLeave(sender As Object, e As EventArgs) Handles grpRefPN.MouseLeave
         '========================================================================================
-        grpRefPN.Focus()
+        'grpRefPN.Focus()        'AES 24APR18
     End Sub
 
     Private Sub TabControl2_SelectedIndexChanged(sender As Object, e As EventArgs) _
@@ -10750,11 +10971,36 @@ Public Class Process_frmMain
         '================================================================================
         optDesign_Cust.Checked = True
 
+        txtMenu.Focus()
+        txtMenu.Select()
+
+        ''If (TabControl2.SelectedIndex = 0) Then
+        ''    txtParkerPart.Focus()
+        ''    txtParkerPart.Select()
+        ''ElseIf (TabControl2.SelectedIndex = 1) Then
+        ''    txtParkerPart.Focus()
+        ''    txtParkerPart.Select()
+        ''End If
+
     End Sub
 
     Private Sub tbTest_SelectedIndexChanged(sender As Object, e As EventArgs) Handles tbTest.SelectedIndexChanged
         '========================================================================================================
         optTest_Cust.Checked = True
+
+        txtMenu.Focus()
+        txtMenu.Select()
+
+        ''If (tbTest.SelectedIndex = 0) Then
+        ''    txtParkerPart.Focus()
+        ''    txtParkerPart.Select()
+        ''ElseIf (tbTest.SelectedIndex = 1) Then
+        ''    txtParkerPart.Focus()
+        ''    txtParkerPart.Select()
+        ''ElseIf (tbTest.SelectedIndex = 2) Then
+        ''    txtParkerPart.Focus()
+        ''    txtParkerPart.Select()
+        ''End If
 
     End Sub
 
@@ -10783,10 +11029,13 @@ Public Class Process_frmMain
                 End If
                 'grdApproval_Attendees.ReadOnly = False
             Else
-                    grdApproval_Attendees.ReadOnly = True
+                grdApproval_Attendees.ReadOnly = True
             End If
 
         End If
+
+        grdApproval_Attendees.Columns(3).ReadOnly = True
+
     End Sub
 
     Private Sub chkHeaderUserSigned_CheckedChanged(sender As Object, e As EventArgs) _
@@ -11023,8 +11272,62 @@ Public Class Process_frmMain
 
         pApp.Visible = True
 
+        pApp.WindowState = EXCEL.XlWindowState.xlMinimized
+        pApp.WindowState = EXCEL.XlWindowState.xlMaximized
+
         Cursor = Cursors.Default
 
+    End Sub
+
+    Private Sub cmbType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbType.SelectedIndexChanged
+        '===========================================================================================================
+        mProcess_Project.Type = cmbType.Text
+
+        If (Not IsNothing(mProcess_Project.Type) And mProcess_Project.Type <> "") Then
+            cmbType.SelectedIndex = 1
+
+        Else
+            cmbType.SelectedIndex = -1
+        End If
+
+
+    End Sub
+
+
+    Private Sub cmbType_DrawItem(sender As Object, e As DrawItemEventArgs) Handles cmbType.DrawItem
+
+        'If (cmbType.SelectedIndex > -1) Then
+        '    Dim text As String = Me.cmbType.GetItemText(cmbType.Items(e.Index))
+        '    e.DrawBackground()
+        '    Using br As SolidBrush = New SolidBrush(e.ForeColor)
+        '        e.Graphics.DrawString(text, e.Font, br, e.Bounds)
+        '    End Using
+
+        '    If (e.State And DrawItemState.Selected) = DrawItemState.Selected Then
+        '        Me.ToolTip1.Show(text, cmbType, e.Bounds.Right, e.Bounds.Bottom)
+        '    Else
+        '        Me.ToolTip1.Hide(cmbType)
+        '    End If
+
+        '    e.DrawFocusRectangle()
+        'End If
+
+    End Sub
+
+    Private Sub TabControl3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TabControl3.SelectedIndexChanged
+        '====================================================================================================================
+
+        txtMenu.Focus()
+        txtMenu.Select()
+
+        'If (TabControl3.SelectedIndex = 0) Then
+        '    txtMenu.Focus()
+        '    txtMenu.Select()
+
+        'ElseIf (TabControl3.SelectedIndex = 1) Then
+        '    txtMenu.Focus()
+        '    txtMenu.Select()
+        'End If
     End Sub
 
     Private Sub SetControls_HeaderUserSign()
@@ -11045,9 +11348,28 @@ Public Class Process_frmMain
             TabControl1.Refresh()
             txtHeaderUserName.Text = gUser.FirstName + " " + gUser.LastName
             txtDateMod.Text = DateTime.Now.ToString("MM/dd/yyyy", pCI.DateTimeFormat())
-
+            txtModifiedBy.Text = gUser.FirstName + " " + gUser.LastName
         Else
             chkHeaderUserSigned.Text = "Sign-off"
+
+            chkPreOrderUserSigned.Checked = False
+            chkITAR_Export_UserSigned.Checked = False
+            chkOrdEntry_UserSigned.Checked = False
+            chkCost_UserSigned.Checked = False
+            chkApp_UserSigned_Face.Checked = False
+            chkDesign_UserSigned.Checked = False
+            chkManf_UserSigned.Checked = False
+            chkPurchase_UserSigned.Checked = False
+            chkQuality_UserSigned.Checked = False
+            chkDwg_UserSigned.Checked = False
+            chkTest_UserSigned.Checked = False
+            chkPlanning_UserSigned.Checked = False
+            chkShipping_UserSigned.Checked = False
+
+            For i As Integer = 0 To grdApproval_Attendees.Rows.Count - 1
+                grdApproval_Attendees.Rows(i).Cells(3).Value = False
+                grdApproval_Attendees.Rows(i).Cells(4).Value = ""
+            Next
 
             If (mTabIndex.Contains(99)) Then
                 '....Header enabled
@@ -11066,8 +11388,8 @@ Public Class Process_frmMain
 
             End If
 
-                '....Disable all tabs according to User Previlege
-                mTabIndex.Clear()
+            '....Disable all tabs according to User Previlege
+            mTabIndex.Clear()
             If (mHeader) Then
                 mTabIndex.Add(99)       'AES 18APR18
             End If
@@ -11098,12 +11420,12 @@ Public Class Process_frmMain
     Private Sub grpCoating_MouseHover(sender As Object, e As EventArgs) Handles grpCoating.MouseHover
         '============================================================================================
         ToolTip1.SetToolTip(grpCoating, "Enter Data in SealPart.")
-        cmdSealPart.Focus()
+        'cmdSealPart.Focus()         'AES 24APR18
     End Sub
 
     Private Sub grpCoating_MouseLeave(sender As Object, e As EventArgs) Handles grpCoating.MouseLeave
         '============================================================================================
-        grpCoating.Focus()
+        'grpCoating.Focus()      'AES 24APR18
     End Sub
 
 

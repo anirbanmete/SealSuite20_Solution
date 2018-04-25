@@ -301,7 +301,7 @@ Partial Class Part_frmHW
         'chkPlating
         '
         Me.chkPlating.AutoSize = True
-        Me.chkPlating.Location = New System.Drawing.Point(14, 20)
+        Me.chkPlating.Location = New System.Drawing.Point(16, 20)
         Me.chkPlating.Name = "chkPlating"
         Me.chkPlating.Size = New System.Drawing.Size(61, 17)
         Me.chkPlating.TabIndex = 677
@@ -545,7 +545,7 @@ Partial Class Part_frmHW
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(26, 14)
+        Me.Label13.Location = New System.Drawing.Point(29, 14)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(51, 13)
         Me.Label13.TabIndex = 177
@@ -558,7 +558,7 @@ Partial Class Part_frmHW
         Me.chkCoating.Cursor = System.Windows.Forms.Cursors.Default
         Me.chkCoating.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkCoating.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.chkCoating.Location = New System.Drawing.Point(12, 14)
+        Me.chkCoating.Location = New System.Drawing.Point(15, 14)
         Me.chkCoating.Name = "chkCoating"
         Me.chkCoating.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.chkCoating.Size = New System.Drawing.Size(13, 14)

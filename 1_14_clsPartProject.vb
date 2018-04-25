@@ -783,9 +783,25 @@ Public Class clsPartProject
                             mSealType = CType([Enum].Parse(GetType(clsPartProject.clsPNR.eType), pSealType), clsPartProject.clsPNR.eType) 'pSealType
                             .MCrossSecNo = pHWFace_Rec.fldMCS
                             '.Hfree = pHWFace_Rec.fldHfreeStd
-                            .HFreeTol(1) = pHWFace_Rec.fldHFreeTol1
-                            .HFreeTol(2) = pHWFace_Rec.fldHFreeTol2
+
+                            ''.HFreeTol(1) = pHWFace_Rec.fldHFreeTol1
+                            ''.HFreeTol(2) = pHWFace_Rec.fldHFreeTol2
+
+                            'AES 24APR18
+                            If (Not IsDBNull(pHWFace_Rec.fldHFreeTol1) And Not IsNothing(pHWFace_Rec.fldHFreeTol1)) Then
+                                .HFreeTol(1) = pHWFace_Rec.fldHFreeTol1
+                            Else
+                                .HFreeTol(1) = 0
+                            End If
+
+                            If (Not IsDBNull(pHWFace_Rec.fldHFreeTol2) And Not IsNothing(pHWFace_Rec.fldHFreeTol2)) Then
+                                .HFreeTol(2) = pHWFace_Rec.fldHFreeTol2
+                            Else
+                                .HFreeTol(1) = 0
+                            End If
+
                             .T = .TStd      'AES 02AUG17
+
 
                             If (mSealType = clsPartProject.clsPNR.eType.C Or mSealType = clsPartProject.clsPNR.eType.SC) Then
                                 '....HW_AdjCSeal table
@@ -805,13 +821,13 @@ Public Class clsPartProject
                                             .DHfree = 0.0#
                                         End If
 
-                                        If (Not IsNothing(pHWFace_AdjCSeal_Rec.fldDThetaOpening)) Then
+                                        If (Not IsNothing(pHWFace_AdjCSeal_Rec.fldDThetaOpening) And Not IsDBNull(pHWFace_AdjCSeal_Rec.fldDThetaOpening)) Then
                                             .DThetaOpening = pHWFace_AdjCSeal_Rec.fldDThetaOpening
                                         Else
                                             .DThetaOpening = 0.0#
                                         End If
 
-                                        If (Not IsNothing(pHWFace_AdjCSeal_Rec.fldDT)) Then
+                                        If (Not IsNothing(pHWFace_AdjCSeal_Rec.fldDT) And Not IsDBNull(pHWFace_AdjCSeal_Rec.fldDT)) Then
                                             .T = pHWFace_AdjCSeal_Rec.fldDT
                                         Else
                                             .T = 0.0#
@@ -842,11 +858,35 @@ Public Class clsPartProject
                                         If (pQry.Count() > 0) Then
 
                                             If (mHW.UnitSystem = "English") Then
-                                                .PlatingThickMin = pQry(0).fldPlatingThickMinEng
-                                                .PlatingThickMax = pQry(0).fldPlatingThickMaxEng
+                                                If (Not IsDBNull(pQry(0).fldPlatingThickMinEng) And Not IsNothing(pQry(0).fldPlatingThickMinEng)) Then
+                                                    .PlatingThickMin = pQry(0).fldPlatingThickMinEng
+                                                Else
+                                                    .PlatingThickMin = 0
+                                                End If
+
+                                                If (Not IsDBNull(pQry(0).fldPlatingThickMaxEng) And Not IsNothing(pQry(0).fldPlatingThickMaxEng)) Then
+                                                    .PlatingThickMax = pQry(0).fldPlatingThickMaxEng
+                                                Else
+                                                    .PlatingThickMax = 0
+                                                End If
+
+                                                '.PlatingThickMin = pQry(0).fldPlatingThickMinEng
+                                                '.PlatingThickMax = pQry(0).fldPlatingThickMaxEng
                                             Else
-                                                .PlatingThickMin = pQry(0).fldPlatingThickMinMet
-                                                .PlatingThickMax = pQry(0).fldPlatingThickMaxMet
+                                                If (Not IsDBNull(pQry(0).fldPlatingThickMinMet) And Not IsNothing(pQry(0).fldPlatingThickMinMet)) Then
+                                                    .PlatingThickMin = pQry(0).fldPlatingThickMinMet
+                                                Else
+                                                    .PlatingThickMin = 0
+                                                End If
+
+                                                If (Not IsDBNull(pQry(0).fldPlatingThickMaxMet) And Not IsNothing(pQry(0).fldPlatingThickMaxMet)) Then
+                                                    .PlatingThickMax = pQry(0).fldPlatingThickMaxMet
+                                                Else
+                                                    .PlatingThickMax = 0
+                                                End If
+
+                                                '.PlatingThickMin = pQry(0).fldPlatingThickMinMet
+                                                '.PlatingThickMax = pQry(0).fldPlatingThickMaxMet
                                             End If
                                         End If
 
@@ -876,13 +916,13 @@ Public Class clsPartProject
                                                             HWFace_AdjESeal.fldRevID = RevID_IN Select HWFace_AdjESeal).First()
 
                                     With mHW
-                                        If (Not IsNothing(pHWFace_AdjESeal_Rec.fldDThetaE1)) Then
+                                        If (Not IsNothing(pHWFace_AdjESeal_Rec.fldDThetaE1) And Not IsDBNull(pHWFace_AdjESeal_Rec.fldDThetaE1)) Then
                                             .DThetaE1 = pHWFace_AdjESeal_Rec.fldDThetaE1
                                         Else
                                             .DThetaE1 = 0.0#
                                         End If
 
-                                        If (Not IsNothing(pHWFace_AdjESeal_Rec.fldDThetaM1)) Then
+                                        If (Not IsNothing(pHWFace_AdjESeal_Rec.fldDThetaM1) And Not IsDBNull(pHWFace_AdjESeal_Rec.fldDThetaM1)) Then
                                             .DThetaM1 = pHWFace_AdjESeal_Rec.fldDThetaM1
                                         Else
                                             .DThetaM1 = 0.0#
@@ -970,8 +1010,20 @@ Public Class clsPartProject
                             .PlatingThickCode = pHWFace_Rec.fldPlatingThickCode
 
                             If (.Plating.ThickCode = "X") Then
-                                .PlatingThickMin = pHWFace_Rec.fldPlatingThickMin
-                                .PlatingThickMax = pHWFace_Rec.fldPlatingThickMax
+                                '.PlatingThickMin = pHWFace_Rec.fldPlatingThickMin
+                                '.PlatingThickMax = pHWFace_Rec.fldPlatingThickMax
+
+                                If (Not IsDBNull(pHWFace_Rec.fldPlatingThickMin) And Not IsNothing(pHWFace_Rec.fldPlatingThickMin)) Then
+                                    .PlatingThickMin = pHWFace_Rec.fldPlatingThickMin
+                                Else
+                                    .PlatingThickMin = 0
+                                End If
+
+                                If (Not IsDBNull(pHWFace_Rec.fldPlatingThickMax) And Not IsNothing(pHWFace_Rec.fldPlatingThickMax)) Then
+                                    .PlatingThickMax = pHWFace_Rec.fldPlatingThickMax
+                                Else
+                                    .PlatingThickMax = 0
+                                End If
 
                             Else
                                 Dim pMCSEntities As New SealIPEMCSDBEntities()
@@ -983,11 +1035,36 @@ Public Class clsPartProject
                                 If (pQry.Count() > 0) Then
 
                                     If (mHW.UnitSystem = "English") Then
-                                        .PlatingThickMin = pQry(0).fldPlatingThickMinEng
-                                        .PlatingThickMax = pQry(0).fldPlatingThickMaxEng
+                                        '.PlatingThickMin = pQry(0).fldPlatingThickMinEng
+                                        '.PlatingThickMax = pQry(0).fldPlatingThickMaxEng
+
+
+                                        If (Not IsDBNull(pQry(0).fldPlatingThickMinEng) And Not IsNothing(pQry(0).fldPlatingThickMinEng)) Then
+                                            .PlatingThickMin = pQry(0).fldPlatingThickMinEng
+                                        Else
+                                            .PlatingThickMin = 0
+                                        End If
+
+                                        If (Not IsDBNull(pQry(0).fldPlatingThickMaxEng) And Not IsNothing(pQry(0).fldPlatingThickMaxEng)) Then
+                                            .PlatingThickMax = pHWFace_Rec.fldPlatingThickMax
+                                        Else
+                                            .PlatingThickMax = 0
+                                        End If
                                     Else
-                                        .PlatingThickMin = pQry(0).fldPlatingThickMinMet
-                                        .PlatingThickMax = pQry(0).fldPlatingThickMaxMet
+                                        '.PlatingThickMin = pQry(0).fldPlatingThickMinMet
+                                        '.PlatingThickMax = pQry(0).fldPlatingThickMaxMet
+
+                                        If (Not IsDBNull(pQry(0).fldPlatingThickMinMet) And Not IsNothing(pQry(0).fldPlatingThickMinMet)) Then
+                                            .PlatingThickMin = pQry(0).fldPlatingThickMinMet
+                                        Else
+                                            .PlatingThickMin = 0
+                                        End If
+
+                                        If (Not IsDBNull(pQry(0).fldPlatingThickMaxMet) And Not IsNothing(pQry(0).fldPlatingThickMaxMet)) Then
+                                            .PlatingThickMax = pQry(0).fldPlatingThickMaxMet
+                                        Else
+                                            .PlatingThickMax = 0
+                                        End If
                                     End If
                                 Else
                                     .PlatingThickCode = ""
@@ -1003,9 +1080,26 @@ Public Class clsPartProject
                         End If
 
                         '.Hfree = pHWFace_Rec.fldHfreeStd
-                        .HFreeTol(1) = pHWFace_Rec.fldHFreeTol1
-                        .HFreeTol(2) = pHWFace_Rec.fldHFreeTol2
-                        .DControl = pHWFace_Rec.fldDControl
+                        If (Not IsDBNull(pHWFace_Rec.fldHFreeTol1) And Not IsNothing(pHWFace_Rec.fldHFreeTol1)) Then
+                            .HFreeTol(1) = pHWFace_Rec.fldHFreeTol1
+                        Else
+                            .HFreeTol(1) = 0
+                        End If
+
+                        If (Not IsDBNull(pHWFace_Rec.fldHFreeTol2) And Not IsNothing(pHWFace_Rec.fldHFreeTol2)) Then
+                            .HFreeTol(2) = pHWFace_Rec.fldHFreeTol2
+                        Else
+                            .HFreeTol(2) = 0
+                        End If
+
+                        If (Not IsDBNull(pHWFace_Rec.fldDControl) And Not IsNothing(pHWFace_Rec.fldDControl)) Then
+                            .DControl = pHWFace_Rec.fldDControl
+                        Else
+                            .DControl = 0
+                        End If
+                        ''.HFreeTol(1) = pHWFace_Rec.fldHFreeTol1
+                        ''.HFreeTol(2) = pHWFace_Rec.fldHFreeTol2
+                        ''.DControl = pHWFace_Rec.fldDControl
                         '.H11Tol = pHWFace_Rec.fldH11Tol
 
                     End With
@@ -1024,13 +1118,13 @@ Public Class clsPartProject
                                                     HWFace_AdjCSeal.fldRevID = RevID_IN Select HWFace_AdjCSeal).First()
 
                         With mHW
-                            If (Not IsNothing(pHWFace_AdjCSeal_Rec.fldDHFree)) Then
+                            If (Not IsNothing(pHWFace_AdjCSeal_Rec.fldDHFree) And Not IsDBNull(pHWFace_AdjCSeal_Rec.fldDHFree)) Then
                                 .DHfree = pHWFace_AdjCSeal_Rec.fldDHFree
                             Else
                                 .DHfree = 0.0#
                             End If
 
-                            If (Not IsNothing(pHWFace_AdjCSeal_Rec.fldDThetaOpening)) Then
+                            If (Not IsNothing(pHWFace_AdjCSeal_Rec.fldDThetaOpening) And Not IsDBNull(pHWFace_AdjCSeal_Rec.fldDThetaOpening)) Then
                                 .DThetaOpening = pHWFace_AdjCSeal_Rec.fldDThetaOpening
                             Else
                                 .DThetaOpening = 0.0#
@@ -1058,13 +1152,13 @@ Public Class clsPartProject
                                                     HWFace_AdjESeal.fldRevID = RevID_IN Select HWFace_AdjESeal).First()
 
                         With mHW
-                            If (Not IsNothing(pHWFace_AdjESeal_Rec.fldDThetaE1)) Then
+                            If (Not IsNothing(pHWFace_AdjESeal_Rec.fldDThetaE1) And Not IsDBNull(pHWFace_AdjESeal_Rec.fldDThetaE1)) Then
                                 .DThetaE1 = pHWFace_AdjESeal_Rec.fldDThetaE1
                             Else
                                 .DThetaE1 = 0.0#
                             End If
 
-                            If (Not IsNothing(pHWFace_AdjESeal_Rec.fldDThetaM1)) Then
+                            If (Not IsNothing(pHWFace_AdjESeal_Rec.fldDThetaM1) And Not IsDBNull(pHWFace_AdjESeal_Rec.fldDThetaM1)) Then
                                 .DThetaM1 = pHWFace_AdjESeal_Rec.fldDThetaM1
                             Else
                                 .DThetaM1 = 0.0#

@@ -18,7 +18,7 @@ Imports System.Runtime.Serialization
 Imports System.Xml.Serialization
 
 
-<Assembly: EdmSchemaAttribute("54cddcfe-9898-4dce-852b-40cb9331cf86")>
+<Assembly: EdmSchemaAttribute("59835463-ce76-4ce8-86a4-bdd1e8bcb61e")>
 #Region "EDM Relationship Metadata"
 <Assembly: EdmRelationshipAttribute("SealTestDBModel", "FK_tblLeak_tblTestRpt", "tblReport", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblReport), "tblLeak", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, GetType(tblLeak), True)>
 <Assembly: EdmRelationshipAttribute("SealTestDBModel", "FK_tblReportLeakData_tblReportLeakEquip", "tblLeak", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(tblLeak), "tblLeakData", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(tblLeakData), True)>

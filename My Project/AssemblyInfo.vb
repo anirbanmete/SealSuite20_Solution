@@ -8,10 +8,10 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("SealSuiteBeta26")>
+<Assembly: AssemblyTitle("SealSuite26")>
 <Assembly: AssemblyDescription("")> 
 <Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("SealSuiteBeta26")>
+<Assembly: AssemblyProduct("SealSuite26")>
 <Assembly: AssemblyCopyright("Copyright ©  2018")> 
 <Assembly: AssemblyTrademark("")> 
 

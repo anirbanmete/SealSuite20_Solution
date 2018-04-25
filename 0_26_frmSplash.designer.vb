@@ -237,11 +237,11 @@ Partial Class frmSplash
         Me.lblVarNo.AutoSize = True
         Me.lblVarNo.Font = New System.Drawing.Font("Verdana", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblVarNo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.lblVarNo.Location = New System.Drawing.Point(306, 282)
+        Me.lblVarNo.Location = New System.Drawing.Point(340, 282)
         Me.lblVarNo.Name = "lblVarNo"
-        Me.lblVarNo.Size = New System.Drawing.Size(282, 32)
+        Me.lblVarNo.Size = New System.Drawing.Size(213, 32)
         Me.lblVarNo.TabIndex = 6
-        Me.lblVarNo.Text = "SealSuiteBeta 2.6"
+        Me.lblVarNo.Text = "SealSuite 2.6"
         Me.lblVarNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'cmdExit

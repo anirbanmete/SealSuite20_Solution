@@ -51,7 +51,7 @@ Public Class clsProcessFile
     Private Const mcDirOutput As String = mcDirRoot & "Output Files\"
 
     '....PDS Report  
-    Private Const mcPDSReportFileName As String = mcDirTemplates & "EN7300007 - Product Definition Sheet_Rev W_Rev03.xltx"
+    Private Const mcPDSReportFileName As String = mcDirTemplates & "EN7300007 - Product Definition Sheet_Rev W_AES_17APR18.xltx"
 
     '....Analytics
     Private Const mcAnalyticsFileName As String = mcDirTemplates & "SealProcess_Dashboard_20APR18.xlsm"
@@ -2163,8 +2163,11 @@ Public Class clsProcessFile
 
         Finally
 
-
             pApp.Visible = True
+            pApp.WindowState = EXCEL.XlWindowState.xlMinimized
+            pApp.WindowState = EXCEL.XlWindowState.xlMaximized
+
+            'app.WindowState = XlWindowState.xlMaximized;
 
         End Try
 

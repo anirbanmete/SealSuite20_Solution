@@ -610,7 +610,7 @@ Public Class Part_frmNonStdCS_CSeal
 
         'AES 27JUL17
         '....Assign the DHfree value to the local HW object property.
-        mPartProject.PNR.HW.DHfree = pDHfree
+        ''mPartProject.PNR.HW.DHfree = pDHfree      'AES 24APR18
 
         '....Check the "T" value if it is within the allowable max. & min. manufacturing limits, 
         '........which are dependent on Hfree.  
@@ -695,7 +695,7 @@ Public Class Part_frmNonStdCS_CSeal
 
         'AES 27JUL17
         '....Assign the DHfree value to the local HW object property.
-        mPartProject.PNR.HW.DThetaOpening = pDThetaOpening
+        ''mPartProject.PNR.HW.DThetaOpening = pDThetaOpening        'AES 24APR18
 
         '....Re-draw Seal Geometries
         DoGraphics()
