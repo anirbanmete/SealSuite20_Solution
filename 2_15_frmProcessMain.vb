@@ -4,7 +4,7 @@
 '                      FORM MODULE   :  Process_frmMain                        '
 '                        VERSION NO  :  1.5                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  20APR18                                '
+'                     LAST MODIFIED  :  30MAY18                                '
 '                                                                              '
 '===============================================================================
 Imports System.Globalization
@@ -146,7 +146,18 @@ Public Class Process_frmMain
 
         With cmbPreOrderSeg.Items
             .Clear()
-            .Add("")
+            .Add("AERO")
+            .Add("AUTO")
+            .Add("CPI(ChemProcInd)")
+            .Add("DIESEL")
+            .Add("INDUSTRIAL")
+            .Add("IT")
+            .Add("LIFE SCIENCE")
+            .Add("MILITARY")
+            .Add("OIL & GAS")
+            .Add("OTHER TRANS")
+            .Add("POWER GEN")
+            .Add("SEMICON")
         End With
 
         With cmbPreOrderChannel.Items
@@ -197,6 +208,8 @@ Public Class Process_frmMain
 
         Initialize_tbTesting_Controls()
         InitializeControls()
+
+        PopulateDropDownList()      'AES 28MAY18
 
         If (gPartProject.PNR.SealType.ToString() = "SC") Then
             PopulateMatComboBox(gPartProject.PNR.SealType.ToString(), cmbDesign_Mat_Spring)
@@ -352,6 +365,94 @@ Public Class Process_frmMain
 
 #Region "HELPER ROUTINES:"
 
+    Private Sub PopulateDropDownList()
+        '=============================
+
+        '....Header
+        PopulateDropDownList(cmbPopCoding, "tblHeader_PopCoding")
+        PopulateDropDownList(cmbRating, "tblHeader_Rating")
+        PopulateDropDownList(cmbType, "tblHeader_Type")
+
+        '....Pre-Order
+        Dim pCmbColDept_PreOrd As New DataGridViewComboBoxColumn
+        pCmbColDept_PreOrd = grdCustContact.Columns.Item(0)
+        PopulateDropDownList(pCmbColDept_PreOrd, "tblPreOrder_CustContactDept")
+
+        PopulateDropDownList(cmbExport_Status, "tblPreOrder_ExpComplianceStatus")
+        PopulateDropDownList(cmbPartType, "tblPreOrder_PartType")
+        PopulateDropDownList(cmbPreOrderSeg, "tblPreOrder_MktSeg")
+        PopulateDropDownList(cmbPreOrderChannel, "tblPreOrder_MktChannel")
+        PopulateDropDownList(cmbCostFileLoc, "tblPreOrder_Loc")
+        PopulateDropDownList(cmbRFQPkgLoc, "tblPreOrder_Loc")
+
+        '....Cost Estimating
+        PopulateDropDownList(cmbCost_QuoteFile, "tblPreOrder_Loc")
+
+        Dim pCmbColDesc_Cost As New DataGridViewComboBoxColumn
+        pCmbColDesc_Cost = grdCost_SplOperation.Columns.Item(0)
+        PopulateDropDownList(pCmbColDesc_Cost, "tblCostEst_SplOpDesc")
+
+        '....Export
+        PopulateDropDownList(cmbITAR_Export_Status, "tblExp_Status")
+        PopulateDropDownList(cmbITAR_Export_EAR_Classification, "tblExp_EARClassification")
+
+        '....Ord Entry
+        Dim pCmbColDept_OrdEntry As New DataGridViewComboBoxColumn
+        pCmbColDept_OrdEntry = grdOrdEntry_CustContact.Columns.Item(0)
+        PopulateDropDownList(pCmbColDept_OrdEntry, "tblPreOrder_CustContactDept")
+
+        '....Application
+        Dim pCmbColCavityDim As New DataGridViewComboBoxColumn
+        pCmbColCavityDim = grdApp_Face_Cavity.Columns.Item(0)
+        PopulateDropDownList(pCmbColCavityDim, "tblApp_CavityDim")
+        PopulateDropDownList(cmbFace_SF_ProcessName, "tblApp_SFinish_Measure")
+        PopulateDropDownList(cmbFace_SF_Unit, "tblApp_SFinish_Unit")
+
+        '....Design
+        Dim pCmbColDesc_Verify As New DataGridViewComboBoxColumn
+        pCmbColDesc_Verify = grdDesign_Verification.Columns.Item(0)
+        PopulateDropDownList(pCmbColDesc_Verify, "tblDesign_VerificationDesc")
+
+        Dim pCmbColDesc_Input As New DataGridViewComboBoxColumn
+        pCmbColDesc_Input = grdDesign_Input.Columns.Item(0)
+        PopulateDropDownList(pCmbColDesc_Input, "tblDesign_InputDesc")
+
+        Dim pCmbColDesc_CustSpec As New DataGridViewComboBoxColumn
+        pCmbColDesc_CustSpec = grdDesign_CustSpec.Columns.Item(0)
+        PopulateDropDownList(pCmbColDesc_CustSpec, "tblDesign_CustSpecType")
+
+        '....Manufacturing
+        Dim pCmbColManfStatus_ToolNGage As New DataGridViewComboBoxColumn
+        pCmbColManfStatus_ToolNGage = grdManf_ToolNGage.Columns.Item(3)
+        PopulateDropDownList(pCmbColManfStatus_ToolNGage, "tblManf_ToolNGages_Status")
+
+        Dim pCmbColManfDesignResponsibility_ToolNGage As New DataGridViewComboBoxColumn
+        pCmbColManfDesignResponsibility_ToolNGage = grdManf_ToolNGage.Columns.Item(5)
+        PopulateDropDownList(pCmbColManfDesignResponsibility_ToolNGage, "tblManf_ToolNGages_DesignResponsibility")
+
+        '....Purchasing
+        Dim pCmbColPurchase_Unit As New DataGridViewComboBoxColumn
+        pCmbColPurchase_Unit = grdPurchase_Mat.Columns.Item(2)
+        PopulateDropDownList(pCmbColPurchase_Unit, "tblPurchase_Unit")
+
+        '....Quality
+        PopulateDropDownList(cmbQuality_VisualInspection_Type, "tblQlty_VisualInspection")
+        PopulateDropDownList(cmbQuality_CustAcceptStd, "tblQlty_CustAcceptStd")
+
+        '....Drawing
+        PopulateDropDownList(cmbDwg_DesignLevel, "tblDwg_DesignLevel")
+
+        '....Testing
+        PopulateDropDownList(cmbTest_MediaPre_Leak, "tblTest_Medium")
+        PopulateDropDownList(cmbTest_MediaPost_Leak, "tblTest_Medium")
+        PopulateDropDownList(cmbTest_FreqPre_Leak, "tblTest_Freq")
+        PopulateDropDownList(cmbTest_FreqPost_Leak, "tblTest_Freq")
+
+
+
+
+    End Sub
+
     Private Sub ReInitializeControls()
         '=============================
         InitializeTabs()
@@ -390,10 +491,10 @@ Public Class Process_frmMain
         End If
 
         If (cmbITAR_Export_SaleExportControlled.Text = "N") Then
-            txtITAR_Export_EAR_Classification.Enabled = False
+            cmbITAR_Export_EAR_Classification.Enabled = False
         Else
             If (mExport) Then
-                txtITAR_Export_EAR_Classification.Enabled = True
+                cmbITAR_Export_EAR_Classification.Enabled = True
             End If
 
         End If
@@ -1877,14 +1978,14 @@ Public Class Process_frmMain
 
             If (.SaleExportControlled) Then
                 cmbITAR_Export_SaleExportControlled.Text = "Y"
-                txtITAR_Export_EAR_Classification.Enabled = True
+                cmbITAR_Export_EAR_Classification.Enabled = True
             Else
                 cmbITAR_Export_SaleExportControlled.Text = "N"
-                txtITAR_Export_EAR_Classification.Enabled = False
+                cmbITAR_Export_EAR_Classification.Enabled = False
             End If
 
             txtITAR_Export_ITAR_Classification.Text = .ITAR_Class
-            txtITAR_Export_EAR_Classification.Text = .EAR_Class
+            cmbITAR_Export_EAR_Classification.Text = .EAR_Class
             cmbITAR_Export_Status.Text = .Status
             txtITAR_Export_HTS_Classification.Text = .HTS_Class
 
@@ -4135,6 +4236,33 @@ Public Class Process_frmMain
         pfrmProcessMain_Custom.ShowDialog()
     End Sub
 
+    Private Sub mnuDropDownList_Click(sender As Object, e As EventArgs) Handles mnuDropDownList.Click
+        '==============================================================================================
+        If (gUser.Role = "Admin") Then
+            With openFileDialog1
+
+                .Filter = "Drop Down List (*.xlsx)|*.xlsx"
+                .FilterIndex = 1
+                .InitialDirectory = gProcessFile.DirProgramDataFile
+                .FileName = ""
+                .Title = "Open"
+
+                If .ShowDialog = Windows.Forms.DialogResult.OK Then
+                    Dim pDDListFileName As String = .FileName
+                    Cursor.Current = Cursors.WaitCursor
+                    ReadExcel_UpdateDB(pDDListFileName)
+                    PopulateDropDownList()
+                    DisplayData()
+                    Cursor.Current = Cursors.Default
+                End If
+            End With
+        Else
+            Dim pMsg As String = "Only 'Admin' user can load the 'Drop-Down DataFile'."
+            MessageBox.Show(pMsg, "Permission Denied!", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+        End If
+
+    End Sub
+
     Private Sub mnuRiskQ_Click(sender As Object, e As EventArgs) Handles mnuRiskQ.Click
         '===============================================================================
         If (gUser.Role = "Admin") Then
@@ -4142,7 +4270,7 @@ Public Class Process_frmMain
 
                 .Filter = "Risk Analysis DataFile (*.xlsx)|*.xlsx"
                 .FilterIndex = 1
-                .InitialDirectory = gFile.DirProgramDataFile_Process
+                .InitialDirectory = gProcessFile.DirProgramDataFile
                 .FileName = ""
                 .Title = "Open"
 
@@ -4160,6 +4288,1202 @@ Public Class Process_frmMain
         End If
 
 
+    End Sub
+
+#End Region
+
+#Region "DROP-DOWN LIST RELATED ROUTINES:"
+
+    Private Sub ReadExcel_UpdateDB(ByVal FileName_In As String)
+        '=====================================================
+        Dim pRow_Start As Integer = 0
+        Dim pColumn_Start As Integer = 0
+        Dim pItem As New List(Of String)
+
+        CloseExcelFiles()
+
+        Dim pApp As EXCEL.Application = Nothing
+        pApp = New EXCEL.Application()
+
+        'pApp.DisplayAlerts = False
+
+        '....Open WorkBook.
+        Dim pWkbOrg As EXCEL.Workbook = Nothing
+        Dim pExitLoop As Boolean = False
+
+        Dim pSealProcessDDListEntities As New SealProcess_DDListDBEntities()
+
+        Try
+
+            pWkbOrg = pApp.Workbooks.Open(FileName_In, Missing.Value, False, Missing.Value, Missing.Value, Missing.Value,
+                                              Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value,
+                                              Missing.Value, Missing.Value, Missing.Value)
+            '....Header
+            '....Table - tblHeader_PopCoding
+            pRow_Start = 5
+            pColumn_Start = 1
+            pItem = New List(Of String)
+            pItem = ReadDropDownList(pWkbOrg, "Header", pRow_Start, pColumn_Start)
+            UpdateDB(pItem, "tblHeader_PopCoding")
+
+            '....Table - tblHeader_Rating
+            pRow_Start = 5
+            pColumn_Start = 3
+            pItem = New List(Of String)
+            pItem = ReadDropDownList(pWkbOrg, "Header", pRow_Start, pColumn_Start)
+            UpdateDB(pItem, "tblHeader_Rating")
+
+            '....Table - tblHeader_Type
+            pRow_Start = 5
+            pColumn_Start = 5
+            pItem = New List(Of String)
+            pItem = ReadDropDownList(pWkbOrg, "Header", pRow_Start, pColumn_Start)
+            UpdateDB(pItem, "tblHeader_Type")
+
+            '....Pre-Order
+            '....Table - tblPreOrder_CustContactDept
+            pRow_Start = 5
+            pColumn_Start = 1
+            pItem = New List(Of String)
+            pItem = ReadDropDownList(pWkbOrg, "Pre-Order", pRow_Start, pColumn_Start)
+            UpdateDB(pItem, "tblPreOrder_CustContactDept")
+
+            '....Table - tblPreOrder_ExpComplianceStatus
+            pRow_Start = 5
+            pColumn_Start = 3
+            pItem = New List(Of String)
+            pItem = ReadDropDownList(pWkbOrg, "Pre-Order", pRow_Start, pColumn_Start)
+            UpdateDB(pItem, "tblPreOrder_ExpComplianceStatus")
+
+            '....Table - tblPreOrder_PartType
+            pRow_Start = 5
+            pColumn_Start = 5
+            pItem = New List(Of String)
+            pItem = ReadDropDownList(pWkbOrg, "Pre-Order", pRow_Start, pColumn_Start)
+            UpdateDB(pItem, "tblPreOrder_PartType")
+
+            '....Table - tblPreOrder_MktSeg
+            pRow_Start = 5
+            pColumn_Start = 7
+            pItem = New List(Of String)
+            pItem = ReadDropDownList(pWkbOrg, "Pre-Order", pRow_Start, pColumn_Start)
+            UpdateDB(pItem, "tblPreOrder_MktSeg")
+
+            '....Table - tblPreOrder_MktChannel
+            pRow_Start = 5
+            pColumn_Start = 9
+            pItem = New List(Of String)
+            pItem = ReadDropDownList(pWkbOrg, "Pre-Order", pRow_Start, pColumn_Start)
+            UpdateDB(pItem, "tblPreOrder_MktChannel")
+
+            '....Table - tblPreOrder_Loc
+            pRow_Start = 5
+            pColumn_Start = 11
+            pItem = New List(Of String)
+            pItem = ReadDropDownList(pWkbOrg, "Pre-Order", pRow_Start, pColumn_Start)
+            UpdateDB(pItem, "tblPreOrder_Loc")
+
+            '....Export
+            '....Table - tblExp_Status
+            pRow_Start = 5
+            pColumn_Start = 1
+            pItem = New List(Of String)
+            pItem = ReadDropDownList(pWkbOrg, "Export", pRow_Start, pColumn_Start)
+            UpdateDB(pItem, "tblExp_Status")
+
+            '....Table - tblExp_EARClassification
+            pRow_Start = 5
+            pColumn_Start = 3
+            pItem = New List(Of String)
+            pItem = ReadDropDownList(pWkbOrg, "Export", pRow_Start, pColumn_Start)
+            UpdateDB(pItem, "tblExp_EARClassification")
+
+            '....Cost Estimating
+            '....Table - tblCostEst_SplOpDesc
+            pRow_Start = 5
+            pColumn_Start = 1
+            pItem = New List(Of String)
+            pItem = ReadDropDownList(pWkbOrg, "Cost Estimating", pRow_Start, pColumn_Start)
+            UpdateDB(pItem, "tblCostEst_SplOpDesc")
+
+
+            '....Application
+            '....Table - tblApp_CavityDim
+            pRow_Start = 5
+            pColumn_Start = 1
+            pItem = New List(Of String)
+            pItem = ReadDropDownList(pWkbOrg, "Application", pRow_Start, pColumn_Start)
+            UpdateDB(pItem, "tblApp_CavityDim")
+
+            '....Table - tblApp_SFinish_Measure
+            pRow_Start = 5
+            pColumn_Start = 3
+            pItem = New List(Of String)
+            pItem = ReadDropDownList(pWkbOrg, "Application", pRow_Start, pColumn_Start)
+            UpdateDB(pItem, "tblApp_SFinish_Measure")
+
+            '....Table - tblApp_SFinish_Unit
+            pRow_Start = 5
+            pColumn_Start = 5
+            pItem = New List(Of String)
+            pItem = ReadDropDownList(pWkbOrg, "Application", pRow_Start, pColumn_Start)
+            UpdateDB(pItem, "tblApp_SFinish_Unit")
+
+            '....Design
+            '....Table - tblDesign_VerificationDesc
+            pRow_Start = 5
+            pColumn_Start = 1
+            pItem = New List(Of String)
+            pItem = ReadDropDownList(pWkbOrg, "Design", pRow_Start, pColumn_Start)
+            UpdateDB(pItem, "tblDesign_VerificationDesc")
+
+            '....Table - tblDesign_InputDesc
+            pRow_Start = 5
+            pColumn_Start = 3
+            pItem = New List(Of String)
+            pItem = ReadDropDownList(pWkbOrg, "Design", pRow_Start, pColumn_Start)
+            UpdateDB(pItem, "tblDesign_InputDesc")
+
+            '....Table - tblDesign_CustSpecType
+            pRow_Start = 5
+            pColumn_Start = 5
+            pItem = New List(Of String)
+            pItem = ReadDropDownList(pWkbOrg, "Design", pRow_Start, pColumn_Start)
+            UpdateDB(pItem, "tblDesign_CustSpecType")
+
+            '....Table - tblDesign_CSeal
+            pRow_Start = 32
+            pColumn_Start = 1
+            pItem = New List(Of String)
+            pItem = ReadDropDownList(pWkbOrg, "Design", pRow_Start, pColumn_Start)
+            UpdateDB(pItem, "tblDesign_CSeal")
+
+            '....Table - tblDesign_ESeal
+            pRow_Start = 32
+            pColumn_Start = 2
+            pItem = New List(Of String)
+            pItem = ReadDropDownList(pWkbOrg, "Design", pRow_Start, pColumn_Start)
+            UpdateDB(pItem, "tblDesign_ESeal")
+
+            '....Table - tblDesign_USeal
+            pRow_Start = 32
+            pColumn_Start = 3
+            pItem = New List(Of String)
+            pItem = ReadDropDownList(pWkbOrg, "Design", pRow_Start, pColumn_Start)
+            UpdateDB(pItem, "tblDesign_USeal")
+
+            '....Table - tblDesign_OSeal
+            pRow_Start = 32
+            pColumn_Start = 4
+            pItem = New List(Of String)
+            pItem = ReadDropDownList(pWkbOrg, "Design", pRow_Start, pColumn_Start)
+            UpdateDB(pItem, "tblDesign_OSeal")
+
+            '....Table - tblDesign_WSeal
+            pRow_Start = 32
+            pColumn_Start = 5
+            pItem = New List(Of String)
+            pItem = ReadDropDownList(pWkbOrg, "Design", pRow_Start, pColumn_Start)
+            UpdateDB(pItem, "tblDesign_WSeal")
+
+            '....Manufacturing
+            '....Table - tblManf_ToolNGages
+            '....Special Case.
+            pRow_Start = 6
+            pColumn_Start = 1
+            pItem = New List(Of String)
+            pItem = ReadDropDownList(pWkbOrg, "Manufacturing", pRow_Start, pColumn_Start)
+            'UpdateDB(pItem, "tblManf_ToolNGages")
+
+            Dim pManf_ToolNGageType As New List(Of String)
+            pManf_ToolNGageType = ReadDropDownList_Manf_ToolNGage_Type(pWkbOrg, "Manufacturing", pRow_Start, pColumn_Start)
+            UpdateDB_Manf_ToolNGages(pItem, pManf_ToolNGageType, "tblManf_ToolNGages")
+            'UpdateDB(pManf_ToolNGageType, "tblManf_ToolNGages")
+
+            '....Table - tblManf_ToolNGages_Status
+            pRow_Start = 5
+            pColumn_Start = 4
+            pItem = New List(Of String)
+            pItem = ReadDropDownList(pWkbOrg, "Manufacturing", pRow_Start, pColumn_Start)
+            UpdateDB(pItem, "tblManf_ToolNGages_Status")
+
+            '....Table - tblManf_ToolNGages_DesignResponsibility
+            pRow_Start = 5
+            pColumn_Start = 6
+            pItem = New List(Of String)
+            pItem = ReadDropDownList(pWkbOrg, "Manufacturing", pRow_Start, pColumn_Start)
+            UpdateDB(pItem, "tblManf_ToolNGages_DesignResponsibility")
+
+            '....Purchasing
+            '....Table - tblPurchase_Unit
+            pRow_Start = 5
+            pColumn_Start = 1
+            pItem = New List(Of String)
+            pItem = ReadDropDownList(pWkbOrg, "Purchasing", pRow_Start, pColumn_Start)
+            UpdateDB(pItem, "tblPurchase_Unit")
+
+            '....Quality
+            '....Table - tblQlty_VisualInspection
+            pRow_Start = 5
+            pColumn_Start = 1
+            pItem = New List(Of String)
+            pItem = ReadDropDownList(pWkbOrg, "Quality", pRow_Start, pColumn_Start)
+            UpdateDB(pItem, "tblQlty_VisualInspection")
+
+            '....Table - tblQlty_CustAcceptStd
+            pRow_Start = 5
+            pColumn_Start = 3
+            pItem = New List(Of String)
+            pItem = ReadDropDownList(pWkbOrg, "Quality", pRow_Start, pColumn_Start)
+            UpdateDB(pItem, "tblQlty_CustAcceptStd")
+
+            '....Dwg
+            '....Table - tblDwg_DesignLevel
+            pRow_Start = 5
+            pColumn_Start = 1
+            pItem = New List(Of String)
+            pItem = ReadDropDownList(pWkbOrg, "Drawing", pRow_Start, pColumn_Start)
+            UpdateDB(pItem, "tblDwg_DesignLevel")
+
+            '....Testing
+            '....Table - tblTest_Medium
+            pRow_Start = 5
+            pColumn_Start = 1
+            pItem = New List(Of String)
+            pItem = ReadDropDownList(pWkbOrg, "Testing", pRow_Start, pColumn_Start)
+            UpdateDB(pItem, "tblTest_Medium")
+
+            '....Table - tblTest_Freq
+            pRow_Start = 5
+            pColumn_Start = 3
+            pItem = New List(Of String)
+            pItem = ReadDropDownList(pWkbOrg, "Testing", pRow_Start, pColumn_Start)
+            UpdateDB(pItem, "tblTest_Freq")
+
+            pWkbOrg.Close()
+            pApp = Nothing
+            Dim pFileTitle As String = System.IO.Path.GetFileName(FileName_In)
+            Dim pMsg As String = "Updated from: " & Space(2) & pFileTitle
+            MessageBox.Show(pMsg, "Drop-Down Data File Loading", MessageBoxButtons.OK)
+
+        Catch ex As Exception
+
+        End Try
+
+    End Sub
+
+    Private Function ReadDropDownList(ByVal WorkBook_In As EXCEL.Workbook, ByVal SheetName_In As String,
+                                      ByVal Row_In As Integer, ByVal Column_In As Integer) As List(Of String)
+        '===============================================================================================================
+
+        Dim pWkSheet As EXCEL.Worksheet
+        Dim pExitLoop As Boolean = False
+
+        pWkSheet = WorkBook_In.Worksheets(SheetName_In)
+
+        Dim pItem As New List(Of String)
+        Dim pIndx As Integer = 0
+
+        While (Not pExitLoop)
+            Dim pVal As String = pWkSheet.Cells(Row_In + pIndx, Column_In).value
+            pExitLoop = String.IsNullOrEmpty(pVal)
+
+            If (Not pExitLoop) Then
+                pItem.Add(pVal)
+                pIndx = pIndx + 1
+
+            End If
+
+        End While
+
+        Return pItem
+
+    End Function
+
+    Private Function ReadDropDownList_Manf_ToolNGage_Type(ByVal WorkBook_In As EXCEL.Workbook, ByVal SheetName_In As String,
+                                                           ByVal Row_In As Integer, ByVal Column_In As Integer) As List(Of String)
+        '===============================================================================================================
+
+        Dim pWkSheet As EXCEL.Worksheet
+        Dim pExitLoop As Boolean = False
+
+        pWkSheet = WorkBook_In.Worksheets(SheetName_In)
+
+        Dim pItem As New List(Of String)
+        Dim pIndx As Integer = 0
+
+        Dim pType As New List(Of String)
+        Dim pType_Column As Integer = Column_In + 1
+
+        While (Not pExitLoop)
+
+            Dim pVal As String = pWkSheet.Cells(Row_In + pIndx, Column_In).value
+            Dim pVal1 As String = pWkSheet.Cells(Row_In + pIndx, pType_Column).value
+
+            If (IsNothing(pVal1)) Then
+                pVal1 = ""
+            End If
+            pExitLoop = String.IsNullOrEmpty(pVal)
+
+            If (Not pExitLoop) Then
+                pItem.Add(pVal)
+                pType.Add(pVal1)
+                pIndx = pIndx + 1
+            End If
+
+        End While
+
+        Return pType
+
+    End Function
+
+    Private Sub UpdateDB_Manf_ToolNGages(ByVal Item_In As List(Of String), ByVal Type_In As List(Of String), ByVal TableName_In As String)
+        '===============================================================================================================================
+        Dim pSealProcessDDListEntities As New SealProcess_DDListDBEntities()
+        Dim pRec = (From Rec In pSealProcessDDListEntities.tblManf_ToolNGages
+                    Select Rec).ToList()
+
+        For i As Integer = 0 To pRec.Count() - 1
+            pSealProcessDDListEntities.DeleteObject(pRec(i))
+            pSealProcessDDListEntities.SaveChanges()
+        Next
+
+        Dim pTableRec As New List(Of tblManf_ToolNGages)
+
+        For i As Integer = 0 To Item_In.Count - 1
+            Dim pList As New tblManf_ToolNGages
+            pTableRec.Add(pList)
+            pTableRec(i).fldID = i + 1
+            pTableRec(i).fldDesc = Item_In(i)
+            pTableRec(i).fldType = Type_In(i)
+
+            pSealProcessDDListEntities.AddTotblManf_ToolNGages(pTableRec(i))
+        Next
+
+        pSealProcessDDListEntities.SaveChanges()
+    End Sub
+
+    Private Sub UpdateDB(ByVal Item_In As List(Of String), ByVal TableName_In As String)
+        '===============================================================================
+        Dim pSealProcessDDListEntities As New SealProcess_DDListDBEntities()
+
+        If (Item_In.Count > 0) Then
+
+            '....Header
+            If (TableName_In = "tblHeader_PopCoding") Then
+                Dim pPopCodingRec = (From Rec In pSealProcessDDListEntities.tblHeader_PopCoding
+                                     Select Rec).ToList()
+
+                For i As Integer = 0 To pPopCodingRec.Count() - 1
+                    pSealProcessDDListEntities.DeleteObject(pPopCodingRec(i))
+                    pSealProcessDDListEntities.SaveChanges()
+                Next
+
+                Dim pPopCodingList As New List(Of tblHeader_PopCoding)
+
+                For i As Integer = 0 To Item_In.Count - 1
+                    Dim pPopCodeNameList As New tblHeader_PopCoding
+                    pPopCodingList.Add(pPopCodeNameList)
+                    pPopCodingList(i).fldID = i + 1
+                    pPopCodingList(i).fldPopCoding = Item_In(i)
+
+                    pSealProcessDDListEntities.AddTotblHeader_PopCoding(pPopCodingList(i))
+                Next
+
+            ElseIf (TableName_In = "tblHeader_Rating") Then
+                Dim pRec = (From Rec In pSealProcessDDListEntities.tblHeader_Rating
+                            Select Rec).ToList()
+
+                For i As Integer = 0 To pRec.Count() - 1
+                    pSealProcessDDListEntities.DeleteObject(pRec(i))
+                    pSealProcessDDListEntities.SaveChanges()
+                Next
+
+                Dim pTableList As New List(Of tblHeader_Rating)
+
+                For i As Integer = 0 To Item_In.Count - 1
+                    Dim pList As New tblHeader_Rating
+                    pTableList.Add(pList)
+                    pTableList(i).fldID = i + 1
+                    pTableList(i).fldRating = Item_In(i)
+
+                    pSealProcessDDListEntities.AddTotblHeader_Rating(pTableList(i))
+                Next
+
+            ElseIf (TableName_In = "tblHeader_Type") Then
+                Dim pRec = (From Rec In pSealProcessDDListEntities.tblHeader_Type
+                            Select Rec).ToList()
+
+                For i As Integer = 0 To pRec.Count() - 1
+                    pSealProcessDDListEntities.DeleteObject(pRec(i))
+                    pSealProcessDDListEntities.SaveChanges()
+                Next
+
+                Dim pTableRec As New List(Of tblHeader_Type)
+
+                For i As Integer = 0 To Item_In.Count - 1
+                    Dim pList As New tblHeader_Type
+                    pTableRec.Add(pList)
+                    pTableRec(i).fldID = i + 1
+                    pTableRec(i).fldType = Item_In(i)
+
+                    pSealProcessDDListEntities.AddTotblHeader_Type(pTableRec(i))
+                Next
+
+                '....Pre-Order
+            ElseIf (TableName_In = "tblPreOrder_CustContactDept") Then
+                Dim pRec = (From Rec In pSealProcessDDListEntities.tblPreOrder_CustContactDept
+                            Select Rec).ToList()
+
+                For i As Integer = 0 To pRec.Count() - 1
+                    pSealProcessDDListEntities.DeleteObject(pRec(i))
+                    pSealProcessDDListEntities.SaveChanges()
+                Next
+
+                Dim pTableRec As New List(Of tblPreOrder_CustContactDept)
+
+                For i As Integer = 0 To Item_In.Count - 1
+                    Dim pList As New tblPreOrder_CustContactDept
+                    pTableRec.Add(pList)
+                    pTableRec(i).fldID = i + 1
+                    pTableRec(i).fldCustContactDept = Item_In(i)
+
+                    pSealProcessDDListEntities.AddTotblPreOrder_CustContactDept(pTableRec(i))
+                Next
+
+            ElseIf (TableName_In = "tblPreOrder_ExpComplianceStatus") Then
+                Dim pRec = (From Rec In pSealProcessDDListEntities.tblPreOrder_ExpComplianceStatus
+                            Select Rec).ToList()
+
+                For i As Integer = 0 To pRec.Count() - 1
+                    pSealProcessDDListEntities.DeleteObject(pRec(i))
+                    pSealProcessDDListEntities.SaveChanges()
+                Next
+
+                Dim pTableRec As New List(Of tblPreOrder_ExpComplianceStatus)
+
+                For i As Integer = 0 To Item_In.Count - 1
+                    Dim pList As New tblPreOrder_ExpComplianceStatus
+                    pTableRec.Add(pList)
+                    pTableRec(i).fldID = i + 1
+                    pTableRec(i).fldExpComplianceStatus = Item_In(i)
+
+                    pSealProcessDDListEntities.AddTotblPreOrder_ExpComplianceStatus(pTableRec(i))
+                Next
+
+            ElseIf (TableName_In = "tblPreOrder_PartType") Then
+                Dim pRec = (From Rec In pSealProcessDDListEntities.tblPreOrder_PartType
+                            Select Rec).ToList()
+
+                For i As Integer = 0 To pRec.Count() - 1
+                    pSealProcessDDListEntities.DeleteObject(pRec(i))
+                    pSealProcessDDListEntities.SaveChanges()
+                Next
+
+                Dim pTableRec As New List(Of tblPreOrder_PartType)
+
+                For i As Integer = 0 To Item_In.Count - 1
+                    Dim pList As New tblPreOrder_PartType
+                    pTableRec.Add(pList)
+                    pTableRec(i).fldID = i + 1
+                    pTableRec(i).fldPartType = Item_In(i)
+
+                    pSealProcessDDListEntities.AddTotblPreOrder_PartType(pTableRec(i))
+                Next
+
+            ElseIf (TableName_In = "tblPreOrder_MktSeg") Then
+                Dim pRec = (From Rec In pSealProcessDDListEntities.tblPreOrder_MktSeg
+                            Select Rec).ToList()
+
+                For i As Integer = 0 To pRec.Count() - 1
+                    pSealProcessDDListEntities.DeleteObject(pRec(i))
+                    pSealProcessDDListEntities.SaveChanges()
+                Next
+
+                Dim pTableRec As New List(Of tblPreOrder_MktSeg)
+
+                For i As Integer = 0 To Item_In.Count - 1
+                    Dim pList As New tblPreOrder_MktSeg
+                    pTableRec.Add(pList)
+                    pTableRec(i).fldID = i + 1
+                    pTableRec(i).fldMktSeg = Item_In(i)
+
+                    pSealProcessDDListEntities.AddTotblPreOrder_MktSeg(pTableRec(i))
+                Next
+
+            ElseIf (TableName_In = "tblPreOrder_MktChannel") Then
+                Dim pRec = (From Rec In pSealProcessDDListEntities.tblPreOrder_MktChannel
+                            Select Rec).ToList()
+
+                For i As Integer = 0 To pRec.Count() - 1
+                    pSealProcessDDListEntities.DeleteObject(pRec(i))
+                    pSealProcessDDListEntities.SaveChanges()
+                Next
+
+                Dim pTableRec As New List(Of tblPreOrder_MktChannel)
+
+                For i As Integer = 0 To Item_In.Count - 1
+                    Dim pList As New tblPreOrder_MktChannel
+                    pTableRec.Add(pList)
+                    pTableRec(i).fldID = i + 1
+                    pTableRec(i).fldMktChannel = Item_In(i)
+
+                    pSealProcessDDListEntities.AddTotblPreOrder_MktChannel(pTableRec(i))
+                Next
+
+            ElseIf (TableName_In = "tblPreOrder_Loc") Then
+                Dim pRec = (From Rec In pSealProcessDDListEntities.tblPreOrder_Loc
+                            Select Rec).ToList()
+
+                For i As Integer = 0 To pRec.Count() - 1
+                    pSealProcessDDListEntities.DeleteObject(pRec(i))
+                    pSealProcessDDListEntities.SaveChanges()
+                Next
+
+                Dim pTableRec As New List(Of tblPreOrder_Loc)
+
+                For i As Integer = 0 To Item_In.Count - 1
+                    Dim pList As New tblPreOrder_Loc
+                    pTableRec.Add(pList)
+                    pTableRec(i).fldID = i + 1
+                    pTableRec(i).fldLoc = Item_In(i)
+
+                    pSealProcessDDListEntities.AddTotblPreOrder_Loc(pTableRec(i))
+                Next
+
+                '....Cost Estimating
+            ElseIf (TableName_In = "tblCostEst_SplOpDesc") Then
+                Dim pRec = (From Rec In pSealProcessDDListEntities.tblCostEst_SplOpDesc
+                            Select Rec).ToList()
+
+                For i As Integer = 0 To pRec.Count() - 1
+                    pSealProcessDDListEntities.DeleteObject(pRec(i))
+                    pSealProcessDDListEntities.SaveChanges()
+                Next
+
+                Dim pTableRec As New List(Of tblCostEst_SplOpDesc)
+
+                For i As Integer = 0 To Item_In.Count - 1
+                    Dim pList As New tblCostEst_SplOpDesc
+                    pTableRec.Add(pList)
+                    pTableRec(i).fldID = i + 1
+                    pTableRec(i).fldSplOpDesc = Item_In(i)
+
+                    pSealProcessDDListEntities.AddTotblCostEst_SplOpDesc(pTableRec(i))
+                Next
+
+                '....Export
+            ElseIf (TableName_In = "tblExp_Status") Then
+                Dim pRec = (From Rec In pSealProcessDDListEntities.tblExp_Status
+                            Select Rec).ToList()
+
+                For i As Integer = 0 To pRec.Count() - 1
+                    pSealProcessDDListEntities.DeleteObject(pRec(i))
+                    pSealProcessDDListEntities.SaveChanges()
+                Next
+
+                Dim pTableRec As New List(Of tblExp_Status)
+
+                For i As Integer = 0 To Item_In.Count - 1
+                    Dim pList As New tblExp_Status
+                    pTableRec.Add(pList)
+                    pTableRec(i).fldID = i + 1
+                    pTableRec(i).fldStatus = Item_In(i)
+
+                    pSealProcessDDListEntities.AddTotblExp_Status(pTableRec(i))
+                Next
+
+            ElseIf (TableName_In = "tblExp_EARClassification") Then
+                Dim pRec = (From Rec In pSealProcessDDListEntities.tblExp_EARClassification
+                            Select Rec).ToList()
+
+                For i As Integer = 0 To pRec.Count() - 1
+                    pSealProcessDDListEntities.DeleteObject(pRec(i))
+                    pSealProcessDDListEntities.SaveChanges()
+                Next
+
+                Dim pTableRec As New List(Of tblExp_EARClassification)
+
+                For i As Integer = 0 To Item_In.Count - 1
+                    Dim pList As New tblExp_EARClassification
+                    pTableRec.Add(pList)
+                    pTableRec(i).fldID = i + 1
+                    pTableRec(i).fldEARClassification = Item_In(i)
+
+                    pSealProcessDDListEntities.AddTotblExp_EARClassification(pTableRec(i))
+                Next
+
+                '....Application
+            ElseIf (TableName_In = "tblApp_CavityDim") Then
+                Dim pRec = (From Rec In pSealProcessDDListEntities.tblApp_CavityDim
+                            Select Rec).ToList()
+
+                For i As Integer = 0 To pRec.Count() - 1
+                    pSealProcessDDListEntities.DeleteObject(pRec(i))
+                    pSealProcessDDListEntities.SaveChanges()
+                Next
+
+                Dim pTableRec As New List(Of tblApp_CavityDim)
+
+                For i As Integer = 0 To Item_In.Count - 1
+                    Dim pList As New tblApp_CavityDim
+                    pTableRec.Add(pList)
+                    pTableRec(i).fldID = i + 1
+                    pTableRec(i).fldCavityDim = Item_In(i)
+
+                    pSealProcessDDListEntities.AddTotblApp_CavityDim(pTableRec(i))
+                Next
+
+            ElseIf (TableName_In = "tblApp_SFinish_Measure") Then
+                Dim pRec = (From Rec In pSealProcessDDListEntities.tblApp_SFinish_Measure
+                            Select Rec).ToList()
+
+                For i As Integer = 0 To pRec.Count() - 1
+                    pSealProcessDDListEntities.DeleteObject(pRec(i))
+                    pSealProcessDDListEntities.SaveChanges()
+                Next
+
+                Dim pTableRec As New List(Of tblApp_SFinish_Measure)
+
+                For i As Integer = 0 To Item_In.Count - 1
+                    Dim pList As New tblApp_SFinish_Measure
+                    pTableRec.Add(pList)
+                    pTableRec(i).fldID = i + 1
+                    pTableRec(i).fldSFinish_Measure = Item_In(i)
+
+                    pSealProcessDDListEntities.AddTotblApp_SFinish_Measure(pTableRec(i))
+                Next
+
+            ElseIf (TableName_In = "tblApp_SFinish_Unit") Then
+                Dim pRec = (From Rec In pSealProcessDDListEntities.tblApp_SFinish_Unit
+                            Select Rec).ToList()
+
+                For i As Integer = 0 To pRec.Count() - 1
+                    pSealProcessDDListEntities.DeleteObject(pRec(i))
+                    pSealProcessDDListEntities.SaveChanges()
+                Next
+
+                Dim pTableRec As New List(Of tblApp_SFinish_Unit)
+
+                For i As Integer = 0 To Item_In.Count - 1
+                    Dim pList As New tblApp_SFinish_Unit
+                    pTableRec.Add(pList)
+                    pTableRec(i).fldID = i + 1
+                    pTableRec(i).fldSFinish_Unit = Item_In(i)
+
+                    pSealProcessDDListEntities.AddTotblApp_SFinish_Unit(pTableRec(i))
+                Next
+
+                '....Design
+            ElseIf (TableName_In = "tblDesign_VerificationDesc") Then
+                Dim pRec = (From Rec In pSealProcessDDListEntities.tblDesign_VerificationDesc
+                            Select Rec).ToList()
+
+                For i As Integer = 0 To pRec.Count() - 1
+                    pSealProcessDDListEntities.DeleteObject(pRec(i))
+                    pSealProcessDDListEntities.SaveChanges()
+                Next
+
+                Dim pTableRec As New List(Of tblDesign_VerificationDesc)
+
+                For i As Integer = 0 To Item_In.Count - 1
+                    Dim pList As New tblDesign_VerificationDesc
+                    pTableRec.Add(pList)
+                    pTableRec(i).fldID = i + 1
+                    pTableRec(i).fldDesignVerification = Item_In(i)
+
+                    pSealProcessDDListEntities.AddTotblDesign_VerificationDesc(pTableRec(i))
+                Next
+
+            ElseIf (TableName_In = "tblDesign_VerificationDesc") Then
+                Dim pRec = (From Rec In pSealProcessDDListEntities.tblDesign_VerificationDesc
+                            Select Rec).ToList()
+
+                For i As Integer = 0 To pRec.Count() - 1
+                    pSealProcessDDListEntities.DeleteObject(pRec(i))
+                    pSealProcessDDListEntities.SaveChanges()
+                Next
+
+                Dim pTableRec As New List(Of tblDesign_VerificationDesc)
+
+                For i As Integer = 0 To Item_In.Count - 1
+                    Dim pList As New tblDesign_VerificationDesc
+                    pTableRec.Add(pList)
+                    pTableRec(i).fldID = i + 1
+                    pTableRec(i).fldDesignVerification = Item_In(i)
+
+                    pSealProcessDDListEntities.AddTotblDesign_VerificationDesc(pTableRec(i))
+                Next
+
+            ElseIf (TableName_In = "tblDesign_InputDesc") Then
+                Dim pRec = (From Rec In pSealProcessDDListEntities.tblDesign_InputDesc
+                            Select Rec).ToList()
+
+                For i As Integer = 0 To pRec.Count() - 1
+                    pSealProcessDDListEntities.DeleteObject(pRec(i))
+                    pSealProcessDDListEntities.SaveChanges()
+                Next
+
+                Dim pTableRec As New List(Of tblDesign_InputDesc)
+
+                For i As Integer = 0 To Item_In.Count - 1
+                    Dim pList As New tblDesign_InputDesc
+                    pTableRec.Add(pList)
+                    pTableRec(i).fldID = i + 1
+                    pTableRec(i).fldInputDesc = Item_In(i)
+
+                    pSealProcessDDListEntities.AddTotblDesign_InputDesc(pTableRec(i))
+                Next
+
+            ElseIf (TableName_In = "tblDesign_CustSpecType") Then
+                Dim pRec = (From Rec In pSealProcessDDListEntities.tblDesign_CustSpecType
+                            Select Rec).ToList()
+
+                For i As Integer = 0 To pRec.Count() - 1
+                    pSealProcessDDListEntities.DeleteObject(pRec(i))
+                    pSealProcessDDListEntities.SaveChanges()
+                Next
+
+                Dim pTableRec As New List(Of tblDesign_CustSpecType)
+
+                For i As Integer = 0 To Item_In.Count - 1
+                    Dim pList As New tblDesign_CustSpecType
+                    pTableRec.Add(pList)
+                    pTableRec(i).fldID = i + 1
+                    pTableRec(i).fldCustSpecType = Item_In(i)
+
+                    pSealProcessDDListEntities.AddTotblDesign_CustSpecType(pTableRec(i))
+                Next
+
+            ElseIf (TableName_In = "tblDesign_CSeal") Then
+                Dim pRec = (From Rec In pSealProcessDDListEntities.tblDesign_CSeal
+                            Select Rec).ToList()
+
+                For i As Integer = 0 To pRec.Count() - 1
+                    pSealProcessDDListEntities.DeleteObject(pRec(i))
+                    pSealProcessDDListEntities.SaveChanges()
+                Next
+
+                Dim pTableRec As New List(Of tblDesign_CSeal)
+
+                For i As Integer = 0 To Item_In.Count - 1
+                    Dim pList As New tblDesign_CSeal
+                    pTableRec.Add(pList)
+                    pTableRec(i).fldID = i + 1
+                    pTableRec(i).fldCSeal = Item_In(i)
+
+                    pSealProcessDDListEntities.AddTotblDesign_CSeal(pTableRec(i))
+                Next
+
+            ElseIf (TableName_In = "tblDesign_ESeal") Then
+                Dim pRec = (From Rec In pSealProcessDDListEntities.tblDesign_ESeal
+                            Select Rec).ToList()
+
+                For i As Integer = 0 To pRec.Count() - 1
+                    pSealProcessDDListEntities.DeleteObject(pRec(i))
+                    pSealProcessDDListEntities.SaveChanges()
+                Next
+
+                Dim pTableRec As New List(Of tblDesign_ESeal)
+
+                For i As Integer = 0 To Item_In.Count - 1
+                    Dim pList As New tblDesign_ESeal
+                    pTableRec.Add(pList)
+                    pTableRec(i).fldID = i + 1
+                    pTableRec(i).fldESeal = Item_In(i)
+
+                    pSealProcessDDListEntities.AddTotblDesign_ESeal(pTableRec(i))
+                Next
+
+            ElseIf (TableName_In = "tblDesign_USeal") Then
+                Dim pRec = (From Rec In pSealProcessDDListEntities.tblDesign_USeal
+                            Select Rec).ToList()
+
+                For i As Integer = 0 To pRec.Count() - 1
+                    pSealProcessDDListEntities.DeleteObject(pRec(i))
+                    pSealProcessDDListEntities.SaveChanges()
+                Next
+
+                Dim pTableRec As New List(Of tblDesign_USeal)
+
+                For i As Integer = 0 To Item_In.Count - 1
+                    Dim pList As New tblDesign_USeal
+                    pTableRec.Add(pList)
+                    pTableRec(i).fldID = i + 1
+                    pTableRec(i).fldUSeal = Item_In(i)
+
+                    pSealProcessDDListEntities.AddTotblDesign_USeal(pTableRec(i))
+                Next
+
+            ElseIf (TableName_In = "tblDesign_OSeal") Then
+                Dim pRec = (From Rec In pSealProcessDDListEntities.tblDesign_OSeal
+                            Select Rec).ToList()
+
+                For i As Integer = 0 To pRec.Count() - 1
+                    pSealProcessDDListEntities.DeleteObject(pRec(i))
+                    pSealProcessDDListEntities.SaveChanges()
+                Next
+
+                Dim pTableRec As New List(Of tblDesign_OSeal)
+
+                For i As Integer = 0 To Item_In.Count - 1
+                    Dim pList As New tblDesign_OSeal
+                    pTableRec.Add(pList)
+                    pTableRec(i).fldID = i + 1
+                    pTableRec(i).fldOSeal = Item_In(i)
+
+                    pSealProcessDDListEntities.AddTotblDesign_OSeal(pTableRec(i))
+                Next
+
+            ElseIf (TableName_In = "tblDesign_WSeal") Then
+                Dim pRec = (From Rec In pSealProcessDDListEntities.tblDesign_WSeal
+                            Select Rec).ToList()
+
+                For i As Integer = 0 To pRec.Count() - 1
+                    pSealProcessDDListEntities.DeleteObject(pRec(i))
+                    pSealProcessDDListEntities.SaveChanges()
+                Next
+
+                Dim pTableRec As New List(Of tblDesign_WSeal)
+
+                For i As Integer = 0 To Item_In.Count - 1
+                    Dim pList As New tblDesign_WSeal
+                    pTableRec.Add(pList)
+                    pTableRec(i).fldID = i + 1
+                    pTableRec(i).fldWSeal = Item_In(i)
+
+                    pSealProcessDDListEntities.AddTotblDesign_WSeal(pTableRec(i))
+                Next
+
+                '....Manufacturing
+                ''ElseIf (TableName_In = "tblManf_ToolNGages") Then
+                ''    Dim pRec = (From Rec In pSealProcessDDListEntities.tblManf_ToolNGages
+                ''                Select Rec).ToList()
+
+                ''    For i As Integer = 0 To pRec.Count() - 1
+                ''        pSealProcessDDListEntities.DeleteObject(pRec(i))
+                ''        pSealProcessDDListEntities.SaveChanges()
+                ''    Next
+
+                ''    Dim pTableRec As New List(Of tblManf_ToolNGages)
+
+                ''    For i As Integer = 0 To Item_In.Count - 1
+                ''        Dim pList As New tblManf_ToolNGages
+                ''        pTableRec.Add(pList)
+                ''        pTableRec(i).fldID = i + 1
+                ''        pTableRec(i).fldDesc = Item_In(i)
+
+                ''        pSealProcessDDListEntities.AddTotblManf_ToolNGages(pTableRec(i))
+                ''    Next
+
+            ElseIf (TableName_In = "tblManf_ToolNGages_Status") Then
+                Dim pRec = (From Rec In pSealProcessDDListEntities.tblManf_ToolNGages_Status
+                            Select Rec).ToList()
+
+                For i As Integer = 0 To pRec.Count() - 1
+                    pSealProcessDDListEntities.DeleteObject(pRec(i))
+                    pSealProcessDDListEntities.SaveChanges()
+                Next
+
+                Dim pTableRec As New List(Of tblManf_ToolNGages_Status)
+
+                For i As Integer = 0 To Item_In.Count - 1
+                    Dim pList As New tblManf_ToolNGages_Status
+                    pTableRec.Add(pList)
+                    pTableRec(i).fldID = i + 1
+                    pTableRec(i).fldStatus = Item_In(i)
+
+                    pSealProcessDDListEntities.AddTotblManf_ToolNGages_Status(pTableRec(i))
+                Next
+
+            ElseIf (TableName_In = "tblManf_ToolNGages_DesignResponsibility") Then
+                Dim pRec = (From Rec In pSealProcessDDListEntities.tblManf_ToolNGages_DesignResponsibility
+                            Select Rec).ToList()
+
+                For i As Integer = 0 To pRec.Count() - 1
+                    pSealProcessDDListEntities.DeleteObject(pRec(i))
+                    pSealProcessDDListEntities.SaveChanges()
+                Next
+
+                Dim pTableRec As New List(Of tblManf_ToolNGages_DesignResponsibility)
+
+                For i As Integer = 0 To Item_In.Count - 1
+                    Dim pList As New tblManf_ToolNGages_DesignResponsibility
+                    pTableRec.Add(pList)
+                    pTableRec(i).fldID = i + 1
+                    pTableRec(i).fldDesignResponsibility = Item_In(i)
+
+                    pSealProcessDDListEntities.AddTotblManf_ToolNGages_DesignResponsibility(pTableRec(i))
+                Next
+
+                '....Purchasing
+            ElseIf (TableName_In = "tblPurchase_Unit") Then
+                Dim pRec = (From Rec In pSealProcessDDListEntities.tblPurchase_Unit
+                            Select Rec).ToList()
+
+                For i As Integer = 0 To pRec.Count() - 1
+                    pSealProcessDDListEntities.DeleteObject(pRec(i))
+                    pSealProcessDDListEntities.SaveChanges()
+                Next
+
+                Dim pTableRec As New List(Of tblPurchase_Unit)
+
+                For i As Integer = 0 To Item_In.Count - 1
+                    Dim pList As New tblPurchase_Unit
+                    pTableRec.Add(pList)
+                    pTableRec(i).fldID = i + 1
+                    pTableRec(i).fldUnit = Item_In(i)
+
+                    pSealProcessDDListEntities.AddTotblPurchase_Unit(pTableRec(i))
+                Next
+
+                '....Quality
+            ElseIf (TableName_In = "tblQlty_VisualInspection") Then
+                Dim pRec = (From Rec In pSealProcessDDListEntities.tblQlty_VisualInspection
+                            Select Rec).ToList()
+
+                For i As Integer = 0 To pRec.Count() - 1
+                    pSealProcessDDListEntities.DeleteObject(pRec(i))
+                    pSealProcessDDListEntities.SaveChanges()
+                Next
+
+                Dim pTableRec As New List(Of tblQlty_VisualInspection)
+
+                For i As Integer = 0 To Item_In.Count - 1
+                    Dim pList As New tblQlty_VisualInspection
+                    pTableRec.Add(pList)
+                    pTableRec(i).fldID = i + 1
+                    pTableRec(i).fldVisualInspectionType = Item_In(i)
+
+                    pSealProcessDDListEntities.AddTotblQlty_VisualInspection(pTableRec(i))
+                Next
+
+            ElseIf (TableName_In = "tblQlty_CustAcceptStd") Then
+                Dim pRec = (From Rec In pSealProcessDDListEntities.tblQlty_CustAcceptStd
+                            Select Rec).ToList()
+
+                For i As Integer = 0 To pRec.Count() - 1
+                    pSealProcessDDListEntities.DeleteObject(pRec(i))
+                    pSealProcessDDListEntities.SaveChanges()
+                Next
+
+                Dim pTableRec As New List(Of tblQlty_CustAcceptStd)
+
+                For i As Integer = 0 To Item_In.Count - 1
+                    Dim pList As New tblQlty_CustAcceptStd
+                    pTableRec.Add(pList)
+                    pTableRec(i).fldID = i + 1
+                    pTableRec(i).fldCustAcceptStd = Item_In(i)
+
+                    pSealProcessDDListEntities.AddTotblQlty_CustAcceptStd(pTableRec(i))
+                Next
+
+                '....Drawing
+            ElseIf (TableName_In = "tblDwg_DesignLevel") Then
+                Dim pRec = (From Rec In pSealProcessDDListEntities.tblDwg_DesignLevel
+                            Select Rec).ToList()
+
+                For i As Integer = 0 To pRec.Count() - 1
+                    pSealProcessDDListEntities.DeleteObject(pRec(i))
+                    pSealProcessDDListEntities.SaveChanges()
+                Next
+
+                Dim pTableRec As New List(Of tblDwg_DesignLevel)
+
+                For i As Integer = 0 To Item_In.Count - 1
+                    Dim pList As New tblDwg_DesignLevel
+                    pTableRec.Add(pList)
+                    pTableRec(i).fldID = i + 1
+                    pTableRec(i).fldDesignLevel = Item_In(i)
+
+                    pSealProcessDDListEntities.AddTotblDwg_DesignLevel(pTableRec(i))
+                Next
+
+                '....Testing
+            ElseIf (TableName_In = "tblTest_Medium") Then
+                Dim pRec = (From Rec In pSealProcessDDListEntities.tblTest_Medium
+                            Select Rec).ToList()
+
+                For i As Integer = 0 To pRec.Count() - 1
+                    pSealProcessDDListEntities.DeleteObject(pRec(i))
+                    pSealProcessDDListEntities.SaveChanges()
+                Next
+
+                Dim pTableRec As New List(Of tblTest_Medium)
+
+                For i As Integer = 0 To Item_In.Count - 1
+                    Dim pList As New tblTest_Medium
+                    pTableRec.Add(pList)
+                    pTableRec(i).fldID = i + 1
+                    pTableRec(i).fldMedium = Item_In(i)
+
+                    pSealProcessDDListEntities.AddTotblTest_Medium(pTableRec(i))
+                Next
+
+
+            ElseIf (TableName_In = "tblTest_Freq") Then
+                Dim pRec = (From Rec In pSealProcessDDListEntities.tblTest_Freq
+                            Select Rec).ToList()
+
+                For i As Integer = 0 To pRec.Count() - 1
+                    pSealProcessDDListEntities.DeleteObject(pRec(i))
+                    pSealProcessDDListEntities.SaveChanges()
+                Next
+
+                Dim pTableRec As New List(Of tblTest_Freq)
+
+                For i As Integer = 0 To Item_In.Count - 1
+                    Dim pList As New tblTest_Freq
+                    pTableRec.Add(pList)
+                    pTableRec(i).fldID = i + 1
+                    pTableRec(i).fldFreq = Item_In(i)
+
+                    pSealProcessDDListEntities.AddTotblTest_Freq(pTableRec(i))
+                Next
+
+            End If
+
+            pSealProcessDDListEntities.SaveChanges()
+
+        End If
+
+    End Sub
+
+    Private Sub PopulateDropDownList(ByVal ComboBox_In As ComboBox, ByVal TableName_In As String)
+        '=======================================================================================
+        Try
+
+            Dim pSealProcessDDListEntities As New SealProcess_DDListDBEntities()
+
+            Dim pRec As Object = Nothing
+            If (TableName_In = "tblHeader_PopCoding") Then
+                pRec = (From Rec In pSealProcessDDListEntities.tblHeader_PopCoding
+                        Select Rec.fldPopCoding).ToList()
+            ElseIf (TableName_In = "tblHeader_Rating") Then
+                pRec = (From Rec In pSealProcessDDListEntities.tblHeader_Rating
+                        Select Rec.fldRating).ToList()
+            ElseIf (TableName_In = "tblHeader_Type") Then
+                pRec = (From Rec In pSealProcessDDListEntities.tblHeader_Type
+                        Select Rec.fldType).ToList()
+            ElseIf (TableName_In = "tblPreOrder_ExpComplianceStatus") Then
+                pRec = (From Rec In pSealProcessDDListEntities.tblPreOrder_ExpComplianceStatus
+                        Select Rec.fldExpComplianceStatus).ToList()
+            ElseIf (TableName_In = "tblPreOrder_PartType") Then
+                pRec = (From Rec In pSealProcessDDListEntities.tblPreOrder_PartType
+                        Select Rec.fldPartType).ToList()
+            ElseIf (TableName_In = "tblPreOrder_MktSeg") Then
+                pRec = (From Rec In pSealProcessDDListEntities.tblPreOrder_MktSeg
+                        Select Rec.fldMktSeg).ToList()
+            ElseIf (TableName_In = "tblPreOrder_MktChannel") Then
+                pRec = (From Rec In pSealProcessDDListEntities.tblPreOrder_MktChannel
+                        Select Rec.fldMktChannel).ToList()
+            ElseIf (TableName_In = "tblPreOrder_Loc") Then
+                pRec = (From Rec In pSealProcessDDListEntities.tblPreOrder_Loc
+                        Select Rec.fldLoc).ToList()
+            ElseIf (TableName_In = "tblExp_Status") Then
+                pRec = (From Rec In pSealProcessDDListEntities.tblExp_Status
+                        Select Rec.fldStatus).ToList()
+            ElseIf (TableName_In = "tblExp_EARClassification") Then
+                pRec = (From Rec In pSealProcessDDListEntities.tblExp_EARClassification
+                        Select Rec.fldEARClassification).ToList()
+            ElseIf (TableName_In = "tblApp_SFinish_Measure") Then
+                pRec = (From Rec In pSealProcessDDListEntities.tblApp_SFinish_Measure
+                        Select Rec.fldSFinish_Measure).ToList()
+            ElseIf (TableName_In = "tblApp_SFinish_Unit") Then
+                pRec = (From Rec In pSealProcessDDListEntities.tblApp_SFinish_Unit
+                        Select Rec.fldSFinish_Unit).ToList()
+            ElseIf (TableName_In = "tblQlty_VisualInspection") Then
+                pRec = (From Rec In pSealProcessDDListEntities.tblQlty_VisualInspection
+                        Select Rec.fldVisualInspectionType).ToList()
+            ElseIf (TableName_In = "tblQlty_CustAcceptStd") Then
+                pRec = (From Rec In pSealProcessDDListEntities.tblQlty_CustAcceptStd
+                        Select Rec.fldCustAcceptStd).ToList()
+            ElseIf (TableName_In = "tblDwg_DesignLevel") Then
+                pRec = (From Rec In pSealProcessDDListEntities.tblDwg_DesignLevel
+                        Select Rec.fldDesignLevel).ToList()
+            ElseIf (TableName_In = "tblTest_Medium") Then
+                pRec = (From Rec In pSealProcessDDListEntities.tblTest_Medium
+                        Select Rec.fldMedium).ToList()
+            ElseIf (TableName_In = "tblTest_Freq") Then
+                pRec = (From Rec In pSealProcessDDListEntities.tblTest_Freq
+                        Select Rec.fldFreq).ToList()
+
+            End If
+
+            ComboBox_In.Items.Clear()
+
+            For i As Integer = 0 To pRec.Count() - 1
+                ComboBox_In.Items.Add(pRec(i))
+            Next
+
+        Catch ex As Exception
+
+        End Try
+
+    End Sub
+
+    Private Sub PopulateDropDownList(ByVal ComboBox_In As DataGridViewComboBoxColumn, ByVal TableName_In As String)
+        '=========================================================================================================
+        Try
+
+            Dim pSealProcessDDListEntities As New SealProcess_DDListDBEntities()
+
+            Dim pRec As Object = Nothing
+            If (TableName_In = "tblPreOrder_CustContactDept") Then
+                pRec = (From Rec In pSealProcessDDListEntities.tblPreOrder_CustContactDept
+                        Select Rec.fldCustContactDept).ToList()
+            ElseIf (TableName_In = "tblCostEst_SplOpDesc") Then
+                pRec = (From Rec In pSealProcessDDListEntities.tblCostEst_SplOpDesc
+                        Select Rec.fldSplOpDesc).ToList()
+            ElseIf (TableName_In = "tblApp_CavityDim") Then
+                pRec = (From Rec In pSealProcessDDListEntities.tblApp_CavityDim
+                        Select Rec.fldCavityDim).ToList()
+            ElseIf (TableName_In = "tblDesign_VerificationDesc") Then
+                pRec = (From Rec In pSealProcessDDListEntities.tblDesign_VerificationDesc
+                        Select Rec.fldDesignVerification).ToList()
+            ElseIf (TableName_In = "tblDesign_InputDesc") Then
+                pRec = (From Rec In pSealProcessDDListEntities.tblDesign_InputDesc
+                        Select Rec.fldInputDesc).ToList()
+            ElseIf (TableName_In = "tblDesign_CustSpecType") Then
+                pRec = (From Rec In pSealProcessDDListEntities.tblDesign_CustSpecType
+                        Select Rec.fldCustSpecType).ToList()
+            ElseIf (TableName_In = "tblManf_ToolNGages_Status") Then
+                pRec = (From Rec In pSealProcessDDListEntities.tblManf_ToolNGages_Status
+                        Select Rec.fldStatus).ToList()
+            ElseIf (TableName_In = "tblManf_ToolNGages_DesignResponsibility") Then
+                pRec = (From Rec In pSealProcessDDListEntities.tblManf_ToolNGages_DesignResponsibility
+                        Select Rec.fldDesignResponsibility).ToList()
+            ElseIf (TableName_In = "tblPurchase_Unit") Then
+                pRec = (From Rec In pSealProcessDDListEntities.tblPurchase_Unit
+                        Select Rec.fldUnit).ToList()
+
+            End If
+
+            ComboBox_In.Items.Clear()
+
+            For i As Integer = 0 To pRec.Count() - 1
+                ComboBox_In.Items.Add(pRec(i))
+            Next
+        Catch ex As Exception
+
+        End Try
+
+    End Sub
+
+    Private Sub CloseExcelFiles()
+        '=======================
+
+        Dim pProcesses As Process() = Process.GetProcesses()
+
+        Try
+            For Each p As Process In pProcesses
+                If p.ProcessName = "EXCEL" Then
+                    p.Kill()
+                End If
+            Next
+
+        Catch pEXP As Exception
+        End Try
     End Sub
 
 #End Region
@@ -5027,10 +6351,10 @@ Public Class Process_frmMain
                                                                          e As System.EventArgs) Handles cmbITAR_Export_SaleExportControlled.SelectedIndexChanged
         '========================================================================================================================================================
         If (cmbITAR_Export_SaleExportControlled.Text = "N") Then
-            txtITAR_Export_EAR_Classification.Enabled = False
+            cmbITAR_Export_EAR_Classification.Enabled = False
         Else
             If (mExport) Then
-                txtITAR_Export_EAR_Classification.Enabled = True
+                cmbITAR_Export_EAR_Classification.Enabled = True
             End If
 
         End If
@@ -6087,7 +7411,6 @@ Public Class Process_frmMain
 
 #Region "DATAGRIDVIEW RELATED ROUTINES:"
 
-
     Private Sub grdApp_Axial_Cavity_CellValidating(sender As Object, e As DataGridViewCellValidatingEventArgs) _
                                                    Handles grdApp_Axial_Cavity.CellValidating
         '=========================================================================================================
@@ -6124,7 +7447,6 @@ Public Class Process_frmMain
         End If
     End Sub
 
-
     Private Sub grdApproval_Attendees_EditingControlShowing(sender As System.Object, e As System.Windows.Forms.DataGridViewEditingControlShowingEventArgs) _
                                                             Handles grdApproval_Attendees.EditingControlShowing
         '===================================================================================================================================================
@@ -6137,11 +7459,11 @@ Public Class Process_frmMain
         'If (gUser.Role = grdApproval_Attendees.Rows(pRowIndex).Cells(0).Value) Then
         '    grdApproval_Attendees.Rows(pRowIndex).ReadOnly = False
         If (pComboBox IsNot Nothing) Then
-                RemoveHandler pComboBox.SelectionChangeCommitted, New EventHandler(AddressOf ComboBox_SelectionChangeCommitted)
+            RemoveHandler pComboBox.SelectionChangeCommitted, New EventHandler(AddressOf ComboBox_SelectionChangeCommitted)
 
-                mRowIndex = grdApproval_Attendees.CurrentCell.RowIndex
-                AddHandler pComboBox.SelectionChangeCommitted, New EventHandler(AddressOf ComboBox_SelectionChangeCommitted)
-            End If
+            mRowIndex = grdApproval_Attendees.CurrentCell.RowIndex
+            AddHandler pComboBox.SelectionChangeCommitted, New EventHandler(AddressOf ComboBox_SelectionChangeCommitted)
+        End If
         'Else
         '    grdApproval_Attendees.Rows(pRowIndex).ReadOnly = True
         'End If
@@ -6475,8 +7797,6 @@ Public Class Process_frmMain
             End If
         End If
     End Sub
-
-
 
     Private Sub grdDesign_Verification_CellValidating(sender As Object,
                                                       e As DataGridViewCellValidatingEventArgs) _
@@ -7636,7 +8956,7 @@ Public Class Process_frmMain
         SaveData()
         SaveToDB()
         MessageBox.Show("Data Saved Succecfully.", "Save Record", MessageBoxButtons.OK)
-        ''Me.Close()
+        Me.Close()
 
     End Sub
 
@@ -7647,7 +8967,6 @@ Public Class Process_frmMain
 
     Private Sub cmdDel_Rec_Click(sender As Object, e As EventArgs) Handles cmdDel_Rec.Click
         '==================================================================================
-
 
         If (mblngrdCustContact_PreOrder) Then
             Delete_Record(grdCustContact, grdCustContact.CurrentRow.Index)
@@ -8616,7 +9935,7 @@ Public Class Process_frmMain
                 .IsUnder_ITAR_Reg = IIf(cmbITAR_Export_ProductITAR_Reg.Text = "Y", True, False)
                 .ITAR_Class = txtITAR_Export_ITAR_Classification.Text
                 .SaleExportControlled = IIf(cmbITAR_Export_SaleExportControlled.Text = "Y", True, False)
-                .EAR_Class = txtITAR_Export_EAR_Classification.Text
+                .EAR_Class = cmbITAR_Export_EAR_Classification.Text
                 .Status = cmbITAR_Export_Status.Text
                 .HTS_Class = txtITAR_Export_HTS_Classification.Text
 
@@ -9954,7 +11273,7 @@ Public Class Process_frmMain
             End If
             CompareVal(.SaleExportControlled, pblnFlag, pCount)
 
-            CompareVal(.EAR_Class, txtITAR_Export_EAR_Classification.Text, pCount)
+            CompareVal(.EAR_Class, cmbITAR_Export_EAR_Classification.Text, pCount)
 
             CompareVal(.Status, cmbITAR_Export_Status.Text, pCount)
 
@@ -10600,7 +11919,7 @@ Public Class Process_frmMain
             Else
                 For i As Integer = 0 To .Mat.ID_Mat.Count - 1
                     CompareVal(.Mat.Item(i), grdPurchase_Mat.Rows(i).Cells(0).Value, pCount)
-                    CompareVal(.Mat.EstQty(i), grdPurchase_Mat.Rows(i).Cells(1).Value, pCount)
+                    CompareVal(.Mat.EstQty(i), ConvertToDbl(grdPurchase_Mat.Rows(i).Cells(1).Value), pCount)    'AES 29MAY18
                     CompareVal(.Mat.Qty_Unit(i), grdPurchase_Mat.Rows(i).Cells(2).Value, pCount)
                     CompareVal(.Mat.Status(i), grdPurchase_Mat.Rows(i).Cells(3).Value, pCount)
                     CompareVal(.Mat.LeadTime(i), ConvertToDbl(grdPurchase_Mat.Rows(i).Cells(4).Value), pCount)
@@ -11329,6 +12648,7 @@ Public Class Process_frmMain
         '    txtMenu.Select()
         'End If
     End Sub
+
 
     Private Sub SetControls_HeaderUserSign()
         '===================================

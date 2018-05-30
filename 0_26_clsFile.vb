@@ -66,18 +66,18 @@ Public Class clsFile
 
 #Region "PROPERTY ROUTINES:"
 
-    Public ReadOnly Property DirUserData() As String
-        '============================================       
+    'Public ReadOnly Property DirUserData() As String
+    '    '============================================       
+    '    Get
+    '        Return mcDirRoot & "Program Data Files\"
+    '    End Get
+
+    'End Property
+
+    Public ReadOnly Property DirProgramDataFile() As String
+        '==================================================       
         Get
             Return mcDirRoot & "Program Data Files\"
-        End Get
-
-    End Property
-
-    Public ReadOnly Property DirProgramDataFile_Process() As String
-        '==========================================================       
-        Get
-            Return mcDirRoot & "SealProcess\Program Data Files\"
         End Get
 
     End Property

@@ -285,6 +285,7 @@ Partial Class frmUserGroup
         '
         'Column9
         '
+        Me.Column9.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
         Me.Column9.HeaderText = "Title"
         Me.Column9.Name = "Column9"
         Me.Column9.Width = 160

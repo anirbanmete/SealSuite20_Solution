@@ -1,0 +1,850 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SealProcess_DDListDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="SealProcess_DDListDBModelStoreContainer">
+          <EntitySet Name="tblApp_CavityDim" EntityType="SealProcess_DDListDBModel.Store.tblApp_CavityDim" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblApp_SFinish_Measure" EntityType="SealProcess_DDListDBModel.Store.tblApp_SFinish_Measure" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblApp_SFinish_Unit" EntityType="SealProcess_DDListDBModel.Store.tblApp_SFinish_Unit" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblCostEst_SplOpDesc" EntityType="SealProcess_DDListDBModel.Store.tblCostEst_SplOpDesc" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblDesign_CSeal" EntityType="SealProcess_DDListDBModel.Store.tblDesign_CSeal" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblDesign_CustSpecType" EntityType="SealProcess_DDListDBModel.Store.tblDesign_CustSpecType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblDesign_ESeal" EntityType="SealProcess_DDListDBModel.Store.tblDesign_ESeal" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblDesign_InputDesc" EntityType="SealProcess_DDListDBModel.Store.tblDesign_InputDesc" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblDesign_OSeal" EntityType="SealProcess_DDListDBModel.Store.tblDesign_OSeal" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblDesign_USeal" EntityType="SealProcess_DDListDBModel.Store.tblDesign_USeal" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblDesign_VerificationDesc" EntityType="SealProcess_DDListDBModel.Store.tblDesign_VerificationDesc" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblDesign_WSeal" EntityType="SealProcess_DDListDBModel.Store.tblDesign_WSeal" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblDwg_DesignLevel" EntityType="SealProcess_DDListDBModel.Store.tblDwg_DesignLevel" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblExp_EARClassification" EntityType="SealProcess_DDListDBModel.Store.tblExp_EARClassification" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblExp_Status" EntityType="SealProcess_DDListDBModel.Store.tblExp_Status" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblHeader_PopCoding" EntityType="SealProcess_DDListDBModel.Store.tblHeader_PopCoding" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblHeader_Rating" EntityType="SealProcess_DDListDBModel.Store.tblHeader_Rating" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblHeader_Type" EntityType="SealProcess_DDListDBModel.Store.tblHeader_Type" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblManf_ToolNGages" EntityType="SealProcess_DDListDBModel.Store.tblManf_ToolNGages" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblManf_ToolNGages_DesignResponsibility" EntityType="SealProcess_DDListDBModel.Store.tblManf_ToolNGages_DesignResponsibility" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblManf_ToolNGages_Status" EntityType="SealProcess_DDListDBModel.Store.tblManf_ToolNGages_Status" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblPreOrder_CustContactDept" EntityType="SealProcess_DDListDBModel.Store.tblPreOrder_CustContactDept" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblPreOrder_ExpComplianceStatus" EntityType="SealProcess_DDListDBModel.Store.tblPreOrder_ExpComplianceStatus" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblPreOrder_Loc" EntityType="SealProcess_DDListDBModel.Store.tblPreOrder_Loc" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblPreOrder_MktChannel" EntityType="SealProcess_DDListDBModel.Store.tblPreOrder_MktChannel" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblPreOrder_MktSeg" EntityType="SealProcess_DDListDBModel.Store.tblPreOrder_MktSeg" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblPreOrder_PartType" EntityType="SealProcess_DDListDBModel.Store.tblPreOrder_PartType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblPurchase_Unit" EntityType="SealProcess_DDListDBModel.Store.tblPurchase_Unit" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblQlty_CustAcceptStd" EntityType="SealProcess_DDListDBModel.Store.tblQlty_CustAcceptStd" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblQlty_VisualInspection" EntityType="SealProcess_DDListDBModel.Store.tblQlty_VisualInspection" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblTest_Freq" EntityType="SealProcess_DDListDBModel.Store.tblTest_Freq" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblTest_Medium" EntityType="SealProcess_DDListDBModel.Store.tblTest_Medium" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="tblApp_CavityDim">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="int" Nullable="false" />
+          <Property Name="fldCavityDim" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblApp_SFinish_Measure">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="int" Nullable="false" />
+          <Property Name="fldSFinish_Measure" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblApp_SFinish_Unit">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="int" Nullable="false" />
+          <Property Name="fldSFinish_Unit" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCostEst_SplOpDesc">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="int" Nullable="false" />
+          <Property Name="fldSplOpDesc" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblDesign_CSeal">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="int" Nullable="false" />
+          <Property Name="fldCSeal" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblDesign_CustSpecType">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="int" Nullable="false" />
+          <Property Name="fldCustSpecType" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblDesign_ESeal">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="int" Nullable="false" />
+          <Property Name="fldESeal" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblDesign_InputDesc">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="int" Nullable="false" />
+          <Property Name="fldInputDesc" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblDesign_OSeal">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="int" Nullable="false" />
+          <Property Name="fldOSeal" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblDesign_USeal">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="int" Nullable="false" />
+          <Property Name="fldUSeal" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblDesign_VerificationDesc">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="int" Nullable="false" />
+          <Property Name="fldDesignVerification" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblDesign_WSeal">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="int" Nullable="false" />
+          <Property Name="fldWSeal" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblDwg_DesignLevel">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="int" Nullable="false" />
+          <Property Name="fldDesignLevel" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblExp_EARClassification">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="int" Nullable="false" />
+          <Property Name="fldEARClassification" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblExp_Status">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="int" Nullable="false" />
+          <Property Name="fldStatus" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblHeader_PopCoding">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="int" Nullable="false" />
+          <Property Name="fldPopCoding" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblHeader_Rating">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="int" Nullable="false" />
+          <Property Name="fldRating" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblHeader_Type">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="int" Nullable="false" />
+          <Property Name="fldType" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblManf_ToolNGages">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="int" Nullable="false" />
+          <Property Name="fldDesc" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="fldType" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblManf_ToolNGages_DesignResponsibility">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="int" Nullable="false" />
+          <Property Name="fldDesignResponsibility" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblManf_ToolNGages_Status">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="int" Nullable="false" />
+          <Property Name="fldStatus" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPreOrder_CustContactDept">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="int" Nullable="false" />
+          <Property Name="fldCustContactDept" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPreOrder_ExpComplianceStatus">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="int" Nullable="false" />
+          <Property Name="fldExpComplianceStatus" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPreOrder_Loc">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="int" Nullable="false" />
+          <Property Name="fldLoc" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPreOrder_MktChannel">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="int" Nullable="false" />
+          <Property Name="fldMktChannel" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPreOrder_MktSeg">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="int" Nullable="false" />
+          <Property Name="fldMktSeg" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPreOrder_PartType">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="int" Nullable="false" />
+          <Property Name="fldPartType" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPurchase_Unit">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="int" Nullable="false" />
+          <Property Name="fldUnit" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblQlty_CustAcceptStd">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="int" Nullable="false" />
+          <Property Name="fldCustAcceptStd" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblQlty_VisualInspection">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="int" Nullable="false" />
+          <Property Name="fldVisualInspectionType" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblTest_Freq">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="int" Nullable="false" />
+          <Property Name="fldFreq" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblTest_Medium">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="int" Nullable="false" />
+          <Property Name="fldMedium" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SealProcess_DDListDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="SealProcess_DDListDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblApp_CavityDim" EntityType="SealProcess_DDListDBModel.tblApp_CavityDim" />
+          <EntitySet Name="tblApp_SFinish_Measure" EntityType="SealProcess_DDListDBModel.tblApp_SFinish_Measure" />
+          <EntitySet Name="tblApp_SFinish_Unit" EntityType="SealProcess_DDListDBModel.tblApp_SFinish_Unit" />
+          <EntitySet Name="tblCostEst_SplOpDesc" EntityType="SealProcess_DDListDBModel.tblCostEst_SplOpDesc" />
+          <EntitySet Name="tblDesign_CSeal" EntityType="SealProcess_DDListDBModel.tblDesign_CSeal" />
+          <EntitySet Name="tblDesign_CustSpecType" EntityType="SealProcess_DDListDBModel.tblDesign_CustSpecType" />
+          <EntitySet Name="tblDesign_ESeal" EntityType="SealProcess_DDListDBModel.tblDesign_ESeal" />
+          <EntitySet Name="tblDesign_InputDesc" EntityType="SealProcess_DDListDBModel.tblDesign_InputDesc" />
+          <EntitySet Name="tblDesign_OSeal" EntityType="SealProcess_DDListDBModel.tblDesign_OSeal" />
+          <EntitySet Name="tblDesign_USeal" EntityType="SealProcess_DDListDBModel.tblDesign_USeal" />
+          <EntitySet Name="tblDesign_VerificationDesc" EntityType="SealProcess_DDListDBModel.tblDesign_VerificationDesc" />
+          <EntitySet Name="tblDesign_WSeal" EntityType="SealProcess_DDListDBModel.tblDesign_WSeal" />
+          <EntitySet Name="tblDwg_DesignLevel" EntityType="SealProcess_DDListDBModel.tblDwg_DesignLevel" />
+          <EntitySet Name="tblExp_EARClassification" EntityType="SealProcess_DDListDBModel.tblExp_EARClassification" />
+          <EntitySet Name="tblExp_Status" EntityType="SealProcess_DDListDBModel.tblExp_Status" />
+          <EntitySet Name="tblHeader_PopCoding" EntityType="SealProcess_DDListDBModel.tblHeader_PopCoding" />
+          <EntitySet Name="tblHeader_Rating" EntityType="SealProcess_DDListDBModel.tblHeader_Rating" />
+          <EntitySet Name="tblHeader_Type" EntityType="SealProcess_DDListDBModel.tblHeader_Type" />
+          <EntitySet Name="tblManf_ToolNGages" EntityType="SealProcess_DDListDBModel.tblManf_ToolNGages" />
+          <EntitySet Name="tblManf_ToolNGages_DesignResponsibility" EntityType="SealProcess_DDListDBModel.tblManf_ToolNGages_DesignResponsibility" />
+          <EntitySet Name="tblManf_ToolNGages_Status" EntityType="SealProcess_DDListDBModel.tblManf_ToolNGages_Status" />
+          <EntitySet Name="tblPreOrder_CustContactDept" EntityType="SealProcess_DDListDBModel.tblPreOrder_CustContactDept" />
+          <EntitySet Name="tblPreOrder_ExpComplianceStatus" EntityType="SealProcess_DDListDBModel.tblPreOrder_ExpComplianceStatus" />
+          <EntitySet Name="tblPreOrder_Loc" EntityType="SealProcess_DDListDBModel.tblPreOrder_Loc" />
+          <EntitySet Name="tblPreOrder_MktChannel" EntityType="SealProcess_DDListDBModel.tblPreOrder_MktChannel" />
+          <EntitySet Name="tblPreOrder_MktSeg" EntityType="SealProcess_DDListDBModel.tblPreOrder_MktSeg" />
+          <EntitySet Name="tblPreOrder_PartType" EntityType="SealProcess_DDListDBModel.tblPreOrder_PartType" />
+          <EntitySet Name="tblPurchase_Unit" EntityType="SealProcess_DDListDBModel.tblPurchase_Unit" />
+          <EntitySet Name="tblQlty_CustAcceptStd" EntityType="SealProcess_DDListDBModel.tblQlty_CustAcceptStd" />
+          <EntitySet Name="tblQlty_VisualInspection" EntityType="SealProcess_DDListDBModel.tblQlty_VisualInspection" />
+          <EntitySet Name="tblTest_Freq" EntityType="SealProcess_DDListDBModel.tblTest_Freq" />
+          <EntitySet Name="tblTest_Medium" EntityType="SealProcess_DDListDBModel.tblTest_Medium" />
+        </EntityContainer>
+        <EntityType Name="tblApp_CavityDim">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Int32" Nullable="false" />
+          <Property Name="fldCavityDim" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblApp_SFinish_Measure">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Int32" Nullable="false" />
+          <Property Name="fldSFinish_Measure" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblApp_SFinish_Unit">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Int32" Nullable="false" />
+          <Property Name="fldSFinish_Unit" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblCostEst_SplOpDesc">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Int32" Nullable="false" />
+          <Property Name="fldSplOpDesc" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblDesign_CSeal">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Int32" Nullable="false" />
+          <Property Name="fldCSeal" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblDesign_CustSpecType">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Int32" Nullable="false" />
+          <Property Name="fldCustSpecType" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblDesign_ESeal">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Int32" Nullable="false" />
+          <Property Name="fldESeal" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblDesign_InputDesc">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Int32" Nullable="false" />
+          <Property Name="fldInputDesc" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblDesign_OSeal">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Int32" Nullable="false" />
+          <Property Name="fldOSeal" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblDesign_USeal">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Int32" Nullable="false" />
+          <Property Name="fldUSeal" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblDesign_VerificationDesc">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Int32" Nullable="false" />
+          <Property Name="fldDesignVerification" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblDesign_WSeal">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Int32" Nullable="false" />
+          <Property Name="fldWSeal" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblDwg_DesignLevel">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Int32" Nullable="false" />
+          <Property Name="fldDesignLevel" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblExp_EARClassification">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Int32" Nullable="false" />
+          <Property Name="fldEARClassification" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblExp_Status">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Int32" Nullable="false" />
+          <Property Name="fldStatus" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblHeader_PopCoding">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Int32" Nullable="false" />
+          <Property Name="fldPopCoding" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblHeader_Rating">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Int32" Nullable="false" />
+          <Property Name="fldRating" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblHeader_Type">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Int32" Nullable="false" />
+          <Property Name="fldType" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblManf_ToolNGages">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Int32" Nullable="false" />
+          <Property Name="fldDesc" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="fldType" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblManf_ToolNGages_DesignResponsibility">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Int32" Nullable="false" />
+          <Property Name="fldDesignResponsibility" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblManf_ToolNGages_Status">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Int32" Nullable="false" />
+          <Property Name="fldStatus" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblPreOrder_CustContactDept">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Int32" Nullable="false" />
+          <Property Name="fldCustContactDept" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblPreOrder_ExpComplianceStatus">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Int32" Nullable="false" />
+          <Property Name="fldExpComplianceStatus" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblPreOrder_Loc">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Int32" Nullable="false" />
+          <Property Name="fldLoc" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblPreOrder_MktChannel">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Int32" Nullable="false" />
+          <Property Name="fldMktChannel" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblPreOrder_MktSeg">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Int32" Nullable="false" />
+          <Property Name="fldMktSeg" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblPreOrder_PartType">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Int32" Nullable="false" />
+          <Property Name="fldPartType" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblPurchase_Unit">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Int32" Nullable="false" />
+          <Property Name="fldUnit" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblQlty_CustAcceptStd">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Int32" Nullable="false" />
+          <Property Name="fldCustAcceptStd" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblQlty_VisualInspection">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Int32" Nullable="false" />
+          <Property Name="fldVisualInspectionType" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblTest_Freq">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Int32" Nullable="false" />
+          <Property Name="fldFreq" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblTest_Medium">
+          <Key>
+            <PropertyRef Name="fldID" />
+          </Key>
+          <Property Name="fldID" Type="Int32" Nullable="false" />
+          <Property Name="fldMedium" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SealProcess_DDListDBModelStoreContainer" CdmEntityContainer="SealProcess_DDListDBEntities">
+          <EntitySetMapping Name="tblApp_CavityDim">
+            <EntityTypeMapping TypeName="SealProcess_DDListDBModel.tblApp_CavityDim">
+              <MappingFragment StoreEntitySet="tblApp_CavityDim">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldCavityDim" ColumnName="fldCavityDim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblApp_SFinish_Measure">
+            <EntityTypeMapping TypeName="SealProcess_DDListDBModel.tblApp_SFinish_Measure">
+              <MappingFragment StoreEntitySet="tblApp_SFinish_Measure">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldSFinish_Measure" ColumnName="fldSFinish_Measure" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblApp_SFinish_Unit">
+            <EntityTypeMapping TypeName="SealProcess_DDListDBModel.tblApp_SFinish_Unit">
+              <MappingFragment StoreEntitySet="tblApp_SFinish_Unit">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldSFinish_Unit" ColumnName="fldSFinish_Unit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCostEst_SplOpDesc">
+            <EntityTypeMapping TypeName="SealProcess_DDListDBModel.tblCostEst_SplOpDesc">
+              <MappingFragment StoreEntitySet="tblCostEst_SplOpDesc">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldSplOpDesc" ColumnName="fldSplOpDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDesign_CSeal">
+            <EntityTypeMapping TypeName="SealProcess_DDListDBModel.tblDesign_CSeal">
+              <MappingFragment StoreEntitySet="tblDesign_CSeal">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldCSeal" ColumnName="fldCSeal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDesign_CustSpecType">
+            <EntityTypeMapping TypeName="SealProcess_DDListDBModel.tblDesign_CustSpecType">
+              <MappingFragment StoreEntitySet="tblDesign_CustSpecType">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldCustSpecType" ColumnName="fldCustSpecType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDesign_ESeal">
+            <EntityTypeMapping TypeName="SealProcess_DDListDBModel.tblDesign_ESeal">
+              <MappingFragment StoreEntitySet="tblDesign_ESeal">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldESeal" ColumnName="fldESeal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDesign_InputDesc">
+            <EntityTypeMapping TypeName="SealProcess_DDListDBModel.tblDesign_InputDesc">
+              <MappingFragment StoreEntitySet="tblDesign_InputDesc">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldInputDesc" ColumnName="fldInputDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDesign_OSeal">
+            <EntityTypeMapping TypeName="SealProcess_DDListDBModel.tblDesign_OSeal">
+              <MappingFragment StoreEntitySet="tblDesign_OSeal">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldOSeal" ColumnName="fldOSeal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDesign_USeal">
+            <EntityTypeMapping TypeName="SealProcess_DDListDBModel.tblDesign_USeal">
+              <MappingFragment StoreEntitySet="tblDesign_USeal">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldUSeal" ColumnName="fldUSeal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDesign_VerificationDesc">
+            <EntityTypeMapping TypeName="SealProcess_DDListDBModel.tblDesign_VerificationDesc">
+              <MappingFragment StoreEntitySet="tblDesign_VerificationDesc">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldDesignVerification" ColumnName="fldDesignVerification" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDesign_WSeal">
+            <EntityTypeMapping TypeName="SealProcess_DDListDBModel.tblDesign_WSeal">
+              <MappingFragment StoreEntitySet="tblDesign_WSeal">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldWSeal" ColumnName="fldWSeal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDwg_DesignLevel">
+            <EntityTypeMapping TypeName="SealProcess_DDListDBModel.tblDwg_DesignLevel">
+              <MappingFragment StoreEntitySet="tblDwg_DesignLevel">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldDesignLevel" ColumnName="fldDesignLevel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblExp_EARClassification">
+            <EntityTypeMapping TypeName="SealProcess_DDListDBModel.tblExp_EARClassification">
+              <MappingFragment StoreEntitySet="tblExp_EARClassification">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldEARClassification" ColumnName="fldEARClassification" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblExp_Status">
+            <EntityTypeMapping TypeName="SealProcess_DDListDBModel.tblExp_Status">
+              <MappingFragment StoreEntitySet="tblExp_Status">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldStatus" ColumnName="fldStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblHeader_PopCoding">
+            <EntityTypeMapping TypeName="SealProcess_DDListDBModel.tblHeader_PopCoding">
+              <MappingFragment StoreEntitySet="tblHeader_PopCoding">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldPopCoding" ColumnName="fldPopCoding" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblHeader_Rating">
+            <EntityTypeMapping TypeName="SealProcess_DDListDBModel.tblHeader_Rating">
+              <MappingFragment StoreEntitySet="tblHeader_Rating">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldRating" ColumnName="fldRating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblHeader_Type">
+            <EntityTypeMapping TypeName="SealProcess_DDListDBModel.tblHeader_Type">
+              <MappingFragment StoreEntitySet="tblHeader_Type">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldType" ColumnName="fldType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblManf_ToolNGages">
+            <EntityTypeMapping TypeName="SealProcess_DDListDBModel.tblManf_ToolNGages">
+              <MappingFragment StoreEntitySet="tblManf_ToolNGages">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldDesc" ColumnName="fldDesc" />
+                <ScalarProperty Name="fldType" ColumnName="fldType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblManf_ToolNGages_DesignResponsibility">
+            <EntityTypeMapping TypeName="SealProcess_DDListDBModel.tblManf_ToolNGages_DesignResponsibility">
+              <MappingFragment StoreEntitySet="tblManf_ToolNGages_DesignResponsibility">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldDesignResponsibility" ColumnName="fldDesignResponsibility" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblManf_ToolNGages_Status">
+            <EntityTypeMapping TypeName="SealProcess_DDListDBModel.tblManf_ToolNGages_Status">
+              <MappingFragment StoreEntitySet="tblManf_ToolNGages_Status">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldStatus" ColumnName="fldStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPreOrder_CustContactDept">
+            <EntityTypeMapping TypeName="SealProcess_DDListDBModel.tblPreOrder_CustContactDept">
+              <MappingFragment StoreEntitySet="tblPreOrder_CustContactDept">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldCustContactDept" ColumnName="fldCustContactDept" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPreOrder_ExpComplianceStatus">
+            <EntityTypeMapping TypeName="SealProcess_DDListDBModel.tblPreOrder_ExpComplianceStatus">
+              <MappingFragment StoreEntitySet="tblPreOrder_ExpComplianceStatus">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldExpComplianceStatus" ColumnName="fldExpComplianceStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPreOrder_Loc">
+            <EntityTypeMapping TypeName="SealProcess_DDListDBModel.tblPreOrder_Loc">
+              <MappingFragment StoreEntitySet="tblPreOrder_Loc">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldLoc" ColumnName="fldLoc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPreOrder_MktChannel">
+            <EntityTypeMapping TypeName="SealProcess_DDListDBModel.tblPreOrder_MktChannel">
+              <MappingFragment StoreEntitySet="tblPreOrder_MktChannel">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldMktChannel" ColumnName="fldMktChannel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPreOrder_MktSeg">
+            <EntityTypeMapping TypeName="SealProcess_DDListDBModel.tblPreOrder_MktSeg">
+              <MappingFragment StoreEntitySet="tblPreOrder_MktSeg">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldMktSeg" ColumnName="fldMktSeg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPreOrder_PartType">
+            <EntityTypeMapping TypeName="SealProcess_DDListDBModel.tblPreOrder_PartType">
+              <MappingFragment StoreEntitySet="tblPreOrder_PartType">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldPartType" ColumnName="fldPartType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPurchase_Unit">
+            <EntityTypeMapping TypeName="SealProcess_DDListDBModel.tblPurchase_Unit">
+              <MappingFragment StoreEntitySet="tblPurchase_Unit">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldUnit" ColumnName="fldUnit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblQlty_CustAcceptStd">
+            <EntityTypeMapping TypeName="SealProcess_DDListDBModel.tblQlty_CustAcceptStd">
+              <MappingFragment StoreEntitySet="tblQlty_CustAcceptStd">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldCustAcceptStd" ColumnName="fldCustAcceptStd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblQlty_VisualInspection">
+            <EntityTypeMapping TypeName="SealProcess_DDListDBModel.tblQlty_VisualInspection">
+              <MappingFragment StoreEntitySet="tblQlty_VisualInspection">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldVisualInspectionType" ColumnName="fldVisualInspectionType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTest_Freq">
+            <EntityTypeMapping TypeName="SealProcess_DDListDBModel.tblTest_Freq">
+              <MappingFragment StoreEntitySet="tblTest_Freq">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldFreq" ColumnName="fldFreq" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTest_Medium">
+            <EntityTypeMapping TypeName="SealProcess_DDListDBModel.tblTest_Medium">
+              <MappingFragment StoreEntitySet="tblTest_Medium">
+                <ScalarProperty Name="fldID" ColumnName="fldID" />
+                <ScalarProperty Name="fldMedium" ColumnName="fldMedium" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="SealProcess_DDListDBModel.tblApp_CavityDim" Width="1.5" PointX="0.75" PointY="0.75" Height="1.4033821614583335" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcess_DDListDBModel.tblApp_SFinish_Measure" Width="1.5" PointX="2.75" PointY="0.75" Height="1.4033821614583335" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcess_DDListDBModel.tblApp_SFinish_Unit" Width="1.5" PointX="0.75" PointY="3.75" Height="1.4033821614583322" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcess_DDListDBModel.tblCostEst_SplOpDesc" Width="1.5" PointX="2.75" PointY="3.75" Height="1.4033821614583335" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcess_DDListDBModel.tblDesign_CSeal" Width="1.5" PointX="4.75" PointY="0.75" Height="1.4033821614583317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcess_DDListDBModel.tblDesign_CustSpecType" Width="1.5" PointX="4.75" PointY="3.75" Height="1.4033821614583322" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcess_DDListDBModel.tblDesign_ESeal" Width="1.5" PointX="6.75" PointY="0.75" Height="1.4033821614583317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcess_DDListDBModel.tblDesign_InputDesc" Width="1.5" PointX="0.75" PointY="6.75" Height="1.4033821614583317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcess_DDListDBModel.tblDesign_OSeal" Width="1.5" PointX="2.75" PointY="6.75" Height="1.4033821614583317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcess_DDListDBModel.tblDesign_USeal" Width="1.5" PointX="6.75" PointY="3.75" Height="1.4033821614583317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcess_DDListDBModel.tblDesign_VerificationDesc" Width="1.5" PointX="4.75" PointY="6.75" Height="1.4033821614583353" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcess_DDListDBModel.tblDesign_WSeal" Width="1.5" PointX="6.75" PointY="6.75" Height="1.4033821614583317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcess_DDListDBModel.tblDwg_DesignLevel" Width="1.5" PointX="8.75" PointY="0.75" Height="1.4033821614583388" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcess_DDListDBModel.tblExp_EARClassification" Width="1.5" PointX="8.75" PointY="3.75" Height="1.4033821614583388" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcess_DDListDBModel.tblExp_Status" Width="1.5" PointX="8.75" PointY="6.75" Height="1.4033821614583388" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcess_DDListDBModel.tblHeader_PopCoding" Width="1.5" PointX="0.75" PointY="9.75" Height="1.4033821614583388" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcess_DDListDBModel.tblHeader_Rating" Width="1.5" PointX="2.75" PointY="9.75" Height="1.4033821614583388" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcess_DDListDBModel.tblHeader_Type" Width="1.5" PointX="4.75" PointY="9.75" Height="1.4033821614583388" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcess_DDListDBModel.tblManf_ToolNGages" Width="1.5" PointX="6.75" PointY="9.75" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcess_DDListDBModel.tblManf_ToolNGages_DesignResponsibility" Width="1.5" PointX="8.75" PointY="9.75" Height="1.4033821614583388" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcess_DDListDBModel.tblManf_ToolNGages_Status" Width="1.5" PointX="10.75" PointY="0.75" Height="1.4033821614583388" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcess_DDListDBModel.tblPreOrder_CustContactDept" Width="1.5" PointX="10.75" PointY="3.75" Height="1.4033821614583282" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcess_DDListDBModel.tblPreOrder_ExpComplianceStatus" Width="1.5" PointX="10.75" PointY="6.75" Height="1.4033821614583246" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcess_DDListDBModel.tblPreOrder_Loc" Width="1.5" PointX="10.75" PointY="9.75" Height="1.4033821614583246" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcess_DDListDBModel.tblPreOrder_MktChannel" Width="1.5" PointX="12.75" PointY="0.75" Height="1.4033821614583246" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcess_DDListDBModel.tblPreOrder_MktSeg" Width="1.5" PointX="0.75" PointY="12.75" Height="1.4033821614583246" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcess_DDListDBModel.tblPreOrder_PartType" Width="1.5" PointX="2.75" PointY="12.75" Height="1.4033821614583246" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcess_DDListDBModel.tblPurchase_Unit" Width="1.5" PointX="12.75" PointY="3.75" Height="1.4033821614583246" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcess_DDListDBModel.tblQlty_CustAcceptStd" Width="1.5" PointX="4.75" PointY="12.75" Height="1.4033821614583246" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcess_DDListDBModel.tblQlty_VisualInspection" Width="1.5" PointX="12.75" PointY="6.75" Height="1.4033821614583246" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcess_DDListDBModel.tblTest_Freq" Width="1.5" PointX="6.75" PointY="12.75" Height="1.4033821614583246" IsExpanded="true" />
+        <EntityTypeShape EntityType="SealProcess_DDListDBModel.tblTest_Medium" Width="1.5" PointX="8.75" PointY="12.75" Height="1.4033821614583246" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

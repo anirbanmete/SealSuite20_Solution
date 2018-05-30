@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmPartMain
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmPartMain
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPartMain))
@@ -66,6 +66,7 @@ Partial Class frmPartMain
         Me.chkSealIPE = New System.Windows.Forms.CheckBox()
         Me.cmdSealProcess = New System.Windows.Forms.Button()
         Me.grpCustomer1 = New System.Windows.Forms.GroupBox()
+        Me.cmbCustomer = New System.Windows.Forms.ComboBox()
         Me.cmbUnit = New System.Windows.Forms.ComboBox()
         Me.label3 = New System.Windows.Forms.Label()
         Me.txtCustomerPN_Rev = New System.Windows.Forms.TextBox()
@@ -73,7 +74,6 @@ Partial Class frmPartMain
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtCustomerPN = New System.Windows.Forms.TextBox()
         Me.txtLocation = New System.Windows.Forms.TextBox()
-        Me.txtCustomer = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.txtPlatform = New System.Windows.Forms.TextBox()
         Me.grpCustomer = New System.Windows.Forms.GroupBox()
@@ -109,6 +109,8 @@ Partial Class frmPartMain
         Me.mnuPN = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuProject = New System.Windows.Forms.ToolStripMenuItem()
         Me.UserGroupToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuProgramData = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuCustomerList = New System.Windows.Forms.ToolStripMenuItem()
         Me.cmdHardware = New System.Windows.Forms.Button()
         Me.openFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.cmdOK = New System.Windows.Forms.Button()
@@ -602,6 +604,7 @@ Partial Class frmPartMain
         '
         'grpCustomer1
         '
+        Me.grpCustomer1.Controls.Add(Me.cmbCustomer)
         Me.grpCustomer1.Controls.Add(Me.cmbUnit)
         Me.grpCustomer1.Controls.Add(Me.label3)
         Me.grpCustomer1.Controls.Add(Me.txtCustomerPN_Rev)
@@ -611,7 +614,6 @@ Partial Class frmPartMain
         Me.grpCustomer1.Controls.Add(Me.txtCustomerPN)
         Me.grpCustomer1.Controls.Add(Me.Label2)
         Me.grpCustomer1.Controls.Add(Me.txtLocation)
-        Me.grpCustomer1.Controls.Add(Me.txtCustomer)
         Me.grpCustomer1.Controls.Add(Me.Label6)
         Me.grpCustomer1.Controls.Add(Me.txtPlatform)
         Me.grpCustomer1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -621,6 +623,16 @@ Partial Class frmPartMain
         Me.grpCustomer1.TabIndex = 494
         Me.grpCustomer1.TabStop = False
         Me.grpCustomer1.Text = "Customer:"
+        '
+        'cmbCustomer
+        '
+        Me.cmbCustomer.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbCustomer.FormattingEnabled = True
+        Me.cmbCustomer.Items.AddRange(New Object() {"GEAE", "PWA", "GE P&W", "GEAE Czech Republic"})
+        Me.cmbCustomer.Location = New System.Drawing.Point(72, 28)
+        Me.cmbCustomer.Name = "cmbCustomer"
+        Me.cmbCustomer.Size = New System.Drawing.Size(226, 21)
+        Me.cmbCustomer.TabIndex = 780
         '
         'cmbUnit
         '
@@ -698,16 +710,6 @@ Partial Class frmPartMain
         Me.txtLocation.Name = "txtLocation"
         Me.txtLocation.Size = New System.Drawing.Size(234, 21)
         Me.txtLocation.TabIndex = 6
-        '
-        'txtCustomer
-        '
-        Me.txtCustomer.BackColor = System.Drawing.SystemColors.Window
-        Me.txtCustomer.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCustomer.ForeColor = System.Drawing.Color.Black
-        Me.txtCustomer.Location = New System.Drawing.Point(72, 28)
-        Me.txtCustomer.Name = "txtCustomer"
-        Me.txtCustomer.Size = New System.Drawing.Size(226, 21)
-        Me.txtCustomer.TabIndex = 2
         '
         'Label6
         '
@@ -1046,7 +1048,7 @@ Partial Class frmPartMain
         '
         'MenuItems
         '
-        Me.MenuItems.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuView, Me.UserGroupToolStripMenuItem})
+        Me.MenuItems.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuView, Me.UserGroupToolStripMenuItem, Me.mnuProgramData})
         Me.MenuItems.Location = New System.Drawing.Point(0, 0)
         Me.MenuItems.Name = "MenuItems"
         Me.MenuItems.Size = New System.Drawing.Size(892, 24)
@@ -1080,6 +1082,20 @@ Partial Class frmPartMain
         Me.UserGroupToolStripMenuItem.Name = "UserGroupToolStripMenuItem"
         Me.UserGroupToolStripMenuItem.Size = New System.Drawing.Size(90, 20)
         Me.UserGroupToolStripMenuItem.Text = "User Group"
+        '
+        'mnuProgramData
+        '
+        Me.mnuProgramData.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuCustomerList})
+        Me.mnuProgramData.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.mnuProgramData.Name = "mnuProgramData"
+        Me.mnuProgramData.Size = New System.Drawing.Size(106, 20)
+        Me.mnuProgramData.Text = "Program Data"
+        '
+        'mnuCustomerList
+        '
+        Me.mnuCustomerList.Name = "mnuCustomerList"
+        Me.mnuCustomerList.Size = New System.Drawing.Size(196, 22)
+        Me.mnuCustomerList.Text = "Load Customer List"
         '
         'cmdHardware
         '
@@ -1173,7 +1189,6 @@ Partial Class frmPartMain
     Friend WithEvents cmdOK As System.Windows.Forms.Button
     Friend WithEvents cmdCancel As System.Windows.Forms.Button
     Friend WithEvents txtPlatform As System.Windows.Forms.TextBox
-    Friend WithEvents txtCustomer As System.Windows.Forms.TextBox
     Friend WithEvents txtParkerPN_Part1 As System.Windows.Forms.TextBox
     Private WithEvents grpCustomer As System.Windows.Forms.GroupBox
     Private WithEvents trvProjects As System.Windows.Forms.TreeView
@@ -1254,4 +1269,7 @@ Partial Class frmPartMain
     Friend WithEvents txtParentCur_Part3 As System.Windows.Forms.MaskedTextBox
     Friend WithEvents UserGroupToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents openFileDialog1 As System.Windows.Forms.OpenFileDialog
+    Friend WithEvents cmbCustomer As ComboBox
+    Friend WithEvents mnuProgramData As ToolStripMenuItem
+    Friend WithEvents mnuCustomerList As ToolStripMenuItem
 End Class

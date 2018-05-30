@@ -228,7 +228,7 @@ Partial Class Part_frmHW
         Me.grpPlating.Controls.Add(Me.cmbPlatingCode)
         Me.grpPlating.Controls.Add(Me.chkPlating)
         Me.grpPlating.Controls.Add(Me.cmbPlatingThickCode)
-        Me.grpPlating.Location = New System.Drawing.Point(484, 84)
+        Me.grpPlating.Location = New System.Drawing.Point(486, 84)
         Me.grpPlating.Name = "grpPlating"
         Me.grpPlating.Size = New System.Drawing.Size(235, 75)
         Me.grpPlating.TabIndex = 691
@@ -441,7 +441,7 @@ Partial Class Part_frmHW
         Me.cmbTemperCode.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbTemperCode.ForeColor = System.Drawing.SystemColors.WindowText
         Me.cmbTemperCode.Items.AddRange(New Object() {"16", "15", "62"})
-        Me.cmbTemperCode.Location = New System.Drawing.Point(259, 126)
+        Me.cmbTemperCode.Location = New System.Drawing.Point(255, 126)
         Me.cmbTemperCode.Name = "cmbTemperCode"
         Me.cmbTemperCode.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.cmbTemperCode.Size = New System.Drawing.Size(48, 21)
@@ -451,7 +451,7 @@ Partial Class Part_frmHW
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(258, 110)
+        Me.Label6.Location = New System.Drawing.Point(254, 110)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(51, 13)
         Me.Label6.TabIndex = 194
@@ -521,9 +521,9 @@ Partial Class Part_frmHW
         Me.grpCoating.Controls.Add(Me.lblSFinish)
         Me.grpCoating.Controls.Add(Me.cmbSFinish)
         Me.grpCoating.Controls.Add(Me.lblUnitSFinish)
-        Me.grpCoating.Location = New System.Drawing.Point(322, 84)
+        Me.grpCoating.Location = New System.Drawing.Point(317, 84)
         Me.grpCoating.Name = "grpCoating"
-        Me.grpCoating.Size = New System.Drawing.Size(153, 75)
+        Me.grpCoating.Size = New System.Drawing.Size(162, 75)
         Me.grpCoating.TabIndex = 187
         Me.grpCoating.TabStop = False
         '
@@ -538,7 +538,7 @@ Partial Class Part_frmHW
         Me.cmbCoating.Location = New System.Drawing.Point(12, 42)
         Me.cmbCoating.Name = "cmbCoating"
         Me.cmbCoating.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.cmbCoating.Size = New System.Drawing.Size(64, 21)
+        Me.cmbCoating.Size = New System.Drawing.Size(82, 21)
         Me.cmbCoating.TabIndex = 178
         '
         'Label13
@@ -569,7 +569,7 @@ Partial Class Part_frmHW
         '
         Me.lblSFinish.AutoSize = True
         Me.lblSFinish.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblSFinish.Location = New System.Drawing.Point(93, 13)
+        Me.lblSFinish.Location = New System.Drawing.Point(104, 13)
         Me.lblSFinish.Name = "lblSFinish"
         Me.lblSFinish.Size = New System.Drawing.Size(47, 13)
         Me.lblSFinish.TabIndex = 180
@@ -584,7 +584,7 @@ Partial Class Part_frmHW
         Me.cmbSFinish.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbSFinish.ForeColor = System.Drawing.SystemColors.WindowText
         Me.cmbSFinish.Items.AddRange(New Object() {"65", "125"})
-        Me.cmbSFinish.Location = New System.Drawing.Point(92, 42)
+        Me.cmbSFinish.Location = New System.Drawing.Point(103, 42)
         Me.cmbSFinish.Name = "cmbSFinish"
         Me.cmbSFinish.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.cmbSFinish.Size = New System.Drawing.Size(48, 21)
@@ -597,12 +597,12 @@ Partial Class Part_frmHW
         Me.lblUnitSFinish.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblUnitSFinish.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblUnitSFinish.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblUnitSFinish.Location = New System.Drawing.Point(97, 27)
+        Me.lblUnitSFinish.Location = New System.Drawing.Point(111, 27)
         Me.lblUnitSFinish.Name = "lblUnitSFinish"
         Me.lblUnitSFinish.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.lblUnitSFinish.Size = New System.Drawing.Size(39, 13)
+        Me.lblUnitSFinish.Size = New System.Drawing.Size(32, 13)
         Me.lblUnitSFinish.TabIndex = 181
-        Me.lblUnitSFinish.Text = "(rms)"
+        Me.lblUnitSFinish.Text = "(Ra)"
         '
         'Label3
         '

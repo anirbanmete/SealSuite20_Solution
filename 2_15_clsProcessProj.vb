@@ -509,13 +509,13 @@ Public Class clsProcessProj
 
         '....ProcessProject table
         Dim pProcessProjectCount As Integer = (From ProcessProjct In pSealProcessDBEntities.tblProcessProject
-                                            Where ProcessProjct.fldPartProjectID = mPartProject.Project_ID And
+                                               Where ProcessProjct.fldPartProjectID = mPartProject.Project_ID And
                                             ProcessProjct.fldID = mID Select ProcessProjct).Count()
 
         If (pProcessProjectCount > 0) Then
             '....Record already exists
             Dim pProcessProject = (From ProcessProjct In pSealProcessDBEntities.tblProcessProject
-                                           Where ProcessProjct.fldPartProjectID = mPartProject.Project_ID And
+                                   Where ProcessProjct.fldPartProjectID = mPartProject.Project_ID And
                                             ProcessProjct.fldID = mID Select ProcessProjct).First()
 
             pProcessProject.fldPOPCoding = mPOPCoding
@@ -534,7 +534,7 @@ Public Class clsProcessProj
             Dim pID As Integer = 1
             Dim pProcessProject As New tblProcessProject
             Dim pProcessProjectRec = (From ProcessProjct In pSealProcessDBEntities.tblProcessProject
-                                           Order By ProcessProjct.fldID Descending Select ProcessProjct).ToList()
+                                      Order By ProcessProjct.fldID Descending Select ProcessProjct).ToList()
             If (pProcessProjectRec.Count > 0) Then
                 pID = pProcessProjectRec(0).fldID + 1
             End If
@@ -689,7 +689,7 @@ Public Class clsProcessProj
             Try
                 '....tblPreOrder_CustContact
                 Dim pQryCustContactCount As Integer = (From pRec In pSealProcessDBEntities.tblPreOrder_CustContact
-                                   Where pRec.fldProcessProjectID = ProjectID_In Select pRec).Count()
+                                                       Where pRec.fldProcessProjectID = ProjectID_In Select pRec).Count()
 
                 If (pQryCustContactCount > 0) Then
 
@@ -727,7 +727,7 @@ Public Class clsProcessProj
             Dim pCustContact As New tblPreOrder_CustContact
 
             Dim pQryCustContact = (From PreOrder In pSealProcessDBEntities.tblPreOrder_CustContact
-                                                Where PreOrder.fldProcessProjectID = ProjectID_In Select PreOrder).ToList()
+                                   Where PreOrder.fldProcessProjectID = ProjectID_In Select PreOrder).ToList()
 
             If (pQryCustContact.Count > 0) Then
                 For j As Integer = 0 To pQryCustContact.Count() - 1
@@ -756,6 +756,7 @@ Public Class clsProcessProj
             pSealProcessDBEntities.SaveChanges()
 
         End Sub
+
 
 #End Region
 

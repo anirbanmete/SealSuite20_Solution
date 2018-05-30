@@ -2,9 +2,9 @@
 '                                                                              '
 '                          SOFTWARE  :  "SealPart"                             '
 '                      FORM MODULE   :  frmMain                                '
-'                        VERSION NO  :  1.4                                    '
+'                        VERSION NO  :  1.5                                    '
 '                      DEVELOPED BY  :  AdvEnSoft, Inc.                        '
-'                     LAST MODIFIED  :  25APR18                                '
+'                     LAST MODIFIED  :  30MAY18                                '
 '                                                                              '
 '===============================================================================
 '
@@ -12,6 +12,8 @@ Imports System.DateTime
 Imports System.Globalization
 Imports System.Linq
 Imports System.Threading
+Imports EXCEL = Microsoft.Office.Interop.Excel
+Imports System.Reflection
 
 Public Class frmPartMain
     Inherits System.Windows.Forms.Form
@@ -139,7 +141,7 @@ Public Class frmPartMain
         cmdHardware.Enabled = False
         cmdSealProcess.Enabled = False
 
-
+        PopulateDropDownList(cmbCustomer, "tblCustList")    'AES 30MAY18
         GetPartProjectInfo()
 
         grpCustomer.Text = ""
@@ -423,7 +425,7 @@ Public Class frmPartMain
                     Dim query = (From it In mPartEntities.tblCustomer
                                     Where it.fldID = mCustomerID Select it).First()
 
-                    txtCustomer.Text = query.fldName
+                    cmbCustomer.Text = query.fldName
                     Dim pUnit As String = query.fldDimUnit
                     cmbUnit.Text = pUnit.Trim()
                     'AES 21JUL17
@@ -739,7 +741,7 @@ Public Class frmPartMain
                             Dim query = (From it In mPartEntities.tblCustomer
                                             Where it.fldID = mCustomerID Select it).First()
 
-                            txtCustomer.Text = query.fldName
+                            cmbCustomer.Text = query.fldName
                             Dim pUnit As String = query.fldDimUnit
                             cmbUnit.Text = pUnit.Trim()
                             ''cmbCulturalFormat.Text = query.fldCulturalFormat.Trim()
@@ -1735,7 +1737,7 @@ Public Class frmPartMain
             If (trvProjects.Nodes.Count > 0) Then
 
                 If (trvProjects.SelectedNode.Level = 0) Then
-                    txtCustomer.Text = ""
+                    cmbCustomer.Text = ""
                     txtPlatform.Text = ""
                     txtLocation.Text = ""
                     txtCustomerPN.Text = ""
@@ -1746,10 +1748,10 @@ Public Class frmPartMain
                     txtParkerPN_Legacy.Text = ""
                     txtParkerPNLegacy_Rev.Text = ""
 
-                    txtCustomer.ReadOnly = False
-                    txtCustomer.BackColor = Color.White
-                    txtCustomer.ForeColor = Color.Black
-                    txtCustomer.Focus()
+                    cmbCustomer.Enabled = True
+                    'cmbCustomer.BackColor = Color.White
+                    'cmbCustomer.ForeColor = Color.Black
+                    cmbCustomer.Focus()
 
                     cmbUnit.Enabled = True
 
@@ -2057,7 +2059,7 @@ Public Class frmPartMain
 
             Else
 
-                txtCustomer.Text = ""
+                cmbCustomer.Text = ""
                 txtPlatform.Text = ""
                 txtLocation.Text = ""
                 txtCustomerPN.Text = ""
@@ -2069,10 +2071,10 @@ Public Class frmPartMain
                 txtParkerPNLegacy_Rev.Text = ""
 
 
-                txtCustomer.ReadOnly = False
-                txtCustomer.BackColor = Color.White
-                txtCustomer.ForeColor = Color.Black
-                txtCustomer.Focus()
+                cmbCustomer.Enabled = True
+                'txtCustomer.BackColor = Color.White
+                'txtCustomer.ForeColor = Color.Black
+                cmbCustomer.Focus()
 
                 cmbUnit.Enabled = True
 
@@ -2142,7 +2144,7 @@ Public Class frmPartMain
                 gPartProject.PNR.Legacy_Type = clsPartProject.clsPNR.eLegacyType.None
 
                 If (trvProjects.SelectedNode.Level = 1) Then
-                    txtCustomer.Text = ""
+                    cmbCustomer.Text = ""
                     txtPlatform.Text = ""
                     txtLocation.Text = ""
                     txtCustomerPN.Text = ""
@@ -2183,9 +2185,9 @@ Public Class frmPartMain
                     txtRefPNNewNotes_Legacy.Text = ""
                     txtRefPNLegacyNotes_Rev.Text = ""
 
-                    txtCustomer.ReadOnly = False
-                    txtCustomer.BackColor = Color.White
-                    txtCustomer.ForeColor = Color.Black
+                    cmbCustomer.Enabled = True
+                    'txtCustomer.BackColor = Color.White
+                    'txtCustomer.ForeColor = Color.Black
                     'txtCustomer.Focus()
 
                     cmbUnit.Enabled = True
@@ -2328,7 +2330,7 @@ Public Class frmPartMain
                 End If
             Else
 
-                txtCustomer.Text = ""
+                cmbCustomer.Text = ""
                 txtPlatform.Text = ""
                 txtLocation.Text = ""
                 txtCustomerPN.Text = ""
@@ -2368,9 +2370,9 @@ Public Class frmPartMain
                 txtRefPNNewNotes_Legacy.Text = ""
                 txtRefPNLegacyNotes_Rev.Text = ""
 
-                txtCustomer.ReadOnly = False
-                txtCustomer.BackColor = Color.White
-                txtCustomer.ForeColor = Color.Black
+                cmbCustomer.Enabled = True
+                'txtCustomer.BackColor = Color.White
+                'txtCustomer.ForeColor = Color.Black
                 'txtCustomer.Focus()
 
                 cmbUnit.Enabled = True
@@ -2505,10 +2507,10 @@ Public Class frmPartMain
             If (mProjectView) Then
 
                 If (trvProjects.SelectedNode.Level = 0) Then
-                    txtCustomer.ReadOnly = False
-                    txtCustomer.BackColor = Color.White
-                    txtCustomer.ForeColor = Color.Black
-                    txtCustomer.Focus()
+                    cmbCustomer.Enabled = True
+                    'txtCustomer.BackColor = Color.White
+                    'txtCustomer.ForeColor = Color.Black
+                    cmbCustomer.Focus()
 
                     cmbUnit.Enabled = True
 
@@ -2727,9 +2729,9 @@ Public Class frmPartMain
                     cmbUnit.Enabled = True
                     'cmbCulturalFormat.Enabled = True
 
-                    txtCustomer.ReadOnly = False
-                    txtCustomer.BackColor = Color.White
-                    txtCustomer.ForeColor = Color.Black
+                    cmbCustomer.Enabled = True
+                    'txtCustomer.BackColor = Color.White
+                    'txtCustomer.ForeColor = Color.Black
 
                     txtPlatform.ReadOnly = False
                     txtPlatform.BackColor = Color.White
@@ -2784,6 +2786,29 @@ Public Class frmPartMain
     Private Sub cmdSave_Click(sender As System.Object, e As System.EventArgs) _
                               Handles tsbSave.Click
         '======================================================================
+        If (trvProjects.SelectedNode.Level = 1) Then
+            If (txtParkerPN_Part3.Text = "" And txtParkerPN_Legacy.Text = "") Then
+                MessageBox.Show("ParkerPN can't be blank", "ParkerPN Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                DisplayData()
+                tsbAdd.Enabled = True
+                tsbEdit.Enabled = True
+                tsbSave.Enabled = False
+                tsbDelete.Enabled = True
+                Exit Sub
+            End If
+
+        ElseIf (trvProjects.SelectedNode.Level = 2) Then
+            If (txtPN_PH_Rev.Text = "" And txtParkerPNLegacy_Rev.Text = "") Then
+                MessageBox.Show("Rev. can't be blank", "Rev. Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                DisplayData()
+                tsbAdd.Enabled = True
+                tsbEdit.Enabled = True
+                tsbSave.Enabled = False
+                tsbDelete.Enabled = True
+                Exit Sub
+            End If
+        End If
+
         SaveData()      'AES 18APR18
         If (mblnAdd) Then
             AddRecords(mCustomerID, mPlatformID, mLocationID, mPNID, mRevID)
@@ -2885,7 +2910,7 @@ Public Class frmPartMain
 
                 If (mCustomerID = 0) Then
                     MessageBox.Show("Customer can't be blank", "Customer Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    txtCustomer.Focus()
+                    cmbCustomer.Focus()
                     Exit Sub
                 Else
                     If (mPlatformID = 0) Then
@@ -2914,6 +2939,33 @@ Public Class frmPartMain
                     End If
                 End If
             End With
+
+        ElseIf (mPNView) Then
+
+            If (mblnAdd Or mblnEdit) Then
+                If (trvProjects.SelectedNode.Level = 1) Then
+                    If (txtParkerPN_Part3.Text = "" And txtParkerPN_Legacy.Text = "") Then
+                        MessageBox.Show("ParkerPN can't be blank", "ParkerPN Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        DisplayData()
+                        tsbAdd.Enabled = True
+                        tsbEdit.Enabled = True
+                        tsbSave.Enabled = False
+                        tsbDelete.Enabled = True
+                        Exit Sub
+                    End If
+
+                ElseIf (trvProjects.SelectedNode.Level = 2) Then
+                    If (txtPN_PH_Rev.Text = "" And txtParkerPNLegacy_Rev.Text = "") Then
+                        MessageBox.Show("Rev. can't be blank", "Rev. Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        DisplayData()
+                        tsbAdd.Enabled = True
+                        tsbEdit.Enabled = True
+                        tsbSave.Enabled = False
+                        tsbDelete.Enabled = True
+                        Exit Sub
+                    End If
+                End If
+            End If
         End If
 
         gFile.SaveIniFile(gUser, gIPE_Project, gIPE_ANSYS, gIPE_Unit)
@@ -4457,31 +4509,31 @@ Public Class frmPartMain
 
                 End If
 
-                If (txtCustomer.Text.Trim() <> "") Then
+                If (cmbCustomer.Text.Trim() <> "") Then
                     '....Customer
                     Dim pCustID As Integer = 0
                     Dim pCustRecCount As Integer = (From Customer In mPartEntities.tblCustomer).Count()
                     Dim pCustomerID As Integer = 0
                     If (pCustRecCount > 0) Then
-                        Dim pCustName As String = txtCustomer.Text.Trim()
+                        Dim pCustName As String = cmbCustomer.Text.Trim()
                         Dim pCustCount As Integer = (From Customer In mPartEntities.tblCustomer Where Customer.fldName = pCustName).Count()
 
                         If (pCustCount > 0) Then
                             '....Existing Customer
                             Dim pCustomer_Out = (From Customer In mPartEntities.tblCustomer
-                                         Where Customer.fldName = pCustName).First()
+                                                 Where Customer.fldName = pCustName).First()
                             pCustomerID = pCustomer_Out.fldID
                             pCustID = pCustomerID
                         Else
                             '....New Customer
                             Dim pCustomer_Out = (From Customer In mPartEntities.tblCustomer
-                                         Order By Customer.fldID Descending).First()
+                                                 Order By Customer.fldID Descending).First()
 
                             pCustomerID = pCustomer_Out.fldID
                             Dim pCustomer As New tblCustomer
                             pCustID = pCustomerID + 1
                             pCustomer.fldID = pCustID
-                            pCustomer.fldName = txtCustomer.Text.Trim()
+                            pCustomer.fldName = cmbCustomer.Text.Trim()
                             pCustomer.fldDimUnit = cmbUnit.Text
                             'pCustomer.fldCulturalFormat = cmbCulturalFormat.Text
                             mPartEntities.AddTotblCustomer(pCustomer)
@@ -4494,7 +4546,7 @@ Public Class frmPartMain
                         Dim pCustomer As New tblCustomer
                         pCustID = 1
                         pCustomer.fldID = pCustID
-                        pCustomer.fldName = txtCustomer.Text.Trim()
+                        pCustomer.fldName = cmbCustomer.Text.Trim()
                         pCustomer.fldDimUnit = cmbUnit.Text
                         'pCustomer.fldCulturalFormat = cmbCulturalFormat.Text
                         mPartEntities.AddTotblCustomer(pCustomer)
@@ -4517,12 +4569,12 @@ Public Class frmPartMain
                             If (pPlatCount > 0) Then
                                 '....Existing Platform
                                 Dim pPlatform_Out = (From Platform In mPartEntities.tblPlatform
-                                            Where Platform.fldCustID = pCustID And Platform.fldName = pPlatformName).First()
+                                                     Where Platform.fldCustID = pCustID And Platform.fldName = pPlatformName).First()
                                 pPlatformID = pPlatform_Out.fldID
                             Else
                                 '....New Platform
                                 Dim pPlatform_Out = (From Platform In mPartEntities.tblPlatform
-                                           Where Platform.fldCustID = pCustID Order By Platform.fldID Descending).First()
+                                                     Where Platform.fldCustID = pCustID Order By Platform.fldID Descending).First()
 
                                 pPlatformID = pPlatform_Out.fldID + 1
                                 Dim pPlatform As New tblPlatform
@@ -4560,12 +4612,12 @@ Public Class frmPartMain
                                 If pLocCount > 0 Then
                                     '....Existing Location
                                     Dim pLoc_Out = (From Loc In mPartEntities.tblLocation
-                                                Where Loc.fldCustID = pCustID And Loc.fldPlatformID = pPlatformID And Loc.fldLoc = pLocationName).First()
+                                                    Where Loc.fldCustID = pCustID And Loc.fldPlatformID = pPlatformID And Loc.fldLoc = pLocationName).First()
                                     pLocationID = pLoc_Out.fldID
                                 Else
                                     '....New Location
                                     Dim pLoc_Out = (From Loc In mPartEntities.tblLocation
-                                               Where Loc.fldCustID = pCustID And Loc.fldPlatformID = pPlatformID Order By Loc.fldID Descending).First()
+                                                    Where Loc.fldCustID = pCustID And Loc.fldPlatformID = pPlatformID Order By Loc.fldID Descending).First()
                                     pLocationID = pLoc_Out.fldID + 1
 
                                     Dim pLocation As New tblLocation
@@ -5002,31 +5054,31 @@ Public Class frmPartMain
 
                 End If
 
-                If (txtCustomer.Text.Trim() <> "") Then
+                If (cmbCustomer.Text.Trim() <> "") Then
                     '....Customer
                     Dim pCustID As Integer = 0
                     Dim pCustRecCount As Integer = (From Customer In mPartEntities.tblCustomer).Count()
                     Dim pCustomerID As Integer = 0
                     If (pCustRecCount > 0) Then
-                        Dim pCustName As String = txtCustomer.Text.Trim()
+                        Dim pCustName As String = cmbCustomer.Text.Trim()
                         Dim pCustCount As Integer = (From Customer In mPartEntities.tblCustomer Where Customer.fldName = pCustName).Count()
 
                         If (pCustCount > 0) Then
                             '....Existing Customer
                             Dim pCustomer_Out = (From Customer In mPartEntities.tblCustomer
-                                         Where Customer.fldName = pCustName).First()
+                                                 Where Customer.fldName = pCustName).First()
                             pCustomerID = pCustomer_Out.fldID
                             pCustID = pCustomerID
                         Else
                             '....New Customer
                             Dim pCustomer_Out = (From Customer In mPartEntities.tblCustomer
-                                         Order By Customer.fldID Descending).First()
+                                                 Order By Customer.fldID Descending).First()
 
                             pCustomerID = pCustomer_Out.fldID
                             Dim pCustomer As New tblCustomer
                             pCustID = pCustomerID + 1
                             pCustomer.fldID = pCustID
-                            pCustomer.fldName = txtCustomer.Text.Trim()
+                            pCustomer.fldName = cmbCustomer.Text.Trim()
                             pCustomer.fldDimUnit = cmbUnit.Text.Trim()
                             'pCustomer.fldCulturalFormat = cmbCulturalFormat.Text
                             mPartEntities.AddTotblCustomer(pCustomer)
@@ -5039,7 +5091,7 @@ Public Class frmPartMain
                         Dim pCustomer As New tblCustomer
                         pCustID = 1
                         pCustomer.fldID = pCustID
-                        pCustomer.fldName = txtCustomer.Text.Trim()
+                        pCustomer.fldName = cmbCustomer.Text.Trim()
                         pCustomer.fldDimUnit = cmbUnit.Text.Trim()
                         'pCustomer.fldCulturalFormat = cmbCulturalFormat.Text
                         mPartEntities.AddTotblCustomer(pCustomer)
@@ -5062,12 +5114,12 @@ Public Class frmPartMain
                             If (pPlatCount > 0) Then
                                 '....Existing Platform
                                 Dim pPlatform_Out = (From Platform In mPartEntities.tblPlatform
-                                            Where Platform.fldCustID = pCustID And Platform.fldName = pPlatformName).First()
+                                                     Where Platform.fldCustID = pCustID And Platform.fldName = pPlatformName).First()
                                 pPlatformID = pPlatform_Out.fldID
                             Else
                                 '....New Platform
                                 Dim pPlatform_Out = (From Platform In mPartEntities.tblPlatform
-                                           Where Platform.fldCustID = pCustID Order By Platform.fldID Descending).First()
+                                                     Where Platform.fldCustID = pCustID Order By Platform.fldID Descending).First()
 
                                 pPlatformID = pPlatform_Out.fldID + 1
                                 Dim pPlatform As New tblPlatform
@@ -5105,12 +5157,12 @@ Public Class frmPartMain
                                 If pLocCount > 0 Then
                                     '....Existing Location
                                     Dim pLoc_Out = (From Loc In mPartEntities.tblLocation
-                                                Where Loc.fldCustID = pCustID And Loc.fldPlatformID = pPlatformID And Loc.fldLoc = pLocationName).First()
+                                                    Where Loc.fldCustID = pCustID And Loc.fldPlatformID = pPlatformID And Loc.fldLoc = pLocationName).First()
                                     pLocationID = pLoc_Out.fldID
                                 Else
                                     '....New Location
                                     Dim pLoc_Out = (From Loc In mPartEntities.tblLocation
-                                               Where Loc.fldCustID = pCustID And Loc.fldPlatformID = pPlatformID Order By Loc.fldID Descending).First()
+                                                    Where Loc.fldCustID = pCustID And Loc.fldPlatformID = pPlatformID Order By Loc.fldID Descending).First()
                                     pLocationID = pLoc_Out.fldID + 1
 
                                     Dim pLocation As New tblLocation
@@ -5986,7 +6038,7 @@ Public Class frmPartMain
                         '....Customer Table
                         Dim pCustomer = (From Cust In mPartEntities.tblCustomer
                                        Where Cust.fldID = CustID_In).First()
-                        pCustomer.fldName = txtCustomer.Text
+                        pCustomer.fldName = cmbCustomer.Text
                         pCustomer.fldDimUnit = cmbUnit.Text.Trim()
                         'pCustomer.fldCulturalFormat = cmbCulturalFormat.Text
 
@@ -6005,10 +6057,10 @@ Public Class frmPartMain
 
                     Else
 
-                        If (txtCustomer.Text <> "" Or txtPlatform.Text <> "" Or txtLocation.Text <> "" Or txtCustomerPN.Text <> "") Then
-                            If (txtCustomer.Text = "") Then
+                        If (cmbCustomer.Text <> "" Or txtPlatform.Text <> "" Or txtLocation.Text <> "" Or txtCustomerPN.Text <> "") Then
+                            If (cmbCustomer.Text = "") Then
                                 MessageBox.Show("Customer can't be blank", "Customer Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                                txtCustomer.Focus()
+                                cmbCustomer.Focus()
                                 Exit Sub
                             Else
 
@@ -6039,32 +6091,32 @@ Public Class frmPartMain
                         End If
 
                         'AES 12OCT17
-                        If (txtCustomer.Text.Trim() <> "") Then
+                        If (cmbCustomer.Text.Trim() <> "") Then
 
                             '....Customer
                             Dim pCustID As Integer = 0
                             Dim pCustRecCount As Integer = (From Customer In mPartEntities.tblCustomer).Count()
                             Dim pCustomerID As Integer = 0
                             If (pCustRecCount > 0) Then
-                                Dim pCustName As String = txtCustomer.Text.Trim()
+                                Dim pCustName As String = cmbCustomer.Text.Trim()
                                 Dim pCustCount As Integer = (From Customer In mPartEntities.tblCustomer Where Customer.fldName = pCustName).Count()
 
                                 If (pCustCount > 0) Then
                                     '....Existing Customer
                                     Dim pCustomer_Out = (From Customer In mPartEntities.tblCustomer
-                                                 Where Customer.fldName = pCustName).First()
+                                                         Where Customer.fldName = pCustName).First()
                                     pCustomerID = pCustomer_Out.fldID
                                     pCustID = pCustomerID
                                 Else
                                     '....New Customer
                                     Dim pCustomer_Out = (From Customer In mPartEntities.tblCustomer
-                                                 Order By Customer.fldID Descending).First()
+                                                         Order By Customer.fldID Descending).First()
 
                                     pCustomerID = pCustomer_Out.fldID
                                     Dim pCustomer As New tblCustomer
                                     pCustID = pCustomerID + 1
                                     pCustomer.fldID = pCustID
-                                    pCustomer.fldName = txtCustomer.Text.Trim()
+                                    pCustomer.fldName = cmbCustomer.Text.Trim()
                                     pCustomer.fldDimUnit = cmbUnit.Text.Trim()
                                     'pCustomer.fldCulturalFormat = cmbCulturalFormat.Text
                                     mPartEntities.AddTotblCustomer(pCustomer)
@@ -6077,7 +6129,7 @@ Public Class frmPartMain
                                 Dim pCustomer As New tblCustomer
                                 pCustID = 1
                                 pCustomer.fldID = pCustID
-                                pCustomer.fldName = txtCustomer.Text.Trim()
+                                pCustomer.fldName = cmbCustomer.Text.Trim()
                                 pCustomer.fldDimUnit = cmbUnit.Text.Trim()
                                 'pCustomer.fldCulturalFormat = cmbCulturalFormat.Text
                                 mPartEntities.AddTotblCustomer(pCustomer)
@@ -6100,12 +6152,12 @@ Public Class frmPartMain
                                     If (pPlatCount > 0) Then
                                         '....Existing Platform
                                         Dim pPlatform_Out = (From Platform In mPartEntities.tblPlatform
-                                                    Where Platform.fldCustID = pCustID And Platform.fldName = pPlatformName).First()
+                                                             Where Platform.fldCustID = pCustID And Platform.fldName = pPlatformName).First()
                                         pPlatformID = pPlatform_Out.fldID
                                     Else
                                         '....New Platform
                                         Dim pPlatform_Out = (From Platform In mPartEntities.tblPlatform
-                                                   Where Platform.fldCustID = pCustID Order By Platform.fldID Descending).First()
+                                                             Where Platform.fldCustID = pCustID Order By Platform.fldID Descending).First()
 
                                         pPlatformID = pPlatform_Out.fldID + 1
                                         Dim pPlatform As New tblPlatform
@@ -6143,12 +6195,12 @@ Public Class frmPartMain
                                         If pLocCount > 0 Then
                                             '....Existing Location
                                             Dim pLoc_Out = (From Loc In mPartEntities.tblLocation
-                                                        Where Loc.fldCustID = pCustID And Loc.fldPlatformID = pPlatformID And Loc.fldLoc = pLocationName).First()
+                                                            Where Loc.fldCustID = pCustID And Loc.fldPlatformID = pPlatformID And Loc.fldLoc = pLocationName).First()
                                             pLocationID = pLoc_Out.fldID
                                         Else
                                             '....New Location
                                             Dim pLoc_Out = (From Loc In mPartEntities.tblLocation
-                                                       Where Loc.fldCustID = pCustID And Loc.fldPlatformID = pPlatformID Order By Loc.fldID Descending).First()
+                                                            Where Loc.fldCustID = pCustID And Loc.fldPlatformID = pPlatformID Order By Loc.fldID Descending).First()
                                             pLocationID = pLoc_Out.fldID + 1
 
                                             Dim pLocation As New tblLocation
@@ -6473,7 +6525,7 @@ Public Class frmPartMain
 #Region "TEXT BOX EVENT ROUTINES:"
 
     Private Sub txtBox_TextChanged(sender As System.Object, e As System.EventArgs) _
-                                   Handles txtCustomer.TextChanged, txtPlatform.TextChanged,
+                                   Handles txtPlatform.TextChanged,
                                    txtCustomerPN.TextChanged, txtLocation.TextChanged, txtPN_PH_Rev.TextChanged
         '===================================================================================
 
@@ -7326,7 +7378,7 @@ Public Class frmPartMain
                                                 Where pRec.fldID = pCustID Select pRec).First()
 
                         If (Not IsDBNull(pQry5.fldName) And Not IsNothing(pQry5.fldName)) Then
-                            txtCustomer.Text = pQry5.fldName
+                            cmbCustomer.Text = pQry5.fldName
                         End If
 
                         '....Unit
@@ -7372,7 +7424,7 @@ Public Class frmPartMain
                         mPlatformID = pPlatformID
                         mLocationID = pLocID
 
-                        mPartProject.CustInfo.CustName = txtCustomer.Text.Trim()
+                        mPartProject.CustInfo.CustName = cmbCustomer.Text.Trim()
                         mPartProject.CustInfo.PlatName = txtPlatform.Text.Trim()
                         mPartProject.CustInfo.LocName = txtLocation.Text.Trim()
                         mPartProject.CustInfo.PN_Cust = txtCustomerPN.Text.Trim()
@@ -7383,7 +7435,7 @@ Public Class frmPartMain
                         'mPartProject.Project_ID = pProjectID
 
                     Else
-                        txtCustomer.Text = ""
+                        cmbCustomer.Text = ""
                         cmbUnit.SelectedIndex = 0
                         ''cmbCulturalFormat.SelectedIndex = 0
                         txtPlatform.Text = ""
@@ -7396,7 +7448,7 @@ Public Class frmPartMain
                         mPartProject.CustInfo.PN_Cust_Rev = txtCustomerPN_Rev.Text.Trim()
                     End If
                 Else
-                    txtCustomer.Text = ""
+                    cmbCustomer.Text = ""
                     cmbUnit.SelectedIndex = 0
                     ''cmbCulturalFormat.SelectedIndex = 0
                     txtPlatform.Text = ""
@@ -7672,7 +7724,7 @@ Public Class frmPartMain
                 ''End If
 
 
-                txtCustomer.Text = ""
+                cmbCustomer.Text = ""
                 cmbUnit.SelectedIndex = 0
                 'cmbCulturalFormat.SelectedIndex = 0
                 txtPlatform.Text = ""
@@ -7702,7 +7754,7 @@ Public Class frmPartMain
     Private Sub InitializeControl(ByVal Status_In As Boolean)
         '====================================================
 
-        txtCustomer.ReadOnly = Not Status_In
+        cmbCustomer.Enabled = Status_In
         cmbUnit.Enabled = Status_In
         txtPlatform.ReadOnly = Not Status_In
         txtCustomerPN.ReadOnly = Not Status_In
@@ -7756,8 +7808,8 @@ Public Class frmPartMain
         Dim pColor As Color = Color.FromArgb(240, 240, 240)
 
         If (Status_In) Then
-            txtCustomer.BackColor = Color.White
-            txtCustomer.ForeColor = Color.Black
+            'txtCustomer.BackColor = Color.White
+            'txtCustomer.ForeColor = Color.Black
 
             txtPlatform.BackColor = Color.White
             txtPlatform.ForeColor = Color.Black
@@ -7809,8 +7861,8 @@ Public Class frmPartMain
 
         Else
 
-            txtCustomer.BackColor = pColor
-            txtCustomer.ForeColor = Color.DimGray
+            'txtCustomer.BackColor = pColor
+            'txtCustomer.ForeColor = Color.DimGray
 
             txtPlatform.BackColor = pColor
             txtPlatform.ForeColor = Color.DimGray
@@ -8912,4 +8964,185 @@ Public Class frmPartMain
 
 
     End Sub
+
+    Private Sub mnuDropDownList_Click(sender As Object, e As EventArgs) Handles mnuCustomerList.Click
+        '============================================================================================
+        If (gUser.Role = "Admin") Then
+            With openFileDialog1
+
+                .Filter = "Customer List (*.xlsx)|*.xlsx"
+                .FilterIndex = 1
+                .InitialDirectory = gFile.DirProgramDataFile
+                .FileName = ""
+                .Title = "Open"
+
+                If .ShowDialog = Windows.Forms.DialogResult.OK Then
+                    Dim pCustListFileName As String = .FileName
+                    Cursor.Current = Cursors.WaitCursor
+                    ReadExcel_UpdateDB(pCustListFileName)
+                    PopulateDropDownList(cmbCustomer, "tblCustList")
+                    DisplayData()
+                    Cursor.Current = Cursors.Default
+                End If
+            End With
+        Else
+            Dim pMsg As String = "Only 'Admin' user can load the 'Customer List DataFile'."
+            MessageBox.Show(pMsg, "Permission Denied!", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+        End If
+
+    End Sub
+
+#Region "DROP-DOWN LIST RELATED ROUTINES:"
+
+    Private Sub ReadExcel_UpdateDB(ByVal FileName_In As String)
+        '=====================================================      'AES 30MAY18
+        Dim pRow_Start As Integer = 0
+        Dim pColumn_Start As Integer = 0
+        Dim pItem As New List(Of String)
+
+        CloseExcelFiles()
+
+        Dim pApp As EXCEL.Application = Nothing
+        pApp = New EXCEL.Application()
+
+        'pApp.DisplayAlerts = False
+
+        '....Open WorkBook.
+        Dim pWkbOrg As EXCEL.Workbook = Nothing
+        Dim pExitLoop As Boolean = False
+
+        Dim pSealPartDDListEntities As New SealPart_DDListDBEntities()
+
+        Try
+
+            pWkbOrg = pApp.Workbooks.Open(FileName_In, Missing.Value, False, Missing.Value, Missing.Value, Missing.Value,
+                                              Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value, Missing.Value,
+                                              Missing.Value, Missing.Value, Missing.Value)
+            '....Customer
+            '....Table - tblCustList
+            pRow_Start = 5
+            pColumn_Start = 1
+            pItem = New List(Of String)
+            pItem = ReadDropDownList(pWkbOrg, "Customer", pRow_Start, pColumn_Start)
+            UpdateDB(pItem, "tblCustList")
+
+            pWkbOrg.Close()
+            pApp = Nothing
+            Dim pFileTitle As String = System.IO.Path.GetFileName(FileName_In)
+            Dim pMsg As String = "Updated from: " & Space(2) & pFileTitle
+            MessageBox.Show(pMsg, "Customer Data File Loading", MessageBoxButtons.OK)
+
+        Catch ex As Exception
+
+        End Try
+
+    End Sub
+
+    Private Function ReadDropDownList(ByVal WorkBook_In As EXCEL.Workbook, ByVal SheetName_In As String,
+                                      ByVal Row_In As Integer, ByVal Column_In As Integer) As List(Of String)
+        '====================================================================================================   'AES 30MAY18
+
+        Dim pWkSheet As EXCEL.Worksheet
+        Dim pExitLoop As Boolean = False
+
+        pWkSheet = WorkBook_In.Worksheets(SheetName_In)
+
+        Dim pItem As New List(Of String)
+        Dim pIndx As Integer = 0
+
+        While (Not pExitLoop)
+            Dim pVal As String = pWkSheet.Cells(Row_In + pIndx, Column_In).value
+            pExitLoop = String.IsNullOrEmpty(pVal)
+
+            If (Not pExitLoop) Then
+                pItem.Add(pVal)
+                pIndx = pIndx + 1
+
+            End If
+
+        End While
+
+        Return pItem
+
+    End Function
+
+
+    Private Sub UpdateDB(ByVal Item_In As List(Of String), ByVal TableName_In As String)
+        '===============================================================================    'AES 30MAY18
+        Dim pSealPartDDListEntities As New SealPart_DDListDBEntities()
+
+        If (Item_In.Count > 0) Then
+
+            '....Customer
+            '....Table - tblCustList
+            If (TableName_In = "tblCustList") Then
+                Dim pRec = (From Rec In pSealPartDDListEntities.tblCustList
+                            Select Rec).ToList()
+
+                For i As Integer = 0 To pRec.Count() - 1
+                    pSealPartDDListEntities.DeleteObject(pRec(i))
+                    pSealPartDDListEntities.SaveChanges()
+                Next
+
+                Dim pTableList As New List(Of tblCustList)
+
+                For i As Integer = 0 To Item_In.Count - 1
+                    Dim pList As New tblCustList
+                    pTableList.Add(pList)
+                    pTableList(i).fldID = i + 1
+                    pTableList(i).fldCustList = Item_In(i)
+
+                    pSealPartDDListEntities.AddTotblCustList(pTableList(i))
+                Next
+
+            End If
+
+            pSealPartDDListEntities.SaveChanges()
+
+        End If
+
+    End Sub
+
+    Private Sub PopulateDropDownList(ByVal ComboBox_In As ComboBox, ByVal TableName_In As String)
+        '=======================================================================================    'AES 30MAY18
+        Try
+
+            Dim pSealPartDDListEntities As New SealPart_DDListDBEntities()
+
+            Dim pRec As Object = Nothing
+            If (TableName_In = "tblCustList") Then
+                pRec = (From Rec In pSealPartDDListEntities.tblCustList
+                        Select Rec.fldCustList).ToList()
+            End If
+
+            ComboBox_In.Items.Clear()
+
+            For i As Integer = 0 To pRec.Count() - 1
+                ComboBox_In.Items.Add(pRec(i))
+            Next
+
+        Catch ex As Exception
+
+        End Try
+
+    End Sub
+
+    Private Sub CloseExcelFiles()
+        '=======================        'AES 30MAY18
+
+        Dim pProcesses As Process() = Process.GetProcesses()
+
+        Try
+            For Each p As Process In pProcesses
+                If p.ProcessName = "EXCEL" Then
+                    p.Kill()
+                End If
+            Next
+
+        Catch pEXP As Exception
+        End Try
+    End Sub
+
+#End Region
+
 End Class

@@ -48,8 +48,14 @@ Public Class Process_frmRoleSelection
         '========================================================================
         gUser.Role = cmbRole.Text
         Me.Close()
+
         Dim pProcess_frmMain As New Process_frmMain()
-        pProcess_frmMain.Size = New Size(1130, 700)     'AES 09JAN18
+        Dim pHeight As Integer = 938
+        Dim pScreenHeight As Integer = Screen.PrimaryScreen.WorkingArea.Height
+        If (pHeight > pScreenHeight) Then
+            pHeight = pScreenHeight
+        End If
+        pProcess_frmMain.Size = New Size(1122, pHeight)   '700  'AES 09JAN18
         pProcess_frmMain.AutoScroll = True
         pProcess_frmMain.ShowDialog()
 

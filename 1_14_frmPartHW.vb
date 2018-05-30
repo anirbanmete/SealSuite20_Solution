@@ -628,6 +628,7 @@ Public Class Part_frmHW
                 With cmbCoating
                     .Items.Clear()
                     .Items.Add("Tricom")
+                    .Items.Add("Tricom-HT")
                     .Items.Add("T800")
 
                     .SelectedIndex = 0

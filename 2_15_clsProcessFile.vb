@@ -109,6 +109,14 @@ Public Class clsProcessFile
 
     End Property
 
+    Public ReadOnly Property DirProgramDataFile() As String
+        '==========================================================       
+        Get
+            Return mcDirRoot & "Program Data Files\"
+        End Get
+
+    End Property
+
 #End Region
 
 #Region "PD - PDS:"
@@ -2054,7 +2062,16 @@ Public Class clsProcessFile
                                         pNewBmp.Save(pTemp_ImagePath, Imaging.ImageFormat.Jpeg)
 
                                         pExcelCellRange = pWkSheet.Range(pColumn_Signature & pIndex.ToString())
-                                        pWkSheet.Shapes.AddPicture(pTemp_ImagePath, False, True, pExcelCellRange.Left, pExcelCellRange.Top, pExcelCellRange.Width * 2, pExcelCellRange.Height)
+                                        Dim pLeft As Single = pExcelCellRange.Left + (pExcelCellRange.Left * 1) / 100
+                                        Dim pTop As Single = pExcelCellRange.Top + (pExcelCellRange.Top * 0.05) / 100
+                                        'Dim pTop As Single = (pExcelCellRange.Top * 95) / 100
+                                        Dim pWid As Single = (pExcelCellRange.Width * 2.5)
+                                        Dim pHt As Single = (pExcelCellRange.Height * 90) / 100
+
+                                        pWkSheet.Shapes.AddPicture(pTemp_ImagePath, False, True, pLeft, pTop, pWid, pHt)
+                                        'pWkSheet.Shapes.AddPicture(pTemp_ImagePath, False, True, pExcelCellRange.Left, pExcelCellRange.Top, pWid, pHt)
+                                        'pWkSheet.Shapes.AddPicture(pTemp_ImagePath, False, True, pExcelCellRange.Left, pExcelCellRange.Top, pWid, pHt)
+                                        'pWkSheet.Shapes.AddPicture(pTemp_ImagePath, False, True, pExcelCellRange.Left, pExcelCellRange.Top, pExcelCellRange.Width * 2, pExcelCellRange.Height)
                                         'Dim picture As EXCEL.Picture = pWkSheet.Pictures.(1, 1, pTemp_ImagePath)
 
 
